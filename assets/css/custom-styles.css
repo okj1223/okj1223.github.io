@@ -1,8 +1,13 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+/* ① Google Fonts → Merriweather + Roboto */
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@700&family=Roboto:wght@400;500&display=swap');
 
 body {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
+h2, h3 {
+  font-family: 'Merriweather', serif;
+}
+
 
 /* ── Banner Overlay Z‑Index & Text Centering ── */
 .banner-overlay {
