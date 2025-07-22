@@ -24,6 +24,41 @@ layout: page
   </div>
 </section>
 
+<!-- ── Skill Radar Chart ── -->
+<section class="skills-chart">
+  <div class="container">
+    <h2>Skill Balance</h2>
+    <canvas id="skillRadar"></canvas>
+  </div>
+</section>
+
+
+<!-- ── Skills Grid ── -->
+<section class="skills-grid">
+  <div class="container">
+    <h2>Skills &amp; Expertise</h2>
+    <div class="grid">
+      <div class="skill-item">
+        <img src="{{ '/assets/img/python-logo.png' | relative_url }}" alt="Python">
+        <span>Python</span>
+      </div>
+      <!-- 여기에 다른 스킬 아이템 추가 -->
+    </div>
+  </div>
+</section>
+
+<!-- ── Proficiency Bars ── -->
+<section class="skills-bars">
+  <div class="container">
+    <h2>Proficiency</h2>
+    <div class="bar">
+      <span>Python</span>
+      <div class="progress" data-percent="85%"></div>
+    </div>
+    <!-- 나머지 스킬 바 추가 -->
+  </div>
+</section>
+
 {{ content }}
 
 {% assign posts = paginator.posts | default: site.posts %}

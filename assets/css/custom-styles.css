@@ -91,6 +91,8 @@
   margin-right: 0;
 }
 
+
+
 /* ── Logo Section Styles ── */
 .logo-section {
   margin: 2rem 0;     /* 배너/콘텐츠와 간격 */
@@ -107,4 +109,45 @@
   width: 100px;       /* 원하는 크기로 조정 */
   height: auto;
   object-fit: contain;
+}
+
+.skills-grid .grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: center;
+}
+.skill-item {
+  text-align: center;
+  width: 100px;
+}
+.skill-item img {
+  width: 60px;
+  height: auto;
+  margin-bottom: 0.5rem;
+}
+
+
+.skills-bars .bar {
+  margin-bottom: 1rem;
+}
+.skills-bars .bar span {
+  display: inline-block;
+  width: 100px;
+}
+.skills-bars .progress {
+  width: 0;
+  height: 8px;
+  background: #0066cc;
+  transition: width 1s ease;
+}
+
+
+.skills-chart {
+  padding: 2rem 0;
+  text-align: center;
+}
+.skills-chart canvas {
+  max-width: 400px;
+  margin: 0 auto;
 }
