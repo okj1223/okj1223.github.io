@@ -163,8 +163,8 @@ section.skills-grid .skill-item span {
 
 /* Arduino 아이콘만 작게 줄이기 */
 .skills-grid .skill-item img[alt="Arduino"] {
-  max-height: 10px !important;   /* ← 여기 !important */
-  max-width: 10px !important;
+  max-height: 50px !important;   /* ← 여기 !important */
+  max-width: auto;
   width: auto;
 }
 
@@ -172,8 +172,8 @@ section.skills-grid .skill-item span {
 .skills-grid .skill-item img[alt="AutoCad"],
 .skills-grid .skill-item img[alt="Inventor"],
 .skills-grid .skill-item img[alt="3Dmax"] {
-  max-height: 10px !important;
-  max-width: 10px !important;
+  max-height: 50px !important;
+  max-width: 50px !important;
   width: auto;
   display: block;
   margin: 0 auto;
