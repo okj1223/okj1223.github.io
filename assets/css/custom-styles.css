@@ -266,3 +266,18 @@ section > h2 {
   margin: 1rem 0;                       /* 위아래 여백 */
   padding: 0;                           /* 패딩 제거 */
 }
+
+/* ── Section Headings Underline Bar ── */
+section > h2 {
+  position: relative;
+  padding-bottom: 0.5rem;  /* 바와 텍스트 사이 여백 */
+}
+
+section > h2::after {
+  content: "";
+  display: block;
+  width: 100px;                     /* 바 길이 */
+  height: 2px;                      /* 바 두께 */
+  background-color: rgba(0, 0, 0, 0.1); /* 연한 회색 */
+  margin: 0.25rem auto 0;           /* 텍스트 중앙에 위치 */
+}
