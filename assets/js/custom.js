@@ -50,13 +50,3 @@ new Chart(ctx, {
   }
 });
 
-
-document.addEventListener('DOMContentLoaded', () => {
-  document.querySelectorAll('.cert-icon').forEach(icon => {
-    icon.addEventListener('click', () => {
-      const details = icon.closest('.cert-item').querySelector('.cert-details');
-      details.classList.toggle('open');
-    });
-  });
-});
-

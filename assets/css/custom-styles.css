@@ -190,53 +190,66 @@ section.skills-grid .skill-item span {
 }
 
 
-
-/* ── Certifications Toggle List ── */
-.certifications { padding: 2rem 0; }
-.certifications h2 { text-align: center; margin-bottom: 1rem; }
-
-.cert-list {
-  list-style: none; padding: 0; margin: 0 auto;
-  display: flex; flex-wrap: wrap; gap: 2rem;
-  justify-content: center;
-}
-
-.cert-item {
-  width: 200px; text-align: center;
-}
-
-.cert-icon {
-  width: 64px; height: 64px; cursor: pointer;
-}
-
-.cert-name {
-  display: block; margin: 0.5rem 0;
-  font-weight: 600;
-}
-
-.cert-details {
-  max-height: 0; overflow: hidden;
-  transition: max-height 0.4s ease, padding 0.4s ease;
-  padding: 0 0;
-}
-
-.cert-details.open {
-  max-height: 200px;      /* 충분히 큰 값 */
-  padding: 0.5rem 0;
-}
-
-
-.skills-grid,
-.skills-chart,
-.certifications {
-  max-width: 800px;
-  margin: 2rem auto;     /* 위아래 여백 + 가로 중앙 정렬 */
-}
-
 /* ── Space Out Major Sections ── */
 .skills-grid,
 .skills-chart,
 .certifications {
   margin: 4rem auto;      /* 위아래 4rem 여백, 좌우는 auto로 중앙 정렬 유지 */
   padding: 0 1rem;        /* 좌우 여유 공간(선택) */
+}
+
+
+/* ── Cert Card Styles ── */
+.cert-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+}
+.cert-item {
+  width: 280px;
+}
+.cert-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 0.5rem;
+  transition: transform 0.3s ease;
+}
+.cert-card img {
+  width: 100%;
+  display: block;
+  transition: transform 0.3s ease;
+}
+.cert-overlay {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background: rgba(0,0,0,0.5);
+  padding: 0.75rem 0;
+  text-align: center;
+}
+.cert-name {
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+/* Hover effects */
+.cert-card:hover {
+  transform: scale(1.03);
+}
+.cert-card:hover img {
+  transform: scale(1.1);
+}
+
+/* Details slide-down */
+.cert-details {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease, padding 0.4s ease;
+  padding: 0 1rem;
+}
+.cert-item:hover .cert-details {
+  max-height: 200px; /* 필요에 따라 조정 */
+  padding: 1rem;
 }
