@@ -172,9 +172,6 @@ section.skills-grid .skill-item span {
 
 
 /* ── Certifications Styles (간소화 & 크기 축소) ── */
-.certifications {
-  padding: 3rem 0;
-}
 
 .cert-list {
   list-style: none;
@@ -252,27 +249,29 @@ section.skills-grid .skill-item span {
   padding: 0.5rem;
 }
 
-/* ── All Section Headings: Centered, Smaller & Lighter ── */
-section > h2 {
-  text-align: center;                   /* 가운데 정렬 */
-  font-size: 1.2rem !important;         /* 작게 */
-  font-weight: 300 !important;          /* 얇게 */
-  color: rgba(0, 0, 0, 0.6) !important; /* 옅은 회색 */
-  margin: 1rem 0;                       /* 위아래 여백 */
-  padding: 0;                           /* 패딩 제거 */
-}
+/* ── Import Google Font: Inter ── */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400&display=swap');
 
-/* ── Section Headings Underline Bar ── */
+/* ── Global Font & Section Heading Styles ── */
+body {
+  font-family: 'Inter', sans-serif;
+}
 section > h2 {
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: 300;
+  color: rgba(0, 0, 0, 0.6);
+  margin: 1rem 0;
+  padding-bottom: 1rem;
   position: relative;
-  padding-bottom: 0.5rem;  /* 바와 텍스트 사이 여백 */
 }
-
 section > h2::after {
   content: "";
   display: block;
-  width: 100px;                     /* 바 길이 */
-  height: 2px;                      /* 바 두께 */
-  background-color: rgba(0, 0, 0, 0.1); /* 연한 회색 */
-  margin: 0.25rem auto 0;           /* 텍스트 중앙에 위치 */
+  width: 200px;
+  height: 1px;
+  background-color: rgba(0, 0, 0, 0.1);
+  margin: 0.5rem auto 0;
+  border-radius: 1px;
 }
+
