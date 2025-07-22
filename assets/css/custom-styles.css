@@ -64,7 +64,6 @@
 
 /* ② 이름 텍스트 스타일 */
 .banner-name {
-  font-family: 'Orbitron', sans-serif;
   font-size: 1rem;           /* 부제보다 작게 */
   color: #ffffff;            /* 네온 포인트 컬러 */
   margin-top: 0.5rem;
