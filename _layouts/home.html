@@ -1,6 +1,15 @@
 ---
 layout: page
 ---
+<!-- at the very top of _layouts/home.html -->
+{% if site.banner-img %}
+<div id="banner" style="background-image: url('{{ site.banner-img | relative_url }}')">
+  <div class="banner-overlay">
+    <h1 class="banner-title">{{ site.banner-title }}</h1>
+    <p class="banner-subtitle">{{ site.banner-subtitle }}</p>
+  </div>
+</div>
+{% endif %}
 
 {{ content }}
 

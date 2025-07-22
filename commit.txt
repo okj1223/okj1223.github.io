@@ -1,0 +1,11 @@
+# 수정된 파일 상태 확인
+git status
+
+# 스테이징
+git add .
+
+# 커밋 메시지 작성
+git commit -m "Add banner image and update config"
+
+# 만약 master라면
+git push origin master

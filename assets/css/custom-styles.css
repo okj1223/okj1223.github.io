@@ -1,0 +1,25 @@
+/* ── Banner Styles ── */
+#banner {
+  background-size: cover;
+  background-position: center;
+  height: 300px;
+  position: relative;
+}
+.banner-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.4);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.banner-title {
+  font-size: 3rem;
+  color: #fff;
+  margin: 0;
+}
+.banner-subtitle {
+  font-size: 1.2rem;
+  color: #ddd;
+}
