@@ -188,38 +188,51 @@ section.skills-grid .skill-item span {
 
 
 /* ── Certifications Section Styles ── */
-.cert-list {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 1rem;               /* 카드 사이 간격 */
-  margin: 0 auto;
-  padding: 0;
+.certifications {
+  padding: 3rem 0;
+}
+.certifications h2 {
+  text-align: left;
+  margin-bottom: 1rem;
 }
 
+/* List reset & flex layout */
+.cert-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;               /* 카드 간격 */
+  justify-content: center;
+}
+
+/* 카드 고정 크기 */
 .cert-item {
-  flex: 0 0 200px;         /* 고정 폭 200px */
+  flex: 0 0 240px;         /* 카드 너비 240px */
   box-sizing: border-box;
 }
 
-/* Card container */
+/* 카드 박스 */
 .cert-card {
   position: relative;
   overflow: hidden;
   border-radius: 0.5rem;
   width: 100%;
+  height: 240px;           /* 카드 높이 240px */
   transition: transform 0.3s ease;
 }
 
-/* Card image */
+/* 카드 이미지 */
 .cert-card img {
   width: 100%;
-  height: auto;
+  height: 100%;
+  object-fit: cover;       /* 박스 꽉 채우기 */
   display: block;
   transition: transform 0.3s ease;
 }
 
-/* Overlay title */
+/* 오버레이 텍스트 */
 .cert-overlay {
   position: absolute;
   bottom: 0;
@@ -228,7 +241,6 @@ section.skills-grid .skill-item span {
   padding: 0.75rem 0;
   text-align: center;
 }
-
 .cert-name {
   color: #fff;
   font-size: 1.1rem;
@@ -237,7 +249,7 @@ section.skills-grid .skill-item span {
 
 /* Hover effects */
 .cert-card:hover {
-  transform: scale(1.03);
+  transform: scale(1.05);
 }
 .cert-card:hover img {
   transform: scale(1.1);
@@ -251,7 +263,8 @@ section.skills-grid .skill-item span {
   transition: max-height 0.4s ease, padding 0.4s ease;
 }
 .cert-item:hover .cert-details {
-  max-height: 200px; /* 필요에 따라 조정 */
+  max-height: 200px;
   padding: 1rem;
 }
+
 
