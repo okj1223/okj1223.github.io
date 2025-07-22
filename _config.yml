@@ -37,9 +37,13 @@ banner-img: "/assets/img/banner.png"
 banner-title: "Enviroboticist"
 
 # 타이틀 아래에 보조 문구
-banner-subtitle: "Enviromental · AI · Robotics"
+banner-subtitle: "Oh Kyungjun"
 
-banner-name: "Oh Kyungjun"
+banner-name: "Enviromental · AI · Robotics"
+
+# banner 설정 섹션에 추가
+banner-line1: "Crafting AI‑driven envirobots with ROS2 & Python"
+banner-line2: "Sensing pollution, eliminate contaminants, and restore ecosystems"
 
 
 ################

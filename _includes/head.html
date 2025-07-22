@@ -113,8 +113,6 @@
       {%- endif -%}
     {%- elsif page.thumbnail-img -%}
       {{ page.thumbnail-img }}
-    {%- elsif site.avatar -%}
-      {{ site.avatar }}
     {% endif %}
   {%- endcapture -%}
   {%- assign img=img | strip -%}
