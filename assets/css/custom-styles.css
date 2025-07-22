@@ -128,21 +128,6 @@
 }
 
 
-.skills-bars .bar {
-  margin-bottom: 1rem;
-}
-.skills-bars .bar span {
-  display: inline-block;
-  width: 100px;
-}
-.skills-bars .progress {
-  width: 0;
-  height: 8px;
-  background: #0066cc;
-  transition: width 1s ease;
-}
-
-
 .skills-chart {
   padding: 2rem 0;
   text-align: center;
