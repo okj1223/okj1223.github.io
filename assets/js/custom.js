@@ -1,4 +1,4 @@
-// Radar chart
+// Radar chart with fixed 0–100 scale
 const ctx = document.getElementById('skillRadar').getContext('2d');
 new Chart(ctx, {
   type: 'radar',
@@ -12,6 +12,23 @@ new Chart(ctx, {
     }]
   },
   options: {
-    scale: { ticks: { beginAtZero: true } }
+    scale: {
+      ticks: {
+        beginAtZero: true,
+        min: 0,        // 최소값
+        max: 100,      // 최대값
+        stepSize: 20   // 눈금 간격
+      },
+      pointLabels: {
+        fontSize: 14,
+        fontColor: '#333'
+      },
+      gridLines: {
+        color: '#ccc'
+      }
+    },
+    legend: {
+      position: 'bottom'
+    }
   }
 });
