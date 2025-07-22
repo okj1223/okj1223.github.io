@@ -136,3 +136,32 @@
   max-width: 400px;
   margin: 0 auto;
 }
+
+
+/* ── Equal‑Height Skill Grid & Hide Labels ── */
+.skills-grid .grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: 1.5rem;
+}
+
+.skill-item {
+  /* 아이콘 박스 높이를 통일 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 120px;        /* 원하는 높이로 조정 */
+  position: relative;
+}
+
+/* 아이콘 크기 통일 */
+.skill-item img {
+  max-height: 80px;     /* 아이콘 최대 높이 */
+  width: auto;
+  object-fit: contain;
+}
+
+/* 아래 텍스트(span)를 숨겨서 깔끔하게 */
+.skill-item span {
+  display: none;
+}
