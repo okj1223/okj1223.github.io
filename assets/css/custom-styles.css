@@ -164,7 +164,7 @@ section.skills-grid .skill-item span {
 
 /* Arduino 아이콘만 작게 줄이기 */
 .skills-grid .skill-item img[alt="Arduino"] {
-  max-height: 40px;       /* 원하는 크기로 조정 */
+  max-height: 10px;       /* 원하는 크기로 조정 */
   width: auto;
 }
 
@@ -172,7 +172,7 @@ section.skills-grid .skill-item span {
 .skills-grid .skill-item img[alt="AutoCad"],
 .skills-grid .skill-item img[alt="Inventor"],
 .skills-grid .skill-item img[alt="3Dmax"] {
-  max-height: 40px;       /* 원하는 크기로 조정 */
+  max-height: 10px;       /* 원하는 크기로 조정 */
   width: auto;
   display: block;         
   margin: 0 auto;         /* 부모 컨테이너에서 가로 가운데 정렬 */
@@ -188,27 +188,39 @@ section.skills-grid .skill-item span {
 }
 
 
-/* ── Cert Card Styles ── */
+/* ── Certifications Section Styles ── */
 .cert-list {
   display: flex;
   flex-wrap: wrap;
-  gap: 2rem;
   justify-content: center;
+  gap: 1rem;               /* 카드 사이 간격 */
+  margin: 0 auto;
+  padding: 0;
 }
+
 .cert-item {
-  width: 280px;
+  flex: 0 0 200px;         /* 고정 폭 200px */
+  box-sizing: border-box;
 }
+
+/* Card container */
 .cert-card {
   position: relative;
   overflow: hidden;
   border-radius: 0.5rem;
+  width: 100%;
   transition: transform 0.3s ease;
 }
+
+/* Card image */
 .cert-card img {
   width: 100%;
+  height: auto;
   display: block;
   transition: transform 0.3s ease;
 }
+
+/* Overlay title */
 .cert-overlay {
   position: absolute;
   bottom: 0;
@@ -217,6 +229,7 @@ section.skills-grid .skill-item span {
   padding: 0.75rem 0;
   text-align: center;
 }
+
 .cert-name {
   color: #fff;
   font-size: 1.1rem;
@@ -231,14 +244,15 @@ section.skills-grid .skill-item span {
   transform: scale(1.1);
 }
 
-/* Details slide-down */
+/* Details slide‑down */
 .cert-details {
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.4s ease, padding 0.4s ease;
   padding: 0 1rem;
+  transition: max-height 0.4s ease, padding 0.4s ease;
 }
 .cert-item:hover .cert-details {
   max-height: 200px; /* 필요에 따라 조정 */
   padding: 1rem;
 }
+
