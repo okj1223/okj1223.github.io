@@ -26,13 +26,27 @@ navbar-links:
     - Learn markdown: "https://www.markdowntutorial.com/"
   Author's home: "https://deanattali.com"
 
+###########################
+# --- Banner Settings --- #
+###########################
+
+# 배너에 사용할 이미지 경로 (assets/img/ 아래 파일명)
+banner-img: "/assets/img/banner.png"
+
+# 배너 위에 표시할 타이틀 텍스트
+banner-title: "TechFusionLab"
+
+# 타이틀 아래에 보조 문구
+banner-subtitle: "Enviromental · AI · Robotics"
+
+
 ################
 # --- Logo --- #
 ################
 
 # Image to show in the navigation bar - works best with a square image
 # Remove this parameter if you don't want an image in the navbar
-avatar: "/assets/img/avatar-icon.png"
+avatar: "/assets/img/profile.JPEG"
 
 # By default, the image is cut into a circle. You can disable this behaviour by setting 'round-avatar: false'
 round-avatar: true
