@@ -1,12 +1,15 @@
 /* ① Google Fonts → Merriweather + Roboto */
 @import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@700&family=Roboto:wght@400;500&display=swap');
+/* ── Import Google Font: Inter ── */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400&display=swap');
 
-body {
+
+/* body {
   font-family: 'Roboto', sans-serif;
 }
 h2, h3 {
   font-family: 'Merriweather', serif;
-}
+} */
 
 
 /* ── Banner Overlay Z‑Index & Text Centering ── */
@@ -249,9 +252,6 @@ section.skills-grid .skill-item span {
   padding: 0.5rem;
 }
 
-/* ── Import Google Font: Inter ── */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400&display=swap');
-
 /* ── Global Font & Section Heading Styles ── */
 body {
   font-family: 'Inter', sans-serif;
@@ -268,7 +268,7 @@ section > h2 {
 section > h2::after {
   content: "";
   display: block;
-  width: 200px;
+  width: 600px;
   height: 1px;
   background-color: rgba(0, 0, 0, 0.1);
   margin: 0.5rem auto 0;
