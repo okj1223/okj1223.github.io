@@ -175,22 +175,6 @@ section.skills-grid .skill-item span {
 .certifications {
   padding: 3rem 0;
 }
-.certifications h2 {
-  text-align: center;
-  margin-bottom: 1rem;
-  font-size: 1.5rem;
-  font-weight: 300;
-  position: relative;
-}
-.certifications h2::after {
-  content: "";
-  display: block;
-  width: 40px;
-  height: 2px;
-  background-color: #8BC34A;
-  margin: 0.25rem auto 0;
-  border-radius: 2px;
-}
 
 .cert-list {
   list-style: none;
@@ -251,7 +235,18 @@ section.skills-grid .skill-item span {
   overflow: hidden;
   padding: 0 0.5rem;
   transition: max-height 0.3s ease, padding 0.3s ease;
+  font-size: 0.875rem;      /* 약 14px 정도로 축소 */
+  line-height: 1.4;         /* 줄간격 살짝 줄이기 */
+  color: #444;              /* 약간 연한 텍스트 컬러 */
 }
+.cert-details ul {
+  margin: 0;
+  padding-left: 1rem;       /* 리스트 들여쓰기 */
+}
+.cert-details ul li {
+  margin-bottom: 0.25rem;   /* 항목 간 간격 축소 */
+}
+
 .cert-item:hover .cert-details {
   max-height: 150px;
   padding: 0.5rem;
