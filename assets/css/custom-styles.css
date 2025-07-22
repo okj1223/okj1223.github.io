@@ -99,46 +99,44 @@
   object-fit: contain;
 }
 
-.skills-grid .grid {
-  flex-wrap: wrap;
-  gap: 1.5rem;
-  justify-content: center;
+
+/* ── Skills & Expertise Styles ── */
+.skills-box {
+  max-width: 1200px;
+  margin: 4rem auto;
+  padding: 2rem;
+  background: #fff;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
 }
 
-.skills-grid .grid {
+.skills-box > h2 {
+  margin-bottom: 1rem;
+  font-size: 2rem;
+  color: #333;
+  text-align: left;
+}
+
+.skills-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-}
-
-.skill-item {
-  text-align: center;
-  width: 100px;
-}
-.skill-item img {
-  width: 60px;
-  height: auto;
-  margin-bottom: 0.5rem;
-}
-
-
-
-
-/* ── Equal‑Height Skill Grid & Hide Labels (업데이트) ── */
-
-.skill-item {
-  display: flex;
+  grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+  gap: 1.5rem;
+  justify-items: center;
   align-items: center;
-  justify-content: center;
-  height: 120px;
-  position: relative;
 }
 
-section.skills-grid .skill-item img {
-  max-height: 80px;   /* 높이 고정 */
-  max-width: 80px;    /* 너비도 고정 */
-  width: auto;
-  height: auto;
-  object-fit: contain !important;
+.skills-grid .skill-item {
+  width: 80px;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.skills-grid .skill-item img {
+  max-width: 60px;
+  max-height: 60px;
+  object-fit: contain;
 }
 
 /* 레이블 감추기 */
@@ -163,16 +161,6 @@ section.skills-grid .skill-item span {
   width: auto;
   display: block;
   margin: 0 auto;
-}
-
-
-
-/* ── Space Out Major Sections ── */
-.skills-grid,
-.skills-chart,
-.certifications {
-  margin: 4rem auto;      /* 위아래 4rem 여백, 좌우는 auto로 중앙 정렬 유지 */
-  padding: 0 1rem;        /* 좌우 여유 공간(선택) */
 }
 
 
