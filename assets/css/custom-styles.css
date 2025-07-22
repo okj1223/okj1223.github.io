@@ -153,8 +153,7 @@
   position: relative;
 }
 
-/* 아이콘 크기 완전 통일 */
-.skill-item img {
+section.skills-grid .skill-item img {
   max-height: 80px !important;   /* 높이 고정 */
   max-width: 80px !important;    /* 너비도 고정 */
   width: auto;
@@ -163,6 +162,6 @@
 }
 
 /* 레이블 감추기 */
-.skill-item span {
+section.skills-grid .skill-item span {
   display: none !important;
 }

@@ -69,9 +69,9 @@ banner-line2: "Sensing pollution, eliminate contaminants, and restore ecosystems
 # Uncomment the links you want to show and add your information to each one.
 social-network-links:
   email: "rudwns1812@gmail.com"
-  rss: true  # remove this line if you don't want to show an RSS link at the bottom
+  # rss: true  # remove this line if you don't want to show an RSS link at the bottom
   github: okj1223
-  youtube: "@daattali"
+  youtube: "@okj2329"
 #  medium: yourname
 #  reddit: yourname or r/yoursubreddit
 #  linkedin: daattali
@@ -172,7 +172,8 @@ footer-hover-col: "#0085A1"
 
 # For any extra visual customization, you can include additional CSS files in every page on your site. List any custom CSS files here
 site-css:
- - "/assets/css/custom-styles.css"
+ - "/assets/css/beautifuljekyll.css"   # 테마 기본
+ - "/assets/css/custom-styles.css"     # 내 커스텀 CSS
 
 # If you have common JavaScript files that should be included in every page, list them here
 #site-js:
