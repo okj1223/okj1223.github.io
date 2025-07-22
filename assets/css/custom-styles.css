@@ -1,3 +1,19 @@
+/* ── Import Fancy Font ── */
+@import url('https://fonts.googleapis.com/css2?family=Audiowide&display=swap');
+
+/* ── Banner Overlay Z‑Index & Text Centering ── */
+.banner-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.4);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  z-index: 2;
+}
+
 /* ── Banner Styles ── */
 #banner {
   position: relative;
@@ -10,8 +26,10 @@
   overflow: hidden;
 }
 .banner-title {
+  font-family: 'Audiowide', cursive;
   font-size: 3rem;
   color: #ffffff;                                  /* Pure White */
+  margin: 0 0 0.5rem;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);       /* 짙은 그림자로 읽기 쉽게 */
 }
 .banner-subtitle {
@@ -19,16 +37,30 @@
   color: #f8f8f8;                                  /* Off‑White */
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
 }
+/* ── Extra Lines 묶음 ── */
+.banner-extra {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;           /* 두 줄 간격 조절 */
+}
+/* ── Line1, Line2 스타일 ── */
 .banner-line1,
 .banner-line2 {
-  font-family: 'Roboto', sans-serif;
-  font-size: 1rem;
-  color: #f0f0f0;
-  opacity: 0.85;
-  margin: 0.25rem 0;
-  text-align: center;
+  font-family: 'Audiowide', cursive;
+  color: rgba(255, 255, 255, 0.9);
+  margin: 0;
+  line-height: 1.2;
 }
 
+.banner-line1 {
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.banner-line2 {
+  font-size: 1rem;
+  font-weight: 300;
+}
 
 
 /* ① Google Fonts 불러오기 */
