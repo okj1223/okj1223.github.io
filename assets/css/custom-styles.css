@@ -108,7 +108,7 @@ h2, h3 {
 
 
 /* ── Skills & Expertise Styles ── */
-.skills-box {
+/* .skills-box {
   max-width: 1200px;
   margin: 4rem auto;
   padding: 2rem;
@@ -122,7 +122,7 @@ h2, h3 {
   font-size: 2rem;
   color: #333;
   text-align: left;
-}
+} */
 
 .skills-grid {
   display: grid;
@@ -249,4 +249,28 @@ section.skills-grid .skill-item span {
 .cert-item:hover .cert-details {
   max-height: 200px;
   padding: 1rem;
+}
+
+/* ── Section Headings: Lighter, Smaller & Underline Bar ── */
+.skills-box > h2,
+.certifications > h2,
+.logo-text h2 {
+  font-size: 1.75rem;        /* 조금 작게 */
+  font-weight: 400;          /* 얕은 굵기 */
+  text-align: center;        /* 중앙 정렬 */
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;    /* 바와 텍스트 간 간격 */
+  position: relative;
+}
+
+.skills-box > h2::after,
+.certifications > h2::after,
+.logo-text h2::after {
+  content: "";
+  display: block;
+  width: 60px;               /* 바 길이 */
+  height: 3px;               /* 바 두께 */
+  background-color: #8BC34A; /* 연한 라임 계열 예시 */
+  margin: 0 auto;            /* 중앙에 위치 */
+  border-radius: 2px;        /* 모서리 라운드 */
 }
