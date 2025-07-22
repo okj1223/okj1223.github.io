@@ -1,18 +1,14 @@
 /* ── Banner Styles ── */
 #banner {
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  width: 100vw;
+  height: 300px;              /* 원하시는 높이로 조정 */
   background-size: cover;
   background-position: center;
-  height: 300px;
-  position: relative;
-}
-.banner-overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(0,0,0,0.4);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
 }
 .banner-title {
   font-size: 3rem;
