@@ -128,14 +128,20 @@
 }
 
 
+/* make the radar chart container a fixed square */
 .skills-chart {
-  padding: 2rem 0;
-  text-align: center;
-}
-.skills-chart canvas {
   max-width: 400px;
-  margin: 0 auto;
+  margin: 2rem auto;     /* center it with some vertical breathing room */
+  height: 400px;         /* <-- fix the height so the canvas can’t expand indefinitely */
+  position: relative;
 }
+
+.skills-chart canvas {
+  width: 100%  !important;
+  height: 100% !important;  /* fill exactly that 400px */
+}
+
+
 
 
 /* ── Equal‑Height Skill Grid & Hide Labels (업데이트) ── */
@@ -181,4 +187,40 @@ section.skills-grid .skill-item span {
   width: auto;
   display: block;         
   margin: 0 auto;         /* 부모 컨테이너에서 가로 가운데 정렬 */
+}
+
+
+
+/* ── Certifications Toggle List ── */
+.certifications { padding: 2rem 0; }
+.certifications h2 { text-align: center; margin-bottom: 1rem; }
+
+.cert-list {
+  list-style: none; padding: 0; margin: 0 auto;
+  display: flex; flex-wrap: wrap; gap: 2rem;
+  justify-content: center;
+}
+
+.cert-item {
+  width: 200px; text-align: center;
+}
+
+.cert-icon {
+  width: 64px; height: 64px; cursor: pointer;
+}
+
+.cert-name {
+  display: block; margin: 0.5rem 0;
+  font-weight: 600;
+}
+
+.cert-details {
+  max-height: 0; overflow: hidden;
+  transition: max-height 0.4s ease, padding 0.4s ease;
+  padding: 0 0;
+}
+
+.cert-details.open {
+  max-height: 200px;      /* 충분히 큰 값 */
+  padding: 0.5rem 0;
 }

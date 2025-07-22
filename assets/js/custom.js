@@ -14,6 +14,8 @@ new Chart(ctx, {
     }]
   },
   options: {
+    maintainAspectRatio: true,  // let Chart.js keep its default ratio
+    aspectRatio: 1,             // 1:1 square
     scales: {
       r: {                        // v3에서는 'r' 축으로 설정
         min: 0,
@@ -45,6 +47,16 @@ new Chart(ctx, {
         }
       }
     },
-    maintainAspectRatio: false     // 컨테이너에 맞게 크기 조정
   }
 });
+
+
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.cert-icon').forEach(icon => {
+    icon.addEventListener('click', () => {
+      const details = icon.closest('.cert-item').querySelector('.cert-details');
+      details.classList.toggle('open');
+    });
+  });
+});
+
