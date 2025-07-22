@@ -257,12 +257,12 @@ section.skills-grid .skill-item span {
   padding: 0.5rem;
 }
 
-/* ── Topic Headings: Centered, Lighter & Smaller ── */
-.skills-section > h2,
-.certifications > h2 {
+/* ── All Section Headings: Centered, Smaller & Lighter ── */
+section > h2 {
   text-align: center;                   /* 가운데 정렬 */
-  font-size: 1.2rem;                    /* 글자 크기 작게 */
-  font-weight: 300;                     /* 얇은 글씨체 */
-  color: rgba(0, 0, 0, 0.6);            /* 옅은 회색 */
-  margin-bottom: 1rem;                  /* 아래 여백 */
+  font-size: 1.2rem !important;         /* 작게 */
+  font-weight: 300 !important;          /* 얇게 */
+  color: rgba(0, 0, 0, 0.6) !important; /* 옅은 회색 */
+  margin: 1rem 0;                       /* 위아래 여백 */
+  padding: 0;                           /* 패딩 제거 */
 }
