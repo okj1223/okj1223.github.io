@@ -308,7 +308,7 @@ section > h2 {
 section > h2::after {
   content: "";
   display: block;
-  width: 800px;
+  width: 600px;
   height: 1px;
   background-color: rgba(0, 0, 0, 0.1);
   
@@ -333,7 +333,7 @@ section > h2::after {
 .certifications .container > h2::after {
   content: "";
   display: block;
-  width: 800px;
+  width: 600px;
   height: 1px;
   background-color: rgba(0, 0, 0, 0.1);
   
