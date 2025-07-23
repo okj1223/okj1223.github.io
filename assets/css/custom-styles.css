@@ -401,9 +401,20 @@ section > h2::after {
 /* 프로젝트 스타일 */
 
 .project-showcase-section {
+  display: flex;
+  justify-content: center;    /* 중앙 정렬 핵심 */
   padding: 4rem 1rem;
-  background-color: #fafafa;
-  margin-top: 4rem;
+}
+
+.project-showcase-container {
+  max-width: 1200px;
+  width: 100%;
+}
+
+.project-showcase-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr)); 
+  gap: 2rem;
 }
 
 .project-title {
@@ -446,13 +457,19 @@ section > h2::after {
 
 .project-description {
   flex: 1;
-  font-family: 'Inter', sans-serif;
-  font-size: 0.85rem;
+  font-size: 0.95rem;
+  color: #333;
 }
-.project-description h3 {
-  margin: 0 0 0.5rem;
-  font-size: 1rem;
+
+.project-description h4 {
+  margin-bottom: 0.75rem;
+  font-size: 1.1rem;
+  font-weight: 700;
   color: #2c3e50;
+}
+
+.project-description p {
+  margin-bottom: 0;
 }
 
 .project-video {
