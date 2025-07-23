@@ -174,29 +174,29 @@ section.skills-grid .skill-item span {
 }
 
 /* ── 구분된 Skills 섹션 스타일 추가 ── */
-.skills-section.core-skills {
+/* .skills-section.core-skills {
   margin-top: 3rem;
-}
+} */
 
-.skills-section.creative-tools {
+/* .skills-section.creative-tools {
   margin-top: 2rem;
   background: #f8f8f8;
   padding: 2rem 1rem;
   border-top: 1px solid #e0e0e0;
   border-bottom: 1px solid #e0e0e0;
-}
+} */
 
 /* Creative Tools 제목만 아이콘 추가 */
 .skills-section.creative-tools > h2::before {
   content: "🎨 ";
 }
-
-/* 제목 너비 줄이고 정렬 개선 */
+/* 
+제목 너비 줄이고 정렬 개선
 section.skills-section > h2 {
   max-width: 640px;
   margin-left: auto;
   margin-right: auto;
-}
+} */
 
 
 
