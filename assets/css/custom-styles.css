@@ -235,7 +235,7 @@ section.skills-grid .skill-item span {
   overflow: hidden;
   padding: 0 0.5rem;
   transition: max-height 0.3s ease, padding 0.3s ease;
-  font-size: 0.875rem;      /* 약 14px 정도로 축소 */
+  font-size: 0.5rem;      /* 약 14px 정도로 축소 */
   line-height: 1.4;         /* 줄간격 살짝 줄이기 */
   color: #444;              /* 약간 연한 텍스트 컬러 */
 }
