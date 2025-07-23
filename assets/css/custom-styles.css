@@ -201,6 +201,7 @@ section.skills-section > h2 {
 .skills-grid .skill-item img[alt="Premiere Pro"],
 .skills-grid .skill-item img[alt="After Effects"],
 .skills-grid .skill-item img[alt="Photoshop"],
+.skills-grid .skill-item img[alt="HTML"],
 .skills-grid .skill-item img[alt="Illustrator"] {
   max-height: 35px !important;
   max-width: 35px !important;
