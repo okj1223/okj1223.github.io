@@ -166,8 +166,8 @@ section.skills-grid .skill-item span {
 .skills-grid .skill-item img[alt="AutoCad"],
 .skills-grid .skill-item img[alt="Inventor"],
 .skills-grid .skill-item img[alt="3Dmax"] {
-  max-height: 50px !important;
-  max-width: 50px !important;
+  max-height: 40px !important;
+  max-width: 40px !important;
   width: auto;
   display: block;
   margin: 0 auto;
@@ -202,8 +202,8 @@ section.skills-section > h2 {
 .skills-grid .skill-item img[alt="After Effects"],
 .skills-grid .skill-item img[alt="Photoshop"],
 .skills-grid .skill-item img[alt="Illustrator"] {
-  max-height: 50px !important;
-  max-width: 50px !important;
+  max-height: 40px !important;
+  max-width: 40px !important;
   margin: 0 auto;
 }
 
