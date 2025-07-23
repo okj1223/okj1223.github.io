@@ -397,3 +397,66 @@ section > h2::after {
   font-size: 0.65rem;   /* ↓ 기존 0.75rem → 0.65rem */
   color: #888;
 }
+
+/* 프로젝트 스타일 */
+
+.project-showcase-section {
+  padding: 4rem 1rem;
+  background-color: #fafafa;
+  margin-top: 4rem;
+}
+
+.project-title {
+  text-align: center;
+  font-family: 'Merriweather', serif;
+  font-weight: 300;
+  font-size: 1.3rem;
+  color: #444;
+  margin-bottom: 3rem;
+  position: relative;
+}
+.project-title::after {
+  content: "";
+  display: block;
+  width: 600px;
+  height: 1px;
+  background: rgba(0, 0, 0, 0.1);
+  margin: 1.5rem auto 0;
+}
+
+.project-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  align-items: start;
+}
+
+.project-item {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+}
+
+.project-description {
+  flex: 1;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.85rem;
+}
+.project-description h3 {
+  margin: 0 0 0.5rem;
+  font-size: 1rem;
+  color: #2c3e50;
+}
+
+.project-video {
+  flex: 1;
+  min-width: 300px;
+  height: auto;
+}
