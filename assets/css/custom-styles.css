@@ -400,12 +400,6 @@ section > h2::after {
 
 /* 프로젝트 스타일 */
 
-.project-showcase-section {
-  display: flex;
-  justify-content: center;    /* 중앙 정렬 핵심 */
-  padding: 4rem 1rem;
-}
-
 .project-showcase-container {
   max-width: 1200px;
   width: 100%;
