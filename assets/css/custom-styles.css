@@ -198,6 +198,14 @@ section.skills-section > h2 {
   margin-right: auto;
 } */
 
+.skills-grid .skill-item img[alt="Premiere Pro"],
+.skills-grid .skill-item img[alt="After Effects"],
+.skills-grid .skill-item img[alt="Photoshop"],
+.skills-grid .skill-item img[alt="Illustrator"] {
+  max-height: 50px !important;
+  max-width: 50px !important;
+  margin: 0 auto;
+}
 
 
 
