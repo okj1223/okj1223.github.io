@@ -417,24 +417,6 @@ section > h2::after {
   gap: 2rem;
 }
 
-.project-title {
-  text-align: center;
-  font-family: 'Merriweather', serif;
-  font-weight: 300;
-  font-size: 1.3rem;
-  color: #444;
-  margin-bottom: 3rem;
-  position: relative;
-}
-.project-title::after {
-  content: "";
-  display: block;
-  width: 600px;
-  height: 1px;
-  background: rgba(0, 0, 0, 0.1);
-  margin: 1.5rem auto 0;
-}
-
 .project-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
