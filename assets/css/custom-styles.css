@@ -202,8 +202,8 @@ section.skills-section > h2 {
 .skills-grid .skill-item img[alt="After Effects"],
 .skills-grid .skill-item img[alt="Photoshop"],
 .skills-grid .skill-item img[alt="Illustrator"] {
-  max-height: 30px !important;
-  max-width: 30px !important;
+  max-height: 50px !important;
+  max-width: 50px !important;
   margin: 0 auto;
 }
 
@@ -301,7 +301,7 @@ section > h2 {
   
   /* ② 언더라인과의 간격을 늘리기 */
   padding-bottom: 2rem !important;  /* 이전 1rem → 1.5rem */
-  margin: 4rem 0 1rem;                /* 제목 위아래 간격도 조정 */
+  margin: 8rem 0 1rem;                /* 제목 위아래 간격도 조정 */
   position: relative;
 }
 
@@ -327,7 +327,7 @@ section > h2::after {
   
   /* ② 언더라인과의 간격을 늘리기 */
   padding-bottom: 2rem !important;  /* 이전 1rem → 1.5rem */
-  margin: 4rem 0 1rem;                /* 제목 위아래 간격도 조정 */
+  margin: 8rem 0 1rem;                /* 제목 위아래 간격도 조정 */
   position: relative;
 }
 .certifications .container > h2::after {
