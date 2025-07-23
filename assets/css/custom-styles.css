@@ -327,7 +327,7 @@ section > h2::after {
   
   /* ② 언더라인과의 간격을 늘리기 */
   padding-bottom: 2rem !important;  /* 이전 1rem → 1.5rem */
-  margin: 3rem 0 1rem;                /* 제목 위아래 간격도 조정 */
+  margin: 2rem 0 1rem;                /* 제목 위아래 간격도 조정 */
   position: relative;
 }
 .certifications .container > h2::after {
@@ -338,7 +338,7 @@ section > h2::after {
   background-color: rgba(0, 0, 0, 0.1);
   
   /* ③ 언더라인 바로 위 공간 추가 */
-  margin: 3rem auto 0;  /* 이전 0.25rem → 0.75rem */
+  margin: 2rem auto 0;  /* 이전 0.25rem → 0.75rem */
   border-radius: 1px;
 }
 
