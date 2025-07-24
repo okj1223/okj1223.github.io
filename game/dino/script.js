@@ -20,15 +20,15 @@ function jump() {
           clearInterval(downInterval);
           isJumping = false;
         } else {
-          position -= 10;
+          position -= 20;
           dino.style.bottom = position + "px";
         }
-      }, 10);
+      }, 20);
     } else {
-      position += 10;
+      position += 20;
       dino.style.bottom = position + "px";
     }
-  }, 10);
+  }, 20);
 }
 
 function startGame() {
