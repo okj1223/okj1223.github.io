@@ -23,33 +23,29 @@ body {
 
 #dino {
   position: absolute;
-  width: 50px;
-  height: 50px;
-  background-color: #333;
   bottom: 0;
   left: 50px;
-  transition: bottom 0.2s;
+  width: 50px;
+  height: 50px;
+  background: url('dino.png') no-repeat center;
+  background-size: cover;
 }
 
 .cactus {
   position: absolute;
   bottom: 0;
-  width: 40px;
+  width: 30px;
   height: 60px;
-  background: green;
+  background: url('cactus.png') no-repeat center;
+  background-size: cover;
 }
-
 
 #startBtn {
   position: absolute;
-  top: 10px;
-  right: 10px;
-  z-index: 10;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
   padding: 10px 20px;
-  font-size: 1rem;
-  background-color: #222;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
+  font-size: 16px;
+  z-index: 1000;
 }
