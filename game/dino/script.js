@@ -1,10 +1,8 @@
 let dino = document.getElementById("dino");
-let cactus = document.getElementById("cactus");
 let startBtn = document.getElementById("startBtn");
 
 let isJumping = false;
 let isGameRunning = false;
-let cactusInterval;
 let gravityInterval;
 
 function jump() {
@@ -31,31 +29,50 @@ function jump() {
   }, 10);
 }
 
-function startGame() {
-  if (isGameRunning) return;
+function createCactus() {
+  const cactus = document.createElement("div");
+  cactus.classList.add("cactus");
+  document.body.appendChild(cactus);
 
-  isGameRunning = true;
-  cactus.style.left = "800px";
+  let cactusPosition = 800;
+  cactus.style.left = cactusPosition + "px";
 
-  cactusInterval = setInterval(() => {
-    let cactusLeft = parseInt(window.getComputedStyle(cactus).left);
-    let dinoBottom = parseInt(window.getComputedStyle(dino).bottom);
-
-    if (cactusLeft < 80 && cactusLeft > 40 && dinoBottom < 50) {
-      alert("💥 Game Over");
-      clearInterval(cactusInterval);
-      isGameRunning = false;
-      cactus.style.left = "800px";
+  let moveInterval = setInterval(() => {
+    if (!isGameRunning) {
+      clearInterval(moveInterval);
+      cactus.remove();
       return;
     }
 
-    cactus.style.left = cactusLeft - 10 + "px";
+    if (cactusPosition < -60) {
+      clearInterval(moveInterval);
+      cactus.remove();
+    } else {
+      cactusPosition -= 10;
+      cactus.style.left = cactusPosition + "px";
 
-    if (cactusLeft <= -20) {
-      cactus.style.left = "800px";
+      let dinoBottom = parseInt(window.getComputedStyle(dino).bottom);
+
+      if (cactusPosition < 80 && cactusPosition > 40 && dinoBottom < 50) {
+        clearInterval(moveInterval);
+        alert("💥 Game Over");
+        isGameRunning = false;
+        document.querySelectorAll(".cactus").forEach(c => c.remove());
+      }
     }
-  }, 30);
+  }, 20);
+
+  const nextCactusTime = Math.random() * 1000 + 1200; // 1.2~2.2초
+  setTimeout(createCactus, nextCactusTime);
 }
+
+function startGame() {
+  if (isGameRunning) return;
+  isGameRunning = true;
+  createCactus(); // 🔥 여기 추가!
+}
+
+
 
 // 키 입력
 document.addEventListener("keydown", function (e) {
