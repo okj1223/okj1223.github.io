@@ -23,12 +23,12 @@ function jump() {
           position -= 20;
           dino.style.bottom = position + "px";
         }
-      }, 20);
+      }, 10);
     } else {
       position += 20;
       dino.style.bottom = position + "px";
     }
-  }, 20);
+  }, 10);
 }
 
 function startGame() {
