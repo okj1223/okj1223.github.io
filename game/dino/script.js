@@ -3,7 +3,6 @@ let startBtn = document.getElementById("startBtn");
 
 let isJumping = false;
 let isGameRunning = false;
-let gravityInterval;
 
 function jump() {
   if (isJumping) return;
@@ -11,19 +10,19 @@ function jump() {
 
   let position = 0;
   let upInterval = setInterval(() => {
-    if (position >= 100) {
+    if (position >= 120) {
       clearInterval(upInterval);
       let downInterval = setInterval(() => {
         if (position <= 0) {
           clearInterval(downInterval);
           isJumping = false;
         } else {
-          position -= 20;
+          position -= 25;
           dino.style.bottom = position + "px";
         }
       }, 10);
     } else {
-      position += 20;
+      position += 25;
       dino.style.bottom = position + "px";
     }
   }, 10);
@@ -44,42 +43,42 @@ function createCactus() {
       return;
     }
 
+    cactusPosition -= 10;
+    cactus.style.left = cactusPosition + "px";
+
+    let dinoBottom = parseInt(window.getComputedStyle(dino).bottom);
+
+    if (cactusPosition < 80 && cactusPosition > 40 && dinoBottom < 50) {
+      clearInterval(moveInterval);
+      alert("💥 Game Over");
+      isGameRunning = false;
+      document.querySelectorAll(".cactus").forEach(c => c.remove());
+    }
+
     if (cactusPosition < -60) {
       clearInterval(moveInterval);
       cactus.remove();
-    } else {
-      cactusPosition -= 10;
-      cactus.style.left = cactusPosition + "px";
-
-      let dinoBottom = parseInt(window.getComputedStyle(dino).bottom);
-
-      if (cactusPosition < 80 && cactusPosition > 40 && dinoBottom < 50) {
-        clearInterval(moveInterval);
-        alert("💥 Game Over");
-        isGameRunning = false;
-        document.querySelectorAll(".cactus").forEach(c => c.remove());
-      }
     }
-  }, 20);
+  }, 16); // 더 부드럽고 빠르게 이동
 
-  const nextCactusTime = Math.random() * 1000 + 1200; // 1.2~2.2초
-  setTimeout(createCactus, nextCactusTime);
+  const nextCactusTime = Math.random() * 900 + 1100; // 1.1~2.0초
+  setTimeout(() => {
+    if (isGameRunning) createCactus();
+  }, nextCactusTime);
 }
 
 function startGame() {
   if (isGameRunning) return;
   isGameRunning = true;
-  createCactus(); // 🔥 여기 추가!
+  createCactus();
 }
 
-
-
-// 키 입력
+// 점프 키
 document.addEventListener("keydown", function (e) {
   if (e.code === "Space" || e.key === "ArrowUp") {
     if (isGameRunning) jump();
   }
 });
 
-// 버튼 클릭
+// 시작 버튼
 startBtn.addEventListener("click", startGame);
