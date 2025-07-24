@@ -1,82 +1,56 @@
 let canvas = document.getElementById("gameCanvas");
 let ctx = canvas.getContext("2d");
-
-let dinoImg = new Image();
-dinoImg.src = "assets/dino.png";
-
-let cactusImg = new Image();
-cactusImg.src = "assets/cactus.png";
+let isRunning = false;
 
 let dino = {
   x: 50,
   y: 150,
   width: 40,
   height: 40,
-  velocityY: 0,
-  gravity: 0.8,
-  jumping: false
+  dy: 0,
+  gravity: 1.5,
+  jumpPower: -15,
+  grounded: true,
 };
 
-let cactus = {
-  x: 800,
-  y: 150,
-  width: 30,
-  height: 40,
-  speed: 6
-};
+function drawDino() {
+  ctx.fillStyle = "#222";
+  ctx.fillRect(dino.x, dino.y, dino.width, dino.height);
+}
 
-let gameRunning = false;
+function update() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-document.getElementById("startBtn").onclick = function () {
-  if (!gameRunning) {
-    gameRunning = true;
-    requestAnimationFrame(gameLoop);
+  // 중력 적용
+  dino.dy += dino.gravity;
+  dino.y += dino.dy;
+
+  // 바닥 도달 시 멈춤
+  if (dino.y + dino.height >= canvas.height) {
+    dino.y = canvas.height - dino.height;
+    dino.dy = 0;
+    dino.grounded = true;
   }
-};
 
+  drawDino();
+
+  if (isRunning) {
+    requestAnimationFrame(update);
+  }
+}
+
+// 점프 기능
 document.addEventListener("keydown", function (e) {
-  if ((e.code === "Space" || e.code === "ArrowUp") && !dino.jumping) {
-    dino.velocityY = -12;
-    dino.jumping = true;
+  if (e.code === "Space" || e.key === "ArrowUp") {
+    if (dino.grounded) {
+      dino.dy = dino.jumpPower;
+      dino.grounded = false;
+    }
   }
 });
 
-function gameLoop() {
-  if (!gameRunning) return;
-
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-  // 공룡
-  dino.velocityY += dino.gravity;
-  dino.y += dino.velocityY;
-  if (dino.y > 150) {
-    dino.y = 150;
-    dino.velocityY = 0;
-    dino.jumping = false;
-  }
-
-  ctx.drawImage(dinoImg, dino.x, dino.y, dino.width, dino.height);
-
-  // 선인장
-  cactus.x -= cactus.speed;
-  if (cactus.x + cactus.width < 0) {
-    cactus.x = 800;
-  }
-
-  ctx.drawImage(cactusImg, cactus.x, cactus.y, cactus.width, cactus.height);
-
-  // 충돌 판정
-  if (
-    dino.x < cactus.x + cactus.width &&
-    dino.x + dino.width > cactus.x &&
-    dino.y < cactus.y + cactus.height
-  ) {
-    alert("Game Over!");
-    gameRunning = false;
-    cactus.x = 800;
-    dino.y = 150;
-    return;
-  }
-
-  requestAnimationFrame(gameLoop);
-}
+// Start 버튼
+document.getElementById("startBtn").addEventListener("click", function () {
+  isRunning = true;
+  update();
+});
