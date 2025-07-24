@@ -1,6 +1,7 @@
 let dino = document.getElementById("dino");
 let startBtn = document.getElementById("startBtn");
 
+
 let isJumping = false;
 let isGameRunning = false;
 
