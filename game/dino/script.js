@@ -1,56 +1,68 @@
-let canvas = document.getElementById("gameCanvas");
-let ctx = canvas.getContext("2d");
-let isRunning = false;
+let dino = document.getElementById("dino");
+let cactus = document.getElementById("cactus");
+let startBtn = document.getElementById("startBtn");
 
-let dino = {
-  x: 50,
-  y: 150,
-  width: 40,
-  height: 40,
-  dy: 0,
-  gravity: 1.5,
-  jumpPower: -15,
-  grounded: true,
-};
+let isJumping = false;
+let isGameRunning = false;
+let cactusInterval;
+let gravityInterval;
 
-function drawDino() {
-  ctx.fillStyle = "#222";
-  ctx.fillRect(dino.x, dino.y, dino.width, dino.height);
+function jump() {
+  if (isJumping) return;
+  isJumping = true;
+
+  let position = 0;
+  let upInterval = setInterval(() => {
+    if (position >= 100) {
+      clearInterval(upInterval);
+      let downInterval = setInterval(() => {
+        if (position <= 0) {
+          clearInterval(downInterval);
+          isJumping = false;
+        } else {
+          position -= 5;
+          dino.style.bottom = position + "px";
+        }
+      }, 20);
+    } else {
+      position += 5;
+      dino.style.bottom = position + "px";
+    }
+  }, 20);
 }
 
-function update() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
+function startGame() {
+  if (isGameRunning) return;
 
-  // 중력 적용
-  dino.dy += dino.gravity;
-  dino.y += dino.dy;
+  isGameRunning = true;
+  cactus.style.left = "800px";
 
-  // 바닥 도달 시 멈춤
-  if (dino.y + dino.height >= canvas.height) {
-    dino.y = canvas.height - dino.height;
-    dino.dy = 0;
-    dino.grounded = true;
-  }
+  cactusInterval = setInterval(() => {
+    let cactusLeft = parseInt(window.getComputedStyle(cactus).left);
+    let dinoBottom = parseInt(window.getComputedStyle(dino).bottom);
 
-  drawDino();
+    if (cactusLeft < 80 && cactusLeft > 40 && dinoBottom < 50) {
+      alert("💥 Game Over");
+      clearInterval(cactusInterval);
+      isGameRunning = false;
+      cactus.style.left = "800px";
+      return;
+    }
 
-  if (isRunning) {
-    requestAnimationFrame(update);
-  }
+    cactus.style.left = cactusLeft - 10 + "px";
+
+    if (cactusLeft <= -20) {
+      cactus.style.left = "800px";
+    }
+  }, 30);
 }
 
-// 점프 기능
+// 키 입력
 document.addEventListener("keydown", function (e) {
   if (e.code === "Space" || e.key === "ArrowUp") {
-    if (dino.grounded) {
-      dino.dy = dino.jumpPower;
-      dino.grounded = false;
-    }
+    if (isGameRunning) jump();
   }
 });
 
-// Start 버튼
-document.getElementById("startBtn").addEventListener("click", function () {
-  isRunning = true;
-  update();
-});
+// 버튼 클릭
+startBtn.addEventListener("click", startGame);
