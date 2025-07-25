@@ -38,6 +38,21 @@
     </div>
   </section>
 
+  <!-- Project List -->
+  <section class="project-list">
+    <div class="container">
+      {% for project in site.projects %}
+        <div class="project-item">
+          <h2><a href="{{ project.url | relative_url }}">{{ project.title }}</a></h2>
+          {% if project.description %}
+            <p>{{ project.description }}</p>
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+  </section>
+
+
   <!-- Back to Projects -->
   <section class="project-back">
     <div class="container">
