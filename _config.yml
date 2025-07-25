@@ -30,6 +30,12 @@ navbar-links:
   - ["About Me", "/aboutme/"]
   - ["Projects", "/projects/"]
 
+collections:
+  projects:
+    output: true
+    permalink: /projects/:path/
+
+
 ###########################
 # --- Banner Settings --- #
 ###########################
