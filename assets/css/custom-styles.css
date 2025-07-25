@@ -646,3 +646,99 @@ section > h2::after {
 .projects-index .projects-list a:hover {
   color: #1a73e8;
 }
+
+
+
+/* ── Projects Banner ── */
+#banner {
+  position: relative;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  height: 300px;
+  background-size: cover;
+  background-position: center;
+}
+.banner-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.banner-title {
+  font-size: 2.5rem;
+  color: #fff;
+}
+.banner-subtitle {
+  font-size: 1rem;
+  color: #ddd;
+  margin-top: 0.5rem;
+}
+
+/* ── Projects Grid ── */
+.project-showcase-section {
+  padding: 4rem 1rem;
+  background: #fafafa;
+}
+.project-title {
+  text-align: center;
+  font-family: 'Merriweather', serif;
+  font-weight: 300;
+  font-size: 1.5rem;
+  color: #444;
+  margin-bottom: 2.5rem;
+  position: relative;
+}
+.project-showcase-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.project-link {
+  text-decoration: none;
+  color: inherit;
+}
+.project-item {
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.2s, box-shadow 0.2s;
+  display: flex;
+  flex-direction: column;
+}
+.project-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+}
+.project-description {
+  padding: 1rem;
+  flex: 1;
+}
+.project-description h3 {
+  margin: 0 0 0.5rem;
+  font-size: 1.1rem;
+  color: #2c3e50;
+}
+.project-description p {
+  font-size: 0.9rem;
+  color: #555;
+}
+.project-video {
+  width: 100%;
+  position: relative;
+  padding-bottom: 56.25%;
+}
+.project-video iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
