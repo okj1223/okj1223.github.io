@@ -25,7 +25,7 @@ permalink: /projects/
             {% endif %}
           </div>
           <!-- 동영상(있으면) -->
-          {% if p.video_id %}
+          {% if p.video_url %}
           <div class="project-video">
             <div class="video-wrapper">
               <iframe 
