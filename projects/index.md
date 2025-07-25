@@ -29,7 +29,7 @@ permalink: /projects/
           <div class="project-video">
             <div class="video-wrapper">
               <iframe 
-                src="https://www.youtube.com/embed/{{ p.video_id }}" 
+                src="{{ p.video_url }}"
                 title="{{ p.title }} Demo"
                 frameborder="0"
                 allowfullscreen>

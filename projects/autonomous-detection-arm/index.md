@@ -4,7 +4,7 @@ title: "Autonomous Detection Arm Robot"
 permalink: /projects/autonomous-detection-arm/
 date: 2025-08-12
 description: "Precision SCR catalyst maintenance using ROS2, 3D laser scanning & high‑pressure micro‑nozzles."
-video_id: "영상ID1"
+video_url: "https://www.youtube.com/embed/영상ID2"
 ---
 
 
