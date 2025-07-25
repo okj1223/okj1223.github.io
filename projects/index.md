@@ -8,11 +8,11 @@ permalink: /projects/
   <div class="container">
     <h1 class="page-title">🛠️ All Projects</h1>
     <ul class="projects-list">
-      {%- assign project_dirs = site.pages | where_exp: 
-         "p", "p.path contains 'projects/' and p.path != 'projects/index.md'" -%}
-      {%- for p in project_dirs -%}
-        <li><a href="{{ p.url }}">{{ p.title }}</a></li>
-      {%- endfor -%}
+      {% assign project_dirs = site.pages | where_exp: "p", "p.path contains 'projects/' and p.path != 'projects/index.md'" %}
+      {% for p in project_dirs %}
+        <li><a href="{{ p.url | relative_url }}">{{ p.title }}</a></li>
+      {% endfor %}
     </ul>
   </div>
 </section>
+
