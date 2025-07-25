@@ -1,9 +1,83 @@
 ---
 layout: page
-title: Automated Catalyst Cleaning Robot
+title: "Automated Catalyst Cleaning Robot"
+permalink: /projects/automated-catalyst-cleaning.html
 ---
 
-<h1>Automated Catalyst Cleaning Robot</h1>
-<p>Designed and built a precision SCR dust‑cleaning robot at Geesco using high‑pressure micro‑nozzles …</p>
-<iframe width="100%" height="315" src="https://www.youtube.com/embed/영상ID1" frameborder="0" allowfullscreen></iframe>
-<!-- 그 외 추가 내용 -->
+<!-- Hero -->
+<section class="project-hero">
+  <div class="container">
+    <h1 class="project-title">Automated Catalyst Cleaning Robot</h1>
+    <p class="project-subtitle">Precision SCR catalyst maintenance using ROS2, 3D laser scanning & high‑pressure micro‑nozzles</p>
+  </div>
+</section>
+
+<!-- Two‑column: Description & Video -->
+<section class="project-overview">
+  <div class="container two-column">
+    <!-- Left: Description -->
+    <div class="column description">
+      <h2>Overview</h2>
+      <p>
+        At Geesco’s R&D center, I designed and built an autonomous robot for
+        precision cleaning of SCR catalysts. By integrating a 3 mm micro‑nozzle
+        manifold with a real‑time 3D laser scanner, the system maps catalyst
+        surfaces and selectively removes particulate buildup—improving
+        emissions control efficiency.
+      </p>
+      <p>
+        Control logic was implemented in ROS2 (Galactic) with Python nodes
+        orchestrating navigation, scanning, and cleaning sequences. The platform
+        navigates within a confined test cell, avoids obstacles, and manages
+        nozzle pressure dynamically.
+      </p>
+    </div>
+
+    <!-- Right: Video Demo -->
+    <div class="column media">
+      <h2>Demo Video</h2>
+      <div class="video-wrapper">
+        <iframe 
+          src="https://www.youtube.com/embed/영상ID1" 
+          title="Automated Catalyst Cleaning Robot Demo"
+          frameborder="0" allowfullscreen>
+        </iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Key Features -->
+<section class="project-features">
+  <div class="container">
+    <h2>Key Features</h2>
+    <ul class="features-list">
+      <li>High‑precision micro‑nozzle array (⌀3 mm) for localized cleaning</li>
+      <li>3D laser scanning for real‑time surface topology mapping</li>
+      <li>ROS2‑based task orchestration with Python scripting</li>
+      <li>Autonomous path planning within complex catalyst geometries</li>
+      <li>Dynamic pressure control to prevent over‑etching</li>
+    </ul>
+  </div>
+</section>
+
+<!-- Technology Stack -->
+<section class="project-techstack">
+  <div class="container">
+    <h2>Technology Stack</h2>
+    <ul class="tech-list">
+      <li>ROS2 Galactic & Python 3.9</li>
+      <li>3D LiDAR Scanner (Ouster OS1‑16)</li>
+      <li>High‑pressure pump & custom nozzle manifold</li>
+      <li>Ubuntu 20.04 LTS, Docker container for deployment</li>
+      <li>RViz & MoveIt! for simulation and calibration</li>
+    </ul>
+  </div>
+</section>
+
+<!-- Back to Research Index -->
+<section class="project-back">
+  <div class="container">
+    <a href="/research/" class="button">&larr; Back to Research Projects</a>
+  </div>
+</section>
