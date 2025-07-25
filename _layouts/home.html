@@ -28,62 +28,30 @@ layout: page
 
 <!-- Project Showcase Section -->
 <section class="project-showcase-section">
-  <h2>🛠️ Projects Engineered</h2>
+  <h2 class="project-title">🛠️ Latest Projects</h2>
   <div class="project-showcase-container">
-  <div class="project-showcase-grid">
-
-    <!-- Project 1 -->
-    <a href="/projects/automated-catalyst-cleaning.html" class="project-link">
-      <div class="project-item">
-        <div class="project-description">
-          <h3>Automated Catalyst Cleaning Robot</h3>
-          <p>Designed and built a precision SCR dust-cleaning robot at Geesco using high-pressure micro-nozzles (⌀3 mm) and 3D laser scanning for targeted particulate removal.</p>
-        </div>
-        <div class="project-video">
-          <iframe width="100%" height="200" src="https://www.youtube.com/embed/영상ID1" title="Automated Catalyst Cleaning Robot" frameborder="0" allowfullscreen></iframe>
-        </div>
-      </div>
-    </a>
-
-    <!-- Project 2 -->
-    <a href="/projects/crack-ppe-detection.html" class="project-link">
-      <div class="project-item">
-        <div class="project-description">
-          <h3>Autonomous Crack & PPE Detection Robot</h3>
-          <p>Developed a mobile robot equipped with computer vision (YOLOv8) to identify structural cracks and detect human PPE violations in real-time using ROS2.</p>
-        </div>
-        <div class="project-video">
-          <iframe width="100%" height="200" src="https://www.youtube.com/embed/영상ID2" title="Crack & PPE Detection Robot" frameborder="0" allowfullscreen></iframe>
-        </div>
-      </div>
-    </a>
-
-    <!-- Project 3 -->
-    <a href="/projects/factory-automation-arm.html" class="project-link">
-      <div class="project-item">
-        <div class="project-description">
-          <h3>Factory Automation Robot Arm</h3>
-          <p>Built an industrial-grade manipulator for automated material transfer and pick-and-place processes using PLC control and SCARA kinematics.</p>
-        </div>
-        <div class="project-video">
-          <iframe width="100%" height="200" src="https://www.youtube.com/embed/영상ID3" title="Factory Automation Arm" frameborder="0" allowfullscreen></iframe>
-        </div>
-      </div>
-    </a>
-
-    <!-- Project 4 -->
-    <a href="/projects/autonomous-detection-arm.html" class="project-link">
-      <div class="project-item">
-        <div class="project-description">
-          <h3>Autonomous Detection Arm Robot</h3>
-          <p>Integrated AI-based object detection with a 6-DOF robotic arm for automated inspection and classification tasks in structured industrial settings.</p>
-        </div>
-        <div class="project-video">
-          <iframe width="100%" height="200" src="https://www.youtube.com/embed/영상ID4" title="Autonomous Detection Arm" frameborder="0" allowfullscreen></iframe>
-        </div>
-      </div>
-    </a>
-
+    <div class="project-showcase-grid">
+      {% assign recent = site.projects | sort: "date" | reverse %}
+      {% for proj in recent limit:2 %}
+        <a href="{{ proj.url }}" class="project-link">
+          <div class="project-item">
+            <div class="project-description">
+              <h3>{{ proj.title }}</h3>
+              <p>{{ proj.description }}</p>
+            </div>
+            <div class="project-video">
+              <iframe 
+                src="https://www.youtube.com/embed/{{ proj.video_id }}" 
+                title="{{ proj.title }}" frameborder="0" allowfullscreen>
+              </iframe>
+            </div>
+          </div>
+        </a>
+      {% endfor %}
+    </div>
+    <div class="view-all">
+      <a href="{{ '/projects/' | relative_url }}" class="button">View All Projects →</a>
+    </div>
   </div>
 </section>
 

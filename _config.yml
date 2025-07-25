@@ -15,6 +15,12 @@ title: TechFusionLab
 # Your name to show in the footer
 author: OH Kyungjun
 
+
+collections:
+  projects:
+    output: true
+    permalink: /projects/:name/
+
 ###############################################
 # --- List of links in the navigation bar --- #
 ###############################################

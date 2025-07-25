@@ -742,3 +742,12 @@ section > h2::after {
   width: 100%;
   height: 100%;
 }
+
+.view-all {
+  text-align: center;
+  margin-top: 2rem;
+}
+.view-all .button {
+  padding: 0.6rem 1.2rem;
+  font-size: 0.9rem;
+}
