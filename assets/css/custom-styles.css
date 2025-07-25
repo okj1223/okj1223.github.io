@@ -681,10 +681,10 @@ section > h2::after {
 
 /* ── Projects Grid ── */
 .project-showcase-section {
-  padding: 4rem 1rem;
-  background: #fafafa;
+  padding: 2rem 1rem;
+  background: transparent;
 }
-.project-title {
+/* .project-title {
   text-align: center;
   font-family: 'Merriweather', serif;
   font-weight: 300;
@@ -692,7 +692,7 @@ section > h2::after {
   color: #444;
   margin-bottom: 2.5rem;
   position: relative;
-}
+} */
 .project-showcase-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
