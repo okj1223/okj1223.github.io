@@ -8,7 +8,7 @@ permalink: /projects/
   <h2 class="project-title">🛠️ All Projects</h2>
   <div class="project-showcase-container">
     <div class="project-showcase-grid">
-      {%- assign project_dirs = site.pages
+      {%- assign project_dirs = site.pprojects
          | where_exp: "p", "p.url contains '/projects/'"
          | where_exp: "p", "p.url != '/projects/'"
          | sort: "date"
