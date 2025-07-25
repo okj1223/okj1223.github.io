@@ -30,10 +30,11 @@ layout: page
 <section class="project-showcase-section">
   <h2>🛠️ Latest Projects</h2>
   <div class="project-showcase-grid">
-    {%- assign projs = site.pages 
-         | where_exp: "p","p.path contains 'projects/' and p.path != 'projects/index.md'"
-         | sort: "date" | reverse 
-         | slice: 0, 2 -%}
+    {%- assign recent = site.projects
+          | where_exp: "proj", "proj.url != '/projects/'"
+          | sort: "date"
+          | reverse
+          | slice: 0, 2 -%}
     {%- for proj in projs -%}
       <a href="{{ proj.url }}" class="project-link">
         <div class="project-item">
