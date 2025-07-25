@@ -619,3 +619,30 @@ section > h2::after {
   border-radius: 4px;
   text-decoration: none;
 }
+
+
+.projects-index .page-title {
+  font-family: 'Merriweather', serif;
+  font-weight: 300;
+  font-size: 1.8rem;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+.projects-index .projects-list {
+  list-style: none;
+  padding: 0;
+  max-width: 600px;
+  margin: 0 auto;
+}
+.projects-index .projects-list li {
+  margin: 0.75rem 0;
+}
+.projects-index .projects-list a {
+  text-decoration: none;
+  color: #2c3e50;
+  font-size: 1rem;
+  transition: color 0.2s;
+}
+.projects-index .projects-list a:hover {
+  color: #1a73e8;
+}
