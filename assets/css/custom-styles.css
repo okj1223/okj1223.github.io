@@ -318,29 +318,7 @@ section > h2::after {
   border-radius: 1px;
 }
 
-/* certifications 섹션 제목에도 글로벌 스타일 적용 */
-.certifications .container > h2 {
-  font-family: 'Merriweather', serif !important;  /* 논문 같은 세리프체 */
-  font-weight: 200;
-  font-size: 1.2rem;
-  text-align: center;
-  color: rgba(0, 0, 0, 0.6);
-  
-  /* ② 언더라인과의 간격을 늘리기 */
-  padding-bottom: 2rem !important;  /* 이전 1rem → 1.5rem */
-  margin: 8rem 0 1rem;                /* 제목 위아래 간격도 조정 */
-  position: relative;
-}
-.certifications .container > h2::after {
-  content: "";
-  display: block;
-  width: 600px;
-  height: 1px;
-  background-color: rgba(0, 0, 0, 0.1);
-  
-  /* ③ 언더라인 바로 위 공간 추가 */
-  margin: 2rem auto 0;  /* 이전 0.25rem → 0.75rem */
-  border-radius: 1px;
+
 }
 
 /* ── Career Bio Section Styles ── */
