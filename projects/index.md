@@ -1,55 +1,18 @@
 ---
+layout: page
+title: "Projects"
+permalink: /projects/
 ---
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-  {% include head.html %}
-</head>
-<body>
-  {% include nav.html %}
 
-  <!-- ── Hero 섹션: Front Matter 의 title, description 사용 ── -->
-  <section class="project-hero">
-    <div class="container">
-      <h1 class="project-title">{{ page.title }}</h1>
-      {% if page.description %}
-        <p class="project-subtitle">{{ page.description }}</p>
-      {% endif %}
-    </div>
-  </section>
-
-  <!-- ── Overview & Demo Video ── -->
-  <section class="project-overview">
-    <div class="container two-column">
-      <!-- Left: markdown 본문(overview) -->
-      <div class="column description">
-        {{ content }}
-      </div>
-      <!-- Right: 동영상(있으면) -->
-      {% if page.video_id %}
-      <div class="column media">
-        <h2>Demo Video</h2>
-        <div class="video-wrapper">
-          <iframe
-            src="https://www.youtube.com/embed/{{ page.video_id }}"
-            title="{{ page.title }} Demo"
-            frameborder="0"
-            allowfullscreen>
-          </iframe>
-        </div>
-      </div>
-      {% endif %}
-    </div>
-  </section>
-
-  <!-- ── Back to Projects ── -->
-  <section class="project-back">
-    <div class="container">
-      <a href="{{ '/projects/' | relative_url }}" class="button">&larr; Back to Projects</a>
-    </div>
-  </section>
-
-  {% include footer.html %}
-  {% include footer-scripts.html %}
-</body>
-</html>
+<section class="projects-index">
+  <div class="container">
+    <h1 class="page-title">🛠️ All Projects</h1>
+    <ul class="projects-list">
+      {%- assign project_dirs = site.pages | where_exp: 
+         "p", "p.path contains 'projects/' and p.path != 'projects/index.md'" -%}
+      {%- for p in project_dirs -%}
+        <li><a href="{{ p.url }}">{{ p.title }}</a></li>
+      {%- endfor -%}
+    </ul>
+  </div>
+</section>
