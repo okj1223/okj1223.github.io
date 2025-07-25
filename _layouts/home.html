@@ -31,33 +31,38 @@ layout: page
   <h2>🛠️ Latest Projects</h2>
   <div class="project-showcase-container">
     <div class="project-showcase-grid">
-      {% assign recent = site.projects
+      {%- assign recent = site.projects
         | where_exp: "proj", "proj.url != '/projects/'"
+        | where_exp: "proj", "proj.date"
         | sort: "date"
         | reverse
-        | slice: 0, 2 %}
-      {% for proj in recent %}
-        <a href="{{ proj.url }}" class="project-link">
-          <div class="project-item">
-            <div class="project-description">
-              <h3>{{ proj.title }}</h3>
-              <p>{{ proj.description }}</p>
-            </div>
-            <div class="project-video">
-              <iframe 
-                src="https://www.youtube.com/embed/{{ proj.video_id }}" 
-                title="{{ proj.title }}" frameborder="0" allowfullscreen>
-              </iframe>
-            </div>
+        | slice: 0, 2 -%}
+
+      {%- for proj in recent -%}
+      <a href="{{ proj.url | relative_url }}" class="project-link">
+        <div class="project-item">
+          <div class="project-description">
+            <h3>{{ proj.title }}</h3>
+            <p class="project-date">{{ proj.date | date: "%Y.%m.%d" }}</p>
+            <p>{{ proj.description }}</p>
           </div>
-        </a>
-      {% endfor %}
+          <div class="project-video">
+            <iframe 
+              src="https://www.youtube.com/embed/{{ proj.video_id }}" 
+              title="{{ proj.title }}" frameborder="0" allowfullscreen>
+            </iframe>
+          </div>
+        </div>
+      </a>
+      {%- endfor -%}
     </div>
+
     <div class="view-all">
       <a href="{{ '/projects/' | relative_url }}" class="button">View All Projects →</a>
     </div>
   </div>
 </section>
+
 
 
 <!-- ── Skills & Expertise Section (Chart Removed) ── -->
