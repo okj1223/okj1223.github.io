@@ -450,7 +450,7 @@ section > h2::after {
 
 .project-video {
   position: relative;
-  padding-bottom: 30%;
+  padding-bottom: 40%;
   height: 0;
   overflow: hidden;
 }
@@ -550,3 +550,18 @@ section > h2::after {
   }
 }
 
+.project-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+.project-link .project-item {
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.project-link .project-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+}
