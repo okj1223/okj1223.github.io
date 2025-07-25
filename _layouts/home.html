@@ -28,11 +28,15 @@ layout: page
 
 <!-- Project Showcase Section -->
 <section class="project-showcase-section">
-  <h2 class="project-title">🛠️ Latest Projects</h2>
+  <h2>🛠️ Latest Projects</h2>
   <div class="project-showcase-container">
     <div class="project-showcase-grid">
-      {% assign recent = site.projects | sort: "date" | reverse %}
-      {% for proj in recent limit:2 %}
+      {% assign recent = site.projects
+        | where_exp: "proj", "proj.url != '/projects/'"
+        | sort: "date"
+        | reverse
+        | slice: 0, 2 %}
+      {% for proj in recent %}
         <a href="{{ proj.url }}" class="project-link">
           <div class="project-item">
             <div class="project-description">
