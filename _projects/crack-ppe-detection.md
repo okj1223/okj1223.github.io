@@ -446,7 +446,11 @@ $$
 
 **Solution Implementation:**
 
-1. **Empirical Calibration Matrix:** $$\mathbf{C} = \arg\min_{\mathbf{C}} \sum_{i=1}^{N} ||\mathbf{p}_{ground\_truth}^{(i)} - \mathbf{C}\mathbf{p}_{measured}^{(i)}||^2$$
+1. **Empirical Calibration Matrix:**
+
+   $$
+   \mathbf{C} = \arg\min_{\mathbf{C}} \sum_{i=1}^{N} \bigl\|\mathbf{p}_{ground\_truth}^{(i)} - \mathbf{C}\,\mathbf{p}_{measured}^{(i)}\bigr\|^2
+   $$
 
 2. **Real-time Validation:** Continuous comparison with known reference points
 
@@ -1071,5 +1075,3 @@ if __name__ == '__main__':
   </node>
 </launch>
 ```
-
-$$
