@@ -22,11 +22,15 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    /* width: 100%; 삭제 */
-    /* 필요하다면 최대 폭만 제한 */
-    max-width: 90%;
-    text-align: center;
 
+    /* 자동 너비→내용 шир이만 차지하도록 변경 */
+    display: inline-block;
+    
+    /* width:100% 제거 (혹시 남아있다면 꼭 삭제) */
+    /* width: 100%; */
+
+    /* 이하 스타일 그대로 */
+    text-align: center;
     font-family: 'Georgia', 'Times New Roman', serif;
     color: #ffffff;
     text-shadow:
