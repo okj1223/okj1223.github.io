@@ -716,3 +716,6 @@ section > h2::after {
   width: 50%;           /* 상세에서 반반 레이아웃 */
   padding-left: 1rem;
 }
+
+.two-column { outline: 2px dashed red; }
+.column.media { outline: 2px dashed blue; }
