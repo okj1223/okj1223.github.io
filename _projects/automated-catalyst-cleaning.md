@@ -80,7 +80,7 @@ Using a 5‑axis CNC mill, I sculpted the ergonomic nozzle handle from 6061‑T6
 ### Rail Processing on the Tapping Machine
 <figure>
   <img class="project-image"
-       src="{{ '/project/automated-catalyst-cleaning/skills/tap_machine.jpg' | relative_url }}"
+       src="{{ '/project/automated-catalyst-cleaning/tap_machine.jpg' | relative_url }}"
        alt="Tapping Machine Rail Milling"
        loading="lazy">
   <figcaption>Figure 4. Precision rail slotting on a vertical tapping machine</figcaption>
