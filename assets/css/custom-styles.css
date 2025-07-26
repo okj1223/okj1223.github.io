@@ -568,7 +568,7 @@ section > h2::after {
 .video-wrapper {
   position: relative;
   padding-bottom: 56.25%;
-  height: 0;
+  /* height: 0; */
   overflow: hidden;  /* 추가 */
 }
 .video-wrapper iframe {
@@ -716,6 +716,3 @@ section > h2::after {
   width: 50%;           /* 상세에서 반반 레이아웃 */
   padding-left: 1rem;
 }
-
-.two-column { outline: 2px dashed red; }
-.column.media { outline: 2px dashed blue; }
