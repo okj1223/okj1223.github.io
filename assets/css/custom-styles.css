@@ -759,19 +759,31 @@ figure figcaption {
   height: 100%;
 }
 
-/* MathJax 블록 수식 스타일링 */
-.MathJax_Display, .mjx-block {
-  display: block;            /* 블록 레벨로 */
-  margin: 1.5em auto;        /* 위아래 여백 + 중앙 정렬 */
-  font-size: 1.2em;          /* 기본보다 20% 키우기 */
-  text-align: center;        /* 중앙 정렬 */
-  line-height: 1.4;          /* 줄 간격 여유 */
+/* MathJax v2/v3 블록 수식 스타일 */
+.MathJax_Display,
+.mjx-block {
+  display: block !important;           /* 블록 레벨로 */
+  text-align: center !important;       /* 가로 중앙 정렬 */
+  margin: 2rem auto !important;        /* 위아래 2rem 여백 + 가운데 */
+  font-size: 1.4em !important;         /* 기본보다 40% 크게 */
+  line-height: 1.4 !important;         /* 줄 간격 확보 */
 }
 
-/* 인라인 수식도 약간 크게 */
-.MathJax .MathJax_Inline {
-  font-size: 1.1em;
+/* KaTeX 블록 수식 스타일 (대체 엔진인 경우) */
+.katex-display {
+  display: block !important;
+  text-align: center !important;
+  margin: 2rem auto !important;
+  font-size: 1.4em !important;
+  line-height: 1.4 !important;
 }
+
+/* 인라인 수식 약간 키우기 */
+.MathJax .MathJax_Inline,
+.katex-inline {
+  font-size: 1.1em !important;
+}
+
 
 .project-content h2 {
   margin-top: 3rem;
