@@ -728,10 +728,12 @@ img.project-image {
 
 /* figure를 이미지 크기만큼만 차지하도록 inline-block으로 변경 */
 figure {
-  display: inline-block;
-  margin: 2rem auto;   /* 위아래 여백 + 가운데 정렬 */
-  /* 이제 width를 따로 지정하지 않으면 자식 img 크기에 맞춰집니다 */
+  display: flex;
+  flex-direction: column;  /* 이미지→캡션 세로 스택 */
+  align-items: center;     /* 자식 요소들을 가운데 정렬 */
+  margin: 2rem auto;       /* 위아래 여백 + 수평 중앙 정렬 */
 }
+
 
 /* 캡션은 figure 너비(=이미지 너비)에 딱 맞게 */
 figure figcaption {
@@ -741,5 +743,19 @@ figure figcaption {
   text-align: center;
   margin-top: 0.5rem;
   line-height: 1.4;
+}
+
+/* 데모 비디오만 작게 표시하기 */
+.project-overview .video-inline .video-wrapper {
+  max-width: 640px;    /* 최대 너비 설정 */
+  margin: 1rem auto;   /* 위아래 간격 + 가운데 정렬 */
+}
+
+.project-overview .video-inline .video-wrapper iframe {
+  /* 기존 설정 유지 */
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
 }
 
