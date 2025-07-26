@@ -1,8 +1,6 @@
-document.addEventListener('DOMContentLoaded', () => {
-  const skipBtn = document.getElementById('skip-button');
-
-  skipBtn.addEventListener('click', () => {
-    // 실제 홈 페이지로 이동
-    window.location.href = '{{ "/home.html" | relative_url }}';
+document.addEventListener('DOMContentLoaded', function() {
+  var skip = document.getElementById('skip-button');
+  skip.addEventListener('click', function() {
+    location.href = this.getAttribute('data-href');
   });
 });
