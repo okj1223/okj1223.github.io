@@ -50,7 +50,8 @@ Custom C++ firmware implements a simple state machine: detect cell position → 
 
 ### Grinding Final Component Clearances
 <figure>
-  <img src="{{ '/project/automated-catalyst-cleaning/grinding.gif' | relative_url }}"
+  <img class="project-image"
+       src="{{ '/project/automated-catalyst-cleaning/grinding.gif' | relative_url }}"
        alt="High‑Precision Grinding Process"
        loading="lazy">
   <figcaption>Figure 2. Diamond‑wheel grinding of the main drive shaft to ±0.02 mm tolerance</figcaption>
@@ -62,7 +63,8 @@ I personally executed high‑speed surface grinding on the robot’s main drive 
 
 ### Machining the Nozzle Handle
 <figure>
-  <img src="{{ '/project/automated-catalyst-cleaning/nozzle_handle.jpg' | relative_url }}"
+  <img class="project-image"
+       src="{{ '/project/automated-catalyst-cleaning/nozzle_handle.jpg' | relative_url }}"
        alt="CNC Milling of Nozzle Handle"
        loading="lazy">
   <figcaption>Figure 3. CNC‑milled nozzle handle with ergonomic grip</figcaption>
@@ -74,7 +76,8 @@ Using a 5‑axis CNC mill, I sculpted the ergonomic nozzle handle from 6061‑T6
 
 ### Rail Processing on the Tapping Machine
 <figure>
-  <img src="{{ '//project/automated-catalyst-cleaning/skills/tap_machine.jpg' | relative_url }}"
+  <img class="project-image"
+       src="{{ '/project/automated-catalyst-cleaning/skills/tap_machine.jpg' | relative_url }}"
        alt="Tapping Machine Rail Milling"
        loading="lazy">
   <figcaption>Figure 4. Precision rail slotting on a vertical tapping machine</figcaption>
@@ -86,7 +89,8 @@ I ran the custom alloy guide rails through a vertical tapping machine, cutting 1
 
 ### Final Assembly & Integration
 <figure>
-  <img src="{{ '/project/automated-catalyst-cleaning/cleaning_robot_components.jpg' | relative_url }}"
+  <img class="project-image"
+       src="{{ '/project/automated-catalyst-cleaning/cleaning_robot_components.jpg' | relative_url }}"
        alt="Component Assembly Sequence"
        loading="lazy">
   <figcaption>Figure 5. Sequential assembly of all subsystems into the rail trolley</figcaption>

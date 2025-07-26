@@ -705,3 +705,22 @@ section > h2::after {
   padding: 0.6rem 1.2rem;
   font-size: 0.9rem;
 }
+
+/* 프로젝트 내 모든 figure 이미지를 최대 600px 너비로 고정하고, 비율 유지 */
+.project-overview figure img,
+.project-gallery figure img {
+  display: block;
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  margin: 0 auto;
+}
+
+/* project-image 클래스가 붙은 이미지에만 적용 */
+img.project-image {
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
