@@ -568,16 +568,19 @@ section > h2::after {
 
 .video-wrapper {
   position: relative;
-  aspect-ratio: 16 / 9;     /* 자동으로 비율 박스 생성 */
+  padding-bottom: 56.25%;
+  height: 0;
   overflow: hidden;
+  box-sizing: content-box;
 }
-
 .video-wrapper iframe {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
+  border: none;
 }
+
 
 .project-features, .project-techstack {
   margin: 4rem 0;
