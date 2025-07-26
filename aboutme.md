@@ -14,7 +14,7 @@ permalink: /aboutme/
 ## About Me
 
 Hello! 👋  
-a mechanical and robotics engineer specializing in industrial safety robot systems and automation solutions.
+I'm a mechanical and robotics engineer specializing in industrial safety robot systems and automation solutions.
 
 - 📧 Email: rudwns181211@gmail.com  
 
