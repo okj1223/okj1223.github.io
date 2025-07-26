@@ -1,14 +1,13 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const video = document.getElementById('intro-video');
-  const intro = document.getElementById('intro-header');
-  const main = document.getElementById('main-content');
-  const skipBtn = document.getElementById('skip-button');
+  const video     = document.getElementById('intro-video');
+  const intro     = document.getElementById('intro-header');
+  const main      = document.getElementById('main-content');
+  const skipBtn   = document.getElementById('skip-button');
 
-  // 영상 끝날 때도 계속 루프이므로, JS 루프 핸들러는 필요 없지만 
-  // 스킵 버튼 클릭 시 인트로 제거
+  // 버튼 클릭하면 바로 메인 콘텐츠 노출
   skipBtn.addEventListener('click', () => {
-    video.pause();
-    intro.remove();
-    main.style.visibility = 'visible';
+    video.pause();                   // 재생 중지
+    intro.style.display = 'none';    // 인트로 숨기기
+    main.style.visibility = 'visible'; // 메인 노출
   });
 });
