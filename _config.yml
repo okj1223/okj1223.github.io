@@ -35,6 +35,10 @@ collections:
     output: true
     permalink: /projects/:path/
 
+markdown: kramdown
+kramdown:
+  math_engine: mathjax
+  parse_block_html: true
 
 ###########################
 # --- Banner Settings --- #
