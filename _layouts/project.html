@@ -13,14 +13,11 @@ layout: default
 </section>
 
 <section class="project-overview">
-  <div class="container two-column">
-    <!-- 왼쪽: Overview -->
-    <div class="column description">
-      {{ content }}
-    </div>
-    <!-- 오른쪽: Demo Video -->
+  <div class="container">
+    {{ content }}
+
     {% if page.video_url %}
-    <div class="column media">
+    <div class="video-inline">
       <h2>Demo Video</h2>
       <div class="video-wrapper">
         <iframe
@@ -34,6 +31,7 @@ layout: default
     {% endif %}
   </div>
 </section>
+
 
 <section class="project-back">
   <div class="container">
