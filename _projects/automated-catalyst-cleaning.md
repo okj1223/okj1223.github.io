@@ -223,7 +223,7 @@ I orchestrated the step‑by‑step assembly—mounting the milled handle, integ
     <figcaption>Figure 8. 3D parametric assembly in Autodesk Inventor</figcaption>
   </figure>
   <figure>
-    <img src="{{ '/project/automated-catalyst-cleaning/3dworking2.png' | relative_url }}"
+    <img src="{{ '/project/automated-catalyst-cleaning/3dworking2.PNG' | relative_url }}"
          alt="AutoCAD Detailed Part Drawing" loading="lazy">
     <figcaption>Figure 9. 2D part geometry and tolerancing in AutoCAD</figcaption>
   </figure>

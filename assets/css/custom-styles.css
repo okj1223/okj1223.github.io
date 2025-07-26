@@ -759,3 +759,16 @@ figure figcaption {
   height: 100%;
 }
 
+/* MathJax 블록 수식 스타일링 */
+.MathJax_Display, .mjx-block {
+  display: block;            /* 블록 레벨로 */
+  margin: 1.5em auto;        /* 위아래 여백 + 중앙 정렬 */
+  font-size: 1.2em;          /* 기본보다 20% 키우기 */
+  text-align: center;        /* 중앙 정렬 */
+  line-height: 1.4;          /* 줄 간격 여유 */
+}
+
+/* 인라인 수식도 약간 크게 */
+.MathJax .MathJax_Inline {
+  font-size: 1.1em;
+}
