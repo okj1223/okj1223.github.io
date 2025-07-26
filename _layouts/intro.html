@@ -39,7 +39,7 @@
   <!-- skip button always on top -->
   <button
     id="skip-button"
-    onclick="location.href='{{ '/home.html' | relative_url }}';"
+    data-href="{{ '/home.html' | relative_url }}"
     style="position:fixed;top:20px;right:20px;z-index:1;padding:8px 16px;
            background:rgba(0,0,0,0.6);color:#fff;border:none;border-radius:4px;
            cursor:pointer;font-size:14px;"
