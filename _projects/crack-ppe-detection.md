@@ -4,7 +4,7 @@ title: "Industrial Safety Robot System"
 permalink: /projects/crack-ppe-detection/
 date: 2025-07-20
 description: "In the intersection of mathematics and machinery, we find not just efficiency, but the possibility of preserving human life itself."
-video_url: "https://www.youtube.com/embed/영상ID2"
+video_url: "https://www.youtube.com/embed/gsk4GZmsjrw"
 ---
 
 
