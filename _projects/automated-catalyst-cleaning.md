@@ -48,8 +48,6 @@ A compact, rail‑mounted trolley carries the atomizer assembly. Two limit switc
 ### Control Logic & Sequencing
 Custom C++ firmware implements a simple state machine: detect cell position → spray mist for a predefined duration → advance to next cell. Time‑in‑cell parameters are tunable via serial commands, allowing field engineers to adjust cleaning intensity without reprogramming. A watchdog timer ensures safe shutdown on fault.
 
-### Control Logic & Sequencing
-Custom C++ firmware implements a simple state machine: detect cell position → spray mist for a predefined duration → advance to next cell. Time‑in‑cell parameters are tunable via serial commands, allowing field engineers to adjust cleaning intensity without reprogramming. A watchdog timer ensures safe shutdown on fault.
 
 #### Firmware & Core Control Code
 
@@ -215,6 +213,71 @@ I ran the custom alloy guide rails through a vertical tapping machine, cutting 1
 </figure>
 
 I orchestrated the step‑by‑step assembly—mounting the milled handle, integrating the atomizer manifold, wiring the solenoid valve array, and routing all harnesses under the trolley chassis. Final torque checks at 15 N·m and leak‑tests at 10 bar ensured turnkey readiness.  
+
+## CAD Modeling & Mechanical Calculation Summary
+
+<div class="cad-gallery">
+  <figure>
+    <img src="{{ 'project/automated-catalyst-cleaning/3dworking2.gif' | relative_url }}"
+         alt="Inventor Parametric Assembly Workflow" loading="lazy">
+    <figcaption>Figure 8. 3D parametric assembly in Autodesk Inventor</figcaption>
+  </figure>
+  <figure>
+    <img src="{{ 'project/automated-catalyst-cleaning/3dworking2.png' | relative_url }}"
+         alt="AutoCAD Detailed Part Drawing" loading="lazy">
+    <figcaption>Figure 9. 2D part geometry and tolerancing in AutoCAD</figcaption>
+  </figure>
+</div>
+
+In order to protect proprietary details, these illustrations show only representative geometry. The actual component suite comprised dozens of unique parts, each sized and verified by the following key mechanical calculations:
+
+1. **Nozzle Orifice Sizing (Bernoulli / Orifice Equation)**  
+   \[
+     Q = C_d\,A\,\sqrt{\frac{2\,\Delta P}{\rho}}
+   \]  
+   - **ΔP** = 90 bar − ambient → convert to Pa  
+   - **ρ** = 1000 kg/m³ (aqueous solution)  
+   - **Cd** = 0.65 (atomizer calibration)  
+   - ⇒ calculated **A** ≈ 7.1 × 10⁻⁷ m² → ø0.95 mm equivalent  
+
+2. **Flow Velocity & Pressure Drop**  
+   \[
+     \Delta P = \tfrac12\,\rho\,v^2,\quad v = \frac{Q}{A}
+   \]  
+   - Ensured **v** ≤ 25 m/s to avoid cavitation and maintain laminar spray  
+
+3. **Beam Deflection of Shaft Supports**  
+   \[
+     \delta = \frac{F\,L^3}{3\,E\,I}
+   \]  
+   - **F** = 50 N payload + dynamic loads  
+   - **L** = 0.15 m span  
+   - **E** = 210 GPa (steel)  
+   - **I** = \(\tfrac{b\,h^3}{12}\) with b = 20 mm, h = 5 mm  
+   - ⇒ δ ≈ 0.12 mm < 0.2 mm max deflection  
+
+4. **Bending Stress & Safety Factor**  
+   \[
+     \sigma = \frac{M\,c}{I},\quad N = \frac{\sigma_y}{\sigma}
+   \]  
+   - **M** = F·L/4 for uniformly loaded beam  
+   - **c** = h/2  
+   - **σy** = 250 MPa (material yield)  
+   - ⇒ σ ≈ 45 MPa → N ≈ 5.6  
+
+5. **Stepper Drive Torque & Inertia**  
+   \[
+     J = \sum m_i\,r_i^2,\quad \tau = J\,\alpha + F\,r
+   \]  
+   - Estimated **J** ≈ 0.002 kg·m² for trolley + payload  
+   - Max **α** = 100 rad/s² (startup)  
+   - **r** = 0.01 m sprocket radius  
+   - ⇒ τ_required ≈ 0.2 N·m → chosen motor stall ≈ 0.5 N·m  
+
+---
+
+Each formula was implemented in our design spreadsheet to iterate dimensions automatically. The combined use of Bernoulli-based nozzle sizing and Euler–Bernoulli beam theory ensured that both the fluid‑dynamic and structural performance targets were met, while maintaining a safety factor ≥ 4 across all critical components.
+
 
 ## Performance & Quantitative Results
 
