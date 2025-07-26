@@ -17,13 +17,13 @@ layout: default
     <div class="column description">
       {{ content }}
     </div>
-    {% if p.video_url %}
+    {% if page.video_url %}
     <div class="column media">
       <h2>Demo Video</h2>
       <div class="video-wrapper">
         <iframe
-          src="{{ p.video_url }}"
-          title="{{ p.title }}"
+          src="{{ page.video_url }}"
+          title="{{ page.title }}"
           frameborder="0"
           allowfullscreen>
         </iframe>
