@@ -724,3 +724,22 @@ img.project-image {
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
+
+
+/* figure를 이미지 크기만큼만 차지하도록 inline-block으로 변경 */
+figure {
+  display: inline-block;
+  margin: 2rem auto;   /* 위아래 여백 + 가운데 정렬 */
+  /* 이제 width를 따로 지정하지 않으면 자식 img 크기에 맞춰집니다 */
+}
+
+/* 캡션은 figure 너비(=이미지 너비)에 딱 맞게 */
+figure figcaption {
+  width: 100%;
+  color: #666;
+  font-size: 0.9rem;
+  text-align: center;
+  margin-top: 0.5rem;
+  line-height: 1.4;
+}
+
