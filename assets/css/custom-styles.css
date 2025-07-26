@@ -772,3 +772,7 @@ figure figcaption {
 .MathJax .MathJax_Inline {
   font-size: 1.1em;
 }
+
+.project-content h2 {
+  margin-top: 2rem;
+}
