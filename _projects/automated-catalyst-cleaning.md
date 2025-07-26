@@ -49,12 +49,7 @@ Custom C++ firmware implements a simple state machine: detect cell position → 
 ## Fabrication & Skills Showcase
 
 ### Grinding Final Component Clearances
-<figure>
-  <img src="{{ '/assets/images/projects/automated-catalyst-cleaning/grinding.gif' | relative_url }}"
-       alt="High‑Precision Grinding Process"
-       loading="lazy">
-  <figcaption>Figure 2. Diamond‑wheel grinding of the main drive shaft to ±0.02 mm tolerance</figcaption>
-</figure>
+![Figure 2. Diamond‑wheel grinding of the main drive shaft to ±0.02 mm tolerance](/project/automated-catalyst-cleaning/grinding.gif)
 
 I personally executed high‑speed surface grinding on the robot’s main drive shaft, running a diamond‑coated wheel at 3000 RPM to achieve an exacting ±0.02 mm finish. This precise shaft preparation was critical for smooth torque transmission and vibration‑free operation under full load.
 
