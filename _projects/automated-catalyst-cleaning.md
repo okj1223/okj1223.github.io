@@ -3,7 +3,7 @@ layout: project
 title: "Automated Catalyst Cleaning Robot"
 date:   2023-07-10
 description: "Precision SCR catalyst maintenance using ROS2, 3D laser scanning & high‑pressure micro‑nozzles."
-video_url: "https://www.youtube.com/embed/영상ID1"
+video_url: "https://www.youtube.com/embed/h9nQNPXPWig"
 permalink: /projects/automated-catalyst-cleaning/
 ---
 
