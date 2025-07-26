@@ -1,68 +1,42 @@
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-  {% include head.html %}
-</head>
-<body>
-  {% include nav.html %}
+---
+layout: default
+---
 
-  <!-- Hero -->
-  <section class="project-hero">
-    <div class="container">
-      <h1 class="project-title">{{ page.title }}</h1>
-      {% if page.description %}
-        <p class="project-subtitle">{{ page.description }}</p>
-      {% endif %}
+<!-- 상세 페이지 본문 시작 -->
+<section class="project-hero">
+  <div class="container">
+    <h1 class="project-title">{{ page.title }}</h1>
+    {% if page.description %}
+      <p class="project-subtitle">{{ page.description }}</p>
+    {% endif %}
+  </div>
+</section>
+
+<section class="project-overview">
+  <div class="container two-column">
+    <div class="column description">
+      {{ content }}
     </div>
-  </section>
-
-  <!-- Overview & Video -->
-  <section class="project-overview">
-    <div class="container two-column">
-      <div class="column description">
-        {{ content }}    <!-- Markdown 본문 -->
+    {% if page.video_url %}
+    <div class="column media">
+      <h2>Demo Video</h2>
+      <div class="video-wrapper">
+        <iframe
+          src="{{ page.video_url }}"
+          title="{{ page.title }}"
+          frameborder="0"
+          allowfullscreen>
+        </iframe>
       </div>
-      {% if p.video_url %}
-      <div class="column media">
-        <h2>Demo Video</h2>
-        <div class="video-wrapper">
-          <iframe
-            src="{{ p.video_url }}"
-            title="{{ page.title }}"
-            frameborder="0"
-            allowfullscreen>
-          </iframe>
-        </div>
-      </div>
-      {% endif %}
     </div>
-  </section>
+    {% endif %}
+  </div>
+</section>
 
-  <!-- Project List -->
-  <section class="project-list">
-    <div class="container">
-      {% for project in site.projects %}
-        <div class="project-item">
-          <h2><a href="{{ project.url | relative_url }}">{{ project.title }}</a></h2>
-          {% if project.description %}
-            <p>{{ project.description }}</p>
-          {% endif %}
-        </div>
-      {% endfor %}
-    </div>
-  </section>
-
-
-  <!-- Back to Projects -->
-  <section class="project-back">
-    <div class="container">
-      <a href="{{ '/projects/' | relative_url }}" class="button">
-        &larr; Back to Projects
-      </a>
-    </div>
-  </section>
-
-  {% include footer.html %}
-  {% include footer-scripts.html %}
-</body>
-</html>
+<section class="project-back">
+  <div class="container">
+    <a href="{{ '/projects/' | relative_url }}" class="button">
+      &larr; Back to Projects
+    </a>
+  </div>
+</section>
