@@ -4,91 +4,80 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>{{ page.title }}</title>
-  <!-- your global CSS -->
   <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}" />
   <style>
-    /* full‑bleed video 배경 */
-    body { margin:0; overflow:hidden; }
-    #intro-video {
-      position:fixed; top:0; left:0;
-      width:100%; height:100%;
-      object-fit:cover; z-index:-1;
+    /* wrapper 전체를 화면에 꽉 채우고 중앙 정렬 */
+    .intro-wrapper {
+      position: fixed;
+      inset: 0;                       /* top:0; right:0; bottom:0; left:0; */
+      display: flex;
+      flex-direction: column;
+      align-items: center;           /* 가로 중앙 */
+      justify-content: center;       /* 세로 중앙 */
+      overflow: hidden;
+      background: rgba(0,0,0,0.4);   /* 필요하면 반투명 오버레이 */
+      z-index: 0;
     }
 
-    /* 최상단 태그라인 */
-    /* 태그라인 전체 배경 광채 */
+    /* 배경 비디오 */
+    #intro-video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1;
+    }
+
+    /* 태그라인 */
     .intro-tagline {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-
-    /* 자동 너비→내용 шир이만 차지하도록 변경 */
-    display: inline-block;
-    
-    /* width:100% 제거 (혹시 남아있다면 꼭 삭제) */
-    /* width: 100%; */
-
-    /* 이하 스타일 그대로 */
-    text-align: center;
-    font-family: 'Georgia', 'Times New Roman', serif;
-    color: #ffffff;
-    text-shadow:
+      z-index: 1;
+      text-align: center;
+      font-family: 'Georgia', serif;
+      color: #ffffff;
+      text-shadow:
         0 2px 4px rgba(0,0,0,0.6),
         0 0 10px rgba(255,255,255,0.3);
-    animation: fadeInDown 1s ease-out both;
-    z-index: 1;
+      animation: fadeInDown 1s ease-out both;
     }
-
-
-    /* 타이틀 */
     .intro-tagline h1 {
-    font-size: 2.5rem;
-    margin: 0 0 1rem;           /* 하단 여백 확대 */
-    font-weight: 600;
-    letter-spacing: 1px;        /* 글자 사이 약간 벌리기 */
-    line-height: 1.2;           /* 행간 조정 */
-    text-shadow:
-        2px 2px 4px rgba(0,0,0,0.7),  /* 진한 그림자 */
-        0 0 8px rgba(255,255,255,0.4); /* 은은한 빛 효과 */
+      font-size: 2.5rem;
+      margin: 0 0 1rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      line-height: 1.2;
+      text-shadow:
+        2px 2px 4px rgba(0,0,0,0.7),
+        0 0 8px rgba(255,255,255,0.4);
     }
-
-    /* 서브타이틀 */
     .intro-tagline h2 {
-    font-size: 1.5rem;
-    margin: 0 0 1.25rem;        /* 여백 약간 더 */
-    font-weight: 400;
-    letter-spacing: 0.5px;
-    line-height: 1.3;
-    text-shadow:
+      font-size: 1.5rem;
+      margin: 0 0 1.25rem;
+      font-weight: 400;
+      letter-spacing: 0.5px;
+      line-height: 1.3;
+      text-shadow:
         1px 1px 3px rgba(0,0,0,0.6),
         0 0 6px rgba(255,255,255,0.3);
     }
-
-    /* 이름 */
     .intro-tagline .name {
-    font-size: 1.25rem;
-    font-style: italic;
-    margin-top: 0.5rem;         /* 제목과의 여유 공간 */
-    opacity: 0.85;
-    letter-spacing: 0.8px;
-    text-shadow:
+      font-size: 1.25rem;
+      font-style: italic;
+      margin-top: 0.5rem;
+      opacity: 0.85;
+      letter-spacing: 0.8px;
+      text-shadow:
         1px 1px 2px rgba(0,0,0,0.5),
         0 0 5px rgba(255,255,255,0.2);
     }
-
-    /* 키프레임은 그대로 */
     @keyframes fadeInDown {
-    from { opacity: 0; transform: translateY(-20px); }
-    to   { opacity: 1; transform: translateY(0); }
+      from { opacity: 0; transform: translateY(-20px); }
+      to   { opacity: 1; transform: translateY(0); }
     }
 
-    /* Home 버튼 – 하단 중앙 */
+    /* 버튼 – 하단 중앙 */
     #skip-button {
-      position: fixed;
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%);
+      margin-top: 2rem;
       z-index: 1;
       padding: 12px 24px;
       background: #1ABC9C;
@@ -106,34 +95,31 @@
   </style>
 </head>
 <body>
+  <div class="intro-wrapper">
+    <video
+      id="intro-video"
+      autoplay
+      muted
+      playsinline
+      loop
+    >
+      <source src="{{ '/assets/videos/intro.mp4' | relative_url }}" type="video/mp4">
+    </video>
 
-  <!-- 1) 환경·로봇공학 강조 태그라인 -->
-  <div class="intro-tagline">
-    <h1>Engineering Tomorrow’s Environment & Robots</h1>
-    <h2>Full‑Stack Robotics Developer<br/>Hardware & Software</h2>
-    <p class="name">Oh Kyungjun</p>
+    <div class="intro-tagline">
+      <h1>Engineering Tomorrow’s Environment & Robots</h1>
+      <h2>Full‑Stack Robotics Developer<br/>Hardware & Software</h2>
+      <p class="name">Oh Kyungjun</p>
+    </div>
+
+    <button
+      id="skip-button"
+      data-href="{{ '/home.html' | relative_url }}"
+    >
+      GO to Home
+    </button>
   </div>
 
-  <!-- 2) 배경 비디오 -->
-  <video
-    id="intro-video"
-    autoplay
-    muted
-    playsinline
-    loop
-  >
-    <source src="{{ '/assets/videos/intro.mp4' | relative_url }}" type="video/mp4">
-  </video>
-
-  <!-- 3) 홈으로 이동 버튼 -->
-  <button
-    id="skip-button"
-    data-href="{{ '/home.html' | relative_url }}"
-  >
-    GO to Home
-  </button>
-
-  <!-- 4) 클릭 스크립트 -->
   <script src="{{ '/assets/js/intro.js' | relative_url }}"></script>
 </body>
 </html>
