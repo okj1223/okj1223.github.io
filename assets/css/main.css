@@ -17,21 +17,57 @@
   z-index: 1;
 }
 
-/* 버튼은 항상 비디오 위에 */
 #skip-button {
-  position: absolute;
-  top: 20px; right: 20px;
-  z-index: 2;
-  padding: 8px 16px;
-  background: rgba(0,0,0,0.6);
-  color: #fff;
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+  padding: 12px 24px;
+  background: #1ABC9C;           /* 부드러운 틸(turquoise) 계열 */
+  color: #ffffff;
   border: none;
   border-radius: 4px;
+  font-size: 16px;
   cursor: pointer;
-  font-size: 14px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  transition: background 0.3s ease;
 }
+#skip-button:hover {
+  background: #16A085;
+}
+
 
 /* 메인 콘텐츠는 숨겨두었다가 JS로 노출 */
 #main-content {
   visibility: hidden;
+}
+
+.intro-tagline {
+  position: absolute;
+  top: 40px;
+  width: 100%;
+  text-align: center;
+  color: #ffffff;
+  text-shadow: 0 2px 6px rgba(0,0,0,0.6);
+  animation: fadeInDown 1s ease-out both;
+}
+.intro-tagline h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+.intro-tagline h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  font-weight: 400;
+}
+.intro-tagline .name {
+  font-size: 1.25rem;
+  font-style: italic;
+  opacity: 0.85;
+}
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to   { opacity: 1; transform: translateY(0); }
 }

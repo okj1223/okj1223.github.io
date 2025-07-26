@@ -23,6 +23,21 @@
     }
   </style>
 </head>
+
+<body>
+  <!-- 1) 영상 위에 오버레이로 띄우기 -->
+  <div class="intro-tagline">
+    <h1>Engineering Tomorrow’s Environment & Robots</h1>
+    <h2>I am a Full‑Stack Robotics Developer<br/>Hardware & Software</h2>
+    <p class="name">Oh Kyungjun</p>
+  </div>
+
+  <video id="intro-video" …> … </video>
+  <button id="skip-button" data-href="{{ '/' | relative_url }}">Home</button>
+  <script src="{{ '/assets/js/intro.js' | relative_url }}"></script>
+</body>
+
+
 <body>
   <!-- looped background video -->
   <video
@@ -44,7 +59,7 @@
            background:rgba(0,0,0,0.6);color:#fff;border:none;border-radius:4px;
            cursor:pointer;font-size:14px;"
   >
-    홈으로 가기
+    Home
   </button>
   <script src="{{ '/assets/js/intro.js' | relative_url }}"></script>
 </body>
