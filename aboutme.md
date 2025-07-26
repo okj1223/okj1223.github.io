@@ -7,7 +7,7 @@ permalink: /aboutme/
 <img src="/assets/img/profile.JPEG"
      alt="Profile Photo"
      width="150px"
-     style="border-radius: 50%; margin-top: 50px; margin-bottom: 1rem;" />
+     style="border-radius: 50%; margin-top: 80px; margin-bottom: 1rem;" />
 
 
 
