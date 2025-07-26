@@ -4,7 +4,7 @@ title: About me
 permalink: /aboutme/
 ---
 
-<img src="/assets/images/profile.JPEG" alt="Profile Photo" width="150px" style="border-radius: 50%; margin-bottom: 1rem;" />
+<img src="/assets/img/profile.JPEG" alt="Profile Photo" width="150px" style="border-radius: 50%; margin-bottom: 1rem;" />
 
 
 ## About Me
