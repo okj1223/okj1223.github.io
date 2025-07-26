@@ -16,10 +16,13 @@ video_url: "https://www.youtube.com/embed/gsk4GZmsjrw"
 
 This paper presents a comprehensive industrial safety robot system developed by Team RobotFactory as part of the K-Digital Training program. The system integrates real-time object detection, autonomous navigation, and distributed communication protocols to address critical safety challenges in industrial environments. Through rigorous mathematical analysis and experimental validation, we achieved 93% detection accuracy with 24.7% noise reduction via advanced Kalman filtering techniques.
 
-<p align="center">
-  <img src="{{ '/project/crack-ppe-detection/system_overview.png' | relative_url }}"
-       alt="Figure 1. Complete system architecture showing multi-robot coordination and MQTT-based communication">
-</p>
+<figure>
+  <img class="project-image"
+       src="{{ '/project/crack-ppe-detection/system_overview.png' | relative_url }}"
+       alt="system architecture"
+       loading="lazy">
+  <figcaption>Figure 1. Complete system architecture showing multi-robot coordination and MQTT-based communication</figcaption>
+</figure>
 
 ---
 
@@ -43,10 +46,14 @@ Industrial safety remains a persistent challenge despite technological advanceme
 | Safety right exercise rate           | 16.3% |
 | Post-refusal protection satisfaction | 13.8% |
 
-<p align="center">
-  <img src="{{ '/project/crack-ppe-detection/fatality_rate_graph.png' | relative_url }}"
-       alt="Figure 2. Trend of Industrial Accident Rates and Fatalities in South Korea">
-</p>
+
+<figure>
+  <img class="project-image"
+       src="{{ '/project/crack-ppe-detection/fatality_rate_graph.png' | relative_url }}"
+       alt="Trend of Industrial"
+       loading="lazy">
+  <figcaption>Figure 2. Trend of Industrial Accident Rates and Fatalities in South Korea</figcaption>
+</figure>
 
 
 ### 1.2 Mathematical Risk Framework
@@ -78,10 +85,14 @@ Statistical analysis indicates 78.2% of industrial accidents stem from behaviora
 | Monitoring Gaps        | $$\eta\_{monitoring} < \eta\_{required}$$          | Real-time surveillance |
 | Communication Barriers | $$I\_{effective} = I\_{transmitted} \cdot \alpha$$ | Visual/audio alerts    |
 
-<p align="center">
-  <img src="{{ '/project/crack-ppe-detection/accident-circle.png' | relative_url }}"
-       alt="Figure 3. Distribution of Accident Causes by Category">
-</p>
+
+<figure>
+  <img class="project-image"
+       src="{{ '/project/crack-ppe-detection/accident-circle.png' | relative_url }}"
+       alt="Distribution of Accident"
+       loading="lazy">
+  <figcaption>Figure 3. Distribution of Accident Causes by Category</figcaption>
+</figure>
 
 ---
 
@@ -134,10 +145,16 @@ $$
 | YOLOv8n  | 3.8                 | 1.01         | 0.856    | 6.2             |
 | YOLOv11n | 4.5                 | 1.22         | 0.851    | 5.9             |
 
-<p align="center">
-  <img src="{{ '/project/crack-ppe-detection/model_comparison.png' | relative_url }}"
-       alt="Figure 4. Box plots showing inference time distribution across different YOLO models">
-</p>
+
+
+<figure>
+  <img class="project-image"
+       src="{{ '/project/crack-ppe-detection/model_comparison.png' | relative_url }}"
+       alt="Box plots"
+       loading="lazy">
+  <figcaption>Figure 4. Box plots showing inference time distribution across different YOLO models</figcaption>
+</figure>
+
 
 **Selection Rationale:** YOLOv8n demonstrates optimal balance of accuracy, speed, and consistency for real-time industrial deployment.
 
@@ -165,10 +182,15 @@ $$
 \text{PPE}_{score} = \prod_{i \in \{\text{helmet, vest, boots}\}} \max_{j} C_i^{(j)}
 $$
 
-<p align="center">
-  <img src="{{ '/project/crack-ppe-detection/detection_framework.png' | relative_url }}"
-       alt="Figure 5. Visual representation of detection confidence mapping and PPE scoring system">
-</p>
+
+<figure>
+  <img class="project-image"
+       src="{{ '/project/crack-ppe-detection/detection_framework.png' | relative_url }}"
+       alt="Visual representation"
+       loading="lazy">
+  <figcaption>Figure 5. Visual representation of detection confidence mapping and PPE scoring system</figcaption>
+</figure>
+
 
 
 ### 3.4 Noise Analysis & Kalman Filter Design
@@ -237,10 +259,14 @@ The crack detection system employs a hybrid approach combining deep learning and
 **HSV Transformation:** $$H = \arctan2(\sqrt{3}(G-B), 2R-G-B) \cdot \frac{180°}{\pi}, S = 1 - \frac{3\min(R,G,B)}{R+G+B}, V = \frac{R+G+B}{3}$$
 
 
-<p align="center">
-  <img src="{{ '/project/crack-ppe-detection/hsv_segmentation.png' | relative_url }}"
-       alt="Figure 6. HSV color space segmentation results showing crack isolation from background">
-</p>
+
+<figure>
+  <img class="project-image"
+       src="{{ '/project/crack-ppe-detection/hsv_segmentation.png' | relative_url }}"
+       alt="HSV color space"
+       loading="lazy">
+  <figcaption>Figure 6. HSV color space segmentation results showing crack isolation from background</figcaption>
+</figure>
 
 
 ### 4.3 3D Area Calculation Framework
@@ -266,10 +292,15 @@ Where $$\theta_{i,j}$$ represents the surface normal angle at pixel $$(i,j)$$.
 
 ### 5.1 NAV2-Based Navigation Architecture
 
-<p align="center">
-  <img src="{{ '/project/crack-ppe-detection/nav_arc.PNG' | relative_url }}"
-       alt="Figure 7. Navigation system state machine showing event handling hierarchy">
-</p>
+
+<figure>
+  <img class="project-image"
+       src="{{ '/project/crack-ppe-detection/nav_arc.PNG' | relative_url }}"
+       alt="HSV color space"
+       loading="lazy">
+  <figcaption>Figure 7. Navigation system state machine showing event handling hierarchy</figcaption>
+</figure>
+
 
 ### 5.2 Multi-Robot Coordination Algorithm
 
@@ -311,10 +342,14 @@ MQTT (Star Topology): $$P_{MQTT_{success}} = \prod_{i=1}^{n} P_{device \rightarr
 
 Since devices connect independently: $$P_{MQTT_{success}} \gg P_{DDS_{success}}$$
 
-<p align="center">
-  <img src="{{ '/project/crack-ppe-detection/protocol_comparison.png' | relative_url }}"
-       alt="Figure 8. Network topology comparison showing MQTT’s resilience advantages">
-</p>
+
+<figure>
+  <img class="project-image"
+       src="{{ '/project/crack-ppe-detection/protocol_comparison.png' | relative_url }}"
+       alt="HSV color space"
+       loading="lazy">
+  <figcaption>Figure 8. Network topology comparison showing MQTT’s resilience advantages</figcaption>
+</figure>
 
 
 ### 6.2 Communication Performance Analysis
@@ -404,10 +439,15 @@ The monitoring dashboard provides real-time visualization and control capabiliti
 - Remote control capabilities
 - Performance metrics display
 
-<p align="center">
-  <img src="{{ '/project/crack-ppe-detection/dash.gif' | relative_url }}"
-       alt="Figure 9. Web-based dashboard interface showing real-time monitoring and control features">
-</p>
+
+<figure>
+  <img class="project-image"
+       src="{{ '/project/crack-ppe-detection/dash.gif' | relative_url }}"
+       alt="Web-based dashboard"
+       loading="lazy">
+  <figcaption>Figure 9. Web-based dashboard interface showing real-time monitoring and control features</figcaption>
+</figure>
+
 
 
 ### 8.2 Mobile Application Integration
@@ -419,10 +459,15 @@ The monitoring dashboard provides real-time visualization and control capabiliti
 - Emergency stop capabilities
 - Location-based event mapping
 
-<p align="center">
-  <img src="{{ '/project/crack-ppe-detection/aplication.gif' | relative_url }}"
-       alt="Figure 10. Mobile application interface showing emergency response and notification features">
-</p>
+
+<figure>
+  <img class="project-image"
+       src="{{ '/project/crack-ppe-detection/aplication.gif' | relative_url }}"
+       alt="Mobile application"
+       loading="lazy">
+  <figcaption>Figure 10. Mobile application interface showing emergency response and notification features</figcaption>
+</figure>
+
 
 ---
 

@@ -34,10 +34,13 @@ SCR chambers present multiple hazards:
 
 ## Solution Design & Architecture
 
-<p align="center">
-  <img src="{{ '/project/automated-catalyst-cleaning/architecture-diagram.png' | relative_url }}"
-       alt="Figure 1. System Architecture Diagram">
-</p>
+<figure>
+  <img class="project-image"
+       src="{{ '/project/automated-catalyst-cleaning/architecture-diagram.png' | relative_url }}"
+       alt="High‑Precision Grinding Process"
+       loading="lazy">
+  <figcaption>Figure 1. System Architecture Diagram</figcaption>
+</figure>
 
 ### Core Control Unit
 We centralized all processing on a single Arduino Uno, eliminating the need for PLCs or complex embedded computers. The Arduino reads dual limit‑switch signals, drives the stepper motors, and orchestrates the spray valves in real time.
