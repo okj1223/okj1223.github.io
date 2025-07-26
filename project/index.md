@@ -37,5 +37,6 @@ permalink: /projects/
         </div>
       </a>
       {%- endfor -%}
+    </div>
   </div>
 </section>
