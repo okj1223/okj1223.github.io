@@ -11,7 +11,6 @@ layout: base
 </head>
 <body>
   <div id="intro-header">
-    <!-- 비디오: loop 속성 추가, position/size는 CSS로 -->
     <video
       id="intro-video"
       autoplay
@@ -19,18 +18,12 @@ layout: base
       playsinline
       loop
     >
-      <source src="{{ '/assets/img/intro.mp4' | relative_url }}" type="video/mp4" />
+      <source src="{{ '/assets/videos/intro.mp4' | relative_url }}" type="video/mp4" />
     </video>
 
-    <!-- 항상 보이는 스킵 버튼 -->
-    <button id="skip-button">홈 화면으로 가기</button>
+    <!-- 스킵 버튼: 클릭 시 JS에서 리다이렉트 -->
+    <button id="skip-button">홈으로 가기</button>
   </div>
-
-  <main id="main-content">
-    {{ content }}
-  </main>
-
-  <script src="{{ '/assets/js/intro.js' | relative_url }}"></script>
 </body>
 </html>
 
