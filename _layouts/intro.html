@@ -8,13 +8,37 @@ layout: base
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{{ page.title | default: site.title }}</title>
   <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
+  <style>
+    /* 스킵 버튼 스타일 */
+    #skip-button {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      z-index: 10001;
+      padding: 10px 20px;
+      background: rgba(0, 0, 0, 0.6);
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+  </style>
 </head>
 <body>
-  <!-- 인트로 비디오 -->
+  <!-- 인트로 비디오 & 스킵 버튼 -->
   <div id="intro-header" style="position:fixed;top:0;left:0;width:100%;height:100%;z-index:9999;background:#000;">
-    <video id="intro-video" autoplay muted playsinline style="width:100%;height:100%;object-fit:cover;">
-      <source src="{{ '/assets/img/intro.mp4' | relative_url }}" type="video/mp4">
+    <video
+      id="intro-video"
+      autoplay
+      muted
+      playsinline
+      loop
+      style="width:100%;height:100%;object-fit:cover;"
+    >
+      <source src="{{ '/assets/videos/intro.mp4' | relative_url }}" type="video/mp4">
     </video>
+    <button id="skip-button">홈으로 가기</button>
   </div>
 
   <!-- 메인 콘텐츠 -->
