@@ -700,3 +700,19 @@ section > h2::after {
   padding: 0.6rem 1.2rem;
   font-size: 0.9rem;
 }
+
+
+.two-column {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+.two-column .column {
+  flex: 1;              /* 두 칼럼이 50/50 분할 */
+  min-width: 300px;     /* 너무 좁아지지 않도록 */
+}
+
+.column.media {
+  width: 50%;           /* 상세에서 반반 레이아웃 */
+  padding-left: 1rem;
+}
