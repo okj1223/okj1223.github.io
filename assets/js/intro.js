@@ -1,6 +1,8 @@
 document.addEventListener('DOMContentLoaded', function() {
   var skip = document.getElementById('skip-button');
+  if (!skip) return;
   skip.addEventListener('click', function() {
-    location.href = this.getAttribute('data-href');
+    var dest = this.getAttribute('data-href');
+    if (dest) location.href = dest;
   });
 });
