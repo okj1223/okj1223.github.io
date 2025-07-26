@@ -568,19 +568,11 @@ section > h2::after {
 
 .video-wrapper {
   position: relative;
-  padding-bottom: 56.25%;    /* 16:9 비율 높이 확보 */
-  /* height: 0;    */
-  overflow: hidden;          /* 자식 iframe이 튀어나오지 않도록 */
-  box-sizing: content-box !important;   /* 전역 border-box 를 무시하고 padding을 실제 높이로 계산 */
+  aspect-ratio: 16 / 9;  
+  overflow: hidden;
 }
-
 .video-wrapper iframe {
-  position: absolute;
-  top: 0;                    /* 부모의 좌상단에 고정 */
-  left: 0;
-  width: 100%;               /* 부모 너비 100% */
-  height: 100%;              /* 부모 높이(padding-bottom) 100% */
-  border: none;
+  position: absolute; inset: 0; width: 100%; height: 100%; border: none;
 }
 
 
