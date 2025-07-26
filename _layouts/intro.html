@@ -17,66 +17,67 @@
 
     /* 최상단 태그라인 */
     /* 태그라인 전체 배경 광채 */
-.intro-tagline {
-  /* 기존 설정 유지 */
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 100%;
-  text-align: center;
-  font-family: 'Georgia', 'Times New Roman', serif;
-  color: #ffffff;
-  animation: fadeInDown 1s ease-out both;
-  z-index: 1;
+    .intro-tagline {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* width: 100%; 삭제 */
+    /* 필요하다면 최대 폭만 제한 */
+    max-width: 90%;
+    text-align: center;
 
-  /* 추가: 전체에 황금빛 글로우 */
-  text-shadow:
-     0 2px 4px rgba(0,0,0,0.6),    /* 기존 다크 쉐도우 */
-     0 0 10px rgba(255,255,255,0.3); /* 은은한 백색 글로우 */
-}
+    font-family: 'Georgia', 'Times New Roman', serif;
+    color: #ffffff;
+    text-shadow:
+        0 2px 4px rgba(0,0,0,0.6),
+        0 0 10px rgba(255,255,255,0.3);
+    animation: fadeInDown 1s ease-out both;
+    z-index: 1;
+    }
 
-/* 타이틀 */
-.intro-tagline h1 {
-  font-size: 2.5rem;
-  margin: 0 0 1rem;           /* 하단 여백 확대 */
-  font-weight: 600;
-  letter-spacing: 1px;        /* 글자 사이 약간 벌리기 */
-  line-height: 1.2;           /* 행간 조정 */
-  text-shadow:
-    2px 2px 4px rgba(0,0,0,0.7),  /* 진한 그림자 */
-    0 0 8px rgba(255,255,255,0.4); /* 은은한 빛 효과 */
-}
 
-/* 서브타이틀 */
-.intro-tagline h2 {
-  font-size: 1.5rem;
-  margin: 0 0 1.25rem;        /* 여백 약간 더 */
-  font-weight: 400;
-  letter-spacing: 0.5px;
-  line-height: 1.3;
-  text-shadow:
-    1px 1px 3px rgba(0,0,0,0.6),
-    0 0 6px rgba(255,255,255,0.3);
-}
+    /* 타이틀 */
+    .intro-tagline h1 {
+    font-size: 2.5rem;
+    margin: 0 0 1rem;           /* 하단 여백 확대 */
+    font-weight: 600;
+    letter-spacing: 1px;        /* 글자 사이 약간 벌리기 */
+    line-height: 1.2;           /* 행간 조정 */
+    text-shadow:
+        2px 2px 4px rgba(0,0,0,0.7),  /* 진한 그림자 */
+        0 0 8px rgba(255,255,255,0.4); /* 은은한 빛 효과 */
+    }
 
-/* 이름 */
-.intro-tagline .name {
-  font-size: 1.25rem;
-  font-style: italic;
-  margin-top: 0.5rem;         /* 제목과의 여유 공간 */
-  opacity: 0.85;
-  letter-spacing: 0.8px;
-  text-shadow:
-    1px 1px 2px rgba(0,0,0,0.5),
-    0 0 5px rgba(255,255,255,0.2);
-}
+    /* 서브타이틀 */
+    .intro-tagline h2 {
+    font-size: 1.5rem;
+    margin: 0 0 1.25rem;        /* 여백 약간 더 */
+    font-weight: 400;
+    letter-spacing: 0.5px;
+    line-height: 1.3;
+    text-shadow:
+        1px 1px 3px rgba(0,0,0,0.6),
+        0 0 6px rgba(255,255,255,0.3);
+    }
 
-/* 키프레임은 그대로 */
-@keyframes fadeInDown {
-  from { opacity: 0; transform: translateY(-20px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
+    /* 이름 */
+    .intro-tagline .name {
+    font-size: 1.25rem;
+    font-style: italic;
+    margin-top: 0.5rem;         /* 제목과의 여유 공간 */
+    opacity: 0.85;
+    letter-spacing: 0.8px;
+    text-shadow:
+        1px 1px 2px rgba(0,0,0,0.5),
+        0 0 5px rgba(255,255,255,0.2);
+    }
+
+    /* 키프레임은 그대로 */
+    @keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to   { opacity: 1; transform: translateY(0); }
+    }
 
     /* Home 버튼 – 하단 중앙 */
     #skip-button {
@@ -125,7 +126,7 @@
     id="skip-button"
     data-href="{{ '/home.html' | relative_url }}"
   >
-    Home
+    GO to Home
   </button>
 
   <!-- 4) 클릭 스크립트 -->
