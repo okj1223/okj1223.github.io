@@ -73,10 +73,10 @@ Statistical analysis indicates 78.2% of industrial accidents stem from behaviora
 
 | Risk Factor            | Mathematical Model                                 | Mitigation Strategy    |
 | ---------------------- | -------------------------------------------------- | ---------------------- |
-| Cognitive Fatigue      | \$V(t) = V\_0 e^{-\lambda t}\$                     | Continuous monitoring  |
-| Cultural Pressure      | \$P\_{speed} > P\_{safety}\$                       | Automated enforcement  |
-| Monitoring Gaps        | \$\eta\_{monitoring} < \eta\_{required}\$          | Real-time surveillance |
-| Communication Barriers | \$I\_{effective} = I\_{transmitted} \cdot \alpha\$ | Visual/audio alerts    |
+| Cognitive Fatigue      | $$V(t) = V\_0 e^{-\lambda t}$$                     | Continuous monitoring  |
+| Cultural Pressure      | $$P\_{speed} > P\_{safety}$$                       | Automated enforcement  |
+| Monitoring Gaps        | $$\eta\_{monitoring} < \eta\_{required}$$          | Real-time surveillance |
+| Communication Barriers | $$I\_{effective} = I\_{transmitted} \cdot \alpha$$ | Visual/audio alerts    |
 
 <p align="center">
   <img src="{{ '/project/crack-ppe-detection/accident-circle.png' | relative_url }}"
