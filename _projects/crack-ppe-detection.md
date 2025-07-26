@@ -43,6 +43,10 @@ Industrial safety remains a persistent challenge despite technological advanceme
 | Safety right exercise rate           | 16.3% |
 | Post-refusal protection satisfaction | 13.8% |
 
+<p align="center">
+  <img src="{{ '/project/crack-ppe-detection/fatality_rate_graph.png' | relative_url }}"
+       alt="Figure 2. Trend of Industrial Accident Rates and Fatalities in South Korea">
+</p>
 
 
 ### 1.2 Mathematical Risk Framework
@@ -74,7 +78,10 @@ Statistical analysis indicates 78.2% of industrial accidents stem from behaviora
 | Monitoring Gaps        | \$\eta\_{monitoring} < \eta\_{required}\$          | Real-time surveillance |
 | Communication Barriers | \$I\_{effective} = I\_{transmitted} \cdot \alpha\$ | Visual/audio alerts    |
 
-
+<p align="center">
+  <img src="{{ '/project/crack-ppe-detection/accident-circle.png' | relative_url }}"
+       alt="Figure 3. Distribution of Accident Causes by Category">
+</p>
 
 ---
 
@@ -93,13 +100,7 @@ Statistical analysis indicates 78.2% of industrial accidents stem from behaviora
 
 
 
-### 2.2 Distributed System Architecture
-
-The system employs a hub-and-spoke topology with fault-tolerant communication:
-
-
-
-### 2.3 Reliability Analysis
+### 2.2 Reliability Analysis
 
 For a distributed system with \$n\$ robots, system reliability \$R\_{system}\$ is:
 
@@ -133,43 +134,75 @@ $$
 | YOLOv8n  | 3.8                 | 1.01         | 0.856    | 6.2             |
 | YOLOv11n | 4.5                 | 1.22         | 0.851    | 5.9             |
 
-
+<p align="center">
+  <img src="{{ '/project/crack-ppe-detection/model_comparison.png' | relative_url }}"
+       alt="Figure 4. Box plots showing inference time distribution across different YOLO models">
+</p>
 
 **Selection Rationale:** YOLOv8n demonstrates optimal balance of accuracy, speed, and consistency for real-time industrial deployment.
 
 ### 3.3 Mathematical Framework for Detection
 
 **Spatial Detection Universe:**
-
-*Definition omitted.*
+$$
+\mathcal{U} = \{(x,y) \mid 0 \leq x \leq W, 0 \leq y \leq H\}
+$$
 
 **Detection Confidence Mapping:**
 
 Where \$\phi(x,y)\$ represents feature extraction at pixel \$(x,y)\$ and \$\sigma\$ is the sigmoid activation:
 
 $$
-\sigma(z) = \frac{1}{1 + e^{-z}}
+C(x,y) = \begin{cases} 
+\sigma(\mathbf{w}^T \phi(x,y) + b) & \text{if } (x,y) \in \text{ROI} \\
+0 & \text{otherwise}
+\end{cases}
 $$
 
 **PPE Compliance Assessment:**
 
-*Framework description omitted.*
+$$
+\text{PPE}_{score} = \prod_{i \in \{\text{helmet, vest, boots}\}} \max_{j} C_i^{(j)}
+$$
 
+<p align="center">
+  <img src="{{ '/project/crack-ppe-detection/detection_framework.png' | relative_url }}"
+       alt="Figure 5. Visual representation of detection confidence mapping and PPE scoring system">
+</p>
 
 
 ### 3.4 Noise Analysis & Kalman Filter Design
 
 **Sensor Noise Characterization:**
 
-- Standard Deviation: \$\sigma = 0.4261\$ m
-- Variance: \$\sigma^2 = 0.1815\$ m²
-- Temporal Correlation: \$\rho(\tau) = 0.85 e^{-\tau/2.3}\$
+- Standard Deviation: $$\sigma = 0.4261\ \mathrm{m}$$
+- Variance: $$\sigma^2 = 0.1815\ \mathrm{m}^2$$
+- Temporal Correlation: $$\rho(\tau) = 0.85\,e^{-\tau/2.3}$$
 
-**State Space Model Design:** Fourth-order state vector for position and velocity.
+**State Space Model Design:** 
+For tracking human position and velocity, we employ a 4D state vector: $$\mathbf{x}_k = [x_k, y_k, \dot{x}_k, \dot{y}_k]^T$$
 
-**Prediction & Update Equations:** Standard Kalman filter equations (omitted).
+**Prediction Equations:** $$\mathbf{P}_{k|k-1} = \mathbf{F}\mathbf{P}_{k-1|k-1}\mathbf{F}^T + \mathbf{Q}$$
 
-**Experimental Validation:**
+**Update Equations:** $$\mathbf{K}_k = \mathbf{P}_{k|k-1}\mathbf{H}^T(\mathbf{H}\mathbf{P}_{k|k-1}\mathbf{H}^T + \mathbf{R})^{-1}$$
+
+Where: $$\mathbf{F} = \begin{bmatrix}
+1 & 0 & \Delta t & 0 \\
+0 & 1 & 0 & \Delta t \\
+0 & 0 & 1 & 0 \\
+0 & 0 & 0 & 1
+\end{bmatrix}, \quad \mathbf{H} = \begin{bmatrix}
+1 & 0 & 0 & 0 \\
+0 & 1 & 0 & 0
+\end{bmatrix}$$
+
+**Theoretical Performance Advantage:**
+Comparing 2D vs 4D models, the Mean Squared Error difference: $$\text{MSE}_{2D} - \text{MSE}_{4D} = (\dot{x}_{k-1})^2(\Delta t)^2 \geq 0$$
+
+This proves the 4D model’s theoretical superiority when velocity $$\dot{x}_{k-1} \neq 0$$.
+
+
+**Experimental Validation:** 
 
 | Performance Metric          | Raw Data  | Kalman Filter | Improvement |
 | --------------------------- | --------- | ------------- | ----------- |
@@ -185,31 +218,37 @@ $$
 
 ### 4.1 Computer Vision Pipeline
 
-1. YOLO-based Region Proposal: Initial crack candidate identification
-2. HSV Color Space Segmentation: Precise crack boundary delineation
-3. Depth-Aware Area Calculation: 3D surface area estimation
-4. Global Coordinate Mapping: Integration with navigation system
+The crack detection system employs a hybrid approach combining deep learning and classical computer vision:
+
+1. **YOLO-based Region Proposal:** Initial crack candidate identification
+2. **HSV Color Space Segmentation:** Precise crack boundary delineation
+3. **Depth-Aware Area Calculation:** 3D surface area estimation
+4. **Global Coordinate Mapping:** Integration with navigation system
 
 ### 4.2 HSV Segmentation Methodology
 
 **Rationale for HSV Selection:**
 
-- Illumination Invariance
-- Computational Efficiency (\$O(n)\$ complexity)
-- Threshold Interpretability
-- Robustness with limited training data
+- **Illumination Invariance:** Separates color information from lighting conditions
+- **Computational Efficiency:** Linear complexity $$O(n)$$ for pixel processing
+- **Threshold Interpretability:** Intuitive parameter tuning for industrial deployment
+- **Robustness with limited training data:** Effective performance with limited training data
 
-HSV Transformation:
+**HSV Transformation:** $$H = \arctan2(\sqrt{3}(G-B), 2R-G-B) \cdot \frac{180°}{\pi}, S = 1 - \frac{3\min(R,G,B)}{R+G+B}, V = \frac{R+G+B}{3}$$
 
-*Formulas omitted.*
 
+<p align="center">
+  <img src="{{ '/project/crack-ppe-detection/hsv_segmentation.png' | relative_url }}"
+       alt="Figure 6. HSV color space segmentation results showing crack isolation from background">
+</p>
 
 
 ### 4.3 3D Area Calculation Framework
 
-- **Camera Calibration Model:** Pixel-to-metric conversion using OAK-D intrinsics.
-- **Surface Area Estimation:** Integration of surface normals.
-- **Error Propagation Analysis:** Analytical propagation of calibration uncertainties.
+- **Camera Calibration Model:** Using OAK-D intrinsic parameters, the pixel-to-metric conversion: $$\text{ratio}_x = \frac{Z}{f_x}, \quad \text{ratio}_y = \frac{Z}{f_y}$$
+- **Surface Area Estimation:** $$A_{crack} = \sum_{i,j \in \text{crack pixels}} \frac{Z_{i,j}}{f_x} \cdot \frac{Z_{i,j}}{f_y} \cdot \cos(\theta_{i,j})$$
+Where $$\theta_{i,j}$$ represents the surface normal angle at pixel $$(i,j)$$.
+- **Error Propagation Analysis:** $$\sigma_A^2 = \left(\frac{\partial A}{\partial Z}\right)^2 \sigma_Z^2 + \left(\frac{\partial A}{\partial f_x}\right)^2 \sigma_{f_x}^2 + \left(\frac{\partial A}{\partial f_y}\right)^2 \sigma_{f_y}^2$$
 
 ### 4.4 Performance Validation
 
@@ -227,7 +266,10 @@ HSV Transformation:
 
 ### 5.1 NAV2-Based Navigation Architecture
 
-
+<p align="center">
+  <img src="{{ '/project/crack-ppe-detection/nav_arc.PNG' | relative_url }}"
+       alt="Figure 7. Navigation system state machine showing event handling hierarchy">
+</p>
 
 ### 5.2 Multi-Robot Coordination Algorithm
 
@@ -239,14 +281,14 @@ $$
 
 **Resource Allocation Optimization:**
 
-Binary linear programming for assigning tasks \$x\_{ij} \in {0,1}\$ under capacity constraints.
+$$\min \sum_{i,j} c_{ij}x_{ij} \quad \text{subject to} \quad \sum_j x_{ij} = 1, \sum_i x_{ij} \leq 1$$
 
 ### 5.3 Navigation Parameter Optimization
 
 **Buffer Size Optimization Problem:**
 
 $$
-b_{min} \le b \le b_{max}, \quad P_{collision}(b) \le P_{threshold}, \quad T_{response}(b) \le T_{max}
+\min_{b} J(b) = \alpha \cdot P_{collision}(b) + \beta \cdot E[T_{stuck}(b)] + \gamma \cdot E[P_{deviation}(b)]
 $$
 
 **Solution:** Reduced inflation radius from 0.4 m to 0.1 m, resulting in:
@@ -261,8 +303,18 @@ $$
 
 ### 6.1 Protocol Selection Analysis
 
-Reliability comparison for network topologies demonstrates MQTT’s advantages in star configurations.
+For a network with $n$ segments, failure probability analysis:
 
+ROS2 DDS (Mesh Topology): $$P_{DDS_{failure}} = 1 - \prod_{i=1}^{n} P_{segment_i}$$
+
+MQTT (Star Topology): $$P_{MQTT_{success}} = \prod_{i=1}^{n} P_{device \rightarrow broker}$$
+
+Since devices connect independently: $$P_{MQTT_{success}} \gg P_{DDS_{success}}$$
+
+<p align="center">
+  <img src="{{ '/project/crack-ppe-detection/protocol_comparison.png' | relative_url }}"
+       alt="Figure 8. Network topology comparison showing MQTT’s resilience advantages">
+</p>
 
 
 ### 6.2 Communication Performance Analysis
@@ -278,10 +330,21 @@ Reliability comparison for network topologies demonstrates MQTT’s advantages i
 
 **Message Overhead:**
 
-- MQTT: 2–7% overhead (\$\eta\_{MQTT} = 0.93–0.98\$)
-- HTTP REST: 200–800% overhead (\$\eta\_{HTTP} = 0.12–0.33\$)
+- MQTT: 2–7% overhead ($$\eta\_{MQTT} = 0.93–0.98\$$)
+- HTTP REST: 200–800% overhead ($$\eta\_{HTTP} = 0.12–0.33\$$)
+
+$$\text{Efficiency Ratio} = \frac{\eta_{MQTT}}{\eta_{HTTP}} \approx 3-8$$
 
 ### 6.3 Image Transmission Performance
+
+**Experimental Setup:**
+
+- Image size: 64KB (320×240 RGB)
+- Test duration: 2000 transmission cycles
+- Network conditions: Industrial WiFi simulation
+
+**Results:**
+
 
 | FPS Setting     | Success Rate (%) | Avg Latency (ms) | Throughput (KB/s) |
 | --------------- | ---------------- | ---------------- | ----------------- |
@@ -289,7 +352,9 @@ Reliability comparison for network topologies demonstrates MQTT’s advantages i
 | 20 fps (50 ms)  | 22.9             | 78               | 14.7              |
 | 100 fps (10 ms) | 21.3             | 156              | 13.6              |
 
-**Optimal Operating Point:** 10 fps balances reliability and real-time performance.
+**Optimal Operating Point:** Based on performance analysis, 10 fps provides optimal balance of reliability and real-time performance for industrial monitoring applications.
+
+
 
 ---
 
@@ -297,19 +362,24 @@ Reliability comparison for network topologies demonstrates MQTT’s advantages i
 
 ### 7.1 End-to-End System Performance
 
-- \$T\_{detection} = 52 \pm 8\$ ms (YOLOv8n inference)
-- \$T\_{processing} = 23 \pm 5\$ ms (coordinate transformation)
-- \$T\_{communication} = 95 \pm 15\$ ms (MQTT round-trip)
-- \$T\_{response} = 180 \pm 30\$ ms (navigation initiation)
+- $$T\_{detection} = 52 \pm 8$$ ms (YOLOv8n inference)
+- $$T\_{processing} = 23 \pm 5$$ ms (coordinate transformation)
+- $$T\_{communication} = 95 \pm 15$$ ms (MQTT round-trip)
+- $$T\_{response} = 180 \pm 30$$ ms (navigation initiation)
 
 **Total System Response Time:** 350 ± 35 ms
 
 ### 7.2 Multi-Robot Coordination Validation
 
+**Test Scenario:** Simultaneous human and crack detection events with 4 robots
+
+**Coordination Algorithm Performance:**
+
 - Event detection to response initiation: 245 ms average
 - Resource allocation conflicts: 0% (perfect coordination)
 - Coverage efficiency: 94% of monitored area
-- Load balancing effectiveness: demonstrated by uniform task distribution
+
+**Load balancing effectiveness:** $$\text{Balance Index} = 1 - \frac{\sigma_{workload}}{\mu_{workload}} = 0.89$$
 
 ### 7.3 Real-World Testing Environment
 
@@ -324,6 +394,8 @@ Reliability comparison for network topologies demonstrates MQTT’s advantages i
 
 ### 8.1 Web-Based Control Interface
 
+The monitoring dashboard provides real-time visualization and control capabilities:
+
 **Key Features:**
 
 - Live robot positioning and status
@@ -332,6 +404,10 @@ Reliability comparison for network topologies demonstrates MQTT’s advantages i
 - Remote control capabilities
 - Performance metrics display
 
+<p align="center">
+  <img src="{{ '/project/crack-ppe-detection/dash.gif' | relative_url }}"
+       alt="Figure 9. Web-based dashboard interface showing real-time monitoring and control features">
+</p>
 
 
 ### 8.2 Mobile Application Integration
@@ -343,7 +419,10 @@ Reliability comparison for network topologies demonstrates MQTT’s advantages i
 - Emergency stop capabilities
 - Location-based event mapping
 
-
+<p align="center">
+  <img src="{{ '/project/crack-ppe-detection/aplication.gif' | relative_url }}"
+       alt="Figure 10. Mobile application interface showing emergency response and notification features">
+</p>
 
 ---
 
@@ -362,29 +441,38 @@ Reliability comparison for network topologies demonstrates MQTT’s advantages i
 **Mathematical Error Model:**
 
 $$
-x_{true} = R \cdot x_{detected} + t
+\mathbf{p}_{measured} = \mathbf{R}\mathbf{p}_{actual} + \mathbf{t} + \boldsymbol{\epsilon}_{systematic} + \boldsymbol{\eta}_{noise}
 $$
 
-**Solutions:**
+**Solution Implementation:**
 
-- Empirical calibration matrix
-- Real-time validation with reference points
+1. **Empirical Calibration Matrix:** $$\mathbf{C} = \arg\min_{\mathbf{C}} \sum_{i=1}^{N} ||\mathbf{p}_{ground\_truth}^{(i)} - \mathbf{C}\mathbf{p}_{measured}^{(i)}||^2$$
 
-**Future Enhancement:** PointCloud registration via ICP
+2. **Real-time Validation:** Continuous comparison with known reference points
+
+3. **Future Enhancement:** PointCloud registration using Iterative Closest Point (ICP)
+
 
 ### 9.2 Navigation Buffer Optimization
 
 **Problem:** Excessive buffer zones caused navigation failures in narrow passages.
 
-**Approach:** Optimize inflation radius within safety constraints.
+**Approach:** $$J(b) = w_1 \sum_{i} I_{collision}^{(i)} + w_2 \sum_{j} T_{stuck}^{(j)} + w_3 \sum_{k} D_{deviation}^{(k)}$$$$
 
-**Results:** See Section 5.3
+**Solution Results:**
+
+- Buffer radius: 0.4m → 0.1m
+
+- Success rate improvement: 73% → 96%
+
+- Average navigation time reduction: 40%
 
 ---
 
 ## 10. Performance Evaluation & Results
 
 ### 10.1 Quantitative Performance Metrics
+**Detection System Performance:**
 
 | Metric              | Human Detection | Crack Detection | Combined System |
 | ------------------- | --------------- | --------------- | --------------- |
@@ -405,6 +493,7 @@ $$
 | Overall System     | 97.1       | 350                    | 2.9            |
 
 ### 10.2 Comparative Analysis
+**Benchmark Comparison with Existing Solutions:**
 
 | Feature                  | Our System | Commercial Solution A | Research System B |
 | ------------------------ | ---------- | --------------------- | ----------------- |
@@ -423,13 +512,22 @@ $$
 Planned multi-sensor integration with optimized weights based on reliability:
 
 $$
-\hat{x} = \sum_i w_i x_i, \quad \sum_i w_i = 1
+\hat{\mathbf{x}}_{fused} = \sum_{i=1}^{n} w_i \hat{\mathbf{x}}_i
 $$
+
+**Expected Performance Improvement:**
+
+$$\sigma_{fused}^2 = \left(\sum_{i=1}^{n} \sigma_i^{-2}\right)^{-1} \leq \min_i \sigma_i^2$$
 
 ### 11.2 Advanced Coordination Algorithms
 
-- Byzantine Fault Tolerant consensus for critical safety decisions
-- Swarm intelligence via Particle Swarm Optimization and Ant Colony Optimization
+**Distributed Consensus for Multi-Robot Systems:** Implementation of Byzantine Fault Tolerant consensus for critical safety decisions.
+
+**Swarm Intelligence Integration:**
+
+- Particle Swarm Optimization for coverage path planning
+
+- Ant Colony Optimization for dynamic task allocation
 
 ### 11.3 Edge Computing Integration
 
@@ -445,20 +543,42 @@ This research presents a comprehensive industrial safety robot system that succe
 
 ### 12.1 Key Achievements
 
-- Real-time Multi-Modal Detection: Achieved 93% accuracy in hazard identification with sub-400 ms response times
-- Advanced Noise Filtering: Implemented Kalman filtering resulting in 24.7% noise reduction
-- Robust Communication: Developed MQTT-based distributed communication with 99.8% reliability
-- Intelligent Coordination: Created multi-robot coordination system with 96% task success rate
+1. **Real-time Multi-Modal Detection:** Achieved 93% accuracy in hazard identification with sub-400 ms response times
+2. **Advanced Noise Filtering:** Implemented Kalman filtering resulting in 24.7% noise reduction
+3. **Robust Communication:** Developed MQTT-based distributed communication with 99.8% reliability
+4. **Intelligent Coordination:** Created multi-robot coordination system with 96% task success rate
 
 ### 12.2 Technical Contributions
 
-- **Mathematical Modeling:** Formalized risk assessment framework; proved theoretical superiority of 4D tracking
-- **System Engineering:** Integrated heterogeneous technologies into a cohesive safety monitoring system
-- **Industrial Impact:** Demonstrated practical applicability in simulated industrial environments
+**Mathematical Modeling:**
+
+- Formalized risk assessment framework for industrial environments
+
+- Proved theoretical superiority of 4D state tracking over 2D alternatives
+
+- Developed optimization models for navigation parameter tuning
+
+**System Engineering:**
+
+- Integrated heterogeneous technologies into cohesive safety monitoring system
+
+- Implemented fault-tolerant distributed architecture
+
+- Created comprehensive testing and validation framework
+
+**Industrial Impact:**
+
+- Demonstrated practical applicability in simulated industrial environments
+
+- Achieved performance metrics suitable for real-world deployment
+
+- Established scalable foundation for future safety system development
 
 ### 12.3 Research Significance
 
-This work represents a significant advancement in autonomous industrial safety systems, providing both theoretical foundations and practical implementations.
+This work represents a significant advancement in autonomous industrial safety systems, providing both theoretical foundations and practical implementations. The mathematical rigor combined with real-world testing demonstrates the system’s readiness for industrial deployment while identifying clear pathways for continued improvement.
+
+**Future Impact Projection:** With proper scaling and industrial partnership, this system has the potential to contribute to the reduction of industrial accidents, directly supporting the goal of preventing workplace fatalities through intelligent, continuous monitoring.
 
 ### 12.4 Final Reflection
 
@@ -585,93 +705,9 @@ mqtt_config:
 
 ---
 
-# Appendix B: Mathematical Derivations
+# Appendix B: Code Implementations
 
-## B.1 Kalman Filter Derivation for 4D State Space
-
-Given the state transition model with process noise \$w\_{k-1} \sim \mathcal{N}(0, Q)\$:
-
-**Prediction Step:**
-
-$$
-x_k^- = F x_{k-1}, \quad P_k^- = F P_{k-1} F^T + Q
-$$
-
-**Update Step:**
-
-$$$
-K_k = P_k^- H^T (H P_k^- H^T + R)^{-1}$$
-$$$
-
-x\_k = x\_k^- + K\_k (z\_k - H x\_k^-), \quad P\_k = (I - K\_k H) P\_k^-
-
-$$
-
-## B.2 MQTT vs DDS Reliability Analysis
-
-For $n$ network segments with individual reliability $p_i$:
-
-**DDS Mesh Network:**
-
-$$
-
-R\_{mesh} = \prod\_{i=1}^n p\_i
-
-$$
-
-**MQTT Star Network:**
-
-$$
-
-R\_{star} = p\_{device\to broker}^n
-
-$$
-
-For $p_i = 0.95$ and $n = 4$, MQTT shows ~13% improvement.
-
-## B.3 Multi-Robot Task Allocation Optimization
-
-**Objective:**
-
-$$
-
-\max \sum\_{i,j} c\_{ij} x\_{ij}
-
-$$
-
-**Constraints:**
-
-$$
-
-\sum\_i x\_{ij} = 1, \quad \sum\_j x\_{ij} \le C\_i, \quad x\_{ij} \in {0,1}
-
-$$
-
-Hungarian algorithm yields $O(n^3)$ time complexity.
-
-## B.4 Risk Assessment Mathematical Framework
-
-Instantaneous Risk Model:
-
-$$
-
-R(t) = \sum\_i P\_i(t) S\_i E\_i(t)
-
-$$
-
-Optimization Objective:
-
-$$
-
-\max \sum\_j B\_j - C\_j \quad \text{s.t.} \sum\_j C\_j \le B
-
-$$
-
----
-
-# Appendix C: Code Implementations
-
-## C.1 Human Detection Node (Python)
+## B.1 Human Detection Node (Python)
 
 ```python
 #!/usr/bin/env python3
@@ -828,7 +864,7 @@ if __name__ == '__main__':
     main()
 ```
 
-## C.2 MQTT Communication Bridge (Python)
+## B.2 MQTT Communication Bridge (Python)
 
 ```python
 #!/usr/bin/env python3
@@ -987,7 +1023,7 @@ if __name__ == '__main__':
     main()
 ```
 
-## C.3 Launch File Configuration
+## B.3 Launch File Configuration
 
 ```xml
 <!-- launch/safety_robot.launch.py -->
