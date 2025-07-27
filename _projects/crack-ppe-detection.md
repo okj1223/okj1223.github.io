@@ -204,9 +204,17 @@ $$
 **State Space Model Design:** 
 For tracking human position and velocity, we employ a 4D state vector: $$\mathbf{x}_k = [x_k, y_k, \dot{x}_k, \dot{y}_k]^T$$
 
-**Prediction Equations:** $$\mathbf{P}_{k|k-1} = \mathbf{F}\mathbf{P}_{k-1|k-1}\mathbf{F}^T + \mathbf{Q}$$
+**Prediction Equations:**
 
-**Update Equations:** $$\mathbf{K}_k = \mathbf{P}_{k|k-1}\mathbf{H}^T(\mathbf{H}\mathbf{P}_{k|k-1}\mathbf{H}^T + \mathbf{R})^{-1}$$
+$$
+\mathbf{P}_{k|k-1} = \mathbf{F}\mathbf{P}_{k-1|k-1}\mathbf{F}^T + \mathbf{Q}
+$$
+
+**Update Equations:**
+
+$$
+\mathbf{K}_k = \mathbf{P}_{k|k-1}\mathbf{H}^T \left( \mathbf{H}\mathbf{P}_{k|k-1}\mathbf{H}^T + \mathbf{R} \right)^{-1}
+$$
 
 Where: $$\mathbf{F} = \begin{bmatrix}
 1 & 0 & \Delta t & 0 \\
