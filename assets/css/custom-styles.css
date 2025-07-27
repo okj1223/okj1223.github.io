@@ -192,7 +192,8 @@ section.skills-grid .skill-item span {
 /* AutoCad, Inventor, 3Dmax 아이콘 작게 + 가운데 정렬 */
 .skills-grid .skill-item img[alt="AutoCad"],
 .skills-grid .skill-item img[alt="Inventor"],
-.skills-grid .skill-item img[alt="3Dmax"] {
+.skills-grid .skill-item img[alt="3Dmax"],
+.skills-grid .skill-item img[alt="C"] {
   max-height: 40px !important;
   max-width: 40px !important;
   width: auto;
