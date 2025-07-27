@@ -36,10 +36,10 @@ SCR chambers present multiple hazards:
 
 <figure>
   <img class="project-image"
-       src="{{ '/project/automated-catalyst-cleaning/grinding.gif' | relative_url }}"
-       alt="High‑Precision Grinding Process"
+       src="{{ '/project/automated-catalyst-cleaning/architecture-diagram.png | relative_url }}"
+       alt="System Architecture"
        loading="lazy">
-  <figcaption>Figure 1.High-precision grinding process </figcaption>
+  <figcaption>Figure 1.System archtecture diagam </figcaption>
 </figure>
 
 ### Core Control Unit
