@@ -16,7 +16,8 @@ permalink: /aboutme/
 Hello! 👋  
 I'm a mechanical and robotics engineer specializing in industrial safety robot systems and automation solutions.
 
-- 📧 Email: rudwns181211@gmail.com  
+- 📧 Email: rudwns181211@gmail.com
+- 📞 Phone: +82-10-8723-7644
 
 ### Areas of Interest
 - Robot Design & Control (ROS2, Python, C/C++)  
