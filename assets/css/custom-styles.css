@@ -90,6 +90,29 @@ h2, h3 {
 }
 
 
+.cv-button-wrapper {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  z-index: 10;
+}
+
+.cv-button {
+  display: inline-block;
+  background-color: #007acc;
+  color: white;
+  padding: 10px 18px;
+  border-radius: 6px;
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease;
+}
+
+.cv-button:hover {
+  background-color: #005a99;
+}
+
 
 /* ── Logo Section Styles ── */
 .logo-section {
