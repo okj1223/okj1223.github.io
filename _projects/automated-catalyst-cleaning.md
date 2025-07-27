@@ -2,7 +2,7 @@
 layout: project
 title: "Automated Catalyst Cleaning Robot"
 date:   2025-01-10
-description: "Precision SCR catalyst maintenance using ROS2, 3D laser scanning & high‑pressure micro‑nozzles."
+description: "Designed and fabricated an in-situ SCR catalyst cleaning system using Arduino-based electrical control, fluid dynamic nozzles, 3D modeling, and welded structural assembly."
 video_url: "https://www.youtube.com/embed/7pVAK6bW15U"
 permalink: /projects/automated-catalyst-cleaning/
 ---
