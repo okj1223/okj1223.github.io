@@ -99,24 +99,24 @@ h2, h3 {
 
 .cv-button {
   display: inline-block;
-  background-color: rgba(255, 255, 255, 0.15); /* 유리효과 느낌 */
-  color: #f1f1f1;
-  padding: 10px 20px;
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  border-radius: 8px;
+  background-color: rgba(255, 255, 255, 0.15);
+  color: #f0f0f0;
+  padding: 6px 14px;
+  font-size: 14px;
   font-weight: 500;
-  backdrop-filter: blur(6px); /* 살짝 글래스 효과 */
-  -webkit-backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 6px;
   text-decoration: none;
-  transition: all 0.3s ease;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  transition: background-color 0.25s ease, border-color 0.25s ease;
 }
 
 .cv-button:hover {
-  background-color: rgba(255, 255, 255, 0.3);
+  background-color: rgba(255, 255, 255, 0.25);
+  border-color: rgba(255, 255, 255, 0.45);
   color: #ffffff;
-  border-color: rgba(255, 255, 255, 0.6);
 }
-
 /* ── Logo Section Styles ── */
 .logo-section {
   margin: 2rem 0;     /* 배너/콘텐츠와 간격 */
