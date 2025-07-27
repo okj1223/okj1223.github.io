@@ -6,7 +6,7 @@ permalink: /home.html
 
 <!-- at the very top of _layouts/home.html -->
 {% if site.banner-img %}
-<div id="banner" style="background-image: url('{{ site.banner-img | relative_url }}')">
+<div id="banner" style="background-image: url('{{ site.banner-img | relative_url }}'); position: relative;">
   <div class="banner-overlay">
     <h1 class="banner-title">{{ site.banner-title }}</h1>
     <p class="banner-subtitle">{{ site.banner-subtitle }}</p>
@@ -15,9 +15,15 @@ permalink: /home.html
       <p class="banner-line1">{{ site.banner-line1 }}</p>
       <p class="banner-line2">{{ site.banner-line2 }}</p>
     </div>
+
+    <!-- ✅ CV Download Button -->
+    <div class="cv-button-wrapper">
+      <a href="/assets/files/CV_Kyungjun_Oh.pdf" download class="cv-button">📄 Download CV</a>
+    </div>
   </div>
 </div>
 {% endif %}
+
 <!-- ── Partner Logos Section (separate from banner) ── -->
 <section class="logo-section">
   <div class="container flex-center">
