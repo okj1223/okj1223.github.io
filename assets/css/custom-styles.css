@@ -827,10 +827,8 @@ figure figcaption {
   background: #000;
 }
 
-@media (prefers-color-scheme: dark) {
-  body {
-    background-color: #1e1e1e;
-    color: #e0e0e0;
-  }
-  /* 필요에 따라 헤더, 링크, 버튼 등 색상 정의 추가 */
+
+body.dark-mode {
+  background-color: #1e1e1e;
+  color: #e0e0e0;
 }
