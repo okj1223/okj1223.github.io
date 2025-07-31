@@ -826,9 +826,3 @@ figure figcaption {
   z-index: 9999;
   background: #000;
 }
-
-
-body.dark-mode {
-  background-color: #1e1e1e;
-  color: #e0e0e0;
-}
