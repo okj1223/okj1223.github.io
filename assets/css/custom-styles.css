@@ -826,3 +826,75 @@ figure figcaption {
   z-index: 9999;
   background: #000;
 }
+
+
+@keyframes neon {
+  0%,100% {
+    text-shadow:
+      0 0 4px #39f,
+      0 0 8px #39f,
+      0 0 16px #39f,
+      0 0 32px #0ff;
+  }
+  50% {
+    text-shadow:
+      0 0 2px #39f,
+      0 0 4px #39f,
+      0 0 8px #39f,
+      0 0 16px #0ff;
+  }
+}
+.banner-title {
+  animation: neon 1.8s infinite ease-in-out;
+}
+
+#banner {
+  /* 기존 설정 유지 */
+  transition: transform 0.6s ease;
+}
+#banner:hover {
+  transform: scale(1.02);
+}
+#banner::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: inherit; /* background-size, position 그대로 적용 */
+  background-attachment: fixed;
+  z-index: -1;
+}
+
+.cv-button {
+  position: relative;
+  overflow: hidden;
+}
+.cv-button::after {
+  content: "";
+  position: absolute;
+  top: -50%; left: -50%;
+  width: 200%; height: 200%;
+  background: radial-gradient(circle at center, rgba(255,255,255,0.4), transparent 60%);
+  opacity: 0;
+  transition: opacity 0.4s, transform 0.4s;
+}
+.cv-button:hover::after {
+  opacity: 1;
+  transform: rotate(45deg) scale(1.2);
+}
+
+@keyframes wave {
+  0%   { stroke-dashoffset: 1000; }
+  100% { stroke-dashoffset: 0; }
+}
+section > h2 {
+  position: relative;
+}
+section > h2::after {
+  content: "";
+  display: block;
+  width: 600px; height: 2px;
+  background: linear-gradient(90deg, #39f, #0ff);
+  margin: 2rem auto 0;
+  background-size: 200% 100%;
+  animation: wave 1.2s ease forwards;
+}
