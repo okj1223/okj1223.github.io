@@ -1,92 +1,22 @@
-/* 🌱🤖 Envirobotic Researcher Theme - Replace your custom-styles.css with this */
+/* ① Google Fonts → Merriweather + Roboto */
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@700&family=Roboto:wght@400;500&display=swap');
+/* ── Import Google Font: Inter ── */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&display=swap');
 
-/* Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Roboto:wght@400;500&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
-
-/* 🌿 Envirobotic Theme Variables */
-:root {
-  --primary-green: #2ecc71;
-  --deep-forest: #27ae60;
-  --tech-blue: #3498db;
-  --eco-cyan: #1abc9c;
-  --earth-brown: #8b4513;
-  --nature-gold: #f39c12;
-  --robot-silver: #95a5a6;
-  --warning-orange: #e67e22;
-  
-  /* 🌱 Envirobotic Gradients */
-  --gradient-nature: linear-gradient(135deg, #2ecc71 0%, #27ae60 50%, #1abc9c 100%);
-  --gradient-tech: linear-gradient(135deg, #3498db 0%, #2980b9 50%, #1abc9c 100%);
-  --gradient-earth: linear-gradient(135deg, #8b4513 0%, #a0522d 50%, #cd853f 100%);
-  --gradient-eco: linear-gradient(135deg, #1abc9c 0%, #16a085 50%, #2ecc71 100%);
-  
-  /* 🤖 Effects */
-  --shadow-eco: 0 4px 15px rgba(46, 204, 113, 0.2);
-  --shadow-tech: 0 4px 15px rgba(52, 152, 219, 0.2);
-  --shadow-heavy: 0 10px 30px rgba(46, 204, 113, 0.3);
-  --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  
-  /* 🌿 Glow effects */
-  --glow-green: 0 0 20px var(--primary-green);
-  --glow-cyan: 0 0 20px var(--eco-cyan);
-  --glow-blue: 0 0 20px var(--tech-blue);
+/* body {
+  font-family: 'Roboto', sans-serif;
 }
+h2, h3 {
+  font-family: 'Merriweather', serif;
+} */
 
-/* 🌍 Enhanced body with eco background */
-body {
-  font-family: 'Merriweather', serif !important;
-  background: linear-gradient(-45deg, #e8f5e8, #f0f8f0, #e6f7f1, #f5f9f5);
-  background-size: 400% 400%;
-  animation: ecoGradientShift 20s ease infinite;
-  overflow-x: hidden;
-  position: relative;
-}
 
-@keyframes ecoGradientShift {
-  0% { background-position: 0% 50%; }
-  25% { background-position: 100% 50%; }
-  50% { background-position: 100% 100%; }
-  75% { background-position: 0% 100%; }
-  100% { background-position: 0% 50%; }
-}
-
-/* 🌱 Nature-inspired floating particles */
-body::before {
-  content: '';
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: 
-    radial-gradient(circle at 20% 80%, rgba(46, 204, 113, 0.08) 0%, transparent 50%),
-    radial-gradient(circle at 80% 20%, rgba(26, 188, 156, 0.08) 0%, transparent 50%),
-    radial-gradient(circle at 40% 40%, rgba(52, 152, 219, 0.06) 0%, transparent 50%),
-    radial-gradient(circle at 60% 60%, rgba(243, 156, 18, 0.04) 0%, transparent 50%);
-  z-index: -1;
-  animation: natureBreathe 25s ease-in-out infinite;
-  pointer-events: none;
-}
-
-@keyframes natureBreathe {
-  0%, 100% { transform: translateY(0px) rotate(0deg) scale(1); }
-  25% { transform: translateY(-15px) rotate(0.5deg) scale(1.02); }
-  50% { transform: translateY(-5px) rotate(-0.3deg) scale(0.98); }
-  75% { transform: translateY(10px) rotate(0.2deg) scale(1.01); }
-}
-
-/* ── Enhanced Banner Overlay with Eco Glass Effect ── */
+/* ── Banner Overlay Z‑Index & Text Centering ── */
 .banner-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, 
-    rgba(46, 204, 113, 0.1) 0%, 
-    rgba(26, 188, 156, 0.2) 50%, 
-    rgba(52, 152, 219, 0.1) 100%);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(0,0,0,0.4);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -95,111 +25,38 @@ body::before {
   z-index: 2;
 }
 
-/* ── Enhanced Banner with Environmental Theme ── */
+/* ── Banner Styles ── */
 #banner {
   position: relative;
-  width: 100vw;
-  margin-left: calc(50% - 50vw);
+  width: 100vw;                     /* 뷰포트 전체 너비 */
+  margin-left: calc(50% - 50vw);    /* 좌우 여백 제거 */
   margin-right: calc(50% - 50vw);
-  height: 100vh;
-  background: var(--gradient-nature);
+  height: 500px;                    /* 필요에 따라 조정 */
   background-size: cover;
   background-position: center;
-  background-attachment: fixed;
   overflow: hidden;
 }
-
-/* 🌿 Animated eco-tech particles */
-#banner::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: 
-    radial-gradient(circle at 25% 25%, var(--primary-green) 2px, transparent 2px),
-    radial-gradient(circle at 75% 75%, var(--eco-cyan) 1px, transparent 1px),
-    radial-gradient(circle at 50% 10%, var(--tech-blue) 1.5px, transparent 1.5px);
-  background-size: 200px 200px, 100px 100px, 150px 150px;
-  animation: ecoStarfield 12s linear infinite;
-  opacity: 0.4;
-  z-index: 1;
-}
-
-@keyframes ecoStarfield {
-  0% { transform: translateX(0) translateY(0); }
-  100% { transform: translateX(-200px) translateY(-200px); }
-}
-
-/* 🌱 Eco-glowing banner title */
 .banner-title {
-  font-size: clamp(2.5rem, 5vw, 4rem);
-  color: #ffffff;
-  margin: 0 0 1rem;
-  text-shadow: 
-    0 0 10px var(--primary-green),
-    0 0 20px var(--eco-cyan),
-    0 0 40px var(--tech-blue),
-    0 2px 4px rgba(0, 0, 0, 0.7);
-  animation: ecoGlow 3s ease-in-out infinite alternate, fadeInUp 1s ease-out;
-  position: relative;
+  font-size: 3rem;
+  color: #ffffff;                                  /* Pure White */
+  margin: 0 0 0.5rem;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);       /* 짙은 그림자로 읽기 쉽게 */
 }
-
-@keyframes ecoGlow {
-  0% { 
-    text-shadow: 
-      0 0 10px var(--primary-green),
-      0 0 20px var(--eco-cyan),
-      0 0 40px var(--tech-blue),
-      0 2px 4px rgba(0, 0, 0, 0.7);
-  }
-  33% { 
-    text-shadow: 
-      0 0 15px var(--eco-cyan),
-      0 0 25px var(--primary-green),
-      0 0 45px var(--tech-blue),
-      0 2px 4px rgba(0, 0, 0, 0.7);
-  }
-  66% { 
-    text-shadow: 
-      0 0 12px var(--tech-blue),
-      0 0 22px var(--eco-cyan),
-      0 0 42px var(--primary-green),
-      0 2px 4px rgba(0, 0, 0, 0.7);
-  }
-  100% { 
-    text-shadow: 
-      0 0 20px var(--primary-green),
-      0 0 30px var(--eco-cyan),
-      0 0 50px var(--tech-blue),
-      0 2px 4px rgba(0, 0, 0, 0.7);
-  }
-}
-
-@keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(30px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
 .banner-subtitle {
-  font-size: 1.3rem;
-  color: #f8fff8;
+  font-size: 1.2rem;
+  color: #f8f8f8;                                  /* Off‑White */
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
-  animation: fadeInUp 1s ease-out 0.3s both;
 }
-
-/* ── Eco-themed Extra Lines ── */
+/* ── Extra Lines 묶음 ── */
 .banner-extra {
   display: flex;
   flex-direction: column;
-  gap: 0.2rem;
-  animation: fadeInUp 1s ease-out 0.6s both;
+  gap: 0.2rem;           /* 두 줄 간격 조절 */
 }
-
+/* ── Line1, Line2 스타일 ── */
 .banner-line1,
 .banner-line2 {
-  color: rgba(255, 255, 255, 0.95);
+  color: rgba(255, 255, 255, 0.9);
   margin: 0;
   line-height: 1.2;
 }
@@ -214,202 +71,125 @@ body::before {
   font-weight: 300;
 }
 
-/* 🤖 Environmental Researcher name with tech pulse */
-.banner-name {
-  font-size: 1rem;
-  color: var(--eco-cyan);
-  margin-top: 0.5rem;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  text-shadow: var(--glow-cyan);
-  animation: fadeInUp 1s ease-out 0.9s both, techPulse 2.5s infinite;
-}
 
-@keyframes techPulse {
-  0%, 100% { opacity: 1; color: var(--eco-cyan); }
-  25% { opacity: 0.8; color: var(--primary-green); }
-  50% { opacity: 0.9; color: var(--tech-blue); }
-  75% { opacity: 0.7; color: var(--eco-cyan); }
+/* ② 이름 텍스트 스타일 */
+.banner-name {
+  font-size: 1rem;           /* 부제보다 작게 */
+  color: #ffffff;            /* 네온 포인트 컬러 */
+  margin-top: 0.5rem;
+  letter-spacing: 0.15em;    /* 테크 느낌 강조 */
+  text-transform: uppercase;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
 }
 
 .banner-title,
 .banner-subtitle,
 .banner-name {
-  margin-left: 0;
+  margin-left: 0;             /* 혹시 남아있는 여백 제거 */
   margin-right: 0;
 }
 
-/* 🌿 Enhanced Eco CV Button */
+
 .cv-button-wrapper {
   position: absolute;
-  bottom: 5%;
+  bottom: 24px; /* 필요시 조정 */
   left: 50%;
   transform: translateX(-50%);
   z-index: 10;
-  animation: fadeInUp 1s ease-out 1.2s both;
 }
 
 .cv-button {
   display: inline-block;
-  background: rgba(46, 204, 113, 0.2);
-  color: #ffffff;
-  padding: 12px 24px;
-  font-size: 16px;
+  background-color: rgba(255, 255, 255, 0.15);
+  color: #f0f0f0;
+  padding: 6px 14px;
+  font-size: 14px;
   font-weight: 500;
-  border: 2px solid var(--primary-green);
-  border-radius: 50px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 6px;
   text-decoration: none;
-  backdrop-filter: blur(15px);
-  -webkit-backdrop-filter: blur(15px);
-  transition: var(--transition-smooth);
-  position: relative;
-  overflow: hidden;
-  box-shadow: var(--shadow-eco);
-}
-
-.cv-button::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(46, 204, 113, 0.3), transparent);
-  transition: left 0.5s;
-}
-
-.cv-button:hover::before {
-  left: 100%;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  transition: background-color 0.25s ease, border-color 0.25s ease;
 }
 
 .cv-button:hover {
-  background: var(--primary-green);
-  color: #000;
-  box-shadow: var(--glow-green), var(--shadow-heavy);
-  transform: translateY(-2px);
-  border-color: var(--eco-cyan);
+  background-color: rgba(255, 255, 255, 0.25);
+  border-color: rgba(255, 255, 255, 0.45);
+  color: #ffffff;
 }
-
-/* ── Enhanced Eco Logo Section ── */
+/* ── Logo Section Styles ── */
 .logo-section {
-  margin: 4rem 0;
-  opacity: 0;
-  animation: fadeInUp 1s ease-out 1.5s both;
+  margin: 2rem 0;     /* 배너/콘텐츠와 간격 */
 }
 
 .logo-section .flex-center {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 3rem;
+  gap: 2rem;          /* 로고 사이 간격 */
 }
 
 .logo-section .logo-img {
-  width: 100px;
+  width: 100px;       /* 원하는 크기로 조정 */
   height: auto;
   object-fit: contain;
-  transition: var(--transition-smooth);
-  filter: grayscale(0.3) opacity(0.9);
-  border-radius: 15px;
-  box-shadow: var(--shadow-eco);
-  border: 2px solid transparent;
 }
 
-.logo-section .logo-img:hover {
-  filter: grayscale(0) opacity(1);
-  transform: translateY(-5px) scale(1.05);
-  box-shadow: var(--shadow-heavy);
-  border-color: var(--primary-green);
+
+/* ── Skills & Expertise Styles ── */
+/* .skills-box {
+  max-width: 1200px;
+  margin: 4rem auto;
+  padding: 2rem;
+  background: #fff;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
 }
 
-/* ── Enhanced Eco Skills Section ── */
-.skills-section {
-  opacity: 0;
-  transform: translateY(50px);
-  transition: var(--transition-smooth);
-}
-
-.skills-section.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
+.skills-box > h2 {
+  margin-bottom: 1rem;
+  font-size: 2rem;
+  color: #333;
+  text-align: left;
+} */
 
 .skills-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-  gap: 2rem;
+  grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+  gap: 1.5rem;
   justify-items: center;
   align-items: center;
-  padding: 2rem 0;
 }
 
 .skills-grid .skill-item {
-  width: 100px;
-  height: 100px;
+  width: 80px;
+  height: 80px;
   display: flex;
   justify-content: center;
   align-items: center;
-  background: rgba(255, 255, 255, 0.9);
-  border-radius: 20px;
-  box-shadow: var(--shadow-eco);
-  transition: var(--transition-smooth);
-  position: relative;
-  overflow: hidden;
-  backdrop-filter: blur(15px);
-  -webkit-backdrop-filter: blur(15px);
-  border: 2px solid transparent;
-}
-
-.skills-grid .skill-item::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: var(--gradient-eco);
-  opacity: 0;
-  transition: var(--transition-smooth);
-  z-index: 1;
-}
-
-.skills-grid .skill-item:hover {
-  transform: translateY(-12px) scale(1.08) rotateZ(3deg);
-  box-shadow: var(--shadow-heavy);
-  border-color: var(--primary-green);
-}
-
-.skills-grid .skill-item:hover::before {
-  opacity: 0.85;
 }
 
 .skills-grid .skill-item img {
   max-width: 60px;
   max-height: 60px;
   object-fit: contain;
-  position: relative;
-  z-index: 2;
-  transition: var(--transition-smooth);
-  filter: drop-shadow(0 4px 8px rgba(46, 204, 113, 0.1));
 }
 
-.skills-grid .skill-item:hover img {
-  filter: brightness(0) invert(1) drop-shadow(0 4px 8px rgba(255, 255, 255, 0.5));
-  transform: scale(1.15);
-}
-
-/* Hide skill labels */
+/* 레이블 감추기 */
 section.skills-grid .skill-item span {
   display: none !important;
 }
 
-/* Specific icon sizing - keep your existing rules */
+
+/* Arduino 아이콘만 작게 줄이기 */
 .skills-grid .skill-item img[alt="Arduino"] {
-  max-height: 30px !important;
+  max-height: 30px !important;   /* ← 여기 !important */
   max-width: auto;
   width: auto;
 }
 
+/* AutoCad, Inventor, 3Dmax 아이콘 작게 + 가운데 정렬 */
 .skills-grid .skill-item img[alt="AutoCad"],
 .skills-grid .skill-item img[alt="Inventor"],
 .skills-grid .skill-item img[alt="3Dmax"],
@@ -421,6 +201,31 @@ section.skills-grid .skill-item span {
   margin: 0 auto;
 }
 
+/* ── 구분된 Skills 섹션 스타일 추가 ── */
+/* .skills-section.core-skills {
+  margin-top: 3rem;
+} */
+
+/* .skills-section.creative-tools {
+  margin-top: 2rem;
+  background: #f8f8f8;
+  padding: 2rem 1rem;
+  border-top: 1px solid #e0e0e0;
+  border-bottom: 1px solid #e0e0e0;
+} */
+
+/* Creative Tools 제목만 아이콘 추가 */
+.skills-section.creative-tools > h2::before {
+  content: "🎨 ";
+}
+/* 
+제목 너비 줄이고 정렬 개선
+section.skills-section > h2 {
+  max-width: 640px;
+  margin-left: auto;
+  margin-right: auto;
+} */
+
 .skills-grid .skill-item img[alt="Premiere Pro"],
 .skills-grid .skill-item img[alt="After Effects"],
 .skills-grid .skill-item img[alt="Photoshop"],
@@ -431,234 +236,33 @@ section.skills-grid .skill-item span {
   margin: 0 auto;
 }
 
-/* 🎨 Creative Tools with eco theme */
-.skills-section.creative-tools > h2::before {
-  content: "🎨 ";
-}
 
-/* ── Enhanced Eco Section Headings ── */
-section > h2 {
-  font-family: 'Merriweather', serif !important;
-  font-weight: 300;
-  font-size: clamp(1.5rem, 3vw, 2.2rem);
-  text-align: center;
-  background: var(--gradient-nature);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  padding-bottom: 2rem !important;
-  margin: 8rem 0 3rem;
-  position: relative;
-  opacity: 0;
-  transform: translateY(30px);
-  transition: var(--transition-smooth);
-}
 
-section > h2.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
 
-section > h2::after {
-  content: "";
-  display: block;
-  width: 120px;
-  height: 4px;
-  background: var(--gradient-eco);
-  margin: 2rem auto 0;
-  border-radius: 2px;
-  animation: expandWidth 1s ease-out 0.5s both;
-  box-shadow: var(--glow-green);
-}
+/* ── Certifications Styles (간소화 & 크기 축소) ── */
 
-@keyframes expandWidth {
-  from { width: 0; }
-  to { width: 120px; }
-}
-
-/* ── Enhanced Eco Project Section ── */
-.project-showcase-section {
-  padding: 2rem 1rem;
-  background: transparent;
-}
-
-.project-showcase-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr)); 
-  gap: 2rem;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.project-item {
-  display: flex;
-  flex-direction: row;
-  gap: 1rem;
-  background: rgba(255, 255, 255, 0.95);
-  border: none;
-  padding: 1.5rem;
-  border-radius: 20px;
-  box-shadow: var(--shadow-eco);
-  backdrop-filter: blur(15px);
-  -webkit-backdrop-filter: blur(15px);
-  transition: var(--transition-smooth);
-  position: relative;
-  border: 2px solid transparent;
-}
-
-.project-item::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 4px;
-  background: var(--gradient-nature);
-  transform: scaleX(0);
-  transition: var(--transition-smooth);
-  border-radius: 20px 20px 0 0;
-}
-
-.project-item:hover {
-  transform: translateY(-12px);
-  box-shadow: var(--shadow-heavy);
-  border-color: var(--primary-green);
-}
-
-.project-item:hover::before {
-  transform: scaleX(1);
-}
-
-.project-description {
-  flex: 1;
-  font-size: 0.95rem;
-  color: #2c3e50;
-}
-
-.project-description h3 {
-  margin: 0 0 0.5rem;
-  font-size: 1.2rem;
-  background: var(--gradient-nature);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  font-weight: 700;
-}
-
-.project-description h4 {
-  margin-bottom: 0.75rem;
-  font-size: 1.1rem;
-  font-weight: 700;
-  color: var(--deep-forest);
-}
-
-.project-description time {
-  display: block;
-  font-size: 0.9rem;
-  color: var(--eco-cyan);
-  margin-bottom: 0.5rem;
-  font-weight: 500;
-}
-
-.project-description p {
-  margin-bottom: 0;
-  line-height: 1.6;
-  color: #34495e;
-}
-
-.project-video {
-  position: relative;
-  padding-bottom: 40%;
-  height: 0;
-  overflow: hidden;
-  border-radius: 15px;
-}
-
-.project-video iframe {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border-radius: 15px;
-}
-
-/* Enhanced Eco View All Button */
-.view-all {
-  text-align: center;
-  margin-top: 2rem;
-}
-
-.view-all .button {
-  padding: 12px 28px;
-  background: var(--gradient-nature);
-  color: #fff;
-  border: none;
-  border-radius: 50px;
-  text-decoration: none;
-  font-weight: 500;
-  font-size: 0.9rem;
-  transition: var(--transition-smooth);
-  box-shadow: var(--shadow-eco);
-  position: relative;
-  overflow: hidden;
-  border: 2px solid transparent;
-}
-
-.view-all .button::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-  transition: left 0.5s;
-}
-
-.view-all .button:hover::before {
-  left: 100%;
-}
-
-.view-all .button:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-heavy);
-  border-color: var(--eco-cyan);
-}
-
-/* ── Enhanced Eco Certifications ── */
 .cert-list {
   list-style: none;
   padding: 0;
   margin: 0 auto;
   display: flex;
   flex-wrap: wrap;
-  gap: 1.5rem;
+  gap: 1rem;
   justify-content: center;
 }
 
 .cert-item {
-  flex: 0 0 220px;
+  flex: 0 0 180px;     /* 카드 너비 180px */
   box-sizing: border-box;
-  perspective: 1000px;
 }
 
 .cert-card {
   position: relative;
   overflow: hidden;
-  border-radius: 20px;
+  border-radius: 0.5rem;
   width: 100%;
-  height: 220px;
-  transition: var(--transition-smooth);
-  transform-style: preserve-3d;
-  border: 3px solid transparent;
-  box-shadow: var(--shadow-eco);
-}
-
-.cert-card:hover {
-  transform: rotateY(8deg) rotateX(3deg) scale(1.05);
-  box-shadow: var(--shadow-heavy);
-  border-color: var(--primary-green);
+  height: 180px;       /* 카드 높이 180px */
+  transition: transform 0.2s ease;
 }
 
 .cert-card img {
@@ -666,19 +270,15 @@ section > h2::after {
   height: 100%;
   object-fit: cover;
   display: block;
-  transition: var(--transition-smooth);
-}
-
-.cert-card:hover img {
-  transform: scale(1.1);
+  transition: transform 0.2s ease;
 }
 
 .cert-overlay {
   position: absolute;
   bottom: 0;
   width: 100%;
-  background: linear-gradient(transparent, rgba(46, 204, 113, 0.9));
-  padding: 1rem 0 0.5rem;
+  background: rgba(0,0,0,0.4);
+  padding: 0.5rem 0;
   text-align: center;
 }
 
@@ -686,7 +286,13 @@ section > h2::after {
   color: #fff;
   font-size: 0.9rem;
   font-weight: 500;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.cert-card:hover {
+  transform: scale(1.02);
+}
+.cert-card:hover img {
+  transform: scale(1.05);
 }
 
 .cert-details {
@@ -694,19 +300,16 @@ section > h2::after {
   overflow: hidden;
   padding: 0 0.5rem;
   transition: max-height 0.3s ease, padding 0.3s ease;
-  font-size: 0.5rem;
-  line-height: 1.4;
-  color: #2c3e50;
-  background: rgba(255, 255, 255, 0.95);
+  font-size: 0.5rem;      /* 약 14px 정도로 축소 */
+  line-height: 1.4;         /* 줄간격 살짝 줄이기 */
+  color: #444;              /* 약간 연한 텍스트 컬러 */
 }
-
 .cert-details ul {
   margin: 0;
-  padding-left: 1rem;
+  padding-left: 1rem;       /* 리스트 들여쓰기 */
 }
-
 .cert-details ul li {
-  margin-bottom: 0.25rem;
+  margin-bottom: 0.25rem;   /* 항목 간 간격 축소 */
 }
 
 .cert-item:hover .cert-details {
@@ -714,9 +317,39 @@ section > h2::after {
   padding: 0.5rem;
 }
 
-/* ── Enhanced Eco Career Bio Section ── */
+/* ── Global Font & Section Heading Styles ── */
+body {
+  font-family: 'Merriweather', serif !important;
+}
+section > h2 {
+  font-family: 'Merriweather', serif !important;  /* 논문 같은 세리프체 */
+  font-weight: 200;
+  font-size: 1.2rem;
+  text-align: center;
+  color: rgba(0, 0, 0, 0.6);
+  
+  /* ② 언더라인과의 간격을 늘리기 */
+  padding-bottom: 2rem !important;  /* 이전 1rem → 1.5rem */
+  margin: 8rem 0 1rem;                /* 제목 위아래 간격도 조정 */
+  position: relative;
+}
+
+section > h2::after {
+  content: "";
+  display: block;
+  width: 600px;
+  height: 1px;
+  background-color: rgba(0, 0, 0, 0.1);
+  
+  /* ③ 언더라인 바로 위 공간 추가 */
+  margin: 2rem auto 0;  /* 이전 0.25rem → 0.75rem */
+  border-radius: 1px;
+}
+
+
+/* ── Career Bio Section Styles ── */
 .career-bio-section {
-  background: transparent;
+  background-color: #f5f5f5;
   padding: 4rem 1rem;
   margin-top: 4rem;
 }
@@ -724,85 +357,203 @@ section > h2::after {
 .career-bio-box {
   max-width: 700px;
   margin: 0 auto;
-  background: rgba(255, 255, 255, 0.3);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 2px solid rgba(46, 204, 113, 0.2);
-  border-radius: 25px;
-  padding: 2.5rem;
+  background: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 1rem 1rem;  /* ↓ 기존 2rem → 1rem */
   font-family: 'Inter', sans-serif;
-  box-shadow: var(--shadow-heavy);
-  position: relative;
-  overflow: hidden;
-}
-
-.career-bio-box::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 2px;
-  background: var(--gradient-nature);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.04);
 }
 
 .career-title {
-  font-size: 1.1rem;
+  font-size: 0.85rem;   /* ↓ 기존 1rem → 0.85rem */
   font-weight: 600;
-  background: var(--gradient-nature);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  margin-bottom: 1.5rem;
+  color: #2c3e50;
+  margin-bottom: 1rem;
   text-align: center;
   letter-spacing: 0.02em;
-  border-bottom: 1px solid rgba(46, 204, 113, 0.3);
-  padding-bottom: 1rem;
+  border-bottom: 1px solid #e0e0e0;
+  padding-bottom: 0.5rem;  /* ↓ 기존 0.75rem → 0.5rem */
 }
 
 .career-list {
   list-style: none;
   padding: 0;
   margin: 0;
-  font-size: 0.85rem;
-  line-height: 1.6;
-  color: rgba(0, 0, 0, 0.8);
+  font-size: 0.75rem;   /* ↓ 기존 0.85rem → 0.75rem */
+  line-height: 1.45;    /* ↓ 줄 간격도 약간 조임 */
+  color: #333;
 }
 
 .career-list li {
-  margin-bottom: 1.5rem;
-  padding: 1.2rem;
-  background: rgba(255, 255, 255, 0.2);
-  border-radius: 15px;
-  border-left: 4px solid var(--primary-green);
-  transition: var(--transition-smooth);
-  box-shadow: var(--shadow-eco);
-}
-
-.career-list li:hover {
-  background: rgba(255, 255, 255, 0.3);
-  transform: translateX(8px);
-  border-left-color: var(--eco-cyan);
-  box-shadow: var(--shadow-tech);
+  margin-bottom: 1rem;  /* ↓ 기존 1.5rem → 1rem */
 }
 
 .career-institution {
   font-weight: 600;
-  color: var(--deep-forest);
-  font-size: 0.9rem;
-  display: block;
-  margin-bottom: 0.3rem;
+  color: #000;
+  font-size: 0.8rem;    /* ↓ 기존 0.9rem → 0.8rem */
 }
 
 .career-date {
   display: block;
-  margin-top: 0.3rem;
-  font-size: 0.75rem;
-  color: var(--eco-cyan);
-  font-weight: 500;
+  margin-top: 0.2rem;   /* ↓ 기존 0.3rem → 0.2rem */
+  font-size: 0.65rem;   /* ↓ 기존 0.75rem → 0.65rem */
+  color: #888;
 }
 
-/* ── Project Link Styles ── */
+/* 프로젝트 스타일 */
+
+.project-showcase-container {
+  max-width: 1200px;
+  width: 100%;
+}
+
+.project-showcase-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr)); 
+  gap: 2rem;
+}
+
+.project-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  align-items: start;
+}
+
+.project-item {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+}
+
+.project-description {
+  flex: 1;
+  font-size: 0.95rem;
+  color: #333;
+}
+
+.project-description h4 {
+  margin-bottom: 0.75rem;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #2c3e50;
+}
+
+.project-description p {
+  margin-bottom: 0;
+}
+
+.project-video {
+  position: relative;
+  padding-bottom: 40%;
+  height: 0;
+  overflow: hidden;
+}
+
+@media (max-width: 768px) {
+  /* 프로젝트 항목 → 세로 정렬 */
+  .project-showcase-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .project-item {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .project-video iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  }
+
+  .project-description {
+    font-size: 0.9rem;
+    padding: 0.5rem;
+  }
+
+  .career-bio-box {
+    padding: 1rem 0.5rem;
+  }
+
+  .cert-list {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .cert-item {
+    flex: 0 0 auto;
+    width: 90%;
+  }
+
+  .skills-grid {
+    grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
+    gap: 1rem;
+  }
+
+  .banner-title {
+    font-size: 2rem;
+  }
+
+  .banner-subtitle {
+    font-size: 1rem;
+  }
+
+  .section-heading {
+    font-size: 1rem;
+    margin: 4rem 0 1rem;
+  }
+
+  section > h2::after {
+    width: 70%;
+  }
+}
+
+/* ── Dino Game Section Styles ── */
+/* .dino-game-section {
+  margin-top: 6rem;
+  padding: 2rem 1rem;
+  background-color: #fefefe;
+  border-top: 1px solid #e0e0e0;
+}
+
+.dino-game-section h2 {
+  font-family: 'Merriweather', serif;
+  font-weight: 300;
+  font-size: 1.2rem;
+  color: #333;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.dino-game-container {
+  max-width: 800px;
+  margin: 0 auto;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+@media (max-width: 768px) {
+  .dino-game-container iframe {
+    height: 240px;
+  }
+} */
+
 .project-link {
   display: block;
   text-decoration: none;
@@ -816,127 +567,22 @@ section > h2::after {
 
 .project-link .project-item:hover {
   transform: translateY(-4px);
-  box-shadow: var(--shadow-heavy);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
 }
 
-/* ── Eco Floating Animation ── */
-.floating-element {
-  animation: ecoFloat 8s ease-in-out infinite;
-}
 
-@keyframes ecoFloat {
-  0%, 100% { transform: translateY(0px) rotate(0deg); }
-  25% { transform: translateY(-8px) rotate(0.5deg); }
-  50% { transform: translateY(-15px) rotate(0deg); }
-  75% { transform: translateY(-5px) rotate(-0.3deg); }
-}
-
-/* ── Eco Custom Scrollbar ── */
-::-webkit-scrollbar {
-  width: 10px;
-}
-
-::-webkit-scrollbar-track {
-  background: rgba(46, 204, 113, 0.1);
-  border-radius: 5px;
-}
-
-::-webkit-scrollbar-thumb {
-  background: var(--gradient-nature);
-  border-radius: 5px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: var(--gradient-eco);
-}
-
-/* ── Mobile Eco Responsiveness ── */
-@media (max-width: 768px) {
-  #banner {
-    height: 70vh;
-  }
-  
-  .banner-title {
-    font-size: 2rem;
-  }
-  
-  .banner-subtitle {
-    font-size: 1rem;
-  }
-  
-  .logo-section .flex-center {
-    gap: 1.5rem;
-    flex-wrap: wrap;
-  }
-  
-  .logo-section .logo-img {
-    width: 80px;
-  }
-  
-  .skills-grid {
-    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
-    gap: 1rem;
-  }
-  
-  .skills-grid .skill-item {
-    width: 80px;
-    height: 80px;
-  }
-  
-  .project-showcase-grid {
-    grid-template-columns: 1fr;
-    gap: 1rem;
-  }
-  
-  .project-item {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-  
-  .project-description {
-    font-size: 0.9rem;
-    padding: 0.5rem;
-  }
-  
-  .career-bio-box {
-    padding: 1rem 0.5rem;
-  }
-  
-  .cert-list {
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .cert-item {
-    flex: 0 0 auto;
-    width: 90%;
-  }
-  
-  section > h2::after {
-    width: 70%;
-  }
-}
-
-/* ── Keep All Your Existing Styles Below ── */
 .project-hero {
   padding: 4rem 0;
   text-align: center;
-  background: linear-gradient(135deg, #e8f5e8, #f0f8f0);
+  background: #f5f5f5;
 }
-
 .project-title {
   font-size: 2.5rem;
   margin-bottom: 0.5rem;
-  background: var(--gradient-nature);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
 }
-
 .project-subtitle {
   font-size: 1.2rem;
-  color: var(--deep-forest);
+  color: #666;
 }
 
 .two-column {
@@ -944,58 +590,48 @@ section > h2::after {
   gap: 2rem;
   margin: 4rem 0;
 }
-
 .two-column .column {
   flex: 1;
 }
 
 .video-wrapper {
-  display: block;
-  width: 100%;
-  aspect-ratio: 16 / 9;
+  display: block;         /* block 요소로 명시 */
+  width: 100%;            /* 부모(.column.media)의 너비를 꽉 채움 */
+  aspect-ratio: 16 / 9;   /* 자동으로 높이 계산 */
   overflow: hidden;
   position: relative;
-  border-radius: 15px;
 }
-
 .video-wrapper iframe {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
   border: none;
-  border-radius: 15px;
 }
+
+
+
 
 .project-features, .project-techstack {
   margin: 4rem 0;
 }
-
 .features-list, .tech-list {
   list-style: disc inside;
   margin-left: 1rem;
-  color: var(--deep-forest);
 }
 
 .project-back {
   text-align: center;
   margin: 4rem 0;
 }
-
 .project-back .button {
   padding: 0.75rem 1.5rem;
-  background: var(--gradient-nature);
+  background: #333;
   color: #fff;
-  border-radius: 25px;
+  border-radius: 4px;
   text-decoration: none;
-  transition: var(--transition-smooth);
-  box-shadow: var(--shadow-eco);
 }
 
-.project-back .button:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-heavy);
-}
 
 .projects-index .page-title {
   font-family: 'Merriweather', serif;
@@ -1003,34 +639,102 @@ section > h2::after {
   font-size: 1.8rem;
   text-align: center;
   margin-bottom: 2rem;
-  background: var(--gradient-nature);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
 }
-
 .projects-index .projects-list {
   list-style: none;
   padding: 0;
   max-width: 600px;
   margin: 0 auto;
 }
-
 .projects-index .projects-list li {
   margin: 0.75rem 0;
 }
-
 .projects-index .projects-list a {
   text-decoration: none;
-  color: var(--deep-forest);
+  color: #2c3e50;
   font-size: 1rem;
   transition: color 0.2s;
 }
-
 .projects-index .projects-list a:hover {
-  color: var(--eco-cyan);
+  color: #1a73e8;
 }
 
+
+
+/* ── Projects Grid ── */
+.project-showcase-section {
+  padding: 2rem 1rem;
+  background: transparent;
+}
+/* .project-title {
+  text-align: center;
+  font-family: 'Merriweather', serif;
+  font-weight: 300;
+  font-size: 1.5rem;
+  color: #444;
+  margin-bottom: 2.5rem;
+  position: relative;
+} */
+.project-showcase-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.project-link {
+  text-decoration: none;
+  color: inherit;
+}
+.project-item {
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.2s, box-shadow 0.2s;
+  display: flex;
+  flex-direction: column;
+}
+.project-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+}
+.project-description {
+  padding: 1rem;
+  flex: 1;
+}
+.project-description h3 {
+  margin: 0 0 0.5rem;
+  font-size: 1.1rem;
+  color: #2c3e50;
+}
+.project-description p {
+  font-size: 0.9rem;
+  color: #555;
+}
+.project-video {
+  width: 100%;
+  position: relative;
+  padding-bottom: 56.25%;
+}
+.project-video iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.view-all {
+  text-align: center;
+  margin-top: 2rem;
+}
+.view-all .button {
+  padding: 0.6rem 1.2rem;
+  font-size: 0.9rem;
+}
+
+/* 프로젝트 내 모든 figure 이미지를 최대 600px 너비로 고정하고, 비율 유지 */
 .project-overview figure img,
 .project-gallery figure img {
   display: block;
@@ -1038,87 +742,88 @@ section > h2::after {
   max-width: 600px;
   height: auto;
   margin: 0 auto;
-  border-radius: 15px;
-  box-shadow: var(--shadow-eco);
 }
 
+/* project-image 클래스가 붙은 이미지에만 적용 */
 img.project-image {
   width: 100%;
   max-width: 500px;
   height: auto;
-  border-radius: 15px;
-  box-shadow: var(--shadow-eco);
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
+
+/* figure를 이미지 크기만큼만 차지하도록 inline-block으로 변경 */
 figure {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 2rem auto;
+  flex-direction: column;  /* 이미지→캡션 세로 스택 */
+  align-items: center;     /* 자식 요소들을 가운데 정렬 */
+  margin: 2rem auto;       /* 위아래 여백 + 수평 중앙 정렬 */
 }
 
+
+/* 캡션은 figure 너비(=이미지 너비)에 딱 맞게 */
 figure figcaption {
   width: 100%;
-  color: var(--deep-forest);
+  color: #666;
   font-size: 0.9rem;
   text-align: center;
   margin-top: 0.5rem;
   line-height: 1.4;
 }
 
+/* 데모 비디오만 작게 표시하기 */
 .project-overview .video-inline .video-wrapper {
-  max-width: 640px;
-  margin: 1rem auto;
-  border-radius: 15px;
+  max-width: 640px;    /* 최대 너비 설정 */
+  margin: 1rem auto;   /* 위아래 간격 + 가운데 정렬 */
 }
 
 .project-overview .video-inline .video-wrapper iframe {
+  /* 기존 설정 유지 */
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
-  border-radius: 15px;
 }
 
+/* MathJax v2/v3 블록 수식 스타일 */
 .MathJax_Display,
 .mjx-block {
-  display: block !important;
-  text-align: center !important;
-  margin: 2rem auto !important;
-  font-size: 1.4em !important;
-  line-height: 1.4 !important;
-  color: var(--deep-forest);
+  display: block !important;           /* 블록 레벨로 */
+  text-align: center !important;       /* 가로 중앙 정렬 */
+  margin: 2rem auto !important;        /* 위아래 2rem 여백 + 가운데 */
+  font-size: 1.4em !important;         /* 기본보다 40% 크게 */
+  line-height: 1.4 !important;         /* 줄 간격 확보 */
 }
 
+/* KaTeX 블록 수식 스타일 (대체 엔진인 경우) */
 .katex-display {
   display: block !important;
   text-align: center !important;
   margin: 2rem auto !important;
   font-size: 1.4em !important;
   line-height: 1.4 !important;
-  color: var(--deep-forest);
 }
 
+/* 인라인 수식 약간 키우기 */
 .MathJax .MathJax_Inline,
 .katex-inline {
   font-size: 1.1em !important;
-  color: var(--eco-cyan);
 }
+
 
 .project-content h2 {
   margin-top: 3rem;
-  background: var(--gradient-nature);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
 }
 
+
+/* 인트로 전체 화면 오버레이 */
 #intro-header {
   position: fixed;
-  top: 0; 
-  left: 0;
-  width: 100%; 
-  height: 100%;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
   z-index: 9999;
-  background: var(--gradient-nature);
+  background: #000;
 }
+
