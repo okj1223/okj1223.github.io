@@ -1,37 +1,57 @@
-/* ✨ Enhanced CSS - Only styles, no content changes needed */
-/* Replace your entire custom-styles.css file with this */
+/* 🌱🤖 Envirobotic Researcher Theme - Replace your custom-styles.css with this */
 
-/* Google Fonts - Keep your existing imports */
-@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@700&family=Roboto:wght@400;500&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&display=swap');
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Roboto:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
 
-/* ✨ New CSS Variables for easy theming */
+/* 🌿 Envirobotic Theme Variables */
 :root {
-  --neon-color: #00d4ff;
-  --accent-color: #3498db;
-  --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  --shadow-light: 0 4px 15px rgba(0,0,0,0.1);
-  --shadow-heavy: 0 10px 30px rgba(0,0,0,0.2);
+  --primary-green: #2ecc71;
+  --deep-forest: #27ae60;
+  --tech-blue: #3498db;
+  --eco-cyan: #1abc9c;
+  --earth-brown: #8b4513;
+  --nature-gold: #f39c12;
+  --robot-silver: #95a5a6;
+  --warning-orange: #e67e22;
+  
+  /* 🌱 Envirobotic Gradients */
+  --gradient-nature: linear-gradient(135deg, #2ecc71 0%, #27ae60 50%, #1abc9c 100%);
+  --gradient-tech: linear-gradient(135deg, #3498db 0%, #2980b9 50%, #1abc9c 100%);
+  --gradient-earth: linear-gradient(135deg, #8b4513 0%, #a0522d 50%, #cd853f 100%);
+  --gradient-eco: linear-gradient(135deg, #1abc9c 0%, #16a085 50%, #2ecc71 100%);
+  
+  /* 🤖 Effects */
+  --shadow-eco: 0 4px 15px rgba(46, 204, 113, 0.2);
+  --shadow-tech: 0 4px 15px rgba(52, 152, 219, 0.2);
+  --shadow-heavy: 0 10px 30px rgba(46, 204, 113, 0.3);
   --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  
+  /* 🌿 Glow effects */
+  --glow-green: 0 0 20px var(--primary-green);
+  --glow-cyan: 0 0 20px var(--eco-cyan);
+  --glow-blue: 0 0 20px var(--tech-blue);
 }
 
-/* ✨ Enhanced body with animated background */
+/* 🌍 Enhanced body with eco background */
 body {
   font-family: 'Merriweather', serif !important;
-  background: linear-gradient(-45deg, #f8f9fa, #e9ecef, #f1f3f4, #f8f9fa);
+  background: linear-gradient(-45deg, #e8f5e8, #f0f8f0, #e6f7f1, #f5f9f5);
   background-size: 400% 400%;
-  animation: gradientShift 15s ease infinite;
+  animation: ecoGradientShift 20s ease infinite;
   overflow-x: hidden;
+  position: relative;
 }
 
-@keyframes gradientShift {
+@keyframes ecoGradientShift {
   0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
+  25% { background-position: 100% 50%; }
+  50% { background-position: 100% 100%; }
+  75% { background-position: 0% 100%; }
   100% { background-position: 0% 50%; }
 }
 
-/* ✨ Floating particles effect */
+/* 🌱 Nature-inspired floating particles */
 body::before {
   content: '';
   position: fixed;
@@ -40,25 +60,33 @@ body::before {
   width: 100%;
   height: 100%;
   background-image: 
-    radial-gradient(circle at 20% 80%, rgba(52, 152, 219, 0.05) 0%, transparent 50%),
-    radial-gradient(circle at 80% 20%, rgba(155, 89, 182, 0.05) 0%, transparent 50%);
+    radial-gradient(circle at 20% 80%, rgba(46, 204, 113, 0.08) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(26, 188, 156, 0.08) 0%, transparent 50%),
+    radial-gradient(circle at 40% 40%, rgba(52, 152, 219, 0.06) 0%, transparent 50%),
+    radial-gradient(circle at 60% 60%, rgba(243, 156, 18, 0.04) 0%, transparent 50%);
   z-index: -1;
-  animation: floatBg 20s ease-in-out infinite;
+  animation: natureBreathe 25s ease-in-out infinite;
   pointer-events: none;
 }
 
-@keyframes floatBg {
-  0%, 100% { transform: translateY(0px) rotate(0deg); }
-  50% { transform: translateY(-20px) rotate(0.5deg); }
+@keyframes natureBreathe {
+  0%, 100% { transform: translateY(0px) rotate(0deg) scale(1); }
+  25% { transform: translateY(-15px) rotate(0.5deg) scale(1.02); }
+  50% { transform: translateY(-5px) rotate(-0.3deg) scale(0.98); }
+  75% { transform: translateY(10px) rotate(0.2deg) scale(1.01); }
 }
 
-/* ── Enhanced Banner Overlay ── */
+/* ── Enhanced Banner Overlay with Eco Glass Effect ── */
 .banner-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(0,0,0,0.4);
-  backdrop-filter: blur(15px);
-  -webkit-backdrop-filter: blur(15px);
+  background: linear-gradient(135deg, 
+    rgba(46, 204, 113, 0.1) 0%, 
+    rgba(26, 188, 156, 0.2) 50%, 
+    rgba(52, 152, 219, 0.1) 100%);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -67,20 +95,21 @@ body::before {
   z-index: 2;
 }
 
-/* ── Enhanced Banner Styles ── */
+/* ── Enhanced Banner with Environmental Theme ── */
 #banner {
   position: relative;
   width: 100vw;
   margin-left: calc(50% - 50vw);
   margin-right: calc(50% - 50vw);
-  height: 100vh; /* ✨ Full height for impact */
+  height: 100vh;
+  background: var(--gradient-nature);
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
   overflow: hidden;
 }
 
-/* ✨ Animated starfield effect */
+/* 🌿 Animated eco-tech particles */
 #banner::before {
   content: '';
   position: absolute;
@@ -89,45 +118,61 @@ body::before {
   width: 100%;
   height: 100%;
   background-image: 
-    radial-gradient(circle at 25% 25%, var(--neon-color) 2px, transparent 2px),
-    radial-gradient(circle at 75% 75%, rgba(255,255,255,0.1) 1px, transparent 1px);
-  background-size: 150px 150px, 75px 75px;
-  animation: starfield 8s linear infinite;
-  opacity: 0.3;
+    radial-gradient(circle at 25% 25%, var(--primary-green) 2px, transparent 2px),
+    radial-gradient(circle at 75% 75%, var(--eco-cyan) 1px, transparent 1px),
+    radial-gradient(circle at 50% 10%, var(--tech-blue) 1.5px, transparent 1.5px);
+  background-size: 200px 200px, 100px 100px, 150px 150px;
+  animation: ecoStarfield 12s linear infinite;
+  opacity: 0.4;
   z-index: 1;
 }
 
-@keyframes starfield {
+@keyframes ecoStarfield {
   0% { transform: translateX(0) translateY(0); }
-  100% { transform: translateX(-150px) translateY(-150px); }
+  100% { transform: translateX(-200px) translateY(-200px); }
 }
 
-/* ✨ Glowing banner title */
+/* 🌱 Eco-glowing banner title */
 .banner-title {
   font-size: clamp(2.5rem, 5vw, 4rem);
   color: #ffffff;
   margin: 0 0 1rem;
   text-shadow: 
-    0 0 10px var(--neon-color),
-    0 0 20px var(--neon-color),
-    0 0 40px var(--neon-color),
+    0 0 10px var(--primary-green),
+    0 0 20px var(--eco-cyan),
+    0 0 40px var(--tech-blue),
     0 2px 4px rgba(0, 0, 0, 0.7);
-  animation: glow 2s ease-in-out infinite alternate, fadeInUp 1s ease-out;
+  animation: ecoGlow 3s ease-in-out infinite alternate, fadeInUp 1s ease-out;
+  position: relative;
 }
 
-@keyframes glow {
-  from { 
+@keyframes ecoGlow {
+  0% { 
     text-shadow: 
-      0 0 10px var(--neon-color),
-      0 0 20px var(--neon-color),
-      0 0 40px var(--neon-color),
+      0 0 10px var(--primary-green),
+      0 0 20px var(--eco-cyan),
+      0 0 40px var(--tech-blue),
       0 2px 4px rgba(0, 0, 0, 0.7);
   }
-  to { 
+  33% { 
     text-shadow: 
-      0 0 20px var(--neon-color),
-      0 0 30px var(--neon-color),
-      0 0 50px var(--neon-color),
+      0 0 15px var(--eco-cyan),
+      0 0 25px var(--primary-green),
+      0 0 45px var(--tech-blue),
+      0 2px 4px rgba(0, 0, 0, 0.7);
+  }
+  66% { 
+    text-shadow: 
+      0 0 12px var(--tech-blue),
+      0 0 22px var(--eco-cyan),
+      0 0 42px var(--primary-green),
+      0 2px 4px rgba(0, 0, 0, 0.7);
+  }
+  100% { 
+    text-shadow: 
+      0 0 20px var(--primary-green),
+      0 0 30px var(--eco-cyan),
+      0 0 50px var(--tech-blue),
       0 2px 4px rgba(0, 0, 0, 0.7);
   }
 }
@@ -139,12 +184,12 @@ body::before {
 
 .banner-subtitle {
   font-size: 1.3rem;
-  color: #f8f8f8;
+  color: #f8fff8;
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
   animation: fadeInUp 1s ease-out 0.3s both;
 }
 
-/* ── Extra Lines 묶음 ── */
+/* ── Eco-themed Extra Lines ── */
 .banner-extra {
   display: flex;
   flex-direction: column;
@@ -154,7 +199,7 @@ body::before {
 
 .banner-line1,
 .banner-line2 {
-  color: rgba(255, 255, 255, 0.9);
+  color: rgba(255, 255, 255, 0.95);
   margin: 0;
   line-height: 1.2;
 }
@@ -169,20 +214,22 @@ body::before {
   font-weight: 300;
 }
 
-/* ✨ Enhanced banner name with pulse effect */
+/* 🤖 Environmental Researcher name with tech pulse */
 .banner-name {
   font-size: 1rem;
-  color: var(--neon-color);
+  color: var(--eco-cyan);
   margin-top: 0.5rem;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  text-shadow: 0 0 10px var(--neon-color);
-  animation: fadeInUp 1s ease-out 0.9s both, pulse 2s infinite;
+  text-shadow: var(--glow-cyan);
+  animation: fadeInUp 1s ease-out 0.9s both, techPulse 2.5s infinite;
 }
 
-@keyframes pulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.7; }
+@keyframes techPulse {
+  0%, 100% { opacity: 1; color: var(--eco-cyan); }
+  25% { opacity: 0.8; color: var(--primary-green); }
+  50% { opacity: 0.9; color: var(--tech-blue); }
+  75% { opacity: 0.7; color: var(--eco-cyan); }
 }
 
 .banner-title,
@@ -192,7 +239,7 @@ body::before {
   margin-right: 0;
 }
 
-/* ✨ Enhanced CV Button with neon glow */
+/* 🌿 Enhanced Eco CV Button */
 .cv-button-wrapper {
   position: absolute;
   bottom: 5%;
@@ -204,19 +251,20 @@ body::before {
 
 .cv-button {
   display: inline-block;
-  background: rgba(255,255,255,0.1);
-  color: #f0f0f0;
+  background: rgba(46, 204, 113, 0.2);
+  color: #ffffff;
   padding: 12px 24px;
   font-size: 16px;
   font-weight: 500;
-  border: 2px solid var(--neon-color);
+  border: 2px solid var(--primary-green);
   border-radius: 50px;
   text-decoration: none;
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
   transition: var(--transition-smooth);
   position: relative;
   overflow: hidden;
+  box-shadow: var(--shadow-eco);
 }
 
 .cv-button::before {
@@ -226,7 +274,7 @@ body::before {
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  background: linear-gradient(90deg, transparent, rgba(46, 204, 113, 0.3), transparent);
   transition: left 0.5s;
 }
 
@@ -235,13 +283,14 @@ body::before {
 }
 
 .cv-button:hover {
-  background: var(--neon-color);
+  background: var(--primary-green);
   color: #000;
-  box-shadow: 0 0 30px var(--neon-color);
+  box-shadow: var(--glow-green), var(--shadow-heavy);
   transform: translateY(-2px);
+  border-color: var(--eco-cyan);
 }
 
-/* ── Enhanced Logo Section ── */
+/* ── Enhanced Eco Logo Section ── */
 .logo-section {
   margin: 4rem 0;
   opacity: 0;
@@ -260,18 +309,20 @@ body::before {
   height: auto;
   object-fit: contain;
   transition: var(--transition-smooth);
-  filter: grayscale(0.5) opacity(0.8);
-  border-radius: 10px;
-  box-shadow: var(--shadow-light);
+  filter: grayscale(0.3) opacity(0.9);
+  border-radius: 15px;
+  box-shadow: var(--shadow-eco);
+  border: 2px solid transparent;
 }
 
 .logo-section .logo-img:hover {
   filter: grayscale(0) opacity(1);
   transform: translateY(-5px) scale(1.05);
   box-shadow: var(--shadow-heavy);
+  border-color: var(--primary-green);
 }
 
-/* ── Enhanced Skills Section ── */
+/* ── Enhanced Eco Skills Section ── */
 .skills-section {
   opacity: 0;
   transform: translateY(50px);
@@ -298,14 +349,15 @@ body::before {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: rgba(255,255,255,0.9);
-  border-radius: 15px;
-  box-shadow: var(--shadow-light);
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 20px;
+  box-shadow: var(--shadow-eco);
   transition: var(--transition-smooth);
   position: relative;
   overflow: hidden;
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 2px solid transparent;
 }
 
 .skills-grid .skill-item::before {
@@ -315,19 +367,20 @@ body::before {
   left: 0;
   width: 100%;
   height: 100%;
-  background: var(--gradient-primary);
+  background: var(--gradient-eco);
   opacity: 0;
   transition: var(--transition-smooth);
   z-index: 1;
 }
 
 .skills-grid .skill-item:hover {
-  transform: translateY(-10px) scale(1.05) rotateZ(5deg);
+  transform: translateY(-12px) scale(1.08) rotateZ(3deg);
   box-shadow: var(--shadow-heavy);
+  border-color: var(--primary-green);
 }
 
 .skills-grid .skill-item:hover::before {
-  opacity: 0.9;
+  opacity: 0.85;
 }
 
 .skills-grid .skill-item img {
@@ -337,12 +390,12 @@ body::before {
   position: relative;
   z-index: 2;
   transition: var(--transition-smooth);
-  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1));
+  filter: drop-shadow(0 4px 8px rgba(46, 204, 113, 0.1));
 }
 
 .skills-grid .skill-item:hover img {
-  filter: brightness(0) invert(1) drop-shadow(0 4px 8px rgba(0,0,0,0.3));
-  transform: scale(1.1);
+  filter: brightness(0) invert(1) drop-shadow(0 4px 8px rgba(255, 255, 255, 0.5));
+  transform: scale(1.15);
 }
 
 /* Hide skill labels */
@@ -378,18 +431,18 @@ section.skills-grid .skill-item span {
   margin: 0 auto;
 }
 
-/* Creative Tools emoji */
+/* 🎨 Creative Tools with eco theme */
 .skills-section.creative-tools > h2::before {
   content: "🎨 ";
 }
 
-/* ── Enhanced Section Headings ── */
+/* ── Enhanced Eco Section Headings ── */
 section > h2 {
   font-family: 'Merriweather', serif !important;
   font-weight: 300;
   font-size: clamp(1.5rem, 3vw, 2.2rem);
   text-align: center;
-  background: var(--gradient-primary);
+  background: var(--gradient-nature);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -409,20 +462,21 @@ section > h2.visible {
 section > h2::after {
   content: "";
   display: block;
-  width: 100px;
-  height: 3px;
-  background: var(--gradient-primary);
+  width: 120px;
+  height: 4px;
+  background: var(--gradient-eco);
   margin: 2rem auto 0;
   border-radius: 2px;
   animation: expandWidth 1s ease-out 0.5s both;
+  box-shadow: var(--glow-green);
 }
 
 @keyframes expandWidth {
   from { width: 0; }
-  to { width: 100px; }
+  to { width: 120px; }
 }
 
-/* ── Enhanced Project Section ── */
+/* ── Enhanced Eco Project Section ── */
 .project-showcase-section {
   padding: 2rem 1rem;
   background: transparent;
@@ -440,15 +494,16 @@ section > h2::after {
   display: flex;
   flex-direction: row;
   gap: 1rem;
-  background: rgba(255,255,255,0.95);
+  background: rgba(255, 255, 255, 0.95);
   border: none;
-  padding: 1rem;
-  border-radius: 15px;
-  box-shadow: var(--shadow-light);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  padding: 1.5rem;
+  border-radius: 20px;
+  box-shadow: var(--shadow-eco);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
   transition: var(--transition-smooth);
   position: relative;
+  border: 2px solid transparent;
 }
 
 .project-item::before {
@@ -458,14 +513,16 @@ section > h2::after {
   left: 0;
   width: 100%;
   height: 4px;
-  background: var(--gradient-primary);
+  background: var(--gradient-nature);
   transform: scaleX(0);
   transition: var(--transition-smooth);
+  border-radius: 20px 20px 0 0;
 }
 
 .project-item:hover {
-  transform: translateY(-10px);
+  transform: translateY(-12px);
   box-shadow: var(--shadow-heavy);
+  border-color: var(--primary-green);
 }
 
 .project-item:hover::before {
@@ -475,13 +532,13 @@ section > h2::after {
 .project-description {
   flex: 1;
   font-size: 0.95rem;
-  color: #333;
+  color: #2c3e50;
 }
 
 .project-description h3 {
   margin: 0 0 0.5rem;
   font-size: 1.2rem;
-  background: var(--gradient-primary);
+  background: var(--gradient-nature);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -492,13 +549,13 @@ section > h2::after {
   margin-bottom: 0.75rem;
   font-size: 1.1rem;
   font-weight: 700;
-  color: #2c3e50;
+  color: var(--deep-forest);
 }
 
 .project-description time {
   display: block;
   font-size: 0.9rem;
-  color: var(--neon-color);
+  color: var(--eco-cyan);
   margin-bottom: 0.5rem;
   font-weight: 500;
 }
@@ -506,6 +563,7 @@ section > h2::after {
 .project-description p {
   margin-bottom: 0;
   line-height: 1.6;
+  color: #34495e;
 }
 
 .project-video {
@@ -513,6 +571,7 @@ section > h2::after {
   padding-bottom: 40%;
   height: 0;
   overflow: hidden;
+  border-radius: 15px;
 }
 
 .project-video iframe {
@@ -521,17 +580,18 @@ section > h2::after {
   left: 0;
   width: 100%;
   height: 100%;
+  border-radius: 15px;
 }
 
-/* Enhanced View All Button */
+/* Enhanced Eco View All Button */
 .view-all {
   text-align: center;
   margin-top: 2rem;
 }
 
 .view-all .button {
-  padding: 12px 24px;
-  background: var(--gradient-primary);
+  padding: 12px 28px;
+  background: var(--gradient-nature);
   color: #fff;
   border: none;
   border-radius: 50px;
@@ -539,9 +599,10 @@ section > h2::after {
   font-weight: 500;
   font-size: 0.9rem;
   transition: var(--transition-smooth);
-  box-shadow: var(--shadow-light);
+  box-shadow: var(--shadow-eco);
   position: relative;
   overflow: hidden;
+  border: 2px solid transparent;
 }
 
 .view-all .button::before {
@@ -551,7 +612,7 @@ section > h2::after {
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
   transition: left 0.5s;
 }
 
@@ -562,21 +623,22 @@ section > h2::after {
 .view-all .button:hover {
   transform: translateY(-2px);
   box-shadow: var(--shadow-heavy);
+  border-color: var(--eco-cyan);
 }
 
-/* ── Enhanced Certifications ── */
+/* ── Enhanced Eco Certifications ── */
 .cert-list {
   list-style: none;
   padding: 0;
   margin: 0 auto;
   display: flex;
   flex-wrap: wrap;
-  gap: 1rem;
+  gap: 1.5rem;
   justify-content: center;
 }
 
 .cert-item {
-  flex: 0 0 200px;
+  flex: 0 0 220px;
   box-sizing: border-box;
   perspective: 1000px;
 }
@@ -584,16 +646,19 @@ section > h2::after {
 .cert-card {
   position: relative;
   overflow: hidden;
-  border-radius: 15px;
+  border-radius: 20px;
   width: 100%;
-  height: 200px;
+  height: 220px;
   transition: var(--transition-smooth);
   transform-style: preserve-3d;
+  border: 3px solid transparent;
+  box-shadow: var(--shadow-eco);
 }
 
 .cert-card:hover {
-  transform: rotateY(10deg) rotateX(5deg) scale(1.05);
+  transform: rotateY(8deg) rotateX(3deg) scale(1.05);
   box-shadow: var(--shadow-heavy);
+  border-color: var(--primary-green);
 }
 
 .cert-card img {
@@ -612,7 +677,7 @@ section > h2::after {
   position: absolute;
   bottom: 0;
   width: 100%;
-  background: linear-gradient(transparent, rgba(0,0,0,0.8));
+  background: linear-gradient(transparent, rgba(46, 204, 113, 0.9));
   padding: 1rem 0 0.5rem;
   text-align: center;
 }
@@ -621,7 +686,7 @@ section > h2::after {
   color: #fff;
   font-size: 0.9rem;
   font-weight: 500;
-  text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .cert-details {
@@ -631,7 +696,8 @@ section > h2::after {
   transition: max-height 0.3s ease, padding 0.3s ease;
   font-size: 0.5rem;
   line-height: 1.4;
-  color: #444;
+  color: #2c3e50;
+  background: rgba(255, 255, 255, 0.95);
 }
 
 .cert-details ul {
@@ -648,7 +714,7 @@ section > h2::after {
   padding: 0.5rem;
 }
 
-/* ── Enhanced Career Bio Section ── */
+/* ── Enhanced Eco Career Bio Section ── */
 .career-bio-section {
   background: transparent;
   padding: 4rem 1rem;
@@ -658,12 +724,12 @@ section > h2::after {
 .career-bio-box {
   max-width: 700px;
   margin: 0 auto;
-  background: rgba(255,255,255,0.25);
-  backdrop-filter: blur(15px);
-  -webkit-backdrop-filter: blur(15px);
-  border: 1px solid rgba(255,255,255,0.18);
-  border-radius: 20px;
-  padding: 2rem;
+  background: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 2px solid rgba(46, 204, 113, 0.2);
+  border-radius: 25px;
+  padding: 2.5rem;
   font-family: 'Inter', sans-serif;
   box-shadow: var(--shadow-heavy);
   position: relative;
@@ -676,21 +742,21 @@ section > h2::after {
   top: 0;
   left: 0;
   width: 100%;
-  height: 1px;
-  background: var(--gradient-primary);
+  height: 2px;
+  background: var(--gradient-nature);
 }
 
 .career-title {
-  font-size: 1rem;
+  font-size: 1.1rem;
   font-weight: 600;
-  background: var(--gradient-primary);
+  background: var(--gradient-nature);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   margin-bottom: 1.5rem;
   text-align: center;
   letter-spacing: 0.02em;
-  border-bottom: 1px solid rgba(255,255,255,0.2);
+  border-bottom: 1px solid rgba(46, 204, 113, 0.3);
   padding-bottom: 1rem;
 }
 
@@ -700,26 +766,29 @@ section > h2::after {
   margin: 0;
   font-size: 0.85rem;
   line-height: 1.6;
-  color: rgba(0,0,0,0.8);
+  color: rgba(0, 0, 0, 0.8);
 }
 
 .career-list li {
   margin-bottom: 1.5rem;
-  padding: 1rem;
-  background: rgba(255,255,255,0.1);
-  border-radius: 10px;
-  border-left: 3px solid var(--neon-color);
+  padding: 1.2rem;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 15px;
+  border-left: 4px solid var(--primary-green);
   transition: var(--transition-smooth);
+  box-shadow: var(--shadow-eco);
 }
 
 .career-list li:hover {
-  background: rgba(255,255,255,0.2);
-  transform: translateX(5px);
+  background: rgba(255, 255, 255, 0.3);
+  transform: translateX(8px);
+  border-left-color: var(--eco-cyan);
+  box-shadow: var(--shadow-tech);
 }
 
 .career-institution {
   font-weight: 600;
-  color: #000;
+  color: var(--deep-forest);
   font-size: 0.9rem;
   display: block;
   margin-bottom: 0.3rem;
@@ -729,7 +798,7 @@ section > h2::after {
   display: block;
   margin-top: 0.3rem;
   font-size: 0.75rem;
-  color: var(--neon-color);
+  color: var(--eco-cyan);
   font-weight: 500;
 }
 
@@ -747,38 +816,41 @@ section > h2::after {
 
 .project-link .project-item:hover {
   transform: translateY(-4px);
-  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+  box-shadow: var(--shadow-heavy);
 }
 
-/* ── Floating Animation ── */
+/* ── Eco Floating Animation ── */
 .floating-element {
-  animation: float 6s ease-in-out infinite;
+  animation: ecoFloat 8s ease-in-out infinite;
 }
 
-@keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-10px); }
+@keyframes ecoFloat {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  25% { transform: translateY(-8px) rotate(0.5deg); }
+  50% { transform: translateY(-15px) rotate(0deg); }
+  75% { transform: translateY(-5px) rotate(-0.3deg); }
 }
 
-/* ── Custom Scrollbar ── */
+/* ── Eco Custom Scrollbar ── */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 10px;
 }
 
 ::-webkit-scrollbar-track {
-  background: rgba(255,255,255,0.1);
+  background: rgba(46, 204, 113, 0.1);
+  border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--gradient-primary);
-  border-radius: 4px;
+  background: var(--gradient-nature);
+  border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--gradient-primary);
+  background: var(--gradient-eco);
 }
 
-/* ── Mobile Responsiveness ── */
+/* ── Mobile Eco Responsiveness ── */
 @media (max-width: 768px) {
   #banner {
     height: 70vh;
@@ -850,17 +922,21 @@ section > h2::after {
 .project-hero {
   padding: 4rem 0;
   text-align: center;
-  background: #f5f5f5;
+  background: linear-gradient(135deg, #e8f5e8, #f0f8f0);
 }
 
 .project-title {
   font-size: 2.5rem;
   margin-bottom: 0.5rem;
+  background: var(--gradient-nature);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .project-subtitle {
   font-size: 1.2rem;
-  color: #666;
+  color: var(--deep-forest);
 }
 
 .two-column {
@@ -879,6 +955,7 @@ section > h2::after {
   aspect-ratio: 16 / 9;
   overflow: hidden;
   position: relative;
+  border-radius: 15px;
 }
 
 .video-wrapper iframe {
@@ -887,6 +964,7 @@ section > h2::after {
   width: 100%;
   height: 100%;
   border: none;
+  border-radius: 15px;
 }
 
 .project-features, .project-techstack {
@@ -896,6 +974,7 @@ section > h2::after {
 .features-list, .tech-list {
   list-style: disc inside;
   margin-left: 1rem;
+  color: var(--deep-forest);
 }
 
 .project-back {
@@ -905,10 +984,17 @@ section > h2::after {
 
 .project-back .button {
   padding: 0.75rem 1.5rem;
-  background: #333;
+  background: var(--gradient-nature);
   color: #fff;
-  border-radius: 4px;
+  border-radius: 25px;
   text-decoration: none;
+  transition: var(--transition-smooth);
+  box-shadow: var(--shadow-eco);
+}
+
+.project-back .button:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-heavy);
 }
 
 .projects-index .page-title {
@@ -917,6 +1003,10 @@ section > h2::after {
   font-size: 1.8rem;
   text-align: center;
   margin-bottom: 2rem;
+  background: var(--gradient-nature);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .projects-index .projects-list {
@@ -932,13 +1022,13 @@ section > h2::after {
 
 .projects-index .projects-list a {
   text-decoration: none;
-  color: #2c3e50;
+  color: var(--deep-forest);
   font-size: 1rem;
   transition: color 0.2s;
 }
 
 .projects-index .projects-list a:hover {
-  color: #1a73e8;
+  color: var(--eco-cyan);
 }
 
 .project-overview figure img,
@@ -948,14 +1038,16 @@ section > h2::after {
   max-width: 600px;
   height: auto;
   margin: 0 auto;
+  border-radius: 15px;
+  box-shadow: var(--shadow-eco);
 }
 
 img.project-image {
   width: 100%;
   max-width: 500px;
   height: auto;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  border-radius: 15px;
+  box-shadow: var(--shadow-eco);
 }
 
 figure {
@@ -967,7 +1059,7 @@ figure {
 
 figure figcaption {
   width: 100%;
-  color: #666;
+  color: var(--deep-forest);
   font-size: 0.9rem;
   text-align: center;
   margin-top: 0.5rem;
@@ -977,6 +1069,7 @@ figure figcaption {
 .project-overview .video-inline .video-wrapper {
   max-width: 640px;
   margin: 1rem auto;
+  border-radius: 15px;
 }
 
 .project-overview .video-inline .video-wrapper iframe {
@@ -984,6 +1077,7 @@ figure figcaption {
   inset: 0;
   width: 100%;
   height: 100%;
+  border-radius: 15px;
 }
 
 .MathJax_Display,
@@ -993,6 +1087,7 @@ figure figcaption {
   margin: 2rem auto !important;
   font-size: 1.4em !important;
   line-height: 1.4 !important;
+  color: var(--deep-forest);
 }
 
 .katex-display {
@@ -1001,15 +1096,21 @@ figure figcaption {
   margin: 2rem auto !important;
   font-size: 1.4em !important;
   line-height: 1.4 !important;
+  color: var(--deep-forest);
 }
 
 .MathJax .MathJax_Inline,
 .katex-inline {
   font-size: 1.1em !important;
+  color: var(--eco-cyan);
 }
 
 .project-content h2 {
   margin-top: 3rem;
+  background: var(--gradient-nature);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 #intro-header {
@@ -1019,5 +1120,5 @@ figure figcaption {
   width: 100%; 
   height: 100%;
   z-index: 9999;
-  background: #000;
+  background: var(--gradient-nature);
 }
