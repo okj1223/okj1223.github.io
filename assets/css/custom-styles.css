@@ -353,15 +353,15 @@ section > h2::after {
 
 .project-showcase-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
   gap: 2rem;
-  max-width: 1000px;
+  max-width: 1200px;
   margin: 0 auto;
 }
 
 .project-item {
   display: flex;
-  flex-direction: row;
+  flex-direction: column; /* Changed from row to column for video layout */
   gap: 1rem;
   background: rgba(255, 255, 255, 0.9);
   border: 2px solid transparent;
@@ -369,6 +369,7 @@ section > h2::after {
   border-radius: 15px;
   box-shadow: 0 2px 15px rgba(0,0,0,0.1);
   transition: var(--smooth-transition);
+  min-height: 400px; /* Ensure consistent card height */
 }
 
 .project-item:hover {
@@ -381,11 +382,12 @@ section > h2::after {
   flex: 1;
   font-size: 0.95rem;
   color: #333;
+  order: 1; /* Description comes first */
 }
 
 .project-description h3 {
   margin: 0 0 0.5rem;
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   font-weight: 700;
   color: var(--forest-green);
 }
@@ -406,17 +408,23 @@ section > h2::after {
 }
 
 .project-description p {
-  margin-bottom: 0;
+  margin: 0.5rem 0 0;
   color: #555;
   line-height: 1.5;
+  font-size: 0.9rem;
 }
 
+/* 🎥 Video Container Styling */
 .project-video {
+  order: 2; /* Video comes after description */
+  width: 100%;
   position: relative;
-  padding-bottom: 40%;
+  padding-bottom: 56.25%; /* 16:9 aspect ratio */
   height: 0;
   overflow: hidden;
-  border-radius: 15px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  background: #000; /* Black background for loading */
 }
 
 .project-video iframe {
@@ -425,7 +433,8 @@ section > h2::after {
   left: 0;
   width: 100%;
   height: 100%;
-  border-radius: 15px;
+  border: none;
+  border-radius: 12px;
 }
 
 /* Enhanced View All Button */
@@ -688,13 +697,17 @@ section > h2::after {
   
   .project-showcase-grid {
     grid-template-columns: 1fr;
-    gap: 1rem;
+    gap: 1.5rem;
   }
   
   .project-item {
     flex-direction: column;
-    align-items: center;
-    text-align: center;
+    min-height: auto;
+    padding: 1rem;
+  }
+  
+  .project-video {
+    padding-bottom: 56.25%; /* Maintain 16:9 on mobile */
   }
   
   .project-video iframe {
@@ -707,9 +720,12 @@ section > h2::after {
   
   .project-description {
     font-size: 0.9rem;
-    padding: 0.5rem;
   }
   
+  .project-description h3 {
+    font-size: 1.1rem;
+  }
+
   .career-bio-box {
     padding: 1rem 0.5rem;
   }
@@ -773,7 +789,8 @@ section > h2::after {
   aspect-ratio: 16 / 9;
   overflow: hidden;
   position: relative;
-  border-radius: 15px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
 .video-wrapper iframe {
@@ -782,7 +799,7 @@ section > h2::after {
   width: 100%;
   height: 100%;
   border: none;
-  border-radius: 15px;
+  border-radius: 12px;
 }
 
 .project-features, .project-techstack {
@@ -933,4 +950,41 @@ figure figcaption {
   height: 100%;
   z-index: 9999;
   background: var(--eco-green);
+}
+
+/* ── Project Cards without Video (fallback) ── */
+.project-item:not(:has(.project-video)) {
+  flex-direction: row; /* Keep row layout if no video */
+}
+
+.project-item:not(:has(.project-video)) .project-description {
+  order: 0; /* Reset order for no-video cards */
+}
+
+/* ── Enhanced Hover Effects for Video Cards ── */
+.project-item:hover .project-video {
+  transform: scale(1.02);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+}
+
+.project-item:hover .project-video iframe {
+  /* Optional: Add subtle glow effect */
+  box-shadow: inset 0 0 0 2px var(--eco-green);
+}
+
+/* ── Loading State for Videos ── */
+.project-video::before {
+  content: '🎥 Loading video...';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  font-size: 0.9rem;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.project-video iframe:loaded + ::before {
+  display: none;
 }
