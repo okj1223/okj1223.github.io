@@ -171,11 +171,11 @@ body::before {
 /* ② 이름 텍스트 스타일 */
 .banner-name {
   font-size: 1rem;
-  color: #045726;
+  color: #1d8347;
   margin-top: 0.5rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  text-shadow: 0 0 15px #022912;
+  text-shadow: 0 0 15px #0e5029;
 }
 
 .banner-title,
