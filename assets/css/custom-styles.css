@@ -511,7 +511,7 @@ section > h2::after {
   position: absolute;
   bottom: 0;
   width: 100%;
-  background: linear-gradient(transparent, rgba(39, 174, 96, 0.9));
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.0));
   padding: 0.5rem 0;
   text-align: center;
 }
