@@ -36,8 +36,12 @@ layout: default
     <!-- TOC 사이드바 -->
     <aside class="project-toc">
       <h4>Contents</h4>
-      * 목차
-      {:toc}
+      {% comment %} Markdown으로 TOC를 생성하기 위한 캡처 후 렌더링 {% endcomment %}
+      {% capture toc_md %}
+* 목차
+{:toc}
+      {% endcapture %}
+      {{ toc_md | markdownify }}
     </aside>
   </div>
 </section>

@@ -6,8 +6,6 @@ date: 2025-07-20
 description: "In the intersection of mathematics and machinery, we find not just efficiency, but the possibility of preserving human life itself."
 video_url: "https://www.youtube.com/embed/gsk4GZmsjrw"
 ---
-* context  
-{:toc}
 
 # Industrial Safety Robot System: Team RobotFactory
 

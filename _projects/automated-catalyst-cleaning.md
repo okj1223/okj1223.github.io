@@ -6,8 +6,6 @@ description: "Designed and fabricated an in-situ SCR catalyst cleaning system us
 video_url: "https://www.youtube.com/embed/7pVAK6bW15U"
 permalink: /projects/automated-catalyst-cleaning/
 ---
-* context  
-{:toc}
 
 
 ## Project Overview
