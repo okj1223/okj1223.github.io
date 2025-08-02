@@ -1,33 +1,29 @@
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-  {% include head.html %}
-</head>
-<body>
-  {% include nav.html %}
+---
+layout: default
+---
 
-  <!-- Hero -->
-  <section class="project-hero">
-    <div class="container">
-      <h1 class="project-title">{{ page.title }}</h1>
-      {% if page.description %}
-        <p class="project-subtitle">{{ page.description }}</p>
-      {% endif %}
-    </div>
-  </section>
+<!-- 상세 페이지 본문 시작 -->
+<section class="project-hero">
+  <div class="container">
+    <h1 class="project-title">{{ page.title }}</h1>
+    {% if page.description %}
+      <p class="project-subtitle">{{ page.description }}</p>
+    {% endif %}
+  </div>
+</section>
 
-  <!-- Overview & Video -->
-  <section class="project-overview">
-    <div class="container two-column">
-      <div class="column description">
-        {{ content }}    <!-- Markdown 본문 -->
-      </div>
-      {% if p.video_url %}
-      <div class="column media">
+<section class="project-overview">
+  <div class="container project-layout">
+    <!-- 본문 영역 -->
+    <main class="project-content">
+      {{ content }}
+
+      {% if page.video_url %}
+      <div class="video-inline">
         <h2>Demo Video</h2>
         <div class="video-wrapper">
           <iframe
-            src="{{ p.video_url }}"
+            src="{{ page.video_url }}"
             title="{{ page.title }}"
             frameborder="0"
             allowfullscreen>
@@ -35,19 +31,21 @@
         </div>
       </div>
       {% endif %}
-    </div>
-  </section>
+    </main>
 
-  <!-- Back to Projects -->
-  <section class="project-back">
-    <div class="container">
-      <a href="{{ '/projects/' | relative_url }}" class="button">
-        &larr; Back to Projects
-      </a>
-    </div>
-  </section>
+    <!-- TOC 사이드바 -->
+    <aside class="project-toc">
+      <h4>Contents</h4>
+      * 목차
+      {:toc}
+    </aside>
+  </div>
+</section>
 
-  {% include footer.html %}
-  {% include footer-scripts.html %}
-</body>
-</html>
+<section class="project-back">
+  <div class="container">
+    <a href="{{ '/projects/' | relative_url }}" class="button">
+      &larr; Back to Projects
+    </a>
+  </div>
+</section>

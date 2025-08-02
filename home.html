@@ -1,0 +1,281 @@
+---
+layout: page
+permalink: /home.html
+---
+
+
+<!-- at the very top of _layouts/home.html -->
+{% if site.banner-img %}
+<div id="banner" style="background-image: url('{{ site.banner-img | relative_url }}'); position: relative;">
+  <div class="banner-overlay">
+    <h1 class="banner-title">{{ site.banner-title }}</h1>
+    <p class="banner-subtitle">{{ site.banner-subtitle }}</p>
+    <p class="banner-name">{{ site.banner-name }}</p>
+    <div class="banner-extra">
+      <p class="banner-line1">{{ site.banner-line1 }}</p>
+      <p class="banner-line2">{{ site.banner-line2 }}</p>
+    </div>
+
+    <!-- ✅ CV Download Button -->
+    <div class="cv-button-wrapper">
+      <a href="/assets/files/CV_Kyungjun_Oh.pdf" download class="cv-button">📄 Download CV</a>
+    </div>
+  </div>
+</div>
+{% endif %}
+
+<!-- ── Partner Logos Section (separate from banner) ── -->
+<section class="logo-section">
+  <div class="container flex-center">
+    <img src="{{ '/assets/img/logo_inu.png' | relative_url }}" alt="Incheon National University Logo" class="logo-img">
+    <img src="{{ '/assets/img/logo_envirgo.png'    | relative_url }}" alt="EnvGo Logo" class="logo-img">
+    <img src="{{ '/assets/img/logo_ge.jpg'    | relative_url }}" alt="Geesco Logo" class="logo-img">
+    <img src="{{ '/assets/img/logo_doo.svg'    | relative_url }}" alt="Doosan Logo" class="logo-img">
+  </div>
+</section>
+
+<div class="eco-leaves">
+    <div class="leaf"></div>
+    <div class="leaf"></div>
+    <div class="leaf"></div>
+    <div class="leaf"></div>
+    <div class="leaf"></div>
+    <div class="leaf"></div>
+    <div class="leaf"></div>
+    <div class="leaf"></div>
+</div>
+
+<div class="section-divider">
+    <div class="plant-divider"></div>
+</div>
+
+<!-- Latest Projects 섹션 -->
+<section class="project-showcase-section">
+  <h2>🛠️ Latest Projects</h2>
+  <div class="project-showcase-grid">
+    {%- assign recent = site.projects
+         | where_exp: "proj", "proj.url != '/projects/'"
+         | sort: "date"
+         | reverse
+         | slice: 0, 2 -%}
+
+    {%- for proj in recent -%}
+      <a href="{{ proj.url | relative_url }}" class="project-link">
+        <div class="project-item">
+          <div class="project-description">
+            <h3>{{ proj.title }}</h3>
+            <time datetime="{{ proj.date | date: '%Y-%m-%d' }}">
+              {{ proj.date | date: '%Y.%m.%d' }}
+            </time>
+            <p>{{ proj.description }}</p>
+          </div>
+
+          {%- if proj.video_url -%}
+          <div class="project-video">
+            <div class="video-wrapper">
+              <iframe
+                src="{{ proj.video_url }}"
+                title="{{ proj.title }} Demo"
+                frameborder="0"
+                allowfullscreen>
+              </iframe>
+            </div>
+          </div>
+          {%- endif -%}
+
+        </div>
+      </a>
+    {%- endfor -%}
+  </div>
+</section>
+
+  <div class="view-all">
+    <a href="{{ '/projects/' | relative_url }}" class="button">View All Projects →</a>
+  </div>
+</section>
+
+
+
+<div class="section-divider">
+    <div class="plant-divider"></div>
+</div>
+
+
+<!-- ── Skills & Expertise Section (Chart Removed) ── -->
+<section class="skills-section core-skills">
+  <h2>Core Technical Skills</h2>
+  <div class="skills-grid">
+    <div class="skill-item"><img src="/assets/img/logo_py.svg" alt="Python"></div>
+    <div class="skill-item"><img src="/assets/img/logo_html.png" alt="HTML"></div>
+    <div class="skill-item"><img src="/assets/img/logo_C.svg" alt="C"></div>
+    <div class="skill-item"><img src="/assets/img/logo_ros2.png" alt="ROS2"></div>
+    <div class="skill-item"><img src="/assets/img/logo_docker.png" alt="Docker"></div>
+    <div class="skill-item"><img src="/assets/img/logo_ard.png" alt="Arduino"></div>
+    <div class="skill-item"><img src="/assets/img/logo_and.svg" alt="Android"></div>
+    <div class="skill-item"><img src="/assets/img/logo_li.svg" alt="Linux"></div>
+    <div class="skill-item"><img src="/assets/img/logo_cad.webp" alt="AutoCad"></div>
+    <div class="skill-item"><img src="/assets/img/logo_in.jpg" alt="Inventor"></div>
+    <div class="skill-item"><img src="/assets/img/logo_3d.jpg" alt="3Dmax"></div>
+  </div>
+</section>
+
+<!-- Creative & Multimedia Tools Section -->
+<section class="skills-section creative-tools">
+  <h2>Creative & Multimedia Tools</h2>
+  <div class="skills-grid">
+    <div class="skill-item"><img src="/assets/img/logo_pri.png" alt="Premiere Pro"></div>
+    <div class="skill-item"><img src="/assets/img/logo_aff.png" alt="After Effects"></div>
+    <div class="skill-item"><img src="/assets/img/logo_ps.png" alt="Photoshop"></div>
+    <div class="skill-item"><img src="/assets/img/logo_ill.png" alt="Illustrator"></div>
+  </div>
+</section>
+
+<div class="section-divider">
+    <div class="plant-divider"></div>
+</div>
+
+<!-- ── Certifications Section ── -->
+<section class="certifications">
+  <h2>Certifications</h2>
+  <div class="container">
+    <ul class="cert-list">
+      <!-- TIG Welding Technician -->
+      <li class="cert-item">
+        <div class="cert-card">
+          <img src="{{ '/assets/img/welding_img.jpg' | relative_url }}" alt="TIG Welding Technician">
+          <div class="cert-overlay">
+            <span class="cert-name">Gas Tungsten Arc Welding Technician (TIG)</span>
+          </div>
+        </div>
+        <div class="cert-details">
+          <ul>
+            <li>Proficient in high-precision TIG welding of stainless steel components (≤3 mm) for robotic structural frames and sensor mounts</li>
+            <li>Familiar with integrating TIG welding into robotic automation cells, including torch path planning and weld parameter optimization</li>
+            <li>Understands thermal distortion management in precision assemblies, critical for end-effector and actuator housing fabrication</li>
+          </ul>
+        </div>
+      </li>
+
+      <!-- Forklift Operator License -->
+      <li class="cert-item">
+        <div class="cert-card">
+          <img src="{{ '/assets/img/forklift_img.jpg' | relative_url }}" alt="Forklift Operator License">
+          <div class="cert-overlay">
+            <span class="cert-name">Forklift Operator License</span>
+          </div>
+        </div>
+        <div class="cert-details">
+          <ul>
+            <li>Understanding of kinematics and control for wheeled mobile robots in indoor logistics environments</li>
+            <li>Simulation of automated forklift systems using ROS or Python for path planning and load control</li>
+            <li>Integration of obstacle detection sensors (e.g., ultrasonic, LiDAR) for safe autonomous navigation</li>
+          </ul>
+        </div>
+      </li>
+
+      <!-- Industrial Safety Engineer -->
+      <li class="cert-item">
+        <div class="cert-card">
+          <img src="{{ '/assets/img/safety_img.jpg' | relative_url }}" alt="Industrial Safety Engineer">
+          <div class="cert-overlay">
+            <span class="cert-name">Industrial Safety Engineer</span>
+          </div>
+        </div>
+        <div class="cert-details">
+          <ul>
+            <li>Perform risk assessments on automated workcells and robotic cells to identify pinch points, reach hazards, and control failures</li>
+            <li>Design and integrate safety-rated hardware (light curtains, safety PLCs, emergency stops) into robotic installations</li>
+            <li>Create training programs for operators and maintenance teams on safe robot operation, lock‑out/tag‑out (LOTO), and preventive maintenance</li>
+          </ul>
+        </div>
+      </li>
+
+      <!-- Air Environment Engineer -->
+      <li class="cert-item">
+        <div class="cert-card">
+          <img src="{{ '/assets/img/air_environment_img.jpg' | relative_url }}" alt="Air Environment Engineer">
+          <div class="cert-overlay">
+            <span class="cert-name">Air Environment Engineer</span>
+          </div>
+        </div>
+        <div class="cert-details">
+          <ul>
+            <li>Integration of air quality monitoring sensors into mobile or industrial robotic platforms</li>
+            <li>Design of environmental data acquisition systems using embedded devices (e.g., Arduino, Raspberry Pi)</li>
+            <li>Development of safety control logic based on pollutant concentration thresholds to enable autonomous robotic decision-making</li>
+          </ul>
+        </div>
+      </li>
+
+      <!-- General Mechanical Engineer -->
+      <li class="cert-item">
+        <div class="cert-card">
+          <img src="{{ '/assets/img/mechanical_engineer_img.jpg' | relative_url }}" alt="General Mechanical Engineer">
+          <div class="cert-overlay">
+            <span class="cert-name">General Mechanical Engineer</span>
+          </div>
+        </div>
+        <div class="cert-details">
+          <ul>
+            <li>Design and analysis of robot joints and linkages using CAD and structural simulation tools</li>
+            <li>Application of mechanical tolerance and fit standards in precision robotic assemblies</li>
+            <li>Selection and integration of actuators, gears, and mechanical components based on load and motion requirements</li>
+          </ul>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<div class="section-divider">
+    <div class="plant-divider"></div>
+</div>
+
+<section class="career-bio-section">
+  <div class="career-bio-box">
+    <h3 class="career-title">📄 Career & Education</h3>
+    <ul class="career-list">
+      <li>
+        <span class="career-institution">Incheon National University</span><br>
+        B.Eng. in Environmental Engineering (Major), Minor in Renewable Energy Engineering  
+        <span class="career-date">Mar. 2017 – Feb. 2024</span>
+      </li>
+      <li>
+        <span class="career-institution">Greenhouse Gas Inventory & Research Center of Korea (Ministry of Environment)</span><br>
+        Internship – Legal Advisory Support on GHG Regulations and Reporting Systems   
+        <span class="career-date">Jun. 2023 – Aug. 2023</span>
+      </li>
+      <li>
+        <span class="career-institution">Geesco Co., Ltd. – R&D Center</span><br>
+        Senior Mechanical Engineer (Deputy Manager)  
+        <span class="career-date">Nov. 2023 – Mar. 2025</span>
+      </li>
+      <li>
+        <span class="career-institution">Academic Credit Bank System, South Korea</span><br>
+        B.Eng. in Mechatronics Engineering (In Progress)  
+        <span class="career-date">Aug. 2024 – Jul. 2026</span>
+      </li>
+      <li>
+        <span class="career-institution">Doosan Robotics AI Robot Training Program</span><br>
+        Intensive Training in AI, ML, DL, RNN, Python, and ROS2  
+        <span class="career-date">Mar. 2025 – Sep. 2025</span>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ── Dino Game Section ── -->
+<!-- <section class="dino-game-section">
+  <h2>🦖 Dino Game Break</h2>
+  <div class="dino-game-container">
+    <iframe 
+      src="{{ '/game/dino/index.html' | relative_url }}" 
+      width="100%" 
+      height="300" 
+      frameborder="0"
+      allowfullscreen>
+    </iframe>
+  </div>
+</section> -->
+
+
