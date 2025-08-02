@@ -6,23 +6,24 @@
 
 /* 🌱 Simple Eco Variables */
 :root {
-  --eco-green: #27ae60;
-  --forest-green: #2c3e50;
-  --light-green: #2ecc71;
-  --water-blue: #3498db;
-  --earth-brown: #8d6e63;
-  --leaf-shadow: 0 4px 15px rgba(39, 174, 96, 0.2);
+  --eco-green: #7fb3d3;        /* 파스텔 블루그린 */
+  --forest-green: #5d737e;     /* 파스텔 다크그레이 */
+  --light-green: #a8d8a8;      /* 파스텔 민트그린 */
+  --water-blue: #87ceeb;       /* 파스텔 스카이블루 */
+  --earth-brown: #c4a484;      /* 파스텔 베이지 */
+  --leaf-shadow: 0 4px 15px rgba(127, 179, 211, 0.15); /* 더 연한 그림자 */
   --smooth-transition: all 0.3s ease;
 }
 
 /* 🌍 Clean body with subtle eco background */
 body {
   font-family: 'Merriweather', serif !important;
-  background: linear-gradient(135deg, #fafcfa 0%, #f2f8f2 100%);
+  background: linear-gradient(135deg, #fefffe 0%, #f8fcf8 100%); /* 거의 흰색 */
   position: relative;
   margin: 0;
   padding: 0;
 }
+
 
 /* 🍃 CSS-only floating leaves */
 .eco-leaves {
@@ -40,9 +41,9 @@ body {
   position: absolute;
   width: 12px;
   height: 12px;
-  background: var(--eco-green);
+  background: #b8d4b8;
   border-radius: 0 100% 0 100%;
-  opacity: 0.6;
+  opacity: 0.3;
   animation: leafFloat 15s infinite linear;
 }
 
@@ -81,8 +82,8 @@ body::before {
   width: 100%;
   height: 100%;
   background-image: 
-    radial-gradient(circle at 20% 80%, rgba(39, 174, 96, 0.03) 0%, transparent 50%),
-    radial-gradient(circle at 80% 20%, rgba(52, 152, 219, 0.03) 0%, transparent 50%);
+    radial-gradient(circle at 20% 80%, rgba(127, 179, 211, 0.02) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(135, 206, 235, 0.02) 0%, transparent 50%);
   z-index: -1;
   animation: gentleWave 20s ease-in-out infinite;
 }
@@ -113,7 +114,7 @@ body::before {
   margin-left: calc(50% - 50vw);
   margin-right: calc(50% - 50vw);
   height: 80vh; /* More reasonable height */
-  background: linear-gradient(135deg, var(--eco-green) 0%, var(--forest-green) 100%);
+  background: linear-gradient(135deg, #b8d4e3 0%, #a8c8d8 50%, #98bcc8 100%);
   background-size: cover;
   background-position: center;
   overflow: hidden;
@@ -127,7 +128,7 @@ body::before {
   font-size: clamp(2.5rem, 5vw, 3.5rem);
   color: #ffffff;
   margin: 0 0 1rem;
-  text-shadow: 0 0 20px rgba(46, 204, 113, 0.8);
+  text-shadow: 0 0 15px rgba(127, 179, 211, 0.4);
   animation: gentleGlow 3s ease-in-out infinite alternate;
 }
 
@@ -196,12 +197,12 @@ body::before {
 
 .cv-button {
   display: inline-block;
-  background: rgba(46, 204, 113, 0.2);
+  background: rgba(168, 216, 168, 0.3);
   color: #ffffff;
   padding: 10px 20px;
   font-size: 14px;
   font-weight: 500;
-  border: 2px solid var(--light-green);
+  border: 2px solid #a8d8a8;
   border-radius: 25px;
   text-decoration: none;
   backdrop-filter: blur(10px);
@@ -210,10 +211,10 @@ body::before {
 }
 
 .cv-button:hover {
-  background: var(--light-green);
+  background: #a8d8a8;
   color: #fff;
   transform: translateY(-2px);
-  box-shadow: var(--leaf-shadow);
+  box-shadow: 0 4px 15px rgba(168, 216, 168, 0.3);
 }
 
 /* ── Logo Section Styles ── */
@@ -266,17 +267,17 @@ body::before {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.8);
   border-radius: 15px;
   box-shadow: 0 2px 10px rgba(0,0,0,0.1);
   transition: var(--smooth-transition);
-  border: 2px solid transparent;
+  border: 1px solid rgba(127, 179, 211, 0.1);
 }
 
 .skills-grid .skill-item:hover {
   transform: translateY(-5px);
-  box-shadow: var(--leaf-shadow);
-  border-color: var(--eco-green);
+  box-shadow: 0 4px 15px rgba(127, 179, 211, 0.15);
+  border-color: #b8d4e3;
 }
 
 .skills-grid .skill-item img {
@@ -340,7 +341,7 @@ section > h2::after {
   display: block;
   width: 60px;
   height: 2px;
-  background: var(--eco-green);
+  background: linear-gradient(90deg, #b8d4e3, #a8d8a8);
   margin: 1rem auto 0;
   border-radius: 1px;
 }
@@ -363,8 +364,8 @@ section > h2::after {
   display: flex;
   flex-direction: column; /* Changed from row to column for video layout */
   gap: 1rem;
-  background: rgba(255, 255, 255, 0.9);
-  border: 2px solid transparent;
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(127, 179, 211, 0.1);
   padding: 1.5rem;
   border-radius: 15px;
   box-shadow: 0 2px 15px rgba(0,0,0,0.1);
@@ -374,8 +375,8 @@ section > h2::after {
 
 .project-item:hover {
   transform: translateY(-5px);
-  box-shadow: var(--leaf-shadow);
-  border-color: var(--eco-green);
+  box-shadow: 0 6px 20px rgba(127, 179, 211, 0.12);
+  border-color: #b8d4e3;
 }
 
 .project-description {
@@ -445,7 +446,7 @@ section > h2::after {
 
 .view-all .button {
   padding: 10px 20px;
-  background: var(--eco-green);
+  background: linear-gradient(135deg, #b8d4e3 0%, #a8d8a8 100%);
   color: #fff;
   border: none;
   border-radius: 25px;
@@ -457,8 +458,8 @@ section > h2::after {
 
 .view-all .button:hover {
   transform: translateY(-2px);
-  box-shadow: var(--leaf-shadow);
-  background: var(--light-green);
+  box-shadow: 0 4px 15px rgba(127, 179, 211, 0.2);
+  background: linear-gradient(135deg, #a8d8a8 0%, #b8d4e3 100%);
 }
 
 /* ── Certifications Styles (간소화 & 크기 축소) ── */
@@ -486,13 +487,13 @@ section > h2::after {
   height: 180px;
   transition: var(--smooth-transition);
   box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-  border: 2px solid transparent;
+  border: 1px solid rgba(168, 216, 168, 0.1);
 }
 
 .cert-card:hover {
   transform: translateY(-3px);
-  box-shadow: var(--leaf-shadow);
-  border-color: var(--eco-green);
+  box-shadow: 0 4px 15px rgba(127, 179, 211, 0.15);
+  border-color: #b8d4e3;
 }
 
 .cert-card img {
@@ -549,7 +550,7 @@ section > h2::after {
 
 /* ── Career Bio Section Styles ── */
 .career-bio-section {
-  background: rgba(255, 255, 255, 0.5);
+  background: rgba(248, 252, 248, 0.7);
   padding: 3rem 1rem;
   margin-top: 3rem;
 }
@@ -557,8 +558,8 @@ section > h2::after {
 .career-bio-box {
   max-width: 700px;
   margin: 0 auto;
-  background: rgba(255, 255, 255, 0.8);
-  border: 2px solid rgba(39, 174, 96, 0.2);
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(168, 216, 168, 0.2);
   border-radius: 15px;
   padding: 2rem;
   font-family: 'Inter', sans-serif;
@@ -588,14 +589,14 @@ section > h2::after {
 .career-list li {
   margin-bottom: 1rem;
   padding: 1rem;
-  background: rgba(39, 174, 96, 0.05);
+  background: rgba(168, 216, 168, 0.03);
   border-radius: 8px;
-  border-left: 3px solid var(--eco-green);
+  border-left: 3px solid #b8d4e3;
   transition: var(--smooth-transition);
 }
 
 .career-list li:hover {
-  background: rgba(39, 174, 96, 0.1);
+  background: rgba(168, 216, 168, 0.06);
   transform: translateX(5px);
 }
 
