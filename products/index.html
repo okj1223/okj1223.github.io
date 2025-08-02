@@ -7,17 +7,31 @@ permalink: /projects/
 # 🛠️ All Projects
 
 <div class="projects-container">
-  <div class="project-card">
-    <h2><a href="/projects/crack-ppe-detection/">Industrial Safety Robot System</a></h2>
-    <p>In the intersection of mathematics and machinery, we find not just efficiency, but the possibility of preserving human life itself.</p>
-    <iframe width="100%" height="315" src="https://www.youtube.com/embed/gsk4GZmsjrw" frameborder="0" allowfullscreen></iframe>
-  </div>
+  
+  <!-- Industrial Safety Robot System - 전체 카드가 클릭 가능 -->
+  <a href="/projects/crack-ppe-detection/" class="project-card-link">
+    <div class="project-card">
+      <h2>Industrial Safety Robot System</h2>
+      <p>In the intersection of mathematics and machinery, we find not just efficiency, but the possibility of preserving human life itself.</p>
+      <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/gsk4GZmsjrw" frameborder="0" allowfullscreen></iframe>
+      </div>
+      <div class="card-arrow">→</div>
+    </div>
+  </a>
 
-  <div class="project-card">
-    <h2><a href="/projects/automated-catalyst-cleaning/">Automated Catalyst Cleaning Robot</a></h2>
-    <p>Designed and fabricated an in-situ SCR catalyst cleaning system using Arduino-based electrical control, fluid dynamic nozzles, 3D modeling, and welded structural assembly.</p>
-    <iframe width="100%" height="315" src="https://www.youtube.com/embed/7pVAK6bW15U" frameborder="0" allowfullscreen></iframe>
-  </div>
+  <!-- Automated Catalyst Cleaning Robot - 전체 카드가 클릭 가능 -->
+  <a href="/projects/automated-catalyst-cleaning/" class="project-card-link">
+    <div class="project-card">
+      <h2>Automated Catalyst Cleaning Robot</h2>
+      <p>Designed and fabricated an in-situ SCR catalyst cleaning system using Arduino-based electrical control, fluid dynamic nozzles, 3D modeling, and welded structural assembly.</p>
+      <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/7pVAK6bW15U" frameborder="0" allowfullscreen></iframe>
+      </div>
+      <div class="card-arrow">→</div>
+    </div>
+  </a>
+
 </div>
 
 <style>
@@ -27,35 +41,164 @@ permalink: /projects/
   padding: 2rem;
 }
 
+/* 링크 스타일 초기화 */
+.project-card-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  margin: 2rem 0;
+}
+
+/* 카드 기본 스타일 */
 .project-card {
   background: white;
-  border: 1px solid #ddd;
-  border-radius: 12px;
-  margin: 2rem 0;
+  border: 2px solid #e1e8ed;
+  border-radius: 15px;
   padding: 2rem;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+  position: relative;
+  cursor: pointer;
 }
 
+/* 호버 효과 - 전체 카드가 반응 */
+.project-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+  border-color: #3498db;
+}
+
+/* 제목 스타일 */
 .project-card h2 {
   margin-bottom: 1rem;
-}
-
-.project-card h2 a {
   color: #2c3e50;
-  text-decoration: none;
+  font-size: 1.5rem;
+  font-weight: 600;
+  transition: color 0.3s ease;
 }
 
-.project-card h2 a:hover {
+.project-card:hover h2 {
   color: #3498db;
 }
 
+/* 설명 텍스트 */
 .project-card p {
   margin-bottom: 1.5rem;
   color: #666;
   line-height: 1.6;
+  font-size: 1rem;
 }
 
-.project-card iframe {
+/* 비디오 컨테이너 */
+.video-container {
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-bottom: 56.25%; /* 16:9 비율 */
+  margin-bottom: 1rem;
   border-radius: 8px;
+  overflow: hidden;
+}
+
+.video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+  pointer-events: none; /* 비디오는 클릭 방지 */
+}
+
+/* 카드 화살표 아이콘 */
+.card-arrow {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  font-size: 1.5rem;
+  color: #bdc3c7;
+  transition: all 0.3s ease;
+}
+
+.project-card:hover .card-arrow {
+  color: #3498db;
+  transform: translateX(5px);
+}
+
+/* 클릭 효과 */
+.project-card:active {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+}
+
+/* 포커스 접근성 */
+.project-card-link:focus {
+  outline: none;
+}
+
+.project-card-link:focus .project-card {
+  border-color: #3498db;
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+  .projects-container {
+    padding: 1rem;
+  }
+  
+  .project-card {
+    padding: 1.5rem;
+  }
+  
+  .project-card h2 {
+    font-size: 1.3rem;
+  }
+  
+  .card-arrow {
+    top: 1.5rem;
+    right: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .project-card {
+    padding: 1rem;
+  }
+  
+  .project-card h2 {
+    font-size: 1.2rem;
+  }
+}
+
+/* 로딩 애니메이션 */
+.project-card {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+.project-card-link:nth-child(2) .project-card {
+  animation-delay: 0.2s;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 마우스 커서 변경 */
+.project-card-link {
+  cursor: pointer;
+}
+
+/* 비디오 호버 시 살짝 확대 */
+.project-card:hover .video-container {
+  transform: scale(1.02);
+  transition: transform 0.3s ease;
 }
 </style>
