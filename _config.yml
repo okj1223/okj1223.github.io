@@ -19,7 +19,7 @@ author: OH Kyungjun
 collections:
   projects:
     output: true
-    permalink: /projects/:name/
+    permalink: /:collection/:name/
 
 ###############################################
 # --- List of links in the navigation bar --- #

@@ -901,22 +901,21 @@ I personally executed high-precision surface grinding operations using industria
 
 ### 5.1 3D Parametric Modeling
 
-<div class="cad-gallery">
-  <figure>
-    <img class="project-image"
-         src="{{ '/project/automated-catalyst-cleaning/3dworking1.gif' | relative_url }}"
-         alt="Inventor Parametric Assembly Workflow" 
-         loading="lazy">
-    <figcaption>Figure 6. 3D parametric assembly workflow in Autodesk Inventor</figcaption>
-  </figure>
-  <figure>
-    <img class="project-image"
-         src="{{ '/project/automated-catalyst-cleaning/3dworking2.PNG' | relative_url }}"
-         alt="AutoCAD Detailed Part Drawing" 
-         loading="lazy">
-    <figcaption>Figure 7. Technical drawing with GD&T specifications in AutoCAD</figcaption>
-  </figure>
-</div>
+<figure>
+  <img class="project-image"
+       src="{{ '/project/automated-catalyst-cleaning/3dworking1.gif' | relative_url }}"
+       alt="Inventor Parametric Assembly Workflow" 
+       loading="lazy">
+  <figcaption>Figure 6. 3D parametric assembly workflow in Autodesk Inventor</figcaption>
+</figure>
+
+<figure>
+  <img class="project-image"
+       src="{{ '/project/automated-catalyst-cleaning/3dworking2.PNG' | relative_url }}"
+       alt="AutoCAD Detailed Part Drawing" 
+       loading="lazy">
+  <figcaption>Figure 7. Technical drawing with GD&T specifications in AutoCAD</figcaption>
+</figure>
 
 **Design Methodology:**
 - **Parametric Modeling:** Fully associative 3D models with design tables
