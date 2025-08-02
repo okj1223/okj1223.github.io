@@ -30,15 +30,11 @@ navbar-links:
   - ["About Me", "/aboutme/"]
   - ["Projects", "/projects/"]
 
-collections:
-  projects:
-    output: true
-    permalink: /projects/:path/
 
 markdown: kramdown
 kramdown:
   input: GFM
-  auto_ids: true
+  auto_ids: false
   toc_levels: 1..6
   math_engine: mathjax
   parse_block_html: true
