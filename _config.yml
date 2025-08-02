@@ -15,7 +15,7 @@ title: TechFusionLab
 # Your name to show in the footer
 author: OH Kyungjun
 
-
+# IMPORTANT: Collections MUST come before navbar-links
 collections:
   projects:
     output: true
@@ -26,10 +26,11 @@ collections:
 ###############################################
 
 navbar-links:
-  - ["Home",    "/"]
-  - ["About Me", "/aboutme/"]
-  - ["Projects", "/projects/"]
+  Home: "/"
+  About Me: "/aboutme/"
+  Projects: "/projects/"
 
+# Fix: Beautiful Jekyll expects object format, not array format
 
 markdown: kramdown
 kramdown:
@@ -38,8 +39,6 @@ kramdown:
   toc_levels: 1..6
   math_engine: mathjax
   parse_block_html: true
-
-
 
 ###########################
 # --- Banner Settings --- #
@@ -52,14 +51,13 @@ banner-img: "/assets/img/banner.png"
 banner-title: "Envirobotics Researcher"
 
 # 타이틀 아래에 보조 문구
-banner-subtitle: "Oh Kyungjun"
+banner-subtitle: "Oh Kyungjun"
 
-banner-name: "Enviromental · AI · Robotics"
+banner-name: "Environmental · AI · Robotics"
 
 # banner 설정 섹션에 추가
 banner-line1: "Crafting AI‑driven envirobots with ROS2 & Python"
 banner-line2: "Sensing pollution, eliminate contaminants, and restore ecosystems"
-
 
 ################
 # --- Logo --- #
@@ -73,7 +71,6 @@ banner-line2: "Sensing pollution, eliminate contaminants, and restore ecosystems
 # If you want to have an image logo in the top-left corner instead of having the title of the website,
 # then specify the following parameter
 #title-img: /path/to/image
-
 
 #####################################
 # --- Footer social media links --- #
@@ -293,7 +290,6 @@ highlighter: rouge
 permalink: /:title/
 paginate: 5
 
-
 # Default YAML values (more information on Jekyll's site)
 defaults:
   -
@@ -307,6 +303,12 @@ defaults:
   -
     scope:
       path: "" # any file that's not a post will be a "page" layout by default
+    values:
+      layout: "page"
+  -
+    scope:
+      path: ""
+      type: "projects"
     values:
       layout: "page"
 
@@ -327,4 +329,3 @@ plugins:
 
 # Beautiful Jekyll / Dean Attali
 # 2fc73a3a967e97599c9763d05e564189
-
