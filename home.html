@@ -3,7 +3,6 @@ layout: page
 permalink: /home.html
 ---
 
-
 <!-- at the very top of _layouts/home.html -->
 {% if site.banner-img %}
 <div id="banner" style="background-image: url('{{ site.banner-img | relative_url }}'); position: relative;">
@@ -49,57 +48,129 @@ permalink: /home.html
     <div class="plant-divider"></div>
 </div>
 
-<!-- Latest Projects 섹션 -->
-<section class="project-showcase-section">
-  <h2>🛠️ Latest Projects</h2>
-  <div class="project-showcase-grid">
-    {%- assign recent = site.projects
-         | where_exp: "proj", "proj.url != '/projects/'"
-         | sort: "date"
-         | reverse
-         | slice: 0, 2 -%}
-
-    {%- for proj in recent -%}
-      <a href="{{ proj.url | relative_url }}" class="project-link">
-        <div class="project-item">
-          <div class="project-description">
-            <h3>{{ proj.title }}</h3>
-            <time datetime="{{ proj.date | date: '%Y-%m-%d' }}">
-              {{ proj.date | date: '%Y.%m.%d' }}
-            </time>
-            <p>{{ proj.description }}</p>
+<!-- Latest Projects 섹션 - 새로운 스타일 -->
+<section class="home-projects-section">
+  <div class="home-projects-container">
+    <h2 class="projects-section-title">🛠️ Latest Projects</h2>
+    
+    <!-- 최신 프로젝트 (2025) -->
+    <article class="home-project-item">
+      <div class="home-project-card">
+        <a href="/projects/crack-ppe-detection/" class="home-project-link">
+          <div class="home-project-content">
+            <div class="home-project-meta">
+              <time class="home-project-year">2025</time>
+              <span class="home-project-category">Environmental Safety • AI</span>
+            </div>
+            <h3 class="home-project-title">Industrial Safety Robot System</h3>
+            <p class="home-project-description">
+              Advanced environmental monitoring system that preserves human life through intelligent robotics. 
+              Multi-robot safety platform with computer vision and predictive analytics.
+            </p>
+            <div class="home-project-impact">
+              <div class="home-impact-item">
+                <span class="home-impact-value">93%</span>
+                <span class="home-impact-label">Detection Accuracy</span>
+              </div>
+              <div class="home-impact-item">
+                <span class="home-impact-value">100%</span>
+                <span class="home-impact-label">Safety Improvement</span>
+              </div>
+              <div class="home-impact-item">
+                <span class="home-impact-value">25%</span>
+                <span class="home-impact-label">Environmental Impact Reduction</span>
+              </div>
+            </div>
+            <div class="home-project-tech">
+              <span class="home-tech-tag ai">ROS2</span>
+              <span class="home-tech-tag ai">YOLOv8</span>
+              <span class="home-tech-tag data">Kalman Filter</span>
+              <span class="home-tech-tag comm">MQTT</span>
+              <span class="home-tech-tag prog">Python</span>
+            </div>
           </div>
-
-          {%- if proj.video_url -%}
-          <div class="project-video">
-            <div class="video-wrapper">
-              <iframe
-                src="{{ proj.video_url }}"
-                title="{{ proj.title }} Demo"
-                frameborder="0"
+        </a>
+        
+        <!-- 동영상은 별도 링크 -->
+        <div class="home-project-media">
+          <a href="https://www.youtube.com/watch?v=gsk4GZmsjrw" target="_blank" class="home-video-link">
+            <div class="home-video-wrapper">
+              <iframe 
+                src="https://www.youtube.com/embed/gsk4GZmsjrw" 
+                title="Industrial Safety Robot System Demo"
+                frameborder="0" 
                 allowfullscreen>
               </iframe>
             </div>
-          </div>
-          {%- endif -%}
-
+          </a>
         </div>
-      </a>
-    {%- endfor -%}
+      </div>
+    </article>
+
+    <!-- 이전 프로젝트 (2024) -->
+    <article class="home-project-item">
+      <div class="home-project-card">
+        <a href="/projects/automated-catalyst-cleaning/" class="home-project-link">
+          <div class="home-project-content">
+            <div class="home-project-meta">
+              <time class="home-project-year">2024</time>
+              <span class="home-project-category">Environmental Automation • Engineering</span>
+            </div>
+            <h3 class="home-project-title">Automated Catalyst Cleaning Robot</h3>
+            <p class="home-project-description">
+              Sustainable automation solution for industrial catalyst maintenance. Eco-friendly robotic system 
+              that reduces chemical waste and extends catalyst lifespan through precision cleaning.
+            </p>
+            <div class="home-project-impact">
+              <div class="home-impact-item">
+                <span class="home-impact-value">58%</span>
+                <span class="home-impact-label">Cycle Time Reduction</span>
+              </div>
+              <div class="home-impact-item">
+                <span class="home-impact-value">35%</span>
+                <span class="home-impact-label">Chemical Waste Reduction</span>
+              </div>
+              <div class="home-impact-item">
+                <span class="home-impact-value">20%</span>
+                <span class="home-impact-label">Catalyst Life Extension</span>
+              </div>
+            </div>
+            <div class="home-project-tech">
+              <span class="home-tech-tag prog">Arduino</span>
+              <span class="home-tech-tag design">CAD Design</span>
+              <span class="home-tech-tag eng">Fluid Dynamics</span>
+              <span class="home-tech-tag manu">CNC Machining</span>
+              <span class="home-tech-tag prog">C++</span>
+            </div>
+          </div>
+        </a>
+        
+        <!-- 동영상은 별도 링크 -->
+        <div class="home-project-media">
+          <a href="https://www.youtube.com/watch?v=7pVAK6bW15U" target="_blank" class="home-video-link">
+            <div class="home-video-wrapper">
+              <iframe 
+                src="https://www.youtube.com/embed/7pVAK6bW15U" 
+                title="Automated Catalyst Cleaning Robot Demo"
+                frameborder="0" 
+                allowfullscreen>
+              </iframe>
+            </div>
+          </a>
+        </div>
+      </div>
+    </article>
+
+    <!-- View All Projects 버튼 -->
+    <div class="view-all-projects">
+      <a href="{{ '/projects/' | relative_url }}" class="view-all-button">View All Projects →</a>
+    </div>
   </div>
 </section>
-
-  <div class="view-all">
-    <a href="{{ '/projects/' | relative_url }}" class="button">View All Projects →</a>
-  </div>
-</section>
-
-
 
 <div class="section-divider">
     <div class="plant-divider"></div>
 </div>
-
 
 <!-- ── Skills & Expertise Section (Chart Removed) ── -->
 <section class="skills-section core-skills">
@@ -149,7 +220,7 @@ permalink: /home.html
         </div>
         <div class="cert-details">
           <ul>
-            <li>Proficient in high-precision TIG welding of stainless steel components (≤3 mm) for robotic structural frames and sensor mounts</li>
+            <li>Proficient in high-precision TIG welding of stainless steel components (≤3 mm) for robotic structural frames and sensor mounts</li>
             <li>Familiar with integrating TIG welding into robotic automation cells, including torch path planning and weld parameter optimization</li>
             <li>Understands thermal distortion management in precision assemblies, critical for end-effector and actuator housing fabrication</li>
           </ul>
@@ -264,18 +335,411 @@ permalink: /home.html
   </div>
 </section>
 
-<!-- ── Dino Game Section ── -->
-<!-- <section class="dino-game-section">
-  <h2>🦖 Dino Game Break</h2>
-  <div class="dino-game-container">
-    <iframe 
-      src="{{ '/game/dino/index.html' | relative_url }}" 
-      width="100%" 
-      height="300" 
-      frameborder="0"
-      allowfullscreen>
-    </iframe>
-  </div>
-</section> -->
+<style>
+/* 홈페이지 프로젝트 섹션 스타일 */
+.home-projects-section {
+  padding: 4rem 0;
+  background: #fafafa;
+  width: 100%;
+  margin: 0;
+}
 
+.home-projects-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  width: 100%;
+}
 
+.projects-section-title {
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #2c3e50;
+  margin-bottom: 3rem;
+  background: linear-gradient(45deg, #2E8B57, #3CB371);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* 홈 프로젝트 아이템 */
+.home-project-item {
+  margin-bottom: 2.5rem;
+  width: 100%;
+}
+
+.home-project-card {
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+  transition: all 0.4s ease;
+  padding: 2rem;
+  position: relative;
+  min-height: 220px;
+  clear: both;
+}
+
+.home-project-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 35px rgba(46, 139, 87, 0.12);
+}
+
+.home-project-card::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.home-project-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  width: 100%;
+}
+
+.home-project-link:hover .home-project-title {
+  color: #2E8B57;
+}
+
+/* 홈 프로젝트 콘텐츠 */
+.home-project-content {
+  width: calc(100% - 260px);
+  margin-right: 0;
+  display: block;
+  float: left;
+  padding-right: 1rem;
+}
+
+.home-project-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin-bottom: 0.8rem;
+}
+
+.home-project-year {
+  background: linear-gradient(45deg, #2E8B57, #3CB371);
+  color: white;
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.home-project-category {
+  color: #2E8B57;
+  font-size: 0.85rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.home-project-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 0.8rem;
+  color: #2c3e50;
+  transition: color 0.3s ease;
+  line-height: 1.2;
+}
+
+.home-project-description {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: #555;
+  margin-bottom: 1rem;
+  text-align: justify;
+}
+
+/* 홈 프로젝트 임팩트 지표 */
+.home-project-impact {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  padding: 0.8rem;
+  background: #f8fffe;
+  border-radius: 10px;
+  border-left: 3px solid #2E8B57;
+  flex-wrap: wrap;
+  clear: left;
+}
+
+.home-impact-item {
+  text-align: center;
+  min-width: 65px;
+  flex: 1;
+}
+
+.home-impact-value {
+  display: block;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #2E8B57;
+  margin-bottom: 0.2rem;
+  line-height: 1;
+}
+
+.home-impact-label {
+  font-size: 0.65rem;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  line-height: 1.2;
+}
+
+/* 홈 기술 태그 */
+.home-project-tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  clear: left;
+}
+
+.home-tech-tag {
+  padding: 0.3rem 0.7rem;
+  border-radius: 16px;
+  font-size: 0.7rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.home-tech-tag.ai {
+  background: #e3f2fd;
+  color: #1976d2;
+  border: 1px solid #bbdefb;
+}
+
+.home-tech-tag.data {
+  background: #f3e5f5;
+  color: #7b1fa2;
+  border: 1px solid #ce93d8;
+}
+
+.home-tech-tag.comm {
+  background: #e8f5e8;
+  color: #388e3c;
+  border: 1px solid #a5d6a7;
+}
+
+.home-tech-tag.prog {
+  background: #fff3e0;
+  color: #f57c00;
+  border: 1px solid #ffcc02;
+}
+
+.home-tech-tag.design {
+  background: #fce4ec;
+  color: #c2185b;
+  border: 1px solid #f8bbd9;
+}
+
+.home-tech-tag.eng {
+  background: #e0f2f1;
+  color: #00695c;
+  border: 1px solid #80cbc4;
+}
+
+.home-tech-tag.manu {
+  background: #f1f8e9;
+  color: #689f38;
+  border: 1px solid #aed581;
+}
+
+.home-tech-tag:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+}
+
+/* 홈 프로젝트 미디어 */
+.home-project-media {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  width: 240px;
+  height: 140px;
+  z-index: 10;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+}
+
+.home-video-link {
+  display: block;
+  width: 100%;
+  height: 100%;
+  text-decoration: none;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.home-video-link:hover {
+  transform: scale(1.03);
+  box-shadow: 0 12px 28px rgba(0,0,0,0.25);
+}
+
+.home-video-link::before {
+  content: "▶";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1.8rem;
+  color: white;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+  z-index: 20;
+  opacity: 0.8;
+  transition: all 0.3s ease;
+}
+
+.home-video-link:hover::before {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1.2);
+}
+
+.home-video-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  transition: all 0.3s ease;
+  background: linear-gradient(135deg, #2E8B57 0%, #3CB371 100%);
+}
+
+.home-video-wrapper iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  pointer-events: none;
+  border-radius: 10px;
+}
+
+/* View All Projects 버튼 */
+.view-all-projects {
+  text-align: center;
+  margin-top: 3rem;
+}
+
+.view-all-button {
+  display: inline-block;
+  background: linear-gradient(45deg, #2E8B57, #3CB371);
+  color: white;
+  padding: 1rem 2rem;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(46, 139, 87, 0.3);
+}
+
+.view-all-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(46, 139, 87, 0.4);
+  color: white;
+  text-decoration: none;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 1200px) {
+  .home-project-content {
+    width: calc(100% - 220px);
+    padding-right: 0.8rem;
+  }
+  
+  .home-project-media {
+    width: 200px;
+    height: 120px;
+    top: 1.2rem;
+    right: 1.2rem;
+  }
+}
+
+@media (max-width: 968px) {
+  .home-project-card {
+    padding: 1.5rem;
+    min-height: auto;
+  }
+  
+  .home-project-content {
+    width: 100%;
+    float: none;
+    padding-right: 0;
+  }
+  
+  .home-project-media {
+    position: static;
+    width: 100%;
+    height: 180px;
+    margin: 1rem 0 0 0;
+  }
+  
+  .home-project-content {
+    text-align: center;
+  }
+  
+  .home-project-impact {
+    justify-content: center;
+    gap: 0.8rem;
+  }
+  
+  .projects-section-title {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .home-project-title {
+    font-size: 1.3rem;
+  }
+  
+  .home-project-description {
+    font-size: 0.85rem;
+  }
+  
+  .home-projects-container {
+    padding: 0 1rem;
+  }
+  
+  .home-project-media {
+    height: 160px;
+  }
+}
+
+@media (max-width: 480px) {
+  .home-project-card {
+    padding: 1.2rem;
+  }
+  
+  .home-impact-value {
+    font-size: 1.1rem;
+  }
+  
+  .home-impact-label {
+    font-size: 0.6rem;
+  }
+  
+  .home-project-impact {
+    padding: 0.6rem;
+    gap: 0.6rem;
+  }
+  
+  .home-impact-item {
+    min-width: 55px;
+  }
+  
+  .home-project-media {
+    height: 140px;
+  }
+  
+  .projects-section-title {
+    font-size: 1.8rem;
+  }
+}
+</style>
