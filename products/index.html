@@ -323,9 +323,7 @@ permalink: /projects/
 }
 
 .project-link {
-  display: flex;
-  align-items: stretch; /* center → stretch로 변경하여 높이를 맞춤 */
-  gap: 4rem; /* 3rem → 4rem으로 늘려서 더 넓은 간격 */
+  display: block; /* flex → block으로 변경 */
   background: white;
   border-radius: 20px;
   overflow: hidden;
@@ -333,10 +331,11 @@ permalink: /projects/
   transition: all 0.4s ease;
   text-decoration: none;
   color: inherit;
-  padding: 2rem; /* 2.5rem → 2rem으로 줄임 */
+  padding: 2rem;
   width: 100%;
   max-width: none;
-  height: 300px; /* 고정 높이 설정 */
+  position: relative; /* 포지셔닝을 위해 추가 */
+  min-height: 250px; /* 최소 높이 설정 */
 }
 
 .project-link:hover {
@@ -354,34 +353,31 @@ permalink: /projects/
 
 /* 프로젝트 콘텐츠 */
 .project-content {
-  flex: 3; /* 2 → 3으로 변경해서 텍스트 영역을 더더욱 넓게 */
-  min-width: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between; /* center → space-between으로 변경 */
-  height: 100%; /* 전체 높이 사용 */
+  width: 100%; /* 전체 너비 사용 */
+  margin-right: 300px; /* 동영상을 위한 우측 여백 */
+  display: block; /* flex → block으로 변경 */
 }
 
 .project-meta {
   display: flex;
   align-items: center;
   gap: 1rem;
-  margin-bottom: 0.8rem; /* 1.2rem → 0.8rem으로 줄임 */
+  margin-bottom: 1rem;
 }
 
 .project-year {
   background: linear-gradient(45deg, #2E8B57, #3CB371);
   color: white;
-  padding: 0.3rem 0.8rem; /* 패딩 줄임 */
+  padding: 0.4rem 1rem;
   border-radius: 20px;
-  font-size: 0.8rem; /* 0.85rem → 0.8rem으로 줄임 */
+  font-size: 0.85rem;
   font-weight: 600;
   white-space: nowrap;
 }
 
 .project-category {
   color: #2E8B57;
-  font-size: 0.85rem; /* 0.9rem → 0.85rem으로 줄임 */
+  font-size: 0.9rem;
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.5px;
@@ -389,67 +385,65 @@ permalink: /projects/
 }
 
 .project-title {
-  font-size: 1.8rem; /* 2rem → 1.8rem으로 더 줄임 */
+  font-size: 2rem;
   font-weight: 700;
-  margin-bottom: 0.8rem; /* 1.2rem → 0.8rem으로 줄임 */
+  margin-bottom: 1rem;
   color: #2c3e50;
   transition: color 0.3s ease;
-  line-height: 1.1; /* 1.2 → 1.1로 줄임 */
+  line-height: 1.2;
+  clear: none; /* 동영상과 겹치는 것 허용 */
 }
 
 .project-description {
-  font-size: 0.95rem; /* 1rem → 0.95rem으로 줄임 */
-  line-height: 1.5; /* 1.6 → 1.5로 줄임 */
+  font-size: 1rem;
+  line-height: 1.6;
   color: #555;
-  margin-bottom: 1rem; /* 1.5rem → 1rem으로 줄임 */
-  flex-grow: 1; /* 남은 공간을 차지하도록 */
-  display: -webkit-box;
-  -webkit-line-clamp: 4; /* 최대 4줄로 제한 */
-  -webkit-box-orient: vertical;
-  overflow: hidden;
+  margin-bottom: 1.5rem;
+  text-align: justify; /* 텍스트 정렬 */
 }
 
 /* 프로젝트 임팩트 지표 */
 .project-impact {
   display: flex;
-  gap: 1rem; /* 1.5rem → 1rem으로 줄임 */
-  margin-bottom: 1rem; /* 1.5rem → 1rem으로 줄임 */
-  padding: 0.8rem; /* 1rem → 0.8rem으로 줄임 */
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+  padding: 1rem;
   background: #f8fffe;
   border-radius: 12px;
   border-left: 4px solid #2E8B57;
   flex-wrap: wrap;
+  clear: left; /* 동영상 아래로 밀려나도록 */
 }
 
 .impact-item {
   text-align: center;
-  min-width: 70px; /* 80px → 70px로 줄임 */
+  min-width: 80px;
   flex: 1;
 }
 
 .impact-value {
   display: block;
-  font-size: 1.3rem; /* 1.5rem → 1.3rem으로 줄임 */
+  font-size: 1.5rem;
   font-weight: 700;
   color: #2E8B57;
-  margin-bottom: 0.1rem; /* 0.2rem → 0.1rem으로 줄임 */
+  margin-bottom: 0.2rem;
   line-height: 1;
 }
 
 .impact-label {
-  font-size: 0.7rem; /* 0.75rem → 0.7rem으로 줄임 */
+  font-size: 0.75rem;
   color: #666;
   text-transform: uppercase;
-  letter-spacing: 0.3px; /* 0.5px → 0.3px로 줄임 */
-  line-height: 1.1;
+  letter-spacing: 0.5px;
+  line-height: 1.2;
 }
 
 /* 기술 태그 */
 .project-tech {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.4rem; /* 0.5rem → 0.4rem으로 줄임 */
-  margin-top: auto; /* 하단에 고정 */
+  gap: 0.5rem;
+  clear: left; /* 동영상 아래로 밀려나도록 */
 }
 
 /* 기술 태그 */
@@ -516,16 +510,18 @@ permalink: /projects/
 
 /* 프로젝트 미디어 */
 .project-media {
-  flex: 0 0 320px; /* 350px → 320px로 더 줄임 */
-  display: flex;
-  align-items: center;
-  height: 100%; /* 전체 높이 사용 */
+  position: absolute; /* absolute 포지셔닝 */
+  top: 2rem; /* 상단에서 2rem */
+  right: 2rem; /* 우측에서 2rem */
+  width: 280px; /* 고정 너비 */
+  height: 160px; /* 고정 높이 */
+  z-index: 10; /* 다른 요소 위에 표시 */
 }
 
 .video-wrapper {
   position: relative;
   width: 100%;
-  height: 180px; /* 200px → 180px로 더 줄임 */
+  height: 100%;
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 10px 25px rgba(0,0,0,0.15);
@@ -595,41 +591,39 @@ permalink: /projects/
 /* 반응형 디자인 */
 @media (max-width: 968px) {
   .project-link {
-    flex-direction: column-reverse;
-    gap: 2rem;
-    align-items: center;
-    height: auto; /* 모바일에서는 고정 높이 제거 */
-    padding: 2rem;
-  }
-  
-  .project-media {
-    flex: none;
-    width: 100%;
-    max-width: 500px;
-    height: auto;
+    padding: 1.5rem;
+    min-height: auto;
   }
   
   .project-content {
-    flex: none;
-    text-align: center;
-    height: auto;
-    justify-content: flex-start; /* space-between → flex-start로 변경 */
+    margin-right: 0; /* 모바일에서는 마진 제거 */
   }
   
-  .project-description {
-    -webkit-line-clamp: none; /* 모바일에서는 줄 제한 해제 */
-    display: block;
+  .project-media {
+    position: static; /* absolute → static으로 변경 */
+    width: 100%;
+    height: 200px;
+    margin: 1rem 0;
+  }
+  
+  .project-impact,
+  .project-tech {
+    clear: none; /* 모바일에서는 clear 제거 */
+  }
+  
+  .project-content {
+    text-align: center;
+  }
+  
+  .project-impact {
+    justify-content: center;
+    gap: 1rem;
   }
   
   .banner-content {
     flex-direction: column;
     text-align: center;
     gap: 2rem;
-  }
-  
-  .project-impact {
-    justify-content: center;
-    gap: 1rem;
   }
   
   .enviro-banner {
@@ -647,11 +641,11 @@ permalink: /projects/
   }
   
   .project-title {
-    font-size: 1.6rem; /* 1.8rem → 1.6rem으로 줄임 */
+    font-size: 1.6rem;
   }
   
   .project-description {
-    font-size: 0.95rem; /* 모바일에서 더 작게 */
+    font-size: 0.95rem;
   }
   
   .container {
@@ -667,27 +661,26 @@ permalink: /projects/
     padding: 0.4rem 0.8rem;
   }
   
-  .project-link {
-    gap: 1.5rem; /* 모바일에서 간격 줄임 */
+  .project-media {
+    height: 180px; /* 모바일에서 비디오 높이 */
   }
   
-  .video-wrapper {
-    height: 180px; /* 모바일에서 비디오 높이 줄임 */
+  .project-content {
+    margin-right: 0;
   }
 }
 
 @media (max-width: 480px) {
   .project-link {
-    padding: 1.5rem;
-    gap: 1rem;
+    padding: 1rem;
   }
   
   .impact-value {
-    font-size: 1.3rem; /* 1.5rem → 1.3rem으로 줄임 */
+    font-size: 1.3rem;
   }
   
   .impact-label {
-    font-size: 0.65rem; /* 0.7rem → 0.65rem으로 줄임 */
+    font-size: 0.65rem;
   }
   
   .banner-keywords {
@@ -704,7 +697,12 @@ permalink: /projects/
   }
   
   .impact-item {
-    min-width: 70px; /* 작은 화면에서 더 작게 */
+    min-width: 70px;
+  }
+  
+  .project-media {
+    width: 100%;
+    height: 160px;
   }
 }
 
