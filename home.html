@@ -3,6 +3,9 @@ layout: page
 permalink: /home.html
 ---
 
+<!-- CSS 파일 연결 -->
+<link rel="stylesheet" href="{{ '/assets/css/ecosystem.css' | relative_url }}">
+
 <!-- at the very top of _layouts/home.html -->
 {% if site.banner-img %}
 <div id="banner" style="background-image: url('{{ site.banner-img | relative_url }}'); position: relative;">
@@ -22,6 +25,169 @@ permalink: /home.html
   </div>
 </div>
 {% endif %}
+
+<!-- Living Technology Ecosystem - 좌측 패널 -->
+<div class="eco-system-left">
+  <!-- 스크롤 진행률 트랙 -->
+  <div class="scroll-progress-track">
+    <div class="progress-line" id="scroll-progress-line"></div>
+    <div class="progress-nodes">
+      <div class="progress-node" data-section="banner">
+        <svg viewBox="0 0 24 24" class="node-icon">
+          <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+        </svg>
+      </div>
+      <div class="progress-node" data-section="projects">
+        <svg viewBox="0 0 24 24" class="node-icon">
+          <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+        </svg>
+      </div>
+      <div class="progress-node" data-section="skills">
+        <svg viewBox="0 0 24 24" class="node-icon">
+          <rect x="2" y="4" width="20" height="16" rx="2"/>
+          <path d="m22 7-10 5L2 7"/>
+        </svg>
+      </div>
+      <div class="progress-node" data-section="career">
+        <svg viewBox="0 0 24 24" class="node-icon">
+          <path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+          <rect x="4" y="6" width="16" height="14" rx="2"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+  
+  <!-- 기술 융합 시각화 -->
+  <div class="tech-fusion-viz">
+    <div class="fusion-center">
+      <div class="center-core"></div>
+      <div class="orbital-ring ring-1">
+        <div class="tech-sphere env">
+          <svg viewBox="0 0 24 24" class="sphere-icon">
+            <path d="M17 8C8 10 5.9 16.17 3.82 21.34l1.89.66.95-2.66c.48-.17.98-.31 1.34-.49C9.37 16.5 10.4 14.7 11.5 13c2.27-3.5 4.5-7 4.5-11z"/>
+            <path d="M12.83 2.18C15.1 2.18 17 4.18 17 6.5s-1.9 4.32-4.17 4.32S8.66 8.82 8.66 6.5s1.9-4.32 4.17-4.32z"/>
+          </svg>
+        </div>
+      </div>
+      <div class="orbital-ring ring-2">
+        <div class="tech-sphere robot">
+          <svg viewBox="0 0 24 24" class="sphere-icon">
+            <rect x="4" y="11" width="16" height="10" rx="2"/>
+            <circle cx="8" cy="15" r="1"/>
+            <circle cx="16" cy="15" r="1"/>
+            <path d="M9 7h6v4H9z"/>
+            <path d="M12 3v4"/>
+            <circle cx="12" cy="2" r="1"/>
+          </svg>
+        </div>
+      </div>
+      <div class="orbital-ring ring-3">
+        <div class="tech-sphere elec">
+          <svg viewBox="0 0 24 24" class="sphere-icon">
+            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+          </svg>
+        </div>
+      </div>
+      <div class="orbital-ring ring-4">
+        <div class="tech-sphere comp">
+          <svg viewBox="0 0 24 24" class="sphere-icon">
+            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+            <line x1="8" y1="21" x2="16" y2="21"/>
+            <line x1="12" y1="17" x2="12" y2="21"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Living Technology Ecosystem - 우측 패널 -->
+<div class="eco-system-right">
+  <!-- 데이터 스트림 -->
+  <div class="data-stream">
+    <div class="stream-line stream-1">
+      <div class="data-packet"></div>
+      <div class="data-packet"></div>
+      <div class="data-packet"></div>
+    </div>
+    <div class="stream-line stream-2">
+      <div class="data-packet"></div>
+      <div class="data-packet"></div>
+    </div>
+    <div class="stream-line stream-3">
+      <div class="data-packet"></div>
+      <div class="data-packet"></div>
+      <div class="data-packet"></div>
+    </div>
+  </div>
+  
+  <!-- 기술 스택 아이콘 스트립 -->
+  <div class="tech-stack-strip">
+    <div class="tech-icon-item" data-tech="Python">
+      <svg viewBox="0 0 24 24" class="tech-svg">
+        <path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zm5.568 16.568C16.568 17.568 15.568 18 14.5 18H9.5c-1.068 0-2.068-.432-2.068-1.432V7.432C7.432 6.432 8.432 6 9.5 6h5c1.068 0 2.068.432 2.068 1.432v9.136z"/>
+      </svg>
+    </div>
+    <div class="tech-icon-item" data-tech="ROS2">
+      <svg viewBox="0 0 24 24" class="tech-svg">
+        <circle cx="12" cy="12" r="3"/>
+        <path d="M12 1v6m0 10v6m11-7h-6m-10 0H1m15.5-6.5l-4.24 4.24M6.74 17.26L2.5 21.5m15-15l-4.24 4.24M6.74 6.74L2.5 2.5"/>
+      </svg>
+    </div>
+    <div class="tech-icon-item" data-tech="Docker">
+      <svg viewBox="0 0 24 24" class="tech-svg">
+        <rect x="2" y="8" width="4" height="4"/>
+        <rect x="7" y="8" width="4" height="4"/>
+        <rect x="12" y="8" width="4" height="4"/>
+        <rect x="17" y="8" width="4" height="4"/>
+        <rect x="7" y="3" width="4" height="4"/>
+        <rect x="12" y="3" width="4" height="4"/>
+      </svg>
+    </div>
+    <div class="tech-icon-item" data-tech="Arduino">
+      <svg viewBox="0 0 24 24" class="tech-svg">
+        <circle cx="12" cy="12" r="10"/>
+        <circle cx="8" cy="10" r="2"/>
+        <circle cx="16" cy="10" r="2"/>
+        <path d="M8 14h8"/>
+      </svg>
+    </div>
+  </div>
+  
+  <!-- 환경 모니터링 HUD -->
+  <div class="env-monitor-hud">
+    <div class="hud-header">SYSTEM STATUS</div>
+    <div class="hud-metrics">
+      <div class="metric-row">
+        <span class="metric-label">CO₂</span>
+        <div class="metric-bar">
+          <div class="metric-fill" id="co2-bar" style="width: 65%"></div>
+        </div>
+        <span class="metric-value" id="co2-val">342</span>
+      </div>
+      <div class="metric-row">
+        <span class="metric-label">PWR</span>
+        <div class="metric-bar">
+          <div class="metric-fill" id="pwr-bar" style="width: 87%"></div>
+        </div>
+        <span class="metric-value" id="pwr-val">87</span>
+      </div>
+      <div class="metric-row">
+        <span class="metric-label">EFF</span>
+        <div class="metric-bar">
+          <div class="metric-fill" id="eff-bar" style="width: 94%"></div>
+        </div>
+        <span class="metric-value" id="eff-val">94</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 배경 격자 패턴 -->
+<div class="bg-grid-pattern">
+  <div class="grid-lines horizontal"></div>
+  <div class="grid-lines vertical"></div>
+</div>
 
 <!-- ── Partner Logos Section (separate from banner) ── -->
 <section class="logo-section">
@@ -52,7 +218,7 @@ permalink: /home.html
 <section class="home-projects-section">
   <div class="home-projects-container">
     <h2 class="projects-section-title">
-      <span class="title-emoji"></span>Latest Projects
+      <span class="title-emoji">🛠️</span>Latest Projects
     </h2>
     <p class="projects-section-subtitle">Showcasing recent innovations in environmental robotics and automation</p>
     
@@ -338,550 +504,5 @@ permalink: /home.html
   </div>
 </section>
 
-<style>
-/* Beautiful Jekyll 테마 강제 오버라이드 */
-.home-projects-section * {
-  box-sizing: border-box !important;
-}
-
-.home-projects-section,
-.home-projects-container,
-.home-project-item,
-.home-project-card {
-  margin: 0 !important;
-  padding: 0 !important;
-  max-width: none !important;
-  width: 100% !important;
-  position: static !important;
-  left: auto !important;
-  right: auto !important;
-  transform: none !important;
-  float: none !important;
-}
-
-/* 홈페이지 프로젝트 섹션 스타일 */
-.home-projects-section {
-  padding: 4rem 0 !important;
-  background: #fafafa !important;
-  width: 100vw !important;
-  margin-left: calc(-50vw + 50%) !important;
-  margin-right: calc(-50vw + 50%) !important;
-  position: relative !important;
-  display: block !important;
-  text-align: center !important;
-}
-
-.home-projects-container {
-  max-width: 1000px !important;
-  margin: 0 auto !important;
-  padding: 0 2rem !important;
-  width: 100% !important;
-  display: block !important;
-  position: relative !important;
-  text-align: center !important;
-}
-
-/* 제목 스타일 - 테마에 맞게 개선 */
-.projects-section-title {
-  text-align: center !important;
-  font-size: 2.8rem !important;
-  font-weight: 700 !important;
-  color: #2c3e50 !important;
-  margin-bottom: 1rem !important;
-  margin-top: 0 !important;
-  position: relative !important;
-  display: inline-block !important;
-  padding: 0 2rem !important;
-}
-
-.projects-section-title::before {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 0;
-  width: 1.5rem;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, #2E8B57);
-  transform: translateY(-50%);
-}
-
-.projects-section-title::after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  right: 0;
-  width: 1.5rem;
-  height: 2px;
-  background: linear-gradient(90deg, #3CB371, transparent);
-  transform: translateY(-50%);
-}
-
-.projects-section-title .title-emoji {
-  background: linear-gradient(135deg, #2E8B57 0%, #3CB371 30%, #20B2AA 70%, #48D1CC 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  margin-right: 0.5rem;
-  font-size: 1.1em;
-}
-
-.projects-section-subtitle {
-  text-align: center !important;
-  color: #7f8c8d !important;
-  font-size: 1.1rem !important;
-  margin-bottom: 3rem !important;
-  font-style: italic !important;
-  opacity: 0.8 !important;
-}
-
-/* 홈 프로젝트 아이템 */
-.home-project-item {
-  margin-bottom: 2.5rem !important;
-  width: 100% !important;
-  max-width: 100% !important;
-  display: block !important;
-  position: relative !important;
-  text-align: left !important;
-}
-
-.home-project-card {
-  background: white !important;
-  border-radius: 16px !important;
-  overflow: hidden !important;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.08) !important;
-  transition: all 0.4s ease !important;
-  padding: 2rem !important;
-  position: relative !important;
-  min-height: 220px !important;
-  clear: both !important;
-  margin: 0 !important;
-  width: 100% !important;
-  max-width: 100% !important;
-  display: block !important;
-  border: none !important;
-}
-
-.home-project-card:hover {
-  transform: translateY(-3px) !important;
-  box-shadow: 0 12px 35px rgba(46, 139, 87, 0.12) !important;
-}
-
-.home-project-card::after {
-  content: "" !important;
-  display: table !important;
-  clear: both !important;
-}
-
-.home-project-link {
-  display: block !important;
-  text-decoration: none !important;
-  color: inherit !important;
-  width: 100% !important;
-  border: none !important;
-  outline: none !important;
-}
-
-.home-project-link:hover {
-  text-decoration: none !important;
-  color: inherit !important;
-}
-
-.home-project-link:hover .home-project-title {
-  color: #2E8B57 !important;
-}
-
-/* 홈 프로젝트 콘텐츠 */
-.home-project-content {
-  width: calc(100% - 260px) !important;
-  margin-right: 0 !important;
-  display: block !important;
-  float: left !important;
-  padding-right: 1rem !important;
-  position: relative !important;
-  text-align: left !important;
-}
-
-.home-project-meta {
-  display: flex !important;
-  align-items: center !important;
-  gap: 0.8rem !important;
-  margin-bottom: 0.8rem !important;
-  flex-wrap: wrap !important;
-}
-
-.home-project-year {
-  background: linear-gradient(45deg, #2E8B57, #3CB371) !important;
-  color: white !important;
-  padding: 0.3rem 0.9rem !important; /* 0.8rem → 0.9rem으로 확대 */
-  border-radius: 20px !important;
-  font-size: 0.75rem !important; /* 0.8rem → 0.75rem으로 축소 */
-  font-weight: 600 !important;
-  white-space: nowrap !important;
-  border: none !important;
-  display: inline-block !important;
-  letter-spacing: 0.3px !important; /* 간격 추가 */
-}
-
-.home-project-category {
-  color: #2E8B57 !important;
-  font-size: 0.85rem !important;
-  font-weight: 500 !important;
-  text-transform: uppercase !important;
-  letter-spacing: 0.5px !important;
-  line-height: 1.2 !important;
-}
-
-.home-project-title {
-  font-size: 1.5rem !important;
-  font-weight: 700 !important;
-  margin-bottom: 0.8rem !important;
-  color: #2c3e50 !important;
-  transition: color 0.3s ease !important;
-  line-height: 1.2 !important;
-  margin-top: 0 !important;
-  text-decoration: none !important;
-  border: none !important;
-}
-
-.home-project-description {
-  font-size: 0.9rem !important;
-  line-height: 1.6 !important;
-  color: #555 !important;
-  margin-bottom: 1rem !important;
-  text-align: justify !important;
-  text-decoration: none !important;
-}
-
-/* 홈 프로젝트 임팩트 지표 */
-.home-project-impact {
-  display: flex !important;
-  gap: 1rem !important;
-  margin-bottom: 1rem !important;
-  padding: 0.8rem !important;
-  background: #f8fffe !important;
-  border-radius: 10px !important;
-  border-left: 3px solid #2E8B57 !important;
-  flex-wrap: wrap !important;
-  clear: left !important;
-  border-top: none !important;
-  border-right: none !important;
-  border-bottom: none !important;
-}
-
-.home-impact-item {
-  text-align: center !important;
-  min-width: 65px !important;
-  flex: 1 !important;
-  display: block !important;
-}
-
-.home-impact-value {
-  display: block !important;
-  font-size: 1.2rem !important;
-  font-weight: 700 !important;
-  color: #2E8B57 !important;
-  margin-bottom: 0.2rem !important;
-  line-height: 1 !important;
-  text-decoration: none !important;
-}
-
-.home-impact-label {
-  font-size: 0.65rem !important;
-  color: #666 !important;
-  text-transform: uppercase !important;
-  letter-spacing: 0.5px !important;
-  line-height: 1.2 !important;
-  display: block !important;
-}
-
-/* 홈 기술 태그 */
-.home-project-tech {
-  display: flex !important;
-  flex-wrap: wrap !important;
-  gap: 0.4rem !important;
-  clear: left !important;
-  margin-top: 0 !important;
-}
-
-.home-tech-tag {
-  padding: 0.3rem 0.7rem !important;
-  border-radius: 16px !important;
-  font-size: 0.7rem !important;
-  font-weight: 500 !important;
-  transition: all 0.3s ease !important;
-  display: inline-block !important;
-  text-decoration: none !important;
-  border-width: 1px !important;
-  border-style: solid !important;
-}
-
-.home-tech-tag.ai {
-  background: #e3f2fd !important;
-  color: #1976d2 !important;
-  border-color: #bbdefb !important;
-}
-
-.home-tech-tag.data {
-  background: #f3e5f5 !important;
-  color: #7b1fa2 !important;
-  border-color: #ce93d8 !important;
-}
-
-.home-tech-tag.comm {
-  background: #e8f5e8 !important;
-  color: #388e3c !important;
-  border-color: #a5d6a7 !important;
-}
-
-.home-tech-tag.prog {
-  background: #fff3e0 !important;
-  color: #f57c00 !important;
-  border-color: #ffcc02 !important;
-}
-
-.home-tech-tag.design {
-  background: #fce4ec !important;
-  color: #c2185b !important;
-  border-color: #f8bbd9 !important;
-}
-
-.home-tech-tag.eng {
-  background: #e0f2f1 !important;
-  color: #00695c !important;
-  border-color: #80cbc4 !important;
-}
-
-.home-tech-tag.manu {
-  background: #f1f8e9 !important;
-  color: #689f38 !important;
-  border-color: #aed581 !important;
-}
-
-.home-tech-tag:hover {
-  transform: translateY(-1px) !important;
-  box-shadow: 0 3px 10px rgba(0,0,0,0.15) !important;
-}
-
-/* 홈 프로젝트 미디어 */
-.home-project-media {
-  position: absolute !important;
-  top: 1.5rem !important;
-  right: 1.5rem !important;
-  width: 240px !important;
-  height: 140px !important;
-  z-index: 10 !important;
-  border-radius: 12px !important;
-  overflow: hidden !important;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.12) !important;
-}
-
-.home-video-link {
-  display: block !important;
-  width: 100% !important;
-  height: 100% !important;
-  text-decoration: none !important;
-  border-radius: 10px !important;
-  overflow: hidden !important;
-  transition: all 0.3s ease !important;
-  position: relative !important;
-  border: none !important;
-}
-
-.home-video-link:hover {
-  transform: scale(1.03) !important;
-  box-shadow: 0 12px 28px rgba(0,0,0,0.25) !important;
-  text-decoration: none !important;
-}
-
-.home-video-link::before {
-  content: "▶" !important;
-  position: absolute !important;
-  top: 50% !important;
-  left: 50% !important;
-  transform: translate(-50%, -50%) !important;
-  font-size: 1.8rem !important;
-  color: white !important;
-  text-shadow: 0 2px 4px rgba(0,0,0,0.5) !important;
-  z-index: 20 !important;
-  opacity: 0.8 !important;
-  transition: all 0.3s ease !important;
-}
-
-.home-video-link:hover::before {
-  opacity: 1 !important;
-  transform: translate(-50%, -50%) scale(1.2) !important;
-}
-
-.home-video-wrapper {
-  position: relative !important;
-  width: 100% !important;
-  height: 100% !important;
-  border-radius: 10px !important;
-  overflow: hidden !important;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.15) !important;
-  transition: all 0.3s ease !important;
-  background: linear-gradient(135deg, #2E8B57 0%, #3CB371 100%) !important;
-}
-
-.home-video-wrapper iframe {
-  width: 100% !important;
-  height: 100% !important;
-  border: none !important;
-  pointer-events: none !important;
-  border-radius: 10px !important;
-}
-
-/* View All Projects 버튼 */
-.view-all-projects {
-  text-align: center !important;
-  margin-top: 3rem !important;
-  clear: both !important;
-}
-
-.view-all-button {
-  display: inline-block !important;
-  background: linear-gradient(45deg, #2E8B57, #3CB371) !important;
-  color: white !important;
-  padding: 1rem 2rem !important;
-  border-radius: 30px !important;
-  text-decoration: none !important;
-  font-weight: 600 !important;
-  font-size: 1.1rem !important;
-  transition: all 0.3s ease !important;
-  box-shadow: 0 4px 15px rgba(46, 139, 87, 0.3) !important;
-  border: none !important;
-  position: relative !important;
-  overflow: hidden !important;
-}
-
-.view-all-button::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-  transition: all 0.6s ease;
-}
-
-.view-all-button:hover::before {
-  left: 100%;
-}
-
-.view-all-button:hover {
-  transform: translateY(-2px) !important;
-  box-shadow: 0 8px 25px rgba(46, 139, 87, 0.4) !important;
-  color: white !important;
-  text-decoration: none !important;
-}
-
-/* 반응형 디자인 */
-@media (max-width: 1200px) {
-  .home-project-content {
-    width: calc(100% - 220px) !important;
-    padding-right: 0.8rem !important;
-  }
-  
-  .home-project-media {
-    width: 200px !important;
-    height: 120px !important;
-    top: 1.2rem !important;
-    right: 1.2rem !important;
-  }
-}
-
-@media (max-width: 968px) {
-  .home-project-card {
-    padding: 1.5rem !important;
-    min-height: auto !important;
-  }
-  
-  .home-project-content {
-    width: 100% !important;
-    float: none !important;
-    padding-right: 0 !important;
-  }
-  
-  .home-project-media {
-    position: static !important;
-    width: 100% !important;
-    height: 180px !important;
-    margin: 1rem 0 0 0 !important;
-    top: auto !important;
-    right: auto !important;
-  }
-  
-  .home-project-content {
-    text-align: center !important;
-  }
-  
-  .home-project-impact {
-    justify-content: center !important;
-    gap: 0.8rem !important;
-  }
-  
-  .projects-section-title {
-    font-size: 2.2rem !important;
-  }
-  
-  .projects-section-title::before,
-  .projects-section-title::after {
-    display: none !important;
-  }
-}
-
-@media (max-width: 768px) {
-  .home-project-title {
-    font-size: 1.3rem !important;
-  }
-  
-  .home-project-description {
-    font-size: 0.85rem !important;
-  }
-  
-  .home-projects-container {
-    padding: 0 1rem !important;
-  }
-  
-  .home-project-media {
-    height: 160px !important;
-  }
-  
-  .projects-section-title {
-    font-size: 2rem !important;
-    padding: 0 1rem !important;
-  }
-}
-
-@media (max-width: 480px) {
-  .home-project-card {
-    padding: 1.2rem !important;
-  }
-  
-  .home-impact-value {
-    font-size: 1.1rem !important;
-  }
-  
-  .home-impact-label {
-    font-size: 0.6rem !important;
-  }
-  
-  .home-project-impact {
-    padding: 0.6rem !important;
-    gap: 0.6rem !important;
-  }
-  
-  .home-impact-item {
-    min-width: 55px !important;
-  }
-  
-  .home-project-media {
-    height: 140px !important;
-  }
-  
-  .projects-section-title {
-    font-size: 1.8rem !important;
-  }
-}
-</style>
+<!-- JavaScript 파일 연결 -->
+<script src="{{ '/assets/js/ecosystem.js' | relative_url }}"></script>
