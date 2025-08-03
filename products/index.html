@@ -237,10 +237,22 @@ html, body {
 }
 
 /* 우리가 직접 정의한 컨테이너 */
-.container {
-  max-width: 1400px !important;
+.projects-container {
+  max-width: 1200px !important; /* 1400px → 1200px로 줄임 */
   margin: 0 auto !important;
   padding: 0 2rem !important;
+  width: 100% !important;
+}
+
+.banner-content {
+  max-width: 1200px !important; /* 1400px → 1200px로 줄임 */
+  margin: 0 auto !important;
+  padding: 0 2rem !important;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  z-index: 2;
   width: 100% !important;
 }
 
@@ -587,10 +599,10 @@ html, body {
 /* 프로젝트 미디어 - 동영상 별도 링크 */
 .project-media {
   position: absolute;
-  top: 3rem; /* 2rem → 3rem으로 증가 */
-  right: 3rem; /* 2rem → 3rem으로 증가 */
-  width: 320px; /* 280px → 320px로 확대 */
-  height: 180px; /* 160px → 180px로 확대 */
+  top: 2.5rem; /* 3rem → 2.5rem으로 줄임 */
+  right: 2.5rem; /* 3rem → 2.5rem으로 줄임 */
+  width: 280px; /* 320px → 280px로 줄임 */
+  height: 160px; /* 180px → 160px로 줄임 */
   z-index: 10;
 }
 
@@ -651,23 +663,23 @@ html, body {
 
 /* 반응형 디자인 */
 @media (max-width: 1200px) {
-  .container, .banner-content {
-    max-width: 1200px; /* 중간 사이즈에서 원래 크기로 */
+  .projects-container, .banner-content {
+    max-width: 1000px !important; /* 1200px → 1000px로 줄임 */
   }
   
   .project-content {
-    margin-right: 320px; /* 조금 줄임 */
+    margin-right: 280px; /* 320px → 280px로 줄임 */
   }
   
   .project-media {
-    width: 300px;
-    height: 170px;
+    width: 260px; /* 300px → 260px로 줄임 */
+    height: 150px; /* 170px → 150px로 줄임 */
   }
 }
 
 @media (max-width: 968px) {
   .project-card {
-    padding: 2rem; /* 3rem → 2rem으로 줄임 */
+    padding: 2rem !important; /* 변경 없음 */
     min-height: auto;
   }
   
@@ -678,8 +690,8 @@ html, body {
   .project-media {
     position: static;
     width: 100%;
-    height: 220px; /* 200px → 220px로 조금 늘림 */
-    margin: 2rem 0 0 0; /* 1rem → 2rem으로 증가 */
+    height: 200px; /* 220px → 200px로 줄임 */
+    margin: 1.5rem 0 0 0; /* 2rem → 1.5rem으로 줄임 */
   }
   
   .video-link {
