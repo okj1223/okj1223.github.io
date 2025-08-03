@@ -4,8 +4,51 @@ title: "Projects"
 permalink: /projects/
 ---
 
+<!-- 인라인 스타일로 강제 적용 -->
+<style>
+/* 최우선 적용을 위한 인라인 스타일 */
+html, body {
+  overflow-x: hidden !important;
+}
+
+.main-content,
+.page-content,
+.page-content .container,
+.page-content .container-fluid,
+.container-md,
+.container-lg,
+.container-xl,
+.container-fluid {
+  max-width: none !important;
+  width: 100% !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+/* Beautiful Jekyll 특정 클래스들 */
+.main-content .container,
+.main-explain-area,
+#main-content {
+  max-width: none !important;
+  width: 100% !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+/* 강제로 전체 너비 확보 */
+.enviro-banner,
+.enviro-projects {
+  width: 100vw !important;
+  position: relative !important;
+  left: 50% !important;
+  right: 50% !important;
+  margin-left: -50vw !important;
+  margin-right: -50vw !important;
+}
+</style>
+
 <!-- 환경로보틱스 배너 섹션 -->
-<section class="enviro-banner">
+<div class="enviro-banner">
   <div class="banner-background">
     <div class="floating-particles"></div>
   </div>
@@ -26,11 +69,11 @@ permalink: /projects/
       <div class="robot-icon">🤖</div>
     </div>
   </div>
-</section>
+</div>
 
 <!-- 프로젝트 리스트 섹션 -->
-<section class="enviro-projects">
-  <div class="container">
+<div class="enviro-projects">
+  <div class="projects-container">
     
     <!-- 최신 프로젝트 (2025) -->
     <article class="project-item">
@@ -150,7 +193,7 @@ permalink: /projects/
     </article>
 
   </div>
-</section>
+</div>
 
 <style>
 /* 전체 페이지 스타일 초기화 */
@@ -195,7 +238,7 @@ permalink: /projects/
 
 /* 우리가 직접 정의한 컨테이너 */
 .container {
-  max-width: 2000px !important;
+  max-width: 1400px !important;
   margin: 0 auto !important;
   padding: 0 2rem !important;
   width: 100% !important;
@@ -365,7 +408,7 @@ permalink: /projects/
   width: 100% !important;
   max-width: none !important;
   position: relative;
-  min-height: 500px;
+  min-height: 280px;
 }
 
 .project-card:hover {
