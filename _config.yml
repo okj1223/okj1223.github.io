@@ -37,6 +37,9 @@ collections:
 
 markdown: kramdown
 kramdown:
+  input: GFM
+  auto_ids: true
+  toc_levels: 1..6
   math_engine: mathjax
   parse_block_html: true
 
