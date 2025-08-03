@@ -13,25 +13,34 @@ layout: default
 </section>
 
 <section class="project-overview">
-  <div class="container">
-    {{ content }}
+  <div class="container project-layout">
+    <!-- 본문 영역 -->
+    <main class="project-content">
+      {{ content }}
 
-    {% if page.video_url %}
-    <div class="video-inline">
-      <h2>Demo Video</h2>
-      <div class="video-wrapper">
-        <iframe
-          src="{{ page.video_url }}"
-          title="{{ page.title }}"
-          frameborder="0"
-          allowfullscreen>
-        </iframe>
+      {% if page.video_url %}
+      <div class="video-inline">
+        <h2>Demo Video</h2>
+        <div class="video-wrapper">
+          <iframe
+            src="{{ page.video_url }}"
+            title="{{ page.title }}"
+            frameborder="0"
+            allowfullscreen>
+          </iframe>
+        </div>
       </div>
-    </div>
-    {% endif %}
+      {% endif %}
+    </main>
+
+    <!-- TOC 사이드바 -->
+    <aside class="project-toc">
+      <h4>Contents</h4>
+      * 목차
+      {:toc}
+    </aside>
   </div>
 </section>
-
 
 <section class="project-back">
   <div class="container">
