@@ -977,3 +977,33 @@ figure figcaption {
 .project-video iframe:loaded + ::before {
   display: none;
 }
+
+
+.project-layout {
+  display: flex;
+  gap: 2rem;
+}
+.project-content {
+  flex: 1;
+}
+.project-toc {
+  width: 240px;
+  position: sticky;
+  top: 120px;
+  padding: 1rem;
+  background: #f9f9f9;
+  border-radius: 8px;
+}
+.project-toc h4 {
+  margin-bottom: 0.5em;
+}
+.project-toc ul {
+  list-style: none;
+  padding-left: 0;
+}
+.project-toc li {
+  margin-bottom: 0.25em;
+}
+.project-toc a {
+  text-decoration: none;
+}
