@@ -487,10 +487,11 @@ html, body {
 
 /* 프로젝트 콘텐츠 - 동영상을 위한 공간 확보 */
 .project-content {
-  width: calc(100% - 240px) !important; /* 동영상 공간 확보 */
+  width: calc(100% - 280px) !important; /* 240px → 280px로 공간 확대 */
   margin-right: 0 !important;
   display: block;
   float: left !important; /* 왼쪽 플로트 */
+  padding-right: 1rem !important; /* 동영상과의 간격 */
 }
 
 .project-meta {
@@ -639,12 +640,15 @@ html, body {
 /* 프로젝트 미디어 - 동영상 오른쪽 배치 */
 .project-media {
   position: absolute !important;
-  top: 2rem !important;
-  right: 2rem !important;
-  width: 220px !important;
-  height: 130px !important;
+  top: 1.5rem !important; /* 2rem → 1.5rem으로 위치 조정 */
+  right: 1.5rem !important; /* 2rem → 1.5rem으로 위치 조정 */
+  width: 260px !important; /* 220px → 260px로 확대 */
+  height: 150px !important; /* 130px → 150px로 확대 */
   z-index: 10;
   margin-top: 0 !important;
+  border-radius: 12px !important;
+  overflow: hidden;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.12) !important; /* 그림자 추가 */
 }
 
 .video-link {
@@ -652,24 +656,45 @@ html, body {
   width: 100%;
   height: 100%;
   text-decoration: none;
-  border-radius: 10px; /* 12px → 10px로 축소 */
+  border-radius: 10px;
   overflow: hidden;
   transition: all 0.3s ease;
+  position: relative;
 }
 
 .video-link:hover {
-  transform: scale(1.02);
-  box-shadow: 0 10px 25px rgba(0,0,0,0.2); /* 12px 30px → 10px 25px */
+  transform: scale(1.03); /* 1.02 → 1.03으로 약간 확대 */
+  box-shadow: 0 12px 28px rgba(0,0,0,0.25); /* 호버 시 더 강한 그림자 */
+}
+
+.video-link::before {
+  content: "▶";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 2rem;
+  color: white;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+  z-index: 20;
+  opacity: 0.8;
+  transition: all 0.3s ease;
+}
+
+.video-link:hover::before {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1.2);
 }
 
 .video-wrapper {
   position: relative;
   width: 100%;
   height: 100%;
-  border-radius: 10px; /* 12px → 10px로 축소 */
+  border-radius: 10px;
   overflow: hidden;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.15); /* 10px 25px → 8px 20px */
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
   transition: all 0.3s ease;
+  background: linear-gradient(135deg, #2E8B57 0%, #3CB371 100%); /* 배경 그라디언트 추가 */
 }
 
 .video-wrapper iframe {
@@ -677,6 +702,7 @@ html, body {
   height: 100%;
   border: none;
   pointer-events: none;
+  border-radius: 10px;
 }
 
 /* 환경 구분선 */
@@ -713,12 +739,15 @@ html, body {
   }
   
   .project-content {
-    width: calc(100% - 200px) !important; /* 동영상 공간 확보 */
+    width: calc(100% - 220px) !important; /* 240px → 220px로 조정 */
+    padding-right: 0.8rem !important;
   }
   
   .project-media {
-    width: 180px !important;
-    height: 110px !important;
+    width: 200px !important; /* 180px → 200px로 조정 */
+    height: 120px !important; /* 110px → 120px로 조정 */
+    top: 1.2rem !important;
+    right: 1.2rem !important;
   }
 }
 
