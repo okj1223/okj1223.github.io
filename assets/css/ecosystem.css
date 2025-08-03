@@ -878,13 +878,13 @@
 /* 반응형 디자인 */
 @media (max-width: 1200px) {
   .home-project-content {
-    width: calc(100% - 220px) !important;
+    width: calc(100% - 260px) !important; /* 220px → 260px로 조정 */
     padding-right: 0.8rem !important;
   }
   
   .home-project-media {
-    width: 200px !important;
-    height: 120px !important;
+    width: 240px !important; /* 200px → 240px로 조정 */
+    height: 140px !important; /* 120px → 140px로 조정 */
     top: 1.2rem !important;
     right: 1.2rem !important;
   }
@@ -994,7 +994,243 @@
   }
 }
 
-/* 추가 애니메이션 및 유틸리티 클래스 */
+/* 스킬 섹션 카테고리별 스타일 추가 */
+.skills-category {
+  margin-bottom: 3rem;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 16px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  border-left: 4px solid #2E8B57;
+  transition: all 0.3s ease;
+}
+
+.skills-category:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(46, 139, 87, 0.12);
+  background: rgba(255, 255, 255, 0.95);
+}
+
+.skills-category h3 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 1.5rem;
+  margin-top: 0;
+  position: relative;
+  padding-left: 1rem;
+  line-height: 1.2;
+}
+
+.skills-category h3::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 20px;
+  background: linear-gradient(135deg, #2E8B57 0%, #3CB371 100%);
+  border-radius: 2px;
+}
+
+/* 카테고리별 아이콘 색상 구분 */
+.skills-category:nth-child(1) {
+  border-left-color: #3498db; /* Programming - 파란색 */
+}
+
+.skills-category:nth-child(1) h3::before {
+  background: linear-gradient(135deg, #3498db 0%, #5dade2 100%);
+}
+
+.skills-category:nth-child(2) {
+  border-left-color: #e74c3c; /* Frameworks - 빨간색 */
+}
+
+.skills-category:nth-child(2) h3::before {
+  background: linear-gradient(135deg, #e74c3c 0%, #ec7063 100%);
+}
+
+.skills-category:nth-child(3) {
+  border-left-color: #f39c12; /* Web Development - 주황색 */
+}
+
+.skills-category:nth-child(3) h3::before {
+  background: linear-gradient(135deg, #f39c12 0%, #f8c471 100%);
+}
+
+.skills-category:nth-child(4) {
+  border-left-color: #9b59b6; /* Embedded & IoT - 보라색 */
+}
+
+.skills-category:nth-child(4) h3::before {
+  background: linear-gradient(135deg, #9b59b6 0%, #bb8fce 100%);
+}
+
+.skills-category:nth-child(5) {
+  border-left-color: #1abc9c; /* DevOps - 청록색 */
+}
+
+.skills-category:nth-child(5) h3::before {
+  background: linear-gradient(135deg, #1abc9c 0%, #76d7c4 100%);
+}
+
+.skills-category:nth-child(6) {
+  border-left-color: #34495e; /* CAD & 3D - 다크그레이 */
+}
+
+.skills-category:nth-child(6) h3::before {
+  background: linear-gradient(135deg, #34495e 0%, #85929e 100%);
+}
+
+/* 스킬 그리드 개선 */
+.skills-category .skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.skills-category .skill-item {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 12px;
+  padding: 1rem;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.skills-category .skill-item:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  border-color: rgba(46, 139, 87, 0.3);
+}
+
+.skills-category .skill-item img {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  transition: all 0.3s ease;
+}
+
+.skills-category .skill-item:hover img {
+  transform: scale(1.1);
+}
+
+/* 메인 스킬 섹션 제목 스타일 개선 */
+.skills-section h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 3rem;
+  color: #2c3e50;
+  position: relative;
+  padding-bottom: 1rem;
+}
+
+.skills-section h2::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background: linear-gradient(90deg, #2E8B57 0%, #3CB371 100%);
+  border-radius: 2px;
+}
+
+/* Core Skills 섹션 특별 스타일 */
+.core-skills {
+  background: linear-gradient(135deg, rgba(46, 139, 87, 0.03) 0%, rgba(60, 179, 113, 0.03) 100%);
+  padding: 4rem 2rem;
+  border-radius: 20px;
+  margin: 2rem 0;
+}
+
+/* Creative Tools 섹션 스타일 */
+.creative-tools {
+  background: linear-gradient(135deg, rgba(156, 39, 176, 0.03) 0%, rgba(233, 30, 99, 0.03) 100%);
+  padding: 3rem 2rem;
+  border-radius: 20px;
+  margin: 2rem 0;
+}
+
+.creative-tools h2 {
+  color: #8e24aa;
+}
+
+.creative-tools h2::after {
+  background: linear-gradient(90deg, #8e24aa 0%, #e91e63 100%);
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+  .skills-category {
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+  }
+  
+  .skills-category h3 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+  }
+  
+  .skills-category .skills-grid {
+    grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
+    gap: 1rem;
+  }
+  
+  .skills-category .skill-item {
+    padding: 0.8rem;
+  }
+  
+  .skills-category .skill-item img {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .skills-section h2 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .skills-category {
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .skills-category h3 {
+    font-size: 1.1rem;
+    padding-left: 0.8rem;
+  }
+  
+  .skills-category h3::before {
+    width: 3px;
+    height: 16px;
+  }
+  
+  .skills-category .skills-grid {
+    grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
+    gap: 0.8rem;
+  }
+  
+  .skills-category .skill-item {
+    padding: 0.6rem;
+  }
+  
+  .skills-category .skill-item img {
+    width: 32px;
+    height: 32px;
+  }
+  
+  .core-skills,
+  .creative-tools {
+    padding: 2rem 1rem;
+  }
+}
 .fade-in {
   opacity: 0;
   transform: translateY(20px);
