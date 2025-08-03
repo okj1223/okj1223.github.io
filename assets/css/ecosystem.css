@@ -1148,20 +1148,59 @@
   margin: 2rem 0;
 }
 
-/* Creative Tools 섹션 스타일 */
+/* Creative Tools 섹션 스타일 - 절제된 디자인 */
 .creative-tools {
-  background: linear-gradient(135deg, rgba(156, 39, 176, 0.03) 0%, rgba(233, 30, 99, 0.03) 100%);
-  padding: 3rem 2rem;
-  border-radius: 20px;
-  margin: 2rem 0;
+  background: rgba(248, 249, 250, 0.6); /* 연한 회색으로 변경 */
+  padding: 2.5rem 2rem; /* 3rem → 2.5rem으로 축소 */
+  border-radius: 12px; /* 20px → 12px로 축소 */
+  margin: 1.5rem 0; /* 2rem → 1.5rem으로 축소 */
+  border: 1px solid rgba(0, 0, 0, 0.05); /* 연한 테두리 추가 */
 }
 
 .creative-tools h2 {
-  color: #8e24aa;
+  color: #5a6c7d; /* 차분한 회색으로 변경 */
+  font-size: 2rem; /* 메인보다 작게 */
+  margin-bottom: 2rem; /* 3rem → 2rem으로 축소 */
 }
 
 .creative-tools h2::after {
-  background: linear-gradient(90deg, #8e24aa 0%, #e91e63 100%);
+  background: linear-gradient(90deg, #95a5a6 0%, #bdc3c7 100%); /* 차분한 회색 그라디언트 */
+  width: 60px; /* 80px → 60px로 축소 */
+  height: 2px; /* 3px → 2px로 축소 */
+}
+
+/* Creative Tools의 스킬 그리드 - 더 단순하게 */
+.creative-tools .skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: 1.2rem; /* 간격 축소 */
+  max-width: 600px; /* 최대 너비 제한 */
+  margin: 0 auto; /* 중앙 정렬 */
+}
+
+.creative-tools .skill-item {
+  background: rgba(255, 255, 255, 0.8); /* 더 연한 배경 */
+  border-radius: 8px; /* 12px → 8px로 축소 */
+  padding: 1rem;
+  transition: all 0.2s ease; /* 애니메이션 축소 */
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04); /* 그림자 축소 */
+}
+
+.creative-tools .skill-item:hover {
+  transform: translateY(-1px); /* -3px → -1px로 축소 */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* 호버 효과 축소 */
+  border-color: rgba(149, 165, 166, 0.3); /* 차분한 색상 */
+}
+
+.creative-tools .skill-item img {
+  width: 40px; /* 48px → 40px로 축소 */
+  height: 40px;
+  transition: all 0.2s ease;
+}
+
+.creative-tools .skill-item:hover img {
+  transform: scale(1.05); /* 1.1 → 1.05로 축소 */
 }
 
 /* 반응형 디자인 */
@@ -1226,9 +1265,23 @@
     height: 32px;
   }
   
-  .core-skills,
   .creative-tools {
-    padding: 2rem 1rem;
+    padding: 2rem 1rem; /* 더 컴팩트하게 */
+  }
+  
+  .creative-tools h2 {
+    font-size: 1.8rem; /* 모바일에서 더 작게 */
+  }
+  
+  .creative-tools .skills-grid {
+    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+    gap: 1rem;
+    max-width: 400px; /* 모바일에서 더 제한 */
+  }
+  
+  .creative-tools .skill-item img {
+    width: 36px; /* 모바일에서 더 작게 */
+    height: 36px;
   }
 }
 .fade-in {
