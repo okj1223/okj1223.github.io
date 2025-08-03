@@ -41,11 +41,11 @@
 /* Living Technology Ecosystem - 좌측 패널 */
 .eco-system-left {
   position: fixed;
-  left: 20px;
+  left: 15px; /* 20px → 15px로 조정 */
   top: 50%;
   transform: translateY(-50%);
-  width: 80px;
-  height: 500px;
+  width: 100px; /* 80px → 100px로 확대 */
+  height: 600px; /* 500px → 600px로 확대 */
   z-index: 1000;
   pointer-events: none;
 }
@@ -71,18 +71,18 @@
 
 .progress-nodes {
   position: absolute;
-  right: 15px;
+  right: 20px; /* 15px → 20px로 조정 */
   top: 0;
   height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 20px 0;
+  padding: 30px 0; /* 20px → 30px로 확대 */
 }
 
 .progress-node {
-  width: 32px;
-  height: 32px;
+  width: 40px; /* 32px → 40px로 확대 */
+  height: 40px; /* 32px → 40px로 확대 */
   background: rgba(255, 255, 255, 0.95);
   border: 2px solid rgba(46, 139, 87, 0.3);
   border-radius: 50%;
@@ -102,8 +102,8 @@
 }
 
 .node-icon {
-  width: 16px;
-  height: 16px;
+  width: 20px; /* 16px → 20px로 확대 */
+  height: 20px; /* 16px → 20px로 확대 */
   fill: #666;
   transition: fill 0.3s ease;
 }
@@ -546,7 +546,7 @@
 
 /* 홈 프로젝트 콘텐츠 */
 .home-project-content {
-  width: calc(100% - 260px) !important;
+  width: calc(100% - 300px) !important; /* 260px → 300px로 조정 */
   margin-right: 0 !important;
   display: block !important;
   float: left !important;
