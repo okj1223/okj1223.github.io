@@ -298,22 +298,9 @@ section.skills-grid .skill-item span {
   width: auto;
 }
 
-/* AutoCad, Inventor, 3Dmax 아이콘 작게 + 가운데 정렬 */
-.skills-grid .skill-item img[alt="AutoCad"],
-.skills-grid .skill-item img[alt="Inventor"],
-.skills-grid .skill-item img[alt="3Dmax"],
-.skills-grid .skill-item img[alt="C"] {
-  max-height: 35px !important;
-  max-width: 35px !important;
-  width: auto;
-  display: block;
-  margin: 0 auto;
-}
-
 .skills-grid .skill-item img[alt="Premiere Pro"],
 .skills-grid .skill-item img[alt="After Effects"],
 .skills-grid .skill-item img[alt="Photoshop"],
-.skills-grid .skill-item img[alt="HTML"],
 .skills-grid .skill-item img[alt="Illustrator"] {
   max-height: 30px !important;
   max-width: 30px !important;
