@@ -158,36 +158,62 @@ permalink: /projects/
   box-sizing: border-box;
 }
 
-/* Beautiful Jekyll 페이지 컨테이너 오버라이드 */
+/* Beautiful Jekyll 테마 전역 컨테이너 강제 오버라이드 */
+.main-content {
+  max-width: none !important;
+  width: 100% !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
 .page-content {
   padding: 0 !important;
   margin: 0 !important;
+  max-width: none !important;
+  width: 100% !important;
 }
 
 .page-content .container-fluid {
   padding: 0 !important;
   max-width: none !important;
+  width: 100% !important;
 }
 
+.page-content .container {
+  padding: 0 !important;
+  max-width: none !important;
+  width: 100% !important;
+}
+
+/* Beautiful Jekyll의 row 클래스도 오버라이드 */
+.row {
+  margin: 0 !important;
+  padding: 0 !important;
+  max-width: none !important;
+  width: 100% !important;
+}
+
+/* 우리가 직접 정의한 컨테이너 */
 .container {
-  max-width: 1400px; /* 1200px → 1400px로 확장 */
-  margin: 0 auto;
-  padding: 0 2rem;
+  max-width: 1400px !important;
+  margin: 0 auto !important;
+  padding: 0 2rem !important;
+  width: 100% !important;
 }
 
 /* 환경로보틱스 배너 - 전체 너비 */
 .enviro-banner {
-  width: 100vw;
+  width: 100vw !important;
   position: relative;
-  left: 50%;
-  right: 50%;
-  margin-left: -50vw;
-  margin-right: -50vw;
+  left: 50% !important;
+  right: 50% !important;
+  margin-left: -50vw !important;
+  margin-right: -50vw !important;
   background: linear-gradient(135deg, #2E8B57 0%, #3CB371 30%, #20B2AA 70%, #48D1CC 100%);
   color: white;
-  padding: 8rem 0 4rem; /* 상단 패딩 증가로 네비게이션바 공간 확보 */
-  margin-top: 0;
-  margin-bottom: 0;
+  padding: 8rem 0 4rem;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
   overflow: hidden;
 }
 
@@ -220,14 +246,15 @@ permalink: /projects/
 }
 
 .banner-content {
-  max-width: 1400px; /* 1200px → 1400px로 확장 */
-  margin: 0 auto;
-  padding: 0 2rem;
+  max-width: 1400px !important;
+  margin: 0 auto !important;
+  padding: 0 2rem !important;
   display: flex;
   align-items: center;
   justify-content: space-between;
   position: relative;
   z-index: 2;
+  width: 100% !important;
 }
 
 .banner-text {
@@ -310,8 +337,9 @@ permalink: /projects/
 .enviro-projects {
   padding: 4rem 0;
   background: #fafafa;
-  width: 100%;
-  margin: 0;
+  width: 100% !important;
+  margin: 0 !important;
+  max-width: none !important;
 }
 
 /* 프로젝트 아이템 */
@@ -323,7 +351,8 @@ permalink: /projects/
 /* 프로젝트 아이템 */
 .project-item {
   margin-bottom: 3rem;
-  width: 100%;
+  width: 100% !important;
+  max-width: none !important;
 }
 
 .project-card {
@@ -332,11 +361,11 @@ permalink: /projects/
   overflow: hidden;
   box-shadow: 0 10px 30px rgba(0,0,0,0.08);
   transition: all 0.4s ease;
-  padding: 3rem; /* 2rem → 3rem으로 증가 */
-  width: 100%;
-  max-width: none;
+  padding: 3rem !important;
+  width: 100% !important;
+  max-width: none !important;
   position: relative;
-  min-height: 280px; /* 250px → 280px로 증가 */
+  min-height: 280px;
 }
 
 .project-card:hover {
@@ -348,6 +377,7 @@ permalink: /projects/
   display: block;
   text-decoration: none;
   color: inherit;
+  width: 100% !important;
 }
 
 .project-link:hover .project-title {
