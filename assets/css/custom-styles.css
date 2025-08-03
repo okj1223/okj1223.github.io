@@ -307,11 +307,6 @@ section.skills-grid .skill-item span {
   margin: 0 auto;
 }
 
-/* Creative Tools 제목만 아이콘 추가 */
-.skills-section.creative-tools > h2::before {
-  content: "🎨 ";
-}
-
 /* ── Global Font & Section Heading Styles ── */
 section > h2 {
   font-family: 'Merriweather', serif !important;
