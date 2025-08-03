@@ -51,7 +51,10 @@ permalink: /home.html
 <!-- Latest Projects 섹션 - 새로운 스타일 -->
 <section class="home-projects-section">
   <div class="home-projects-container">
-    <h2 class="projects-section-title">🛠️ Latest Projects</h2>
+    <h2 class="projects-section-title">
+      <span class="title-emoji">🛠️</span>Latest Projects
+    </h2>
+    <p class="projects-section-subtitle">Showcasing recent innovations in environmental robotics and automation</p>
     
     <!-- 최신 프로젝트 (2025) -->
     <article class="home-project-item">
@@ -336,410 +339,548 @@ permalink: /home.html
 </section>
 
 <style>
+/* Beautiful Jekyll 테마 강제 오버라이드 */
+.home-projects-section * {
+  box-sizing: border-box !important;
+}
+
+.home-projects-section,
+.home-projects-container,
+.home-project-item,
+.home-project-card {
+  margin: 0 !important;
+  padding: 0 !important;
+  max-width: none !important;
+  width: 100% !important;
+  position: static !important;
+  left: auto !important;
+  right: auto !important;
+  transform: none !important;
+  float: none !important;
+}
+
 /* 홈페이지 프로젝트 섹션 스타일 */
 .home-projects-section {
-  padding: 4rem 0;
-  background: #fafafa;
-  width: 100%;
-  margin: 0;
+  padding: 4rem 0 !important;
+  background: #fafafa !important;
+  width: 100vw !important;
+  margin-left: calc(-50vw + 50%) !important;
+  margin-right: calc(-50vw + 50%) !important;
+  position: relative !important;
+  display: block !important;
+  text-align: center !important;
 }
 
 .home-projects-container {
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 0 2rem;
-  width: 100%;
+  max-width: 1000px !important;
+  margin: 0 auto !important;
+  padding: 0 2rem !important;
+  width: 100% !important;
+  display: block !important;
+  position: relative !important;
+  text-align: center !important;
 }
 
+/* 제목 스타일 - 테마에 맞게 개선 */
 .projects-section-title {
-  text-align: center;
-  font-size: 2.5rem;
-  font-weight: 700;
-  color: #2c3e50;
-  margin-bottom: 3rem;
-  background: linear-gradient(45deg, #2E8B57, #3CB371);
+  text-align: center !important;
+  font-size: 2.8rem !important;
+  font-weight: 700 !important;
+  color: #2c3e50 !important;
+  margin-bottom: 1rem !important;
+  margin-top: 0 !important;
+  position: relative !important;
+  display: inline-block !important;
+  padding: 0 2rem !important;
+}
+
+.projects-section-title::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 1.5rem;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #2E8B57);
+  transform: translateY(-50%);
+}
+
+.projects-section-title::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 0;
+  width: 1.5rem;
+  height: 2px;
+  background: linear-gradient(90deg, #3CB371, transparent);
+  transform: translateY(-50%);
+}
+
+.projects-section-title .title-emoji {
+  background: linear-gradient(135deg, #2E8B57 0%, #3CB371 30%, #20B2AA 70%, #48D1CC 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  margin-right: 0.5rem;
+  font-size: 1.1em;
+}
+
+.projects-section-subtitle {
+  text-align: center !important;
+  color: #7f8c8d !important;
+  font-size: 1.1rem !important;
+  margin-bottom: 3rem !important;
+  font-style: italic !important;
+  opacity: 0.8 !important;
 }
 
 /* 홈 프로젝트 아이템 */
 .home-project-item {
-  margin-bottom: 2.5rem;
-  width: 100%;
+  margin-bottom: 2.5rem !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  display: block !important;
+  position: relative !important;
+  text-align: left !important;
 }
 
 .home-project-card {
-  background: white;
-  border-radius: 16px;
-  overflow: hidden;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.08);
-  transition: all 0.4s ease;
-  padding: 2rem;
-  position: relative;
-  min-height: 220px;
-  clear: both;
+  background: white !important;
+  border-radius: 16px !important;
+  overflow: hidden !important;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.08) !important;
+  transition: all 0.4s ease !important;
+  padding: 2rem !important;
+  position: relative !important;
+  min-height: 220px !important;
+  clear: both !important;
+  margin: 0 !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  display: block !important;
+  border: none !important;
 }
 
 .home-project-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 12px 35px rgba(46, 139, 87, 0.12);
+  transform: translateY(-3px) !important;
+  box-shadow: 0 12px 35px rgba(46, 139, 87, 0.12) !important;
 }
 
 .home-project-card::after {
-  content: "";
-  display: table;
-  clear: both;
+  content: "" !important;
+  display: table !important;
+  clear: both !important;
 }
 
 .home-project-link {
-  display: block;
-  text-decoration: none;
-  color: inherit;
-  width: 100%;
+  display: block !important;
+  text-decoration: none !important;
+  color: inherit !important;
+  width: 100% !important;
+  border: none !important;
+  outline: none !important;
+}
+
+.home-project-link:hover {
+  text-decoration: none !important;
+  color: inherit !important;
 }
 
 .home-project-link:hover .home-project-title {
-  color: #2E8B57;
+  color: #2E8B57 !important;
 }
 
 /* 홈 프로젝트 콘텐츠 */
 .home-project-content {
-  width: calc(100% - 260px);
-  margin-right: 0;
-  display: block;
-  float: left;
-  padding-right: 1rem;
+  width: calc(100% - 260px) !important;
+  margin-right: 0 !important;
+  display: block !important;
+  float: left !important;
+  padding-right: 1rem !important;
+  position: relative !important;
+  text-align: left !important;
 }
 
 .home-project-meta {
-  display: flex;
-  align-items: center;
-  gap: 0.8rem;
-  margin-bottom: 0.8rem;
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.8rem !important;
+  margin-bottom: 0.8rem !important;
+  flex-wrap: wrap !important;
 }
 
 .home-project-year {
-  background: linear-gradient(45deg, #2E8B57, #3CB371);
-  color: white;
-  padding: 0.3rem 0.8rem;
-  border-radius: 20px;
-  font-size: 0.8rem;
-  font-weight: 600;
-  white-space: nowrap;
+  background: linear-gradient(45deg, #2E8B57, #3CB371) !important;
+  color: white !important;
+  padding: 0.3rem 0.8rem !important;
+  border-radius: 20px !important;
+  font-size: 0.8rem !important;
+  font-weight: 600 !important;
+  white-space: nowrap !important;
+  border: none !important;
+  display: inline-block !important;
 }
 
 .home-project-category {
-  color: #2E8B57;
-  font-size: 0.85rem;
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
+  color: #2E8B57 !important;
+  font-size: 0.85rem !important;
+  font-weight: 500 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
+  line-height: 1.2 !important;
 }
 
 .home-project-title {
-  font-size: 1.5rem;
-  font-weight: 700;
-  margin-bottom: 0.8rem;
-  color: #2c3e50;
-  transition: color 0.3s ease;
-  line-height: 1.2;
+  font-size: 1.5rem !important;
+  font-weight: 700 !important;
+  margin-bottom: 0.8rem !important;
+  color: #2c3e50 !important;
+  transition: color 0.3s ease !important;
+  line-height: 1.2 !important;
+  margin-top: 0 !important;
+  text-decoration: none !important;
+  border: none !important;
 }
 
 .home-project-description {
-  font-size: 0.9rem;
-  line-height: 1.6;
-  color: #555;
-  margin-bottom: 1rem;
-  text-align: justify;
+  font-size: 0.9rem !important;
+  line-height: 1.6 !important;
+  color: #555 !important;
+  margin-bottom: 1rem !important;
+  text-align: justify !important;
+  text-decoration: none !important;
 }
 
 /* 홈 프로젝트 임팩트 지표 */
 .home-project-impact {
-  display: flex;
-  gap: 1rem;
-  margin-bottom: 1rem;
-  padding: 0.8rem;
-  background: #f8fffe;
-  border-radius: 10px;
-  border-left: 3px solid #2E8B57;
-  flex-wrap: wrap;
-  clear: left;
+  display: flex !important;
+  gap: 1rem !important;
+  margin-bottom: 1rem !important;
+  padding: 0.8rem !important;
+  background: #f8fffe !important;
+  border-radius: 10px !important;
+  border-left: 3px solid #2E8B57 !important;
+  flex-wrap: wrap !important;
+  clear: left !important;
+  border-top: none !important;
+  border-right: none !important;
+  border-bottom: none !important;
 }
 
 .home-impact-item {
-  text-align: center;
-  min-width: 65px;
-  flex: 1;
+  text-align: center !important;
+  min-width: 65px !important;
+  flex: 1 !important;
+  display: block !important;
 }
 
 .home-impact-value {
-  display: block;
-  font-size: 1.2rem;
-  font-weight: 700;
-  color: #2E8B57;
-  margin-bottom: 0.2rem;
-  line-height: 1;
+  display: block !important;
+  font-size: 1.2rem !important;
+  font-weight: 700 !important;
+  color: #2E8B57 !important;
+  margin-bottom: 0.2rem !important;
+  line-height: 1 !important;
+  text-decoration: none !important;
 }
 
 .home-impact-label {
-  font-size: 0.65rem;
-  color: #666;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  line-height: 1.2;
+  font-size: 0.65rem !important;
+  color: #666 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
+  line-height: 1.2 !important;
+  display: block !important;
 }
 
 /* 홈 기술 태그 */
 .home-project-tech {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.4rem;
-  clear: left;
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 0.4rem !important;
+  clear: left !important;
+  margin-top: 0 !important;
 }
 
 .home-tech-tag {
-  padding: 0.3rem 0.7rem;
-  border-radius: 16px;
-  font-size: 0.7rem;
-  font-weight: 500;
-  transition: all 0.3s ease;
+  padding: 0.3rem 0.7rem !important;
+  border-radius: 16px !important;
+  font-size: 0.7rem !important;
+  font-weight: 500 !important;
+  transition: all 0.3s ease !important;
+  display: inline-block !important;
+  text-decoration: none !important;
+  border-width: 1px !important;
+  border-style: solid !important;
 }
 
 .home-tech-tag.ai {
-  background: #e3f2fd;
-  color: #1976d2;
-  border: 1px solid #bbdefb;
+  background: #e3f2fd !important;
+  color: #1976d2 !important;
+  border-color: #bbdefb !important;
 }
 
 .home-tech-tag.data {
-  background: #f3e5f5;
-  color: #7b1fa2;
-  border: 1px solid #ce93d8;
+  background: #f3e5f5 !important;
+  color: #7b1fa2 !important;
+  border-color: #ce93d8 !important;
 }
 
 .home-tech-tag.comm {
-  background: #e8f5e8;
-  color: #388e3c;
-  border: 1px solid #a5d6a7;
+  background: #e8f5e8 !important;
+  color: #388e3c !important;
+  border-color: #a5d6a7 !important;
 }
 
 .home-tech-tag.prog {
-  background: #fff3e0;
-  color: #f57c00;
-  border: 1px solid #ffcc02;
+  background: #fff3e0 !important;
+  color: #f57c00 !important;
+  border-color: #ffcc02 !important;
 }
 
 .home-tech-tag.design {
-  background: #fce4ec;
-  color: #c2185b;
-  border: 1px solid #f8bbd9;
+  background: #fce4ec !important;
+  color: #c2185b !important;
+  border-color: #f8bbd9 !important;
 }
 
 .home-tech-tag.eng {
-  background: #e0f2f1;
-  color: #00695c;
-  border: 1px solid #80cbc4;
+  background: #e0f2f1 !important;
+  color: #00695c !important;
+  border-color: #80cbc4 !important;
 }
 
 .home-tech-tag.manu {
-  background: #f1f8e9;
-  color: #689f38;
-  border: 1px solid #aed581;
+  background: #f1f8e9 !important;
+  color: #689f38 !important;
+  border-color: #aed581 !important;
 }
 
 .home-tech-tag:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+  transform: translateY(-1px) !important;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.15) !important;
 }
 
 /* 홈 프로젝트 미디어 */
 .home-project-media {
-  position: absolute;
-  top: 1.5rem;
-  right: 1.5rem;
-  width: 240px;
-  height: 140px;
-  z-index: 10;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+  position: absolute !important;
+  top: 1.5rem !important;
+  right: 1.5rem !important;
+  width: 240px !important;
+  height: 140px !important;
+  z-index: 10 !important;
+  border-radius: 12px !important;
+  overflow: hidden !important;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.12) !important;
 }
 
 .home-video-link {
-  display: block;
-  width: 100%;
-  height: 100%;
-  text-decoration: none;
-  border-radius: 10px;
-  overflow: hidden;
-  transition: all 0.3s ease;
-  position: relative;
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  text-decoration: none !important;
+  border-radius: 10px !important;
+  overflow: hidden !important;
+  transition: all 0.3s ease !important;
+  position: relative !important;
+  border: none !important;
 }
 
 .home-video-link:hover {
-  transform: scale(1.03);
-  box-shadow: 0 12px 28px rgba(0,0,0,0.25);
+  transform: scale(1.03) !important;
+  box-shadow: 0 12px 28px rgba(0,0,0,0.25) !important;
+  text-decoration: none !important;
 }
 
 .home-video-link::before {
-  content: "▶";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 1.8rem;
-  color: white;
-  text-shadow: 0 2px 4px rgba(0,0,0,0.5);
-  z-index: 20;
-  opacity: 0.8;
-  transition: all 0.3s ease;
+  content: "▶" !important;
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  font-size: 1.8rem !important;
+  color: white !important;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.5) !important;
+  z-index: 20 !important;
+  opacity: 0.8 !important;
+  transition: all 0.3s ease !important;
 }
 
 .home-video-link:hover::before {
-  opacity: 1;
-  transform: translate(-50%, -50%) scale(1.2);
+  opacity: 1 !important;
+  transform: translate(-50%, -50%) scale(1.2) !important;
 }
 
 .home-video-wrapper {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-  transition: all 0.3s ease;
-  background: linear-gradient(135deg, #2E8B57 0%, #3CB371 100%);
+  position: relative !important;
+  width: 100% !important;
+  height: 100% !important;
+  border-radius: 10px !important;
+  overflow: hidden !important;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15) !important;
+  transition: all 0.3s ease !important;
+  background: linear-gradient(135deg, #2E8B57 0%, #3CB371 100%) !important;
 }
 
 .home-video-wrapper iframe {
-  width: 100%;
-  height: 100%;
-  border: none;
-  pointer-events: none;
-  border-radius: 10px;
+  width: 100% !important;
+  height: 100% !important;
+  border: none !important;
+  pointer-events: none !important;
+  border-radius: 10px !important;
 }
 
 /* View All Projects 버튼 */
 .view-all-projects {
-  text-align: center;
-  margin-top: 3rem;
+  text-align: center !important;
+  margin-top: 3rem !important;
+  clear: both !important;
 }
 
 .view-all-button {
-  display: inline-block;
-  background: linear-gradient(45deg, #2E8B57, #3CB371);
-  color: white;
-  padding: 1rem 2rem;
-  border-radius: 30px;
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 1.1rem;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(46, 139, 87, 0.3);
+  display: inline-block !important;
+  background: linear-gradient(45deg, #2E8B57, #3CB371) !important;
+  color: white !important;
+  padding: 1rem 2rem !important;
+  border-radius: 30px !important;
+  text-decoration: none !important;
+  font-weight: 600 !important;
+  font-size: 1.1rem !important;
+  transition: all 0.3s ease !important;
+  box-shadow: 0 4px 15px rgba(46, 139, 87, 0.3) !important;
+  border: none !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+.view-all-button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: all 0.6s ease;
+}
+
+.view-all-button:hover::before {
+  left: 100%;
 }
 
 .view-all-button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(46, 139, 87, 0.4);
-  color: white;
-  text-decoration: none;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 25px rgba(46, 139, 87, 0.4) !important;
+  color: white !important;
+  text-decoration: none !important;
 }
 
 /* 반응형 디자인 */
 @media (max-width: 1200px) {
   .home-project-content {
-    width: calc(100% - 220px);
-    padding-right: 0.8rem;
+    width: calc(100% - 220px) !important;
+    padding-right: 0.8rem !important;
   }
   
   .home-project-media {
-    width: 200px;
-    height: 120px;
-    top: 1.2rem;
-    right: 1.2rem;
+    width: 200px !important;
+    height: 120px !important;
+    top: 1.2rem !important;
+    right: 1.2rem !important;
   }
 }
 
 @media (max-width: 968px) {
   .home-project-card {
-    padding: 1.5rem;
-    min-height: auto;
+    padding: 1.5rem !important;
+    min-height: auto !important;
   }
   
   .home-project-content {
-    width: 100%;
-    float: none;
-    padding-right: 0;
+    width: 100% !important;
+    float: none !important;
+    padding-right: 0 !important;
   }
   
   .home-project-media {
-    position: static;
-    width: 100%;
-    height: 180px;
-    margin: 1rem 0 0 0;
+    position: static !important;
+    width: 100% !important;
+    height: 180px !important;
+    margin: 1rem 0 0 0 !important;
+    top: auto !important;
+    right: auto !important;
   }
   
   .home-project-content {
-    text-align: center;
+    text-align: center !important;
   }
   
   .home-project-impact {
-    justify-content: center;
-    gap: 0.8rem;
+    justify-content: center !important;
+    gap: 0.8rem !important;
   }
   
   .projects-section-title {
-    font-size: 2rem;
+    font-size: 2.2rem !important;
+  }
+  
+  .projects-section-title::before,
+  .projects-section-title::after {
+    display: none !important;
   }
 }
 
 @media (max-width: 768px) {
   .home-project-title {
-    font-size: 1.3rem;
+    font-size: 1.3rem !important;
   }
   
   .home-project-description {
-    font-size: 0.85rem;
+    font-size: 0.85rem !important;
   }
   
   .home-projects-container {
-    padding: 0 1rem;
+    padding: 0 1rem !important;
   }
   
   .home-project-media {
-    height: 160px;
+    height: 160px !important;
+  }
+  
+  .projects-section-title {
+    font-size: 2rem !important;
+    padding: 0 1rem !important;
   }
 }
 
 @media (max-width: 480px) {
   .home-project-card {
-    padding: 1.2rem;
+    padding: 1.2rem !important;
   }
   
   .home-impact-value {
-    font-size: 1.1rem;
+    font-size: 1.1rem !important;
   }
   
   .home-impact-label {
-    font-size: 0.6rem;
+    font-size: 0.6rem !important;
   }
   
   .home-project-impact {
-    padding: 0.6rem;
-    gap: 0.6rem;
+    padding: 0.6rem !important;
+    gap: 0.6rem !important;
   }
   
   .home-impact-item {
-    min-width: 55px;
+    min-width: 55px !important;
   }
   
   .home-project-media {
-    height: 140px;
+    height: 140px !important;
   }
   
   .projects-section-title {
-    font-size: 1.8rem;
+    font-size: 1.8rem !important;
   }
 }
 </style>
