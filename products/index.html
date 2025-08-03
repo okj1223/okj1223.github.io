@@ -170,7 +170,7 @@ permalink: /projects/
 }
 
 .container {
-  max-width: 1200px;
+  max-width: 1400px; /* 1200px → 1400px로 확장 */
   margin: 0 auto;
   padding: 0 2rem;
 }
@@ -220,7 +220,7 @@ permalink: /projects/
 }
 
 .banner-content {
-  max-width: 1200px;
+  max-width: 1400px; /* 1200px → 1400px로 확장 */
   margin: 0 auto;
   padding: 0 2rem;
   display: flex;
@@ -332,11 +332,11 @@ permalink: /projects/
   overflow: hidden;
   box-shadow: 0 10px 30px rgba(0,0,0,0.08);
   transition: all 0.4s ease;
-  padding: 2rem;
+  padding: 3rem; /* 2rem → 3rem으로 증가 */
   width: 100%;
   max-width: none;
   position: relative;
-  min-height: 250px;
+  min-height: 280px; /* 250px → 280px로 증가 */
 }
 
 .project-card:hover {
@@ -514,10 +514,10 @@ permalink: /projects/
 /* 프로젝트 미디어 - 동영상 별도 링크 */
 .project-media {
   position: absolute;
-  top: 2rem;
-  right: 2rem;
-  width: 280px;
-  height: 160px;
+  top: 3rem; /* 2rem → 3rem으로 증가 */
+  right: 3rem; /* 2rem → 3rem으로 증가 */
+  width: 320px; /* 280px → 320px로 확대 */
+  height: 180px; /* 160px → 180px로 확대 */
   z-index: 10;
 }
 
@@ -577,9 +577,24 @@ permalink: /projects/
 }
 
 /* 반응형 디자인 */
+@media (max-width: 1200px) {
+  .container, .banner-content {
+    max-width: 1200px; /* 중간 사이즈에서 원래 크기로 */
+  }
+  
+  .project-content {
+    margin-right: 320px; /* 조금 줄임 */
+  }
+  
+  .project-media {
+    width: 300px;
+    height: 170px;
+  }
+}
+
 @media (max-width: 968px) {
   .project-card {
-    padding: 1.5rem;
+    padding: 2rem; /* 3rem → 2rem으로 줄임 */
     min-height: auto;
   }
   
@@ -590,8 +605,8 @@ permalink: /projects/
   .project-media {
     position: static;
     width: 100%;
-    height: 200px;
-    margin: 1rem 0 0 0;
+    height: 220px; /* 200px → 220px로 조금 늘림 */
+    margin: 2rem 0 0 0; /* 1rem → 2rem으로 증가 */
   }
   
   .video-link {
@@ -640,7 +655,7 @@ permalink: /projects/
     font-size: 0.95rem;
   }
   
-  .container {
+  .container, .banner-content {
     padding: 0 1rem;
   }
   
@@ -654,7 +669,7 @@ permalink: /projects/
   }
   
   .project-media {
-    height: 180px;
+    height: 200px; /* 180px → 200px로 증가 */
   }
   
   .project-content {
@@ -664,7 +679,7 @@ permalink: /projects/
 
 @media (max-width: 480px) {
   .project-card {
-    padding: 1rem;
+    padding: 1.5rem; /* 1rem → 1.5rem으로 증가 */
   }
   
   .impact-value {
@@ -694,7 +709,7 @@ permalink: /projects/
   
   .project-media {
     width: 100%;
-    height: 160px;
+    height: 180px; /* 160px → 180px로 증가 */
   }
 }
 
