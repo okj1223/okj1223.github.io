@@ -3738,11 +3738,11 @@ figure figcaption {
 
 /* 네비게이션 로고 스타일 */
 
-/* 방법 1: 타이틀 옆에 로고 */
+/* 방법 1: 타이틀 옆에 로고 - 크기 증가 & 간격 조정 */
 .brand-logo {
-  height: 35px !important;
+  height: 45px !important;  /* 35px → 45px로 증가 */
   width: auto !important;
-  margin-right: 0.8rem !important;
+  margin-right: 0.4rem !important;  /* 0.8rem → 0.4rem로 간격 줄임 */
   transition: var(--smooth-transition) !important;
   filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1)) !important;
   vertical-align: middle !important;
@@ -3751,4 +3751,42 @@ figure figcaption {
 .navbar-brand:hover .brand-logo {
   transform: scale(1.05) rotate(3deg) !important;
   filter: drop-shadow(0 4px 8px rgba(127, 179, 211, 0.2)) !important;
+}
+
+/* 브랜드 영역 정렬 */
+.navbar-brand {
+  display: flex !important;
+  align-items: center !important;
+}
+
+/* 네비게이션바 높이도 약간 증가 */
+.navbar-custom {
+  min-height: 75px !important;  /* 70px → 75px */
+}
+
+/* 모바일에서 로고 크기 조정 */
+@media (max-width: 768px) {
+  .brand-logo {
+    height: 38px !important;  /* 30px → 38px로 증가 */
+    margin-right: 0.3rem !important;  /* 간격도 줄임 */
+  }
+  
+  .navbar-brand-logo img {
+    height: 42px !important;  /* 35px → 42px로 증가 */
+  }
+  
+  .navbar-custom {
+    min-height: 70px !important;  /* 모바일에서는 기존 높이 유지 */
+  }
+}
+
+@media (max-width: 480px) {
+  .brand-logo {
+    height: 35px !important;
+    margin-right: 0.25rem !important;  /* 아주 작은 화면에서는 더 가깝게 */
+  }
+  
+  .navbar-brand-logo img {
+    height: 38px !important;
+  }
 }
