@@ -3024,6 +3024,100 @@ padding: 0 1rem !important;
 /* 8. 플렉스 컨테이너 내부 텍스트 안전장치 */
 .project-item *,
 .home-project-card * {
-min-width: 0 !important;
+min-width: 0 !/* 🎬 동영상 화살표 아이콘 완전 제거 */
+
+/* 1. 홈 프로젝트 미디어의 화살표 제거 */
+.home-video-link::before {
+display: none !important;
 }
+
+/* 2. 모든 동영상 컨테이너의 화살표 제거 */
+.project-video::before,
+.video-wrapper::before,
+.home-video-wrapper::before {
+display: none !important;
+}
+
+/* 3. 기존 화살표 관련 CSS 무효화 */
+.home-video-link::before,
+.home-video-link:hover::before {
+content: none !important;
+display: none !important;
+opacity: 0 !important;
+visibility: hidden !important;
+}
+
+/* 4. 동영상 링크 호버 효과는 유지 (화살표만 제거) */
+.home-video-link:hover {
+transform: scale(1.02) !important;
+box-shadow: 0 6px 20px rgba(0,0,0,0.12) !important;
+text-decoration: none !important;
+}
+
+/* 5. 깔끔한 동영상 컨테이너 스타일 */
+.home-video-wrapper,
+.project-video,
+.video-wrapper {
+position: relative !important;
+border-radius: 12px !important;
+overflow: hidden !important;
+box-shadow: 0 4px 12px rgba(0,0,0,0.1) !important;
+transition: var(–smooth-transition) !important;
+}
+
+/* 6. 동영상 iframe 스타일 유지 */
+.home-video-wrapper iframe,
+.project-video iframe,
+.video-wrapper iframe {
+width: 100% !important;
+height: 100% !important;
+border: none !important;
+border-radius: 12px !important;
+}
+
+/* 7. 추가 안전장치 - 모든 가상 요소 화살표 제거 */
+*::before,
+*::after {
+content: none !important;
+}
+
+/* 하지만 필요한 가상 요소는 다시 활성화 */
+.skills-section h2::after,
+.certifications h2::after,
+.section > h2::after,
+.skills-category h3::before,
+.projects-section-title::before,
+.projects-section-title::after,
+.career-title::after {
+content: “” !important;
+display: block !important;
+}
+
+/* 8. 플레이 버튼, 재생 아이콘 모두 제거 */
+[class*=“play”]::before,
+[class*=“video”]::before,
+[class*=“media”]::before {
+display: none !important;
+}
+
+/* 9. 기존 화살표 스타일 완전 무효화 */
+.home-video-link {
+display: block !important;
+width: 100% !important;
+height: 100% !important;
+text-decoration: none !important;
+border-radius: 12px !important;
+overflow: hidden !important;
+transition: var(–smooth-transition) !important;
+position: relative !important;
+border: none !important;
+}
+
+/* 화살표 없는 깔끔한 호버 효과 */
+.home-video-link:hover {
+transform: scale(1.02) !important;
+box-shadow: 0 6px 20px rgba(0,0,0,0.12) !important;
+text-decoration: none !important;
+}
+
 
