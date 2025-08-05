@@ -1544,13 +1544,14 @@ figure figcaption {
     padding: 0 1rem !important;
   }
   
-  .bg-grid-pattern {
-    opacity: 0.003;
-  }
-  
+
   .project-showcase-grid {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
+    display: grid;
+    grid-template-columns: 1fr;     /* 한 줄에 하나씩 */
+    gap: 1rem;                      /* 카드 간 간격 */
+  }
+  .bg-grid-pattern {
+    opacity: 0.003;                 /* 흐리게 */
   }
   
   .project-item {
@@ -1583,7 +1584,15 @@ figure figcaption {
   }
   
   .project-description h3 {
-    font-size: 1.1rem;
+    font-size: 1rem !important;    /* 기존 1.1rem → 1rem */
+    margin-bottom: 0.5rem;
+  }
+  .project-description p {
+    font-size: 0.8rem !important;  /* 기존 0.9rem → 0.8rem */
+    line-height: 1.2;
+  }
+  .project-description a {
+    font-size: 0.75rem !important; /* 버튼/링크 크기 동기화 */
   }
 
 
