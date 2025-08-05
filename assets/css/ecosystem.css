@@ -758,7 +758,9 @@ body::before {
 .home-project-item {
   margin-bottom: 2.5rem !important;
   width: 100% !important;
-  max-width: 100% !important;
+  max-width: 800px !important; /* 데스크톱에서 최대 너비 제한 */
+  margin-left: auto !important; /* 중앙 정렬 */
+  margin-right: auto !important; /* 중앙 정렬 */
   display: block !important;
   position: relative !important;
   text-align: left !important;
@@ -1473,6 +1475,8 @@ section > h2::after {
   box-shadow: 0 2px 15px rgba(0,0,0,0.1);
   transition: var(--smooth-transition);
   min-height: 400px;
+  max-width: 600px; /* 데스크톱에서 최대 너비 제한 */
+  margin: 0 auto; /* 중앙 정렬 */
 }
 
 .project-item:hover {
@@ -2053,6 +2057,13 @@ figure figcaption {
     font-size: 1rem;
   }
   
+  /* 모바일에서는 홈 프로젝트 아이템 전체 너비 사용 */
+  .home-project-item {
+    max-width: 100% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+  
   .home-project-card {
     padding: 1.5rem !important;
     min-height: auto !important;
@@ -2119,12 +2130,14 @@ figure figcaption {
     opacity: 0.003;                 /* 흐리게 */
   }
   
-  /* 카드 컨테이너 전체 폭 확장 */
+  /* 모바일에서 프로젝트 카드는 전체 너비 사용 */
   .project-item {
     display: flex;
     flex-direction: column;
     align-items: stretch !important;
     padding: 1rem !important;
+    max-width: 100% !important; /* 모바일에서 최대 너비 제한 해제 */
+    margin: 0 !important; /* 모바일에서 여백 제거 */
   }
 
   /* 제목·본문 영역 폭 100%, 줄바꿈 허용 */
@@ -2274,12 +2287,21 @@ figure figcaption {
     font-size: 1.4rem !important;
   }
 
-  /* 1) 카드 컨테이너가 자식 요소를 가로 전체로 확장 */
+  /* 극소형 화면에서도 프로젝트 카드는 전체 너비 사용 */
   .project-item {
     display: flex;
     flex-direction: column;
     align-items: stretch !important; /* center → stretch */
     padding: 0.8rem !important;
+    max-width: 100% !important; /* 극소형 화면에서도 최대 너비 제한 해제 */
+    margin: 0 !important; /* 극소형 화면에서도 여백 제거 */
+  }
+
+  /* 홈 프로젝트 아이템도 동일하게 */
+  .home-project-item {
+    max-width: 100% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
   }
 
   /* 2) 제목·본문 영역을 전체 폭으로 설정하고 정상적인 줄바꿈 허용 */
