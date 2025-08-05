@@ -3735,3 +3735,20 @@ figure figcaption {
     border-top-color: rgba(255, 255, 255, 0.2);
   }
 }
+
+/* 네비게이션 로고 스타일 */
+
+/* 방법 1: 타이틀 옆에 로고 */
+.brand-logo {
+  height: 35px !important;
+  width: auto !important;
+  margin-right: 0.8rem !important;
+  transition: var(--smooth-transition) !important;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1)) !important;
+  vertical-align: middle !important;
+}
+
+.navbar-brand:hover .brand-logo {
+  transform: scale(1.05) rotate(3deg) !important;
+  filter: drop-shadow(0 4px 8px rgba(127, 179, 211, 0.2)) !important;
+}

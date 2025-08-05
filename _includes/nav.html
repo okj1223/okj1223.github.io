@@ -6,7 +6,10 @@
     </a>
   {%- elsif site.title -%}
     <a class="navbar-brand" href="{{ '/' | absolute_url }}">
-      <span class="brand-icon"></span>{{ site.title }}
+      {% if site.site-logo %}
+        <img src="{{ site.site-logo | relative_url }}" alt="{{ site.title }} Logo" class="brand-logo">
+      {% endif %}
+      {{ site.title }}
     </a>
   {%- endif -%}
 
