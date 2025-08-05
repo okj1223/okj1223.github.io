@@ -378,3 +378,234 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // 기존 ecosystem.js 코드들...
 // (스크롤 진행률, HUD 애니메이션 등)
+
+
+// 🌿 에코 테마 네비게이션 JavaScript
+
+document.addEventListener('DOMContentLoaded', function() {
+    const navbar = document.querySelector('.navbar-custom');
+    const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
+    
+    // 스크롤 효과
+    let lastScrollTop = 0;
+    let ticking = false;
+    
+    function updateNavbar() {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        
+        // 스크롤 방향 감지
+        if (scrollTop > lastScrollTop && scrollTop > 100) {
+            // 아래로 스크롤 - 네비게이션 숨기기
+            navbar.style.transform = 'translateY(-100%)';
+        } else {
+            // 위로 스크롤 - 네비게이션 보이기
+            navbar.style.transform = 'translateY(0)';
+        }
+        
+        // 스크롤에 따른 배경 변화
+        if (scrollTop > 50) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+        
+        // 스크롤 인디케이터
+        const scrollIndicator = document.querySelector('.scroll-indicator');
+        if (scrollIndicator) {
+            const scrollPercent = (scrollTop / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+            scrollIndicator.style.width = scrollPercent + '%';
+        }
+        
+        lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+        ticking = false;
+    }
+    
+    function requestTick() {
+        if (!ticking) {
+            requestAnimationFrame(updateNavbar);
+            ticking = true;
+        }
+    }
+    
+    window.addEventListener('scroll', requestTick);
+    
+    // 스크롤 인디케이터 추가
+    function addScrollIndicator() {
+        if (!document.querySelector('.scroll-indicator')) {
+            const indicator = document.createElement('div');
+            indicator.className = 'scroll-indicator';
+            navbar.appendChild(indicator);
+        }
+    }
+    addScrollIndicator();
+    
+    // 현재 페이지 활성화
+    function setActiveNavLink() {
+        const currentPath = window.location.pathname;
+        
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            const linkPath = new URL(link.href).pathname;
+            
+            if (linkPath === currentPath || 
+                (currentPath === '/' && linkPath === '/') ||
+                (currentPath.startsWith('/projects') && linkPath.startsWith('/projects')) ||
+                (currentPath.startsWith('/aboutme') && linkPath.startsWith('/aboutme'))) {
+                link.classList.add('active');
+            }
+        });
+    }
+    setActiveNavLink();
+    
+    // 부드러운 스크롤 (앵커 링크용)
+    function smoothScroll(target, duration = 800) {
+        const targetElement = document.querySelector(target);
+        if (!targetElement) return;
+        
+        const targetPosition = targetElement.offsetTop - navbar.offsetHeight - 20;
+        const startPosition = window.pageYOffset;
+        const distance = targetPosition - startPosition;
+        let startTime = null;
+        
+        function animation(currentTime) {
+            if (startTime === null) startTime = currentTime;
+            const timeElapsed = currentTime - startTime;
+            const run = ease(timeElapsed, startPosition, distance, duration);
+            window.scrollTo(0, run);
+            if (timeElapsed < duration) requestAnimationFrame(animation);
+        }
+        
+        function ease(t, b, c, d) {
+            t /= d / 2;
+            if (t < 1) return c / 2 * t * t + b;
+            t--;
+            return -c / 2 * (t * (t - 2) - 1) + b;
+        }
+        
+        requestAnimationFrame(animation);
+    }
+    
+    // 앵커 링크 클릭 시 부드러운 스크롤
+    document.querySelectorAll('a[href^="#"]').forEach(link => {
+        link.addEventListener('click', function(e) {
+            const target = this.getAttribute('href');
+            if (target !== '#' && document.querySelector(target)) {
+                e.preventDefault();
+                smoothScroll(target);
+                
+                // 모바일에서 메뉴 닫기
+                const navbarCollapse = document.querySelector('.navbar-collapse');
+                if (navbarCollapse.classList.contains('show')) {
+                    document.querySelector('.navbar-toggler').click();
+                }
+            }
+        });
+    });
+    
+    // 드롭다운 호버 효과 (데스크톱)
+    if (window.innerWidth > 1199) {
+        const dropdowns = document.querySelectorAll('.nav-item.dropdown');
+        
+        dropdowns.forEach(dropdown => {
+            let timeout;
+            
+            dropdown.addEventListener('mouseenter', function() {
+                clearTimeout(timeout);
+                const dropdownMenu = this.querySelector('.dropdown-menu');
+                const dropdownToggle = this.querySelector('.dropdown-toggle');
+                
+                dropdownToggle.setAttribute('aria-expanded', 'true');
+                dropdownMenu.classList.add('show');
+            });
+            
+            dropdown.addEventListener('mouseleave', function() {
+                const dropdownMenu = this.querySelector('.dropdown-menu');
+                const dropdownToggle = this.querySelector('.dropdown-toggle');
+                
+                timeout = setTimeout(() => {
+                    dropdownToggle.setAttribute('aria-expanded', 'false');
+                    dropdownMenu.classList.remove('show');
+                }, 300);
+            });
+        });
+    }
+    
+    // 검색 기능 개선
+    const searchLink = document.querySelector('#nav-search-link');
+    if (searchLink) {
+        searchLink.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // 검색 아이콘에 애니메이션 추가
+            const searchIcon = document.querySelector('#nav-search-icon');
+            searchIcon.style.transform = 'rotate(360deg)';
+            searchIcon.style.transition = 'transform 0.5s ease';
+            
+            setTimeout(() => {
+                searchIcon.style.transform = 'rotate(0deg)';
+            }, 500);
+            
+            // 실제 검색 기능 트리거 (기존 Beautiful Jekyll 검색)
+            if (window.openSearch) {
+                window.openSearch();
+            }
+        });
+    }
+    
+    // 모바일 메뉴 토글 개선
+    const navbarToggler = document.querySelector('.navbar-toggler');
+    const navbarCollapse = document.querySelector('.navbar-collapse');
+    
+    if (navbarToggler) {
+        navbarToggler.addEventListener('click', function() {
+            // 햄버거 아이콘 애니메이션은 CSS로 처리됨
+            
+            // 모바일 메뉴 열릴 때 바디 스크롤 방지
+            setTimeout(() => {
+                if (navbarCollapse.classList.contains('show')) {
+                    document.body.style.overflow = 'hidden';
+                } else {
+                    document.body.style.overflow = '';
+                }
+            }, 100);
+        });
+        
+        // 모바일 메뉴 외부 클릭시 닫기
+        document.addEventListener('click', function(e) {
+            if (!navbar.contains(e.target) && navbarCollapse.classList.contains('show')) {
+                navbarToggler.click();
+            }
+        });
+    }
+    
+    // 페이지 로드 시 네비게이션 애니메이션
+    navbar.style.opacity = '0';
+    navbar.style.transform = 'translateY(-20px)';
+    
+    setTimeout(() => {
+        navbar.style.transition = 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
+        navbar.style.opacity = '1';
+        navbar.style.transform = 'translateY(0)';
+    }, 100);
+    
+    // 리사이즈 시 모바일/데스크톱 전환 처리
+    let resizeTimeout;
+    window.addEventListener('resize', function() {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(() => {
+            if (window.innerWidth > 1199 && navbarCollapse.classList.contains('show')) {
+                navbarToggler.click();
+            }
+            document.body.style.overflow = '';
+        }, 250);
+    });
+});
+
+// 페이지 전환 시 로딩 애니메이션
+window.addEventListener('beforeunload', function() {
+    const navbar = document.querySelector('.navbar-custom');
+    if (navbar) {
+        navbar.style.opacity = '0.5';
+        navbar.style.transform = 'translateY(-10px)';
+    }
+});
