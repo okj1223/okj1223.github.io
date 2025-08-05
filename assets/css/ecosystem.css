@@ -1705,9 +1705,44 @@ figure figcaption {
   .projects-section-title {
     font-size: 1.4rem !important;
   }
-  
-  .home-project-title {
-    font-size: 1.1rem !important;
+
+  /* 1) 카드 컨테이너가 자식 요소를 가로 전체로 확장 */
+  .project-item {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch !important; /* center → stretch */
+    padding: 0.8rem !important;
+  }
+
+  /* 2) 제목·본문 영역을 전체 폭으로 설정하고 정상적인 줄바꿈 허용 */
+  .home-project-title,
+  .project-description {
+    width: 100% !important;
+    min-width: 0 !important;              /* flex-shrink가 동작하도록 */
+    white-space: normal !important;       /* 문장 단위 줄바꿈 */
+    word-break: break-word !important;    /* 단어 단위 줄바꿈 허용 */
+    text-align: center !important;        /* 원하시면 center 유지 가능 */
+  }
+
+  /* 3) 동영상은 아래로 배치 유지 */
+  .project-video {
+    order: 2 !important;
+    width: 100% !important;
+    padding-bottom: 56.25% !important;
+    position: relative !important;
+  }
+  .project-video iframe {
+    position: absolute !important;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+  }
+
+  /* 4) 텍스트 영역은 비디오 위에 */
+  .project-description {
+    order: 1 !important;
+    padding-bottom: 0.5rem !important;
+    font-size: 0.75rem !important;
+    line-height: 1.2 !important;
   }
   
   .skills-category {
