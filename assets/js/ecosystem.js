@@ -327,3 +327,54 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
 });
+
+// 스킬 필터 기능
+document.addEventListener('DOMContentLoaded', function() {
+    // 필터 버튼과 스킬 아이템들 가져오기
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const skillItems = document.querySelectorAll('.unified-skills-grid .skill-item');
+    
+    // 필터 버튼 클릭 이벤트
+    filterButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const filter = this.getAttribute('data-filter');
+            
+            // 모든 버튼에서 active 클래스 제거
+            filterButtons.forEach(btn => btn.classList.remove('active'));
+            
+            // 클릭한 버튼에 active 클래스 추가
+            this.classList.add('active');
+            
+            // 스킬 아이템 필터링
+            skillItems.forEach(item => {
+                const category = item.getAttribute('data-category');
+                
+                if (filter === 'all' || category === filter) {
+                    // 보이기
+                    item.style.display = 'flex';
+                    item.style.opacity = '0';
+                    item.style.transform = 'translateY(20px)';
+                    
+                    // 애니메이션 효과
+                    setTimeout(() => {
+                        item.style.transition = 'all 0.3s ease';
+                        item.style.opacity = '1';
+                        item.style.transform = 'translateY(0)';
+                    }, 50);
+                } else {
+                    // 숨기기
+                    item.style.transition = 'all 0.3s ease';
+                    item.style.opacity = '0';
+                    item.style.transform = 'translateY(20px)';
+                    
+                    setTimeout(() => {
+                        item.style.display = 'none';
+                    }, 300);
+                }
+            });
+        });
+    });
+});
+
+// 기존 ecosystem.js 코드들...
+// (스크롤 진행률, HUD 애니메이션 등)
