@@ -341,86 +341,109 @@ permalink: /home.html
     <div class="plant-divider"></div>
 </div>
 
-<!-- ── Skills & Expertise Section (Chart Removed) ── -->
-<section class="skills-section core-skills">
+<!-- 방법 1: 통합된 그리드 스타일 (가장 추천) -->
+<section class="skills-section compact-skills">
   <h2>Core Technical Skills</h2>
-
-  <!-- Programming Languages -->
-  <div class="skills-category">
-    <h3>Programming Languages</h3>
-    <div class="skills-grid">
-      <div class="skill-item"><img src="/assets/img/logo_py.svg" alt="Python"></div>
-      <div class="skill-item"><img src="/assets/img/logo_C.svg" alt="C"></div>
-      <div class="skill-item"><img src="/assets/img/logo_js.png" alt="JavaScript"></div>
+  
+  <div class="unified-skills-grid">
+    <!-- Programming -->
+    <div class="skill-item" data-category="Programming">
+      <img src="/assets/img/logo_py.svg" alt="Python">
+      <span class="skill-name">Python</span>
+    </div>
+    <div class="skill-item" data-category="Programming">
+      <img src="/assets/img/logo_C.svg" alt="C">
+      <span class="skill-name">C/C++</span>
+    </div>
+    <div class="skill-item" data-category="Programming">
+      <img src="/assets/img/logo_js.png" alt="JavaScript">
+      <span class="skill-name">JavaScript</span>
+    </div>
+    
+    <!-- Frameworks -->
+    <div class="skill-item" data-category="Frameworks">
+      <img src="/assets/img/logo_react.jpeg" alt="React">
+      <span class="skill-name">React</span>
+    </div>
+    <div class="skill-item" data-category="Frameworks">
+      <img src="/assets/img/logo_ros2.png" alt="ROS2">
+      <span class="skill-name">ROS2</span>
+    </div>
+    <div class="skill-item" data-category="Frameworks">
+      <img src="/assets/img/logo_pytorch.svg" alt="PyTorch">
+      <span class="skill-name">PyTorch</span>
+    </div>
+    <div class="skill-item" data-category="Frameworks">
+      <img src="/assets/img/logo_scikit.png" alt="Scikit-learn">
+      <span class="skill-name">Scikit-learn</span>
+    </div>
+    
+    <!-- Web & Mobile -->
+    <div class="skill-item" data-category="Web & Mobile">
+      <img src="/assets/img/logo_html.png" alt="HTML">
+      <span class="skill-name">HTML/CSS</span>
+    </div>
+    <div class="skill-item" data-category="Web & Mobile">
+      <img src="/assets/img/logo_and.svg" alt="Android">
+      <span class="skill-name">Android</span>
+    </div>
+    
+    <!-- Embedded & IoT -->
+    <div class="skill-item" data-category="Embedded">
+      <img src="/assets/img/logo_ard.png" alt="Arduino">
+      <span class="skill-name">Arduino</span>
+    </div>
+    <div class="skill-item" data-category="Embedded">
+      <img src="/assets/img/logo_mqtt.jpg" alt="MQTT">
+      <span class="skill-name">MQTT</span>
+    </div>
+    
+    <!-- DevOps -->
+    <div class="skill-item" data-category="DevOps">
+      <img src="/assets/img/logo_docker.png" alt="Docker">
+      <span class="skill-name">Docker</span>
+    </div>
+    <div class="skill-item" data-category="DevOps">
+      <img src="/assets/img/logo_git.webp" alt="Git">
+      <span class="skill-name">Git</span>
+    </div>
+    <div class="skill-item" data-category="DevOps">
+      <img src="/assets/img/logo_li.svg" alt="Linux">
+      <span class="skill-name">Linux</span>
+    </div>
+    
+    <!-- CAD & Design -->
+    <div class="skill-item" data-category="CAD">
+      <img src="/assets/img/logo_cad.webp" alt="AutoCAD">
+      <span class="skill-name">AutoCAD</span>
+    </div>
+    <div class="skill-item" data-category="CAD">
+      <img src="/assets/img/logo_in.jpg" alt="Inventor">
+      <span class="skill-name">Inventor</span>
+    </div>
+    <div class="skill-item" data-category="CAD">
+      <img src="/assets/img/logo_3d.jpg" alt="3ds Max">
+      <span class="skill-name">3ds Max</span>
+    </div>
+    
+    <!-- Creative Tools -->
+    <div class="skill-item" data-category="Creative">
+      <img src="/assets/img/logo_pri.png" alt="Premiere Pro">
+      <span class="skill-name">Premiere</span>
+    </div>
+    <div class="skill-item" data-category="Creative">
+      <img src="/assets/img/logo_ps.png" alt="Photoshop">
+      <span class="skill-name">Photoshop</span>
     </div>
   </div>
-
-  <!-- Frameworks & Libraries -->
-  <div class="skills-category">
-    <h3>Frameworks & Libraries</h3>
-    <div class="skills-grid">
-      <div class="skill-item"><img src="/assets/img/logo_react.jpeg" alt="React"></div>
-      <div class="skill-item"><img src="/assets/img/logo_ros2.png" alt="ROS2"></div>
-      <div class="skill-item"><img src="/assets/img/logo_pytorch.svg" alt="PyTorch"></div>
-      <div class="skill-item"><img src="/assets/img/logo_scikit.png" alt="Scikit-learn"></div>
-    </div>
-  </div>
-
-  <!-- Web Development -->
-  <div class="skills-category">
-    <h3>Web Development</h3>
-    <div class="skills-grid">
-      <div class="skill-item"><img src="/assets/img/logo_html.png" alt="HTML"></div>
-      <div class="skill-item"><img src="/assets/img/logo_css.svg" alt="CSS"></div>
-    </div>
-  </div>
-
-  <!-- Mobile Development -->
-  <div class="skills-category">
-    <h3>Mobile Development</h3>
-    <div class="skills-grid">
-      <div class="skill-item"><img src="/assets/img/logo_and.svg" alt="Android"></div>
-    </div>
-  </div>
-
-  <!-- Embedded & IoT -->
-  <div class="skills-category">
-    <h3>Embedded & IoT</h3>
-    <div class="skills-grid">
-      <div class="skill-item"><img src="/assets/img/logo_ard.png" alt="Arduino"></div>
-      <div class="skill-item"><img src="/assets/img/logo_mqtt.jpg" alt="MQTT"></div>
-    </div>
-  </div>
-
-  <!-- DevOps & Tools -->
-  <div class="skills-category">
-    <h3>DevOps & Tools</h3>
-    <div class="skills-grid">
-      <div class="skill-item"><img src="/assets/img/logo_docker.png" alt="Docker"></div>
-      <div class="skill-item"><img src="/assets/img/logo_git.webp" alt="Git & GitHub"></div>
-      <div class="skill-item"><img src="/assets/img/logo_li.svg" alt="Linux"></div>
-    </div>
-  </div>
-
-  <!-- CAD & 3D Modeling -->
-  <div class="skills-category">
-    <h3>CAD & 3D Modeling</h3>
-    <div class="skills-grid">
-      <div class="skill-item"><img src="/assets/img/logo_cad.webp" alt="AutoCAD"></div>
-      <div class="skill-item"><img src="/assets/img/logo_in.jpg" alt="Inventor"></div>
-      <div class="skill-item"><img src="/assets/img/logo_3d.jpg" alt="3ds Max"></div>
-    </div>
-  </div>
-</section>
-
-<!-- Creative & Multimedia Tools Section -->
-<section class="skills-section creative-tools">
-  <h2>Creative & Multimedia Tools</h2>
-  <div class="skills-grid">
-    <div class="skill-item"><img src="/assets/img/logo_pri.png" alt="Premiere Pro"></div>
-    <div class="skill-item"><img src="/assets/img/logo_aff.png" alt="After Effects"></div>
-    <div class="skill-item"><img src="/assets/img/logo_ps.png" alt="Photoshop"></div>
-    <div class="skill-item"><img src="/assets/img/logo_ill.png" alt="Illustrator"></div>
+  
+  <!-- 카테고리 필터 (선택사항) -->
+  <div class="skill-filter">
+    <button class="filter-btn active" data-filter="all">All</button>
+    <button class="filter-btn" data-filter="Programming">Programming</button>
+    <button class="filter-btn" data-filter="Frameworks">Frameworks</button>
+    <button class="filter-btn" data-filter="DevOps">DevOps</button>
+    <button class="filter-btn" data-filter="CAD">CAD</button>
   </div>
 </section>
 

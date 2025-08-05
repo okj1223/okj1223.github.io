@@ -2557,3 +2557,123 @@ figure figcaption {
     border: 1px solid #ddd !important;
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.compact-skills {
+  padding: 3rem 0;
+  background: rgba(248, 252, 248, 0.4);
+}
+
+.unified-skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 1rem;
+  max-width: 1000px;
+  margin: 0 auto 2rem;
+  padding: 0 1rem;
+}
+
+.unified-skills-grid .skill-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 12px;
+  transition: var(--smooth-transition);
+  border: 2px solid transparent;
+  position: relative;
+  overflow: hidden;
+}
+
+.unified-skills-grid .skill-item::before {
+  content: attr(data-category);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: var(--eco-green);
+  color: white;
+  font-size: 0.6rem;
+  padding: 0.2rem;
+  text-align: center;
+  transform: translateY(-100%);
+  transition: var(--smooth-transition);
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+.unified-skills-grid .skill-item:hover::before {
+  transform: translateY(0);
+}
+
+.unified-skills-grid .skill-item:hover {
+  transform: translateY(-5px);
+  border-color: var(--eco-green);
+  box-shadow: var(--leaf-shadow);
+}
+
+.unified-skills-grid .skill-item img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  margin-bottom: 0.5rem;
+  transition: var(--smooth-transition);
+}
+
+.unified-skills-grid .skill-item:hover img {
+  transform: scale(1.1);
+}
+
+.skill-name {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--forest-green);
+  text-align: center;
+  font-family: 'Inter', sans-serif;
+}
+
+/* 필터 버튼 */
+.skill-filter {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-top: 1.5rem;
+}
+
+.filter-btn {
+  padding: 0.5rem 1rem;
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(127, 179, 211, 0.2);
+  border-radius: 20px;
+  color: var(--forest-green);
+  font-size: 0.8rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--smooth-transition);
+  font-family: 'Inter', sans-serif;
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+  background: var(--eco-green);
+  color: white;
+  border-color: var(--eco-green);
+}
