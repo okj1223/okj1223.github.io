@@ -609,3 +609,33 @@ window.addEventListener('beforeunload', function() {
         navbar.style.transform = 'translateY(-10px)';
     }
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+  const backToTopButton = document.getElementById('backToTop');
+  
+  window.addEventListener('scroll', function() {
+    if (window.pageYOffset > 300) {
+      backToTopButton.classList.add('visible');
+    } else {
+      backToTopButton.classList.remove('visible');
+    }
+  });
+  
+  backToTopButton.addEventListener('click', function() {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  });
+  
+  // 소셜 아이콘 호버 효과
+  document.querySelectorAll('.social-link').forEach(link => {
+    link.addEventListener('mouseenter', function() {
+      this.querySelector('.social-icon').style.transform = 'translateY(-3px) rotate(5deg)';
+    });
+    
+    link.addEventListener('mouseleave', function() {
+      this.querySelector('.social-icon').style.transform = 'translateY(0) rotate(0deg)';
+    });
+  });
+});
