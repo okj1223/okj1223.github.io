@@ -3241,35 +3241,6 @@ figure figcaption {
   filter: drop-shadow(0 4px 8px rgba(127, 179, 211, 0.2)) !important;
 }
 
-/* 애니메이션 키프레임 */
-@keyframes leafFloat {
-  0%, 100% { transform: translateY(0) rotate(0deg); }
-  50% { transform: translateY(-3px) rotate(5deg); }
-}
-
-.navbar-nav .nav-link:hover::after {
-  animation: leafFloat 2s ease-in-out infinite;
-}
-
-/* 다크모드 지원 */
-@media (prefers-color-scheme: dark) {
-  .navbar-custom {
-    background: rgba(0, 0, 0, 0.95) !important;
-    border-bottom-color: rgba(127, 179, 211, 0.3) !important;
-  }
-  
-  .navbar-brand,
-  .navbar-nav .nav-link {
-    color: rgba(255, 255, 255, 0.9) !important;
-  }
-  
-  .navbar-toggler-icon,
-  .navbar-toggler-icon::before,
-  .navbar-toggler-icon::after {
-    background: rgba(255, 255, 255, 0.9) !important;
-  }
-}
-
 
 /* 🌿 에코 테마 푸터 스타일 */
 
