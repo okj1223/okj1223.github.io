@@ -950,46 +950,95 @@ body::before {
   box-shadow: 0 2px 8px rgba(0,0,0,0.1) !important;
 }
 
+/* AI/머신러닝 태그 */
 .home-tech-tag.ai {
-  background: rgba(184, 212, 227, 0.3) !important;
+  background: rgba(127, 179, 211, 0.2) !important;
   color: var(--eco-green) !important;
-  border-color: rgba(127, 179, 211, 0.4) !important;
+  border-color: var(--eco-green) !important;
 }
 
+/* 데이터/분석 태그 */
 .home-tech-tag.data {
-  background: rgba(168, 216, 168, 0.3) !important;
+  background: rgba(168, 216, 168, 0.2) !important;
   color: var(--light-green) !important;
-  border-color: rgba(168, 216, 168, 0.5) !important;
+  border-color: var(--light-green) !important;
 }
 
+/* 통신/네트워킹 태그 */
 .home-tech-tag.comm {
-  background: rgba(135, 206, 235, 0.3) !important;
+  background: rgba(135, 206, 235, 0.2) !important;
   color: var(--water-blue) !important;
-  border-color: rgba(135, 206, 235, 0.5) !important;
+  border-color: var(--water-blue) !important;
 }
 
+/* 프로그래밍/시스템 태그 */
 .home-tech-tag.prog {
-  background: rgba(196, 164, 132, 0.3) !important;
+  background: rgba(196, 164, 132, 0.2) !important;
   color: var(--earth-brown) !important;
-  border-color: rgba(196, 164, 132, 0.5) !important;
+  border-color: var(--earth-brown) !important;
 }
 
+/* ROS/로보틱스 시스템 */
+.home-tech-tag.prog.ros {
+  background: rgba(70, 130, 180, 0.2) !important;
+  color: #4682b4 !important;
+  border-color: #4682b4 !important;
+}
+
+/* 디자인/CAD 태그 */
 .home-tech-tag.design {
-  background: rgba(93, 115, 126, 0.3) !important;
+  background: rgba(93, 115, 126, 0.2) !important;
   color: var(--forest-green) !important;
-  border-color: rgba(93, 115, 126, 0.5) !important;
+  border-color: var(--forest-green) !important;
 }
 
+/* 엔지니어링 태그 */
 .home-tech-tag.eng {
-  background: rgba(184, 212, 184, 0.3) !important;
-  color: #7fa87f !important;
-  border-color: rgba(184, 212, 184, 0.5) !important;
+  background: rgba(32, 178, 170, 0.2) !important;
+  color: #20b2aa !important;
+  border-color: #20b2aa !important;
 }
 
+/* 제조/하드웨어 태그 */
 .home-tech-tag.manu {
-  background: rgba(180, 200, 180, 0.3) !important;
+  background: rgba(180, 200, 180, 0.2) !important;
   color: #6b946b !important;
-  border-color: rgba(180, 200, 180, 0.5) !important;
+  border-color: #6b946b !important;
+}
+
+/* 유체역학/물리 태그 */
+.home-tech-tag.fluid {
+  background: rgba(70, 130, 180, 0.2) !important;
+  color: #4682b4 !important;
+  border-color: #4682b4 !important;
+}
+
+/* 로봇 하드웨어 태그 */
+.home-tech-tag.robot-hw {
+  background: rgba(105, 105, 105, 0.2) !important;
+  color: #696969 !important;
+  border-color: #696969 !important;
+}
+
+/* 센서/하드웨어 태그 */
+.home-tech-tag.sensor {
+  background: rgba(255, 140, 0, 0.2) !important;
+  color: #ff8c00 !important;
+  border-color: #ff8c00 !important;
+}
+
+/* 정밀제어 태그 */
+.home-tech-tag.precision {
+  background: rgba(147, 112, 219, 0.2) !important;
+  color: #9370db !important;
+  border-color: #9370db !important;
+}
+
+/* 시스템 통합 태그 */
+.home-tech-tag.system {
+  background: rgba(60, 179, 113, 0.2) !important;
+  color: #3cb371 !important;
+  border-color: #3cb371 !important;
 }
 
 /* 홈 프로젝트 미디어 */
