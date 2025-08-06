@@ -4,11 +4,16 @@ title: "Projects"
 permalink: /projects/
 ---
 
+<!-- 🌿 에코 테마 CSS 강제 로드 -->
+<link rel="stylesheet" href="{{ '/assets/css/ecosystem.css' | relative_url }}">
+
 <!-- 인라인 스타일로 강제 적용 -->
 <style>
 /* 최우선 적용을 위한 인라인 스타일 */
 html, body {
   overflow-x: hidden !important;
+  font-family: 'Merriweather', serif !important;
+  background: linear-gradient(135deg, #fefffe 0%, #f8fcf8 100%) !important;
 }
 
 /* 모든 Beautiful Jekyll 컨테이너를 완전히 무력화 */
@@ -36,31 +41,7 @@ html, body {
   transform: none !important;
 }
 
-.main-content,
-.page-content,
-.page-content .container,
-.page-content .container-fluid,
-.container-md,
-.container-lg,
-.container-xl,
-.container-fluid {
-  max-width: none !important;
-  width: 100% !important;
-  padding: 0 !important;
-  margin: 0 !important;
-}
-
-/* Beautiful Jekyll 특정 클래스들 */
-.main-content .container,
-.main-explain-area,
-#main-content {
-  max-width: none !important;
-  width: 100% !important;
-  padding: 0 !important;
-  margin: 0 !important;
-}
-
-/* 강제로 전체 너비 확보 - 새로운 방법 */
+/* 강제로 전체 너비 확보 */
 .enviro-banner,
 .enviro-projects {
   width: 100vw !important;
@@ -70,22 +51,33 @@ html, body {
   display: block !important;
   text-align: center !important;
 }
-
-/* 프로젝트 섹션을 완전히 초기화하고 가운데 정렬 */
-.enviro-projects {
-  background: #fafafa;
-  padding: 3rem 0;
-}
 </style>
 
-<!-- 환경로보틱스 배너 섹션 -->
+<!-- 🌿 에코 테마 배경 요소들 -->
+<div class="eco-leaves">
+  <div class="leaf"></div>
+  <div class="leaf"></div>
+  <div class="leaf"></div>
+  <div class="leaf"></div>
+  <div class="leaf"></div>
+  <div class="leaf"></div>
+  <div class="leaf"></div>
+  <div class="leaf"></div>
+</div>
+
+<div class="bg-grid-pattern">
+  <div class="grid-lines horizontal"></div>
+  <div class="grid-lines vertical"></div>
+</div>
+
+<!-- 환경로보틱스 배너 섹션 - 에코 테마 적용 -->
 <div class="enviro-banner">
   <div class="banner-background">
     <div class="floating-particles"></div>
   </div>
   <div class="banner-content">
     <div class="banner-text">
-      <h1 class="banner-title">Environmental Robotics</h1>
+      <h1 class="banner-title">🌿 Environmental Robotics</h1>
       <p class="banner-subtitle">Innovating for a sustainable future through AI-driven environmental solutions</p>
       <div class="banner-keywords">
         <span class="keyword">🌱 Sustainability</span>
@@ -102,53 +94,53 @@ html, body {
   </div>
 </div>
 
-<!-- 프로젝트 리스트 섹션 -->
+<!-- 프로젝트 리스트 섹션 - 홈페이지 스타일 적용 -->
 <div class="enviro-projects">
   <div class="projects-container">
     
     <!-- 최신 프로젝트 (2025) -->
-    <article class="project-item">
-      <div class="project-card">
-        <a href="/projects/crack-ppe-detection/" class="project-link">
-          <div class="project-content">
-            <div class="project-meta">
-              <time class="project-year">2025.07.20</time>
-              <span class="project-category">Environmental Safety • AI</span>
+    <article class="home-project-item">
+      <div class="home-project-card">
+        <a href="/projects/crack-ppe-detection/" class="home-project-link">
+          <div class="home-project-content">
+            <div class="home-project-meta">
+              <time class="home-project-year">2025.07.20</time>
+              <span class="home-project-category">Environmental Safety • AI</span>
             </div>
-            <h2 class="project-title">Industrial Safety Robot System</h2>
-            <p class="project-description">
+            <h2 class="home-project-title">Industrial Safety Robot System</h2>
+            <p class="home-project-description">
               Advanced environmental monitoring system that preserves human life through intelligent robotics. 
               Our multi-robot safety platform combines computer vision, sensor fusion, and predictive analytics 
               to create safer industrial environments while reducing environmental impact by 25%.
             </p>
-            <div class="project-impact">
-              <div class="impact-item">
-                <span class="impact-value">93%</span>
-                <span class="impact-label">Detection Accuracy</span>
+            <div class="home-project-impact">
+              <div class="home-impact-item">
+                <span class="home-impact-value">93%</span>
+                <span class="home-impact-label">Detection Accuracy</span>
               </div>
-              <div class="impact-item">
-                <span class="impact-value">100%</span>
-                <span class="impact-label">Safety Improvement</span>
+              <div class="home-impact-item">
+                <span class="home-impact-value">100%</span>
+                <span class="home-impact-label">Safety Improvement</span>
               </div>
-              <div class="impact-item">
-                <span class="impact-value">25%</span>
-                <span class="impact-label">Environmental Impact Reduction</span>
+              <div class="home-impact-item">
+                <span class="home-impact-value">25%</span>
+                <span class="home-impact-label">Impact Reduction</span>
               </div>
             </div>
-            <div class="project-tech">
-              <span class="tech-tag ai">ROS2</span>
-              <span class="tech-tag ai">YOLOv8</span>
-              <span class="tech-tag data">Kalman Filter</span>
-              <span class="tech-tag comm">MQTT</span>
-              <span class="tech-tag prog">Python</span>
+            <div class="home-project-tech">
+              <span class="home-tech-tag ai">ROS2</span>
+              <span class="home-tech-tag ai">YOLOv8</span>
+              <span class="home-tech-tag data">Kalman Filter</span>
+              <span class="home-tech-tag comm">MQTT</span>
+              <span class="home-tech-tag prog">Python</span>
             </div>
           </div>
         </a>
         
         <!-- 동영상은 별도 링크 -->
-        <div class="project-media">
-          <a href="https://www.youtube.com/watch?v=gsk4GZmsjrw" target="_blank" class="video-link">
-            <div class="video-wrapper">
+        <div class="home-project-media">
+          <a href="https://www.youtube.com/watch?v=gsk4GZmsjrw" target="_blank" class="home-video-link">
+            <div class="home-video-wrapper">
               <iframe 
                 src="https://www.youtube.com/embed/gsk4GZmsjrw" 
                 title="Industrial Safety Robot System Demo"
@@ -161,56 +153,54 @@ html, body {
       </div>
     </article>
 
-    <!-- 환경 구분선 -->
-    <div class="eco-divider">
-      <div class="divider-line"></div>
-      <div class="divider-icon">🌱</div>
-      <div class="divider-line"></div>
+    <!-- 환경 구분선 - 에코 테마 -->
+    <div class="section-divider">
+      <div class="plant-divider"></div>
     </div>
 
     <!-- 이전 프로젝트 (2024) -->
-    <article class="project-item">
-      <div class="project-card">
-        <a href="/projects/automated-catalyst-cleaning/" class="project-link">
-          <div class="project-content">
-            <div class="project-meta">
-              <time class="project-year">2025.01.10</time>
-              <span class="project-category">Environmental Automation • Engineering</span>
+    <article class="home-project-item">
+      <div class="home-project-card">
+        <a href="/projects/automated-catalyst-cleaning/" class="home-project-link">
+          <div class="home-project-content">
+            <div class="home-project-meta">
+              <time class="home-project-year">2025.01.10</time>
+              <span class="home-project-category">Environmental Automation • Engineering</span>
             </div>
-            <h2 class="project-title">Automated Catalyst Cleaning Robot</h2>
-            <p class="project-description">
+            <h2 class="home-project-title">Automated Catalyst Cleaning Robot</h2>
+            <p class="home-project-description">
               Sustainable automation solution for industrial catalyst maintenance. This eco-friendly robotic system 
               reduces chemical waste by 35%, eliminates human exposure to toxic environments, and extends 
               catalyst lifespan by 20% through precision cleaning technology.
             </p>
-            <div class="project-impact">
-              <div class="impact-item">
-                <span class="impact-value">58%</span>
-                <span class="impact-label">Cycle Time Reduction</span>
+            <div class="home-project-impact">
+              <div class="home-impact-item">
+                <span class="home-impact-value">58%</span>
+                <span class="home-impact-label">Cycle Time Reduction</span>
               </div>
-              <div class="impact-item">
-                <span class="impact-value">35%</span>
-                <span class="impact-label">Chemical Waste Reduction</span>
+              <div class="home-impact-item">
+                <span class="home-impact-value">35%</span>
+                <span class="home-impact-label">Chemical Waste Reduction</span>
               </div>
-              <div class="impact-item">
-                <span class="impact-value">20%</span>
-                <span class="impact-label">Catalyst Life Extension</span>
+              <div class="home-impact-item">
+                <span class="home-impact-value">20%</span>
+                <span class="home-impact-label">Catalyst Life Extension</span>
               </div>
             </div>
-            <div class="project-tech">
-              <span class="tech-tag prog">Arduino</span>
-              <span class="tech-tag design">CAD Design</span>
-              <span class="tech-tag eng">Fluid Dynamics</span>
-              <span class="tech-tag manu">CNC Machining</span>
-              <span class="tech-tag prog">C++</span>
+            <div class="home-project-tech">
+              <span class="home-tech-tag prog">Arduino</span>
+              <span class="home-tech-tag design">CAD Design</span>
+              <span class="home-tech-tag eng">Fluid Dynamics</span>
+              <span class="home-tech-tag manu">CNC Machining</span>
+              <span class="home-tech-tag prog">C++</span>
             </div>
           </div>
         </a>
         
         <!-- 동영상은 별도 링크 -->
-        <div class="project-media">
-          <a href="https://www.youtube.com/watch?v=7pVAK6bW15U" target="_blank" class="video-link">
-            <div class="video-wrapper">
+        <div class="home-project-media">
+          <a href="https://www.youtube.com/watch?v=7pVAK6bW15U" target="_blank" class="home-video-link">
+            <div class="home-video-wrapper">
               <iframe 
                 src="https://www.youtube.com/embed/7pVAK6bW15U" 
                 title="Automated Catalyst Cleaning Robot Demo"
@@ -223,56 +213,46 @@ html, body {
       </div>
     </article>
 
+    <!-- Back to Home 버튼 -->
+    <div class="view-all-projects">
+      <a href="{{ '/' | relative_url }}" class="view-all-button">
+        🏠 Back to Home
+      </a>
+    </div>
+
   </div>
 </div>
 
 <style>
+/* 🌿 에코 테마 프로젝트 페이지 전용 스타일 */
+
+/* CSS 변수 정의 */
+:root {
+  --eco-green: #7fb3d3;
+  --forest-green: #5d737e;
+  --light-green: #a8d8a8;
+  --water-blue: #87ceeb;
+  --earth-brown: #c4a484;
+  --leaf-shadow: 0 4px 15px rgba(127, 179, 211, 0.15);
+  --smooth-transition: all 0.3s ease;
+}
+
 /* 전체 페이지 스타일 초기화 */
 * {
   box-sizing: border-box;
 }
 
 /* Beautiful Jekyll 테마 전역 컨테이너 강제 오버라이드 */
-.main-content {
-  max-width: none !important;
-  width: 100% !important;
-  padding: 0 !important;
-  margin: 0 !important;
-  text-align: center !important; /* 강제 가운데 정렬 */
-}
-
+.main-content,
 .page-content {
+  max-width: none !important;
+  width: 100% !important;
   padding: 0 !important;
   margin: 0 !important;
-  max-width: none !important;
-  width: 100% !important;
-  text-align: center !important; /* 강제 가운데 정렬 */
+  text-align: center !important;
 }
 
-.page-content .container-fluid {
-  padding: 0 !important;
-  max-width: none !important;
-  width: 100% !important;
-  text-align: center !important; /* 강제 가운데 정렬 */
-}
-
-.page-content .container {
-  padding: 0 !important;
-  max-width: none !important;
-  width: 100% !important;
-  text-align: center !important; /* 강제 가운데 정렬 */
-}
-
-/* Beautiful Jekyll의 row 클래스도 오버라이드 */
-.row {
-  margin: 0 !important;
-  padding: 0 !important;
-  max-width: none !important;
-  width: 100% !important;
-  text-align: center !important; /* 강제 가운데 정렬 */
-}
-
-/* 컨테이너를 완전히 새로 정의 */
+/* 프로젝트 컨테이너 */
 .projects-container {
   width: 100% !important;
   max-width: 1000px !important;
@@ -280,25 +260,10 @@ html, body {
   padding: 0 2rem !important;
   display: block !important;
   position: relative !important;
-  left: 0 !important;
-  right: 0 !important;
-  transform: translateX(0) !important;
-  text-align: center !important;
+  z-index: 10 !important; /* 배경 요소보다 위에 */
 }
 
-.banner-content {
-  max-width: 1000px !important; /* 1200px → 1000px로 축소 */
-  margin: 0 auto !important;
-  padding: 0 1.5rem !important; /* 2rem → 1.5rem */
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  position: relative;
-  z-index: 2;
-  width: 100% !important;
-}
-
-/* 환경로보틱스 배너 - 전체 너비 */
+/* 환경로보틱스 배너 - 에코 테마 색상 적용 */
 .enviro-banner {
   width: 100vw !important;
   position: relative;
@@ -306,12 +271,25 @@ html, body {
   right: 50% !important;
   margin-left: -50vw !important;
   margin-right: -50vw !important;
-  background: linear-gradient(135deg, #2E8B57 0%, #3CB371 30%, #20B2AA 70%, #48D1CC 100%);
+  background: linear-gradient(135deg, var(--eco-green) 0%, var(--water-blue) 30%, var(--light-green) 70%, #b8d4e3 100%) !important;
   color: white;
-  padding: 6rem 0 3rem; /* 8rem → 6rem으로 축소 */
-  margin-top: 0 !important;
+  padding: 6rem 0 3rem;
+  margin-top: 70px !important; /* 네비게이션 높이만큼 */
   margin-bottom: 0 !important;
   overflow: hidden;
+  z-index: 5 !important;
+}
+
+.banner-content {
+  max-width: 1000px !important;
+  margin: 0 auto !important;
+  padding: 0 1.5rem !important;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  z-index: 2;
+  width: 100% !important;
 }
 
 .banner-background {
@@ -344,53 +322,64 @@ html, body {
 
 .banner-text {
   flex: 1;
-  max-width: 500px; /* 600px → 500px로 축소 */
+  max-width: 500px;
 }
 
 .banner-title {
-  font-size: 3rem; /* 3.5rem → 3rem으로 축소 */
-  font-weight: 700;
+  font-size: 3rem !important;
+  font-weight: 300 !important; /* 700 → 300으로 에코 테마 맞춤 */
   margin-bottom: 1rem;
   background: linear-gradient(45deg, #fff, #E0FFFF);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   line-height: 1.2;
+  font-family: 'Merriweather', serif !important;
 }
 
 .banner-subtitle {
-  font-size: 1.2rem; /* 1.3rem → 1.2rem으로 축소 */
+  font-size: 1.2rem !important;
   margin-bottom: 2rem;
   opacity: 0.95;
   line-height: 1.6;
+  font-family: 'Inter', sans-serif !important;
+  font-weight: 400 !important;
 }
 
 .banner-keywords {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.8rem; /* 1rem → 0.8rem으로 축소 */
+  gap: 0.8rem;
 }
 
 .keyword {
   background: rgba(255, 255, 255, 0.15);
-  padding: 0.4rem 0.8rem; /* 0.5rem 1rem → 0.4rem 0.8rem */
+  padding: 0.4rem 0.8rem;
   border-radius: 25px;
-  font-size: 0.85rem; /* 0.9rem → 0.85rem으로 축소 */
+  font-size: 0.85rem;
   font-weight: 500;
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.2);
+  font-family: 'Inter', sans-serif !important;
+  transition: var(--smooth-transition);
+}
+
+.keyword:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transform: translateY(-2px);
 }
 
 .banner-visual {
   position: relative;
-  width: 160px; /* 200px → 160px로 축소 */
-  height: 160px; /* 200px → 160px로 축소 */
+  width: 160px;
+  height: 160px;
 }
 
 .eco-icon, .tech-icon, .robot-icon {
   position: absolute;
-  font-size: 3rem; /* 4rem → 3rem으로 축소 */
+  font-size: 3rem;
   animation: rotate-float 8s ease-in-out infinite;
+  transition: var(--smooth-transition);
 }
 
 .eco-icon {
@@ -418,376 +407,156 @@ html, body {
   66% { transform: translateY(-5px) rotate(-5deg); }
 }
 
-/* 프로젝트 섹션 */
+/* 프로젝트 섹션 - 에코 테마 배경 */
 .enviro-projects {
-  padding: 3rem 0; /* 4rem → 3rem으로 축소 */
-  background: #fafafa;
+  padding: 4rem 0 !important;
+  background: rgba(248, 252, 248, 0.3) !important;
   width: 100% !important;
   margin: 0 !important;
   max-width: none !important;
-}
-
-/* 프로젝트 아이템을 완전히 새로 정의 */
-.project-item {
-  width: 100% !important;
-  max-width: 100% !important;
-  margin: 0 0 2.5rem 0 !important;
-  padding: 0 !important;
-  display: block !important;
-  position: relative !important;
-  left: 0 !important;
-  right: 0 !important;
-  transform: none !important;
-  text-align: left !important;
-}
-
-/* 프로젝트 카드를 완전히 새로 정의 */
-.project-card {
-  background: white;
-  border-radius: 16px;
-  overflow: hidden;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.08);
-  transition: all 0.4s ease;
-  padding: 2rem !important;
-  width: 100% !important;
-  max-width: 100% !important;
   position: relative;
-  min-height: 240px;
-  margin: 0 !important;
-  display: block !important;
-  box-sizing: border-box !important;
-  left: 0 !important;
-  right: 0 !important;
-  transform: none !important;
-  /* 플로트 클리어 */
-  clear: both !important;
+  z-index: 10 !important;
 }
 
-.project-card::after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
-.project-card:hover {
-  transform: translateY(-3px); /* -5px → -3px로 축소 */
-  box-shadow: 0 12px 35px rgba(46, 139, 87, 0.12); /* 15px 40px → 12px 35px */
-}
-
-.project-link {
-  display: block;
-  text-decoration: none;
-  color: inherit;
-  width: 100% !important;
-}
-
-.project-link:hover .project-title {
-  color: #2E8B57;
-}
-
-/* 프로젝트 콘텐츠 - 동영상을 위한 공간 확보 */
-.project-content {
-  width: calc(100% - 280px) !important; /* 240px → 280px로 공간 확대 */
-  margin-right: 0 !important;
-  display: block;
-  float: left !important; /* 왼쪽 플로트 */
-  padding-right: 1rem !important; /* 동영상과의 간격 */
-}
-
-.project-meta {
+/* 🌱 CSS-only plant growth animation for section dividers */
+.section-divider {
   display: flex;
-  align-items: center;
-  gap: 0.8rem; /* 1rem → 0.8rem으로 축소 */
-  margin-bottom: 0.8rem; /* 1rem → 0.8rem으로 축소 */
-}
-
-.project-year {
-  background: linear-gradient(45deg, #2E8B57, #3CB371);
-  color: white;
-  padding: 0.3rem 0.9rem; /* 0.8rem → 0.9rem으로 확대 */
-  border-radius: 20px;
-  font-size: 0.75rem; /* 0.8rem → 0.75rem으로 축소 */
-  font-weight: 600;
-  white-space: nowrap;
-  letter-spacing: 0.3px; /* 간격 추가 */
-}
-
-.project-category {
-  color: #2E8B57;
-  font-size: 0.85rem; /* 0.9rem → 0.85rem으로 축소 */
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  line-height: 1.2;
-}
-
-.project-title {
-  font-size: 1.7rem; /* 2rem → 1.7rem으로 축소 */
-  font-weight: 700;
-  margin-bottom: 0.8rem; /* 1rem → 0.8rem으로 축소 */
-  color: #2c3e50;
-  transition: color 0.3s ease;
-  line-height: 1.2;
-  clear: none;
-}
-
-.project-description {
-  font-size: 0.95rem; /* 1rem → 0.95rem으로 축소 */
-  line-height: 1.6;
-  color: #555;
-  margin-bottom: 1.2rem; /* 1.5rem → 1.2rem으로 축소 */
-  text-align: justify;
-}
-
-/* 프로젝트 임팩트 지표 */
-.project-impact {
-  display: flex;
-  gap: 1.2rem; /* 1.5rem → 1.2rem으로 축소 */
-  margin-bottom: 1.2rem; /* 1.5rem → 1.2rem으로 축소 */
-  padding: 0.8rem; /* 1rem → 0.8rem으로 축소 */
-  background: #f8fffe;
-  border-radius: 10px; /* 12px → 10px로 축소 */
-  border-left: 3px solid #2E8B57; /* 4px → 3px로 축소 */
-  flex-wrap: wrap;
-  clear: left;
-}
-
-.impact-item {
-  text-align: center;
-  min-width: 70px; /* 80px → 70px로 축소 */
-  flex: 1;
-}
-
-.impact-value {
-  display: block;
-  font-size: 1.3rem; /* 1.5rem → 1.3rem으로 축소 */
-  font-weight: 700;
-  color: #2E8B57;
-  margin-bottom: 0.2rem;
-  line-height: 1;
-}
-
-.impact-label {
-  font-size: 0.7rem; /* 0.75rem → 0.7rem으로 축소 */
-  color: #666;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  line-height: 1.2;
-}
-
-/* 기술 태그 */
-.project-tech {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.4rem; /* 0.5rem → 0.4rem으로 축소 */
-  clear: left;
-}
-
-.tech-tag {
-  padding: 0.3rem 0.7rem; /* 0.4rem 0.8rem → 0.3rem 0.7rem */
-  border-radius: 16px; /* 20px → 16px로 축소 */
-  font-size: 0.75rem; /* 0.8rem → 0.75rem으로 축소 */
-  font-weight: 500;
-  transition: all 0.3s ease;
-}
-
-.tech-tag.ai {
-  background: #e3f2fd;
-  color: #1976d2;
-  border: 1px solid #bbdefb;
-}
-
-.tech-tag.data {
-  background: #f3e5f5;
-  color: #7b1fa2;
-  border: 1px solid #ce93d8;
-}
-
-.tech-tag.comm {
-  background: #e8f5e8;
-  color: #388e3c;
-  border: 1px solid #a5d6a7;
-}
-
-.tech-tag.prog {
-  background: #fff3e0;
-  color: #f57c00;
-  border: 1px solid #ffcc02;
-}
-
-.tech-tag.design {
-  background: #fce4ec;
-  color: #c2185b;
-  border: 1px solid #f8bbd9;
-}
-
-.tech-tag.eng {
-  background: #e0f2f1;
-  color: #00695c;
-  border: 1px solid #80cbc4;
-}
-
-.tech-tag.manu {
-  background: #f1f8e9;
-  color: #689f38;
-  border: 1px solid #aed581;
-}
-
-.tech-tag:hover {
-  transform: translateY(-1px); /* -2px → -1px로 축소 */
-  box-shadow: 0 3px 10px rgba(0,0,0,0.15); /* 4px 12px → 3px 10px */
-}
-
-/* 프로젝트 미디어 - 동영상 오른쪽 배치 */
-.project-media {
-  position: absolute !important;
-  top: 1.5rem !important; /* 2rem → 1.5rem으로 위치 조정 */
-  right: 1.5rem !important; /* 2rem → 1.5rem으로 위치 조정 */
-  width: 260px !important; /* 220px → 260px로 확대 */
-  height: 150px !important; /* 130px → 150px로 확대 */
-  z-index: 10;
-  margin-top: 0 !important;
-  border-radius: 12px !important;
-  overflow: hidden;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.12) !important; /* 그림자 추가 */
-}
-
-.video-link {
-  display: block;
-  width: 100%;
-  height: 100%;
-  text-decoration: none;
-  border-radius: 10px;
-  overflow: hidden;
-  transition: all 0.3s ease;
-  position: relative;
-}
-
-.video-link:hover {
-  transform: scale(1.03); /* 1.02 → 1.03으로 약간 확대 */
-  box-shadow: 0 12px 28px rgba(0,0,0,0.25); /* 호버 시 더 강한 그림자 */
-}
-
-.video-link::before {
-  content: "▶";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 2rem;
-  color: white;
-  text-shadow: 0 2px 4px rgba(0,0,0,0.5);
-  z-index: 20;
-  opacity: 0.8;
-  transition: all 0.3s ease;
-}
-
-.video-link:hover::before {
-  opacity: 1;
-  transform: translate(-50%, -50%) scale(1.2);
-}
-
-.video-wrapper {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-  transition: all 0.3s ease;
-  background: linear-gradient(135deg, #2E8B57 0%, #3CB371 100%); /* 배경 그라디언트 추가 */
-}
-
-.video-wrapper iframe {
-  width: 100%;
-  height: 100%;
-  border: none;
-  pointer-events: none;
-  border-radius: 10px;
-}
-
-/* 환경 구분선 */
-.eco-divider {
-  display: flex;
-  align-items: center;
   justify-content: center;
-  margin: 2.5rem 0; /* 3rem → 2.5rem으로 축소 */
-  width: 100% !important;
-  max-width: 1000px !important;
-  margin-left: auto !important;
-  margin-right: auto !important;
+  margin: 3rem 0;
 }
 
-.divider-line {
-  flex: 1;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, #2E8B57, transparent);
+.plant-divider {
+  width: 4px;
+  height: 40px;
+  background: var(--eco-green);
+  border-radius: 2px;
+  position: relative;
+  animation: growPlant 2s ease-out;
 }
 
-.divider-icon {
-  margin: 0 1rem;
-  font-size: 1.3rem; /* 1.5rem → 1.3rem으로 축소 */
-  background: white;
-  padding: 0.4rem; /* 0.5rem → 0.4rem으로 축소 */
-  border-radius: 50%;
-  box-shadow: 0 2px 8px rgba(46, 139, 87, 0.2); /* 10px → 8px로 축소 */
+.plant-divider::before {
+  content: '';
+  position: absolute;
+  top: -5px;
+  left: -8px;
+  width: 10px;
+  height: 10px;
+  background: var(--light-green);
+  border-radius: 50% 0 50% 0;
+  transform: rotate(45deg);
+  animation: leafGrow 2s ease-out 1s both;
+}
+
+.plant-divider::after {
+  content: '';
+  position: absolute;
+  top: -5px;
+  right: -8px;
+  width: 10px;
+  height: 10px;
+  background: var(--light-green);
+  border-radius: 0 50% 0 50%;
+  transform: rotate(45deg);
+  animation: leafGrow 2s ease-out 1.5s both;
+}
+
+@keyframes growPlant {
+  from { height: 0; }
+  to { height: 40px; }
+}
+
+@keyframes leafGrow {
+  from { opacity: 0; transform: rotate(45deg) scale(0); }
+  to { opacity: 1; transform: rotate(45deg) scale(1); }
+}
+
+/* 에코 배경 요소들 */
+.eco-leaves {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.leaf {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background: #b8d4b8;
+  border-radius: 0 100% 0 100%;
+  opacity: 0.3;
+  animation: leafFloat 15s infinite linear;
+}
+
+.leaf:nth-child(1) { left: 10%; animation-delay: 0s; }
+.leaf:nth-child(2) { left: 20%; animation-delay: 2s; }
+.leaf:nth-child(3) { left: 30%; animation-delay: 4s; }
+.leaf:nth-child(4) { left: 40%; animation-delay: 6s; }
+.leaf:nth-child(5) { left: 50%; animation-delay: 8s; }
+.leaf:nth-child(6) { left: 60%; animation-delay: 1s; }
+.leaf:nth-child(7) { left: 70%; animation-delay: 3s; }
+.leaf:nth-child(8) { left: 80%; animation-delay: 5s; }
+
+@keyframes leafFloat {
+  0% {
+    transform: translateY(-100px) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.6;
+  }
+  90% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateY(100vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+.bg-grid-pattern {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.005;
+}
+
+.grid-lines {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.grid-lines.horizontal {
+  background-image: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 60px,
+    #b8d4e3 60px,
+    #b8d4e3 61px
+  );
+}
+
+.grid-lines.vertical {
+  background-image: repeating-linear-gradient(
+    90deg,
+    transparent,
+    transparent 60px,
+    #b8d4e3 60px,
+    #b8d4e3 61px
+  );
 }
 
 /* 반응형 디자인 */
-@media (max-width: 1200px) {
-  .projects-container, .banner-content {
-    max-width: 900px !important;
-  }
-  
-  .project-content {
-    width: calc(100% - 220px) !important; /* 240px → 220px로 조정 */
-    padding-right: 0.8rem !important;
-  }
-  
-  .project-media {
-    width: 200px !important; /* 180px → 200px로 조정 */
-    height: 120px !important; /* 110px → 120px로 조정 */
-    top: 1.2rem !important;
-    right: 1.2rem !important;
-  }
-}
-
 @media (max-width: 968px) {
-  .project-card {
-    padding: 1.5rem !important;
-    min-height: auto;
-  }
-  
-  .project-content {
-    width: 100% !important; /* 모바일에서는 전체 너비 */
-    float: none !important;
-  }
-  
-  .project-media {
-    position: static !important;
-    width: 100% !important;
-    height: 180px !important;
-    margin: 1rem 0 0 0 !important;
-  }
-  
-  .video-link {
-    border-radius: 10px;
-  }
-  
-  .project-impact,
-  .project-tech {
-    clear: none;
-  }
-  
-  .project-content {
-    text-align: center;
-  }
-  
-  .project-impact {
-    justify-content: center;
-    gap: 0.8rem;
-  }
-  
   .banner-content {
     flex-direction: column;
     text-align: center;
@@ -796,105 +565,58 @@ html, body {
   
   .enviro-banner {
     padding: 5rem 0 2.5rem;
+    margin-top: 60px !important;
   }
 }
 
 @media (max-width: 768px) {
   .banner-title {
-    font-size: 2.2rem; /* 2.5rem → 2.2rem으로 축소 */
+    font-size: 2.2rem !important;
   }
   
   .banner-subtitle {
-    font-size: 1rem; /* 1.1rem → 1rem으로 축소 */
-  }
-  
-  .project-title {
-    font-size: 1.4rem; /* 1.6rem → 1.4rem으로 축소 */
-  }
-  
-  .project-description {
-    font-size: 0.9rem; /* 0.95rem → 0.9rem으로 축소 */
+    font-size: 1rem !important;
   }
   
   .projects-container, .banner-content {
-    padding: 0 1rem; /* 1.5rem → 1rem으로 축소 */
+    padding: 0 1rem !important;
   }
   
   .enviro-banner {
-    padding: 4rem 0 2rem; /* 5rem 0 2.5rem → 4rem 0 2rem */
+    padding: 4rem 0 2rem !important;
   }
   
   .keyword {
-    font-size: 0.75rem; /* 0.8rem → 0.75rem으로 축소 */
-    padding: 0.3rem 0.7rem; /* 0.4rem 0.8rem → 0.3rem 0.7rem */
-  }
-  
-  .project-media {
-    height: 160px; /* 180px → 160px로 축소 */
-  }
-  
-  .project-content {
-    margin-right: 0;
+    font-size: 0.75rem !important;
+    padding: 0.3rem 0.7rem !important;
   }
 }
 
 @media (max-width: 480px) {
-  .project-card {
-    padding: 1.2rem !important; /* 1.5rem → 1.2rem으로 축소 */
-  }
-  
-  .impact-value {
-    font-size: 1.2rem; /* 1.3rem → 1.2rem으로 축소 */
-  }
-  
-  .impact-label {
-    font-size: 0.6rem; /* 0.65rem → 0.6rem으로 축소 */
-  }
-  
   .banner-keywords {
     justify-content: center;
   }
   
   .enviro-banner {
-    padding: 3rem 0 1.5rem; /* 4rem 0 2rem → 3rem 0 1.5rem */
-  }
-  
-  .project-impact {
-    padding: 0.6rem; /* 0.8rem → 0.6rem으로 축소 */
-    gap: 0.6rem; /* 0.8rem → 0.6rem으로 축소 */
-  }
-  
-  .impact-item {
-    min-width: 60px; /* 70px → 60px로 축소 */
-  }
-  
-  .project-media {
-    width: 100%;
-    height: 140px; /* 160px → 140px로 축소 */
+    padding: 3rem 0 1.5rem !important;
   }
   
   .banner-visual {
-    width: 120px; /* 160px → 120px로 축소 */
-    height: 120px; /* 160px → 120px로 축소 */
+    width: 120px !important;
+    height: 120px !important;
   }
   
   .eco-icon, .tech-icon, .robot-icon {
-    font-size: 2.5rem; /* 3rem → 2.5rem으로 축소 */
+    font-size: 2.5rem !important;
   }
 }
 
-/* 접근성 개선 */
-.project-link:focus {
-  outline: 2px solid #2E8B57; /* 3px → 2px로 축소 */
-  outline-offset: 3px; /* 4px → 3px로 축소 */
-}
-
 /* 로딩 애니메이션 */
-.project-item {
+.home-project-item {
   animation: fadeInUp 0.8s ease-out;
 }
 
-.project-item:nth-child(3) {
+.home-project-item:nth-child(3) {
   animation-delay: 0.3s;
 }
 
@@ -907,5 +629,19 @@ html, body {
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+/* 접근성 개선 */
+.home-project-link:focus {
+  outline: 2px solid var(--eco-green);
+  outline-offset: 3px;
+}
+
+/* 호버 효과 강화 */
+.banner-visual:hover .eco-icon,
+.banner-visual:hover .tech-icon,
+.banner-visual:hover .robot-icon {
+  animation-play-state: paused;
+  transform: scale(1.2);
 }
 </style>
