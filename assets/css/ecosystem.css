@@ -1061,7 +1061,6 @@ body::before {
   text-decoration: none !important;
   border-radius: 12px !important;
   overflow: hidden !important;
-  transition: var(--smooth-transition) !important;
   position: relative !important;
   border: none !important;
 }
@@ -1074,7 +1073,6 @@ body::before {
   border-radius: 12px !important;
   overflow: hidden !important;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1) !important;
-  transition: var(--smooth-transition) !important;
   background: linear-gradient(135deg, var(--eco-green) 0%, var(--light-green) 100%) !important;
 }
 
@@ -1082,7 +1080,7 @@ body::before {
   width: 100% !important;
   height: 100% !important;
   border: none !important;
-  pointer-events: none !important;
+  pointer-events: auto !important;
   border-radius: 12px !important;
 }
 
