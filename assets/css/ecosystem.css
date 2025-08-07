@@ -3836,7 +3836,7 @@ figure figcaption {
 
 /* HTML의 brand-logo-only 클래스에 맞춘 스타일 */
 .brand-logo-only {
-  height: 100px !important;  /* 로고+타이틀이 들어간 이미지이므로 더 크게 */
+  height: 200px !important;  /* 로고+타이틀이 들어간 이미지이므로 더 크게 */
   width: auto !important;
   margin-right: 0 !important;  /* 텍스트가 없으므로 여백 제거 */
   transition: var(--smooth-transition) !important;
