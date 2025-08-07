@@ -3027,7 +3027,6 @@ figure figcaption {
   padding: 0.5rem 0 !important;
 }
 
-/* 브랜드/로고 스타일 */
 .navbar-brand {
   display: flex !important;
   align-items: center !important;
@@ -3035,7 +3034,14 @@ figure figcaption {
 }
 
 .navbar-brand::after {
-  display: none !important;  /* 밑줄 효과 제거 */
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--eco-green), var(--light-green));
+  transition: width 0.3s ease;
 }
 
 .navbar-brand:hover {
@@ -3046,10 +3052,6 @@ figure figcaption {
 
 .navbar-brand:hover::after {
   width: 100%;
-}
-
-.navbar-brand .brand-text {
-  display: none !important;
 }
 
 /* 네비게이션 링크 스타일 - 가독성 개선 */
@@ -3264,20 +3266,16 @@ figure figcaption {
   border-radius: 0 2px 2px 0;
 }
 
-.navbar-brand img,
-.brand-logo {
-  height: 50px !important;  /* 로고+타이틀이 들어간 이미지이므로 더 크게 */
+/* 로고 이미지가 있을 경우 */
+.navbar-brand-logo img {
+  height: 40px !important;
   width: auto !important;
-  margin-right: 0 !important;  /* 텍스트가 없으므로 여백 제거 */
-  transition: var(--smooth-transition) !important;
+  transition: all 0.3s ease !important;
   filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1)) !important;
-  vertical-align: middle !important;
 }
 
-/* 호버 효과 */
-.navbar-brand:hover img,
-.navbar-brand:hover .brand-logo {
-  transform: scale(1.05) rotate(2deg) !important;
+.navbar-brand-logo:hover img {
+  transform: scale(1.05) rotate(5deg) !important;
   filter: drop-shadow(0 4px 8px rgba(127, 179, 211, 0.2)) !important;
 }
 
@@ -3907,10 +3905,37 @@ figure figcaption {
   }
 }
 
+
+/* HTML의 brand-logo-only 클래스에 맞춘 스타일 */
+.brand-logo-only {
+  height: 50px !important;  /* 로고+타이틀이 들어간 이미지이므로 더 크게 */
+  width: auto !important;
+  margin-right: 0 !important;  /* 텍스트가 없으므로 여백 제거 */
+  transition: var(--smooth-transition) !important;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1)) !important;
+  vertical-align: middle !important;
+}
+
+/* 호버 효과 - JavaScript와 중복되지 않도록 CSS만으로 설정 */
+.navbar-brand-logo:hover .brand-logo-only {
+  transform: scale(1.1) rotate(3deg) !important;
+  filter: drop-shadow(0 6px 12px rgba(127, 179, 211, 0.3)) !important;
+}
+
+/* 기존 텍스트 스타일 제거 또는 숨김 */
+.navbar-brand::after {
+  display: none !important;  /* 밑줄 효과 제거 */
+}
+
+/* 만약 HTML에서 텍스트를 완전히 제거하지 못한다면 숨김 처리 */
+.navbar-brand .brand-text {
+  display: none !important;
+}
+
+
 /* 모바일 반응형 */
 @media (max-width: 768px) {
-  .navbar-brand img,
-  .brand-logo {
+  .brand-logo-only {
     height: 42px !important;  /* 모바일에서는 적당한 크기로 */
   }
   
@@ -3920,8 +3945,7 @@ figure figcaption {
 }
 
 @media (max-width: 480px) {
-  .navbar-brand img,
-  .brand-logo {
+  .brand-logo-only {
     height: 38px !important;  /* 아주 작은 화면에서는 더 작게 */
   }
   
@@ -3930,15 +3954,9 @@ figure figcaption {
   }
 }
 
-/* 스크롤시 네비게이션 변화 - 로고 크기도 함께 조정 */
-.navbar-custom.scrolled .navbar-brand img,
-.navbar-custom.scrolled .brand-logo {
-  height: 45px !important;  /* 스크롤시 약간 작게 */
-}
 
 @media (max-width: 768px) {
-  .navbar-custom.scrolled .navbar-brand img,
-  .navbar-custom.scrolled .brand-logo {
+  .navbar-custom.scrolled .brand-logo-only {
     height: 38px !important;
   }
 }
