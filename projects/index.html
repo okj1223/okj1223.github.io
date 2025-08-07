@@ -1,3 +1,75 @@
+---
+layout: page
+title: "Projects"
+permalink: /projects/
+---
+
+<!-- 🌿 에코 테마 CSS 강제 로드 -->
+<link rel="stylesheet" href="{{ '/assets/css/ecosystem.css' | relative_url }}">
+
+<!-- 인라인 스타일로 강제 적용 -->
+<style>
+/* 최우선 적용을 위한 인라인 스타일 */
+html, body {
+  overflow-x: hidden !important;
+  font-family: 'Merriweather', serif !important;
+  background: linear-gradient(135deg, #fefffe 0%, #f8fcf8 100%) !important;
+}
+
+/* 모든 Beautiful Jekyll 컨테이너를 완전히 무력화 */
+.main-content,
+.page-content,
+.page-content .container,
+.page-content .container-fluid,
+.container-md,
+.container-lg,
+.container-xl,
+.container-fluid,
+.container,
+.row,
+.col,
+.col-12,
+.col-lg-12 {
+  max-width: none !important;
+  width: 100% !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  float: none !important;
+  position: static !important;
+  left: auto !important;
+  right: auto !important;
+  transform: none !important;
+}
+
+/* 강제로 전체 너비 확보 */
+.enviro-banner,
+.enviro-projects {
+  width: 100vw !important;
+  margin-left: calc(-50vw + 50%) !important;
+  margin-right: calc(-50vw + 50%) !important;
+  position: relative !important;
+  display: block !important;
+  text-align: center !important;
+}
+</style>
+
+<!-- 🌿 에코 테마 배경 요소들 -->
+<div class="eco-leaves">
+  <div class="leaf"></div>
+  <div class="leaf"></div>
+  <div class="leaf"></div>
+  <div class="leaf"></div>
+  <div class="leaf"></div>
+  <div class="leaf"></div>
+  <div class="leaf"></div>
+  <div class="leaf"></div>
+</div>
+
+<div class="bg-grid-pattern">
+  <div class="grid-lines horizontal"></div>
+  <div class="grid-lines vertical"></div>
+</div>
+
 <!-- 환경로보틱스 배너 섹션 - 간지나는 버전 -->
 <div class="enviro-banner">
   <div class="banner-background">
@@ -816,5 +888,381 @@
     width: 50px !important;
     height: 50px !important;
   }
+}
+</style>
+
+<!-- 프로젝트 리스트 섹션 - 홈페이지 스타일 적용 -->
+<div class="enviro-projects">
+  <div class="projects-container">
+
+    <article class="home-project-item">
+      <div class="home-project-card">
+        <a href="/projects/liquid_injection/" class="home-project-link">
+          <div class="home-project-content">
+            <div class="home-project-meta">
+              <time class="home-project-year">2025.08.06</time>
+              <span class="home-project-category">Precision Control • Robotics</span>
+            </div>
+            <h3 class="home-project-title">Robot-Based Precision Concentration Control System</h3>
+            <p class="home-project-description">
+              An autonomous ROS2-based system for high-precision liquid pouring using industrial robotic arms, 
+              load cells, and MQTT communication. Achieving target concentration within ±0.5% error range 
+              through intelligent fluid dynamic modeling and adaptive control algorithms.
+            </p>
+            <div class="home-project-impact">
+              <div class="home-impact-item">
+                <span class="home-impact-value">±0.5%</span>
+                <span class="home-impact-label">Precision Accuracy</span>
+              </div>
+              <div class="home-impact-item">
+                <span class="home-impact-value">89.3%</span>
+                <span class="home-impact-label">Model Validation</span>
+              </div>
+              <div class="home-impact-item">
+                <span class="home-impact-value">8.3s</span>
+                <span class="home-impact-label">Response Time</span>
+              </div>
+            </div>
+            <div class="home-project-tech">
+              <span class="home-tech-tag ai">ROS2</span>
+              <span class="home-tech-tag data">Kalman Filter</span>
+              <span class="home-tech-tag comm">MQTT</span>
+              <span class="home-tech-tag eng">Fluid Dynamics</span>
+              <span class="home-tech-tag design">Doosan M0609</span>
+              <span class="home-tech-tag design">HX711 ADC</span>
+              <span class="home-tech-tag prog">Python</span>
+            </div>
+          </div>
+        </a>
+        
+        <!-- 동영상은 별도 링크 -->
+        <div class="home-project-media">
+          <a href="https://www.youtube.com/watch?v=yVg4EGmNAvk" target="_blank" class="home-video-link">
+            <div class="home-video-wrapper">
+              <iframe 
+                src="https://www.youtube.com/embed/yVg4EGmNAvk" 
+                title="Robot-Based Precision Concentration Control System Demo"
+                frameborder="0" 
+                allowfullscreen>
+              </iframe>
+            </div>
+          </a>
+        </div>
+      </div>
+    </article>
+
+    <!-- 최신 프로젝트 (2025) -->
+    <article class="home-project-item">
+      <div class="home-project-card">
+        <a href="/projects/crack-ppe-detection/" class="home-project-link">
+          <div class="home-project-content">
+            <div class="home-project-meta">
+              <time class="home-project-year">2025.07.20</time>
+              <span class="home-project-category">Environmental Safety • AI</span>
+            </div>
+            <h2 class="home-project-title">Industrial Safety Robot System</h2>
+            <p class="home-project-description">
+              Advanced environmental monitoring system that preserves human life through intelligent robotics. 
+              Our multi-robot safety platform combines computer vision, sensor fusion, and predictive analytics 
+              to create safer industrial environments while reducing environmental impact by 25%.
+            </p>
+            <div class="home-project-impact">
+              <div class="home-impact-item">
+                <span class="home-impact-value">93%</span>
+                <span class="home-impact-label">Detection Accuracy</span>
+              </div>
+              <div class="home-impact-item">
+                <span class="home-impact-value">100%</span>
+                <span class="home-impact-label">Safety Improvement</span>
+              </div>
+              <div class="home-impact-item">
+                <span class="home-impact-value">25%</span>
+                <span class="home-impact-label">Impact Reduction</span>
+              </div>
+            </div>
+            <div class="home-project-tech">
+              <span class="home-tech-tag ai">ROS2</span>
+              <span class="home-tech-tag ai">YOLOv8</span>
+              <span class="home-tech-tag data">Kalman Filter</span>
+              <span class="home-tech-tag comm">MQTT</span>
+              <span class="home-tech-tag prog">Python</span>
+            </div>
+          </div>
+        </a>
+        
+        <!-- 동영상은 별도 링크 -->
+        <div class="home-project-media">
+          <a href="https://www.youtube.com/watch?v=gsk4GZmsjrw" target="_blank" class="home-video-link">
+            <div class="home-video-wrapper">
+              <iframe 
+                src="https://www.youtube.com/embed/gsk4GZmsjrw" 
+                title="Industrial Safety Robot System Demo"
+                frameborder="0" 
+                allowfullscreen>
+              </iframe>
+            </div>
+          </a>
+        </div>
+      </div>
+    </article>
+
+    <!-- 이전 프로젝트 (2024) -->
+    <article class="home-project-item">
+      <div class="home-project-card">
+        <a href="/projects/automated-catalyst-cleaning/" class="home-project-link">
+          <div class="home-project-content">
+            <div class="home-project-meta">
+              <time class="home-project-year">2025.01.10</time>
+              <span class="home-project-category">Environmental Automation • Engineering</span>
+            </div>
+            <h2 class="home-project-title">Automated Catalyst Cleaning Robot</h2>
+            <p class="home-project-description">
+              Sustainable automation solution for industrial catalyst maintenance. This eco-friendly robotic system 
+              reduces chemical waste by 35%, eliminates human exposure to toxic environments, and extends 
+              catalyst lifespan by 20% through precision cleaning technology.
+            </p>
+            <div class="home-project-impact">
+              <div class="home-impact-item">
+                <span class="home-impact-value">58%</span>
+                <span class="home-impact-label">Cycle Time Reduction</span>
+              </div>
+              <div class="home-impact-item">
+                <span class="home-impact-value">35%</span>
+                <span class="home-impact-label">Chemical Waste Reduction</span>
+              </div>
+              <div class="home-impact-item">
+                <span class="home-impact-value">20%</span>
+                <span class="home-impact-label">Catalyst Life Extension</span>
+              </div>
+            </div>
+            <div class="home-project-tech">
+              <span class="home-tech-tag prog">Arduino</span>
+              <span class="home-tech-tag design">CAD Design</span>
+              <span class="home-tech-tag eng">Fluid Dynamics</span>
+              <span class="home-tech-tag design">CNC Machining</span>
+              <span class="home-tech-tag prog">C++</span>
+            </div>
+          </div>
+        </a>
+        
+        <!-- 동영상은 별도 링크 -->
+        <div class="home-project-media">
+          <a href="https://www.youtube.com/watch?v=7pVAK6bW15U" target="_blank" class="home-video-link">
+            <div class="home-video-wrapper">
+              <iframe 
+                src="https://www.youtube.com/embed/7pVAK6bW15U" 
+                title="Automated Catalyst Cleaning Robot Demo"
+                frameborder="0" 
+                allowfullscreen>
+              </iframe>
+            </div>
+          </a>
+        </div>
+      </div>
+    </article>
+
+    <!-- Back to Home 버튼 -->
+    <div class="view-all-projects">
+      <a href="{{ '/home.html' | relative_url }}" class="view-all-button">
+        🏠 Back to Home
+      </a>
+    </div>
+
+
+  </div>
+</div>
+
+<style>
+/* 🌿 에코 테마 프로젝트 페이지 전용 스타일 */
+
+/* CSS 변수 정의 */
+:root {
+  --eco-green: #7fb3d3;
+  --forest-green: #5d737e;
+  --light-green: #a8d8a8;
+  --water-blue: #87ceeb;
+  --earth-brown: #c4a484;
+  --leaf-shadow: 0 4px 15px rgba(127, 179, 211, 0.15);
+  --smooth-transition: all 0.3s ease;
+}
+
+/* 전체 페이지 스타일 초기화 */
+* {
+  box-sizing: border-box;
+}
+
+/* Beautiful Jekyll 테마 전역 컨테이너 강제 오버라이드 */
+.main-content,
+.page-content {
+  max-width: none !important;
+  width: 100% !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  text-align: center !important;
+}
+
+/* 프로젝트 컨테이너 */
+.projects-container {
+  width: 100% !important;
+  max-width: 1000px !important;
+  margin: 0 auto !important;
+  padding: 0 2rem !important;
+  display: block !important;
+  position: relative !important;
+  z-index: 10 !important; /* 배경 요소보다 위에 */
+}
+
+
+
+.floating-particles {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(2px 2px at 20px 30px, #fff, transparent),
+    radial-gradient(2px 2px at 40px 70px, #fff, transparent),
+    radial-gradient(1px 1px at 90px 40px, #fff, transparent),
+    radial-gradient(1px 1px at 130px 80px, #fff, transparent);
+  background-repeat: repeat;
+  background-size: 200px 200px;
+  animation: float-particles 20s linear infinite;
+}
+
+@keyframes float-particles {
+  0% { transform: translateY(0px); }
+  100% { transform: translateY(-200px); }
+}
+
+
+
+
+@keyframes rotate-float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  33% { transform: translateY(-10px) rotate(5deg); }
+  66% { transform: translateY(-5px) rotate(-5deg); }
+}
+
+/* 프로젝트 섹션 - 에코 테마 배경 */
+.enviro-projects {
+  padding: 4rem 0 !important;
+  background: rgba(248, 252, 248, 0.3) !important;
+  width: 100% !important;
+  margin: 0 !important;
+  max-width: none !important;
+  position: relative;
+  z-index: 10 !important;
+}
+
+/* 에코 배경 요소들 */
+.eco-leaves {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.leaf {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background: #b8d4b8;
+  border-radius: 0 100% 0 100%;
+  opacity: 0.3;
+  animation: leafFloat 15s infinite linear;
+}
+
+.leaf:nth-child(1) { left: 10%; animation-delay: 0s; }
+.leaf:nth-child(2) { left: 20%; animation-delay: 2s; }
+.leaf:nth-child(3) { left: 30%; animation-delay: 4s; }
+.leaf:nth-child(4) { left: 40%; animation-delay: 6s; }
+.leaf:nth-child(5) { left: 50%; animation-delay: 8s; }
+.leaf:nth-child(6) { left: 60%; animation-delay: 1s; }
+.leaf:nth-child(7) { left: 70%; animation-delay: 3s; }
+.leaf:nth-child(8) { left: 80%; animation-delay: 5s; }
+
+@keyframes leafFloat {
+  0% {
+    transform: translateY(-100px) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.6;
+  }
+  90% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateY(100vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+.bg-grid-pattern {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.005;
+}
+
+.grid-lines {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.grid-lines.horizontal {
+  background-image: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 60px,
+    #b8d4e3 60px,
+    #b8d4e3 61px
+  );
+}
+
+.grid-lines.vertical {
+  background-image: repeating-linear-gradient(
+    90deg,
+    transparent,
+    transparent 60px,
+    #b8d4e3 60px,
+    #b8d4e3 61px
+  );
+}
+
+
+
+/* 로딩 애니메이션 */
+.home-project-item {
+  animation: fadeInUp 0.8s ease-out;
+}
+
+.home-project-item:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 접근성 개선 */
+.home-project-link:focus {
+  outline: 2px solid var(--eco-green);
+  outline-offset: 3px;
 }
 </style>
