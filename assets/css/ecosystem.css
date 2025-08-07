@@ -3033,27 +3033,6 @@ figure figcaption {
   /* 텍스트 제거 - 로고 이미지에 이미 타이틀이 포함되어 있으므로 */
 }
 
-.navbar-brand::after {
-  content: '';
-  position: absolute;
-  bottom: -2px;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background: linear-gradient(90deg, var(--eco-green), var(--light-green));
-  transition: width 0.3s ease;
-}
-
-.navbar-brand:hover {
-  color: var(--eco-green) !important;
-  transform: translateY(-1px);
-  text-decoration: none !important;
-}
-
-.navbar-brand:hover::after {
-  width: 100%;
-}
-
 /* 네비게이션 링크 스타일 - 가독성 개선 */
 .navbar-nav .nav-link {
   font-family: 'Inter', sans-serif !important;
@@ -3266,18 +3245,7 @@ figure figcaption {
   border-radius: 0 2px 2px 0;
 }
 
-/* 로고 이미지가 있을 경우 */
-.navbar-brand-logo img {
-  height: 40px !important;
-  width: auto !important;
-  transition: all 0.3s ease !important;
-  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1)) !important;
-}
 
-.navbar-brand-logo:hover img {
-  transform: scale(1.05) rotate(5deg) !important;
-  filter: drop-shadow(0 4px 8px rgba(127, 179, 211, 0.2)) !important;
-}
 
 
 /* 🌿 에코 테마 푸터 스타일 */
@@ -3776,20 +3744,6 @@ figure figcaption {
 
 /* 네비게이션 로고 스타일 */
 
-/* 방법 1: 타이틀 옆에 로고 - 크기 증가 & 간격 조정 */
-.brand-logo {
-  height: 45px !important;  /* 35px → 45px로 증가 */
-  width: auto !important;
-  margin-right: 0.4rem !important;  /* 0.8rem → 0.4rem로 간격 줄임 */
-  transition: var(--smooth-transition) !important;
-  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1)) !important;
-  vertical-align: middle !important;
-}
-
-.navbar-brand:hover .brand-logo {
-  transform: scale(1.05) rotate(3deg) !important;
-  filter: drop-shadow(0 4px 8px rgba(127, 179, 211, 0.2)) !important;
-}
 
 /* 브랜드 영역 정렬 */
 .navbar-brand {
@@ -3802,32 +3756,6 @@ figure figcaption {
   min-height: 75px !important;  /* 70px → 75px */
 }
 
-/* 모바일에서 로고 크기 조정 */
-@media (max-width: 768px) {
-  .brand-logo {
-    height: 38px !important;  /* 30px → 38px로 증가 */
-    margin-right: 0.3rem !important;  /* 간격도 줄임 */
-  }
-  
-  .navbar-brand-logo img {
-    height: 42px !important;  /* 35px → 42px로 증가 */
-  }
-  
-  .navbar-custom {
-    min-height: 70px !important;  /* 모바일에서는 기존 높이 유지 */
-  }
-}
-
-@media (max-width: 480px) {
-  .brand-logo {
-    height: 35px !important;
-    margin-right: 0.25rem !important;  /* 아주 작은 화면에서는 더 가깝게 */
-  }
-  
-  .navbar-brand-logo img {
-    height: 38px !important;
-  }
-}
 
 /* 🔧 liquid injection 프로젝트용 추가 CSS 스타일 */
 
@@ -3916,11 +3844,6 @@ figure figcaption {
   vertical-align: middle !important;
 }
 
-/* 호버 효과 - JavaScript와 중복되지 않도록 CSS만으로 설정 */
-.navbar-brand-logo:hover .brand-logo-only {
-  transform: scale(1.1) rotate(3deg) !important;
-  filter: drop-shadow(0 6px 12px rgba(127, 179, 211, 0.3)) !important;
-}
 
 /* 기존 텍스트 스타일 제거 또는 숨김 */
 .navbar-brand::after {
