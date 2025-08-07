@@ -1,14 +1,18 @@
 <nav class="navbar navbar-expand-xl navbar-light fixed-top navbar-custom {% if page.nav-short %}top-nav-short-permanent{% else %}top-nav-regular{% endif %}">
 
   {%- if site.title-img -%}
+    <!-- 로고 이미지만 사용 (텍스트 제거) -->
     <a class="navbar-brand navbar-brand-logo" href="{{ '/' | absolute_url }}">
-      <img alt="{{ site.title }} Logo" src="{{ site.title-img | relative_url}}"/>
+      <img alt="{{ site.title }} Logo" src="{{ site.title-img | relative_url}}" class="brand-logo-only"/>
+    </a>
+  {%- elsif site.site-logo -%}
+    <!-- site-logo가 있으면 그것만 사용 -->
+    <a class="navbar-brand navbar-brand-logo" href="{{ '/' | absolute_url }}">
+      <img src="{{ site.site-logo | relative_url }}" alt="{{ site.title }} Logo" class="brand-logo-only">
     </a>
   {%- elsif site.title -%}
+    <!-- 로고 이미지가 없으면 텍스트만 표시 -->
     <a class="navbar-brand" href="{{ '/' | absolute_url }}">
-      {% if site.site-logo %}
-        <img src="{{ site.site-logo | relative_url }}" alt="{{ site.title }} Logo" class="brand-logo">
-      {% endif %}
       {{ site.title }}
     </a>
   {%- endif -%}
@@ -69,16 +73,18 @@
 <script>
   // nav.html에 직접 포함된 간단한 스크립트
   document.addEventListener('DOMContentLoaded', function() {
-    // 브랜드 아이콘에 호버 애니메이션
-    const brandIcon = document.querySelector('.brand-icon');
-    if (brandIcon) {
-      brandIcon.addEventListener('mouseenter', function() {
-        this.style.transform = 'rotate(20deg) scale(1.2)';
+    // 브랜드 로고에 호버 애니메이션
+    const brandLogo = document.querySelector('.brand-logo-only');
+    if (brandLogo) {
+      brandLogo.addEventListener('mouseenter', function() {
+        this.style.transform = 'scale(1.1) rotate(3deg)';
         this.style.transition = 'all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55)';
+        this.style.filter = 'drop-shadow(0 6px 12px rgba(127, 179, 211, 0.3))';
       });
       
-      brandIcon.addEventListener('mouseleave', function() {
-        this.style.transform = 'rotate(0deg) scale(1)';
+      brandLogo.addEventListener('mouseleave', function() {
+        this.style.transform = 'scale(1) rotate(0deg)';
+        this.style.filter = 'drop-shadow(0 2px 4px rgba(0,0,0,0.1))';
       });
     }
   });

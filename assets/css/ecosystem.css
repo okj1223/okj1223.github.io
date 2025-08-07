@@ -3029,23 +3029,13 @@ figure figcaption {
 
 /* 브랜드/로고 스타일 */
 .navbar-brand {
-  font-family: 'Merriweather', serif !important;
-  font-size: 1.4rem !important;
-  font-weight: 300 !important;
-  color: var(--forest-green) !important;
-  transition: all 0.3s ease !important;
-  position: relative !important;
+  display: flex !important;
+  align-items: center !important;
+  /* 텍스트 제거 - 로고 이미지에 이미 타이틀이 포함되어 있으므로 */
 }
 
 .navbar-brand::after {
-  content: '';
-  position: absolute;
-  bottom: -2px;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background: linear-gradient(90deg, var(--eco-green), var(--light-green));
-  transition: width 0.3s ease;
+  display: none !important;  /* 밑줄 효과 제거 */
 }
 
 .navbar-brand:hover {
@@ -3056,6 +3046,10 @@ figure figcaption {
 
 .navbar-brand:hover::after {
   width: 100%;
+}
+
+.navbar-brand .brand-text {
+  display: none !important;
 }
 
 /* 네비게이션 링크 스타일 - 가독성 개선 */
@@ -3270,16 +3264,20 @@ figure figcaption {
   border-radius: 0 2px 2px 0;
 }
 
-/* 로고 이미지가 있을 경우 */
-.navbar-brand-logo img {
-  height: 40px !important;
+.navbar-brand img,
+.brand-logo {
+  height: 50px !important;  /* 로고+타이틀이 들어간 이미지이므로 더 크게 */
   width: auto !important;
-  transition: all 0.3s ease !important;
+  margin-right: 0 !important;  /* 텍스트가 없으므로 여백 제거 */
+  transition: var(--smooth-transition) !important;
   filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1)) !important;
+  vertical-align: middle !important;
 }
 
-.navbar-brand-logo:hover img {
-  transform: scale(1.05) rotate(5deg) !important;
+/* 호버 효과 */
+.navbar-brand:hover img,
+.navbar-brand:hover .brand-logo {
+  transform: scale(1.05) rotate(2deg) !important;
   filter: drop-shadow(0 4px 8px rgba(127, 179, 211, 0.2)) !important;
 }
 
@@ -3906,5 +3904,41 @@ figure figcaption {
   .home-tech-tag {
     font-size: 0.65rem !important;
     padding: 0.25rem 0.6rem !important;
+  }
+}
+
+/* 모바일 반응형 */
+@media (max-width: 768px) {
+  .navbar-brand img,
+  .brand-logo {
+    height: 42px !important;  /* 모바일에서는 적당한 크기로 */
+  }
+  
+  .navbar-custom {
+    min-height: 70px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar-brand img,
+  .brand-logo {
+    height: 38px !important;  /* 아주 작은 화면에서는 더 작게 */
+  }
+  
+  .navbar-custom {
+    min-height: 65px !important;
+  }
+}
+
+/* 스크롤시 네비게이션 변화 - 로고 크기도 함께 조정 */
+.navbar-custom.scrolled .navbar-brand img,
+.navbar-custom.scrolled .brand-logo {
+  height: 45px !important;  /* 스크롤시 약간 작게 */
+}
+
+@media (max-width: 768px) {
+  .navbar-custom.scrolled .navbar-brand img,
+  .navbar-custom.scrolled .brand-logo {
+    height: 38px !important;
   }
 }
