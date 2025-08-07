@@ -146,7 +146,7 @@ where Δθ_correction ∈ [1.0°, 2.0°] represents the sensitivity control rang
 
 $$C_{current} = \frac{m_{sugar}}{m_{sugar} + m_{water}} \times 100\%$$
 
-If |C_current - C_target| < ε: Terminate
+If \|C_current - C_target\| < ε: Terminate
 
 Else: Continue Feedback Loop
 
