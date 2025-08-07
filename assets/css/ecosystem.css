@@ -1994,7 +1994,7 @@ figure figcaption {
   display: block !important;
   text-align: center !important;
   margin: 2rem auto !important;
-  font-size: 1.4em !important;
+  font-size: 1.1em !important;  /* 1.4em → 1.1em */
   line-height: 1.4 !important;
   color: var(--forest-green);
 }
@@ -2003,14 +2003,14 @@ figure figcaption {
   display: block !important;
   text-align: center !important;
   margin: 2rem auto !important;
-  font-size: 1.4em !important;
+  font-size: 1.1em !important;  /* 1.4em → 1.1em */
   line-height: 1.4 !important;
   color: var(--forest-green);
 }
 
 .MathJax .MathJax_Inline,
 .katex-inline {
-  font-size: 1.1em !important;
+  font-size: 1.0em !important;  /* 1.1em → 1.0em (선택사항) */
   color: var(--eco-green);
 }
 
