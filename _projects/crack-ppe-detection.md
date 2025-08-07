@@ -27,8 +27,7 @@ This paper presents a comprehensive industrial safety robot system developed by 
        src="{{ '/project/crack-ppe-detection/system_overview.png' | relative_url }}"
        alt="system architecture"
        loading="lazy">
-  <figcaption>Figure 1. Complete system architecture showing multi-robot coordination and MQTT-based communication</figcaption>
-</figure>
+  <figcaption>Figure 1. Complete system architecture showing multi-robot coordination and MQTT-based communication
 
 ---
 
@@ -58,8 +57,7 @@ Industrial safety remains a persistent challenge despite technological advanceme
        src="{{ '/project/crack-ppe-detection/fatality_rate_graph.png' | relative_url }}"
        alt="Trend of Industrial"
        loading="lazy">
-  <figcaption>Figure 2. Trend of Industrial Accident Rates and Fatalities in South Korea (2019-2024)</figcaption>
-</figure>
+  <figcaption>Figure 2. Trend of Industrial Accident Rates and Fatalities in South Korea (2019-2024)
 
 ### 1.2 Mathematical Risk Framework
 
@@ -97,8 +95,7 @@ Statistical analysis indicates **78.2% of industrial accidents** stem from behav
        src="{{ '/project/crack-ppe-detection/accident-circle.png' | relative_url }}"
        alt="Distribution of Accident"
        loading="lazy">
-  <figcaption>Figure 3. Distribution of Accident Causes by Category with Prevention Strategies</figcaption>
-</figure>
+  <figcaption>Figure 3. Distribution of Accident Causes by Category with Prevention Strategies
 
 ---
 
@@ -170,8 +167,7 @@ Where $k_{min}$ is the minimum number of operational robots needed.
        src="{{ '/project/crack-ppe-detection/model_comparison.png' | relative_url }}"
        alt="Box plots"
        loading="lazy">
-  <figcaption>Figure 4. Comprehensive model performance comparison including energy efficiency metrics</figcaption>
-</figure>
+  <figcaption>Figure 4. Comprehensive model performance comparison including energy efficiency metrics
 
 ### 3.2 Mathematical Framework for Detection
 
@@ -200,8 +196,7 @@ $$\text{Safety}(x,y) = \begin{cases}
        src="{{ '/project/crack-ppe-detection/detection_framework.png' | relative_url }}"
        alt="Visual representation"
        loading="lazy">
-  <figcaption>Figure 5. Enhanced detection framework with temporal analysis and safety zone mapping</figcaption>
-</figure>
+  <figcaption>Figure 5. Enhanced detection framework with temporal analysis and safety zone mapping
 
 ### 3.3 Advanced Kalman Filter Design
 
@@ -258,8 +253,7 @@ $$I_{multiscale}(x,y) = \sum_{s=1}^S w_s \cdot G_{\sigma_s} * I(x,y)$$
        src="{{ '/project/crack-ppe-detection/hsv_segmentation.png' | relative_url }}"
        alt="HSV color space"
        loading="lazy">
-  <figcaption>Figure 6. Multi-scale crack detection showing progression from detection to 3D reconstruction</figcaption>
-</figure>
+  <figcaption>Figure 6. Multi-scale crack detection showing progression from detection to 3D reconstruction
 
 ### 4.3 3D Volumetric Analysis
 
@@ -301,8 +295,7 @@ $$L(t) = L_0 \cdot e^{\alpha \sqrt{t}} + \beta \cdot \sigma_{stress}$$
        src="{{ '/project/crack-ppe-detection/nav_arc.PNG' | relative_url }}"
        alt="Navigation architecture"
        loading="lazy">
-  <figcaption>Figure 7. Hierarchical navigation system with multi-layer decision making</figcaption>
-</figure>
+  <figcaption>Figure 7. Hierarchical navigation system with multi-layer decision making
 
 ### 5.2 Enhanced Multi-Robot Coordination
 
@@ -364,8 +357,7 @@ $$\text{QoS}_{adaptive} = \begin{cases}
        src="{{ '/project/crack-ppe-detection/protocol_comparison.png' | relative_url }}"
        alt="Protocol comparison"
        loading="lazy">
-  <figcaption>Figure 8. Comprehensive communication protocol analysis including edge computing integration</figcaption>
-</figure>
+  <figcaption>Figure 8. Comprehensive communication protocol analysis including edge computing integration
 
 ### 6.2 Message Optimization & Compression
 
@@ -468,8 +460,7 @@ $$\text{Max\_Robots} = \frac{\text{Bandwidth}_{available}}{\text{Bandwidth}_{per
        src="{{ '/project/crack-ppe-detection/dash.gif' | relative_url }}"
        alt="Web-based dashboard"
        loading="lazy">
-  <figcaption>Figure 9. Advanced dashboard with predictive analytics and 3D environment visualization</figcaption>
-</figure>
+  <figcaption>Figure 9. Advanced dashboard with predictive analytics and 3D environment visualization
 
 **Dashboard Performance:**
 - Real-time updates: 10 Hz
@@ -493,8 +484,7 @@ $$\text{Max\_Robots} = \frac{\text{Bandwidth}_{available}}{\text{Bandwidth}_{per
        src="{{ '/project/crack-ppe-detection/aplication.gif' | relative_url }}"
        alt="Mobile application"
        loading="lazy">
-  <figcaption>Figure 10. Mobile application with AR overlay and voice-activated emergency controls</figcaption>
-</figure>
+  <figcaption>Figure 10. Mobile application with AR overlay and voice-activated emergency controls
 
 **Mobile App Features:**
 - **AR Overlay:** Real-time safety information on camera view

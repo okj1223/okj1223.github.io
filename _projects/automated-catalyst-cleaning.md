@@ -70,8 +70,7 @@ The automated cleaning system employs a **rail-mounted mobile platform** with pr
        src="{{ '/project/automated-catalyst-cleaning/architecture-diagram.png' | relative_url }}"
        alt="System Architecture"
        loading="lazy">
-  <figcaption>Figure 1. System architecture diagram showing control flow and mechanical subsystems</figcaption>
-</figure>
+  <figcaption>Figure 1. System architecture diagram showing control flow and mechanical subsystems
 
 **Core Components Integration:**
 - **Control Unit:** Arduino Uno with custom state machine firmware
@@ -827,8 +826,7 @@ Where:
        src="{{ '/project/automated-catalyst-cleaning/grinding.gif' | relative_url }}"
        alt="High-Precision Grinding Process"
        loading="lazy">
-  <figcaption>Figure 2. Diamond-wheel surface grinding achieving ±0.02 mm tolerance on drive shaft</figcaption>
-</figure>
+  <figcaption>Figure 2. Diamond-wheel surface grinding achieving ±0.02 mm tolerance on drive shaft
 
 I personally executed high-precision surface grinding operations using industrial diamond tooling:
 
@@ -851,8 +849,7 @@ I personally executed high-precision surface grinding operations using industria
        src="{{ '/project/automated-catalyst-cleaning/nozzle_handle.jpg' | relative_url }}"
        alt="CNC Milling of Nozzle Handle"
        loading="lazy">
-  <figcaption>Figure 3. 5-axis CNC machining of ergonomic nozzle handle from 6061-T6 aluminum</figcaption>
-</figure>
+  <figcaption>Figure 3. 5-axis CNC machining of ergonomic nozzle handle from 6061-T6 aluminum
 
 **Advanced CNC Programming:**
 - **Machine:** 5-axis VMC with 0.001 mm resolution
@@ -870,8 +867,7 @@ I personally executed high-precision surface grinding operations using industria
        src="{{ '/project/automated-catalyst-cleaning/tap_machine.jpg' | relative_url }}"
        alt="Tapping Machine Rail Processing"
        loading="lazy">
-  <figcaption>Figure 4. Precision keyway slotting on vertical milling machine</figcaption>
-</figure>
+  <figcaption>Figure 4. Precision keyway slotting on vertical milling machine
 
 **Precision Rail Manufacturing:**
 - **Material:** Custom aluminum extrusion, 6063-T5
@@ -886,8 +882,7 @@ I personally executed high-precision surface grinding operations using industria
        src="{{ '/project/automated-catalyst-cleaning/cleaning_robot_components.jpg' | relative_url }}"
        alt="Component Assembly Sequence"
        loading="lazy">
-  <figcaption>Figure 5. Systematic assembly sequence with torque-controlled fastening</figcaption>
-</figure>
+  <figcaption>Figure 5. Systematic assembly sequence with torque-controlled fastening
 
 **Assembly Process Excellence:**
 - **Torque Specifications:** All critical fasteners torqued to 15 N·m ±0.5 N·m
@@ -906,16 +901,14 @@ I personally executed high-precision surface grinding operations using industria
        src="{{ '/project/automated-catalyst-cleaning/3dworking1.gif' | relative_url }}"
        alt="Inventor Parametric Assembly Workflow" 
        loading="lazy">
-  <figcaption>Figure 6. 3D parametric assembly workflow in Autodesk Inventor</figcaption>
-</figure>
+  <figcaption>Figure 6. 3D parametric assembly workflow in Autodesk Inventor
 
 <figure>
   <img class="project-image"
        src="{{ '/project/automated-catalyst-cleaning/3dworking2.PNG' | relative_url }}"
        alt="AutoCAD Detailed Part Drawing" 
        loading="lazy">
-  <figcaption>Figure 7. Technical drawing with GD&T specifications in AutoCAD</figcaption>
-</figure>
+  <figcaption>Figure 7. Technical drawing with GD&T specifications in AutoCAD
 
 **Design Methodology:**
 - **Parametric Modeling:** Fully associative 3D models with design tables

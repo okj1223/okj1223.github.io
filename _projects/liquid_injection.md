@@ -175,8 +175,7 @@ The experimental setup implements a distributed hardware architecture connecting
        src="{{ '/project/liquid_injection/hardware_architecture.png' | relative_url }}"
        alt="Hardware Architecture Diagram"
        loading="lazy">
-  <figcaption>Figure 4.1: Complete hardware system architecture showing data flow between components</figcaption>
-</figure>
+  <figcaption>Figure 4.1: Complete hardware system architecture showing data flow between components
 
 #### 4.1.1 System Architecture Components
 
@@ -263,7 +262,7 @@ The load cell mounting system requires precise mechanical design to ensure:
 
 For maximum expected load of 1.0 kg with safety factor SF = 3.0:
 
-$F_{design} = 1.0 \text{ kg} \times 9.81 \text{ m/s}^2 \times 3.0 = 29.43 \text{ N}$
+$$F_{design} = 1.0 \text{ kg} \times 9.81 \text{ m/s}^2 \times 3.0 = 29.43 \text{ N}$$
 
 **Bending Stress Analysis:**
 For rectangular beam under point load (worst-case scenario):
@@ -278,11 +277,11 @@ where:
 
 **Required Thickness Calculation:**
 
-$t_{required} = \sqrt{\frac{6FL}{b \sigma_{allowable}}}$
+$$t_{required} = \sqrt{\frac{6FL}{b \sigma_{allowable}}}$$
 
 Using allowable stress = 80 MPa / 3.0 = 26.67 MPa:
 
-$t_{required} = \sqrt{\frac{6 \times 29.43 \times 0.06}{0.12 \times 26.67 \times 10^6}} = 1.78 \text{ mm}$
+$$t_{required} = \sqrt{\frac{6 \times 29.43 \times 0.06}{0.12 \times 26.67 \times 10^6}} = 1.78 \text{ mm}$$
 
 **Final Design Decision:**
 Selected thickness: **6 mm** (safety factor = 6/1.78 = 3.37)
@@ -304,7 +303,7 @@ Weight measurement variations due to object placement can introduce systematic e
 
 For off-center loading, the apparent weight error is:
 
-$\text{Error} = \frac{W \times d}{L_{effective}} \times 100\%$
+$$\text{Error} = \frac{W \times d}{L_{effective}} \times 100\%$$
 
 where:
 - W = actual weight
@@ -400,13 +399,12 @@ All threaded connections follow Korean Standard (KS) specifications:
        src="{{ '/project/liquid_injection/3d_printing_process.gif' | relative_url }}"
        alt="3D Printing Process"
        loading="lazy">
-  <figcaption>Figure 4.3: Creality Ender-3 V3 KE during precision printing process showing layer-by-layer construction with 100% infill density</figcaption>
-</figure>
+  <figcaption>Figure 4.3: Creality Ender-3 V3 KE during precision printing process showing layer-by-layer construction with 100% infill density
 
 **Manufacturing Execution:**
-- **Print Duration**: 8 hours 45 minutes (100% infill extends time significantly)
+- **Print Duration**: 1 hours 45 minutes (100% infill extends time significantly)
 - **Material Consumption**: 245g PLA+ filament
-- **Layer Count**: 640 layers at 0.15mm resolution
+- **Layer Count**: 600 layers at 0.2mm resolution
 - **Print Success**: Single attempt success with zero defects
 
 **Post-Processing Operations:**
@@ -421,8 +419,7 @@ All threaded connections follow Korean Standard (KS) specifications:
        src="{{ '/project/liquid_injection/completed_frame.jpg' | relative_url }}"
        alt="Completed Frame Assembly"
        loading="lazy">
-  <figcaption>Figure 4.4: Completed load cell frame assembly showing integrated object positioning guides and KS-standard fastener installation</figcaption>
-</figure>
+  <figcaption>Figure 4.4: Completed load cell frame assembly showing integrated object positioning guides and KS-standard fastener installation
 
 ### 4.3 Load Cell Principle of Operation
 
@@ -447,8 +444,7 @@ The load cell implements a full Wheatstone bridge configuration for maximum sens
        src="{{ '/project/liquid_injection/loadcell_internal.png' | relative_url }}"
        alt="Load Cell Internal Structure"
        loading="lazy">
-  <figcaption>Figure 4.5: Internal structure of the load cell showing strain gauge placement and bridge configuration</figcaption>
-</figure>
+  <figcaption>Figure 4.5: Internal structure of the load cell showing strain gauge placement and bridge configuration
 
 **Bridge Circuit Analysis:**
 
@@ -495,8 +491,7 @@ The HX711 is a precision 24-bit analog-to-digital converter specifically designe
        src="{{ '/project/liquid_injection/hx711_soldering.jpg' | relative_url }}"
        alt="HX711 Soldering Process"
        loading="lazy">
-  <figcaption>Figure 4.6: Precision soldering process for HX711 module connections showing proper wire gauge and connection techniques</figcaption>
-</figure>
+  <figcaption>Figure 4.6: Precision soldering process for HX711 module connections showing proper wire gauge and connection techniques
 
 **Key Specifications:**
 - **Resolution**: 24-bit sigma-delta ADC
@@ -526,8 +521,7 @@ The HX711 is a precision 24-bit analog-to-digital converter specifically designe
        src="{{ '/project/liquid_injection/electrical_schematic.webp' | relative_url }}"
        alt="Electrical Schematic"
        loading="lazy">
-  <figcaption>Figure 4.7: Complete electrical schematic showing HX711-Arduino-Load Cell connections</figcaption>
-</figure>
+  <figcaption>Figure 4.7: Complete electrical schematic showing HX711-Arduino-Load Cell connections
 
 **Circuit Analysis:**
 
