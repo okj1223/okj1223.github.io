@@ -243,8 +243,7 @@ The load cell mounting system requires precise mechanical design to ensure:
        src="{{ '/project/liquid_injection/frame_design_3d.gif' | relative_url }}"
        alt="3D Frame Design"
        loading="lazy">
-  <figcaption>Figure 4.2: CAD model of the custom load cell mounting frame showing key dimensions, mounting points, and integrated object positioning guides</figcaption>
-</figure>
+  <figcaption>Figure 4.2: CAD model of the custom load cell mounting frame showing key dimensions, mounting points, and integrated object positioning guides
 
 #### 4.2.2 Load-Based Thickness Calculation and Safety Analysis
 
