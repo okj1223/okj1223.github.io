@@ -3833,53 +3833,143 @@ figure figcaption {
   }
 }
 
+/* 🔧 네비게이션바 높이는 유지하면서 로고만 크게 보이도록 조정 */
 
-/* HTML의 brand-logo-only 클래스에 맞춘 스타일 */
+/* 네비게이션바 높이 고정 */
+.navbar-custom {
+  min-height: 70px !important;  /* 기존 높이 유지 */
+  max-height: 70px !important;  /* 최대 높이도 제한 */
+  overflow: visible !important;  /* 로고가 네비바 영역을 벗어나도 보이도록 */
+  position: relative !important;
+  z-index: 1050 !important;  /* 다른 요소들보다 위에 표시 */
+}
+
+/* 네비게이션 컨테이너 내부 정렬 */
+.navbar-custom .container,
+.navbar-custom .container-fluid {
+  height: 70px !important;
+  display: flex !important;
+  align-items: center !important;
+}
+
+/* 브랜드 로고 컨테이너 */
+.navbar-brand-logo {
+  display: flex !important;
+  align-items: center !important;
+  height: 70px !important;  /* 네비바 높이와 동일 */
+  padding: 0 !important;
+  margin: 0 !important;
+  position: relative !important;
+  z-index: 1051 !important;
+}
+
+/* 큰 로고 이미지 스타일 */
 .brand-logo-only {
-  height: 150px !important;  /* 로고+타이틀이 들어간 이미지이므로 더 크게 */
+  height: 120px !important;  /* 150px는 너무 클 수 있으니 120px로 조정 */
   width: auto !important;
-  margin-right: 0 !important;  /* 텍스트가 없으므로 여백 제거 */
+  margin: 0 !important;
   transition: var(--smooth-transition) !important;
-  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1)) !important;
+  filter: drop-shadow(0 3px 6px rgba(0,0,0,0.15)) !important;
   vertical-align: middle !important;
+  
+  /* 네비바 중앙에 정렬하되 위아래로 약간 넘어갈 수 있도록 */
+  position: relative !important;
+  top: 0 !important;
+  z-index: 1052 !important;
 }
 
-
-/* 기존 텍스트 스타일 제거 또는 숨김 */
-.navbar-brand::after {
-  display: none !important;  /* 밑줄 효과 제거 */
+/* 호버 효과 */
+.navbar-brand-logo:hover .brand-logo-only {
+  transform: scale(1.05) rotate(2deg) !important;
+  filter: drop-shadow(0 6px 12px rgba(127, 179, 211, 0.3)) !important;
 }
 
-/* 만약 HTML에서 텍스트를 완전히 제거하지 못한다면 숨김 처리 */
-.navbar-brand .brand-text {
-  display: none !important;
+/* 다른 네비게이션 요소들이 로고에 가려지지 않도록 */
+.navbar-nav {
+  z-index: 1051 !important;
+  position: relative !important;
 }
 
+.navbar-toggler {
+  z-index: 1051 !important;
+  position: relative !important;
+}
+
+/* 스크롤시 로고 크기 줄이기 */
+.navbar-custom.scrolled {
+  min-height: 60px !important;
+  max-height: 60px !important;
+}
+
+.navbar-custom.scrolled .navbar-brand-logo {
+  height: 60px !important;
+}
+
+.navbar-custom.scrolled .brand-logo-only {
+  height: 80px !important;  /* 스크롤시 작아짐 */
+}
 
 /* 모바일 반응형 */
 @media (max-width: 768px) {
-  .brand-logo-only {
-    height: 100px !important;  /* 모바일에서는 적당한 크기로 */
+  .navbar-custom {
+    min-height: 60px !important;
+    max-height: 60px !important;
   }
   
-  .navbar-custom {
-    min-height: 70px !important;
+  .navbar-brand-logo {
+    height: 60px !important;
+  }
+  
+  .brand-logo-only {
+    height: 90px !important;  /* 모바일에서는 더 작게 */
+  }
+  
+  .navbar-custom.scrolled .brand-logo-only {
+    height: 70px !important;
   }
 }
 
 @media (max-width: 480px) {
-  .brand-logo-only {
-    height: 60px !important;  /* 아주 작은 화면에서는 더 작게 */
+  .navbar-custom {
+    min-height: 55px !important;
+    max-height: 55px !important;
   }
   
-  .navbar-custom {
-    min-height: 65px !important;
+  .navbar-brand-logo {
+    height: 55px !important;
+  }
+  
+  .brand-logo-only {
+    height: 75px !important;  /* 아주 작은 화면에서는 더 작게 */
+  }
+  
+  .navbar-custom.scrolled .brand-logo-only {
+    height: 60px !important;
   }
 }
 
+/* 네비게이션 아래 콘텐츠가 로고에 가려지지 않도록 여백 추가 */
+body {
+  padding-top: 80px !important;  /* 기존보다 약간 증가 */
+}
 
 @media (max-width: 768px) {
-  .navbar-custom.scrolled .brand-logo-only {
-    height: 100px !important;
+  body {
+    padding-top: 70px !important;
   }
+}
+
+/* 배너나 다른 고정 요소들과의 z-index 충돌 방지 */
+#banner {
+  margin-top: 0 !important;
+  position: relative !important;
+  z-index: 1 !important;
+}
+
+/* 로고가 다른 요소 위에 올바르게 표시되도록 */
+.brand-logo-only {
+  /* 네비바 배경과 조화되도록 약간의 배경 추가 (선택사항) */
+  background: radial-gradient(ellipse at center, rgba(255,255,255,0.1) 0%, transparent 70%) !important;
+  border-radius: 50px !important;
+  padding: 5px !important;
 }
