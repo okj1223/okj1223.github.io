@@ -1,0 +1,309 @@
+/* ============================================
+   Technology Tags & Labels
+   ============================================ */
+
+/* Base Tech Tag Style */
+.home-project-tech {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 0.4rem !important;
+  clear: left !important;
+  margin-top: 0 !important;
+  line-height: 1.2 !important;
+}
+
+.home-tech-tag {
+  padding: 0.3rem 0.7rem !important;
+  border-radius: 16px !important;
+  font-size: 0.7rem !important;
+  font-weight: 500 !important;
+  transition: var(--smooth-transition) !important;
+  display: inline-block !important;
+  text-decoration: none !important;
+  border-width: 1px !important;
+  border-style: solid !important;
+  font-family: var(--font-sans) !important;
+}
+
+.home-tech-tag:hover {
+  transform: translateY(-1px) !important;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1) !important;
+}
+
+/* Tech Tag Categories */
+
+/* AI/Machine Learning */
+.home-tech-tag.ai {
+  background: rgba(127, 179, 211, 0.2) !important;
+  color: var(--eco-green) !important;
+  border-color: var(--eco-green) !important;
+}
+
+/* Data/Analytics */
+.home-tech-tag.data {
+  background: rgba(168, 216, 168, 0.2) !important;
+  color: var(--light-green) !important;
+  border-color: var(--light-green) !important;
+}
+
+/* Communication/Networking */
+.home-tech-tag.comm {
+  background: rgba(135, 206, 235, 0.2) !important;
+  color: var(--water-blue) !important;
+  border-color: var(--water-blue) !important;
+}
+
+/* Programming/System */
+.home-tech-tag.prog {
+  background: rgba(196, 164, 132, 0.2) !important;
+  color: var(--earth-brown) !important;
+  border-color: var(--earth-brown) !important;
+}
+
+/* ROS/Robotics System */
+.home-tech-tag.prog.ros {
+  background: rgba(70, 130, 180, 0.2) !important;
+  color: var(--steel-blue) !important;
+  border-color: var(--steel-blue) !important;
+}
+
+/* Design/CAD */
+.home-tech-tag.design {
+  background: rgba(93, 115, 126, 0.2) !important;
+  color: var(--forest-green) !important;
+  border-color: var(--forest-green) !important;
+}
+
+/* Engineering */
+.home-tech-tag.eng {
+  background: rgba(32, 178, 170, 0.2) !important;
+  color: var(--light-coral) !important;
+  border-color: var(--light-coral) !important;
+}
+
+/* Manufacturing/Hardware */
+.home-tech-tag.manu {
+  background: rgba(180, 200, 180, 0.2) !important;
+  color: #6b946b !important;
+  border-color: #6b946b !important;
+}
+
+/* Fluid Dynamics/Physics */
+.home-tech-tag.fluid {
+  background: rgba(70, 130, 180, 0.2) !important;
+  color: var(--steel-blue) !important;
+  border-color: var(--steel-blue) !important;
+}
+
+/* Robot Hardware */
+.home-tech-tag.robot-hw {
+  background: rgba(105, 105, 105, 0.2) !important;
+  color: var(--dim-gray) !important;
+  border-color: var(--dim-gray) !important;
+}
+
+/* Sensor/Hardware */
+.home-tech-tag.sensor {
+  background: rgba(255, 140, 0, 0.2) !important;
+  color: var(--dark-orange) !important;
+  border-color: var(--dark-orange) !important;
+}
+
+/* Precision Control */
+.home-tech-tag.precision {
+  background: rgba(147, 112, 219, 0.2) !important;
+  color: var(--medium-purple) !important;
+  border-color: var(--medium-purple) !important;
+}
+
+/* System Integration */
+.home-tech-tag.system {
+  background: rgba(60, 179, 113, 0.2) !important;
+  color: var(--sea-green) !important;
+  border-color: var(--sea-green) !important;
+}
+
+/* Tech Stack Icons */
+.tech-stack-strip {
+  position: absolute;
+  right: 0;
+  top: 50px;
+  width: 40px;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.tech-icon-item {
+  width: 32px;
+  height: 32px;
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(184, 212, 227, 0.2);
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--smooth-transition);
+  backdrop-filter: blur(10px);
+  cursor: pointer;
+}
+
+.tech-icon-item:hover {
+  transform: scale(1.1);
+  border-color: var(--eco-green);
+  box-shadow: var(--leaf-shadow);
+}
+
+.tech-svg {
+  width: 16px;
+  height: 16px;
+  fill: var(--forest-green);
+  transition: fill 0.3s ease;
+}
+
+.tech-icon-item:hover .tech-svg {
+  fill: var(--eco-green);
+}
+
+/* Tech Fusion Visualization */
+.tech-fusion-viz {
+  position: absolute;
+  bottom: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120px;
+  height: 120px;
+}
+
+.fusion-center {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.center-core {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 16px;
+  height: 16px;
+  background: radial-gradient(circle, var(--earth-brown) 0%, var(--eco-green) 100%);
+  border-radius: 50%;
+  box-shadow: 0 0 20px rgba(196, 164, 132, 0.6);
+  animation: coreGlow 3s ease-in-out infinite;
+}
+
+.orbital-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border: 1px solid rgba(184, 212, 227, 0.2);
+  border-radius: 50%;
+  animation: rotate 20s linear infinite;
+}
+
+.ring-1 {
+  width: 40px;
+  height: 40px;
+  transform: translate(-50%, -50%);
+}
+
+.ring-2 {
+  width: 60px;
+  height: 60px;
+  transform: translate(-50%, -50%);
+  animation-duration: 25s;
+  animation-direction: reverse;
+}
+
+.ring-3 {
+  width: 80px;
+  height: 80px;
+  transform: translate(-50%, -50%);
+  animation-duration: 30s;
+}
+
+.ring-4 {
+  width: 100px;
+  height: 100px;
+  transform: translate(-50%, -50%);
+  animation-duration: 35s;
+  animation-direction: reverse;
+}
+
+.tech-sphere {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(10px);
+  transition: var(--smooth-transition);
+}
+
+.tech-sphere.env {
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(168, 216, 168, 0.2);
+  border: 1px solid var(--light-green);
+}
+
+.tech-sphere.robot {
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(93, 115, 126, 0.2);
+  border: 1px solid var(--forest-green);
+}
+
+.tech-sphere.elec {
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(196, 164, 132, 0.2);
+  border: 1px solid var(--earth-brown);
+}
+
+.tech-sphere.comp {
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(127, 179, 211, 0.2);
+  border: 1px solid var(--eco-green);
+}
+
+.tech-sphere:hover {
+  transform: translateX(-50%) scale(1.2);
+  box-shadow: 0 0 15px currentColor;
+}
+
+.sphere-icon {
+  width: 12px;
+  height: 12px;
+  fill: currentColor;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .home-tech-tag {
+    font-size: 0.65rem !important;
+    padding: 0.25rem 0.6rem !important;
+  }
+  
+  .tech-stack-strip,
+  .tech-fusion-viz {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .home-tech-tag {
+    font-size: 0.65rem !important;
+    padding: 0.25rem 0.6rem !important;
+  }
+}
