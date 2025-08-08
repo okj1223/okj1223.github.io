@@ -3044,9 +3044,9 @@ figure figcaption {
   font-size: 0.95rem !important;
   font-weight: 500 !important;
   color: var(--forest-green) !important;
-  padding: 0.75rem 1.2rem !important;
-  margin: 0 0.2rem !important;
-  border-radius: 25px !important;
+  padding: 0 0.6rem !important;   /* 세로패딩 제거, 가로만 */
+  margin: 0 0.15rem !important;
+  border-radius: 12px !important; /* 둥근 정도 축소 */
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
   position: relative !important;
   overflow: hidden !important;
@@ -3099,10 +3099,10 @@ figure figcaption {
   font-family: 'Inter', sans-serif !important;
   font-size: 0.9rem !important;
   color: var(--forest-green) !important;
-  padding: 0.75rem 1.5rem !important;
+  padding: 0.5rem 1rem !important;
   transition: all 0.3s ease !important;
-  border-radius: 10px !important;
-  margin: 0.2rem 0.5rem !important;
+  border-radius: 8px !important;
+  margin: 0.15rem 0.35rem !important;
 }
 
 .dropdown-item:hover {
@@ -3905,19 +3905,21 @@ figure figcaption {
   }
   
   .navbar-brand-logo {
-    height: 80px !important;
+    height: 56px !important;
   }
   
   .navbar-custom.scrolled .brand-logo-only {
-    height: 70px !important;
+    height: 44px !important;
   }
 
   .brand-logo-only,
   .navbar-custom .nav-link,
   #nav-search-link {
-    height: 80px !important;
-    line-height: 80px !important;
+    height: 44px !important;
+    line-height: 44px !important;
   }
+
+  .brand-logo-only { height: 56px !important; }
 }
 
 @media (max-width: 480px) {
