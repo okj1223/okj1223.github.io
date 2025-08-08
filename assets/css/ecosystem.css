@@ -3910,7 +3910,7 @@ figure figcaption {
   }
   
   .navbar-brand-logo {
-    height: 60px !important;
+    height: 80px !important;
   }
   
   .navbar-custom.scrolled .brand-logo-only {
@@ -3920,8 +3920,8 @@ figure figcaption {
   .brand-logo-only,
   .navbar-custom .nav-link,
   #nav-search-link {
-    height: 36px !important;
-    line-height: 36px !important;
+    height: 80px !important;
+    line-height: 80px !important;
   }
 }
 
@@ -3932,11 +3932,11 @@ figure figcaption {
   }
   
   .navbar-brand-logo {
-    height: 55px !important;
+    height: 70px !important;
   }
   
   .brand-logo-only {
-    height: 55px !important;  /* 아주 작은 화면에서는 더 작게 */
+    height: 70px !important;  /* 아주 작은 화면에서는 더 작게 */
   }
   
   .navbar-custom.scrolled .brand-logo-only {
