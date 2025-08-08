@@ -3108,11 +3108,12 @@ figure figcaption {
 
 /* 검색 버튼 */
 #nav-search-link {
-  background: rgba(127, 179, 211, 0.1) !important;
-  border: 1px solid rgba(127, 179, 211, 0.2) !important;
-  border-radius: 50px !important;
-  padding: 0.6rem 1rem !important;
-  margin-left: 0.5rem !important;
+  padding: 0 12px !important;    /* 세로 패딩 제거 */
+  height: 40px !important;       /* 버튼 자체 높이 지정 */
+  line-height: 40px !important;  /* 텍스트/아이콘 수직 정렬 */
+  border-radius: 20px !important;
+  display: inline-flex !important;
+  align-items: center !important; /* 아이콘 정렬 보정 */
 }
 
 #nav-search-link:hover {
@@ -3323,7 +3324,7 @@ figure figcaption {
 }
 
 .avatar-circle:hover {
-  transform: scale(1.1) rotate(5deg);
+  transform: scale(1.1);
   box-shadow: 0 12px 35px rgba(127, 179, 211, 0.3);
 }
 
@@ -3880,7 +3881,7 @@ figure figcaption {
 
 /* 호버 효과 */
 .navbar-brand-logo:hover .brand-logo-only {
-  transform: scale(1.05) rotate(2deg) !important;
+  transform: scale(1.05) !important;
   filter: drop-shadow(0 6px 12px rgba(127, 179, 211, 0.3)) !important;
 }
 
