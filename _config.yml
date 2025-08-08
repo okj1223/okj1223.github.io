@@ -10,7 +10,7 @@
 ############################
 
 # Name of website
-title: KAVEO Lab
+title: KERIA Lab
 
 site-logo: "/assets/img/logo.png"
 # Your name to show in the footer
@@ -127,7 +127,7 @@ share-links-active:
 
 # How to display the link to your website in the footer
 # Remove this if you don't want a link in the footer
-url-pretty: "kaveolab.com"
+url-pretty: "kerialab.com"
 
 # Add the website title to the title of every page
 title-on-all-pages: true
@@ -186,7 +186,7 @@ footer-hover-col: "#0085A1"
 # For any extra visual customization, you can include additional CSS files in every page on your site. List any custom CSS files here
 site-css:
  - "/assets/css/beautifuljekyll.css"   # 테마 기본
- - "/assets/css/custom-styles.css"     # 내 커스텀 CSS
+ - "/assets/css/ecosystem.css"     # 내 커스텀 CSS
 
 # If you have common JavaScript files that should be included in every page, list them here
 #site-js:
