@@ -3964,9 +3964,15 @@ body { padding-top: 0 !important; }
 @media (max-width: 768px) { body { padding-top: 0 !important; } }
 
 .navbar-custom .nav-link {
-  padding: 0 12px !important;   /* 세로 패딩 0, 가로만 */
+  padding: 0 12px !important;     /* 세로패딩 제거 */
+  height: 40px !important;
+  line-height: 40px !important;
   display: inline-flex !important;
   align-items: center !important;
-  height: 40px !important;      /* 동일한 라인 높이 */
-  line-height: 40px !important;
+  border-radius: 20px !important;  /* 모양 유지 */
+}
+
+.navbar-custom {
+  height: 70px !important;
+  padding: 0 !important;
 }
