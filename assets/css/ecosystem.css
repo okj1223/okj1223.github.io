@@ -3859,7 +3859,7 @@ figure figcaption {
 
 /* 큰 로고 이미지 스타일 */
 .brand-logo-only {
-  height: 100px !important;  /* 150px는 너무 클 수 있으니 120px로 조정 */
+  height: 150px !important;  /* 150px는 너무 클 수 있으니 120px로 조정 */
   width: auto !important;
   margin: 0 !important;
   transition: var(--smooth-transition) !important;
