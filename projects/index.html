@@ -624,35 +624,20 @@ html, body {
 
 .holo-ring {
   position: absolute;
-  border-radius: 50%;
-  border: 2px solid rgba(127, 179, 211, 0.6);
   top: 50%;
   left: 50%;
+  /* 중앙 정렬 방식: 마진 대신 트랜스폼 사용 */
+  transform: translate(-50%, -50%);
   transform-origin: center;
+  box-sizing: border-box;
+  will-change: transform;
+  pointer-events: none;
+  z-index: 1; /* 코어 아래/위 정렬 통일 */
 }
 
-.ring-1 {
-  width: 300px;
-  height: 300px;
-  margin: -150px 0 0 -150px;
-  animation: ringRotate 15s linear infinite;
-}
-
-.ring-2 {
-  width: 200px;
-  height: 200px;
-  margin: -100px 0 0 -100px;
-  animation: ringRotate 12s linear infinite reverse;
-  border-color: rgba(135, 206, 235, 0.6);
-}
-
-.ring-3 {
-  width: 100px;
-  height: 100px;
-  margin: -50px 0 0 -50px;
-  animation: ringRotate 8s linear infinite;
-  border-color: rgba(168, 216, 168, 0.6);
-}
+.ring-1 { width: 300px; height: 300px; animation: ringRotate 15s linear infinite; }
+.ring-2 { width: 200px; height: 200px; animation: ringRotate 12s linear infinite reverse; border-color: rgba(135, 206, 235, 0.6); }
+.ring-3 { width: 100px; height: 100px; animation: ringRotate 8s linear infinite; border-color: rgba(168, 216, 168, 0.6); }
 
 .ring-segment {
   position: absolute;
@@ -661,6 +646,7 @@ html, body {
   background: radial-gradient(circle, rgba(127, 179, 211, 0.8) 0%, transparent 70%);
   border-radius: 50%;
   animation: segmentPulse 2s ease-in-out infinite;
+  transform: translateZ(0);
 }
 
 .ring-1 .ring-segment:nth-child(1) { top: -10px; left: 50%; transform: translateX(-50%); animation-delay: 0s; }
@@ -688,6 +674,11 @@ html, body {
   align-items: center;
   justify-content: center;
   animation: coreRotate 4s ease-in-out infinite;
+}
+
+.central-core {
+  z-index: 2;
+  transform: translateZ(0); /* 미세 떨림 방지 */
 }
 
 .core-pulse {
@@ -1264,4 +1255,23 @@ html, body {
   outline: 2px solid var(--eco-green);
   outline-offset: 3px;
 }
+
+/* ===== Fix: kill the phantom top padding above the banner ===== */
+.main-content,
+.page-content,
+.page-content .container,
+.page-content .container-fluid,
+.container-md,
+.container-lg,
+.container-xl,
+.container-fluid,
+.container,
+.row,
+.col,
+.col-12,
+.col-lg-12 {
+  padding: 0 !important;   /* 상단 80px 지우기 */
+  margin: 0 !important;
+}
+
 </style>
