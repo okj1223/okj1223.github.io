@@ -3041,18 +3041,12 @@ figure figcaption {
 /* 네비게이션 링크 스타일 - 가독성 개선 */
 .navbar-nav .nav-link {
   font-family: 'Inter', sans-serif !important;
-  /* Updated dimensions for slimmer, modern nav items */
   font-size: 0.92rem !important;
   font-weight: 500 !important;
   color: var(--forest-green) !important;
-  padding: 0 0.6rem !important;
+  padding: 0 0.6rem !important;   /* 세로패딩 제거, 가로만 */
   margin: 0 0.15rem !important;
-  border-radius: 12px !important;
-  /* Ensure consistent height and vertical centering */
-  display: inline-flex !important;
-  align-items: center !important;
-  height: 40px !important;
-  line-height: 40px !important;
+  border-radius: 12px !important; /* 둥근 정도 축소 */
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
   position: relative !important;
   overflow: hidden !important;
@@ -3119,13 +3113,12 @@ figure figcaption {
 
 /* 검색 버튼 */
 #nav-search-link {
-  /* Match the search link to the updated nav link styling */
-  padding: 0 0.6rem !important;
-  height: 40px !important;
-  line-height: 40px !important;
-  border-radius: 12px !important;
+  padding: 0 12px !important;    /* 세로 패딩 제거 */
+  height: 40px !important;       /* 버튼 자체 높이 지정 */
+  line-height: 40px !important;  /* 텍스트/아이콘 수직 정렬 */
+  border-radius: 20px !important;
   display: inline-flex !important;
-  align-items: center !important;
+  align-items: center !important; /* 아이콘 정렬 보정 */
 }
 
 #nav-search-link:hover {
@@ -3224,10 +3217,9 @@ figure figcaption {
 /* 모바일에서 네비게이션 링크 */
 @media (max-width: 1199.98px) {
   .navbar-nav .nav-link {
-    /* Centre text but avoid excessive padding on medium screens */
     text-align: center !important;
-    margin: 0.3rem 0.15rem !important;
-    padding: 0.6rem 0.6rem !important;
+    margin: 0.3rem 0 !important;
+    padding: 0.8rem 1rem !important;
   }
   
   .navbar-nav {
@@ -3897,19 +3889,13 @@ figure figcaption {
   position: relative !important;
 }
 
-/* 스크롤시 로고 크기 줄이기 */
-.navbar-custom.scrolled {
-  min-height: 60px !important;
-  max-height: 60px !important;
-}
 
 .navbar-custom.scrolled .navbar-brand-logo {
-  height: 60px !important;
+  height: 120px !important;
 }
 
-/* Reduce the logo size when the navbar is scrolled to better balance against nav items */
 .navbar-custom.scrolled .brand-logo-only {
-  height: 60px !important;
+  height: 80px !important;  /* 스크롤시 작아짐 */
 }
 
 /* 모바일 반응형 */
@@ -3917,24 +3903,23 @@ figure figcaption {
   .navbar-custom {
     height: 60px !important;
   }
-
-  /* Brand logo sizing on mobile */
-  .navbar-brand-logo,
-  .brand-logo-only {
+  
+  .navbar-brand-logo {
     height: 56px !important;
-    line-height: 56px !important;
   }
-
+  
   .navbar-custom.scrolled .brand-logo-only {
-    height: 56px !important;
+    height: 44px !important;
   }
 
-  /* Navigation links and search button */
+  .brand-logo-only,
   .navbar-custom .nav-link,
   #nav-search-link {
     height: 44px !important;
     line-height: 44px !important;
   }
+
+  .brand-logo-only { height: 56px !important; }
 }
 
 @media (max-width: 480px) {
@@ -3943,17 +3928,16 @@ figure figcaption {
     max-height: 55px !important;
   }
   
-  /* Further compress the logo on very small screens */
   .navbar-brand-logo {
-    height: 56px !important;
+    height: 70px !important;
   }
   
   .brand-logo-only {
-    height: 56px !important;
+    height: 70px !important;  /* 아주 작은 화면에서는 더 작게 */
   }
   
   .navbar-custom.scrolled .brand-logo-only {
-    height: 56px !important;
+    height: 60px !important;
   }
 }
 
@@ -3977,14 +3961,12 @@ body { padding-top: 0 !important; }
 @media (max-width: 768px) { body { padding-top: 0 !important; } }
 
 .navbar-custom .nav-link {
-  /* Reduced horizontal padding for slimmer nav buttons */
-  padding: 0 0.6rem !important;
+  padding: 0 12px !important;     /* 세로패딩 제거 */
   height: 40px !important;
   line-height: 40px !important;
   display: inline-flex !important;
   align-items: center !important;
-  /* Tighter rounding to match updated nav styling */
-  border-radius: 12px !important;
+  border-radius: 20px !important;  /* 모양 유지 */
 }
 
 .navbar-custom {
