@@ -3319,7 +3319,6 @@ figure figcaption {
   width: 200%;
   height: 200%;
   background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
-  transform: rotate(45deg);
   transition: var(--smooth-transition);
 }
 
@@ -3752,10 +3751,6 @@ figure figcaption {
   align-items: center !important;
 }
 
-/* 네비게이션바 높이도 약간 증가 */
-.navbar-custom {
-  min-height: 75px !important;  /* 70px → 75px */
-}
 
 
 /* 🔧 liquid injection 프로젝트용 추가 CSS 스타일 */
@@ -3843,6 +3838,7 @@ figure figcaption {
   overflow: visible !important;  /* 로고가 네비바 영역을 벗어나도 보이도록 */
   position: relative !important;
   z-index: 1050 !important;  /* 다른 요소들보다 위에 표시 */
+  padding: 0.4rem 0 !important;
 }
 
 /* 네비게이션 컨테이너 내부 정렬 */
