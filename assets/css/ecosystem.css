@@ -3859,7 +3859,7 @@ figure figcaption {
 
 /* 큰 로고 이미지 스타일 */
 .brand-logo-only {
-  height: 48px !important;  /* 150px는 너무 클 수 있으니 120px로 조정 */
+  height: 100px !important;  /* 150px는 너무 클 수 있으니 120px로 조정 */
   width: auto !important;
   margin: 0 !important;
   transition: var(--smooth-transition) !important;
@@ -3936,7 +3936,7 @@ figure figcaption {
   }
   
   .brand-logo-only {
-    height: 75px !important;  /* 아주 작은 화면에서는 더 작게 */
+    height: 55px !important;  /* 아주 작은 화면에서는 더 작게 */
   }
   
   .navbar-custom.scrolled .brand-logo-only {
@@ -3944,16 +3944,6 @@ figure figcaption {
   }
 }
 
-/* 네비게이션 아래 콘텐츠가 로고에 가려지지 않도록 여백 추가 */
-body {
-  padding-top: 80px !important;  /* 기존보다 약간 증가 */
-}
-
-@media (max-width: 768px) {
-  body {
-    padding-top: 70px !important;
-  }
-}
 
 /* 배너나 다른 고정 요소들과의 z-index 충돌 방지 */
 #banner {
