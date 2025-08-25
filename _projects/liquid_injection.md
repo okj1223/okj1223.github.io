@@ -171,7 +171,7 @@ The mathematical foundation ensures industrial-grade precision and repeatability
 The experimental setup implements a distributed hardware architecture connecting multiple subsystems through standardized communication protocols. The complete system architecture consists of four primary hardware components integrated through MQTT communication protocol.
 
 <figure>
-  <img class="project-image"
+  <img class="flowchart"
        src="{{ '/project/liquid_injection/hardware_architecture.png' | relative_url }}"
        alt="Hardware Architecture Diagram"
        loading="lazy">
@@ -517,7 +517,7 @@ The HX711 is a precision 24-bit analog-to-digital converter specifically designe
 | A- | Signal- | Load Cell Green | Green |
 
 <figure>
-  <img class="project-image"
+  <img class="flowchart"
        src="{{ '/project/liquid_injection/electrical_schematic.webp' | relative_url }}"
        alt="Electrical Schematic"
        loading="lazy">

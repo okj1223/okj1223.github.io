@@ -308,6 +308,44 @@ body {
   margin: 1rem auto !important;
 }
 
+/* 플로우차트/다이어그램용 클래스 - 꽉찬 너비, 배경/그림자 제거 */
+.project-content .flowchart,
+.project-content .diagram,
+.project-content .architecture,
+.project-content figure .flowchart,
+.project-content figure .diagram,
+.project-content figure .architecture {
+  max-width: 100% !important;
+  max-height: none !important;
+  width: 100% !important;
+  border-radius: 0 !important; /* 둥근 모서리 제거 */
+  box-shadow: none !important; /* 그림자 제거 */
+  background: transparent !important; /* 배경 투명 */
+  margin: 2rem auto !important;
+  border: none !important; /* 테두리도 제거 */
+}
+
+/* 작은 이미지용 클래스 */
+.project-content .small-image,
+.project-content figure .small-image {
+  max-width: 50% !important;
+  max-height: 250px !important;
+}
+
+/* 중간 이미지용 클래스 */
+.project-content .medium-image,
+.project-content figure .medium-image {
+  max-width: 70% !important;
+  max-height: 400px !important;
+}
+
+/* 큰 이미지용 클래스 */
+.project-content .large-image,
+.project-content figure .large-image {
+  max-width: 95% !important;
+  max-height: 700px !important;
+}
+
 /* 표만 센터 정렬 */
 .project-content table {
   margin: 2rem auto !important;
@@ -633,6 +671,17 @@ body {
   .project-content figure img {
     max-width: 95% !important;
     max-height: 300px !important;
+  }
+  
+  /* 모바일에서도 플로우차트는 꽉찬 너비 유지 */
+  .project-content .flowchart,
+  .project-content .diagram,
+  .project-content .architecture,
+  .project-content figure .flowchart,
+  .project-content figure .diagram,
+  .project-content figure .architecture {
+    max-width: 100% !important;
+    max-height: 400px !important; /* 모바일에서만 높이 제한 */
   }
 }
 

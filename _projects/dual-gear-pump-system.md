@@ -218,7 +218,7 @@ This provides sufficient margin compared to typical gear pump NPSHR (0.5-2m).
 ## 4. Major Component Selection and Design
 
 <figure>
-  <img class="project-image"
+  <img class="flowchart"
        src="{{ '/project/dual-gear-pump-system/system-architecture.png' | relative_url }}"
        alt="System Architecture"
        loading="lazy">
@@ -346,7 +346,7 @@ Control inputs:
 ### 5.2 Wiring Design
 
 <figure>
-  <img class="project-image"
+  <img class="flowchart"
        src="{{ '/project/dual-gear-pump-system/wiring-diagram.png' | relative_url }}"
        alt="Electrical Wiring Diagram"
        loading="lazy">

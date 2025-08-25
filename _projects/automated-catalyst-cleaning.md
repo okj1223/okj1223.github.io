@@ -66,7 +66,7 @@ SCR systems are critical for NOₓ emission reduction in power plants, cement ki
 The automated cleaning system employs a **rail-mounted mobile platform** with precision positioning, Arduino-based control, and fluid atomization technology. The design philosophy prioritizes **simplicity, reliability, and maintainability** over complex solutions.
 
 <figure>
-  <img class="project-image"
+  <img class="flowchart"
        src="{{ '/project/automated-catalyst-cleaning/architecture-diagram.png' | relative_url }}"
        alt="System Architecture"
        loading="lazy">
