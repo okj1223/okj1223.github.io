@@ -284,7 +284,31 @@ body {
   margin-bottom: 0.5rem !important;
 }
 
-/* 표와 그림만 센터 정렬 */
+/* 이미지 크기 조절 */
+.project-content figure img {
+  display: block !important;
+  margin: 0 auto !important;
+  max-width: 80% !important; /* 기본 너비를 80%로 제한 */
+  max-height: 500px !important; /* 최대 높이 제한 */
+  height: auto !important;
+  border-radius: 12px !important;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1) !important;
+  object-fit: contain !important; /* 비율 유지하면서 크기 조절 */
+}
+
+/* 일반 이미지 (figure 밖의 이미지)도 크기 제한 */
+.project-content img {
+  max-width: 80% !important;
+  max-height: 500px !important;
+  height: auto !important;
+  border-radius: 8px !important;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1) !important;
+  object-fit: contain !important;
+  display: block !important;
+  margin: 1rem auto !important;
+}
+
+/* 표만 센터 정렬 */
 .project-content table {
   margin: 2rem auto !important;
   text-align: center !important;
@@ -309,15 +333,6 @@ body {
   display: block !important;
   text-align: center !important;
   margin: 2rem auto !important;
-}
-
-.project-content figure img {
-  display: block !important;
-  margin: 0 auto !important;
-  max-width: 100% !important;
-  height: auto !important;
-  border-radius: 12px !important;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1) !important;
 }
 
 .project-content figcaption {
@@ -518,7 +533,7 @@ body {
   text-decoration: none !important;
 }
 
-/* 모바일 반응형 */
+/* 태블릿 반응형 */
 @media (max-width: 1024px) {
   .project-layout {
     flex-direction: column !important;
@@ -556,8 +571,16 @@ body {
   .project-content {
     padding: 1.5rem !important;
   }
+  
+  /* 태블릿에서 이미지 크기 */
+  .project-content img,
+  .project-content figure img {
+    max-width: 90% !important;
+    max-height: 400px !important;
+  }
 }
 
+/* 모바일 반응형 */
 @media (max-width: 768px) {
   .project-hero {
     padding: 5rem 0 3rem !important;
@@ -603,6 +626,13 @@ body {
   .project-content code {
     font-size: 0.85em !important;
     padding: 0.15rem 0.4rem !important;
+  }
+  
+  /* 모바일에서 이미지 더 작게 */
+  .project-content img,
+  .project-content figure img {
+    max-width: 95% !important;
+    max-height: 300px !important;
   }
 }
 
