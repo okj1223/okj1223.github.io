@@ -237,7 +237,7 @@ Key reasons for selecting gear pumps:
 
 <figure>
   <img class="project-image"
-       src="{{ '/assets/images/projects/dual-gear-pump-system/gear-pump-internal.jpg' | relative_url }}"
+       src="{{ '/project/dual-gear-pump-system/gear-pump-internal.jpg' | relative_url }}"
        alt="Gear Pump Internal Structure"
        loading="lazy">
   <figcaption>Figure 4.1-1: Internal structure of gear pump showing meshing gears and flow chambers for positive displacement operation
