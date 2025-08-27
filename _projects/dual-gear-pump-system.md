@@ -1,7 +1,7 @@
 ---
 layout: project
 title: "High-Pressure Dual Gear Pump System for Catalyst Regeneration"
-date: 2024-06-15
+date: 2024-04-15
 description: "Designed and fabricated a portable dual gear pump system for industrial catalyst regeneration using precise hydraulic analysis, inverter control technology, modular aluminum frame design, and comprehensive electrical integration."
 permalink: /projects/dual-gear-pump-system/
 ---

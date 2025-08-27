@@ -1,9 +1,9 @@
 ---
 layout: project
-title: "Industrial Safety Robot System"
-permalink: /projects/crack-ppe-detection/
-date: 2025-07-20
-description: "In the intersection of mathematics and machinery, we find not just efficiency, but the possibility of preserving human life itself."
+title: "Dry Ice Blaster Feeding System Design and Implementation"
+permalink: /projects/dry-ice-blaster-feeding-system/
+date: 2024-04-06
+description: "Where theoretical fluid dynamics meets hands-on fabrication, we discover not just technical excellence, but the art of transforming industrial cleaning through precision engineering."
 video_url: "https://www.youtube.com/embed/gsk4GZmsjrw"
 ---
 
