@@ -10,7 +10,7 @@ description: "Where theoretical fluid dynamics meets hands-on fabrication, we di
 
 <figure>
   <img class="project-image"
-       src="{{ '/project/dry-ice-blaster-feeding-system/completed_dry_ice_blaster.jpeg' | relative_url }}"
+       src="{{ '/project/dry-ice-blaster-feeding-system/completed_dry_ice_blaster.png' | relative_url }}"
        alt="Completed Dry Ice Blaster Feeding System"
        loading="lazy">
   <figcaption>Overall view of the completed dry ice blaster feeding system
