@@ -1,15 +1,11 @@
 ---
 layout: project
-title: "Dry Ice Blaster Feeding System Design and Implementation"
-permalink: /projects/dry-ice-blaster-feeding-system/
-date: 2024-04-06
-description: "Where theoretical fluid dynamics meets hands-on fabrication, we discover not just technical excellence, but the art of transforming industrial cleaning through precision engineering."
+title: "Industrial Safety Robot System: A Comprehensive Multi-Modal Approach"
+permalink: /projects/crack-ppe-detection/
+date: 2025-07-20
+description: "In the intersection of mathematics and machinery, we find not just efficiency, but the possibility of preserving human life itself."
 video_url: "https://www.youtube.com/embed/gsk4GZmsjrw"
 ---
-
-# Industrial Safety Robot System: Team RobotFactory
-
-> "In the intersection of mathematics and machinery, we find not just efficiency, but the possibility of preserving human life itself."
 
 ## Abstract
 
