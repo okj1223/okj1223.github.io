@@ -748,6 +748,7 @@ Flow analysis revealed:
 #### 7.3.1 Quantitative Performance Assessment
 
 **System Performance Metrics**:
+
 | Parameter | Target | Achieved | Status |
 |-----------|---------|----------|---------|
 | Pellet feed accuracy | ±5% | ±2.4% | Exceeded |
@@ -1428,6 +1429,7 @@ Results:
 #### C.1 Performance Test Matrix
 
 **Test Conditions Matrix**:
+
 | Test # | Pressure (bar) | Feed Rate (kg/min) | Ambient Temp (°C) | Humidity (%) | Duration (min) |
 |--------|----------------|---------------------|-------------------|--------------|----------------|
 | 1 | 6.0 | 0.5 | 20 | 45 | 30 |
