@@ -588,11 +588,10 @@ class PCBYOLOv11n:
 
 <figure>
   <img class="project-image"
-       src="{{ '/project/pcb_inspection/yolo_detection_realtime.gif' | relative_url }}"
+       src="{{ '/project/pcb_inspection/yolo_detection_realtime.jpg' | relative_url }}"
        alt="Real-time YOLO detection on PCB assembly line"
        loading="lazy">
-  <figcaption>Figure 4.1: 컨베이어 벨트 상에서 실시간 YOLOv11n 검출 과정. Arduino 보드와 각종 전자부품의 정확한 위치 및 상태 검출</figcaption>
-</figure>
+  <figcaption>Figure 4.1: 컨베이어 벨트 상에서 실시간 YOLOv11n 검출 과정. Arduino 보드와 각종 전자부품의 정확한 위치 및 상태 검출
 
 #### 4.1.2 템플릿 기반 품질 판정 시스템
 
