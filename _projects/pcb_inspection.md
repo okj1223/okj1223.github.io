@@ -51,11 +51,11 @@ PCB 품질 관리는 전통적으로 수동이고 오류가 발생하기 쉬운 
 우리 시스템은 각 구성요소가 MQTT와 ROS2를 통해 통신하는 모듈형 이벤트 기반 아키텍처를 따른다. 각 악기(모듈)가 완벽한 조화로 자신의 역할을 하는 교향곡이라고 생각하면 된다.
 
 <figure>
-  <img class="project-image"
-       src="{{ '/project/liquid_injection/archi.png' | relative_url }}"
+  <img class="flowchart"
+       src="{{ '/project/pcb_inspection/archi.png' | relative_url }}"
        alt="System architecture"
        loading="lazy">
-  <figcaption>Figure 1.1: Overall system architecture of AI-based PCB intelligent QC inspection and control system
+  <figcaption>Figure 2.1: Overall system architecture of AI-based PCB intelligent QC inspection and control system
 
 
 ### 주요 설계 결정사항
@@ -85,6 +85,21 @@ PCB 품질 관리는 전통적으로 수동이고 오류가 발생하기 쉬운 
 ## 3. 하드웨어 아키텍처 심화
 
 ### 컨베이어 시스템: 기계공학적 설계 분석
+
+<figure>
+  <img class="project-image"
+       src="{{ '/projectpcb_inspection/conveyor-belt-prototype-v1-assembled-arduino-rails.jpg' | relative_url }}"
+       alt="3D-printed conveyor belt prototype fully assembled with rubber belt, rails, and Arduino control board"
+       loading="lazy">
+  <figcaption>Figure 2.1: Fully assembled 3D-printed conveyor belt (rails + Arduino control).
+
+<figure>
+  <img class="project-image"
+       src="{{ '/project/pcb_inspection/conveyor-belt-prototype-v1-frame-motors-no-belt.jpg' | relative_url }}"
+       alt="3D-printed conveyor belt frame with twin yellow DC gear motors and roller, belt removed and no wiring"
+       loading="lazy">
+  <figcaption>Figure 2.2: 3D-printed conveyor frame with motors installed, belt removed.
+
 
 #### 3.1 설계 요구사항 및 하중 분석
 
@@ -299,14 +314,15 @@ PLA 재료 특성:
        src="{{ '/project/pcb_inspection_robot/conveyor_3d_modeling.gif' | relative_url }}"
        alt="3D modeling process of conveyor frame"
        loading="lazy">
-  <figcaption>Figure 3.1: CAD 소프트웨어를 사용한 컨베이어 프레임 3D 모델링 과정. PLA 재질 특성을 고려한 구조 최적화 설계
+  <figcaption>Figure 3.1: Fusion 소프트웨어를 사용한 컨베이어 프레임 3D 모델링 과정. PLA 재질 특성을 고려한 구조 최적화 설계
 
 <figure>
   <img class="project-image"
-       src="{{ '/project/pcb_inspection_robot/ender3_printing_process.gif' | relative_url }}"
+       src="{{ '/project/pcb_inspection/conveyor-belt-prototype-v1-frame-3d-printing.gif' | relative_url }}"
        alt="3D printing process using Creality Ender 3 V3 KE"
        loading="lazy">
   <figcaption>Figure 3.2: Creality Ender 3 V3 KE를 사용한 컨베이어 부품 실제 출력 과정. 레이어 높이 0.2mm, 충진율 20%로 설정
+
 
 #### 3.1.5 동역학 분석 및 성능 최적화
 
@@ -572,7 +588,7 @@ class PCBYOLOv11n:
 
 <figure>
   <img class="project-image"
-       src="{{ '/project/pcb_inspection_robot/yolo_detection_realtime.gif' | relative_url }}"
+       src="{{ '/project/pcb_inspection/yolo_detection_realtime.gif' | relative_url }}"
        alt="Real-time YOLO detection on PCB assembly line"
        loading="lazy">
   <figcaption>Figure 4.1: 컨베이어 벨트 상에서 실시간 YOLOv11n 검출 과정. Arduino 보드와 각종 전자부품의 정확한 위치 및 상태 검출</figcaption>
