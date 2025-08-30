@@ -1869,8 +1869,7 @@ This system implements a 2-stage verification pipeline that hierarchically combi
        src="{{ '/project/pcb_inspection/voice_control_system_architecture.png' | relative_url }}"
        alt="Voice control system architecture"
        loading="lazy">
-  <figcaption>Figure 6.1: Voice control system architecture with dual-stage authentication</figcaption>
-</figure>
+  <figcaption>Figure 6.1: Voice control system architecture with dual-stage authentication
 
 <figure>
   <img class="flowchart"
@@ -1898,26 +1897,26 @@ data/
 **Time Domain Augmentation:**
 
 Gain Perturbation:
-$G(x) = \alpha \cdot x, \quad \alpha \sim \mathcal{U}(10^{-6/20}, 10^{6/20})$
+$$G(x) = \alpha \cdot x, \quad \alpha \sim \mathcal{U}(10^{-6/20}, 10^{6/20})$$
 
 Time Shifting:
-$S(x[n]) = x[n - \delta], \quad \delta \sim \mathcal{U}(-0.08 \cdot f_s, 0.08 \cdot f_s)$
+$$S(x[n]) = x[n - \delta], \quad \delta \sim \mathcal{U}(-0.08 \cdot f_s, 0.08 \cdot f_s)$$
 
 Speed Perturbation (WSOLA):
-$V(x) = \text{resample}(x, r), \quad r \sim \mathcal{U}(0.9, 1.1)$
+$$V(x) = \text{resample}(x, r), \quad r \sim \mathcal{U}(0.9, 1.1)$$
 
 **Frequency Domain Augmentation:**
 
 Pitch Shifting (Phase Vocoder):
-$P(X) = \text{STFT}^{-1}(X \cdot e^{j\phi}), \quad \phi = \angle(X) \cdot 2^{\text{cents}/1200}$
+$$P(X) = \text{STFT}^{-1}(X \cdot e^{j\phi}), \quad \phi = \angle(X) \cdot 2^{\text{cents}/1200}$$
 
 Reverb Simulation:
-$R(x) = x * h, \quad h(t) = e^{-6t/T} \cdot \delta(t)$
+$$R(x) = x * h, \quad h(t) = e^{-6t/T} \cdot \delta(t)$$
 
 **SNR-controlled Noise Mixing:**
-$\text{SNR}_{\text{target}} \sim \mathcal{U}(0, 20) \text{ dB}$
-$\sigma_{\text{noise}} = \frac{\sigma_{\text{signal}}}{10^{\text{SNR}/20}}$
-$y = x + \alpha \cdot n, \quad \alpha = \frac{\sigma_{\text{noise}}}{||n||_2}$
+$$\text{SNR}_{\text{target}} \sim \mathcal{U}(0, 20) \text{ dB}$$
+$$\sigma_{\text{noise}} = \frac{\sigma_{\text{signal}}}{10^{\text{SNR}/20}}$$
+$$y = x + \alpha \cdot n, \quad \alpha = \frac{\sigma_{\text{noise}}}{||n||_2}$$
 
 ## 6.3 Feature Extraction: Log-Mel Spectrogram
 
@@ -1939,35 +1938,35 @@ $y = x + \alpha \cdot n, \quad \alpha = \frac{\sigma_{\text{noise}}}{||n||_2}$
   <figcaption>Figure 6.4: Log-Mel spectrogram transformation stages
 
 **Mel Scale Conversion:**
-$m = 2595 \cdot \log_{10}(1 + f/700)$
-$f = 700 \cdot (10^{m/2595} - 1)$
+$$m = 2595 \cdot \log_{10}(1 + f/700)$$
+$$f = 700 \cdot (10^{m/2595} - 1)$$
 
 **Triangular Filter Weights (40 channels, 20Hz-7600Hz):**
-$W[m, k] = \begin{cases}
+$$$W[m, k] = \begin{cases}
 \frac{k - f[m-1]}{f[m] - f[m-1]}, & f[m-1] \leq k < f[m] \\
 \frac{f[m+1] - k}{f[m+1] - f[m]}, & f[m] \leq k < f[m+1] \\
 0, & \text{otherwise}
-\end{cases}$
+\end{cases}$$
 
 ### 6.3.2 Feature Extraction Pipeline
 
 1. **Windowing:** 
-   $x_w[n] = x[n] \cdot w[n], \quad w[n] = 0.5 - 0.5\cos\left(\frac{2\pi n}{N-1}\right)$
+   $$x_w[n] = x[n] \cdot w[n], \quad w[n] = 0.5 - 0.5\cos\left(\frac{2\pi n}{N-1}\right)$$
 
 2. **STFT:**
-   $X[k, l] = \sum_{n=0}^{N-1} x_w[n] \cdot e^{-j2\pi kn/N}$
+   $$X[k, l] = \sum_{n=0}^{N-1} x_w[n] \cdot e^{-j2\pi kn/N}$$
 
 3. **Power Spectrum:**
-   $P[k, l] = |X[k, l]|^2$
+   $$P[k, l] = |X[k, l]|^2$$
 
 4. **Mel Filtering:**
-   $M[m, l] = \sum_{k=0}^{N/2} W[m, k] \cdot P[k, l]$
+   $$M[m, l] = \sum_{k=0}^{N/2} W[m, k] \cdot P[k, l]$$
 
 5. **Log Compression:**
-   $L[m, l] = 10 \cdot \log_{10}(\max(M[m, l], \epsilon))$
+   $$L[m, l] = 10 \cdot \log_{10}(\max(M[m, l], \epsilon))$$
 
 6. **Normalization:**
-   $Z[m, l] = \frac{L[m, l] - \mu}{\sigma}$
+   $$Z[m, l] = \frac{L[m, l] - \mu}{\sigma}$$
 
 ## 6.4 CNN-based KWS Model
 
@@ -1985,20 +1984,20 @@ $W[m, k] = \begin{cases}
 ### 6.4.2 Loss Function and Optimization
 
 **Class-Balanced BCE Loss:**
-$\mathcal{L} = -\sum_{i=1}^{N} w_i \cdot [y_i \log(p_i) + (1-y_i)\log(1-p_i)]$
+$$\mathcal{L} = -\sum_{i=1}^{N} w_i \cdot [y_i \log(p_i) + (1-y_i)\log(1-p_i)]$$
 
 where:
-$w_i = \begin{cases}
+$$w_i = \begin{cases}
 \frac{0.5}{N_{\text{pos}}}, & \text{if } y_i = 1 \\
 \frac{0.5}{N_{\text{neg}}}, & \text{if } y_i = 0
-\end{cases}$
+\end{cases}$$
 
 **AdamW Optimizer:**
-$\theta_t = \theta_{t-1} - \eta \cdot \left(\frac{\hat{m}_t}{\sqrt{\hat{v}_t} + \epsilon} + \lambda \cdot \theta_{t-1}\right)$
+$$\theta_t = \theta_{t-1} - \eta \cdot \left(\frac{\hat{m}_t}{\sqrt{\hat{v}_t} + \epsilon} + \lambda \cdot \theta_{t-1}\right)$$
 
 Hyperparameters:
-- Learning Rate: $\eta = 10^{-3}$
-- Weight Decay: $\lambda = 10^{-5}$
+- Learning Rate: $$\eta = 10^{-3}$$
+- Weight Decay: $$\lambda = 10^{-5}$$
 - Batch Size: 64
 - Early Stopping: patience=6
 
@@ -2008,55 +2007,55 @@ Hyperparameters:
 
 Utilizing pre-trained ECAPA-TDNN (VoxCeleb dataset) for 192-dimensional embeddings:
 
-$\mathbf{e} = \text{ECAPA}(x) \in \mathbb{R}^{192}$
-$\hat{\mathbf{e}} = \frac{\mathbf{e}}{||\mathbf{e}||_2}$
+$$\mathbf{e} = \text{ECAPA}(x) \in \mathbb{R}^{192}$$
+$$\hat{\mathbf{e}} = \frac{\mathbf{e}}{||\mathbf{e}||_2}$$
 
 ### 6.5.2 User Profile Generation
 
 Calculate average embedding from N enrollment utterances:
-$\mathbf{u} = \frac{1}{N} \sum_{i=1}^{N} \hat{\mathbf{e}}_i$
-$\hat{\mathbf{u}} = \frac{\mathbf{u}}{||\mathbf{u}||_2}$
+$$\mathbf{u} = \frac{1}{N} \sum_{i=1}^{N} \hat{\mathbf{e}}_i$$
+$$\hat{\mathbf{u}} = \frac{\mathbf{u}}{||\mathbf{u}||_2}$$
 
 ### 6.5.3 Cosine Similarity-based Verification
 
-$s(x, \hat{\mathbf{u}}) = \hat{\mathbf{e}}_x \cdot \hat{\mathbf{u}} = \sum_{i=1}^{192} \hat{\mathbf{e}}_x[i] \cdot \hat{\mathbf{u}}[i]$
+$$s(x, \hat{\mathbf{u}}) = \hat{\mathbf{e}}_x \cdot \hat{\mathbf{u}} = \sum_{i=1}^{192} \hat{\mathbf{e}}_x[i] \cdot \hat{\mathbf{u}}[i]$$
 
-$\text{Decision} = \begin{cases}
+$$\text{Decision} = \begin{cases}
 \text{Accept}, & \text{if } s(x, \hat{\mathbf{u}}) > \tau_{\text{spk}} \\
 \text{Reject}, & \text{otherwise}
-\end{cases}$
+\end{cases}$$
 
 ### 6.5.4 Adaptive Threshold Setting
 
 Analyze positive/negative sample similarity distributions:
-$\mu_{\text{pos}} = \mathbb{E}[s(x_{\text{pos}}, \hat{\mathbf{u}})]$
-$\mu_{\text{neg}} = \mathbb{E}[s(x_{\text{neg}}, \hat{\mathbf{u}})]$
+$$\mu_{\text{pos}} = \mathbb{E}[s(x_{\text{pos}}, \hat{\mathbf{u}})]$$
+$$\mu_{\text{neg}} = \mathbb{E}[s(x_{\text{neg}}, \hat{\mathbf{u}})]$$
 
 Threshold including safety margin:
-$\tau_{\text{spk}} = \frac{\mu_{\text{pos}} + \mu_{\text{neg}}}{2} - 0.02$
+$$\tau_{\text{spk}} = \frac{\mu_{\text{pos}} + \mu_{\text{neg}}}{2} - 0.02$$
 
 ## 6.6 Hierarchical Decision System
 
 ### 6.6.1 2-Stage Verification Pipeline
 
 **Stage 1 (KWS):**
-$P(\text{keyword}|x) > \tau_{\text{kws}}$
+$$P(\text{keyword}|x) > \tau_{\text{kws}}$$
 
 **Stage 2 (Speaker):**
-$s(x, \hat{\mathbf{u}}) > \tau_{\text{spk}}$
+$$s(x, \hat{\mathbf{u}}) > \tau_{\text{spk}}$$
 
 **Final Decision:**
-$\text{Final} = \text{Stage1} \land \text{Stage2}$
+$$\text{Final} = \text{Stage1} \land \text{Stage2}$$
 
 ### 6.6.2 Confidence Score Calculation
 
-$\text{Confidence} = \sqrt{P(\text{keyword}|x) \cdot s(x, \hat{\mathbf{u}})}$
+$$\text{Confidence} = \sqrt{P(\text{keyword}|x) \cdot s(x, \hat{\mathbf{u}})}$$
 
-$\text{Action} = \begin{cases}
+$$\text{Action} = \begin{cases}
 \text{Execute}, & \text{if confidence} > 0.8 \\
 \text{Confirm}, & \text{if } 0.5 < \text{confidence} \leq 0.8 \\
 \text{Reject}, & \text{if confidence} \leq 0.5
-\end{cases}$
+\end{cases}$$
 
 ## 6.7 Training Results and Performance Analysis
 
