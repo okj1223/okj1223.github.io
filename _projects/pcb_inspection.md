@@ -1927,7 +1927,7 @@ $y = x + \alpha \cdot n, \quad \alpha = \frac{\sigma_{\text{noise}}}{||n||_2}$
 ### 6.3.1 Mel Filter Bank Design
 
 <figure>
-  <img class="flowchart"
+  <img class="project-image"
        src="{{ '/project/pcb_inspection/voice_to_2D_tensor.jpg' | relative_url }}"
        alt="Voice to 2D tensor conversion"
        loading="lazy">
@@ -1935,7 +1935,7 @@ $y = x + \alpha \cdot n, \quad \alpha = \frac{\sigma_{\text{noise}}}{||n||_2}$
 </figure>
 
 <figure>
-  <img class="flowchart"
+  <img class="project-image"
        src="{{ '/project/pcb_inspection/Log-Mel_changing.PNG' | relative_url }}"
        alt="Log-Mel spectrogram transformation"
        loading="lazy">
@@ -2894,11 +2894,3 @@ The future of manufacturing is here. And it's closer than you think.
 
 *Feel free to reach out if you have questions or want to collaborate - I love talking about the intersection of robotics, computer vision, AI and manufacturing.*
 
-### Related Resources
-
-**GitHub Repository**: [Link pending]
-**Technical Paper**: "Hybrid Vision Systems for Industrial PCB Inspection" (in preparation)
-**Demo Video**: [YouTube link pending]
-**Slides**: [SlideShare link pending]
-
-**Tags**: #PCBInspection #Robotics #ComputerVision #VoiceRecognition #ManufacturingAutomation #ROS2 #YOLO #DeepLearning
