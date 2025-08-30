@@ -11,13 +11,37 @@
     <!-- 폰트 -->
     <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
-    <!-- Bootstrap CSS (nav.html에 필요) -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    
-    <!-- Font Awesome (footer.html에 필요) -->
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 <body>
+
+<!-- 네비게이션 바 -->
+<nav class="project-navbar">
+  <div class="nav-container">
+    <a href="/" class="nav-logo">
+      <img src="/assets/img/keria-logo.svg" alt="KERIA Lab" class="nav-logo-img">
+    </a>
+    
+    <button class="nav-toggle" id="navToggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    
+    <ul class="nav-menu" id="navMenu">
+      <li class="nav-item">
+        <a href="/" class="nav-link">HOME</a>
+      </li>
+      <li class="nav-item">
+        <a href="/aboutme" class="nav-link">ABOUT ME</a>
+      </li>
+      <li class="nav-item">
+        <a href="/projects" class="nav-link active">PROJECTS</a>
+      </li>
+    </ul>
+  </div>
+</nav>
 
 <!-- 🌿 에코 테마 배경 요소들 -->
 <div class="eco-leaves">
@@ -604,12 +628,79 @@
   </div>
 </div>
 
-<!-- jQuery와 Bootstrap JS (nav.html 토글 기능에 필요) -->
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+<!-- 푸터 -->
+<footer class="project-footer">
+  <div class="footer-wave">
+    <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+      <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25" fill="#7fb3d3"></path>
+      <path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5" fill="#7fb3d3"></path>
+      <path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" fill="#7fb3d3"></path>
+    </svg>
+  </div>
+  
+  <div class="footer-content">
+    <div class="footer-container">
+      <div class="footer-grid">
+        <!-- 프로필 섹션 -->
+        <div class="footer-section">
+          <div class="footer-profile">
+            <img src="/assets/img/profile.JPEG" alt="Joo Hoon Oh" class="profile-image">
+            <h3 class="profile-name">Joo Hoon Oh</h3>
+            <p class="profile-title">Envirobotics Researcher</p>
+            <p class="profile-description">
+              Crafting AI-driven environmental robots with passion for sustainable technology.
+            </p>
+          </div>
+        </div>
+        
+        <!-- Quick Links -->
+        <div class="footer-section">
+          <h4 class="footer-title">🔗 Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="/">→ Home</a></li>
+            <li><a href="/aboutme">→ About Me</a></li>
+            <li><a href="/projects">→ Projects</a></li>
+          </ul>
+        </div>
+        
+        <!-- Contact -->
+        <div class="footer-section">
+          <h4 class="footer-title">💬 Get In Touch</h4>
+          <div class="social-links">
+            <a href="mailto:okj1223@inha.edu" class="social-link">
+              <i class="fas fa-envelope"></i> Email
+            </a>
+            <a href="https://github.com/okj1223" class="social-link">
+              <i class="fab fa-github"></i> GitHub
+            </a>
+            <a href="https://youtube.com/@user-ix1pr5vl6v" class="social-link">
+              <i class="fab fa-youtube"></i> YouTube
+            </a>
+          </div>
+          <div class="contact-info">
+            <p>📍 Incheon, South Korea</p>
+            <p>⚡ Available for collaborations</p>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Copyright -->
+      <div class="footer-bottom">
+        <p>© 2025 Joo Hoon Oh | Engineered for a greener tomorrow 🌎</p>
+      </div>
+    </div>
+  </div>
+</footer>
 
-<!-- 페이지네이션 JavaScript 코드 -->
+<!-- JavaScript -->
 <script>
+// 네비게이션 토글
+document.getElementById('navToggle').addEventListener('click', function() {
+  document.getElementById('navMenu').classList.toggle('active');
+  this.classList.toggle('active');
+});
+
+// 페이지네이션 JavaScript 코드
 document.addEventListener('DOMContentLoaded', function() {
   const projectsPerPage = 5;
   const allProjects = document.querySelectorAll('.project-page');
@@ -730,6 +821,101 @@ html, body {
   padding: 0;
 }
 
+/* ===== 네비게이션 바 ===== */
+.project-navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 2px 10px rgba(127, 179, 211, 0.1);
+  z-index: 1000;
+  padding: 1rem 0;
+}
+
+.nav-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.nav-logo-img {
+  height: 40px;
+  width: auto;
+}
+
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  width: 30px;
+  height: 30px;
+  justify-content: space-around;
+}
+
+.nav-toggle span {
+  display: block;
+  height: 3px;
+  width: 100%;
+  background: var(--eco-green);
+  border-radius: 3px;
+  transition: var(--smooth-transition);
+}
+
+.nav-toggle.active span:nth-child(1) {
+  transform: rotate(45deg) translate(8px, 8px);
+}
+
+.nav-toggle.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.nav-toggle.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(8px, -8px);
+}
+
+.nav-menu {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-item {
+  list-style: none;
+}
+
+.nav-link {
+  color: var(--forest-green);
+  text-decoration: none;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 0.95rem;
+  transition: var(--smooth-transition);
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: var(--eco-green);
+  background: rgba(127, 179, 211, 0.1);
+}
+
 /* ===== 에코 배경 요소들 ===== */
 .eco-leaves {
   position: fixed;
@@ -823,7 +1009,7 @@ html, body {
   color: white;
   padding: 0;
   margin: 0;
-  margin-top: 60px; /* nav를 위한 여백 */
+  margin-top: 60px;
   overflow: hidden;
   z-index: 5;
   display: flex;
@@ -1163,19 +1349,19 @@ html, body {
 }
 
 .keyword-chip {
-  background: rgba(255, 255, 255, 0.1);
-  padding: 0.8rem 1.2rem;
-  border-radius: 25px;
-  font-size: 0.9rem;
-  font-weight: 500;
-  backdrop-filter: blur(15px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  font-family: 'Inter', sans-serif;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  animation: chipSlideIn 1s ease-out both;
+ background: rgba(255, 255, 255, 0.1);
+ padding: 0.8rem 1.2rem;
+ border-radius: 25px;
+ font-size: 0.9rem;
+ font-weight: 500;
+ backdrop-filter: blur(15px);
+ border: 1px solid rgba(255, 255, 255, 0.3);
+ font-family: 'Inter', sans-serif;
+ transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+ display: flex;
+ align-items: center;
+ gap: 0.5rem;
+ animation: chipSlideIn 1s ease-out both;
 }
 
 .keyword-chip:nth-child(1) { animation-delay: 2s; }
@@ -1184,52 +1370,52 @@ html, body {
 .keyword-chip:nth-child(4) { animation-delay: 2.3s; }
 
 .keyword-chip:hover {
-  background: rgba(127, 179, 211, 0.3);
-  transform: translateY(-3px) scale(1.05);
-  box-shadow: 0 10px 25px rgba(127, 179, 211, 0.4);
+ background: rgba(127, 179, 211, 0.3);
+ transform: translateY(-3px) scale(1.05);
+ box-shadow: 0 10px 25px rgba(127, 179, 211, 0.4);
 }
 
 .chip-icon {
-  width: 16px;
-  height: 16px;
-  color: currentColor;
+ width: 16px;
+ height: 16px;
+ color: currentColor;
 }
 
 @keyframes chipSlideIn {
-  0% {
-    opacity: 0;
-    transform: translateX(-30px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateX(0);
-  }
+ 0% {
+   opacity: 0;
+   transform: translateX(-30px);
+ }
+ 100% {
+   opacity: 1;
+   transform: translateX(0);
+ }
 }
 
 .banner-visual {
-  position: relative;
-  width: 400px;
-  height: 400px;
-  flex-shrink: 0;
+ position: relative;
+ width: 400px;
+ height: 400px;
+ flex-shrink: 0;
 }
 
 .holographic-display {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  animation: holoFloat 6s ease-in-out infinite;
+ position: relative;
+ width: 100%;
+ height: 100%;
+ animation: holoFloat 6s ease-in-out infinite;
 }
 
 .holo-ring {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  transform-origin: center;
-  box-sizing: border-box;
-  will-change: transform;
-  pointer-events: none;
-  z-index: 1;
+ position: absolute;
+ top: 50%;
+ left: 50%;
+ transform: translate(-50%, -50%);
+ transform-origin: center;
+ box-sizing: border-box;
+ will-change: transform;
+ pointer-events: none;
+ z-index: 1;
 }
 
 .ring-1 { width: 300px; height: 300px; animation: ringRotate 15s linear infinite; }
@@ -1237,13 +1423,13 @@ html, body {
 .ring-3 { width: 100px; height: 100px; animation: ringRotate 8s linear infinite; border-color: rgba(168, 216, 168, 0.6); }
 
 .ring-segment {
-  position: absolute;
-  width: 20px;
-  height: 20px;
-  background: radial-gradient(circle, rgba(127, 179, 211, 0.8) 0%, transparent 70%);
-  border-radius: 50%;
-  animation: segmentPulse 2s ease-in-out infinite;
-  transform: translateZ(0);
+ position: absolute;
+ width: 20px;
+ height: 20px;
+ background: radial-gradient(circle, rgba(127, 179, 211, 0.8) 0%, transparent 70%);
+ border-radius: 50%;
+ animation: segmentPulse 2s ease-in-out infinite;
+ transform: translateZ(0);
 }
 
 .ring-1 .ring-segment:nth-child(1) { top: -10px; left: 50%; transform: translateX(-50%); animation-delay: 0s; }
@@ -1259,100 +1445,100 @@ html, body {
 .ring-3 .ring-segment:nth-child(2) { bottom: -10px; left: 50%; transform: translateX(-50%); animation-delay: 1.2s; }
 
 .central-core {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 80px;
-  height: 80px;
-  margin: -40px 0 0 -40px;
-  background: radial-gradient(circle, rgba(127, 179, 211, 0.8) 0%, rgba(127, 179, 211, 0.2) 100%);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  animation: coreRotate 4s ease-in-out infinite;
+ position: absolute;
+ top: 50%;
+ left: 50%;
+ width: 80px;
+ height: 80px;
+ margin: -40px 0 0 -40px;
+ background: radial-gradient(circle, rgba(127, 179, 211, 0.8) 0%, rgba(127, 179, 211, 0.2) 100%);
+ border-radius: 50%;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ animation: coreRotate 4s ease-in-out infinite;
 }
 
 .core-pulse {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  border: 2px solid rgba(127, 179, 211, 0.8);
-  animation: corePulse 2s ease-in-out infinite;
+ position: absolute;
+ width: 100%;
+ height: 100%;
+ border-radius: 50%;
+ border: 2px solid rgba(127, 179, 211, 0.8);
+ animation: corePulse 2s ease-in-out infinite;
 }
 
 .core-icon {
-  width: 28px;
-  height: 28px;
-  color: white;
-  z-index: 2;
-  animation: iconSpin 8s linear infinite;
+ width: 28px;
+ height: 28px;
+ color: white;
+ z-index: 2;
+ animation: iconSpin 8s linear infinite;
 }
 
 .data-streams {
-  position: absolute;
-  width: 100%;
-  height: 100%;
+ position: absolute;
+ width: 100%;
+ height: 100%;
 }
 
 .stream {
-  position: absolute;
-  width: 2px;
-  height: 60px;
-  background: linear-gradient(180deg, rgba(127, 179, 211, 0.8) 0%, transparent 100%);
-  animation: streamFlow 3s ease-in-out infinite;
+ position: absolute;
+ width: 2px;
+ height: 60px;
+ background: linear-gradient(180deg, rgba(127, 179, 211, 0.8) 0%, transparent 100%);
+ animation: streamFlow 3s ease-in-out infinite;
 }
 
 .stream-1 {
-  top: 20%;
-  left: 30%;
-  animation-delay: 0s;
-  transform: rotate(15deg);
+ top: 20%;
+ left: 30%;
+ animation-delay: 0s;
+ transform: rotate(15deg);
 }
 
 .stream-2 {
-  bottom: 25%;
-  right: 20%;
-  animation-delay: 1s;
-  transform: rotate(-30deg);
+ bottom: 25%;
+ right: 20%;
+ animation-delay: 1s;
+ transform: rotate(-30deg);
 }
 
 .stream-3 {
-  top: 60%;
-  left: 70%;
-  animation-delay: 2s;
-  transform: rotate(45deg);
+ top: 60%;
+ left: 70%;
+ animation-delay: 2s;
+ transform: rotate(45deg);
 }
 
 @keyframes holoFloat {
-  0%, 100% { transform: translateY(0) rotate(0deg); }
-  50% { transform: translateY(-20px) rotate(2deg); }
+ 0%, 100% { transform: translateY(0) rotate(0deg); }
+ 50% { transform: translateY(-20px) rotate(2deg); }
 }
 
 @keyframes ringRotate {
-  0% { transform: translate(-50%, -50%) rotate(0deg); }
-  100% { transform: translate(-50%, -50%) rotate(360deg); }
+ 0% { transform: translate(-50%, -50%) rotate(0deg); }
+ 100% { transform: translate(-50%, -50%) rotate(360deg); }
 }
 
 @keyframes segmentPulse {
-  0%, 100% { opacity: 0.6; transform: scale(1); }
-  50% { opacity: 1; transform: scale(1.3); }
+ 0%, 100% { opacity: 0.6; transform: scale(1); }
+ 50% { opacity: 1; transform: scale(1.3); }
 }
 
 @keyframes coreRotate {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.1); }
+ 0%, 100% { transform: scale(1); }
+ 50% { transform: scale(1.1); }
 }
 
 @keyframes corePulse {
-  0% { transform: scale(1); opacity: 1; }
-  100% { transform: scale(1.8); opacity: 0; }
+ 0% { transform: scale(1); opacity: 1; }
+ 100% { transform: scale(1.8); opacity: 0; }
 }
 
 @keyframes iconSpin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+ 0% { transform: rotate(0deg); }
+ 100% { transform: rotate(360deg); }
 }
 
 @keyframes streamFlow {
@@ -1741,6 +1927,146 @@ html, body {
  text-decoration: none;
 }
 
+/* ===== 푸터 ===== */
+.project-footer {
+ position: relative;
+ background: linear-gradient(180deg, #f8fcf8 0%, #e8f4f8 100%);
+ margin-top: 5rem;
+}
+
+.footer-wave {
+ position: absolute;
+ top: 0;
+ left: 0;
+ width: 100%;
+ overflow: hidden;
+ line-height: 0;
+ transform: rotate(180deg);
+}
+
+.footer-wave svg {
+ position: relative;
+ display: block;
+ width: calc(100% + 1.3px);
+ height: 120px;
+}
+
+.footer-content {
+ padding: 8rem 0 2rem 0;
+ position: relative;
+}
+
+.footer-container {
+ max-width: 1200px;
+ margin: 0 auto;
+ padding: 0 2rem;
+}
+
+.footer-grid {
+ display: grid;
+ grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+ gap: 3rem;
+ margin-bottom: 3rem;
+}
+
+.footer-section {
+ text-align: center;
+}
+
+.footer-profile {
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+ gap: 1rem;
+}
+
+.profile-image {
+ width: 100px;
+ height: 100px;
+ border-radius: 50%;
+ object-fit: cover;
+ border: 3px solid var(--eco-green);
+}
+
+.profile-name {
+ font-size: 1.5rem;
+ color: var(--forest-green);
+ margin: 0;
+}
+
+.profile-title {
+ color: var(--eco-green);
+ font-weight: 500;
+ margin: 0;
+}
+
+.profile-description {
+ color: rgba(93, 115, 126, 0.9);
+ line-height: 1.6;
+ max-width: 300px;
+}
+
+.footer-title {
+ font-size: 1.2rem;
+ color: var(--forest-green);
+ margin-bottom: 1.5rem;
+}
+
+.footer-links {
+ list-style: none;
+ padding: 0;
+}
+
+.footer-links li {
+ margin-bottom: 1rem;
+}
+
+.footer-links a {
+ color: rgba(93, 115, 126, 0.9);
+ text-decoration: none;
+ transition: var(--smooth-transition);
+}
+
+.footer-links a:hover {
+ color: var(--eco-green);
+ transform: translateX(5px);
+ display: inline-block;
+}
+
+.social-links {
+ display: flex;
+ flex-direction: column;
+ gap: 1rem;
+ margin-bottom: 2rem;
+}
+
+.social-link {
+ color: rgba(93, 115, 126, 0.9);
+ text-decoration: none;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ gap: 0.5rem;
+ transition: var(--smooth-transition);
+}
+
+.social-link:hover {
+ color: var(--eco-green);
+ transform: translateY(-2px);
+}
+
+.contact-info p {
+ color: rgba(93, 115, 126, 0.9);
+ margin: 0.5rem 0;
+}
+
+.footer-bottom {
+ text-align: center;
+ padding-top: 2rem;
+ border-top: 1px solid rgba(127, 179, 211, 0.2);
+ color: rgba(93, 115, 126, 0.9);
+}
+
 /* 애니메이션 */
 @keyframes fadeInUp {
  from {
@@ -1760,6 +2086,20 @@ html, body {
 .view-all-button:focus {
  outline: 2px solid var(--eco-green);
  outline-offset: 3px;
+}
+
+.home-project-link {
+ display: block;
+ text-decoration: none;
+ color: inherit;
+ transition: var(--smooth-transition);
+}
+
+.home-project-link:hover {
+ text-decoration: underline;
+ text-decoration-color: #87ceeb;
+ text-decoration-thickness: 2px;
+ text-underline-offset: 4px;
 }
 
 /* 반응형 디자인 */
@@ -1794,6 +2134,27 @@ html, body {
 }
 
 @media (max-width: 768px) {
+ .nav-toggle {
+   display: flex;
+ }
+ 
+ .nav-menu {
+   position: fixed;
+   left: -100%;
+   top: 70px;
+   flex-direction: column;
+   background: rgba(255, 255, 255, 0.98);
+   width: 100%;
+   text-align: center;
+   transition: 0.3s;
+   box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+   padding: 2rem 0;
+ }
+ 
+ .nav-menu.active {
+   left: 0;
+ }
+ 
  .enviro-banner {
    min-height: 100vh;
  }
@@ -1881,6 +2242,16 @@ html, body {
    gap: 0.5rem;
    text-align: center;
  }
+ 
+ .footer-grid {
+   grid-template-columns: 1fr;
+   text-align: center;
+ }
+ 
+ .social-links {
+   flex-direction: row;
+   justify-content: center;
+ }
 }
 
 @media (max-width: 480px) {
@@ -1947,71 +2318,6 @@ html, body {
    padding: 1rem 2rem;
    font-size: 1rem;
  }
-}
-
-.home-project-link {
- display: block;
- text-decoration: none;
- color: inherit;
- transition: var(--smooth-transition);
-}
-
-.home-project-link:hover {
- text-decoration: underline;
- text-decoration-color: #87ceeb;
- text-decoration-thickness: 2px;
- text-underline-offset: 4px;
-}
-
-.navbar {
-  max-width: 100% !important;
-  width: 100% !important;
-}
-
-.navbar > * {
-  max-width: 100% !important;
-}
-
-/* 메인 컨텐츠 너비 강제 */
-.enviro-banner,
-.enviro-projects {
-  width: 100vw !important;
-  max-width: 100vw !important;
-  margin-left: 0 !important;
-  margin-right: 0 !important;
-  padding-left: 0 !important;
-  padding-right: 0 !important;
-}
-
-/* Bootstrap row/col 오버라이드 */
-.row {
-  margin-left: 0 !important;
-  margin-right: 0 !important;
-}
-
-.col-lg-4, .col-md-6 {
-  padding-left: 15px !important;
-  padding-right: 15px !important;
-}
-
-/* 전체 body 리셋 */
-html, body {
-  width: 100% !important;
-  max-width: 100% !important;
-  overflow-x: hidden !important;
-  margin: 0 !important;
-  padding: 0 !important;
-}
-
-/* container 클래스 무력화 */
-.container,
-.container-md,
-.container-lg,
-.container-xl {
-  max-width: 100% !important;
-  width: 100% !important;
-  padding-left: 2rem !important;
-  padding-right: 2rem !important;
 }
 </style>
 
