@@ -1,3 +1,12 @@
+---
+layout: project
+date: 2024-04-06
+title: "SCR DeNOx Catalyst Performance Testing Apparatus: VGB-R 302 Compliant Bench-Scale Evaluation System"
+description: "A precision testing apparatus for SCR catalyst performance evaluation compliant with international standards, achieving 94.3% NOx removal efficiency validation with four-zone temperature control and multi-component gas analysis."
+video_url: ""
+permalink: /projects/scr-catalyst-testing-apparatus/
+---
+
 # Design and Implementation of SCR DeNOx Catalyst Performance Testing Apparatus
 
 ## Abstract
