@@ -1878,4 +1878,30 @@ html, body {
     width: 100%;
   }
 }
+
+/* ---- 미디어를 카드 하단으로 강제 ---- */
+.home-project-card {
+  display: flex;
+  flex-direction: column;    /* 위=콘텐츠, 아래=미디어 */
+}
+
+.home-project-content { order: 1; }
+.home-project-media   { order: 2; }
+
+/* 보기도 안정화: iframe/이미지 폭/비율 */
+.home-project-media iframe {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  display: block;
+}
+
+.home-image-wrapper img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  display: block;
+}
+
 </style>
