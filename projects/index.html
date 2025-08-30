@@ -1,4 +1,11 @@
-</style>
+---
+layout: page
+title: "Projects"
+permalink: /projects/
+---
+
+<!-- 🌿 에코 테마 CSS 강제 로드 -->
+<link rel="stylesheet" href="{{ '/assets/css/ecosystem.css' | relative_url }}">
 
 <!-- 🌿 에코 테마 배경 요소들 -->
 <div class="eco-leaves">
@@ -58,7 +65,7 @@
       
       <div class="banner-stats">
         <div class="stat-item">
-          <div class="stat-number">7</div>
+          <div class="stat-number">6</div>
           <div class="stat-label">Active Projects</div>
         </div>
         <div class="stat-item">
@@ -529,12 +536,50 @@
   </div>
 </div>
 
+<!-- Footer 섹션 -->
+<footer class="enviro-footer">
+  <div class="footer-container">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3 class="footer-title">Environmental Robotics</h3>
+        <p class="footer-description">
+          Building sustainable solutions through AI-driven environmental robotics
+        </p>
+      </div>
+      
+      <div class="footer-section">
+        <h4 class="footer-heading">Quick Links</h4>
+        <ul class="footer-links">
+          <li><a href="/home.html">Home</a></li>
+          <li><a href="/projects/">Projects</a></li>
+          <li><a href="/about/">About</a></li>
+          <li><a href="/contact/">Contact</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h4 class="footer-heading">Technologies</h4>
+        <ul class="footer-links">
+          <li>AI & Computer Vision</li>
+          <li>Robotics & Automation</li>
+          <li>Environmental Systems</li>
+          <li>Sustainable Engineering</li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>&copy; 2025 Environmental Robotics. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
 <script>
 // 페이지네이션 JavaScript 코드
 document.addEventListener('DOMContentLoaded', function() {
   const projectsPerPage = 5;
   const allProjects = document.querySelectorAll('.project-page');
-  const totalProjects = 6; // 현재 총 프로젝트 수
+  const totalProjects = 6;
   const totalPages = Math.ceil(totalProjects / projectsPerPage);
   
   let currentPage = 1;
@@ -557,16 +602,13 @@ document.addEventListener('DOMContentLoaded', function() {
   
   // 특정 페이지 표시
   function showPage(pageNum) {
-    // 모든 프로젝트 페이지 숨기기
     allProjects.forEach(page => {
       page.style.display = 'none';
     });
     
-    // 해당 페이지만 표시
     const targetPage = document.querySelector(`[data-page="${pageNum}"]`);
     if (targetPage) {
       targetPage.style.display = 'block';
-      // 페이지 전환 애니메이션
       targetPage.style.animation = 'none';
       setTimeout(() => {
         targetPage.style.animation = 'fadeInUp 0.6s ease-out';
@@ -579,18 +621,13 @@ document.addEventListener('DOMContentLoaded', function() {
   
   // 페이지네이션 컨트롤 업데이트
   function updatePaginationControls() {
-    // Previous 버튼
     prevBtn.disabled = (currentPage === 1);
-    
-    // Next 버튼
     nextBtn.disabled = (currentPage === totalPages);
     
-    // 페이지 번호 버튼들
     pageNumberBtns.forEach(btn => {
       const pageNum = parseInt(btn.dataset.page);
       btn.classList.toggle('active', pageNum === currentPage);
       
-      // 존재하지 않는 페이지 버튼 숨기기
       if (pageNum > totalPages) {
         btn.style.display = 'none';
       }
@@ -612,7 +649,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
   
-  // 페이지 번호 버튼 클릭
   pageNumberBtns.forEach(btn => {
     btn.addEventListener('click', () => {
       const pageNum = parseInt(btn.dataset.page);
@@ -637,42 +673,8 @@ document.addEventListener('DOMContentLoaded', function() {
   // 초기화
   init();
 });
-
-// 향후 프로젝트 추가를 위한 유틸리티 함수
-function addNewProject(projectHTML, pageNumber) {
-  const targetPage = document.querySelector(`[data-page="${pageNumber}"]`);
-  if (targetPage) {
-    targetPage.insertAdjacentHTML('beforeend', projectHTML);
-  } else {
-    // 새 페이지 생성
-    const newPage = document.createElement('div');
-    newPage.className = 'project-page';
-    newPage.setAttribute('data-page', pageNumber);
-    newPage.style.display = 'none';
-    newPage.innerHTML = projectHTML;
-    
-    document.getElementById('projectsGrid').appendChild(newPage);
-    
-    // 페이지 번호 버튼 추가
-    if (!document.querySelector(`[data-page="${pageNumber}"]`)) {
-      const newPageBtn = document.createElement('button');
-      newPageBtn.className = 'page-number-btn';
-      newPageBtn.setAttribute('data-page', pageNumber);
-      newPageBtn.textContent = pageNumber;
-      
-      document.querySelector('.page-numbers').appendChild(newPageBtn);
-    }
-  }
-}
 </script>
-                ---
-layout: page
-title: "Projects"
-permalink: /projects/
----
 
-<!-- 🌿 에코 테마 CSS 강제 로드 -->
-<link rel="stylesheet" href="{{ '/assets/css/ecosystem.css' | relative_url }}">
 
 <!-- 인라인 스타일로 강제 적용 -->
 <style>
@@ -1434,122 +1436,11 @@ html, body {
   animation: fadeInUp 0.6s ease-out;
 }
 
-/* 페이지네이션 컨트롤 */
-.pagination-controls {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 2rem;
-  margin: 4rem 0 2rem 0;
-  flex-wrap: wrap;
-}
-
-.pagination-btn {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.8rem 1.5rem;
-  background: rgba(127, 179, 211, 0.1);
-  border: 2px solid rgba(127, 179, 211, 0.3);
-  border-radius: 12px;
-  color: var(--eco-green);
-  font-family: 'Inter', sans-serif;
-  font-weight: 500;
-  font-size: 0.95rem;
-  cursor: pointer;
-  transition: var(--smooth-transition);
-  backdrop-filter: blur(10px);
-}
-
-.pagination-btn:hover:not(:disabled) {
-  background: rgba(127, 179, 211, 0.2);
-  border-color: var(--eco-green);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(127, 179, 211, 0.3);
-}
-
-.pagination-btn:disabled {
-  opacity: 0.4;
-  cursor: not-allowed;
-  transform: none;
-}
-
-.pagination-btn svg {
-  width: 18px;
-  height: 18px;
-  transition: var(--smooth-transition);
-}
-
-.pagination-btn:hover:not(:disabled) svg {
-  transform: scale(1.1);
-}
-
-/* 페이지 번호 버튼들 */
-.page-numbers {
-  display: flex;
-  gap: 0.5rem;
-}
-
-.page-number-btn {
-  width: 45px;
-  height: 45px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.1);
-  border: 2px solid rgba(127, 179, 211, 0.3);
-  color: var(--eco-green);
-  font-family: 'Inter', sans-serif;
-  font-weight: 600;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: var(--smooth-transition);
-  backdrop-filter: blur(10px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.page-number-btn:hover {
-  background: rgba(127, 179, 211, 0.2);
-  border-color: var(--eco-green);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(127, 179, 211, 0.3);
-}
-
-.page-number-btn.active {
-  background: var(--eco-green);
-  color: white;
-  border-color: var(--eco-green);
-  box-shadow: 0 4px 15px rgba(127, 179, 211, 0.4);
-}
-
-.page-number-btn.active:hover {
-  background: var(--forest-green);
-  transform: translateY(-2px);
-}
-
-/* 프로젝트 카드 스타일 (기존 home 스타일 사용) */
+/* 프로젝트 카드 스타일 - 80% 크기로 줄임 */
 .home-project-item {
-  margin-bottom: 3rem;
-  animation: fadeInUp 0.8s ease-out;
-}
-
-.home-project-item:nth-child(odd) {
-  animation-delay: 0.1s;
-}
-
-.home-project-item:nth-child(even) {
-  animation-delay: 0.2s;
-}
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(40px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  margin-bottom: 2.4rem;
+  transform: scale(0.8);
+  transform-origin: center;
 }
 
 .home-project-card {
@@ -1722,6 +1613,98 @@ html, body {
   transform: scale(1.05);
 }
 
+/* 페이지네이션 컨트롤 */
+.pagination-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  margin: 4rem 0 2rem 0;
+  flex-wrap: wrap;
+}
+
+.pagination-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.8rem 1.5rem;
+  background: rgba(127, 179, 211, 0.1);
+  border: 2px solid rgba(127, 179, 211, 0.3);
+  border-radius: 12px;
+  color: var(--eco-green);
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: var(--smooth-transition);
+  backdrop-filter: blur(10px);
+}
+
+.pagination-btn:hover:not(:disabled) {
+  background: rgba(127, 179, 211, 0.2);
+  border-color: var(--eco-green);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(127, 179, 211, 0.3);
+}
+
+.pagination-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.pagination-btn svg {
+  width: 18px;
+  height: 18px;
+  transition: var(--smooth-transition);
+}
+
+.pagination-btn:hover:not(:disabled) svg {
+  transform: scale(1.1);
+}
+
+.page-numbers {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.page-number-btn {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(127, 179, 211, 0.3);
+  color: var(--eco-green);
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: var(--smooth-transition);
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.page-number-btn:hover {
+  background: rgba(127, 179, 211, 0.2);
+  border-color: var(--eco-green);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(127, 179, 211, 0.3);
+}
+
+.page-number-btn.active {
+  background: var(--eco-green);
+  color: white;
+  border-color: var(--eco-green);
+  box-shadow: 0 4px 15px rgba(127, 179, 211, 0.4);
+}
+
+.page-number-btn.active:hover {
+  background: var(--forest-green);
+  transform: translateY(-2px);
+}
+
 .view-all-projects {
   text-align: center;
   margin-top: 3rem;
@@ -1753,11 +1736,110 @@ html, body {
   text-decoration: none;
 }
 
+/* Footer 스타일 */
+.enviro-footer {
+  background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+  color: white;
+  padding: 3rem 0 1rem 0;
+  margin-top: 4rem;
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  margin-right: calc(-50vw + 50%);
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.footer-content {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.footer-section {
+  font-family: 'Inter', sans-serif;
+}
+
+.footer-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: var(--eco-green);
+  font-family: 'Merriweather', serif;
+}
+
+.footer-description {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 0;
+}
+
+.footer-heading {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-links li {
+  margin-bottom: 0.5rem;
+}
+
+.footer-links a {
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+  transition: color 0.3s ease;
+  font-size: 0.9rem;
+}
+
+.footer-links a:hover {
+  color: var(--eco-green);
+}
+
+.footer-links li:not(:has(a)) {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.9rem;
+}
+
+.footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 1.5rem;
+  text-align: center;
+}
+
+.footer-bottom p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.6);
+  font-family: 'Inter', sans-serif;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 /* 접근성 개선 */
 .home-project-link:focus,
 .pagination-btn:focus,
-.page-number-btn:focus,
-.view-all-button:focus {
+.page-number-btn:focus {
   outline: 2px solid var(--eco-green);
   outline-offset: 3px;
 }
@@ -1855,6 +1937,11 @@ html, body {
     min-width: 80px;
     padding: 0.8rem 0.6rem;
   }
+  
+  .footer-content {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
 }
 
 @media (max-width: 480px) {
@@ -1916,3 +2003,4 @@ html, body {
     width: 100%;
   }
 }
+</style>
