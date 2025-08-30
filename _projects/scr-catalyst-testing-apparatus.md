@@ -14,7 +14,7 @@ This study presents the design and implementation of a bench-scale testing appar
 
 <figure>
   <img class="project-image"
-       src="{{ '/project/scr_catalyst/completed_apparatus.jpg' | relative_url }}"
+       src="{{ '/project/scr-catalyst-testing-apparatus/completed_apparatus.jpg' | relative_url }}"
        alt="Completed SCR catalyst performance testing apparatus"
        loading="lazy">
   <figcaption>Figure 1.1: Completed SCR catalyst performance testing apparatus
