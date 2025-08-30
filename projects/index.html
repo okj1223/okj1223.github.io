@@ -1949,7 +1949,59 @@ html, body {
 .enviro-projects .home-video-wrapper iframe { position: absolute !important; inset: 0 !important; width: 100% !important; height: 100% !important; }
 .enviro-projects .home-image-wrapper img { width: 100% !important; height: auto !important; aspect-ratio: 16/9 !important; object-fit: cover !important; display: block !important; }
 
-/* (임시 점검용) 적용 확인 후 지워도 됨 */
-.enviro-projects .home-project-card > * { outline: 2px dashed rgba(38,170,255,.7); }
+/* 0) 카드 레이아웃 고정 + 아이템을 가로로 '늘리기' */
+.enviro-projects .home-project-card {
+  display: grid !important;
+  grid-auto-rows: auto;
+  row-gap: 1rem;
+  justify-items: stretch !important;   /* ← 왼쪽 쏠림 방지 */
+}
+
+/* 1) 직계 자식 2개(링크/미디어) 전체 폭 사용 + 순서 고정 */
+.enviro-projects .home-project-card > .home-project-link  {
+  grid-column: 1 / -1 !important; grid-row: 1 !important; 
+  width: 100% !important; justify-self: stretch !important;
+}
+.enviro-projects .home-project-card > .home-project-media {
+  grid-column: 1 / -1 !important; grid-row: 2 !important; 
+  width: 100% !important; justify-self: stretch !important;
+  position: static !important; float: none !important;   /* 위로 떠오르는 잔존 규칙 차단 */
+  margin-top: .75rem !important;
+}
+
+/* 2) 미디어 래퍼들: 가로 100%, 블록화(고정폭/inline 영향 제거) */
+.enviro-projects .home-project-media,
+.enviro-projects .home-image-wrapper,
+.enviro-projects .home-video-wrapper {
+  display: block !important;
+  width: 100% !important;
+  max-width: none !important;
+  margin: 0 !important;
+}
+
+/* 3) 동영상 크게(16:9, 카드 가로 꽉) */
+.enviro-projects .home-video-wrapper {
+  position: relative !important;
+  height: 0 !important;
+  padding-bottom: 56.25% !important;   /* 16:9 */
+}
+.enviro-projects .home-video-wrapper iframe {
+  position: absolute !important; inset: 0 !important;
+  width: 100% !important; height: 100% !important;
+  border: 0; border-radius: 14px;
+}
+
+/* 4) 이미지도 동일하게 크게 */
+.enviro-projects .home-image-wrapper img {
+  display: block !important;
+  width: 100% !important; height: auto !important;
+  aspect-ratio: 16/9 !important; object-fit: cover !important;
+  border-radius: 14px;
+}
+
+/* 5) 데스크톱에서 시원하게(선택) */
+@media (min-width: 1024px) {
+  .enviro-projects .home-video-wrapper { min-height: 320px !important; }
+}
 
 </style>
