@@ -7,9 +7,6 @@ video_url: "https://www.youtube.com/embed/gpQtFfs4qww"
 permalink: /projects/pcb_inspection/
 ---
 
-
-# AI-Based Acoustic and Visual Fusion PCB Intelligent Quality Inspection and Control Automation System
-
 *Building an Autonomous PCB Quality Management System by Combining Computer Vision, Robotics, and Voice Commands*
 
 ---
