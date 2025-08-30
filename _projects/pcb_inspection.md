@@ -1,8 +1,8 @@
 ---
 layout: project
 date: 2025-08-21
-title: "Robot-Based Precision Concentration Control System: An Integrated Approach to Fluid Dynamic Modeling and Adaptive Control Algorithms"
-description: "An autonomous ROS2-based system for high-precision liquid pouring using industrial robotic arms, load cells, and MQTT communication"
+title: "AI-Powered PCB Quality Inspection System: Computer Vision and Voice-Controlled Robotics for Manufacturing Automation"
+description: "An autonomous quality control system combining YOLOv11 computer vision, RealSense 3D sensing, and voice commands to inspect PCBs with 94.5% accuracy."
 video_url: "https://www.youtube.com/embed/gpQtFfs4qww"
 permalink: /projects/pcb_inspection/
 ---
