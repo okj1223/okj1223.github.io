@@ -14,7 +14,7 @@ This study presents the design and implementation of a bench-scale testing appar
 
 <figure>
   <img class="project-image"
-       src="{{ '/project/scr_catalyst/completed_apparatus.png' | relative_url }}"
+       src="{{ '/project/scr_catalyst/completed_apparatus.jpg' | relative_url }}"
        alt="Completed SCR catalyst performance testing apparatus"
        loading="lazy">
   <figcaption>Figure 1.1: Completed SCR catalyst performance testing apparatus
@@ -143,7 +143,7 @@ This SCR catalyst performance evaluation apparatus consists of the following maj
 
 <figure>
   <img class="project-image"
-       src="{{ '/project/scr_catalyst/system_architecture.png' | relative_url }}"
+       src="{{ '/project/scr-catalyst-testing-apparatus/completed_apparatus.jpg' | relative_url }}"
        alt="Overall system architecture"
        loading="lazy">
   <figcaption>Figure 3.1: Overall system architecture of SCR catalyst performance testing apparatus
