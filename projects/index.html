@@ -1927,4 +1927,29 @@ html, body {
   object-fit: cover;
 }
 
+/* 1) 카드 레이아웃을 '그리드'로 고정 (외부 테마 영향 무시) */
+.enviro-projects .home-project-card {
+  display: grid !important;
+  grid-template-rows: auto auto !important; /* 위=콘텐츠, 아래=미디어 */
+}
+
+/* 2) '직계 자식' 두 개의 위치를 그리드 행으로 지정 */
+.enviro-projects .home-project-card > .home-project-link  { grid-row: 1 !important; }
+.enviro-projects .home-project-card > .home-project-media { grid-row: 2 !important; }
+
+/* 3) 혹시 위로 떠오르게 만드는 속성 차단 */
+.enviro-projects .home-project-card > .home-project-media {
+  position: static !important;
+  float: none !important;
+  margin-top: 0.5rem;
+}
+
+/* (선택) 이미지/영상 비율 안정화 */
+.enviro-projects .home-video-wrapper { position: relative !important; padding-bottom: 56.25% !important; height: 0 !important; }
+.enviro-projects .home-video-wrapper iframe { position: absolute !important; inset: 0 !important; width: 100% !important; height: 100% !important; }
+.enviro-projects .home-image-wrapper img { width: 100% !important; height: auto !important; aspect-ratio: 16/9 !important; object-fit: cover !important; display: block !important; }
+
+/* (임시 점검용) 적용 확인 후 지워도 됨 */
+.enviro-projects .home-project-card > * { outline: 2px dashed rgba(38,170,255,.7); }
+
 </style>
