@@ -1,11 +1,12 @@
----
-layout: page
-title: "Projects"
-permalink: /projects/
----
-
-<!-- 🌿 에코 테마 CSS 강제 로드 -->
-<link rel="stylesheet" href="{{ '/assets/css/ecosystem.css' | relative_url }}">
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects - Environmental Robotics</title>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
 
 <!-- 🌿 에코 테마 배경 요소들 -->
 <div class="eco-leaves">
@@ -174,44 +175,42 @@ permalink: /projects/
       <div class="project-page" data-page="1">
         <article class="home-project-item">
           <div class="home-project-card">
-            <a href="/projects/pcb_inspection/" class="home-project-link">
-              <div class="home-project-content">
-                <div class="home-project-meta">
-                  <time class="home-project-year">2025.08.21</time>
-                  <span class="home-project-category">AI • Robotics • Manufacturing</span>
+            <div class="home-project-content">
+              <div class="home-project-meta">
+                <time class="home-project-year">2025.08.21</time>
+                <span class="home-project-category">AI • Robotics • Manufacturing</span>
+              </div>
+              <h2 class="home-project-title">AI-Based PCB Quality Control System</h2>
+              <p class="home-project-description">
+                Intelligent automation system combining computer vision, robotics, and voice commands for PCB inspection. 
+                This autonomous system detects defects, sorts products, and responds to voice commands while achieving 
+                industrial-grade accuracy at a fraction of traditional costs.
+              </p>
+              <div class="home-project-impact">
+                <div class="home-impact-item">
+                  <span class="home-impact-value">94.5%</span>
+                  <span class="home-impact-label">Detection Accuracy</span>
                 </div>
-                <h2 class="home-project-title">AI-Based PCB Quality Control System</h2>
-                <p class="home-project-description">
-                  Intelligent automation system combining computer vision, robotics, and voice commands for PCB inspection. 
-                  This autonomous system detects defects, sorts products, and responds to voice commands while achieving 
-                  industrial-grade accuracy at a fraction of traditional costs.
-                </p>
-                <div class="home-project-impact">
-                  <div class="home-impact-item">
-                    <span class="home-impact-value">94.5%</span>
-                    <span class="home-impact-label">Detection Accuracy</span>
-                  </div>
-                  <div class="home-impact-item">
-                    <span class="home-impact-value">97%</span>
-                    <span class="home-impact-label">Voice Command Accuracy</span>
-                  </div>
-                  <div class="home-impact-item">
-                    <span class="home-impact-value">85%</span>
-                    <span class="home-impact-label">Cost Reduction vs Industrial</span>
-                  </div>
+                <div class="home-impact-item">
+                  <span class="home-impact-value">97%</span>
+                  <span class="home-impact-label">Voice Command Accuracy</span>
                 </div>
-                <div class="home-project-tech">
-                  <span class="home-tech-tag ai">YOLOv11</span>
-                  <span class="home-tech-tag prog">ROS2</span>
-                  <span class="home-tech-tag ai">Computer Vision</span>
-                  <span class="home-tech-tag comm">MQTT</span>
-                  <span class="home-tech-tag ai">Voice Recognition</span>
-                  <span class="home-tech-tag ai">LLM</span>
-                  <span class="home-tech-tag design">3D Printing</span>
-                  <span class="home-tech-tag eng">Robotics</span>
+                <div class="home-impact-item">
+                  <span class="home-impact-value">85%</span>
+                  <span class="home-impact-label">Cost Reduction vs Industrial</span>
                 </div>
               </div>
-            </a>
+              <div class="home-project-tech">
+                <span class="home-tech-tag ai">YOLOv11</span>
+                <span class="home-tech-tag prog">ROS2</span>
+                <span class="home-tech-tag ai">Computer Vision</span>
+                <span class="home-tech-tag comm">MQTT</span>
+                <span class="home-tech-tag ai">Voice Recognition</span>
+                <span class="home-tech-tag ai">LLM</span>
+                <span class="home-tech-tag design">3D Printing</span>
+                <span class="home-tech-tag eng">Robotics</span>
+              </div>
+            </div>
             
             <div class="home-project-media">
               <a href="https://www.youtube.com/embed/gpQtFfs4qww" target="_blank" class="home-video-link">
@@ -230,45 +229,43 @@ permalink: /projects/
 
         <article class="home-project-item">
           <div class="home-project-card">
-            <a href="/projects/liquid_injection/" class="home-project-link">
-              <div class="home-project-content">
-                <div class="home-project-meta">
-                  <time class="home-project-year">2025.08.06</time>
-                  <span class="home-project-category">Precision Control • Robotics</span>
+            <div class="home-project-content">
+              <div class="home-project-meta">
+                <time class="home-project-year">2025.08.06</time>
+                <span class="home-project-category">Precision Control • Robotics</span>
+              </div>
+              <h3 class="home-project-title">Robot-Based Precision Concentration Control System</h3>
+              <p class="home-project-description">
+                An autonomous ROS2-based system for high-precision liquid pouring using industrial robotic arms, 
+                load cells, and MQTT communication. Achieving target concentration within ±0.5% error range 
+                through intelligent fluid dynamic modeling and adaptive control algorithms.
+              </p>
+              <div class="home-project-impact">
+                <div class="home-impact-item">
+                  <span class="home-impact-value">±0.5%</span>
+                  <span class="home-impact-label">Precision Accuracy</span>
                 </div>
-                <h3 class="home-project-title">Robot-Based Precision Concentration Control System</h3>
-                <p class="home-project-description">
-                  An autonomous ROS2-based system for high-precision liquid pouring using industrial robotic arms, 
-                  load cells, and MQTT communication. Achieving target concentration within ±0.5% error range 
-                  through intelligent fluid dynamic modeling and adaptive control algorithms.
-                </p>
-                <div class="home-project-impact">
-                  <div class="home-impact-item">
-                    <span class="home-impact-value">±0.5%</span>
-                    <span class="home-impact-label">Precision Accuracy</span>
-                  </div>
-                  <div class="home-impact-item">
-                    <span class="home-impact-value">89.3%</span>
-                    <span class="home-impact-label">Model Validation</span>
-                  </div>
-                  <div class="home-impact-item">
-                    <span class="home-impact-value">8.3s</span>
-                    <span class="home-impact-label">Response Time</span>
-                  </div>
+                <div class="home-impact-item">
+                  <span class="home-impact-value">89.3%</span>
+                  <span class="home-impact-label">Model Validation</span>
                 </div>
-                <div class="home-project-tech">
-                  <span class="home-tech-tag prog">ROS2</span>
-                  <span class="home-tech-tag data">Kalman Filter</span>
-                  <span class="home-tech-tag comm">MQTT</span>
-                  <span class="home-tech-tag eng">Fluid Dynamics</span>
-                  <span class="home-tech-tag design">Doosan M0609</span>
-                  <span class="home-tech-tag design">HX711 ADC</span>
-                  <span class="home-tech-tag prog">Python</span>
-                  <span class="home-tech-tag prog">C++</span>
-                  <span class="home-tech-tag prog">Arduino</span>
+                <div class="home-impact-item">
+                  <span class="home-impact-value">8.3s</span>
+                  <span class="home-impact-label">Response Time</span>
                 </div>
               </div>
-            </a>
+              <div class="home-project-tech">
+                <span class="home-tech-tag prog">ROS2</span>
+                <span class="home-tech-tag data">Kalman Filter</span>
+                <span class="home-tech-tag comm">MQTT</span>
+                <span class="home-tech-tag eng">Fluid Dynamics</span>
+                <span class="home-tech-tag design">Doosan M0609</span>
+                <span class="home-tech-tag design">HX711 ADC</span>
+                <span class="home-tech-tag prog">Python</span>
+                <span class="home-tech-tag prog">C++</span>
+                <span class="home-tech-tag prog">Arduino</span>
+              </div>
+            </div>
             
             <div class="home-project-media">
               <a href="https://www.youtube.com/watch?v=yVg4EGmNAvk" target="_blank" class="home-video-link">
@@ -287,41 +284,39 @@ permalink: /projects/
 
         <article class="home-project-item">
           <div class="home-project-card">
-            <a href="/projects/crack-ppe-detection/" class="home-project-link">
-              <div class="home-project-content">
-                <div class="home-project-meta">
-                  <time class="home-project-year">2025.07.20</time>
-                  <span class="home-project-category">Environmental Safety • AI</span>
+            <div class="home-project-content">
+              <div class="home-project-meta">
+                <time class="home-project-year">2025.07.20</time>
+                <span class="home-project-category">Environmental Safety • AI</span>
+              </div>
+              <h2 class="home-project-title">Industrial Safety Robot System</h2>
+              <p class="home-project-description">
+                Advanced environmental monitoring system that preserves human life through intelligent robotics. 
+                Our multi-robot safety platform combines computer vision, sensor fusion, and predictive analytics 
+                to create safer industrial environments while reducing environmental impact by 25%.
+              </p>
+              <div class="home-project-impact">
+                <div class="home-impact-item">
+                  <span class="home-impact-value">93%</span>
+                  <span class="home-impact-label">Detection Accuracy</span>
                 </div>
-                <h2 class="home-project-title">Industrial Safety Robot System</h2>
-                <p class="home-project-description">
-                  Advanced environmental monitoring system that preserves human life through intelligent robotics. 
-                  Our multi-robot safety platform combines computer vision, sensor fusion, and predictive analytics 
-                  to create safer industrial environments while reducing environmental impact by 25%.
-                </p>
-                <div class="home-project-impact">
-                  <div class="home-impact-item">
-                    <span class="home-impact-value">93%</span>
-                    <span class="home-impact-label">Detection Accuracy</span>
-                  </div>
-                  <div class="home-impact-item">
-                    <span class="home-impact-value">100%</span>
-                    <span class="home-impact-label">Safety Improvement</span>
-                  </div>
-                  <div class="home-impact-item">
-                    <span class="home-impact-value">25%</span>
-                    <span class="home-impact-label">Impact Reduction</span>
-                  </div>
+                <div class="home-impact-item">
+                  <span class="home-impact-value">100%</span>
+                  <span class="home-impact-label">Safety Improvement</span>
                 </div>
-                <div class="home-project-tech">
-                  <span class="home-tech-tag prog">ROS2</span>
-                  <span class="home-tech-tag ai">YOLOv8</span>
-                  <span class="home-tech-tag data">Kalman Filter</span>
-                  <span class="home-tech-tag comm">MQTT</span>
-                  <span class="home-tech-tag prog">Python</span>
+                <div class="home-impact-item">
+                  <span class="home-impact-value">25%</span>
+                  <span class="home-impact-label">Impact Reduction</span>
                 </div>
               </div>
-            </a>
+              <div class="home-project-tech">
+                <span class="home-tech-tag prog">ROS2</span>
+                <span class="home-tech-tag ai">YOLOv8</span>
+                <span class="home-tech-tag data">Kalman Filter</span>
+                <span class="home-tech-tag comm">MQTT</span>
+                <span class="home-tech-tag prog">Python</span>
+              </div>
+            </div>
             
             <div class="home-project-media">
               <a href="https://www.youtube.com/watch?v=gsk4GZmsjrw" target="_blank" class="home-video-link">
@@ -340,41 +335,39 @@ permalink: /projects/
 
         <article class="home-project-item">
           <div class="home-project-card">
-            <a href="/projects/automated-catalyst-cleaning/" class="home-project-link">
-              <div class="home-project-content">
-                <div class="home-project-meta">
-                  <time class="home-project-year">2025.01.10</time>
-                  <span class="home-project-category">Environmental Automation • Engineering</span>
+            <div class="home-project-content">
+              <div class="home-project-meta">
+                <time class="home-project-year">2025.01.10</time>
+                <span class="home-project-category">Environmental Automation • Engineering</span>
+              </div>
+              <h2 class="home-project-title">Automated Catalyst Cleaning Robot</h2>
+              <p class="home-project-description">
+                Sustainable automation solution for industrial catalyst maintenance. This eco-friendly robotic system 
+                reduces chemical waste by 35%, eliminates human exposure to toxic environments, and extends 
+                catalyst lifespan by 20% through precision cleaning technology.
+              </p>
+              <div class="home-project-impact">
+                <div class="home-impact-item">
+                  <span class="home-impact-value">58%</span>
+                  <span class="home-impact-label">Cycle Time Reduction</span>
                 </div>
-                <h2 class="home-project-title">Automated Catalyst Cleaning Robot</h2>
-                <p class="home-project-description">
-                  Sustainable automation solution for industrial catalyst maintenance. This eco-friendly robotic system 
-                  reduces chemical waste by 35%, eliminates human exposure to toxic environments, and extends 
-                  catalyst lifespan by 20% through precision cleaning technology.
-                </p>
-                <div class="home-project-impact">
-                  <div class="home-impact-item">
-                    <span class="home-impact-value">58%</span>
-                    <span class="home-impact-label">Cycle Time Reduction</span>
-                  </div>
-                  <div class="home-impact-item">
-                    <span class="home-impact-value">35%</span>
-                    <span class="home-impact-label">Chemical Waste Reduction</span>
-                  </div>
-                  <div class="home-impact-item">
-                    <span class="home-impact-value">20%</span>
-                    <span class="home-impact-label">Catalyst Life Extension</span>
-                  </div>
+                <div class="home-impact-item">
+                  <span class="home-impact-value">35%</span>
+                  <span class="home-impact-label">Chemical Waste Reduction</span>
                 </div>
-                <div class="home-project-tech">
-                  <span class="home-tech-tag prog">Arduino</span>
-                  <span class="home-tech-tag design">CAD Design</span>
-                  <span class="home-tech-tag eng">Fluid Dynamics</span>
-                  <span class="home-tech-tag design">CNC Machining</span>
-                  <span class="home-tech-tag prog">C++</span>
+                <div class="home-impact-item">
+                  <span class="home-impact-value">20%</span>
+                  <span class="home-impact-label">Catalyst Life Extension</span>
                 </div>
               </div>
-            </a>
+              <div class="home-project-tech">
+                <span class="home-tech-tag prog">Arduino</span>
+                <span class="home-tech-tag design">CAD Design</span>
+                <span class="home-tech-tag eng">Fluid Dynamics</span>
+                <span class="home-tech-tag design">CNC Machining</span>
+                <span class="home-tech-tag prog">C++</span>
+              </div>
+            </div>
             
             <div class="home-project-media">
               <a href="https://www.youtube.com/watch?v=7pVAK6bW15U" target="_blank" class="home-video-link">
@@ -393,54 +386,50 @@ permalink: /projects/
 
         <article class="home-project-item">
           <div class="home-project-card">
-            <a href="/projects/dual-gear-pump-system/" class="home-project-link">
-              <div class="home-project-content">
-                <div class="home-project-meta">
-                  <time class="home-project-year">2024.06.15</time>
-                  <span class="home-project-category">Fluid Dynamics • Industrial Systems</span>
+            <div class="home-project-content">
+              <div class="home-project-meta">
+                <time class="home-project-year">2024.06.15</time>
+                <span class="home-project-category">Fluid Dynamics • Industrial Systems</span>
+              </div>
+              <h3 class="home-project-title">High-Pressure Dual Gear Pump System for Catalyst Regeneration</h3>
+              <p class="home-project-description">
+                A portable dual gear pump system designed for industrial catalyst regeneration processes. 
+                Features precise hydraulic analysis, inverter control technology, and modular aluminum frame 
+                design achieving 43+ bar pressure with 20L/min flow rate for effective catalyst treatment.
+              </p>
+              <div class="home-project-impact">
+                <div class="home-impact-item">
+                  <span class="home-impact-value">43+ bar</span>
+                  <span class="home-impact-label">Max Pressure</span>
                 </div>
-                <h3 class="home-project-title">High-Pressure Dual Gear Pump System for Catalyst Regeneration</h3>
-                <p class="home-project-description">
-                  A portable dual gear pump system designed for industrial catalyst regeneration processes. 
-                  Features precise hydraulic analysis, inverter control technology, and modular aluminum frame 
-                  design achieving 43+ bar pressure with 20L/min flow rate for effective catalyst treatment.
-                </p>
-                <div class="home-project-impact">
-                  <div class="home-impact-item">
-                    <span class="home-impact-value">43+ bar</span>
-                    <span class="home-impact-label">Max Pressure</span>
-                  </div>
-                  <div class="home-impact-item">
-                    <span class="home-impact-value">102.5%</span>
-                    <span class="home-impact-label">Target Achievement</span>
-                  </div>
-                  <div class="home-impact-item">
-                    <span class="home-impact-value">7.24m</span>
-                    <span class="home-impact-label">NPSH Margin</span>
-                  </div>
+                <div class="home-impact-item">
+                  <span class="home-impact-value">102.5%</span>
+                  <span class="home-impact-label">Target Achievement</span>
                 </div>
-                <div class="home-project-tech">
-                  <span class="home-tech-tag eng">Darcy-Weisbach</span>
-                  <span class="home-tech-tag eng">NPSH Analysis</span>
-                  <span class="home-tech-tag comm">LS ELECTRIC</span>
-                  <span class="home-tech-tag design">ASEDA SAP-20</span>
-                  <span class="home-tech-tag design">4040/4080 Profile</span>
-                  <span class="home-tech-tag prog">Inverter Control</span>
-                  <span class="home-tech-tag data">Hydraulic Calc</span>
+                <div class="home-impact-item">
+                  <span class="home-impact-value">7.24m</span>
+                  <span class="home-impact-label">NPSH Margin</span>
                 </div>
               </div>
-            </a>
+              <div class="home-project-tech">
+                <span class="home-tech-tag eng">Darcy-Weisbach</span>
+                <span class="home-tech-tag eng">NPSH Analysis</span>
+                <span class="home-tech-tag comm">LS ELECTRIC</span>
+                <span class="home-tech-tag design">ASEDA SAP-20</span>
+                <span class="home-tech-tag design">4040/4080 Profile</span>
+                <span class="home-tech-tag prog">Inverter Control</span>
+                <span class="home-tech-tag data">Hydraulic Calc</span>
+              </div>
+            </div>
             
             <div class="home-project-media">
-              <a href="/projects/dual-gear-pump-system/" class="home-image-link">
-                <div class="home-image-wrapper">
-                  <img 
-                    src="/project/dual-gear-pump-system/complete-system-page.jpg"
-                    alt="High-Pressure Dual Gear Pump System"
-                    title="Complete dual gear pump system with aluminum frame and control panel"
-                    loading="lazy">
-                </div>
-              </a>
+              <div class="home-image-wrapper">
+                <img 
+                  src="https://images.unsplash.com/photo-1581094288338-2314dddb7ece?w=800&h=450&fit=crop"
+                  alt="High-Pressure Dual Gear Pump System"
+                  title="Complete dual gear pump system with aluminum frame and control panel"
+                  loading="lazy">
+              </div>
             </div>
           </div>
         </article>
@@ -450,54 +439,50 @@ permalink: /projects/
       <div class="project-page" data-page="2" style="display: none;">
         <article class="home-project-item">
           <div class="home-project-card">
-            <a href="/projects/dry-ice-blaster-feeding-system/" class="home-project-link">
-              <div class="home-project-content">
-                <div class="home-project-meta">
-                  <time class="home-project-year">2024.02.26</time>
-                  <span class="home-project-category">Pressure Vessels • TIG Welding • Pneumatic Systems</span>
+            <div class="home-project-content">
+              <div class="home-project-meta">
+                <time class="home-project-year">2024.02.26</time>
+                <span class="home-project-category">Pressure Vessels • TIG Welding • Pneumatic Systems</span>
+              </div>
+              <h3 class="home-project-title">Dry Ice Blaster Feeding System for Catalyst Cleaning</h3>
+              <p class="home-project-description">
+                An innovative cryogenic pellet feeding system engineered for industrial catalyst surface cleaning. 
+                Features ASME pressure vessel design, precision TIG welding fabrication, and two-phase flow optimization 
+                achieving stable operation at -63°C with 98.5% system availability and exceptional 2.3-month ROI.
+              </p>
+              <div class="home-project-impact">
+                <div class="home-impact-item">
+                  <span class="home-impact-value">2.3 months</span>
+                  <span class="home-impact-label">ROI Payback</span>
                 </div>
-                <h3 class="home-project-title">Dry Ice Blaster Feeding System for Catalyst Cleaning</h3>
-                <p class="home-project-description">
-                  An innovative cryogenic pellet feeding system engineered for industrial catalyst surface cleaning. 
-                  Features ASME pressure vessel design, precision TIG welding fabrication, and two-phase flow optimization 
-                  achieving stable operation at -63°C with 98.5% system availability and exceptional 2.3-month ROI.
-                </p>
-                <div class="home-project-impact">
-                  <div class="home-impact-item">
-                    <span class="home-impact-value">2.3 months</span>
-                    <span class="home-impact-label">ROI Payback</span>
-                  </div>
-                  <div class="home-impact-item">
-                    <span class="home-impact-value">98.5%</span>
-                    <span class="home-impact-label">System Availability</span>
-                  </div>
-                  <div class="home-impact-item">
-                    <span class="home-impact-value">96.5%</span>
-                    <span class="home-impact-label">Cleaning Efficiency</span>
-                  </div>
+                <div class="home-impact-item">
+                  <span class="home-impact-value">98.5%</span>
+                  <span class="home-impact-label">System Availability</span>
                 </div>
-                <div class="home-project-tech">
-                  <span class="home-tech-tag eng">ASME Sec.VIII</span>
-                  <span class="home-tech-tag eng">TIG Welding</span>
-                  <span class="home-tech-tag design">SUS316L</span>
-                  <span class="home-tech-tag design">DKM Motor</span>
-                  <span class="home-tech-tag design">4040/4080 Profile</span>
-                  <span class="home-tech-tag prog">LS iG5A Inverter</span>
-                  <span class="home-tech-tag data">Two-Phase Flow</span>
+                <div class="home-impact-item">
+                  <span class="home-impact-value">96.5%</span>
+                  <span class="home-impact-label">Cleaning Efficiency</span>
                 </div>
               </div>
-            </a>
+              <div class="home-project-tech">
+                <span class="home-tech-tag eng">ASME Sec.VIII</span>
+                <span class="home-tech-tag eng">TIG Welding</span>
+                <span class="home-tech-tag design">SUS316L</span>
+                <span class="home-tech-tag design">DKM Motor</span>
+                <span class="home-tech-tag design">4040/4080 Profile</span>
+                <span class="home-tech-tag prog">LS iG5A Inverter</span>
+                <span class="home-tech-tag data">Two-Phase Flow</span>
+              </div>
+            </div>
             
             <div class="home-project-media">
-              <a href="/projects/dry-ice-blaster-feeding-system/" class="home-image-link">
-                <div class="home-image-wrapper">
-                  <img 
-                    src="/project/dry-ice-blaster-feeding-system/completed_dry_ice_blaster.png"
-                    alt="Dry Ice Blaster Feeding System"
-                    title="Complete dry ice blaster system with TIG welded nozzles and aluminum frame"
-                    loading="lazy">
-                </div>
-              </a>
+              <div class="home-image-wrapper">
+                <img 
+                  src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=800&h=450&fit=crop"
+                  alt="Dry Ice Blaster Feeding System"
+                  title="Complete dry ice blaster system with TIG welded nozzles and aluminum frame"
+                  loading="lazy">
+              </div>
             </div>
           </div>
         </article>
@@ -528,14 +513,13 @@ permalink: /projects/
 
     <!-- Back to Home 버튼 -->
     <div class="view-all-projects">
-      <a href="{{ '/home.html' | relative_url }}" class="view-all-button">
+      <a href="#" class="view-all-button">
         🏠 Back to Home
       </a>
     </div>
 
   </div>
 </div>
-
 
 <script>
 // 페이지네이션 JavaScript 코드
@@ -638,51 +622,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
 
-<!-- 인라인 스타일로 강제 적용 -->
 <style>
-/* 최우선 적용을 위한 인라인 스타일 */
-html, body {
-  overflow-x: hidden !important;
-  font-family: 'Merriweather', serif !important;
-  background: linear-gradient(135deg, #fefffe 0%, #f8fcf8 100%) !important;
-}
-
-/* 모든 Beautiful Jekyll 컨테이너를 완전히 무력화 */
-.main-content,
-.page-content,
-.page-content .container,
-.page-content .container-fluid,
-.container-md,
-.container-lg,
-.container-xl,
-.container-fluid,
-.container,
-.row,
-.col,
-.col-12,
-.col-lg-12 {
-  max-width: none !important;
-  width: 100% !important;
-  padding: 0 !important;
-  margin: 0 !important;
-  float: none !important;
-  position: static !important;
-  left: auto !important;
-  right: auto !important;
-  transform: none !important;
-}
-
-/* 강제로 전체 너비 확보 */
-.enviro-banner,
-.enviro-projects {
-  width: 100vw !important;
-  margin-left: calc(-50vw + 50%) !important;
-  margin-right: calc(-50vw + 50%) !important;
-  position: relative !important;
-  display: block !important;
-  text-align: center !important;
-}
-
 /* CSS 변수 정의 */
 :root {
   --eco-green: #7fb3d3;
@@ -692,6 +632,21 @@ html, body {
   --earth-brown: #c4a484;
   --leaf-shadow: 0 4px 15px rgba(127, 179, 211, 0.15);
   --smooth-transition: all 0.3s ease;
+}
+
+/* 기본 설정 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  overflow-x: hidden;
+  font-family: 'Merriweather', serif;
+  background: linear-gradient(135deg, #fefffe 0%, #f8fcf8 100%);
+  margin: 0;
+  padding: 0;
 }
 
 /* ===== 에코 배경 요소들 ===== */
@@ -992,11 +947,11 @@ html, body {
 }
 
 .banner-title {
-  font-size: 4rem !important;
-  font-weight: 700 !important;
+  font-size: 4rem;
+  font-weight: 700;
   margin: 0;
   line-height: 1.1;
-  font-family: 'Merriweather', serif !important;
+  font-family: 'Merriweather', serif;
   perspective: 1000px;
 }
 
@@ -1038,10 +993,10 @@ html, body {
 }
 
 .banner-subtitle {
-  font-size: 1.4rem !important;
+  font-size: 1.4rem;
   margin-bottom: 3rem;
-  font-family: 'Inter', sans-serif !important;
-  font-weight: 300 !important;
+  font-family: 'Inter', sans-serif;
+  font-weight: 300;
   line-height: 1.6;
 }
 
@@ -1133,7 +1088,7 @@ html, body {
   font-weight: 500;
   backdrop-filter: blur(15px);
   border: 1px solid rgba(255, 255, 255, 0.3);
-  font-family: 'Inter', sans-serif !important;
+  font-family: 'Inter', sans-serif;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   display: flex;
   align-items: center;
@@ -1343,23 +1298,20 @@ html, body {
 
 /* ===== 프로젝트 섹션 ===== */
 .enviro-projects {
-  padding: 4rem 0 !important;
-  background: rgba(248, 252, 248, 0.3) !important;
-  width: 100% !important;
-  margin: 0 !important;
-  max-width: none !important;
+  padding: 4rem 0;
+  background: rgba(248, 252, 248, 0.3);
+  width: 100%;
   position: relative;
-  z-index: 10 !important;
+  z-index: 10;
 }
 
 .projects-container {
-  width: 100% !important;
-  max-width: 1000px !important;
-  margin: 0 auto !important;
-  padding: 0 2rem !important;
-  display: block !important;
-  position: relative !important;
-  z-index: 10 !important;
+  width: 100%;
+  max-width: 1000px; /* 컨테이너 크기 줄임 */
+  margin: 0 auto;
+  padding: 0 2rem;
+  position: relative;
+  z-index: 10;
 }
 
 /* 페이지네이션 정보 */
@@ -1398,110 +1350,111 @@ html, body {
   animation: fadeInUp 0.6s ease-out;
 }
 
-/* 프로젝트 카드 스타일 - 80% 크기로 줄임 */
+/* 프로젝트 카드 스타일 - 크기 증가 및 개선 */
 .home-project-item {
-  margin-bottom: 2.4rem;
-  transform: scale(0.8);
-  transform-origin: center;
+  margin-bottom: 3rem; /* 카드 간격 증가 */
+  transform: none; /* scale(0.8) 제거로 크기 정상화 */
 }
 
 .home-project-card {
   background: rgba(255, 255, 255, 0.95);
-  border-radius: 20px;
+  border-radius: 24px; /* 더 둥근 모서리 */
   overflow: hidden;
   transition: var(--smooth-transition);
-  box-shadow: var(--leaf-shadow);
+  box-shadow: 0 8px 25px rgba(127, 179, 211, 0.15); /* 더 강한 그림자 */
   border: 1px solid rgba(127, 179, 211, 0.1);
   backdrop-filter: blur(10px);
+  display: flex;
+  flex-direction: column;
+  min-height: 600px; /* 최소 높이 설정 */
 }
 
 .home-project-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 15px 40px rgba(127, 179, 211, 0.25);
+  transform: translateY(-12px); /* 더 큰 hover 효과 */
+  box-shadow: 0 20px 50px rgba(127, 179, 211, 0.25);
   border-color: rgba(127, 179, 211, 0.3);
 }
 
-.home-project-link {
-  display: block;
-  text-decoration: none;
-  color: inherit;
-}
-
 .home-project-content {
-  padding: 2rem;
+  padding: 3rem; /* 패딩 증가 */
+  text-align: left; /* 왼쪽 정렬로 수정 */
+  flex: 1;
 }
 
 .home-project-meta {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
   gap: 1rem;
   flex-wrap: wrap;
 }
 
 .home-project-year {
-  font-size: 0.9rem;
+  font-size: 1rem;
   color: var(--forest-green);
   font-weight: 500;
   font-family: 'Inter', sans-serif;
 }
 
 .home-project-category {
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   color: var(--eco-green);
   background: rgba(127, 179, 211, 0.1);
-  padding: 0.3rem 0.8rem;
-  border-radius: 12px;
+  padding: 0.4rem 1rem;
+  border-radius: 15px;
   font-weight: 500;
   font-family: 'Inter', sans-serif;
 }
 
 .home-project-title {
-  font-size: 1.5rem;
+  font-size: 1.8rem; /* 제목 크기 증가 */
   font-weight: 700;
   color: var(--forest-green);
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
   font-family: 'Merriweather', serif;
   line-height: 1.3;
 }
 
 .home-project-description {
-  font-size: 1rem;
-  line-height: 1.6;
+  font-size: 1.1rem; /* 설명 텍스트 크기 증가 */
+  line-height: 1.7;
   color: rgba(93, 115, 126, 0.9);
-  margin-bottom: 2rem;
+  margin-bottom: 2.5rem;
   font-family: 'Inter', sans-serif;
 }
 
 .home-project-impact {
   display: flex;
-  gap: 1.5rem;
-  margin-bottom: 1.5rem;
+  gap: 2rem;
+  margin-bottom: 2rem;
   flex-wrap: wrap;
+  justify-content: flex-start; /* 왼쪽 정렬 */
 }
 
 .home-impact-item {
   text-align: center;
   background: rgba(127, 179, 211, 0.05);
-  padding: 1rem 0.8rem;
-  border-radius: 12px;
-  min-width: 100px;
+  padding: 1.5rem 1rem; /* 패딩 증가 */
+  border-radius: 15px;
+  min-width: 120px;
   border: 1px solid rgba(127, 179, 211, 0.1);
+  flex: 1;
+  max-width: 150px;
 }
 
 .home-impact-value {
   display: block;
-  font-size: 1.3rem;
+  font-size: 1.5rem; /* 값 크기 증가 */
   font-weight: 700;
   color: var(--eco-green);
   font-family: 'Inter', sans-serif;
 }
 
 .home-impact-label {
-  font-size: 0.75rem;
+  font-size: 0.8rem;
   color: var(--forest-green);
-  margin-top: 0.3rem;
+  margin-top: 0.5rem;
   font-family: 'Inter', sans-serif;
   line-height: 1.2;
 }
@@ -1509,13 +1462,14 @@ html, body {
 .home-project-tech {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
+  gap: 0.8rem;
+  justify-content: flex-start; /* 왼쪽 정렬 */
 }
 
 .home-tech-tag {
-  padding: 0.4rem 0.8rem;
-  border-radius: 15px;
-  font-size: 0.75rem;
+  padding: 0.5rem 1rem; /* 패딩 증가 */
+  border-radius: 18px;
+  font-size: 0.8rem;
   font-weight: 500;
   font-family: 'Inter', sans-serif;
   transition: var(--smooth-transition);
@@ -1529,13 +1483,16 @@ html, body {
 .home-tech-tag.eng { background: rgba(205, 133, 63, 0.15); color: #8b5a2b; }
 
 .home-tech-tag:hover {
-  transform: translateY(-1px);
+  transform: translateY(-2px);
   opacity: 0.8;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
+/* 미디어 섹션 스타일 개선 */
 .home-project-media {
   background: #f8fcf8;
   border-top: 1px solid rgba(127, 179, 211, 0.1);
+  margin-top: auto; /* 하단에 고정 */
 }
 
 .home-video-link, .home-image-link {
@@ -1545,9 +1502,10 @@ html, body {
 
 .home-video-wrapper {
   position: relative;
-  padding-bottom: 56.25%;
+  padding-bottom: 56.25%; /* 16:9 비율 */
   height: 0;
   overflow: hidden;
+  border-radius: 0; /* 하단 모서리만 직각 */
 }
 
 .home-video-wrapper iframe {
@@ -1556,6 +1514,7 @@ html, body {
   left: 0;
   width: 100%;
   height: 100%;
+  border: 0;
   transition: var(--smooth-transition);
 }
 
@@ -1565,14 +1524,16 @@ html, body {
 
 .home-image-wrapper img {
   width: 100%;
-  height: 300px;
+  height: auto;
+  aspect-ratio: 16/9;
   object-fit: cover;
+  display: block;
   transition: var(--smooth-transition);
 }
 
 .home-video-link:hover iframe,
 .home-image-link:hover img {
-  transform: scale(1.05);
+  transform: scale(1.02); /* 작은 확대 효과 */
 }
 
 /* 페이지네이션 컨트롤 */
@@ -1589,14 +1550,14 @@ html, body {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.8rem 1.5rem;
+  padding: 1rem 2rem; /* 버튼 크기 증가 */
   background: rgba(127, 179, 211, 0.1);
   border: 2px solid rgba(127, 179, 211, 0.3);
-  border-radius: 12px;
+  border-radius: 15px;
   color: var(--eco-green);
   font-family: 'Inter', sans-serif;
   font-weight: 500;
-  font-size: 0.95rem;
+  font-size: 1rem;
   cursor: pointer;
   transition: var(--smooth-transition);
   backdrop-filter: blur(10px);
@@ -1605,8 +1566,8 @@ html, body {
 .pagination-btn:hover:not(:disabled) {
   background: rgba(127, 179, 211, 0.2);
   border-color: var(--eco-green);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(127, 179, 211, 0.3);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(127, 179, 211, 0.3);
 }
 
 .pagination-btn:disabled {
@@ -1616,8 +1577,8 @@ html, body {
 }
 
 .pagination-btn svg {
-  width: 18px;
-  height: 18px;
+  width: 20px;
+  height: 20px;
   transition: var(--smooth-transition);
 }
 
@@ -1627,19 +1588,19 @@ html, body {
 
 .page-numbers {
   display: flex;
-  gap: 0.5rem;
+  gap: 0.8rem;
 }
 
 .page-number-btn {
-  width: 45px;
-  height: 45px;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.1);
   border: 2px solid rgba(127, 179, 211, 0.3);
   color: var(--eco-green);
   font-family: 'Inter', sans-serif;
   font-weight: 600;
-  font-size: 1rem;
+  font-size: 1.1rem;
   cursor: pointer;
   transition: var(--smooth-transition);
   backdrop-filter: blur(10px);
@@ -1651,20 +1612,20 @@ html, body {
 .page-number-btn:hover {
   background: rgba(127, 179, 211, 0.2);
   border-color: var(--eco-green);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(127, 179, 211, 0.3);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(127, 179, 211, 0.3);
 }
 
 .page-number-btn.active {
   background: var(--eco-green);
   color: white;
   border-color: var(--eco-green);
-  box-shadow: 0 4px 15px rgba(127, 179, 211, 0.4);
+  box-shadow: 0 6px 20px rgba(127, 179, 211, 0.4);
 }
 
 .page-number-btn.active:hover {
   background: var(--forest-green);
-  transform: translateY(-2px);
+  transform: translateY(-3px);
 }
 
 .view-all-projects {
@@ -1675,16 +1636,16 @@ html, body {
 .view-all-button {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  padding: 1rem 2rem;
+  gap: 0.8rem;
+  padding: 1.2rem 2.5rem; /* 버튼 크기 증가 */
   background: rgba(127, 179, 211, 0.1);
   border: 2px solid rgba(127, 179, 211, 0.3);
-  border-radius: 15px;
+  border-radius: 18px;
   color: var(--eco-green);
   text-decoration: none;
   font-family: 'Inter', sans-serif;
   font-weight: 600;
-  font-size: 1rem;
+  font-size: 1.1rem;
   transition: var(--smooth-transition);
   backdrop-filter: blur(10px);
 }
@@ -1692,14 +1653,13 @@ html, body {
 .view-all-button:hover {
   background: rgba(127, 179, 211, 0.2);
   border-color: var(--eco-green);
-  transform: translateY(-3px);
-  box-shadow: 0 10px 25px rgba(127, 179, 211, 0.3);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(127, 179, 211, 0.3);
   color: var(--eco-green);
   text-decoration: none;
 }
 
-/* Footer 스타일 제거 */
-
+/* 애니메이션 */
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -1712,9 +1672,10 @@ html, body {
 }
 
 /* 접근성 개선 */
-.home-project-link:focus,
+.home-project-card:focus-within,
 .pagination-btn:focus,
-.page-number-btn:focus {
+.page-number-btn:focus,
+.view-all-button:focus {
   outline: 2px solid var(--eco-green);
   outline-offset: 3px;
 }
@@ -1734,7 +1695,19 @@ html, body {
   }
   
   .banner-title {
-    font-size: 3rem !important;
+    font-size: 3rem;
+  }
+  
+  .projects-container {
+    max-width: 900px;
+  }
+  
+  .home-project-card {
+    min-height: 550px;
+  }
+  
+  .home-project-content {
+    padding: 2.5rem;
   }
 }
 
@@ -1749,11 +1722,11 @@ html, body {
   }
   
   .banner-title {
-    font-size: 2.5rem !important;
+    font-size: 2.5rem;
   }
   
   .banner-subtitle {
-    font-size: 1.1rem !important;
+    font-size: 1.1rem;
   }
   
   .banner-stats {
@@ -1780,27 +1753,25 @@ html, body {
     font-size: 0.8rem;
   }
   
-  .pagination-controls {
-    gap: 1rem;
-  }
-  
-  .pagination-btn {
-    padding: 0.6rem 1rem;
-    font-size: 0.85rem;
-  }
-  
-  .pagination-info {
-    flex-direction: column;
-    gap: 0.5rem;
-    text-align: center;
-  }
-  
-  .page-numbers {
-    order: -1;
-  }
-  
   .projects-container {
-    padding: 0 1rem !important;
+    padding: 0 1rem;
+    max-width: 100%;
+  }
+  
+  .home-project-card {
+    min-height: auto;
+  }
+  
+  .home-project-content {
+    padding: 2rem;
+  }
+  
+  .home-project-title {
+    font-size: 1.5rem;
+  }
+  
+  .home-project-description {
+    font-size: 1rem;
   }
   
   .home-project-impact {
@@ -1809,19 +1780,30 @@ html, body {
   }
   
   .home-impact-item {
-    min-width: 80px;
-    padding: 0.8rem 0.6rem;
+    min-width: 100px;
+    max-width: none;
+    flex: 1;
   }
   
-  .footer-content {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
+  .pagination-controls {
+    gap: 1rem;
+  }
+  
+  .pagination-btn {
+    padding: 0.8rem 1.5rem;
+    font-size: 0.9rem;
+  }
+  
+  .pagination-info {
+    flex-direction: column;
+    gap: 0.5rem;
+    text-align: center;
   }
 }
 
 @media (max-width: 480px) {
   .banner-title {
-    font-size: 2rem !important;
+    font-size: 2rem;
   }
   
   .banner-visual {
@@ -1846,8 +1828,8 @@ html, body {
   }
   
   .orb-1, .orb-2, .orb-3, .orb-4, .orb-5 {
-    width: 50px !important;
-    height: 50px !important;
+    width: 50px;
+    height: 50px;
   }
   
   .pagination-controls {
@@ -1876,202 +1858,11 @@ html, body {
   
   .home-impact-item {
     width: 100%;
+    max-width: none;
+  }
+  
+  .view-all-button {
+    padding: 1rem 2rem;
+    font-size: 1rem;
   }
 }
-
-/* ---- 미디어를 카드 하단으로 강제 ---- */
-.home-project-card {
-  display: flex;
-  flex-direction: column;    /* 위=콘텐츠, 아래=미디어 */
-}
-
-.home-project-content { order: 1; }
-.home-project-media   { order: 2; }
-
-/* 보기도 안정화: iframe/이미지 폭/비율 */
-.home-project-media iframe {
-  width: 100%;
-  height: auto;
-  aspect-ratio: 16 / 9;
-  display: block;
-}
-
-.home-image-wrapper img {
-  width: 100%;
-  height: auto;
-  aspect-ratio: 16 / 9;
-  object-fit: cover;
-  display: block;
-}
-
-@media (min-width: 769px) {
-  .home-project-card { display:flex; flex-direction:column; }
-}
-
-/* 카드 구조: [ <a.home-project-link>, <div.home-project-media> ] */
-.enviro-projects .home-project-card {
-  display: flex;
-  flex-direction: column;   /* 위=링크(텍스트), 아래=미디어 */
-}
-
-/* 플렉스 '직계 자식'에 order 적용 */
-.enviro-projects .home-project-card > .home-project-link { order: 1; }
-.enviro-projects .home-project-card > .home-project-media { order: 2; }
-
-/* 보기 안정화(선택): 썸네일/영상 비율 통일 */
-.enviro-projects .home-project-media { margin-top: 0.5rem; }
-.enviro-projects .home-image-wrapper img {
-  width: 100%;
-  height: auto;            /* 기존 고정 높이(300px)보다 비율이 자연스러움 */
-  aspect-ratio: 16 / 9;
-  object-fit: cover;
-}
-
-/* 1) 카드 레이아웃을 '그리드'로 고정 (외부 테마 영향 무시) */
-.enviro-projects .home-project-card {
-  display: grid !important;
-  grid-template-rows: auto auto !important; /* 위=콘텐츠, 아래=미디어 */
-}
-
-/* 2) '직계 자식' 두 개의 위치를 그리드 행으로 지정 */
-.enviro-projects .home-project-card > .home-project-link  { grid-row: 1 !important; }
-.enviro-projects .home-project-card > .home-project-media { grid-row: 2 !important; }
-
-/* 3) 혹시 위로 떠오르게 만드는 속성 차단 */
-.enviro-projects .home-project-card > .home-project-media {
-  position: static !important;
-  float: none !important;
-  margin-top: 0.5rem;
-}
-
-/* (선택) 이미지/영상 비율 안정화 */
-.enviro-projects .home-video-wrapper { position: relative !important; padding-bottom: 56.25% !important; height: 0 !important; }
-.enviro-projects .home-video-wrapper iframe { position: absolute !important; inset: 0 !important; width: 100% !important; height: 100% !important; }
-.enviro-projects .home-image-wrapper img { width: 100% !important; height: auto !important; aspect-ratio: 16/9 !important; object-fit: cover !important; display: block !important; }
-
-/* 0) 카드 레이아웃 고정 + 아이템을 가로로 '늘리기' */
-.enviro-projects .home-project-card {
-  display: grid !important;
-  grid-auto-rows: auto;
-  row-gap: 1rem;
-  justify-items: stretch !important;   /* ← 왼쪽 쏠림 방지 */
-}
-
-/* 1) 직계 자식 2개(링크/미디어) 전체 폭 사용 + 순서 고정 */
-.enviro-projects .home-project-card > .home-project-link  {
-  grid-column: 1 / -1 !important; grid-row: 1 !important; 
-  width: 100% !important; justify-self: stretch !important;
-}
-.enviro-projects .home-project-card > .home-project-media {
-  grid-column: 1 / -1 !important; grid-row: 2 !important; 
-  width: 100% !important; justify-self: stretch !important;
-  position: static !important; float: none !important;   /* 위로 떠오르는 잔존 규칙 차단 */
-  margin-top: .75rem !important;
-}
-
-/* 2) 미디어 래퍼들: 가로 100%, 블록화(고정폭/inline 영향 제거) */
-.enviro-projects .home-project-media,
-.enviro-projects .home-image-wrapper,
-.enviro-projects .home-video-wrapper {
-  display: block !important;
-  width: 100% !important;
-  max-width: none !important;
-  margin: 0 !important;
-}
-
-/* 3) 동영상 크게(16:9, 카드 가로 꽉) */
-.enviro-projects .home-video-wrapper {
-  position: relative !important;
-  height: 0 !important;
-  padding-bottom: 56.25% !important;   /* 16:9 */
-}
-.enviro-projects .home-video-wrapper iframe {
-  position: absolute !important; inset: 0 !important;
-  width: 100% !important; height: 100% !important;
-  border: 0; border-radius: 14px;
-}
-
-/* 4) 이미지도 동일하게 크게 */
-.enviro-projects .home-image-wrapper img {
-  display: block !important;
-  width: 100% !important; height: auto !important;
-  aspect-ratio: 16/9 !important; object-fit: cover !important;
-  border-radius: 14px;
-}
-
-/* 5) 데스크톱에서 시원하게(선택) */
-@media (min-width: 1024px) {
-  .enviro-projects .home-video-wrapper { min-height: 320px !important; }
-}
-
-/* 0) 카드 전체 축소된 상태 해제(지금 0.8배로 작게 보이는 원인) */
-.enviro-projects .home-project-item {
-  transform: none !important;            /* ← scale(0.8) 제거 */
-  transform-origin: center !important;
-}
-
-/* 1) 텍스트 블록 중앙 정렬 (왼쪽 쏠림 해소) */
-.enviro-projects .home-project-card > .home-project-link {
-  width: 100% !important;
-  justify-self: stretch !important;
-}
-
-.enviro-projects .home-project-content { 
-  text-align: center !important;         /* 본문 텍스트 중앙 */
-}
-
-.enviro-projects .home-project-meta {    /* 날짜/카테고리 줄 */
-  justify-content: center !important;
-  gap: .5rem !important;
-}
-
-.enviro-projects .home-project-title,
-.enviro-projects .home-project-description {
-  margin-left: auto !important;
-  margin-right: auto !important;
-}
-
-/* 임팩트/태그 라인도 가운데 정렬 */
-.enviro-projects .home-project-impact,
-.enviro-projects .home-project-tech {
-  justify-content: center !important;
-}
-
-/* 2) 미디어 확 키우기 (카드 가로 100% + 최소 높이 확보) */
-.enviro-projects .home-video-wrapper,
-.enviro-projects .home-image-wrapper { 
-  width: 100% !important;
-  display: block !important;
-}
-
-.enviro-projects .home-video-wrapper {
-  position: relative !important;
-  height: 0 !important;
-  padding-bottom: 56.25% !important;   /* 16:9 기본 */
-}
-
-.enviro-projects .home-video-wrapper iframe {
-  position: absolute !important;
-  inset: 0 !important;
-  width: 100% !important;
-  height: 100% !important;
-  border: 0;
-  border-radius: 14px;
-}
-
-/* 이미지도 동일하게 크게 */
-.enviro-projects .home-image-wrapper img {
-  display: block !important;
-  width: 100% !important;
-  height: auto !important;
-  aspect-ratio: 16/9 !important;
-  object-fit: cover !important;
-  border-radius: 14px;
-}
-
-/* 데스크톱에서 더 시원하게: 최소 높이 업 */
-@media (min-width: 1024px) {
-  .enviro-projects .home-video-wrapper { min-height: 420px !important; }
-}
-
-</style>
