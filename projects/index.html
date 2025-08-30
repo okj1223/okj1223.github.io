@@ -1907,4 +1907,24 @@ html, body {
 @media (min-width: 769px) {
   .home-project-card { display:flex; flex-direction:column; }
 }
+
+/* 카드 구조: [ <a.home-project-link>, <div.home-project-media> ] */
+.enviro-projects .home-project-card {
+  display: flex;
+  flex-direction: column;   /* 위=링크(텍스트), 아래=미디어 */
+}
+
+/* 플렉스 '직계 자식'에 order 적용 */
+.enviro-projects .home-project-card > .home-project-link { order: 1; }
+.enviro-projects .home-project-card > .home-project-media { order: 2; }
+
+/* 보기 안정화(선택): 썸네일/영상 비율 통일 */
+.enviro-projects .home-project-media { margin-top: 0.5rem; }
+.enviro-projects .home-image-wrapper img {
+  width: 100%;
+  height: auto;            /* 기존 고정 높이(300px)보다 비율이 자연스러움 */
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
 </style>
