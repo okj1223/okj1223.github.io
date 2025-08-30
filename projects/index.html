@@ -2004,4 +2004,74 @@ html, body {
   .enviro-projects .home-video-wrapper { min-height: 320px !important; }
 }
 
+/* 0) 카드 전체 축소된 상태 해제(지금 0.8배로 작게 보이는 원인) */
+.enviro-projects .home-project-item {
+  transform: none !important;            /* ← scale(0.8) 제거 */
+  transform-origin: center !important;
+}
+
+/* 1) 텍스트 블록 중앙 정렬 (왼쪽 쏠림 해소) */
+.enviro-projects .home-project-card > .home-project-link {
+  width: 100% !important;
+  justify-self: stretch !important;
+}
+
+.enviro-projects .home-project-content { 
+  text-align: center !important;         /* 본문 텍스트 중앙 */
+}
+
+.enviro-projects .home-project-meta {    /* 날짜/카테고리 줄 */
+  justify-content: center !important;
+  gap: .5rem !important;
+}
+
+.enviro-projects .home-project-title,
+.enviro-projects .home-project-description {
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+/* 임팩트/태그 라인도 가운데 정렬 */
+.enviro-projects .home-project-impact,
+.enviro-projects .home-project-tech {
+  justify-content: center !important;
+}
+
+/* 2) 미디어 확 키우기 (카드 가로 100% + 최소 높이 확보) */
+.enviro-projects .home-video-wrapper,
+.enviro-projects .home-image-wrapper { 
+  width: 100% !important;
+  display: block !important;
+}
+
+.enviro-projects .home-video-wrapper {
+  position: relative !important;
+  height: 0 !important;
+  padding-bottom: 56.25% !important;   /* 16:9 기본 */
+}
+
+.enviro-projects .home-video-wrapper iframe {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  border: 0;
+  border-radius: 14px;
+}
+
+/* 이미지도 동일하게 크게 */
+.enviro-projects .home-image-wrapper img {
+  display: block !important;
+  width: 100% !important;
+  height: auto !important;
+  aspect-ratio: 16/9 !important;
+  object-fit: cover !important;
+  border-radius: 14px;
+}
+
+/* 데스크톱에서 더 시원하게: 최소 높이 업 */
+@media (min-width: 1024px) {
+  .enviro-projects .home-video-wrapper { min-height: 420px !important; }
+}
+
 </style>
