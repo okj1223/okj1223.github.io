@@ -1,792 +1,881 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projects - Environmental Robotics</title>
-    
-    <!-- 폰트 -->
-    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Projects - Environmental Robotics</title>
+   
+   <!-- 폰트 -->
+   <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+   
+   <!-- Font Awesome -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 <body>
 
 <!-- 네비게이션 바 -->
 <nav class="project-navbar">
-  <div class="nav-container">
-    <a href="/" class="nav-logo">
-      <img src="/assets/img/logo.png" alt="KERIA Lab" class="nav-logo-img">
-    </a>
-    
-    <button class="nav-toggle" id="navToggle">
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
-    
-    <ul class="nav-menu" id="navMenu">
-      <li class="nav-item">
-        <a href="/" class="nav-link">HOME</a>
-      </li>
-      <li class="nav-item">
-        <a href="/aboutme" class="nav-link">ABOUT ME</a>
-      </li>
-      <li class="nav-item">
-        <a href="/projects" class="nav-link active">PROJECTS</a>
-      </li>
-    </ul>
-  </div>
+ <div class="nav-container">
+   <a href="/" class="navbar-brand-logo">
+     <img src="/assets/img/keria-logo.svg" alt="KERIA Lab" class="brand-logo-only">
+   </a>
+   
+   <button class="navbar-toggler" id="navToggle">
+     <span class="navbar-toggler-icon"></span>
+   </button>
+   
+   <ul class="navbar-nav" id="navMenu">
+     <li class="nav-item">
+       <a href="/" class="nav-link">HOME</a>
+     </li>
+     <li class="nav-item">
+       <a href="/aboutme" class="nav-link">ABOUT ME</a>
+     </li>
+     <li class="nav-item">
+       <a href="/projects" class="nav-link active">PROJECTS</a>
+     </li>
+   </ul>
+ </div>
 </nav>
 
 <!-- 🌿 에코 테마 배경 요소들 -->
 <div class="eco-leaves">
-  <div class="leaf"></div>
-  <div class="leaf"></div>
-  <div class="leaf"></div>
-  <div class="leaf"></div>
-  <div class="leaf"></div>
-  <div class="leaf"></div>
-  <div class="leaf"></div>
-  <div class="leaf"></div>
+ <div class="leaf"></div>
+ <div class="leaf"></div>
+ <div class="leaf"></div>
+ <div class="leaf"></div>
+ <div class="leaf"></div>
+ <div class="leaf"></div>
+ <div class="leaf"></div>
+ <div class="leaf"></div>
 </div>
 
 <div class="bg-grid-pattern">
-  <div class="grid-lines horizontal"></div>
-  <div class="grid-lines vertical"></div>
+ <div class="grid-lines horizontal"></div>
+ <div class="grid-lines vertical"></div>
 </div>
 
 <!-- 환경로보틱스 배너 섹션 -->
 <div class="enviro-banner">
-  <div class="banner-background">
-    <div class="animated-gradient"></div>
-    <div class="floating-orbs">
-      <div class="orb orb-1"></div>
-      <div class="orb orb-2"></div>
-      <div class="orb orb-3"></div>
-      <div class="orb orb-4"></div>
-      <div class="orb orb-5"></div>
-    </div>
-    <div class="neural-network">
-      <div class="node node-1"></div>
-      <div class="node node-2"></div>
-      <div class="node node-3"></div>
-      <div class="node node-4"></div>
-      <div class="node node-5"></div>
-      <div class="connection con-1"></div>
-      <div class="connection con-2"></div>
-      <div class="connection con-3"></div>
-      <div class="connection con-4"></div>
-    </div>
-  </div>
-  
-  <div class="banner-content">
-    <div class="banner-text">
-      <div class="title-container">
-        <h1 class="banner-title">
-          <span class="title-word" data-word="Environmental">Environmental</span>
-          <span class="title-word" data-word="Robotics">Robotics</span>
-        </h1>
-        <div class="title-underline"></div>
-      </div>
-      
-      <p class="banner-subtitle">
-        <span class="subtitle-line">Innovating for a sustainable future</span>
-        <span class="subtitle-line">through AI-driven environmental solutions</span>
-      </p>
-      
-      <div class="banner-stats">
-        <div class="stat-item">
-          <div class="stat-number">8</div>
-          <div class="stat-label">Active Projects</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-number">95%</div>
-          <div class="stat-label">AI Accuracy</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-number">50%</div>
-          <div class="stat-label">Waste Reduction</div>
-        </div>
-      </div>
-      
-      <div class="banner-keywords">
-        <div class="keyword-chip">
-          <span class="chip-icon">
-            <svg viewBox="0 0 24 24" fill="currentColor">
-              <path d="M17,8C8,10 5.9,16.17 3.82,21.34L5.71,22L6.66,19.7C7.14,19.87 7.64,20 8,20C19,20 22,3 22,3C21,5 14,5.25 9,6.25C4,7.25 2,11.5 2,13.5C2,15.5 3.75,17.25 3.75,17.25C7,8 17,8 17,8Z"/>
-            </svg>
-          </span>
-          <span>Sustainability</span>
-        </div>
-        <div class="keyword-chip">
-          <span class="chip-icon">
-            <svg viewBox="0 0 24 24" fill="currentColor">
-              <path d="M12,2A2,2 0 0,1 14,4C14,4.74 13.6,5.39 13,5.73V7H14A7,7 0 0,1 21,14H22A1,1 0 0,1 23,15V18A1,1 0 0,1 22,19H21V20A2,2 0 0,1 19,22H5A2,2 0 0,1 3,20V19H2A1,1 0 0,1 1,18V15A1,1 0 0,1 2,14H3A7,7 0 0,1 10,7H11V5.73C10.4,5.39 10,4.74 10,4A2,2 0 0,1 12,2M7.5,13A2.5,2.5 0 0,0 5,15.5A2.5,2.5 0 0,0 7.5,18A2.5,2.5 0 0,0 10,15.5A2.5,2.5 0 0,0 7.5,13M16.5,13A2.5,2.5 0 0,0 14,15.5A2.5,2.5 0 0,0 16.5,18A2.5,2.5 0 0,0 19,15.5A2.5,2.5 0 0,0 16.5,13Z"/>
-            </svg>
-          </span>
-          <span>Automation</span>
-        </div>
-        <div class="keyword-chip">
-          <span class="chip-icon">
-            <svg viewBox="0 0 24 24" fill="currentColor">
-              <path d="M12,2A7,7 0 0,0 5,9C5,11.38 6.19,13.47 8,14.74V17A1,1 0 0,0 9,18H15A1,1 0 0,0 16,17V14.74C17.81,13.47 19,11.38 19,9A7,7 0 0,0 12,2M9,21A1,1 0 0,0 10,22H14A1,1 0 0,0 15,21V20H9V21Z"/>
-            </svg>
-          </span>
-          <span>Innovation</span>
-        </div>
-        <div class="keyword-chip">
-          <span class="chip-icon">
-            <svg viewBox="0 0 24 24" fill="currentColor">
-              <path d="M17.9,17.39C17.64,16.59 16.89,16 16,16H15V13A1,1 0 0,0 14,12H8V10H10A1,1 0 0,0 11,9V7H13A2,2 0 0,0 15,5V4.59C17.93,5.77 20,8.64 20,12C20,14.08 19.2,15.97 17.9,17.39M11,19.93C7.05,19.44 4,16.08 4,12C4,11.38 4.08,10.78 4.21,10.21L9,15V16A2,2 0 0,0 11,18M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z"/>
-            </svg>
-          </span>
-          <span>Environment</span>
-        </div>
-      </div>
-    </div>
-    
-    <div class="banner-visual">
-      <div class="holographic-display">
-        <div class="holo-ring ring-1">
-          <div class="ring-segment"></div>
-          <div class="ring-segment"></div>
-          <div class="ring-segment"></div>
-          <div class="ring-segment"></div>
-        </div>
-        <div class="holo-ring ring-2">
-          <div class="ring-segment"></div>
-          <div class="ring-segment"></div>
-          <div class="ring-segment"></div>
-        </div>
-        <div class="holo-ring ring-3">
-          <div class="ring-segment"></div>
-          <div class="ring-segment"></div>
-        </div>
-        <div class="central-core">
-          <div class="core-pulse"></div>
-          <div class="core-icon">
-            <svg viewBox="0 0 24 24" fill="currentColor">
-              <path d="M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z"/>
-            </svg>
-          </div>
-        </div>
-        <div class="data-streams">
-          <div class="stream stream-1"></div>
-          <div class="stream stream-2"></div>
-          <div class="stream stream-3"></div>
-        </div>
-      </div>
-    </div>
-  </div>
-  
-  <div class="banner-bottom-wave">
-    <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
-      <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25"></path>
-      <path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5"></path>
-      <path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z"></path>
-    </svg>
-  </div>
+ <div class="banner-background">
+   <div class="animated-gradient"></div>
+   <div class="floating-orbs">
+     <div class="orb orb-1"></div>
+     <div class="orb orb-2"></div>
+     <div class="orb orb-3"></div>
+     <div class="orb orb-4"></div>
+     <div class="orb orb-5"></div>
+   </div>
+   <div class="neural-network">
+     <div class="node node-1"></div>
+     <div class="node node-2"></div>
+     <div class="node node-3"></div>
+     <div class="node node-4"></div>
+     <div class="node node-5"></div>
+     <div class="connection con-1"></div>
+     <div class="connection con-2"></div>
+     <div class="connection con-3"></div>
+     <div class="connection con-4"></div>
+   </div>
+ </div>
+ 
+ <div class="banner-content">
+   <div class="banner-text">
+     <div class="title-container">
+       <h1 class="banner-title">
+         <span class="title-word" data-word="Environmental">Environmental</span>
+         <span class="title-word" data-word="Robotics">Robotics</span>
+       </h1>
+       <div class="title-underline"></div>
+     </div>
+     
+     <p class="banner-subtitle">
+       <span class="subtitle-line">Innovating for a sustainable future</span>
+       <span class="subtitle-line">through AI-driven environmental solutions</span>
+     </p>
+     
+     <div class="banner-stats">
+       <div class="stat-item">
+         <div class="stat-number">8</div>
+         <div class="stat-label">Active Projects</div>
+       </div>
+       <div class="stat-item">
+         <div class="stat-number">95%</div>
+         <div class="stat-label">AI Accuracy</div>
+       </div>
+       <div class="stat-item">
+         <div class="stat-number">50%</div>
+         <div class="stat-label">Waste Reduction</div>
+       </div>
+     </div>
+     
+     <div class="banner-keywords">
+       <div class="keyword-chip">
+         <span class="chip-icon">
+           <svg viewBox="0 0 24 24" fill="currentColor">
+             <path d="M17,8C8,10 5.9,16.17 3.82,21.34L5.71,22L6.66,19.7C7.14,19.87 7.64,20 8,20C19,20 22,3 22,3C21,5 14,5.25 9,6.25C4,7.25 2,11.5 2,13.5C2,15.5 3.75,17.25 3.75,17.25C7,8 17,8 17,8Z"/>
+           </svg>
+         </span>
+         <span>Sustainability</span>
+       </div>
+       <div class="keyword-chip">
+         <span class="chip-icon">
+           <svg viewBox="0 0 24 24" fill="currentColor">
+             <path d="M12,2A2,2 0 0,1 14,4C14,4.74 13.6,5.39 13,5.73V7H14A7,7 0 0,1 21,14H22A1,1 0 0,1 23,15V18A1,1 0 0,1 22,19H21V20A2,2 0 0,1 19,22H5A2,2 0 0,1 3,20V19H2A1,1 0 0,1 1,18V15A1,1 0 0,1 2,14H3A7,7 0 0,1 10,7H11V5.73C10.4,5.39 10,4.74 10,4A2,2 0 0,1 12,2M7.5,13A2.5,2.5 0 0,0 5,15.5A2.5,2.5 0 0,0 7.5,18A2.5,2.5 0 0,0 10,15.5A2.5,2.5 0 0,0 7.5,13M16.5,13A2.5,2.5 0 0,0 14,15.5A2.5,2.5 0 0,0 16.5,18A2.5,2.5 0 0,0 19,15.5A2.5,2.5 0 0,0 16.5,13Z"/>
+           </svg>
+         </span>
+         <span>Automation</span>
+       </div>
+       <div class="keyword-chip">
+         <span class="chip-icon">
+           <svg viewBox="0 0 24 24" fill="currentColor">
+             <path d="M12,2A7,7 0 0,0 5,9C5,11.38 6.19,13.47 8,14.74V17A1,1 0 0,0 9,18H15A1,1 0 0,0 16,17V14.74C17.81,13.47 19,11.38 19,9A7,7 0 0,0 12,2M9,21A1,1 0 0,0 10,22H14A1,1 0 0,0 15,21V20H9V21Z"/>
+           </svg>
+         </span>
+         <span>Innovation</span>
+       </div>
+       <div class="keyword-chip">
+         <span class="chip-icon">
+           <svg viewBox="0 0 24 24" fill="currentColor">
+             <path d="M17.9,17.39C17.64,16.59 16.89,16 16,16H15V13A1,1 0 0,0 14,12H8V10H10A1,1 0 0,0 11,9V7H13A2,2 0 0,0 15,5V4.59C17.93,5.77 20,8.64 20,12C20,14.08 19.2,15.97 17.9,17.39M11,19.93C7.05,19.44 4,16.08 4,12C4,11.38 4.08,10.78 4.21,10.21L9,15V16A2,2 0 0,0 11,18M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z"/>
+           </svg>
+         </span>
+         <span>Environment</span>
+       </div>
+     </div>
+   </div>
+   
+   <div class="banner-visual">
+     <div class="holographic-display">
+       <div class="holo-ring ring-1">
+         <div class="ring-segment"></div>
+         <div class="ring-segment"></div>
+         <div class="ring-segment"></div>
+         <div class="ring-segment"></div>
+       </div>
+       <div class="holo-ring ring-2">
+         <div class="ring-segment"></div>
+         <div class="ring-segment"></div>
+         <div class="ring-segment"></div>
+       </div>
+       <div class="holo-ring ring-3">
+         <div class="ring-segment"></div>
+         <div class="ring-segment"></div>
+       </div>
+       <div class="central-core">
+         <div class="core-pulse"></div>
+         <div class="core-icon">
+           <svg viewBox="0 0 24 24" fill="currentColor">
+             <path d="M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z"/>
+           </svg>
+         </div>
+       </div>
+       <div class="data-streams">
+         <div class="stream stream-1"></div>
+         <div class="stream stream-2"></div>
+         <div class="stream stream-3"></div>
+       </div>
+     </div>
+   </div>
+ </div>
+ 
+ <div class="banner-bottom-wave">
+   <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+     <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25"></path>
+     <path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5"></path>
+     <path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z"></path>
+   </svg>
+ </div>
 </div>
 
 <!-- 프로젝트 리스트 섹션 - 페이지네이션 포함 -->
 <div class="enviro-projects">
-  <div class="projects-container">
-    
-    <!-- 페이지네이션 정보 표시 -->
-    <div class="pagination-info">
-      <span class="page-indicator">Page <span id="currentPage">1</span> of <span id="totalPages">2</span></span>
-      <span class="total-projects">(<span id="totalProjectsCount">8</span> projects total)</span>
-    </div>
+ <div class="projects-container">
+   
+   <!-- 페이지네이션 정보 표시 -->
+   <div class="pagination-info">
+     <span class="page-indicator">Page <span id="currentPage">1</span> of <span id="totalPages">2</span></span>
+     <span class="total-projects">(<span id="totalProjectsCount">8</span> projects total)</span>
+   </div>
 
-    <!-- 프로젝트 그리드 컨테이너 -->
-    <div id="projectsGrid" class="projects-grid">
-      
-      <!-- Page 1 Projects (1-5) -->
-      <div class="project-page" data-page="1">
-        <article class="home-project-item">
-          <div class="home-project-card">
-            <a href="/projects/pcb_inspection/" class="home-project-link">
-              <div class="home-project-content">
-                <div class="home-project-meta">
-                  <time class="home-project-year">2025.08.21</time>
-                  <span class="home-project-category">AI • Robotics • Manufacturing</span>
-                </div>
-                <h2 class="home-project-title">AI-Based PCB Quality Control System</h2>
-                <p class="home-project-description">
-                  Intelligent automation system combining computer vision, robotics, and voice commands for PCB inspection. 
-                  This autonomous system detects defects, sorts products, and responds to voice commands while achieving 
-                  industrial-grade accuracy at a fraction of traditional costs.
-                </p>
-                <div class="home-project-impact">
-                  <div class="home-impact-item">
-                    <span class="home-impact-value">94.5%</span>
-                    <span class="home-impact-label">Detection Accuracy</span>
-                  </div>
-                  <div class="home-impact-item">
-                    <span class="home-impact-value">97%</span>
-                    <span class="home-impact-label">Voice Command Accuracy</span>
-                  </div>
-                  <div class="home-impact-item">
-                    <span class="home-impact-value">85%</span>
-                    <span class="home-impact-label">Cost Reduction vs Industrial</span>
-                  </div>
-                </div>
-                <div class="home-project-tech">
-                  <span class="home-tech-tag ai">YOLOv11</span>
-                  <span class="home-tech-tag prog">ROS2</span>
-                  <span class="home-tech-tag ai">Computer Vision</span>
-                  <span class="home-tech-tag comm">MQTT</span>
-                  <span class="home-tech-tag ai">Voice Recognition</span>
-                  <span class="home-tech-tag ai">LLM</span>
-                  <span class="home-tech-tag design">3D Printing</span>
-                  <span class="home-tech-tag eng">Robotics</span>
-                </div>
-              </div>
-            </a>
-            
-            <div class="home-project-media">
-              <a href="https://www.youtube.com/embed/gpQtFfs4qww" target="_blank" class="home-video-link">
-                <div class="home-video-wrapper">
-                  <iframe 
-                    src="https://www.youtube.com/embed/gpQtFfs4qww" 
-                    title="AI-Based PCB Quality Control System Demo"
-                    frameborder="0" 
-                    allowfullscreen>
-                  </iframe>
-                </div>
-              </a>
-            </div>
-          </div>
-        </article>
+   <!-- 프로젝트 그리드 컨테이너 -->
+   <div id="projectsGrid" class="projects-grid">
+     
+     <!-- Page 1 Projects (1-5) -->
+     <div class="project-page" data-page="1">
+       <article class="home-project-item">
+         <div class="home-project-card">
+           <a href="/projects/pcb_inspection/" class="home-project-link">
+             <div class="home-project-content">
+               <div class="home-project-meta">
+                 <time class="home-project-year">2025.08.21</time>
+                 <span class="home-project-category">AI • Robotics • Manufacturing</span>
+               </div>
+               <h2 class="home-project-title">AI-Based PCB Quality Control System</h2>
+               <p class="home-project-description">
+                 Intelligent automation system combining computer vision, robotics, and voice commands for PCB inspection. 
+                 This autonomous system detects defects, sorts products, and responds to voice commands while achieving 
+                 industrial-grade accuracy at a fraction of traditional costs.
+               </p>
+               <div class="home-project-impact">
+                 <div class="home-impact-item">
+                   <span class="home-impact-value">94.5%</span>
+                   <span class="home-impact-label">Detection Accuracy</span>
+                 </div>
+                 <div class="home-impact-item">
+                   <span class="home-impact-value">97%</span>
+                   <span class="home-impact-label">Voice Command Accuracy</span>
+                 </div>
+                 <div class="home-impact-item">
+                   <span class="home-impact-value">85%</span>
+                   <span class="home-impact-label">Cost Reduction vs Industrial</span>
+                 </div>
+               </div>
+               <div class="home-project-tech">
+                 <span class="home-tech-tag ai">YOLOv11</span>
+                 <span class="home-tech-tag prog">ROS2</span>
+                 <span class="home-tech-tag ai">Computer Vision</span>
+                 <span class="home-tech-tag comm">MQTT</span>
+                 <span class="home-tech-tag ai">Voice Recognition</span>
+                 <span class="home-tech-tag ai">LLM</span>
+                 <span class="home-tech-tag design">3D Printing</span>
+                 <span class="home-tech-tag eng">Robotics</span>
+               </div>
+             </div>
+           </a>
+           
+           <div class="home-project-media">
+             <a href="https://www.youtube.com/embed/gpQtFfs4qww" target="_blank" class="home-video-link">
+               <div class="home-video-wrapper">
+                 <iframe 
+                   src="https://www.youtube.com/embed/gpQtFfs4qww" 
+                   title="AI-Based PCB Quality Control System Demo"
+                   frameborder="0" 
+                   allowfullscreen>
+                 </iframe>
+               </div>
+             </a>
+           </div>
+         </div>
+       </article>
 
-        <article class="home-project-item">
-          <div class="home-project-card">
-            <a href="/projects/liquid_injection/" class="home-project-link">
-              <div class="home-project-content">
-                <div class="home-project-meta">
-                  <time class="home-project-year">2025.08.06</time>
-                  <span class="home-project-category">Precision Control • Robotics</span>
-                </div>
-                <h3 class="home-project-title">Robot-Based Precision Concentration Control System</h3>
-                <p class="home-project-description">
-                  An autonomous ROS2-based system for high-precision liquid pouring using industrial robotic arms, 
-                  load cells, and MQTT communication. Achieving target concentration within ±0.5% error range 
-                  through intelligent fluid dynamic modeling and adaptive control algorithms.
-                </p>
-                <div class="home-project-impact">
-                  <div class="home-impact-item">
-                    <span class="home-impact-value">±0.5%</span>
-                    <span class="home-impact-label">Precision Accuracy</span>
-                  </div>
-                  <div class="home-impact-item">
-                    <span class="home-impact-value">89.3%</span>
-                    <span class="home-impact-label">Model Validation</span>
-                  </div>
-                  <div class="home-impact-item">
-                    <span class="home-impact-value">8.3s</span>
-                    <span class="home-impact-label">Response Time</span>
-                  </div>
-                </div>
-                <div class="home-project-tech">
-                  <span class="home-tech-tag prog">ROS2</span>
-                  <span class="home-tech-tag data">Kalman Filter</span>
-                  <span class="home-tech-tag comm">MQTT</span>
-                  <span class="home-tech-tag eng">Fluid Dynamics</span>
-                  <span class="home-tech-tag design">Doosan M0609</span>
-                  <span class="home-tech-tag design">HX711 ADC</span>
-                  <span class="home-tech-tag prog">Python</span>
-                  <span class="home-tech-tag prog">C++</span>
-                  <span class="home-tech-tag prog">Arduino</span>
-                </div>
-              </div>
-            </a>
-            
-            <div class="home-project-media">
-              <a href="https://www.youtube.com/watch?v=yVg4EGmNAvk" target="_blank" class="home-video-link">
-                <div class="home-video-wrapper">
-                  <iframe 
-                    src="https://www.youtube.com/embed/yVg4EGmNAvk" 
-                    title="Robot-Based Precision Concentration Control System Demo"
-                    frameborder="0" 
-                    allowfullscreen>
-                  </iframe>
-                </div>
-              </a>
-            </div>
-          </div>
-        </article>
+       <article class="home-project-item">
+         <div class="home-project-card">
+           <a href="/projects/liquid_injection/" class="home-project-link">
+             <div class="home-project-content">
+               <div class="home-project-meta">
+                 <time class="home-project-year">2025.08.06</time>
+                 <span class="home-project-category">Precision Control • Robotics</span>
+               </div>
+               <h3 class="home-project-title">Robot-Based Precision Concentration Control System</h3>
+               <p class="home-project-description">
+                 An autonomous ROS2-based system for high-precision liquid pouring using industrial robotic arms, 
+                 load cells, and MQTT communication. Achieving target concentration within ±0.5% error range 
+                 through intelligent fluid dynamic modeling and adaptive control algorithms.
+               </p>
+               <div class="home-project-impact">
+                 <div class="home-impact-item">
+                   <span class="home-impact-value">±0.5%</span>
+                   <span class="home-impact-label">Precision Accuracy</span>
+                 </div>
+                 <div class="home-impact-item">
+                   <span class="home-impact-value">89.3%</span>
+                   <span class="home-impact-label">Model Validation</span>
+                 </div>
+                 <div class="home-impact-item">
+                   <span class="home-impact-value">8.3s</span>
+                   <span class="home-impact-label">Response Time</span>
+                 </div>
+               </div>
+               <div class="home-project-tech">
+                 <span class="home-tech-tag prog">ROS2</span>
+                 <span class="home-tech-tag data">Kalman Filter</span>
+                 <span class="home-tech-tag comm">MQTT</span>
+                 <span class="home-tech-tag eng">Fluid Dynamics</span>
+                 <span class="home-tech-tag design">Doosan M0609</span>
+                 <span class="home-tech-tag design">HX711 ADC</span>
+                 <span class="home-tech-tag prog">Python</span>
+                 <span class="home-tech-tag prog">C++</span>
+                 <span class="home-tech-tag prog">Arduino</span>
+               </div>
+             </div>
+           </a>
+           
+           <div class="home-project-media">
+             <a href="https://www.youtube.com/watch?v=yVg4EGmNAvk" target="_blank" class="home-video-link">
+               <div class="home-video-wrapper">
+                 <iframe 
+                   src="https://www.youtube.com/embed/yVg4EGmNAvk" 
+                   title="Robot-Based Precision Concentration Control System Demo"
+                   frameborder="0" 
+                   allowfullscreen>
+                 </iframe>
+               </div>
+             </a>
+           </div>
+         </div>
+       </article>
 
-        <article class="home-project-item">
-          <div class="home-project-card">
-            <a href="/projects/crack-ppe-detection/" class="home-project-link">
-              <div class="home-project-content">
-                <div class="home-project-meta">
-                  <time class="home-project-year">2025.07.20</time>
-                  <span class="home-project-category">Environmental Safety • AI</span>
-                </div>
-                <h2 class="home-project-title">Industrial Safety Robot System</h2>
-                <p class="home-project-description">
-                  Advanced environmental monitoring system that preserves human life through intelligent robotics. 
-                  Our multi-robot safety platform combines computer vision, sensor fusion, and predictive analytics 
-                  to create safer industrial environments while reducing environmental impact by 25%.
-                </p>
-                <div class="home-project-impact">
-                  <div class="home-impact-item">
-                    <span class="home-impact-value">93%</span>
-                    <span class="home-impact-label">Detection Accuracy</span>
-                  </div>
-                  <div class="home-impact-item">
-                    <span class="home-impact-value">100%</span>
-                    <span class="home-impact-label">Safety Improvement</span>
-                  </div>
-                  <div class="home-impact-item">
-                    <span class="home-impact-value">25%</span>
-                    <span class="home-impact-label">Impact Reduction</span>
-                  </div>
-                </div>
-                <div class="home-project-tech">
-                  <span class="home-tech-tag prog">ROS2</span>
-                  <span class="home-tech-tag ai">YOLOv8</span>
-                  <span class="home-tech-tag data">Kalman Filter</span>
-                  <span class="home-tech-tag comm">MQTT</span>
-                  <span class="home-tech-tag prog">Python</span>
-                </div>
-              </div>
-            </a>
-            
-            <div class="home-project-media">
-              <a href="https://www.youtube.com/watch?v=gsk4GZmsjrw" target="_blank" class="home-video-link">
-                <div class="home-video-wrapper">
-                  <iframe 
-                    src="https://www.youtube.com/embed/gsk4GZmsjrw" 
-                    title="Industrial Safety Robot System Demo"
-                    frameborder="0" 
-                    allowfullscreen>
-                  </iframe>
-                </div>
-              </a>
-            </div>
-          </div>
-        </article>
+       <article class="home-project-item">
+         <div class="home-project-card">
+           <a href="/projects/crack-ppe-detection/" class="home-project-link">
+             <div class="home-project-content">
+               <div class="home-project-meta">
+                 <time class="home-project-year">2025.07.20</time>
+                 <span class="home-project-category">Environmental Safety • AI</span>
+               </div>
+               <h2 class="home-project-title">Industrial Safety Robot System</h2>
+               <p class="home-project-description">
+                 Advanced environmental monitoring system that preserves human life through intelligent robotics. 
+                 Our multi-robot safety platform combines computer vision, sensor fusion, and predictive analytics 
+                 to create safer industrial environments while reducing environmental impact by 25%.
+               </p>
+               <div class="home-project-impact">
+                 <div class="home-impact-item">
+                   <span class="home-impact-value">93%</span>
+                   <span class="home-impact-label">Detection Accuracy</span>
+                 </div>
+                 <div class="home-impact-item">
+                   <span class="home-impact-value">100%</span>
+                   <span class="home-impact-label">Safety Improvement</span>
+                 </div>
+                 <div class="home-impact-item">
+                   <span class="home-impact-value">25%</span>
+                   <span class="home-impact-label">Impact Reduction</span>
+                 </div>
+               </div>
+               <div class="home-project-tech">
+                 <span class="home-tech-tag prog">ROS2</span>
+                 <span class="home-tech-tag ai">YOLOv8</span>
+                 <span class="home-tech-tag data">Kalman Filter</span>
+                 <span class="home-tech-tag comm">MQTT</span>
+                 <span class="home-tech-tag prog">Python</span>
+               </div>
+             </div>
+           </a>
+           
+           <div class="home-project-media">
+             <a href="https://www.youtube.com/watch?v=gsk4GZmsjrw" target="_blank" class="home-video-link">
+               <div class="home-video-wrapper">
+                 <iframe 
+                   src="https://www.youtube.com/embed/gsk4GZmsjrw" 
+                   title="Industrial Safety Robot System Demo"
+                   frameborder="0" 
+                   allowfullscreen>
+                 </iframe>
+               </div>
+             </a>
+           </div>
+         </div>
+       </article>
 
-        <article class="home-project-item">
-          <div class="home-project-card">
-            <a href="/projects/automated-catalyst-cleaning/" class="home-project-link">
-              <div class="home-project-content">
-                <div class="home-project-meta">
-                  <time class="home-project-year">2025.01.10</time>
-                  <span class="home-project-category">Environmental Automation • Engineering</span>
-                </div>
-                <h2 class="home-project-title">Automated Catalyst Cleaning Robot</h2>
-                <p class="home-project-description">
-                  Sustainable automation solution for industrial catalyst maintenance. This eco-friendly robotic system 
-                  reduces chemical waste by 35%, eliminates human exposure to toxic environments, and extends 
-                  catalyst lifespan by 20% through precision cleaning technology.
-                </p>
-                <div class="home-project-impact">
-                  <div class="home-impact-item">
-                    <span class="home-impact-value">58%</span>
-                    <span class="home-impact-label">Cycle Time Reduction</span>
-                  </div>
-                  <div class="home-impact-item">
-                    <span class="home-impact-value">35%</span>
-                    <span class="home-impact-label">Chemical Waste Reduction</span>
-                  </div>
-                  <div class="home-impact-item">
-                    <span class="home-impact-value">20%</span>
-                    <span class="home-impact-label">Catalyst Life Extension</span>
-                  </div>
-                </div>
-                <div class="home-project-tech">
-                  <span class="home-tech-tag prog">Arduino</span>
-                  <span class="home-tech-tag design">CAD Design</span>
-                  <span class="home-tech-tag eng">Fluid Dynamics</span>
-                  <span class="home-tech-tag design">CNC Machining</span>
-                  <span class="home-tech-tag prog">C++</span>
-                </div>
-              </div>
-            </a>
-            
-            <div class="home-project-media">
-              <a href="https://www.youtube.com/watch?v=7pVAK6bW15U" target="_blank" class="home-video-link">
-                <div class="home-video-wrapper">
-                  <iframe 
-                    src="https://www.youtube.com/embed/7pVAK6bW15U" 
-                    title="Automated Catalyst Cleaning Robot Demo"
-                    frameborder="0" 
-                    allowfullscreen>
-                  </iframe>
-                </div>
-              </a>
-            </div>
-          </div>
-        </article>
+       <article class="home-project-item">
+         <div class="home-project-card">
+           <a href="/projects/automated-catalyst-cleaning/" class="home-project-link">
+             <div class="home-project-content">
+               <div class="home-project-meta">
+                 <time class="home-project-year">2025.01.10</time>
+                 <span class="home-project-category">Environmental Automation • Engineering</span>
+               </div>
+               <h2 class="home-project-title">Automated Catalyst Cleaning Robot</h2>
+               <p class="home-project-description">
+                 Sustainable automation solution for industrial catalyst maintenance. This eco-friendly robotic system 
+                 reduces chemical waste by 35%, eliminates human exposure to toxic environments, and extends 
+                 catalyst lifespan by 20% through precision cleaning technology.
+               </p>
+               <div class="home-project-impact">
+                 <div class="home-impact-item">
+                   <span class="home-impact-value">58%</span>
+                   <span class="home-impact-label">Cycle Time Reduction</span>
+                 </div>
+                 <div class="home-impact-item">
+                   <span class="home-impact-value">35%</span>
+                   <span class="home-impact-label">Chemical Waste Reduction</span>
+                 </div>
+                 <div class="home-impact-item">
+                   <span class="home-impact-value">20%</span>
+                   <span class="home-impact-label">Catalyst Life Extension</span>
+                 </div>
+               </div>
+               <div class="home-project-tech">
+                 <span class="home-tech-tag prog">Arduino</span>
+                 <span class="home-tech-tag design">CAD Design</span>
+                 <span class="home-tech-tag eng">Fluid Dynamics</span>
+                 <span class="home-tech-tag design">CNC Machining</span>
+                 <span class="home-tech-tag prog">C++</span>
+               </div>
+             </div>
+           </a>
+           
+           <div class="home-project-media">
+             <a href="https://www.youtube.com/watch?v=7pVAK6bW15U" target="_blank" class="home-video-link">
+               <div class="home-video-wrapper">
+                 <iframe 
+                   src="https://www.youtube.com/embed/7pVAK6bW15U" 
+                   title="Automated Catalyst Cleaning Robot Demo"
+                   frameborder="0" 
+                   allowfullscreen>
+                 </iframe>
+               </div>
+             </a>
+           </div>
+         </div>
+       </article>
 
-        <article class="home-project-item">
-          <div class="home-project-card">
-            <a href="/projects/dual-gear-pump-system/" class="home-project-link">
-              <div class="home-project-content">
-                <div class="home-project-meta">
-                  <time class="home-project-year">2024.06.15</time>
-                  <span class="home-project-category">Fluid Dynamics • Industrial Systems</span>
-                </div>
-                <h3 class="home-project-title">High-Pressure Dual Gear Pump System for Catalyst Regeneration</h3>
-                <p class="home-project-description">
-                  A portable dual gear pump system designed for industrial catalyst regeneration processes. 
-                  Features precise hydraulic analysis, inverter control technology, and modular aluminum frame 
-                  design achieving 43+ bar pressure with 20L/min flow rate for effective catalyst treatment.
-                </p>
-                <div class="home-project-impact">
-                  <div class="home-impact-item">
-                    <span class="home-impact-value">43+ bar</span>
-                    <span class="home-impact-label">Max Pressure</span>
-                  </div>
-                  <div class="home-impact-item">
-                    <span class="home-impact-value">102.5%</span>
-                    <span class="home-impact-label">Target Achievement</span>
-                  </div>
-                  <div class="home-impact-item">
-                    <span class="home-impact-value">7.24m</span>
-                    <span class="home-impact-label">NPSH Margin</span>
-                  </div>
-                </div>
-                <div class="home-project-tech">
-                  <span class="home-tech-tag eng">Darcy-Weisbach</span>
-                  <span class="home-tech-tag eng">NPSH Analysis</span>
-                  <span class="home-tech-tag comm">LS ELECTRIC</span>
-                  <span class="home-tech-tag design">ASEDA SAP-20</span>
-                  <span class="home-tech-tag design">4040/4080 Profile</span>
-                  <span class="home-tech-tag prog">Inverter Control</span>
-                  <span class="home-tech-tag data">Hydraulic Calc</span>
-                </div>
-              </div>
-            </a>
-            
-            <div class="home-project-media">
-              <a href="/projects/dual-gear-pump-system/" class="home-image-link">
-                <div class="home-image-wrapper">
-                  <img 
-                    src="/project/dual-gear-pump-system/complete-system-page.jpg"
-                    alt="High-Pressure Dual Gear Pump System"
-                    title="Complete dual gear pump system with aluminum frame and control panel"
-                    loading="lazy">
-                </div>
-              </a>
-            </div>
-          </div>
-        </article>
-      </div>
+       <article class="home-project-item">
+         <div class="home-project-card">
+           <a href="/projects/dual-gear-pump-system/" class="home-project-link">
+             <div class="home-project-content">
+               <div class="home-project-meta">
+                 <time class="home-project-year">2024.06.15</time>
+                 <span class="home-project-category">Fluid Dynamics • Industrial Systems</span>
+               </div>
+               <h3 class="home-project-title">High-Pressure Dual Gear Pump System for Catalyst Regeneration</h3>
+               <p class="home-project-description">
+                 A portable dual gear pump system designed for industrial catalyst regeneration processes. 
+                 Features precise hydraulic analysis, inverter control technology, and modular aluminum frame 
+                 design achieving 43+ bar pressure with 20L/min flow rate for effective catalyst treatment.
+               </p>
+               <div class="home-project-impact">
+                 <div class="home-impact-item">
+                   <span class="home-impact-value">43+ bar</span>
+                   <span class="home-impact-label">Max Pressure</span>
+                 </div>
+                 <div class="home-impact-item">
+                   <span class="home-impact-value">102.5%</span>
+                   <span class="home-impact-label">Target Achievement</span>
+                 </div>
+                 <div class="home-impact-item">
+                   <span class="home-impact-value">7.24m</span>
+                   <span class="home-impact-label">NPSH Margin</span>
+                 </div>
+               </div>
+               <div class="home-project-tech">
+                 <span class="home-tech-tag eng">Darcy-Weisbach</span>
+                 <span class="home-tech-tag eng">NPSH Analysis</span>
+                 <span class="home-tech-tag comm">LS ELECTRIC</span>
+                 <span class="home-tech-tag design">ASEDA SAP-20</span>
+                 <span class="home-tech-tag design">4040/4080 Profile</span>
+                 <span class="home-tech-tag prog">Inverter Control</span>
+                 <span class="home-tech-tag data">Hydraulic Calc</span>
+               </div>
+             </div>
+           </a>
+           
+           <div class="home-project-media">
+             <a href="/projects/dual-gear-pump-system/" class="home-image-link">
+               <div class="home-image-wrapper">
+                 <img 
+                   src="/project/dual-gear-pump-system/complete-system-page.jpg"
+                   alt="High-Pressure Dual Gear Pump System"
+                   title="Complete dual gear pump system with aluminum frame and control panel"
+                   loading="lazy">
+               </div>
+             </a>
+           </div>
+         </div>
+       </article>
+     </div>
 
-      <!-- Page 2 Projects (6+) -->
-      <div class="project-page" data-page="2" style="display: none;">
+     <!-- Page 2 Projects (6+) -->
+     <div class="project-page" data-page="2" style="display: none;">
 
-        <article class="home-project-item">
-          <div class="home-project-card">
-            <a href="/projects/scr-catalyst-testing-apparatus/" class="home-project-link">
-              <div class="home-project-content">
-                <div class="home-project-meta">
-                  <time class="home-project-year">2024.04.06</time>
-                  <span class="home-project-category">Environmental Engineering • Catalyst Technology</span>
-                </div>
-                <h3 class="home-project-title">SCR DeNOx Catalyst Performance Testing Apparatus</h3>
-                <p class="home-project-description">
-                  A bench-scale testing apparatus compliant with VGB-R 302 standard for evaluating SCR catalyst 
-                  performance in thermal power plants. Features precision gas mixing, four-zone temperature control, 
-                  and real-time NOx analysis achieving 94.3% removal efficiency validation for catalyst quality assessment.
-                </p>
-                <div class="home-project-impact">
-                  <div class="home-impact-item">
-                    <span class="home-impact-value">94.3%</span>
-                    <span class="home-impact-label">NOx Removal</span>
-                  </div>
-                  <div class="home-impact-item">
-                    <span class="home-impact-value">±1.5°C</span>
-                    <span class="home-impact-label">Temp Control</span>
-                  </div>
-                  <div class="home-impact-item">
-                    <span class="home-impact-value">207 m/h</span>
-                    <span class="home-impact-label">Catalyst Activity</span>
-                  </div>
-                </div>
-                <div class="home-project-tech">
-                  <span class="home-tech-tag eng">VGB-R 302</span>
-                  <span class="home-tech-tag eng">EPRI Protocol</span>
-                  <span class="home-tech-tag comm">Testo 350K</span>
-                  <span class="home-tech-tag design">V₂O₅-TiO₂</span>
-                  <span class="home-tech-tag design">PID Control</span>
-                  <span class="home-tech-tag prog">HMI System</span>
-                  <span class="home-tech-tag data">NOx Analysis</span>
-                </div>
-              </div>
-            </a>
-            
-            <div class="home-project-media">
-              <a href="/projects/scr-catalyst-testing-apparatus/" class="home-image-link">
-                <div class="home-image-wrapper">
-                  <img 
-                    src="/project/scr-catalyst-testing-apparatus/completed_apparatus.jpg"
-                    alt="SCR DeNOx Catalyst Performance Testing Apparatus"
-                    title="Complete SCR catalyst testing system with control panel and analysis equipment"
-                    loading="lazy">
-                </div>
-              </a>
-            </div>
-          </div>
-        </article>
+       <article class="home-project-item">
+         <div class="home-project-card">
+           <a href="/projects/scr-catalyst-testing-apparatus/" class="home-project-link">
+             <div class="home-project-content">
+               <div class="home-project-meta">
+                 <time class="home-project-year">2024.04.06</time>
+                 <span class="home-project-category">Environmental Engineering • Catalyst Technology</span>
+               </div>
+               <h3 class="home-project-title">SCR DeNOx Catalyst Performance Testing Apparatus</h3>
+               <p class="home-project-description">
+                 A bench-scale testing apparatus compliant with VGB-R 302 standard for evaluating SCR catalyst 
+                 performance in thermal power plants. Features precision gas mixing, four-zone temperature control, 
+                 and real-time NOx analysis achieving 94.3% removal efficiency validation for catalyst quality assessment.
+               </p>
+               <div class="home-project-impact">
+                 <div class="home-impact-item">
+                   <span class="home-impact-value">94.3%</span>
+                   <span class="home-impact-label">NOx Removal</span>
+                 </div>
+                 <div class="home-impact-item">
+                   <span class="home-impact-value">±1.5°C</span>
+                   <span class="home-impact-label">Temp Control</span>
+                 </div>
+                 <div class="home-impact-item">
+                   <span class="home-impact-value">207 m/h</span>
+                   <span class="home-impact-label">Catalyst Activity</span>
+                 </div>
+               </div>
+               <div class="home-project-tech">
+                 <span class="home-tech-tag eng">VGB-R 302</span>
+                 <span class="home-tech-tag eng">EPRI Protocol</span>
+                 <span class="home-tech-tag comm">Testo 350K</span>
+                 <span class="home-tech-tag design">V₂O₅-TiO₂</span>
+                 <span class="home-tech-tag design">PID Control</span>
+                 <span class="home-tech-tag prog">HMI System</span>
+                 <span class="home-tech-tag data">NOx Analysis</span>
+               </div>
+             </div>
+           </a>
+           
+           <div class="home-project-media">
+             <a href="/projects/scr-catalyst-testing-apparatus/" class="home-image-link">
+               <div class="home-image-wrapper">
+                 <img 
+                   src="/project/scr-catalyst-testing-apparatus/completed_apparatus.jpg"
+                   alt="SCR DeNOx Catalyst Performance Testing Apparatus"
+                   title="Complete SCR catalyst testing system with control panel and analysis equipment"
+                   loading="lazy">
+               </div>
+             </a>
+           </div>
+         </div>
+       </article>
 
 
-        <article class="home-project-item">
-          <div class="home-project-card">
-            <a href="/projects/dry-ice-blaster-feeding-system/" class="home-project-link">
-              <div class="home-project-content">
-                <div class="home-project-meta">
-                  <time class="home-project-year">2024.02.26</time>
-                  <span class="home-project-category">Pressure Vessels • TIG Welding • Pneumatic Systems</span>
-                </div>
-                <h3 class="home-project-title">Dry Ice Blaster Feeding System for Catalyst Cleaning</h3>
-                <p class="home-project-description">
-                  An innovative cryogenic pellet feeding system engineered for industrial catalyst surface cleaning. 
-                  Features ASME pressure vessel design, precision TIG welding fabrication, and two-phase flow optimization 
-                  achieving stable operation at -63°C with 98.5% system availability and exceptional 2.3-month ROI.
-                </p>
-                <div class="home-project-impact">
-                  <div class="home-impact-item">
-                    <span class="home-impact-value">2.3 months</span>
-                    <span class="home-impact-label">ROI Payback</span>
-                  </div>
-                  <div class="home-impact-item">
-                    <span class="home-impact-value">98.5%</span>
-                    <span class="home-impact-label">System Availability</span>
-                  </div>
-                  <div class="home-impact-item">
-                    <span class="home-impact-value">96.5%</span>
-                    <span class="home-impact-label">Cleaning Efficiency</span>
-                  </div>
-                </div>
-                <div class="home-project-tech">
-                  <span class="home-tech-tag eng">ASME Sec.VIII</span>
-                  <span class="home-tech-tag eng">TIG Welding</span>
-                  <span class="home-tech-tag design">SUS316L</span>
-                  <span class="home-tech-tag design">DKM Motor</span>
-                  <span class="home-tech-tag design">4040/4080 Profile</span>
-                  <span class="home-tech-tag prog">LS iG5A Inverter</span>
-                  <span class="home-tech-tag data">Two-Phase Flow</span>
-                </div>
-              </div>
-            </a>
-            
-            <div class="home-project-media">
-              <a href="/projects/dry-ice-blaster-feeding-system/" class="home-image-link">
-                <div class="home-image-wrapper">
-                  <img 
-                    src="/project/dry-ice-blaster-feeding-system/completed_dry_ice_blaster.png"
-                    alt="Dry Ice Blaster Feeding System"
-                    title="Complete dry ice blaster system with TIG welded nozzles and aluminum frame"
-                    loading="lazy">
-                </div>
-              </a>
-            </div>
-          </div>
-        </article>
-      </div>
-    </div>
+       <article class="home-project-item">
+         <div class="home-project-card">
+           <a href="/projects/dry-ice-blaster-feeding-system/" class="home-project-link">
+             <div class="home-project-content">
+               <div class="home-project-meta">
+                 <time class="home-project-year">2024.02.26</time>
+                 <span class="home-project-category">Pressure Vessels • TIG Welding • Pneumatic Systems</span>
+               </div>
+               <h3 class="home-project-title">Dry Ice Blaster Feeding System for Catalyst Cleaning</h3>
+               <p class="home-project-description">
+                 An innovative cryogenic pellet feeding system engineered for industrial catalyst surface cleaning. 
+                 Features ASME pressure vessel design, precision TIG welding fabrication, and two-phase flow optimization 
+                 achieving stable operation at -63°C with 98.5% system availability and exceptional 2.3-month ROI.
+               </p>
+               <div class="home-project-impact">
+                 <div class="home-impact-item">
+                   <span class="home-impact-value">2.3 months</span>
+                   <span class="home-impact-label">ROI Payback</span>
+                 </div>
+                 <div class="home-impact-item">
+                   <span class="home-impact-value">98.5%</span>
+                   <span class="home-impact-label">System Availability</span>
+                 </div>
+                 <div class="home-impact-item">
+                   <span class="home-impact-value">96.5%</span>
+                   <span class="home-impact-label">Cleaning Efficiency</span>
+                 </div>
+               </div>
+               <div class="home-project-tech">
+                 <span class="home-tech-tag eng">ASME Sec.VIII</span>
+                 <span class="home-tech-tag eng">TIG Welding</span>
+                 <span class="home-tech-tag design">SUS316L</span>
+                 <span class="home-tech-tag design">DKM Motor</span>
+                 <span class="home-tech-tag design">4040/4080 Profile</span>
+                 <span class="home-tech-tag prog">LS iG5A Inverter</span>
+                 <span class="home-tech-tag data">Two-Phase Flow</span>
+               </div>
+             </div>
+           </a>
+           
+           <div class="home-project-media">
+             <a href="/projects/dry-ice-blaster-feeding-system/" class="home-image-link">
+               <div class="home-image-wrapper">
+                 <img 
+                   src="/project/dry-ice-blaster-feeding-system/completed_dry_ice_blaster.png"
+                   alt="Dry Ice Blaster Feeding System"
+                   title="Complete dry ice blaster system with TIG welded nozzles and aluminum frame"
+                   loading="lazy">
+               </div>
+             </a>
+           </div>
+         </div>
+       </article>
+     </div>
+   </div>
 
-    <!-- 페이지네이션 컨트롤 -->
-    <div class="pagination-controls">
-      <button id="prevBtn" class="pagination-btn" disabled>
-        <svg viewBox="0 0 24 24" fill="currentColor">
-          <path d="M15.41,16.58L10.83,12L15.41,7.41L14,6L8,12L14,18L15.41,16.58Z"/>
-        </svg>
-        Previous
-      </button>
-      
-      <div class="page-numbers">
-        <button class="page-number-btn active" data-page="1">1</button>
-        <button class="page-number-btn" data-page="2">2</button>
-      </div>
-      
-      <button id="nextBtn" class="pagination-btn">
-        Next
-        <svg viewBox="0 0 24 24" fill="currentColor">
-          <path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z"/>
-        </svg>
-      </button>
-    </div>
+   <!-- 페이지네이션 컨트롤 -->
+   <div class="pagination-controls">
+     <button id="prevBtn" class="pagination-btn" disabled>
+       <svg viewBox="0 0 24 24" fill="currentColor">
+         <path d="M15.41,16.58L10.83,12L15.41,7.41L14,6L8,12L14,18L15.41,16.58Z"/>
+       </svg>
+       Previous
+     </button>
+     
+     <div class="page-numbers">
+       <button class="page-number-btn active" data-page="1">1</button>
+       <button class="page-number-btn" data-page="2">2</button>
+     </div>
+     
+     <button id="nextBtn" class="pagination-btn">
+       Next
+       <svg viewBox="0 0 24 24" fill="currentColor">
+         <path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z"/>
+       </svg>
+     </button>
+   </div>
 
-    <!-- Back to Home 버튼 -->
-    <div class="view-all-projects">
-      <a href="/" class="view-all-button">
-        🏠 Back to Home
-      </a>
-    </div>
+   <!-- Back to Home 버튼 -->
+   <div class="view-all-projects">
+     <a href="/" class="view-all-button">
+       🏠 Back to Home
+     </a>
+   </div>
 
-  </div>
+ </div>
 </div>
 
 <!-- 푸터 -->
-<footer class="project-footer">
-  <div class="footer-wave">
-    <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
-      <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25" fill="#7fb3d3"></path>
-      <path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5" fill="#7fb3d3"></path>
-      <path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" fill="#7fb3d3"></path>
-    </svg>
-  </div>
-  
-  <div class="footer-content">
-    <div class="footer-container">
-      <div class="footer-grid">
-        <!-- 프로필 섹션 -->
-        <div class="footer-section">
-          <div class="footer-profile">
-            <img src="/assets/img/profile.JPEG" alt="Kyungjun Oh" class="profile-image">
-            <h3 class="profile-name">Kyungjun Oh</h3>
-            <p class="profile-title">Envirobotics Researcher</p>
-            <p class="profile-description">
-              Crafting AI-driven environmental robots with passion for sustainable technology.
-            </p>
-          </div>
-        </div>
-        
-        <!-- Quick Links -->
-        <div class="footer-section">
-          <h4 class="footer-title">🔗 Quick Links</h4>
-          <ul class="footer-links">
-            <li><a href="/">→ Home</a></li>
-            <li><a href="/aboutme">→ About Me</a></li>
-            <li><a href="/projects">→ Projects</a></li>
-          </ul>
-        </div>
-        
-        <!-- Contact -->
-        <div class="footer-section">
-          <h4 class="footer-title">💬 Get In Touch</h4>
-          <div class="social-links">
-            <a href="mailto:okj1223@inha.edu" class="social-link">
-              <i class="fas fa-envelope"></i> Email
-            </a>
-            <a href="https://github.com/okj1223" class="social-link">
-              <i class="fab fa-github"></i> GitHub
-            </a>
-            <a href="https://youtube.com/@user-ix1pr5vl6v" class="social-link">
-              <i class="fab fa-youtube"></i> YouTube
-            </a>
-          </div>
-          <div class="contact-info">
-            <p>📍 Incheon, South Korea</p>
-            <p>⚡ Available for collaborations</p>
-          </div>
-        </div>
-      </div>
-      
-      <!-- Copyright -->
-      <div class="footer-bottom">
-        <p>© 2025 Kyungjun Oh | Engineered for a greener tomorrow 🌎</p>
-      </div>
-    </div>
-  </div>
+<footer class="eco-footer">
+ <div class="footer-wave">
+   <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+     <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25" fill="#7fb3d3"></path>
+     <path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5" fill="#7fb3d3"></path>
+     <path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" fill="#7fb3d3"></path>
+   </svg>
+ </div>
+ 
+ <div class="footer-content">
+   <div class="footer-container">
+     <div class="footer-grid">
+       <!-- 프로필 섹션 -->
+       <div class="footer-section">
+         <div class="footer-profile">
+           <div class="profile-avatar">
+             <div class="avatar-circle">
+               <img src="/assets/img/profile.JPEG" alt="Joo Hoon Oh" class="profile-image">
+             </div>
+           </div>
+           <h3 class="profile-name">Joo Hoon Oh</h3>
+           <p class="profile-title">Envirobotics Researcher</p>
+           <p class="profile-description">
+             Crafting AI-driven environmental robots with passion for sustainable technology.
+           </p>
+         </div>
+       </div>
+       
+       <!-- Quick Links -->
+       <div class="footer-section">
+         <h4 class="footer-section-title">
+           <span class="title-icon">🔗</span>
+           Quick Links
+         </h4>
+         <ul class="footer-links">
+           <li>
+             <a href="/" class="footer-link">
+               <span class="link-arrow">→</span>
+               Home
+             </a>
+           </li>
+           <li>
+             <a href="/aboutme" class="footer-link">
+               <span class="link-arrow">→</span>
+               About Me
+             </a>
+           </li>
+           <li>
+             <a href="/projects" class="footer-link">
+               <span class="link-arrow">→</span>
+               Projects
+             </a>
+           </li>
+         </ul>
+       </div>
+       
+       <!-- Get In Touch -->
+       <div class="footer-section">
+         <h4 class="footer-section-title">
+           <span class="title-icon">💬</span>
+           Get In Touch
+         </h4>
+         
+         <div class="social-networks">
+           <a href="mailto:okj1223@inha.edu" class="social-link email">
+             <div class="social-icon">
+               <i class="fas fa-envelope"></i>
+             </div>
+             <span class="social-label">Email</span>
+           </a>
+           
+           <a href="https://github.com/okj1223" class="social-link github">
+             <div class="social-icon">
+               <i class="fab fa-github"></i>
+             </div>
+             <span class="social-label">GitHub</span>
+           </a>
+           
+           <a href="https://youtube.com/@user-ix1pr5vl6v" class="social-link youtube">
+             <div class="social-icon">
+               <i class="fab fa-youtube"></i>
+             </div>
+             <span class="social-label">YouTube</span>
+           </a>
+         </div>
+         
+         <div class="contact-info">
+           <div class="contact-item">
+             <span class="contact-icon">📍</span>
+             <span class="contact-text">Incheon, South Korea</span>
+           </div>
+           <div class="contact-item">
+             <span class="contact-icon">⚡</span>
+             <span class="contact-text">Available for collaborations</span>
+           </div>
+         </div>
+       </div>
+     </div>
+     
+     <!-- Footer Bottom -->
+     <div class="footer-bottom">
+       <div class="copyright-info">
+         <p class="copyright-text">
+           <span class="copyright-symbol">©</span>
+           2025 Joo Hoon Oh
+         </p>
+       </div>
+       <div class="footer-credits">
+         <div class="tech-stack">
+           <span class="tech-item">
+             <i class="fab fa-html5"></i>
+           </span>
+           <span class="tech-item">
+             <i class="fab fa-css3-alt"></i>
+           </span>
+           <span class="tech-item">
+             <i class="fab fa-js-square"></i>
+           </span>
+           <span class="tech-item">
+             <i class="fab fa-github"></i>
+           </span>
+         </div>
+         <p class="powered-by">
+           Engineered for <a href="https://okj1223.github.io/projects/">a greener tomorrow</a> 🌎
+         </p>
+       </div>
+     </div>
+   </div>
+ </div>
+ 
+ <!-- Back to Top Button -->
+ <button class="back-to-top" id="backToTop">
+   <span class="back-to-top-icon">🚀</span>
+ </button>
 </footer>
 
 <!-- JavaScript -->
 <script>
 // 네비게이션 토글
 document.getElementById('navToggle').addEventListener('click', function() {
-  document.getElementById('navMenu').classList.toggle('active');
-  this.classList.toggle('active');
+ document.getElementById('navMenu').classList.toggle('active');
+ this.classList.toggle('active');
+});
+
+// Back to Top 버튼
+const backToTopButton = document.getElementById('backToTop');
+
+window.addEventListener('scroll', () => {
+ if (window.scrollY > 300) {
+   backToTopButton.classList.add('visible');
+ } else {
+   backToTopButton.classList.remove('visible');
+ }
+});
+
+backToTopButton.addEventListener('click', () => {
+ window.scrollTo({
+   top: 0,
+   behavior: 'smooth'
+ });
 });
 
 // 페이지네이션 JavaScript 코드
 document.addEventListener('DOMContentLoaded', function() {
-  const projectsPerPage = 5;
-  const allProjects = document.querySelectorAll('.project-page');
-  const totalProjects = 8;
-  const totalPages = Math.ceil(totalProjects / projectsPerPage);
-  
-  let currentPage = 1;
-  
-  const currentPageSpan = document.getElementById('currentPage');
-  const totalPagesSpan = document.getElementById('totalPages');
-  const totalProjectsSpan = document.getElementById('totalProjectsCount');
-  const prevBtn = document.getElementById('prevBtn');
-  const nextBtn = document.getElementById('nextBtn');
-  const pageNumberBtns = document.querySelectorAll('.page-number-btn');
-  
-  function init() {
-    totalPagesSpan.textContent = totalPages;
-    totalProjectsSpan.textContent = totalProjects;
-    showPage(1);
-    updatePaginationControls();
-  }
-  
-  function showPage(pageNum) {
-    allProjects.forEach(page => {
-      page.style.display = 'none';
-    });
-    
-    const targetPage = document.querySelector(`[data-page="${pageNum}"]`);
-    if (targetPage) {
-      targetPage.style.display = 'block';
-      targetPage.style.animation = 'none';
-      setTimeout(() => {
-        targetPage.style.animation = 'fadeInUp 0.6s ease-out';
-      }, 10);
-    }
-    
-    currentPage = pageNum;
-    currentPageSpan.textContent = pageNum;
-  }
-  
-  function updatePaginationControls() {
-    prevBtn.disabled = (currentPage === 1);
-    nextBtn.disabled = (currentPage === totalPages);
-    
-    pageNumberBtns.forEach(btn => {
-      const pageNum = parseInt(btn.dataset.page);
-      btn.classList.toggle('active', pageNum === currentPage);
-      
-      if (pageNum > totalPages) {
-        btn.style.display = 'none';
-      }
-    });
-  }
-  
-  prevBtn.addEventListener('click', () => {
-    if (currentPage > 1) {
-      showPage(currentPage - 1);
-      updatePaginationControls();
-    }
-  });
-  
-  nextBtn.addEventListener('click', () => {
-    if (currentPage < totalPages) {
-      showPage(currentPage + 1);
-      updatePaginationControls();
-    }
-  });
-  
-  pageNumberBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const pageNum = parseInt(btn.dataset.page);
-      if (pageNum <= totalPages) {
-        showPage(pageNum);
-        updatePaginationControls();
-      }
-    });
-  });
-  
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'ArrowLeft' && currentPage > 1) {
-      showPage(currentPage - 1);
-      updatePaginationControls();
-    } else if (e.key === 'ArrowRight' && currentPage < totalPages) {
-      showPage(currentPage + 1);
-      updatePaginationControls();
-    }
-  });
-  
-  init();
+ const projectsPerPage = 5;
+ const allProjects = document.querySelectorAll('.project-page');
+ const totalProjects = 8;
+ const totalPages = Math.ceil(totalProjects / projectsPerPage);
+ 
+ let currentPage = 1;
+ 
+ const currentPageSpan = document.getElementById('currentPage');
+ const totalPagesSpan = document.getElementById('totalPages');
+ const totalProjectsSpan = document.getElementById('totalProjectsCount');
+ const prevBtn = document.getElementById('prevBtn');
+ const nextBtn = document.getElementById('nextBtn');
+ const pageNumberBtns = document.querySelectorAll('.page-number-btn');
+ 
+ function init() {
+   totalPagesSpan.textContent = totalPages;
+   totalProjectsSpan.textContent = totalProjects;
+   showPage(1);
+   updatePaginationControls();
+ }
+ 
+ function showPage(pageNum) {
+   allProjects.forEach(page => {
+     page.style.display = 'none';
+   });
+   
+   const targetPage = document.querySelector(`[data-page="${pageNum}"]`);
+   if (targetPage) {
+     targetPage.style.display = 'block';
+     targetPage.style.animation = 'none';
+     setTimeout(() => {
+       targetPage.style.animation = 'fadeInUp 0.6s ease-out';
+     }, 10);
+   }
+   
+   currentPage = pageNum;
+   currentPageSpan.textContent = pageNum;
+ }
+ 
+ function updatePaginationControls() {
+   prevBtn.disabled = (currentPage === 1);
+   nextBtn.disabled = (currentPage === totalPages);
+   
+   pageNumberBtns.forEach(btn => {
+     const pageNum = parseInt(btn.dataset.page);
+     btn.classList.toggle('active', pageNum === currentPage);
+     
+     if (pageNum > totalPages) {
+       btn.style.display = 'none';
+     }
+   });
+ }
+ 
+ prevBtn.addEventListener('click', () => {
+   if (currentPage > 1) {
+     showPage(currentPage - 1);
+     updatePaginationControls();
+   }
+ });
+ 
+ nextBtn.addEventListener('click', () => {
+   if (currentPage < totalPages) {
+     showPage(currentPage + 1);
+     updatePaginationControls();
+   }
+ });
+ 
+ pageNumberBtns.forEach(btn => {
+   btn.addEventListener('click', () => {
+     const pageNum = parseInt(btn.dataset.page);
+     if (pageNum <= totalPages) {
+       showPage(pageNum);
+       updatePaginationControls();
+     }
+   });
+ });
+ 
+ document.addEventListener('keydown', (e) => {
+   if (e.key === 'ArrowLeft' && currentPage > 1) {
+     showPage(currentPage - 1);
+     updatePaginationControls();
+   } else if (e.key === 'ArrowRight' && currentPage < totalPages) {
+     showPage(currentPage + 1);
+     updatePaginationControls();
+   }
+ });
+ 
+ init();
 });
 </script>
 
@@ -794,145 +883,227 @@ document.addEventListener('DOMContentLoaded', function() {
 <style>
 /* CSS 변수 정의 */
 :root {
-  --eco-green: #7fb3d3;
-  --forest-green: #5d737e;
-  --light-green: #a8d8a8;
-  --water-blue: #87ceeb;
-  --earth-brown: #c4a484;
-  --leaf-shadow: 0 4px 15px rgba(127, 179, 211, 0.15);
-  --smooth-transition: all 0.3s ease;
+ --eco-green: #7fb3d3;
+ --forest-green: #5d737e;
+ --light-green: #a8d8a8;
+ --water-blue: #87ceeb;
+ --earth-brown: #c4a484;
+ --leaf-shadow: 0 4px 15px rgba(127, 179, 211, 0.15);
+ --smooth-transition: all 0.3s ease;
 }
 
 /* 기본 설정 */
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+ margin: 0;
+ padding: 0;
+ box-sizing: border-box;
 }
 
 html, body {
-  overflow-x: hidden;
-  font-family: 'Merriweather', serif;
-  background: linear-gradient(135deg, #fefffe 0%, #f8fcf8 100%);
-  margin: 0;
-  padding: 0;
+ overflow-x: hidden;
+ font-family: 'Merriweather', serif;
+ background: linear-gradient(135deg, #fefffe 0%, #f8fcf8 100%);
+ margin: 0;
+ padding: 0;
 }
 
 /* ===== 네비게이션 바 ===== */
 .project-navbar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(10px);
-  box-shadow: 0 2px 10px rgba(127, 179, 211, 0.1);
-  z-index: 1000;
-  padding: 1rem 0;
+ position: fixed;
+ top: 0;
+ left: 0;
+ right: 0;
+ background: rgba(255, 255, 255, 0.95);
+ backdrop-filter: blur(10px);
+ -webkit-backdrop-filter: blur(10px);
+ box-shadow: 0 2px 10px rgba(127, 179, 211, 0.1);
+ z-index: 1050;
+ height: 70px;
+ padding: 0;
+ transition: var(--smooth-transition);
 }
 
 .nav-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 2rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+ max-width: 1200px;
+ margin: 0 auto;
+ padding: 0 2rem;
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+ height: 100%;
 }
 
-.nav-logo {
-  display: flex;
-  align-items: center;
-  text-decoration: none;
+.navbar-brand-logo {
+ display: flex;
+ align-items: center;
+ height: 70px;
+ padding: 0;
+ margin: 0;
+ position: relative;
+ z-index: 1051;
 }
 
-.nav-logo-img {
-  height: 80px;
-  width: auto;
+.brand-logo-only {
+ height: 60px;
+ width: auto;
+ transition: var(--smooth-transition);
+ filter: drop-shadow(0 3px 6px rgba(0,0,0,0.15));
+ vertical-align: middle;
 }
 
-.nav-toggle {
-  display: none;
-  flex-direction: column;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 0;
-  width: 30px;
-  height: 30px;
-  justify-content: space-around;
+.navbar-brand-logo:hover .brand-logo-only {
+ transform: scale(1.05);
+ filter: drop-shadow(0 6px 12px rgba(127, 179, 211, 0.3));
 }
 
-.nav-toggle span {
-  display: block;
-  height: 3px;
-  width: 100%;
-  background: var(--eco-green);
-  border-radius: 3px;
-  transition: var(--smooth-transition);
+.navbar-toggler {
+ display: none;
+ border: none;
+ padding: 0.5rem;
+ border-radius: 8px;
+ background: rgba(127, 179, 211, 0.1);
+ transition: var(--smooth-transition);
+ cursor: pointer;
 }
 
-.nav-toggle.active span:nth-child(1) {
-  transform: rotate(45deg) translate(8px, 8px);
+.navbar-toggler:hover {
+ background: rgba(127, 179, 211, 0.2);
 }
 
-.nav-toggle.active span:nth-child(2) {
-  opacity: 0;
+.navbar-toggler-icon {
+ width: 24px;
+ height: 24px;
+ background-image: none;
+ position: relative;
+ transition: var(--smooth-transition);
 }
 
-.nav-toggle.active span:nth-child(3) {
-  transform: rotate(-45deg) translate(8px, -8px);
+.navbar-toggler-icon::before,
+.navbar-toggler-icon::after,
+.navbar-toggler-icon {
+ display: block;
+ content: '';
 }
 
-.nav-menu {
-  display: flex;
-  list-style: none;
-  gap: 2rem;
-  margin: 0;
-  padding: 0;
+.navbar-toggler-icon::before,
+.navbar-toggler-icon::after {
+ position: absolute;
+ width: 24px;
+ height: 3px;
+ background: var(--forest-green);
+ border-radius: 2px;
+ transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.navbar-toggler-icon::before {
+ top: -8px;
+}
+
+.navbar-toggler-icon::after {
+ bottom: -8px;
+}
+
+.navbar-toggler-icon {
+ background: var(--forest-green);
+ height: 3px;
+ border-radius: 2px;
+}
+
+.navbar-toggler.active .navbar-toggler-icon {
+ background: transparent;
+}
+
+.navbar-toggler.active .navbar-toggler-icon::before {
+ transform: rotate(45deg);
+ top: 0;
+}
+
+.navbar-toggler.active .navbar-toggler-icon::after {
+ transform: rotate(-45deg);
+ bottom: 0;
+}
+
+.navbar-nav {
+ display: flex;
+ list-style: none;
+ gap: 0.3rem;
+ margin: 0;
+ padding: 0;
+ z-index: 1051;
+ position: relative;
 }
 
 .nav-item {
-  list-style: none;
+ list-style: none;
 }
 
 .nav-link {
-  color: var(--forest-green);
-  text-decoration: none;
-  font-family: 'Inter', sans-serif;
-  font-weight: 500;
-  font-size: 0.95rem;
-  transition: var(--smooth-transition);
-  padding: 0.5rem 1rem;
-  border-radius: 8px;
+ font-family: 'Inter', sans-serif;
+ font-size: 0.92rem;
+ font-weight: 500;
+ color: var(--forest-green);
+ padding: 0 0.6rem;
+ margin: 0 0.15rem;
+ border-radius: 12px;
+ display: inline-flex;
+ align-items: center;
+ height: 40px;
+ line-height: 40px;
+ transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+ position: relative;
+ overflow: hidden;
+ text-decoration: none;
 }
 
-.nav-link:hover,
+.nav-link::before {
+ content: '';
+ position: absolute;
+ top: 0;
+ left: -100%;
+ width: 100%;
+ height: 100%;
+ background: linear-gradient(90deg, transparent, rgba(127, 179, 211, 0.1), transparent);
+ transition: left 0.6s ease;
+}
+
+.nav-link:hover::before {
+ left: 100%;
+}
+
+.nav-link:hover {
+ color: white;
+ background: linear-gradient(135deg, var(--eco-green), var(--water-blue));
+ transform: translateY(-2px);
+ box-shadow: 0 4px 15px rgba(127, 179, 211, 0.3);
+ text-decoration: none;
+}
+
 .nav-link.active {
-  color: var(--eco-green);
-  background: rgba(127, 179, 211, 0.1);
+ color: white;
+ background: linear-gradient(135deg, var(--eco-green), var(--light-green));
+ box-shadow: 0 2px 10px rgba(127, 179, 211, 0.2);
 }
 
 /* ===== 에코 배경 요소들 ===== */
 .eco-leaves {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 0;
-  overflow: hidden;
+ position: fixed;
+ top: 0;
+ left: 0;
+ width: 100%;
+ height: 100%;
+ pointer-events: none;
+ z-index: 0;
+ overflow: hidden;
 }
 
 .leaf {
-  position: absolute;
-  width: 12px;
-  height: 12px;
-  background: #b8d4b8;
-  border-radius: 0 100% 0 100%;
-  opacity: 0.3;
-  animation: leafFloat 15s infinite linear;
+ position: absolute;
+ width: 12px;
+ height: 12px;
+ background: #b8d4b8;
+ border-radius: 0 100% 0 100%;
+ opacity: 0.3;
+ animation: leafFloat 15s infinite linear;
 }
 
 .leaf:nth-child(1) { left: 10%; animation-delay: 0s; }
@@ -945,186 +1116,186 @@ html, body {
 .leaf:nth-child(8) { left: 80%; animation-delay: 5s; }
 
 @keyframes leafFloat {
-  0% {
-    transform: translateY(-100px) rotate(0deg);
-    opacity: 0;
-  }
-  10% {
-    opacity: 0.6;
-  }
-  90% {
-    opacity: 0.6;
-  }
-  100% {
-    transform: translateY(100vh) rotate(360deg);
-    opacity: 0;
-  }
+ 0% {
+   transform: translateY(-100px) rotate(0deg);
+   opacity: 0;
+ }
+ 10% {
+   opacity: 0.6;
+ }
+ 90% {
+   opacity: 0.6;
+ }
+ 100% {
+   transform: translateY(100vh) rotate(360deg);
+   opacity: 0;
+ }
 }
 
 .bg-grid-pattern {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  pointer-events: none;
-  z-index: 0;
-  opacity: 0.005;
+ position: fixed;
+ top: 0;
+ left: 0;
+ width: 100vw;
+ height: 100vh;
+ pointer-events: none;
+ z-index: 0;
+ opacity: 0.005;
 }
 
 .grid-lines {
-  position: absolute;
-  width: 100%;
-  height: 100%;
+ position: absolute;
+ width: 100%;
+ height: 100%;
 }
 
 .grid-lines.horizontal {
-  background-image: repeating-linear-gradient(
-    0deg,
-    transparent,
-    transparent 60px,
-    #b8d4e3 60px,
-    #b8d4e3 61px
-  );
+ background-image: repeating-linear-gradient(
+   0deg,
+   transparent,
+   transparent 60px,
+   #b8d4e3 60px,
+   #b8d4e3 61px
+ );
 }
 
 .grid-lines.vertical {
-  background-image: repeating-linear-gradient(
-    90deg,
-    transparent,
-    transparent 60px,
-    #b8d4e3 60px,
-    #b8d4e3 61px
-  );
+ background-image: repeating-linear-gradient(
+   90deg,
+   transparent,
+   transparent 60px,
+   #b8d4e3 60px,
+   #b8d4e3 61px
+ );
 }
 
 /* ===== 배너 스타일 ===== */
 .enviro-banner {
-  position: relative;
-  min-height: 65vh;
-  background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 25%, #16213e 50%, #0f3460 75%, #533483 100%);
-  color: white;
-  padding: 0;
-  margin: 0;
-  margin-top: 60px;
-  overflow: hidden;
-  z-index: 5;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+ position: relative;
+ min-height: 65vh;
+ background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 25%, #16213e 50%, #0f3460 75%, #533483 100%);
+ color: white;
+ padding: 0;
+ margin: 0;
+ margin-top: 70px;
+ overflow: hidden;
+ z-index: 5;
+ display: flex;
+ align-items: center;
+ justify-content: center;
 }
 
 .banner-background {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 1;
+ position: absolute;
+ top: 0;
+ left: 0;
+ width: 100%;
+ height: 100%;
+ z-index: 1;
 }
 
 .animated-gradient {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 200%;
-  height: 200%;
-  background: linear-gradient(45deg, 
-    transparent 0%,
-    rgba(127, 179, 211, 0.1) 25%,
-    rgba(135, 206, 235, 0.15) 50%,
-    rgba(168, 216, 168, 0.1) 75%,
-    transparent 100%
-  );
-  animation: gradientShift 8s ease-in-out infinite;
+ position: absolute;
+ top: 0;
+ left: 0;
+ width: 200%;
+ height: 200%;
+ background: linear-gradient(45deg, 
+   transparent 0%,
+   rgba(127, 179, 211, 0.1) 25%,
+   rgba(135, 206, 235, 0.15) 50%,
+   rgba(168, 216, 168, 0.1) 75%,
+   transparent 100%
+ );
+ animation: gradientShift 8s ease-in-out infinite;
 }
 
 @keyframes gradientShift {
-  0%, 100% { transform: translate(-10%, -10%) rotate(0deg); }
-  33% { transform: translate(-20%, -5%) rotate(120deg); }
-  66% { transform: translate(-5%, -20%) rotate(240deg); }
+ 0%, 100% { transform: translate(-10%, -10%) rotate(0deg); }
+ 33% { transform: translate(-20%, -5%) rotate(120deg); }
+ 66% { transform: translate(-5%, -20%) rotate(240deg); }
 }
 
 .floating-orbs {
-  position: absolute;
-  width: 100%;
-  height: 100%;
+ position: absolute;
+ width: 100%;
+ height: 100%;
 }
 
 .orb {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(1px);
-  animation: floatOrb 12s ease-in-out infinite;
+ position: absolute;
+ border-radius: 50%;
+ filter: blur(1px);
+ animation: floatOrb 12s ease-in-out infinite;
 }
 
 .orb-1 {
-  width: 100px;
-  height: 100px;
-  background: radial-gradient(circle, rgba(127, 179, 211, 0.3) 0%, transparent 70%);
-  top: 20%;
-  left: 10%;
-  animation-delay: 0s;
+ width: 100px;
+ height: 100px;
+ background: radial-gradient(circle, rgba(127, 179, 211, 0.3) 0%, transparent 70%);
+ top: 20%;
+ left: 10%;
+ animation-delay: 0s;
 }
 
 .orb-2 {
-  width: 60px;
-  height: 60px;
-  background: radial-gradient(circle, rgba(168, 216, 168, 0.4) 0%, transparent 70%);
-  top: 60%;
-  right: 15%;
-  animation-delay: 2s;
+ width: 60px;
+ height: 60px;
+ background: radial-gradient(circle, rgba(168, 216, 168, 0.4) 0%, transparent 70%);
+ top: 60%;
+ right: 15%;
+ animation-delay: 2s;
 }
 
 .orb-3 {
-  width: 80px;
-  height: 80px;
-  background: radial-gradient(circle, rgba(135, 206, 235, 0.25) 0%, transparent 70%);
-  bottom: 30%;
-  left: 15%;
-  animation-delay: 4s;
+ width: 80px;
+ height: 80px;
+ background: radial-gradient(circle, rgba(135, 206, 235, 0.25) 0%, transparent 70%);
+ bottom: 30%;
+ left: 15%;
+ animation-delay: 4s;
 }
 
 .orb-4 {
-  width: 40px;
-  height: 40px;
-  background: radial-gradient(circle, rgba(196, 164, 132, 0.3) 0%, transparent 70%);
-  top: 40%;
-  right: 40%;
-  animation-delay: 6s;
+ width: 40px;
+ height: 40px;
+ background: radial-gradient(circle, rgba(196, 164, 132, 0.3) 0%, transparent 70%);
+ top: 40%;
+ right: 40%;
+ animation-delay: 6s;
 }
 
 .orb-5 {
-  width: 120px;
-  height: 120px;
-  background: radial-gradient(circle, rgba(127, 179, 211, 0.2) 0%, transparent 70%);
-  top: 10%;
-  right: 20%;
-  animation-delay: 8s;
+ width: 120px;
+ height: 120px;
+ background: radial-gradient(circle, rgba(127, 179, 211, 0.2) 0%, transparent 70%);
+ top: 10%;
+ right: 20%;
+ animation-delay: 8s;
 }
 
 @keyframes floatOrb {
-  0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.3; }
-  25% { transform: translate(20px, -30px) scale(1.1); opacity: 0.6; }
-  50% { transform: translate(-10px, -60px) scale(0.9); opacity: 0.4; }
-  75% { transform: translate(-30px, -20px) scale(1.05); opacity: 0.7; }
+ 0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.3; }
+ 25% { transform: translate(20px, -30px) scale(1.1); opacity: 0.6; }
+ 50% { transform: translate(-10px, -60px) scale(0.9); opacity: 0.4; }
+ 75% { transform: translate(-30px, -20px) scale(1.05); opacity: 0.7; }
 }
 
 .neural-network {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  opacity: 0.3;
+ position: absolute;
+ width: 100%;
+ height: 100%;
+ opacity: 0.3;
 }
 
 .node {
-  position: absolute;
-  width: 8px;
-  height: 8px;
-  background: rgba(127, 179, 211, 0.8);
-  border-radius: 50%;
-  box-shadow: 0 0 20px rgba(127, 179, 211, 0.6);
-  animation: nodePulse 3s ease-in-out infinite;
+ position: absolute;
+ width: 8px;
+ height: 8px;
+ background: rgba(127, 179, 211, 0.8);
+ border-radius: 50%;
+ box-shadow: 0 0 20px rgba(127, 179, 211, 0.6);
+ animation: nodePulse 3s ease-in-out infinite;
 }
 
 .node-1 { top: 25%; left: 20%; animation-delay: 0s; }
@@ -1134,174 +1305,169 @@ html, body {
 .node-5 { top: 60%; left: 60%; animation-delay: 2s; }
 
 .connection {
-  position: absolute;
-  height: 1px;
-  background: linear-gradient(90deg, 
-    transparent 0%, 
-    rgba(127, 179, 211, 0.6) 50%, 
-    transparent 100%
-  );
-  animation: connectionFlow 4s ease-in-out infinite;
+ position: absolute;
+ height: 1px;
+ background: linear-gradient(90deg, 
+   transparent 0%, 
+   rgba(127, 179, 211, 0.6) 50%, 
+   transparent 100%
+ );
+ animation: connectionFlow 4s ease-in-out infinite;
 }
 
 .con-1 {
-  top: 25%;
-  left: 20%;
-  width: 200px;
-  transform: rotate(25deg);
-  animation-delay: 0s;
+ top: 25%;
+ left: 20%;
+ width: 200px;
+ transform: rotate(25deg);
+ animation-delay: 0s;
 }
 
 .con-2 {
-  top: 45%;
-  left: 60%;
-  width: 150px;
-  transform: rotate(-45deg);
-  animation-delay: 1s;
+ top: 45%;
+ left: 60%;
+ width: 150px;
+ transform: rotate(-45deg);
+ animation-delay: 1s;
 }
 
 .con-3 {
-  bottom: 35%;
-  left: 15%;
-  width: 300px;
-  transform: rotate(15deg);
-  animation-delay: 2s;
+ bottom: 35%;
+ left: 15%;
+ width: 300px;
+ transform: rotate(15deg);
+ animation-delay: 2s;
 }
 
 .con-4 {
-  top: 60%;
-  left: 25%;
-  width: 180px;
-  transform: rotate(-30deg);
-  animation-delay: 3s;
+ top: 60%;
+ left: 25%;
+ width: 180px;
+ transform: rotate(-30deg);
+ animation-delay: 3s;
 }
 
 @keyframes nodePulse {
-  0%, 100% { transform: scale(1); box-shadow: 0 0 20px rgba(127, 179, 211, 0.6); }
-  50% { transform: scale(1.5); box-shadow: 0 0 30px rgba(127, 179, 211, 1); }
+ 0%, 100% { transform: scale(1); box-shadow: 0 0 20px rgba(127, 179, 211, 0.6); }
+ 50% { transform: scale(1.5); box-shadow: 0 0 30px rgba(127, 179, 211, 1);
 }
-
-@keyframes connectionFlow {
-  0% { opacity: 0; transform: scaleX(0); }
-  50% { opacity: 1; transform: scaleX(1); }
-  100% { opacity: 0; transform: scaleX(0); }
 }
 
 .banner-content {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 2rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  position: relative;
-  z-index: 10;
-  width: 100%;
-  min-height: 60vh;
+ max-width: 1200px;
+ margin: 0 auto;
+ padding: 2rem;
+ display: flex;
+ align-items: center;
+ justify-content: space-between;
+ position: relative;
+ z-index: 10;
+ width: 100%;
+ min-height: 60vh;
 }
 
 .banner-text {
-  flex: 1;
-  max-width: 600px;
-  z-index: 10;
+ flex: 1;
+ max-width: 600px;
+ z-index: 10;
 }
 
 .title-container {
-  position: relative;
-  margin-bottom: 2rem;
+ position: relative;
+ margin-bottom: 2rem;
 }
 
 .banner-title {
-  font-size: 4rem;
-  font-weight: 700;
-  margin: 0;
-  line-height: 1.1;
-  font-family: 'Merriweather', serif;
-  perspective: 1000px;
+ font-size: 4rem;
+ font-weight: 700;
+ margin: 0;
+ line-height: 1.1;
+ font-family: 'Merriweather', serif;
+ perspective: 1000px;
 }
 
 .title-word {
-  display: block;
-  background: linear-gradient(135deg, #ffffff 0%, #7fb3d3 50%, #87ceeb 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  animation: titleGlow 4s ease-in-out infinite;
-  text-shadow: 0 0 50px rgba(127, 179, 211, 0.5);
+ display: block;
+ background: linear-gradient(135deg, #ffffff 0%, #7fb3d3 50%, #87ceeb 100%);
+ -webkit-background-clip: text;
+ -webkit-text-fill-color: transparent;
+ background-clip: text;
+ animation: titleGlow 4s ease-in-out infinite;
+ text-shadow: 0 0 50px rgba(127, 179, 211, 0.5);
 }
 
 .title-word:nth-child(1) { animation-delay: 0s; }
 .title-word:nth-child(2) { animation-delay: 0.5s; }
 
 @keyframes titleGlow {
-  0%, 100% { 
-    transform: translateZ(0);
-    filter: brightness(1) saturate(1);
-  }
-  50% { 
-    transform: translateZ(10px);
-    filter: brightness(1.3) saturate(1.2);
-  }
+ 0%, 100% { 
+   transform: translateZ(0);
+   filter: brightness(1) saturate(1);
+ }
+ 50% { 
+   transform: translateZ(10px);
+   filter: brightness(1.3) saturate(1.2);
+ }
 }
 
 .title-underline {
-  height: 4px;
-  background: linear-gradient(90deg, transparent 0%, #7fb3d3 50%, transparent 100%);
-  margin-top: 1rem;
-  border-radius: 2px;
-  animation: underlineExpand 2s ease-out 1s both;
+ height: 4px;
+ background: linear-gradient(90deg, transparent 0%, #7fb3d3 50%, transparent 100%);
+ margin-top: 1rem;
+ border-radius: 2px;
+ animation: underlineExpand 2s ease-out 1s both;
 }
 
 @keyframes underlineExpand {
-  0% { width: 0; }
-  100% { width: 100%; }
+ 0% { width: 0; }
+ 100% { width: 100%; }
 }
 
 .banner-subtitle {
-  font-size: 1.4rem;
-  margin-bottom: 3rem;
-  font-family: 'Inter', sans-serif;
-  font-weight: 300;
-  line-height: 1.6;
+ font-size: 1.4rem;
+ margin-bottom: 3rem;
+ font-family: 'Inter', sans-serif;
+ font-weight: 300;
+ line-height: 1.6;
 }
 
 .subtitle-line {
-  display: block;
-  opacity: 0;
-  animation: slideInUp 1s ease-out both;
+ display: block;
+ opacity: 0;
+ animation: slideInUp 1s ease-out both;
 }
 
 .subtitle-line:nth-child(1) { animation-delay: 1s; }
 .subtitle-line:nth-child(2) { animation-delay: 1.2s; }
 
 @keyframes slideInUp {
-  0% {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
+ 0% {
+   opacity: 0;
+   transform: translateY(30px);
+ }
+ 100% {
+   opacity: 1;
+   transform: translateY(0);
+ }
 }
 
 .banner-stats {
-  display: flex;
-  gap: 2rem;
-  margin-bottom: 3rem;
-  flex-wrap: wrap;
+ display: flex;
+ gap: 2rem;
+ margin-bottom: 3rem;
+ flex-wrap: wrap;
 }
 
 .stat-item {
-  text-align: center;
-  background: rgba(255, 255, 255, 0.1);
-  padding: 1.5rem 1rem;
-  border-radius: 15px;
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  min-width: 120px;
-  transition: all 0.3s ease;
-  animation: statFadeIn 1s ease-out both;
+ text-align: center;
+ background: rgba(255, 255, 255, 0.1);
+ padding: 1.5rem 1rem;
+ border-radius: 15px;
+ backdrop-filter: blur(10px);
+ border: 1px solid rgba(255, 255, 255, 0.2);
+ min-width: 120px;
+ transition: all 0.3s ease;
+ animation: statFadeIn 1s ease-out both;
 }
 
 .stat-item:nth-child(1) { animation-delay: 1.5s; }
@@ -1309,40 +1475,40 @@ html, body {
 .stat-item:nth-child(3) { animation-delay: 1.9s; }
 
 .stat-item:hover {
-  transform: translateY(-5px);
-  background: rgba(255, 255, 255, 0.2);
-  box-shadow: 0 10px 30px rgba(127, 179, 211, 0.3);
+ transform: translateY(-5px);
+ background: rgba(255, 255, 255, 0.2);
+ box-shadow: 0 10px 30px rgba(127, 179, 211, 0.3);
 }
 
 .stat-number {
-  font-size: 2.5rem;
-  font-weight: 700;
-  color: #7fb3d3;
-  text-shadow: 0 0 20px rgba(127, 179, 211, 0.5);
-  margin-bottom: 0.5rem;
+ font-size: 2.5rem;
+ font-weight: 700;
+ color: #7fb3d3;
+ text-shadow: 0 0 20px rgba(127, 179, 211, 0.5);
+ margin-bottom: 0.5rem;
 }
 
 .stat-label {
-  font-size: 0.9rem;
-  opacity: 0.8;
-  font-weight: 400;
+ font-size: 0.9rem;
+ opacity: 0.8;
+ font-weight: 400;
 }
 
 @keyframes statFadeIn {
-  0% {
-    opacity: 0;
-    transform: translateY(20px) scale(0.9);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
+ 0% {
+   opacity: 0;
+   transform: translateY(20px) scale(0.9);
+ }
+ 100% {
+   opacity: 1;
+   transform: translateY(0) scale(1);
+ }
 }
 
 .banner-keywords {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
+ display: flex;
+ flex-wrap: wrap;
+ gap: 1rem;
 }
 
 .keyword-chip {
@@ -1544,6 +1710,12 @@ html, body {
  100% { opacity: 0; transform: translateY(-20px) scaleY(0); }
 }
 
+@keyframes connectionFlow {
+ 0% { opacity: 0; transform: scaleX(0); }
+ 50% { opacity: 1; transform: scaleX(1); }
+ 100% { opacity: 0; transform: scaleX(0); }
+}
+
 .banner-bottom-wave {
  position: absolute;
  bottom: 0;
@@ -1579,7 +1751,6 @@ html, body {
  z-index: 10;
 }
 
-/* 페이지네이션 정보 */
 .pagination-info {
  display: flex;
  justify-content: center;
@@ -1605,7 +1776,6 @@ html, body {
  color: rgba(93, 115, 126, 0.8);
 }
 
-/* 프로젝트 그리드 */
 .projects-grid {
  position: relative;
  min-height: 500px;
@@ -1615,7 +1785,6 @@ html, body {
  animation: fadeInUp 0.6s ease-out;
 }
 
-/* 프로젝트 카드 스타일 */
 .home-project-item {
  margin-bottom: 2.5rem;
  transform: none;
@@ -1753,7 +1922,6 @@ html, body {
  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
-/* 미디어 섹션 스타일 */
 .home-project-media {
  background: #f8fcf8;
  border-top: 1px solid rgba(127, 179, 211, 0.1);
@@ -1801,7 +1969,6 @@ html, body {
  transform: scale(1.02);
 }
 
-/* 페이지네이션 컨트롤 */
 .pagination-controls {
  display: flex;
  justify-content: center;
@@ -1924,33 +2091,47 @@ html, body {
  text-decoration: none;
 }
 
-/* ===== 푸터 ===== */
-.project-footer {
+.home-project-link {
+ display: block;
+ text-decoration: none;
+ color: inherit;
+ transition: var(--smooth-transition);
+}
+
+.home-project-link:hover {
+ text-decoration: underline;
+ text-decoration-color: #87ceeb;
+ text-decoration-thickness: 2px;
+ text-underline-offset: 4px;
+}
+
+/* ===== 푸터 스타일 ===== */
+.eco-footer {
+ background: linear-gradient(135deg, #f8fcf8 0%, #f0f8f0 50%, #e8f5e8 100%);
+ margin-top: 4rem;
  position: relative;
- background: linear-gradient(180deg, #f8fcf8 0%, #e8f4f8 100%);
- margin-top: 5rem;
+ overflow: hidden;
 }
 
 .footer-wave {
- position: absolute;
- top: 0;
- left: 0;
+ position: relative;
+ top: -1px;
  width: 100%;
- overflow: hidden;
- line-height: 0;
- transform: rotate(180deg);
+ height: 60px;
+ margin-bottom: 2rem;
 }
 
 .footer-wave svg {
  position: relative;
  display: block;
  width: calc(100% + 1.3px);
- height: 120px;
+ height: 60px;
 }
 
 .footer-content {
- padding: 8rem 0 2rem 0;
+ padding: 2rem 0 1rem;
  position: relative;
+ z-index: 2;
 }
 
 .footer-container {
@@ -1967,101 +2148,346 @@ html, body {
 }
 
 .footer-section {
- text-align: center;
+ margin-bottom: 2rem;
+ padding: 0 1rem;
 }
 
 .footer-profile {
+ text-align: center;
+ padding: 1rem;
+}
+
+.profile-avatar {
+ margin-bottom: 1rem;
+}
+
+.avatar-circle {
+ width: 80px;
+ height: 80px;
+ background: linear-gradient(135deg, var(--eco-green), var(--light-green));
+ border-radius: 50%;
  display: flex;
- flex-direction: column;
  align-items: center;
- gap: 1rem;
+ justify-content: center;
+ margin: 0 auto;
+ box-shadow: 0 8px 25px rgba(127, 179, 211, 0.2);
+ transition: var(--smooth-transition);
+ position: relative;
+ overflow: hidden;
+}
+
+.avatar-circle::before {
+ content: '';
+ position: absolute;
+ top: -50%;
+ left: -50%;
+ width: 200%;
+ height: 200%;
+ background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+ transition: var(--smooth-transition);
+}
+
+.avatar-circle:hover {
+ transform: scale(1.1);
+ box-shadow: 0 12px 35px rgba(127, 179, 211, 0.3);
+}
+
+.avatar-circle:hover::before {
+ animation: shimmer 2s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+ 0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+ 100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
 }
 
 .profile-image {
- width: 100px;
- height: 100px;
- border-radius: 50%;
+ width: 100%;
+ height: 100%;
  object-fit: cover;
- border: 3px solid var(--eco-green);
+ border-radius: 50%;
 }
 
 .profile-name {
- font-size: 1.5rem;
+ font-family: 'Merriweather', serif;
+ font-size: 1.4rem;
+ font-weight: 400;
  color: var(--forest-green);
- margin: 0;
+ margin-bottom: 0.5rem;
+ position: relative;
+}
+
+.profile-name::after {
+ content: '';
+ position: absolute;
+ bottom: -5px;
+ left: 50%;
+ transform: translateX(-50%);
+ width: 50px;
+ height: 2px;
+ background: linear-gradient(90deg, var(--eco-green), var(--light-green));
+ border-radius: 1px;
 }
 
 .profile-title {
  color: var(--eco-green);
+ font-size: 1rem;
  font-weight: 500;
- margin: 0;
+ margin-bottom: 0.8rem;
+ font-family: 'Inter', sans-serif;
 }
 
 .profile-description {
- color: rgba(93, 115, 126, 0.9);
- line-height: 1.6;
- max-width: 300px;
+ color: #666;
+ font-size: 0.9rem;
+ line-height: 1.5;
+ max-width: 280px;
+ margin: 0 auto;
+ font-family: 'Inter', sans-serif;
 }
 
-.footer-title {
+.footer-section-title {
+ font-family: 'Merriweather', serif;
  font-size: 1.2rem;
+ font-weight: 400;
  color: var(--forest-green);
  margin-bottom: 1.5rem;
+ display: flex;
+ align-items: center;
+ gap: 0.5rem;
+}
+
+.title-icon {
+ font-size: 1.1rem;
 }
 
 .footer-links {
  list-style: none;
  padding: 0;
+ margin: 0;
 }
 
 .footer-links li {
- margin-bottom: 1rem;
+ margin-bottom: 0.8rem;
 }
 
-.footer-links a {
- color: rgba(93, 115, 126, 0.9);
+.footer-link {
+ display: flex;
+ align-items: center;
+ gap: 0.5rem;
+ color: #666;
  text-decoration: none;
+ font-size: 0.95rem;
+ font-family: 'Inter', sans-serif;
+ transition: var(--smooth-transition);
+ padding: 0.3rem 0;
+}
+
+.footer-link:hover {
+ color: var(--eco-green);
+ text-decoration: none;
+ transform: translateX(5px);
+}
+
+.link-arrow {
+ color: var(--eco-green);
+ font-weight: bold;
  transition: var(--smooth-transition);
 }
 
-.footer-links a:hover {
- color: var(--eco-green);
- transform: translateX(5px);
- display: inline-block;
+.footer-link:hover .link-arrow {
+ transform: translateX(3px);
 }
 
-.social-links {
+.social-networks {
  display: flex;
  flex-direction: column;
  gap: 1rem;
- margin-bottom: 2rem;
+ margin-bottom: 1.5rem;
 }
 
 .social-link {
- color: rgba(93, 115, 126, 0.9);
- text-decoration: none;
  display: flex;
  align-items: center;
- justify-content: center;
- gap: 0.5rem;
+ gap: 1rem;
+ padding: 0.8rem;
+ background: rgba(255, 255, 255, 0.7);
+ border-radius: 12px;
+ text-decoration: none;
  transition: var(--smooth-transition);
+ border: 1px solid rgba(127, 179, 211, 0.1);
 }
 
 .social-link:hover {
+ background: rgba(255, 255, 255, 0.9);
+ border-color: rgba(127, 179, 211, 0.3);
+ transform: translateY(-2px);
+ box-shadow: 0 4px 15px rgba(127, 179, 211, 0.1);
+ text-decoration: none;
+}
+
+.social-icon {
+ width: 40px;
+ height: 40px;
+ border-radius: 50%;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ font-size: 1.2rem;
+ transition: var(--smooth-transition);
+}
+
+.social-link.email .social-icon {
+ background: linear-gradient(135deg, #ea4335, #fbbc05);
+ color: white;
+}
+
+.social-link.github .social-icon {
+ background: linear-gradient(135deg, #333, #666);
+ color: white;
+}
+
+.social-link.youtube .social-icon {
+ background: linear-gradient(135deg, #ff0000, #cc0000);
+ color: white;
+}
+
+.social-label {
+ font-family: 'Inter', sans-serif;
+ font-size: 0.95rem;
+ font-weight: 500;
+ color: var(--forest-green);
+}
+
+.contact-info {
+ margin-top: 1rem;
+}
+
+.contact-item {
+ display: flex;
+ align-items: center;
+ gap: 0.8rem;
+ margin-bottom: 0.8rem;
+ padding: 0.5rem;
+ background: rgba(255, 255, 255, 0.5);
+ border-radius: 8px;
+ font-size: 0.9rem;
+}
+
+.contact-icon {
+ font-size: 1.1rem;
+}
+
+.contact-text {
+ color: #666;
+ font-family: 'Inter', sans-serif;
+}
+
+.footer-bottom {
+ margin-top: 3rem;
+ padding: 1.5rem 0;
+ border-top: 1px solid rgba(127, 179, 211, 0.2);
+ background: rgba(255, 255, 255, 0.5);
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+ flex-wrap: wrap;
+}
+
+.copyright-info {
+ text-align: left;
+}
+
+.copyright-text {
+ margin: 0;
+ font-size: 0.85rem;
+ color: #777;
+ font-family: 'Inter', sans-serif;
+}
+
+.copyright-symbol {
+ font-weight: bold;
+ color: var(--eco-green);
+}
+
+.footer-credits {
+ text-align: right;
+}
+
+.tech-stack {
+ display: flex;
+ justify-content: flex-end;
+ gap: 0.8rem;
+ margin-bottom: 0.5rem;
+}
+
+.tech-item {
+ font-size: 1.2rem;
+ color: #999;
+ transition: var(--smooth-transition);
+ cursor: pointer;
+}
+
+.tech-item:hover {
  color: var(--eco-green);
  transform: translateY(-2px);
 }
 
-.contact-info p {
- color: rgba(93, 115, 126, 0.9);
- margin: 0.5rem 0;
+.powered-by {
+ margin: 0;
+ font-size: 0.8rem;
+ color: #888;
+ font-family: 'Inter', sans-serif;
 }
 
-.footer-bottom {
- text-align: center;
- padding-top: 2rem;
- border-top: 1px solid rgba(127, 179, 211, 0.2);
- color: rgba(93, 115, 126, 0.9);
+.powered-by a {
+ color: var(--eco-green);
+ text-decoration: none;
+ font-weight: 500;
+}
+
+.powered-by a:hover {
+ text-decoration: underline;
+}
+
+.back-to-top {
+ position: fixed;
+ bottom: 2rem;
+ right: 2rem;
+ width: 50px;
+ height: 50px;
+ background: linear-gradient(135deg, var(--eco-green), var(--light-green));
+ border: none;
+ border-radius: 50%;
+ color: white;
+ font-size: 1.2rem;
+ cursor: pointer;
+ opacity: 0;
+ visibility: hidden;
+ transform: translateY(20px);
+ transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+ z-index: 1000;
+ box-shadow: 0 4px 15px rgba(127, 179, 211, 0.3);
+}
+
+.back-to-top.visible {
+ opacity: 1;
+ visibility: visible;
+ transform: translateY(0);
+}
+
+.back-to-top:hover {
+ transform: translateY(-3px) scale(1.1);
+ box-shadow: 0 6px 20px rgba(127, 179, 211, 0.4);
+}
+
+.back-to-top-icon {
+ animation: rocket 2s ease-in-out infinite;
+}
+
+@keyframes rocket {
+ 0%, 100% { transform: translateY(0); }
+ 50% { transform: translateY(-3px); }
 }
 
 /* 애니메이션 */
@@ -2085,21 +2511,15 @@ html, body {
  outline-offset: 3px;
 }
 
-.home-project-link {
- display: block;
- text-decoration: none;
- color: inherit;
- transition: var(--smooth-transition);
-}
-
-.home-project-link:hover {
- text-decoration: underline;
- text-decoration-color: #87ceeb;
- text-decoration-thickness: 2px;
- text-underline-offset: 4px;
-}
-
 /* 반응형 디자인 */
+@media (max-width: 1199.98px) {
+ .navbar-nav .nav-link {
+   text-align: center;
+   margin: 0.3rem 0.15rem;
+   padding: 0.6rem 0.6rem;
+ }
+}
+
 @media (max-width: 1024px) {
  .banner-content {
    flex-direction: column;
@@ -2131,14 +2551,26 @@ html, body {
 }
 
 @media (max-width: 768px) {
- .nav-toggle {
+ .project-navbar {
+   height: 60px;
+ }
+ 
+ .navbar-brand-logo {
+   height: 60px;
+ }
+ 
+ .brand-logo-only {
+   height: 50px;
+ }
+ 
+ .navbar-toggler {
    display: flex;
  }
  
- .nav-menu {
+ .navbar-nav {
    position: fixed;
    left: -100%;
-   top: 70px;
+   top: 60px;
    flex-direction: column;
    background: rgba(255, 255, 255, 0.98);
    width: 100%;
@@ -2148,7 +2580,7 @@ html, body {
    padding: 2rem 0;
  }
  
- .nav-menu.active {
+ .navbar-nav.active {
    left: 0;
  }
  
@@ -2245,9 +2677,39 @@ html, body {
    text-align: center;
  }
  
- .social-links {
-   flex-direction: row;
+ .footer-section {
+   text-align: center;
+ }
+ 
+ .social-networks {
+   align-items: center;
+   max-width: 300px;
+   margin: 0 auto 1.5rem;
+ }
+ 
+ .footer-bottom {
+   flex-direction: column;
+   text-align: center;
+ }
+ 
+ .copyright-info {
+   text-align: center;
+   margin-bottom: 1rem;
+ }
+ 
+ .footer-credits {
+   text-align: center;
+ }
+ 
+ .tech-stack {
    justify-content: center;
+ }
+ 
+ .back-to-top {
+   bottom: 1rem;
+   right: 1rem;
+   width: 45px;
+   height: 45px;
  }
 }
 
