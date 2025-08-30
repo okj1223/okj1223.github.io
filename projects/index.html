@@ -536,43 +536,10 @@ permalink: /projects/
   </div>
 </div>
 
-<!-- Footer 섹션 -->
-<footer class="enviro-footer">
-  <div class="footer-container">
-    <div class="footer-content">
-      <div class="footer-section">
-        <h3 class="footer-title">Environmental Robotics</h3>
-        <p class="footer-description">
-          Building sustainable solutions through AI-driven environmental robotics
-        </p>
-      </div>
-      
-      <div class="footer-section">
-        <h4 class="footer-heading">Quick Links</h4>
-        <ul class="footer-links">
-          <li><a href="/home.html">Home</a></li>
-          <li><a href="/projects/">Projects</a></li>
-          <li><a href="/about/">About</a></li>
-          <li><a href="/contact/">Contact</a></li>
-        </ul>
-      </div>
-      
-      <div class="footer-section">
-        <h4 class="footer-heading">Technologies</h4>
-        <ul class="footer-links">
-          <li>AI & Computer Vision</li>
-          <li>Robotics & Automation</li>
-          <li>Environmental Systems</li>
-          <li>Sustainable Engineering</li>
-        </ul>
-      </div>
-    </div>
-    
-    <div class="footer-bottom">
-      <p>&copy; 2025 Environmental Robotics. All rights reserved.</p>
-    </div>
-  </div>
-</footer>
+<!-- 기존 Jekyll Footer 불러오기 -->
+<div style="text-align: center;">
+  {% include footer.html %}
+</div>
 
 <script>
 // 페이지네이션 JavaScript 코드
@@ -674,7 +641,6 @@ document.addEventListener('DOMContentLoaded', function() {
   init();
 });
 </script>
-
 
 <!-- 인라인 스타일로 강제 적용 -->
 <style>
@@ -1736,94 +1702,7 @@ html, body {
   text-decoration: none;
 }
 
-/* Footer 스타일 */
-.enviro-footer {
-  background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
-  color: white;
-  padding: 3rem 0 1rem 0;
-  margin-top: 4rem;
-  width: 100vw;
-  margin-left: calc(-50vw + 50%);
-  margin-right: calc(-50vw + 50%);
-}
-
-.footer-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 2rem;
-}
-
-.footer-content {
-  display: grid;
-  grid-template-columns: 2fr 1fr 1fr;
-  gap: 2rem;
-  margin-bottom: 2rem;
-}
-
-.footer-section {
-  font-family: 'Inter', sans-serif;
-}
-
-.footer-title {
-  font-size: 1.5rem;
-  font-weight: 700;
-  margin-bottom: 1rem;
-  color: var(--eco-green);
-  font-family: 'Merriweather', serif;
-}
-
-.footer-description {
-  font-size: 1rem;
-  line-height: 1.6;
-  color: rgba(255, 255, 255, 0.8);
-  margin-bottom: 0;
-}
-
-.footer-heading {
-  font-size: 1.1rem;
-  font-weight: 600;
-  margin-bottom: 1rem;
-  color: rgba(255, 255, 255, 0.9);
-}
-
-.footer-links {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.footer-links li {
-  margin-bottom: 0.5rem;
-}
-
-.footer-links a {
-  color: rgba(255, 255, 255, 0.7);
-  text-decoration: none;
-  transition: color 0.3s ease;
-  font-size: 0.9rem;
-}
-
-.footer-links a:hover {
-  color: var(--eco-green);
-}
-
-.footer-links li:not(:has(a)) {
-  color: rgba(255, 255, 255, 0.7);
-  font-size: 0.9rem;
-}
-
-.footer-bottom {
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  padding-top: 1.5rem;
-  text-align: center;
-}
-
-.footer-bottom p {
-  margin: 0;
-  font-size: 0.9rem;
-  color: rgba(255, 255, 255, 0.6);
-  font-family: 'Inter', sans-serif;
-}
+/* Footer 스타일 제거 */
 
 @keyframes fadeInUp {
   from {
