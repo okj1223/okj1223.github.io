@@ -302,52 +302,75 @@
       }
     }
     
-    /* 프로젝트 카드 크기 강제 복구 */
+    /* 🎯 프로젝트 카드 완전 수정 */
     .home-project-card {
-      min-height: 600px !important;
+      min-height: 500px !important;
       width: 100% !important;
-      max-width: 100% !important;
-    }
-    
-    .home-project-content {
-      padding: 2.5rem !important;
-      height: auto !important;
-    }
-    
-    .home-project-media {
-      width: 100% !important;
-      height: auto !important;
-      display: block !important;
-    }
-    
-    .home-projects-grid {
-      display: grid !important;
-      grid-template-columns: 1fr !important;
-      gap: 2rem !important;
       max-width: 800px !important;
-      margin: 0 auto !important;
+      margin: 0 auto 2rem auto !important;
+      display: flex !important;
+      flex-direction: column !important;
+      overflow: hidden !important;
+      background: rgba(255, 255, 255, 0.95) !important;
+      border-radius: 20px !important;
+      box-shadow: 0 6px 20px rgba(127, 179, 211, 0.12) !important;
     }
     
-    .home-project-item {
-      width: 100% !important;
-      margin-bottom: 2rem !important;
-    }
-    
-    /* 동영상이 아래로 오도록 강제 */
+    /* 프로젝트 링크는 세로 배치 */
     .home-project-link {
       display: flex !important;
       flex-direction: column !important;
       height: 100% !important;
+      text-decoration: none !important;
     }
     
+    /* 텍스트 콘텐츠가 위로 */
     .home-project-content {
-      order: 1 !important;
       flex: 1 !important;
+      padding: 2.5rem !important;
+      order: 1 !important;
+      display: flex !important;
+      flex-direction: column !important;
     }
     
+    /* 동영상이 아래로 */
     .home-project-media {
       order: 2 !important;
-      margin-top: auto !important;
+      width: 100% !important;
+      max-height: 300px !important;
+      overflow: hidden !important;
+      margin: 0 !important;
+      padding: 0 !important;
+    }
+    
+    /* 동영상 크기 조절 */
+    .home-project-media iframe,
+    .home-project-media video {
+      width: 100% !important;
+      height: 300px !important;
+      object-fit: cover !important;
+      border: none !important;
+    }
+    
+    /* 프로젝트 컨테이너 */
+    .home-projects-grid {
+      display: grid !important;
+      grid-template-columns: 1fr !important;
+      gap: 2rem !important;
+      max-width: 900px !important;
+      margin: 0 auto !important;
+      padding: 0 2rem !important;
+    }
+    
+    .home-project-item {
+      width: 100% !important;
+    }
+    
+    /* 페이지네이션 수정 */
+    .projects-pagination {
+      max-width: 900px !important;
+      margin: 2rem auto !important;
+      text-align: center !important;
     }
   </style>
 </head>
