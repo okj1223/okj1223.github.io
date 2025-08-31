@@ -15,37 +15,156 @@
    <link rel="stylesheet" href="/assets/css/ecosystem.css">
   
   <style>
-    /* 3D 드론 시스템 스타일 */
-    .drone-container {
+    /* 3D 드론 배너 환경 시스템 */
+    .drone-banner-environment {
       position: relative;
       width: 100%;
-      height: 400px;
-      margin: 2rem 0;
+      min-height: 100vh;
       overflow: hidden;
-      border-radius: 10px;
-      background: linear-gradient(135deg, #74b9ff, #0984e3, #6c5ce7);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+      background: linear-gradient(
+        180deg, 
+        #87ceeb 0%,     /* 하늘색 상단 */
+        #98d8e8 20%,    /* 밝은 하늘 */
+        #a8e6cf 40%,    /* 연한 민트 */
+        #74b9ff 70%,    /* 파란 하늘 */
+        #0984e3 100%    /* 깊은 푸른색 하단 */
+      );
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .drone-3d-canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
       width: 100%;
       height: 100%;
       display: block;
       cursor: pointer;
+      z-index: 1;
     }
 
+    /* 배너 텍스트 오버레이 */
+    .banner-text-overlay {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      z-index: 10;
+      color: white;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+      max-width: 800px;
+      padding: 2rem;
+    }
+
+    .banner-title h1 {
+      font-size: 4rem;
+      font-weight: 700;
+      margin: 0 0 1rem 0;
+      background: linear-gradient(135deg, #ffffff 0%, #87ceeb 50%, #74b9ff 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: titleGlow 3s ease-in-out infinite;
+      line-height: 1.1;
+      font-family: 'Merriweather', serif;
+    }
+
+    .banner-title h2 {
+      font-size: 2rem;
+      font-weight: 400;
+      margin: 0 0 2rem 0;
+      color: rgba(255,255,255,0.9);
+      letter-spacing: 1px;
+      animation: slideIn 1s ease-out 0.5s both;
+    }
+
+    .banner-subtitle p {
+      font-size: 1.2rem;
+      margin: 0 0 2rem 0;
+      color: rgba(255,255,255,0.8);
+      line-height: 1.6;
+      animation: slideIn 1s ease-out 1s both;
+    }
+
+    .banner-stats {
+      display: flex;
+      justify-content: center;
+      gap: 3rem;
+      margin-top: 2rem;
+    }
+
+    .stat-item {
+      text-align: center;
+      animation: slideUp 1s ease-out 1.5s both;
+    }
+
+    .stat-number {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #00ff88;
+      text-shadow: 0 0 10px rgba(0,255,136,0.5);
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+
+    .stat-label {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.7);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    @keyframes titleGlow {
+      0%, 100% { 
+        filter: brightness(1) saturate(1);
+        text-shadow: 0 0 20px rgba(135,206,235,0.5);
+      }
+      50% { 
+        filter: brightness(1.2) saturate(1.3);
+        text-shadow: 0 0 30px rgba(135,206,235,0.8);
+      }
+    }
+
+    @keyframes slideIn {
+      from { 
+        opacity: 0; 
+        transform: translateY(30px); 
+      }
+      to { 
+        opacity: 1; 
+        transform: translateY(0); 
+      }
+    }
+
+    @keyframes slideUp {
+      from { 
+        opacity: 0; 
+        transform: translateY(50px); 
+      }
+      to { 
+        opacity: 1; 
+        transform: translateY(0); 
+      }
+    }
+
+    /* 드론 UI 개선 */
     .drone-ui {
       position: absolute;
-      top: 20px;
-      left: 20px;
-      background: rgba(0,0,0,0.8);
-      padding: 15px;
-      border-radius: 8px;
+      top: 30px;
+      right: 30px;
+      background: rgba(0,15,35,0.9);
+      padding: 20px;
+      border-radius: 15px;
       color: white;
       font-family: 'Courier New', monospace;
-      min-width: 250px;
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255,255,255,0.1);
+      min-width: 300px;
+      backdrop-filter: blur(15px);
+      border: 2px solid rgba(0,255,136,0.3);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      z-index: 20;
     }
 
     .drone-status h4 {
@@ -107,13 +226,57 @@
     .drone-btn.active {
       background: #00ff88;
       color: black;
+      box-shadow: 0 0 20px rgba(0,255,136,0.6);
+    }
+
+    .drone-btn.emergency {
+      border-color: #ff4757;
+      color: #ff4757;
+      background: rgba(255,71,87,0.1);
+    }
+
+    .drone-btn.emergency:hover {
+      background: rgba(255,71,87,0.2);
+      box-shadow: 0 0 15px rgba(255,71,87,0.4);
+    }
+
+    .drone-btn.emergency.active {
+      background: #ff4757;
+      color: white;
+      box-shadow: 0 0 20px rgba(255,71,87,0.6);
     }
 
     /* 반응형 디자인 */
     @media (max-width: 768px) {
-      .drone-container {
-        height: 300px;
-        margin: 1rem 0;
+      .drone-banner-environment {
+        min-height: 100vh;
+      }
+      
+      .banner-text-overlay {
+        max-width: 90%;
+        padding: 1rem;
+      }
+      
+      .banner-title h1 {
+        font-size: 2.5rem;
+      }
+      
+      .banner-title h2 {
+        font-size: 1.5rem;
+      }
+      
+      .banner-subtitle p {
+        font-size: 1rem;
+      }
+      
+      .banner-stats {
+        flex-direction: column;
+        gap: 1rem;
+        align-items: center;
+      }
+      
+      .stat-item {
+        min-width: 120px;
       }
       
       .drone-ui {
@@ -184,150 +347,60 @@
  <div class="grid-lines vertical"></div>
 </div>
 
-<!-- 환경로보틱스 배너 섹션 -->
-<div class="enviro-banner">
- <div class="banner-background">
-   <div class="animated-gradient"></div>
-   <div class="floating-orbs">
-     <div class="orb orb-1"></div>
-     <div class="orb orb-2"></div>
-     <div class="orb orb-3"></div>
-     <div class="orb orb-4"></div>
-     <div class="orb orb-5"></div>
-   </div>
-   <div class="neural-network">
-     <div class="node node-1"></div>
-     <div class="node node-2"></div>
-     <div class="node node-3"></div>
-     <div class="node node-4"></div>
-     <div class="node node-5"></div>
-     <div class="connection con-1"></div>
-     <div class="connection con-2"></div>
-     <div class="connection con-3"></div>
-     <div class="connection con-4"></div>
-   </div>
- </div>
+<!-- 🚁 3D 드론 배너 환경 시스템 -->
+<div class="drone-banner-environment">
+  <canvas id="droneCanvas" class="drone-3d-canvas"></canvas>
+  
+  <!-- 배너 텍스트 오버레이 -->
+  <div class="banner-text-overlay">
+    <div class="banner-title">
+      <h1>Engineering Tomorrow's Environment</h1>
+      <h2>Advanced Robotics & Environmental Solutions</h2>
+    </div>
+    <div class="banner-subtitle">
+      <p>Full-Stack Robotics Developer • Environmental Engineering • AI Systems</p>
+      <div class="banner-stats">
+        <div class="stat-item">
+          <span class="stat-number">15+</span>
+          <span class="stat-label">Projects</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">5+</span>
+          <span class="stat-label">Years Experience</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">∞</span>
+          <span class="stat-label">Innovation</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- 드론 상태 UI -->
+  <div class="drone-ui">
+    <div class="drone-status">
+      <h4>🚁 Environmental Monitoring System</h4>
+      <div class="status-item">
+        <span class="status-label">Active Drones</span>
+        <span class="status-value status-drones">5</span>
+      </div>
+      <div class="status-item">
+        <span class="status-label">Air Quality</span>
+        <span class="status-value status-air">Excellent</span>
+      </div>
+      <div class="status-item">
+        <span class="status-label">Mission Status</span>
+        <span class="status-value status-mission">Monitoring</span>
+      </div>
+    </div>
+    <div class="drone-controls">
+      <button id="deployBtn" class="drone-btn">DEPLOY</button>
+      <button id="recallBtn" class="drone-btn">RECALL</button>
+      <button id="emergencyBtn" class="drone-btn emergency">EMERGENCY</button>
+    </div>
+  </div>
+</div>
  
- <!-- 🚁 3D 환경 드론 시스템 -->
- <div class="drone-container">
-   <canvas id="droneCanvas" class="drone-3d-canvas"></canvas>
-   <div class="drone-ui">
-     <div class="drone-status">
-       <div class="status-item">
-         <span class="status-label">Environment Drones</span>
-         <span class="status-value" id="droneCount">3</span>
-       </div>
-       <div class="status-item">
-         <span class="status-label">Air Quality</span>
-         <span class="status-value good" id="airQuality">Good</span>
-       </div>
-       <div class="status-item">
-         <span class="status-label">Mission Status</span>
-         <span class="status-value active" id="missionStatus">Monitoring</span>
-       </div>
-     </div>
-   </div>
- </div>
- 
- <div class="banner-content">
-   <div class="banner-text">
-     <div class="title-container">
-       <h1 class="banner-title">
-         <span class="title-word" data-word="Environmental">Environmental</span>
-         <span class="title-word" data-word="Robotics">Robotics</span>
-       </h1>
-       <div class="title-underline"></div>
-     </div>
-     
-     <p class="banner-subtitle">
-       <span class="subtitle-line">Innovating for a sustainable future</span>
-       <span class="subtitle-line">through AI-driven environmental solutions</span>
-     </p>
-     
-     <div class="banner-stats">
-       <div class="stat-item">
-         <div class="stat-number">8</div>
-         <div class="stat-label">Active Projects</div>
-       </div>
-       <div class="stat-item">
-         <div class="stat-number">95%</div>
-         <div class="stat-label">AI Accuracy</div>
-       </div>
-       <div class="stat-item">
-         <div class="stat-number">50%</div>
-         <div class="stat-label">Waste Reduction</div>
-       </div>
-     </div>
-     
-     <div class="banner-keywords">
-       <div class="keyword-chip">
-         <span class="chip-icon">
-           <svg viewBox="0 0 24 24" fill="currentColor">
-             <path d="M17,8C8,10 5.9,16.17 3.82,21.34L5.71,22L6.66,19.7C7.14,19.87 7.64,20 8,20C19,20 22,3 22,3C21,5 14,5.25 9,6.25C4,7.25 2,11.5 2,13.5C2,15.5 3.75,17.25 3.75,17.25C7,8 17,8 17,8Z"/>
-           </svg>
-         </span>
-         <span>Sustainability</span>
-       </div>
-       <div class="keyword-chip">
-         <span class="chip-icon">
-           <svg viewBox="0 0 24 24" fill="currentColor">
-             <path d="M12,2A2,2 0 0,1 14,4C14,4.74 13.6,5.39 13,5.73V7H14A7,7 0 0,1 21,14H22A1,1 0 0,1 23,15V18A1,1 0 0,1 22,19H21V20A2,2 0 0,1 19,22H5A2,2 0 0,1 3,20V19H2A1,1 0 0,1 1,18V15A1,1 0 0,1 2,14H3A7,7 0 0,1 10,7H11V5.73C10.4,5.39 10,4.74 10,4A2,2 0 0,1 12,2M7.5,13A2.5,2.5 0 0,0 5,15.5A2.5,2.5 0 0,0 7.5,18A2.5,2.5 0 0,0 10,15.5A2.5,2.5 0 0,0 7.5,13M16.5,13A2.5,2.5 0 0,0 14,15.5A2.5,2.5 0 0,0 16.5,18A2.5,2.5 0 0,0 19,15.5A2.5,2.5 0 0,0 16.5,13Z"/>
-           </svg>
-         </span>
-         <span>Automation</span>
-       </div>
-       <div class="keyword-chip">
-         <span class="chip-icon">
-           <svg viewBox="0 0 24 24" fill="currentColor">
-             <path d="M12,2A7,7 0 0,0 5,9C5,11.38 6.19,13.47 8,14.74V17A1,1 0 0,0 9,18H15A1,1 0 0,0 16,17V14.74C17.81,13.47 19,11.38 19,9A7,7 0 0,0 12,2M9,21A1,1 0 0,0 10,22H14A1,1 0 0,0 15,21V20H9V21Z"/>
-           </svg>
-         </span>
-         <span>Innovation</span>
-       </div>
-       <div class="keyword-chip">
-         <span class="chip-icon">
-           <svg viewBox="0 0 24 24" fill="currentColor">
-             <path d="M17.9,17.39C17.64,16.59 16.89,16 16,16H15V13A1,1 0 0,0 14,12H8V10H10A1,1 0 0,0 11,9V7H13A2,2 0 0,0 15,5V4.59C17.93,5.77 20,8.64 20,12C20,14.08 19.2,15.97 17.9,17.39M11,19.93C7.05,19.44 4,16.08 4,12C4,11.38 4.08,10.78 4.21,10.21L9,15V16A2,2 0 0,0 11,18M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z"/>
-           </svg>
-         </span>
-         <span>Environment</span>
-       </div>
-     </div>
-   </div>
-   
-   <div class="banner-visual">
-     <div class="holographic-display">
-       <div class="holo-ring ring-1">
-         <div class="ring-segment"></div>
-         <div class="ring-segment"></div>
-         <div class="ring-segment"></div>
-         <div class="ring-segment"></div>
-       </div>
-       <div class="holo-ring ring-2">
-         <div class="ring-segment"></div>
-         <div class="ring-segment"></div>
-         <div class="ring-segment"></div>
-       </div>
-       <div class="holo-ring ring-3">
-         <div class="ring-segment"></div>
-         <div class="ring-segment"></div>
-       </div>
-       <div class="central-core">
-         <div class="core-pulse"></div>
-         <div class="core-icon">
-           <svg viewBox="0 0 24 24" fill="currentColor">
-             <path d="M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z"/>
-           </svg>
-         </div>
-       </div>
-       <div class="data-streams">
-         <div class="stream stream-1"></div>
-         <div class="stream stream-2"></div>
-         <div class="stream stream-3"></div>
-       </div>
-     </div>
-   </div>
- </div>
  
  <div class="banner-bottom-wave">
    <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
@@ -2778,48 +2851,162 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // 드론 배열
   const drones = [];
-  const droneCount = 3;
+  const droneCount = 5; // 더 많은 드론으로 장관 연출
   
-  // 드론 생성 함수
+  // 🚁 개간지 현실적인 드론 생성 함수
   function createDrone() {
     const droneGroup = new THREE.Group();
     
-    // 드론 몸체
-    const bodyGeometry = new THREE.BoxGeometry(0.4, 0.1, 0.4);
-    const bodyMaterial = new THREE.MeshPhongMaterial({ color: 0x333333 });
+    // 메인 바디 (더 현실적인 형태)
+    const bodyGeometry = new THREE.BoxGeometry(1.2, 0.3, 0.8);
+    const bodyMaterial = new THREE.MeshPhongMaterial({ 
+      color: 0x2c2c2c,
+      shininess: 100,
+      specular: 0x444444
+    });
     const body = new THREE.Mesh(bodyGeometry, bodyMaterial);
+    body.castShadow = true;
+    body.receiveShadow = true;
     droneGroup.add(body);
     
-    // 프로펠러 암
-    const armGeometry = new THREE.BoxGeometry(0.8, 0.02, 0.02);
-    const armMaterial = new THREE.MeshPhongMaterial({ color: 0x555555 });
+    // 상단 커버 (더 매끈한 디자인)
+    const topGeometry = new THREE.BoxGeometry(1.0, 0.15, 0.6);
+    const topMaterial = new THREE.MeshPhongMaterial({ 
+      color: 0x1a1a1a,
+      shininess: 150 
+    });
+    const topCover = new THREE.Mesh(topGeometry, topMaterial);
+    topCover.position.y = 0.225;
+    topCover.castShadow = true;
+    droneGroup.add(topCover);
+    
+    // LED 표시등 (상태 표시)
+    const ledGeometry = new THREE.SphereGeometry(0.03, 8, 8);
+    const ledMaterial = new THREE.MeshBasicMaterial({ 
+      color: 0x00ff00, 
+      emissive: 0x00ff00,
+      emissiveIntensity: 0.5
+    });
+    const led1 = new THREE.Mesh(ledGeometry, ledMaterial);
+    led1.position.set(-0.4, 0.15, 0.2);
+    const led2 = new THREE.Mesh(ledGeometry, ledMaterial);
+    led2.position.set(0.4, 0.15, 0.2);
+    droneGroup.add(led1);
+    droneGroup.add(led2);
+    droneGroup.leds = [led1, led2];
+    
+    // 카메라/센서 볼 (환경 모니터링용)
+    const cameraGeometry = new THREE.SphereGeometry(0.08, 12, 12);
+    const cameraMaterial = new THREE.MeshPhongMaterial({ 
+      color: 0x000066,
+      shininess: 200,
+      transparent: true,
+      opacity: 0.8
+    });
+    const camera = new THREE.Mesh(cameraGeometry, cameraMaterial);
+    camera.position.set(0, -0.2, 0.3);
+    camera.castShadow = true;
+    droneGroup.add(camera);
+    
+    // 프로펠러 암 (더 강인한 디자인)
+    const armGeometry = new THREE.CylinderGeometry(0.03, 0.04, 1.4, 8);
+    const armMaterial = new THREE.MeshPhongMaterial({ 
+      color: 0x444444,
+      metalness: 0.3 
+    });
     
     const arm1 = new THREE.Mesh(armGeometry, armMaterial);
-    arm1.rotation.z = Math.PI / 4;
+    arm1.rotation.z = Math.PI / 2;
+    arm1.rotation.y = Math.PI / 4;
+    arm1.castShadow = true;
     droneGroup.add(arm1);
     
     const arm2 = new THREE.Mesh(armGeometry, armMaterial);
-    arm2.rotation.z = -Math.PI / 4;
+    arm2.rotation.z = Math.PI / 2;
+    arm2.rotation.y = -Math.PI / 4;
+    arm2.castShadow = true;
     droneGroup.add(arm2);
     
-    // 프로펠러
-    const propGeometry = new THREE.CylinderGeometry(0.15, 0.15, 0.01, 16);
-    const propMaterial = new THREE.MeshPhongMaterial({ color: 0x00ff88, transparent: true, opacity: 0.7 });
+    // 모터 (각 프로펠러 위치에)
+    const motorGeometry = new THREE.CylinderGeometry(0.08, 0.1, 0.15, 12);
+    const motorMaterial = new THREE.MeshPhongMaterial({ 
+      color: 0x1a1a1a,
+      shininess: 100 
+    });
     
-    const positions = [
-      { x: 0.3, z: 0.3 },
-      { x: -0.3, z: 0.3 },
-      { x: 0.3, z: -0.3 },
-      { x: -0.3, z: -0.3 }
+    const propPositions = [
+      { x: 0.7, z: 0.7 },
+      { x: -0.7, z: 0.7 },
+      { x: 0.7, z: -0.7 },
+      { x: -0.7, z: -0.7 }
     ];
     
+    // 프로펠러와 모터
     droneGroup.propellers = [];
-    positions.forEach(pos => {
-      const prop = new THREE.Mesh(propGeometry, propMaterial);
-      prop.position.set(pos.x, 0.1, pos.z);
-      droneGroup.propellers.push(prop);
-      droneGroup.add(prop);
+    droneGroup.motors = [];
+    
+    propPositions.forEach((pos, index) => {
+      // 모터
+      const motor = new THREE.Mesh(motorGeometry, motorMaterial);
+      motor.position.set(pos.x, 0.2, pos.z);
+      motor.castShadow = true;
+      droneGroup.motors.push(motor);
+      droneGroup.add(motor);
+      
+      // 프로펠러 (더 현실적인 형태)
+      const propGroup = new THREE.Group();
+      
+      // 프로펠러 블레이드 (2개씩)
+      const bladeGeometry = new THREE.BoxGeometry(0.6, 0.01, 0.08);
+      const bladeMaterial = new THREE.MeshPhongMaterial({ 
+        color: 0x00ff88, 
+        transparent: true, 
+        opacity: 0.8,
+        shininess: 50
+      });
+      
+      const blade1 = new THREE.Mesh(bladeGeometry, bladeMaterial);
+      blade1.position.x = 0.15;
+      blade1.castShadow = true;
+      propGroup.add(blade1);
+      
+      const blade2 = new THREE.Mesh(bladeGeometry, bladeMaterial);
+      blade2.position.x = -0.15;
+      blade2.castShadow = true;
+      propGroup.add(blade2);
+      
+      // 프로펠러 허브
+      const hubGeometry = new THREE.CylinderGeometry(0.04, 0.04, 0.02, 8);
+      const hubMaterial = new THREE.MeshPhongMaterial({ color: 0x333333 });
+      const hub = new THREE.Mesh(hubGeometry, hubMaterial);
+      hub.castShadow = true;
+      propGroup.add(hub);
+      
+      propGroup.position.set(pos.x, 0.3, pos.z);
+      droneGroup.propellers.push(propGroup);
+      droneGroup.add(propGroup);
     });
+    
+    // 랜딩 기어
+    const gearGeometry = new THREE.CylinderGeometry(0.02, 0.03, 0.2, 6);
+    const gearMaterial = new THREE.MeshPhongMaterial({ color: 0x666666 });
+    
+    const gear1 = new THREE.Mesh(gearGeometry, gearMaterial);
+    gear1.position.set(-0.3, -0.25, 0);
+    gear1.castShadow = true;
+    droneGroup.add(gear1);
+    
+    const gear2 = new THREE.Mesh(gearGeometry, gearMaterial);
+    gear2.position.set(0.3, -0.25, 0);
+    gear2.castShadow = true;
+    droneGroup.add(gear2);
+    
+    // 안테나 (통신용)
+    const antennaGeometry = new THREE.CylinderGeometry(0.005, 0.005, 0.3, 4);
+    const antennaMaterial = new THREE.MeshPhongMaterial({ color: 0x888888 });
+    const antenna = new THREE.Mesh(antennaGeometry, antennaMaterial);
+    antenna.position.set(0, 0.45, -0.2);
+    droneGroup.add(antenna);
     
     return droneGroup;
   }
@@ -2849,8 +3036,106 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   // 카메라 위치 설정
-  camera.position.set(0, 5, 8);
-  camera.lookAt(0, 1, 0);
+  camera.position.set(0, 8, 12);
+  camera.lookAt(0, 2, 0);
+
+  // ☁️ 구름과 하늘 환경 생성
+  const clouds = [];
+  const cloudCount = 12;
+  
+  function createCloud() {
+    const cloudGroup = new THREE.Group();
+    
+    // 여러 개의 구체로 구름 구성
+    const sphereCount = 8 + Math.floor(Math.random() * 6);
+    
+    for (let i = 0; i < sphereCount; i++) {
+      const radius = 0.8 + Math.random() * 1.2;
+      const cloudGeometry = new THREE.SphereGeometry(radius, 8, 6);
+      const cloudMaterial = new THREE.MeshLambertMaterial({ 
+        color: 0xffffff, 
+        transparent: true,
+        opacity: 0.8 + Math.random() * 0.2
+      });
+      
+      const cloudSphere = new THREE.Mesh(cloudGeometry, cloudMaterial);
+      cloudSphere.position.set(
+        (Math.random() - 0.5) * 4,
+        (Math.random() - 0.5) * 1.5,
+        (Math.random() - 0.5) * 4
+      );
+      cloudSphere.castShadow = false;
+      cloudSphere.receiveShadow = false;
+      
+      cloudGroup.add(cloudSphere);
+    }
+    
+    return cloudGroup;
+  }
+  
+  // 구름들 배치
+  for (let i = 0; i < cloudCount; i++) {
+    const cloud = createCloud();
+    
+    // 하늘 전체에 구름 배치
+    cloud.position.set(
+      (Math.random() - 0.5) * 100,
+      8 + Math.random() * 15,
+      (Math.random() - 0.5) * 100
+    );
+    
+    // 구름 크기 랜덤화
+    const scale = 0.5 + Math.random() * 1.5;
+    cloud.scale.set(scale, scale * 0.6, scale);
+    
+    // 구름 회전
+    cloud.rotation.y = Math.random() * Math.PI * 2;
+    
+    // 구름 이동 속도 설정
+    cloud.userData = {
+      driftSpeed: 0.01 + Math.random() * 0.02,
+      rotationSpeed: 0.001 + Math.random() * 0.002
+    };
+    
+    clouds.push(cloud);
+    scene.add(cloud);
+  }
+
+  // ☀️ 햇빛 효과 (더 강한 조명)
+  const sunLight = new THREE.DirectionalLight(0xffeb3b, 1.2);
+  sunLight.position.set(20, 25, 10);
+  sunLight.castShadow = true;
+  sunLight.shadow.mapSize.width = 2048;
+  sunLight.shadow.mapSize.height = 2048;
+  sunLight.shadow.camera.near = 0.1;
+  sunLight.shadow.camera.far = 100;
+  sunLight.shadow.camera.left = -50;
+  sunLight.shadow.camera.right = 50;
+  sunLight.shadow.camera.top = 50;
+  sunLight.shadow.camera.bottom = -50;
+  scene.add(sunLight);
+  
+  // 태양 오브젝트 (시각적 효과)
+  const sunGeometry = new THREE.SphereGeometry(2, 16, 16);
+  const sunMaterial = new THREE.MeshBasicMaterial({ 
+    color: 0xffeb3b,
+    emissive: 0xffeb3b,
+    emissiveIntensity: 0.8
+  });
+  const sun = new THREE.Mesh(sunGeometry, sunMaterial);
+  sun.position.copy(sunLight.position);
+  scene.add(sun);
+  
+  // 하늘 박스 (더 넓은 하늘)
+  const skyGeometry = new THREE.SphereGeometry(200, 32, 32);
+  const skyMaterial = new THREE.MeshBasicMaterial({ 
+    color: 0x87ceeb,
+    side: THREE.BackSide,
+    transparent: true,
+    opacity: 0.3
+  });
+  const skyBox = new THREE.Mesh(skyGeometry, skyMaterial);
+  scene.add(skyBox);
 
   // 마우스 상호작용을 위한 Raycaster
   const raycaster = new THREE.Raycaster();
@@ -2916,58 +3201,112 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }
 
+  // 애니메이션 시간 변수
+  let time = 0;
+
   // 애니메이션 루프
   function animate() {
     requestAnimationFrame(animate);
     
-    // 드론 애니메이션
+    // 🚁 개선된 드론 애니메이션
     drones.forEach((drone, index) => {
       const userData = drone.userData;
       
-      // 원형 비행 패턴
+      // 원형 비행 패턴 (더 부드럽고 현실적)
       userData.angle += userData.speed;
-      drone.position.x = Math.cos(userData.angle) * userData.patrolRadius;
-      drone.position.z = Math.sin(userData.angle) * userData.patrolRadius;
+      const baseRadius = userData.patrolRadius;
+      const heightVariation = Math.sin(userData.angle * 2) * 0.5;
       
-      // 수직 움직임 (둥둥 떠다니는 효과)
-      drone.position.y = userData.baseY + Math.sin(userData.angle * 3 + userData.phase) * 0.3;
+      drone.position.x = Math.cos(userData.angle) * baseRadius;
+      drone.position.z = Math.sin(userData.angle) * baseRadius;
+      drone.position.y = userData.baseY + heightVariation + Math.sin(time * 2 + userData.phase) * 0.2;
       
-      // 프로펠러 회전
+      // 프로펠러 회전 (더 빠르고 현실적)
       if (drone.propellers) {
-        drone.propellers.forEach(prop => {
-          prop.rotation.y += 0.5;
+        drone.propellers.forEach((prop, propIndex) => {
+          // 프론트/리어는 시계방향, 사이드는 반시계방향 (실제 드론처럼)
+          const direction = (propIndex % 2 === 0) ? 1 : -1;
+          prop.rotation.y += direction * 0.8;
         });
       }
       
-      // 드론 기울임 (비행 방향에 따라)
-      const nextX = Math.cos(userData.angle + 0.1) * userData.patrolRadius;
-      const nextZ = Math.sin(userData.angle + 0.1) * userData.patrolRadius;
+      // LED 깜빡임 효과
+      if (drone.leds) {
+        const blinkSpeed = userData.status === 'emergency' ? 0.3 : 0.1;
+        const blinkIntensity = Math.sin(time * (10 + blinkSpeed * 50)) * 0.5 + 0.5;
+        
+        drone.leds.forEach(led => {
+          led.material.emissiveIntensity = 0.3 + blinkIntensity * 0.7;
+          
+          // 상태에 따른 LED 색상
+          switch (userData.status) {
+            case 'monitoring':
+              led.material.color.setHex(0x00ff00);
+              led.material.emissive.setHex(0x00ff00);
+              break;
+            case 'cleaning':
+              led.material.color.setHex(0xff6600);
+              led.material.emissive.setHex(0xff6600);
+              break;
+            case 'returning':
+              led.material.color.setHex(0x0066ff);
+              led.material.emissive.setHex(0x0066ff);
+              break;
+            case 'emergency':
+              led.material.color.setHex(0xff0000);
+              led.material.emissive.setHex(0xff0000);
+              break;
+          }
+        });
+      }
+      
+      // 드론 기울임 (비행 방향에 따라 더 현실적으로)
+      const nextX = Math.cos(userData.angle + 0.1) * baseRadius;
+      const nextZ = Math.sin(userData.angle + 0.1) * baseRadius;
       const dirX = nextX - drone.position.x;
       const dirZ = nextZ - drone.position.z;
       
-      drone.rotation.z = -dirX * 0.3;
-      drone.rotation.x = dirZ * 0.3;
+      // 속도에 따른 기울임
+      const tiltIntensity = userData.speed * 5;
+      drone.rotation.z = -dirX * tiltIntensity;
+      drone.rotation.x = dirZ * tiltIntensity;
       
-      // 상태에 따른 색상 변경
+      // 상태에 따른 바디 색상 변경
       const bodyMaterial = drone.children[0].material;
       switch (userData.status) {
         case 'monitoring':
-          bodyMaterial.color.setHex(0x333333);
+          bodyMaterial.color.setHex(0x2c2c2c);
           break;
         case 'cleaning':
-          bodyMaterial.color.setHex(0xff6b6b);
+          bodyMaterial.color.setHex(0x4a2c2c);
           break;
         case 'returning':
-          bodyMaterial.color.setHex(0x74b9ff);
+          bodyMaterial.color.setHex(0x2c3a4a);
+          break;
+        case 'emergency':
+          bodyMaterial.color.setHex(0x4a2c2c);
           break;
       }
     });
     
+    // ☁️ 구름 움직임 애니메이션
+    clouds.forEach(cloud => {
+      cloud.position.x += cloud.userData.driftSpeed;
+      cloud.rotation.y += cloud.userData.rotationSpeed;
+      
+      // 구름이 화면 밖으로 나가면 반대편에서 다시 등장
+      if (cloud.position.x > 50) {
+        cloud.position.x = -50;
+      }
+    });
+    
     // 카메라 회전 (천천히)
-    const time = Date.now() * 0.0005;
-    camera.position.x = Math.cos(time) * 8;
-    camera.position.z = Math.sin(time) * 8;
-    camera.lookAt(0, 1, 0);
+    camera.position.x = Math.cos(time) * 12;
+    camera.position.z = Math.sin(time) * 12;
+    camera.lookAt(0, 2, 0);
+    
+    // 시간 업데이트
+    time += 0.01;
     
     renderer.render(scene, camera);
   }
@@ -2975,16 +3314,18 @@ document.addEventListener('DOMContentLoaded', function() {
   // 컨트롤 버튼 이벤트
   const deployBtn = document.getElementById('deployBtn');
   const recallBtn = document.getElementById('recallBtn');
+  const emergencyBtn = document.getElementById('emergencyBtn');
   
   if (deployBtn) {
     deployBtn.addEventListener('click', function() {
       drones.forEach(drone => {
-        if (drone.userData.status === 'returning') {
+        if (drone.userData.status === 'returning' || drone.userData.status === 'emergency') {
           drone.userData.status = 'monitoring';
         }
       });
       this.classList.add('active');
       recallBtn?.classList.remove('active');
+      emergencyBtn?.classList.remove('active');
       updateDroneStatus();
     });
   }
@@ -2996,6 +3337,21 @@ document.addEventListener('DOMContentLoaded', function() {
       });
       this.classList.add('active');
       deployBtn?.classList.remove('active');
+      emergencyBtn?.classList.remove('active');
+      updateDroneStatus();
+    });
+  }
+  
+  if (emergencyBtn) {
+    emergencyBtn.addEventListener('click', function() {
+      drones.forEach(drone => {
+        drone.userData.status = 'emergency';
+        // 응급 모드에서는 속도 증가
+        drone.userData.speed = Math.max(drone.userData.speed * 2, 0.1);
+      });
+      this.classList.add('active');
+      deployBtn?.classList.remove('active');
+      recallBtn?.classList.remove('active');
       updateDroneStatus();
     });
   }
