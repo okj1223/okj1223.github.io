@@ -3934,10 +3934,15 @@ figure figcaption {
 
 /* 네비게이션 컨테이너 내부 정렬 */
 .navbar-custom .container,
-.navbar-custom .container-fluid {
+.navbar-custom .container-fluid,
+.navbar-custom .nav-container {
   height: 100% !important;
   display: flex !important;
   align-items: center !important;
+  justify-content: space-between !important;
+  max-width: 1200px !important;
+  margin: 0 auto !important;
+  padding: 0 2rem !important;
 }
 
 /* 브랜드 로고 컨테이너 */
