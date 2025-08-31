@@ -10,6 +10,10 @@
   --forest-green: #5d737e;     /* 파스텔 다크그레이 */
   --light-green: #a8d8a8;      /* 파스텔 민트그린 */
   --water-blue: #87ceeb;       /* 파스텔 스카이블루 */
+  --ocean-blue: #00bcd4;       /* 깨끗한 바다색 */
+  --crystal-blue: #4dd0e1;     /* 맑은 크리스탈 블루 */
+  --shallow-water: #80deea;    /* 얕은 바다색 */
+  --deep-ocean: #0097a7;       /* 깊은 바다색 */
   --earth-brown: #c4a484;      /* 파스텔 베이지 */
   --leaf-shadow: 0 4px 15px rgba(127, 179, 211, 0.15);
   --smooth-transition: all 0.3s ease;
@@ -3291,26 +3295,79 @@ figure figcaption {
 /* 🌿 에코 테마 푸터 스타일 */
 
 .eco-footer {
-  background: linear-gradient(135deg, #f8fcf8 0%, #f0f8f0 50%, #e8f5e8 100%);
-  margin-top: 2rem; /* 상단 여백 감소 */
+  background: linear-gradient(180deg, 
+    #ffffff 0%,
+    #e0f7fa 10%,      /* 맑은 하늘빛 바다 */
+    #b2ebf2 30%,      /* 연한 청록빛 */
+    #80deea 50%,      /* 맑은 터코이즈 */
+    #4dd0e1 70%,      /* 맑은 청록 */
+    #26c6da 85%,      /* 깨끗한 바다 */
+    #00acc1 100%      /* 깊은 청록 */
+  );
+  margin-top: 2rem;
   position: relative;
   overflow: hidden;
 }
 
-/* 물결 모양 분리선 */
+/* 깨끗한 바다 파도 애니메이션 */
 .footer-wave {
   position: relative;
   top: -1px;
   width: 100%;
-  height: 60px;
-  margin-bottom: 2rem;
+  height: 120px;
+  margin-bottom: 0;
+  overflow: hidden;
+  background: linear-gradient(to bottom, 
+    transparent 0%, 
+    rgba(0, 188, 212, 0.03) 50%,
+    rgba(0, 188, 212, 0.06) 100%
+  );
 }
 
 .footer-wave svg {
-  position: relative;
+  position: absolute;
   display: block;
-  width: calc(100% + 1.3px);
-  height: 60px;
+  width: 200%;
+  height: 100%;
+  animation: wave-flow 15s cubic-bezier(0.36, 0.45, 0.63, 0.53) infinite;
+  transform: translate3d(0, 0, 0);
+}
+
+/* 여러 겹의 파도 효과 */
+.footer-wave::before,
+.footer-wave::after {
+  content: '';
+  position: absolute;
+  width: 200%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  opacity: 0.4;
+}
+
+.footer-wave::before {
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" fill="%2300bcd4" opacity="0.3"/></svg>') repeat-x;
+  animation: wave-flow 20s linear infinite;
+  animation-direction: reverse;
+}
+
+.footer-wave::after {
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0,0V7.23C0,65.52,268.63,112.77,600.28,112.77S1200,65.52,1200,7.23V0Z" fill="%234dd0e1" opacity="0.2"/></svg>') repeat-x;
+  animation: wave-flow 25s linear infinite;
+  animation-delay: -5s;
+}
+
+/* 파도 흐름 애니메이션 */
+@keyframes wave-flow {
+  0% {
+    transform: translateX(0) translateY(0);
+  }
+  50% {
+    transform: translateX(-25%) translateY(-10px);
+  }
+  100% {
+    transform: translateX(-50%) translateY(0);
+  }
 }
 
 /* 푸터 콘텐츠 */
