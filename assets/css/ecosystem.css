@@ -701,6 +701,13 @@ body::before {
   text-align: center !important;
 }
 
+.home-projects-grid {
+  display: block !important;
+  width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
 /* 제목 스타일 - 에코 테마와 조화 */
 .projects-section-title {
   text-align: center !important;
@@ -3381,7 +3388,8 @@ figure figcaption {
   transition: all 0.3s ease;
   font-size: 1.2rem;
   user-select: none;
-  animation: debris-float 8s linear infinite;
+  animation: debris-float 20s ease-in-out infinite;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
 }
 
 .ocean-debris:hover {
@@ -3414,20 +3422,36 @@ figure figcaption {
   text-shadow: 0 0 5px rgba(51, 51, 51, 0.3);
 }
 
-/* 쓰레기 떠다니는 애니메이션 */
+/* 쓰레기 떠다니는 애니메이션 - 파도와 같은 방향으로 두둥실 */
 @keyframes debris-float {
   0% {
-    transform: translateX(-100px) translateY(0) rotate(0deg);
+    transform: translateX(calc(100vw + 100px)) translateY(0) rotate(0deg);
     opacity: 0;
   }
-  10% {
+  5% {
+    opacity: 0.6;
+  }
+  20% {
+    transform: translateX(80vw) translateY(-5px) rotate(45deg);
+    opacity: 0.9;
+  }
+  40% {
+    transform: translateX(60vw) translateY(8px) rotate(120deg);
     opacity: 1;
   }
-  90% {
+  60% {
+    transform: translateX(40vw) translateY(-3px) rotate(200deg);
     opacity: 1;
+  }
+  80% {
+    transform: translateX(20vw) translateY(10px) rotate(280deg);
+    opacity: 0.8;
+  }
+  95% {
+    opacity: 0.3;
   }
   100% {
-    transform: translateX(calc(100vw + 100px)) translateY(-20px) rotate(360deg);
+    transform: translateX(-150px) translateY(-8px) rotate(360deg);
     opacity: 0;
   }
 }

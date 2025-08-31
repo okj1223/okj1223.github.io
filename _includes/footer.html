@@ -241,13 +241,18 @@ document.addEventListener('DOMContentLoaded', function() {
     debris.innerHTML = debrisType.emoji;
     debris.title = `클릭해서 ${debrisType.name} 치우기!`;
     
-    // 랜덤 위치와 애니메이션 지연
-    const randomY = Math.random() * 80 + 10; // 10-90% 위치
-    const randomDelay = Math.random() * 3; // 0-3초 지연
+    // 랜덤 위치와 애니메이션 지연 (파도와 함께 두둥실)
+    const randomY = Math.random() * 60 + 20; // 20-80% 위치 (파도 영역 내)
+    const randomDelay = Math.random() * 5; // 0-5초 지연
+    const floatIntensity = Math.random() * 0.5 + 0.8; // 0.8-1.3 속도 변화
     
     debris.style.top = randomY + '%';
-    debris.style.left = '-50px';
+    debris.style.right = '-100px'; // 오른쪽에서 시작
     debris.style.animationDelay = randomDelay + 's';
+    debris.style.animationDuration = (18 + Math.random() * 8) + 's'; // 18-26초로 랜덤 속도
+    
+    // 두둥실 효과를 위한 추가 애니메이션
+    debris.style.setProperty('--float-offset', Math.random() * 20 - 10 + 'px');
     
     debrisCount++;
     
@@ -259,12 +264,13 @@ document.addEventListener('DOMContentLoaded', function() {
     
     oceanContainer.appendChild(debris);
     
-    // 8초 후 자동 제거 (애니메이션 완료)
+    // 애니메이션 완료 후 자동 제거
+    const animationDuration = parseInt(debris.style.animationDuration) * 1000;
     setTimeout(() => {
       if (debris.parentNode && !debris.classList.contains('removing')) {
         debris.remove();
       }
-    }, 8000 + randomDelay * 1000);
+    }, animationDuration + randomDelay * 1000);
   }
   
   // 쓰레기 청소 함수
