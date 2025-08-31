@@ -2901,160 +2901,39 @@ document.addEventListener('DOMContentLoaded', function() {
   const drones = [];
   const droneCount = 5; // 더 많은 드론으로 장관 연출
   
-  // 🚁 개간지 현실적인 드론 생성 함수
+  // 🚁 간단하고 확실히 보이는 드론 생성 함수
   function createDrone() {
     const droneGroup = new THREE.Group();
     
-    // 메인 바디 (더 현실적인 형태)
-    const bodyGeometry = new THREE.BoxGeometry(1.2, 0.3, 0.8);
-    const bodyMaterial = new THREE.MeshPhongMaterial({ 
-      color: 0x2c2c2c,
-      shininess: 100,
-      specular: 0x444444
+    // 큰 메인 바디 (확실히 보이게)
+    const bodyGeometry = new THREE.BoxGeometry(3, 0.6, 2); // 크기 대폭 증가
+    const bodyMaterial = new THREE.MeshBasicMaterial({ 
+      color: 0xff0000  // 빨간색으로 확실히 보이게
     });
     const body = new THREE.Mesh(bodyGeometry, bodyMaterial);
-    body.castShadow = true;
-    body.receiveShadow = true;
     droneGroup.add(body);
     
-    // 상단 커버 (더 매끈한 디자인)
-    const topGeometry = new THREE.BoxGeometry(1.0, 0.15, 0.6);
-    const topMaterial = new THREE.MeshPhongMaterial({ 
-      color: 0x1a1a1a,
-      shininess: 150 
-    });
-    const topCover = new THREE.Mesh(topGeometry, topMaterial);
-    topCover.position.y = 0.225;
-    topCover.castShadow = true;
-    droneGroup.add(topCover);
-    
-    // LED 표시등 (상태 표시)
-    const ledGeometry = new THREE.SphereGeometry(0.03, 8, 8);
-    const ledMaterial = new THREE.MeshBasicMaterial({ 
-      color: 0x00ff00, 
-      emissive: 0x00ff00,
-      emissiveIntensity: 0.5
-    });
-    const led1 = new THREE.Mesh(ledGeometry, ledMaterial);
-    led1.position.set(-0.4, 0.15, 0.2);
-    const led2 = new THREE.Mesh(ledGeometry, ledMaterial);
-    led2.position.set(0.4, 0.15, 0.2);
-    droneGroup.add(led1);
-    droneGroup.add(led2);
-    droneGroup.leds = [led1, led2];
-    
-    // 카메라/센서 볼 (환경 모니터링용)
-    const cameraGeometry = new THREE.SphereGeometry(0.08, 12, 12);
-    const cameraMaterial = new THREE.MeshPhongMaterial({ 
-      color: 0x000066,
-      shininess: 200,
-      transparent: true,
-      opacity: 0.8
-    });
-    const camera = new THREE.Mesh(cameraGeometry, cameraMaterial);
-    camera.position.set(0, -0.2, 0.3);
-    camera.castShadow = true;
-    droneGroup.add(camera);
-    
-    // 프로펠러 암 (더 강인한 디자인)
-    const armGeometry = new THREE.CylinderGeometry(0.03, 0.04, 1.4, 8);
-    const armMaterial = new THREE.MeshPhongMaterial({ 
-      color: 0x444444,
-      metalness: 0.3 
-    });
-    
-    const arm1 = new THREE.Mesh(armGeometry, armMaterial);
-    arm1.rotation.z = Math.PI / 2;
-    arm1.rotation.y = Math.PI / 4;
-    arm1.castShadow = true;
-    droneGroup.add(arm1);
-    
-    const arm2 = new THREE.Mesh(armGeometry, armMaterial);
-    arm2.rotation.z = Math.PI / 2;
-    arm2.rotation.y = -Math.PI / 4;
-    arm2.castShadow = true;
-    droneGroup.add(arm2);
-    
-    // 모터 (각 프로펠러 위치에)
-    const motorGeometry = new THREE.CylinderGeometry(0.08, 0.1, 0.15, 12);
-    const motorMaterial = new THREE.MeshPhongMaterial({ 
-      color: 0x1a1a1a,
-      shininess: 100 
-    });
-    
+    // 간단한 프로펠러 4개 (확실히 보이게)
     const propPositions = [
-      { x: 0.7, z: 0.7 },
-      { x: -0.7, z: 0.7 },
-      { x: 0.7, z: -0.7 },
-      { x: -0.7, z: -0.7 }
+      { x: 2, z: 2 },
+      { x: -2, z: 2 },
+      { x: 2, z: -2 },
+      { x: -2, z: -2 }
     ];
     
-    // 프로펠러와 모터
     droneGroup.propellers = [];
-    droneGroup.motors = [];
     
     propPositions.forEach((pos, index) => {
-      // 모터
-      const motor = new THREE.Mesh(motorGeometry, motorMaterial);
-      motor.position.set(pos.x, 0.2, pos.z);
-      motor.castShadow = true;
-      droneGroup.motors.push(motor);
-      droneGroup.add(motor);
-      
-      // 프로펠러 (더 현실적인 형태)
-      const propGroup = new THREE.Group();
-      
-      // 프로펠러 블레이드 (2개씩)
-      const bladeGeometry = new THREE.BoxGeometry(0.6, 0.01, 0.08);
-      const bladeMaterial = new THREE.MeshPhongMaterial({ 
-        color: 0x00ff88, 
-        transparent: true, 
-        opacity: 0.8,
-        shininess: 50
+      // 큰 프로펠러
+      const propGeometry = new THREE.BoxGeometry(1.5, 0.05, 0.3);
+      const propMaterial = new THREE.MeshBasicMaterial({ 
+        color: 0x00ff00  // 초록색 프로펠러
       });
-      
-      const blade1 = new THREE.Mesh(bladeGeometry, bladeMaterial);
-      blade1.position.x = 0.15;
-      blade1.castShadow = true;
-      propGroup.add(blade1);
-      
-      const blade2 = new THREE.Mesh(bladeGeometry, bladeMaterial);
-      blade2.position.x = -0.15;
-      blade2.castShadow = true;
-      propGroup.add(blade2);
-      
-      // 프로펠러 허브
-      const hubGeometry = new THREE.CylinderGeometry(0.04, 0.04, 0.02, 8);
-      const hubMaterial = new THREE.MeshPhongMaterial({ color: 0x333333 });
-      const hub = new THREE.Mesh(hubGeometry, hubMaterial);
-      hub.castShadow = true;
-      propGroup.add(hub);
-      
-      propGroup.position.set(pos.x, 0.3, pos.z);
-      droneGroup.propellers.push(propGroup);
-      droneGroup.add(propGroup);
+      const prop = new THREE.Mesh(propGeometry, propMaterial);
+      prop.position.set(pos.x, 0.5, pos.z);
+      droneGroup.propellers.push(prop);
+      droneGroup.add(prop);
     });
-    
-    // 랜딩 기어
-    const gearGeometry = new THREE.CylinderGeometry(0.02, 0.03, 0.2, 6);
-    const gearMaterial = new THREE.MeshPhongMaterial({ color: 0x666666 });
-    
-    const gear1 = new THREE.Mesh(gearGeometry, gearMaterial);
-    gear1.position.set(-0.3, -0.25, 0);
-    gear1.castShadow = true;
-    droneGroup.add(gear1);
-    
-    const gear2 = new THREE.Mesh(gearGeometry, gearMaterial);
-    gear2.position.set(0.3, -0.25, 0);
-    gear2.castShadow = true;
-    droneGroup.add(gear2);
-    
-    // 안테나 (통신용)
-    const antennaGeometry = new THREE.CylinderGeometry(0.005, 0.005, 0.3, 4);
-    const antennaMaterial = new THREE.MeshPhongMaterial({ color: 0x888888 });
-    const antenna = new THREE.Mesh(antennaGeometry, antennaMaterial);
-    antenna.position.set(0, 0.45, -0.2);
-    droneGroup.add(antenna);
     
     return droneGroup;
   }
@@ -3063,14 +2942,14 @@ document.addEventListener('DOMContentLoaded', function() {
   for (let i = 0; i < droneCount; i++) {
     const drone = createDrone();
     
-    // 초기 위치 설정 (원형 배치, 더 가까이)
+    // 초기 위치 설정 (화면 중앙 근처, 확실히 보이게)
     const angle = (i / droneCount) * Math.PI * 2;
-    drone.position.x = Math.cos(angle) * 4;
-    drone.position.z = Math.sin(angle) * 4;
-    drone.position.y = Math.random() * 2 + 2;
+    drone.position.x = Math.cos(angle) * 6;  // 더 넓게 배치
+    drone.position.z = Math.sin(angle) * 6;
+    drone.position.y = 3 + i; // 높이를 다르게 해서 겹치지 않게
     
-    // 드론 크기 확대
-    drone.scale.set(1.5, 1.5, 1.5);
+    // 드론 크기 더 크게
+    drone.scale.set(2, 2, 2);
     
     // 드론 상태 정보 추가
     drone.userData = {
@@ -3086,9 +2965,9 @@ document.addEventListener('DOMContentLoaded', function() {
     scene.add(drone);
   }
 
-  // 카메라 위치 설정 (드론들을 더 잘 보이게)
-  camera.position.set(0, 6, 10);
-  camera.lookAt(0, 2, 0);
+  // 카메라 위치 설정 (드론들을 확실히 보이게)
+  camera.position.set(0, 10, 15);
+  camera.lookAt(0, 4, 0);
 
   // ☁️ 구름과 하늘 환경 생성
   const clouds = [];
