@@ -19,7 +19,7 @@
     .drone-banner-environment {
       position: relative;
       width: 100%;
-      min-height: 100vh;
+      min-height: 70vh;  /* 100vh → 70vh로 줄임 */
       overflow: hidden;
       background: linear-gradient(
         180deg, 
@@ -249,7 +249,7 @@
     /* 반응형 디자인 */
     @media (max-width: 768px) {
       .drone-banner-environment {
-        min-height: 100vh;
+        min-height: 60vh;  /* 모바일에서 더 적당한 크기 */
       }
       
       .banner-text-overlay {
@@ -300,6 +300,54 @@
         padding: 8px 12px;
         font-size: 0.7rem;
       }
+    }
+    
+    /* 프로젝트 카드 크기 강제 복구 */
+    .home-project-card {
+      min-height: 600px !important;
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+    
+    .home-project-content {
+      padding: 2.5rem !important;
+      height: auto !important;
+    }
+    
+    .home-project-media {
+      width: 100% !important;
+      height: auto !important;
+      display: block !important;
+    }
+    
+    .home-projects-grid {
+      display: grid !important;
+      grid-template-columns: 1fr !important;
+      gap: 2rem !important;
+      max-width: 800px !important;
+      margin: 0 auto !important;
+    }
+    
+    .home-project-item {
+      width: 100% !important;
+      margin-bottom: 2rem !important;
+    }
+    
+    /* 동영상이 아래로 오도록 강제 */
+    .home-project-link {
+      display: flex !important;
+      flex-direction: column !important;
+      height: 100% !important;
+    }
+    
+    .home-project-content {
+      order: 1 !important;
+      flex: 1 !important;
+    }
+    
+    .home-project-media {
+      order: 2 !important;
+      margin-top: auto !important;
     }
   </style>
 </head>
@@ -361,16 +409,16 @@
       <p>Full-Stack Robotics Developer • Environmental Engineering • AI Systems</p>
       <div class="banner-stats">
         <div class="stat-item">
-          <span class="stat-number">15+</span>
+          <span class="stat-number">8+</span>
           <span class="stat-label">Projects</span>
         </div>
         <div class="stat-item">
-          <span class="stat-number">5+</span>
+          <span class="stat-number">3+</span>
           <span class="stat-label">Years Experience</span>
         </div>
         <div class="stat-item">
           <span class="stat-number">∞</span>
-          <span class="stat-label">Innovation</span>
+          <span class="stat-label">Passion</span>
         </div>
       </div>
     </div>
@@ -3015,11 +3063,14 @@ document.addEventListener('DOMContentLoaded', function() {
   for (let i = 0; i < droneCount; i++) {
     const drone = createDrone();
     
-    // 초기 위치 설정 (원형 배치)
+    // 초기 위치 설정 (원형 배치, 더 가까이)
     const angle = (i / droneCount) * Math.PI * 2;
-    drone.position.x = Math.cos(angle) * 3;
-    drone.position.z = Math.sin(angle) * 3;
-    drone.position.y = Math.random() * 2 + 1;
+    drone.position.x = Math.cos(angle) * 4;
+    drone.position.z = Math.sin(angle) * 4;
+    drone.position.y = Math.random() * 2 + 2;
+    
+    // 드론 크기 확대
+    drone.scale.set(1.5, 1.5, 1.5);
     
     // 드론 상태 정보 추가
     drone.userData = {
@@ -3035,8 +3086,8 @@ document.addEventListener('DOMContentLoaded', function() {
     scene.add(drone);
   }
 
-  // 카메라 위치 설정
-  camera.position.set(0, 8, 12);
+  // 카메라 위치 설정 (드론들을 더 잘 보이게)
+  camera.position.set(0, 6, 10);
   camera.lookAt(0, 2, 0);
 
   // ☁️ 구름과 하늘 환경 생성
@@ -3136,6 +3187,13 @@ document.addEventListener('DOMContentLoaded', function() {
   });
   const skyBox = new THREE.Mesh(skyGeometry, skyMaterial);
   scene.add(skyBox);
+  
+  // 테스트용 간단한 큐브 (드론 확인용)
+  const testGeometry = new THREE.BoxGeometry(2, 2, 2);
+  const testMaterial = new THREE.MeshBasicMaterial({ color: 0xff0000 });
+  const testCube = new THREE.Mesh(testGeometry, testMaterial);
+  testCube.position.set(0, 2, 0);
+  scene.add(testCube);
 
   // 마우스 상호작용을 위한 Raycaster
   const raycaster = new THREE.Raycaster();
@@ -3300,9 +3358,10 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     });
     
-    // 카메라 회전 (천천히)
-    camera.position.x = Math.cos(time) * 12;
-    camera.position.z = Math.sin(time) * 12;
+    // 카메라 회전 (천천히, 더 가까이)
+    camera.position.x = Math.cos(time * 0.5) * 8;
+    camera.position.z = Math.sin(time * 0.5) * 8;
+    camera.position.y = 6 + Math.sin(time * 0.3) * 1;
     camera.lookAt(0, 2, 0);
     
     // 시간 업데이트

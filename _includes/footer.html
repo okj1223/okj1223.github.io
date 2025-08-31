@@ -211,7 +211,7 @@
 <!-- 청소 완료 메시지 -->
 <div class="cleanup-message" id="cleanupMessage">
   <span class="cleanup-icon">🌊</span>
-  <span class="cleanup-text">바다가 깨끗해졌어요!</span>
+  <span class="cleanup-text">Ocean cleaned up! 🌊✨</span>
 </div>
 
 <!-- Three.js 라이브러리 -->
@@ -308,8 +308,8 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // 랜덤 위치와 크기
     debris.position.set(
-      40 + Math.random() * 5,   // 오른쪽 화면 밖에서 시작
-      Math.random() * 3 - 1,    // 파도 위 높이
+      window.innerWidth / 100 + 20 + Math.random() * 10, // 전체 화면 오른쪽 밖에서 시작
+      Math.random() * 2 + 0.5,  // 조금 더 위로 (파도 위)
       Math.random() * 8 - 4     // 깊이 랜덤
     );
     
@@ -323,7 +323,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // 커스텀 속성
     debris.userData = {
       name: debrisType.name,
-      velocity: -(0.02 + Math.random() * 0.03), // 왼쪽으로 이동 속도
+      velocity: -(0.08 + Math.random() * 0.06), // 왼쪽으로 이동 속도 (2배 빠르게)
       rotationSpeed: {
         x: (Math.random() - 0.5) * 0.02,
         y: (Math.random() - 0.5) * 0.02,
@@ -407,7 +407,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // 쓰레기 애니메이션
     debrisObjects.forEach((debris, index) => {
       // 파도 따라 움직이기
-      debris.position.x += debris.userData.velocity * 3;
+      debris.position.x += debris.userData.velocity;
       debris.position.y = Math.sin(time + debris.userData.waveOffset) * debris.userData.amplitude;
       
       // 회전
@@ -416,7 +416,7 @@ document.addEventListener('DOMContentLoaded', function() {
       debris.rotation.z += debris.userData.rotationSpeed.z;
       
       // 화면 왼쪽 끝으로 사라지면 제거
-      if (debris.position.x < -40) {
+      if (debris.position.x < -window.innerWidth / 100 - 20) {
         scene.remove(debris);
         debrisObjects.splice(index, 1);
       }
