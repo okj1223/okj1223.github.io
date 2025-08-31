@@ -239,25 +239,25 @@ document.addEventListener('DOMContentLoaded', function() {
       name: '플라스틱 병', 
       color: 0x4169e1, 
       geometry: () => new THREE.CylinderGeometry(0.3, 0.4, 1.5, 8),
-      scale: 0.8
+      scale: 2.4
     },
     { 
       name: '캔', 
       color: 0x888888, 
       geometry: () => new THREE.CylinderGeometry(0.4, 0.4, 1.2, 12),
-      scale: 0.6
+      scale: 1.8
     },
     { 
       name: '비닐봉지', 
       color: 0x333333, 
       geometry: () => new THREE.SphereGeometry(0.8, 6, 6),
-      scale: 1.0
+      scale: 3.0
     },
     { 
       name: '플라스틱 용기', 
       color: 0xff4444, 
       geometry: () => new THREE.BoxGeometry(1.2, 0.6, 0.8),
-      scale: 0.7
+      scale: 2.1
     }
   ];
   
@@ -308,7 +308,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // 랜덤 위치와 크기
     debris.position.set(
-      25 + Math.random() * 10,  // 오른쪽에서 시작
+      40 + Math.random() * 5,   // 오른쪽 화면 밖에서 시작
       Math.random() * 3 - 1,    // 파도 위 높이
       Math.random() * 8 - 4     // 깊이 랜덤
     );
@@ -407,7 +407,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // 쓰레기 애니메이션
     debrisObjects.forEach((debris, index) => {
       // 파도 따라 움직이기
-      debris.position.x += debris.userData.velocity;
+      debris.position.x += debris.userData.velocity * 3;
       debris.position.y = Math.sin(time + debris.userData.waveOffset) * debris.userData.amplitude;
       
       // 회전
@@ -415,8 +415,8 @@ document.addEventListener('DOMContentLoaded', function() {
       debris.rotation.y += debris.userData.rotationSpeed.y;
       debris.rotation.z += debris.userData.rotationSpeed.z;
       
-      // 화면 왼쪽을 벗어나면 제거
-      if (debris.position.x < -30) {
+      // 화면 왼쪽 끝으로 사라지면 제거
+      if (debris.position.x < -40) {
         scene.remove(debris);
         debrisObjects.splice(index, 1);
       }
