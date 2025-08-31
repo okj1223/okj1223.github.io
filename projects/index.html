@@ -15,23 +15,39 @@
    <link rel="stylesheet" href="/assets/css/ecosystem.css">
   
   <style>
-    /* 3D 드론 배너 환경 시스템 */
+    /* 🚀 트랜디한 3D 드론 배너 환경 */
     .drone-banner-environment {
       position: relative;
       width: 100%;
-      min-height: 70vh;  /* 100vh → 70vh로 줄임 */
+      min-height: 80vh;
       overflow: hidden;
-      background: linear-gradient(
-        180deg, 
-        #87ceeb 0%,     /* 하늘색 상단 */
-        #98d8e8 20%,    /* 밝은 하늘 */
-        #a8e6cf 40%,    /* 연한 민트 */
-        #74b9ff 70%,    /* 파란 하늘 */
-        #0984e3 100%    /* 깊은 푸른색 하단 */
-      );
+      background: 
+        radial-gradient(ellipse at top, rgba(255,255,255,0.1) 0%, transparent 50%),
+        linear-gradient(
+          135deg, 
+          #667eea 0%,     /* 모던 퍼플 블루 */
+          #764ba2 25%,    /* 깊은 퍼플 */
+          #f093fb 50%,    /* 핑크 */
+          #f5576c 75%,    /* 코랄 */
+          #4facfe 100%    /* 브라이트 블루 */
+        );
       display: flex;
       align-items: center;
       justify-content: center;
+      animation: gradientShift 15s ease-in-out infinite;
+    }
+    
+    @keyframes gradientShift {
+      0%, 100% { 
+        background: 
+          radial-gradient(ellipse at top, rgba(255,255,255,0.1) 0%, transparent 50%),
+          linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #f5576c 75%, #4facfe 100%);
+      }
+      50% { 
+        background: 
+          radial-gradient(ellipse at bottom, rgba(255,255,255,0.15) 0%, transparent 60%),
+          linear-gradient(225deg, #4facfe 0%, #00f2fe 25%, #667eea 50%, #764ba2 75%, #f093fb 100%);
+      }
     }
 
     .drone-3d-canvas {
@@ -45,7 +61,7 @@
       z-index: 1;
     }
 
-    /* 배너 텍스트 오버레이 */
+    /* 🎨 트랜디한 배너 텍스트 오버레이 */
     .banner-text-overlay {
       position: absolute;
       top: 50%;
@@ -53,32 +69,66 @@
       transform: translate(-50%, -50%);
       text-align: center;
       z-index: 10;
-      color: white;
-      text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
-      max-width: 800px;
-      padding: 2rem;
+      max-width: 900px;
+      padding: 3rem;
+      backdrop-filter: blur(10px) saturate(1.2);
+      background: rgba(255,255,255,0.1);
+      border-radius: 30px;
+      border: 1px solid rgba(255,255,255,0.2);
+      box-shadow: 
+        0 25px 50px rgba(0,0,0,0.1),
+        inset 0 1px 0 rgba(255,255,255,0.2);
+      animation: floatIn 1.5s ease-out;
+    }
+
+    @keyframes floatIn {
+      0% { 
+        opacity: 0; 
+        transform: translate(-50%, -40%) scale(0.9);
+        filter: blur(10px);
+      }
+      100% { 
+        opacity: 1; 
+        transform: translate(-50%, -50%) scale(1);
+        filter: blur(0px);
+      }
     }
 
     .banner-title h1 {
-      font-size: 4rem;
-      font-weight: 700;
+      font-size: 4.5rem;
+      font-weight: 800;
       margin: 0 0 1rem 0;
-      background: linear-gradient(135deg, #ffffff 0%, #87ceeb 50%, #74b9ff 100%);
+      background: linear-gradient(
+        135deg, 
+        #fff 0%, 
+        #f093fb 25%, 
+        #f5576c 50%, 
+        #4facfe 75%, 
+        #00f2fe 100%
+      );
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
-      animation: titleGlow 3s ease-in-out infinite;
+      background-size: 200% 200%;
+      animation: gradientText 4s ease-in-out infinite;
       line-height: 1.1;
-      font-family: 'Merriweather', serif;
+      font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+      letter-spacing: -2px;
+    }
+
+    @keyframes gradientText {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
     }
 
     .banner-title h2 {
-      font-size: 2rem;
-      font-weight: 400;
-      margin: 0 0 2rem 0;
-      color: rgba(255,255,255,0.9);
-      letter-spacing: 1px;
-      animation: slideIn 1s ease-out 0.5s both;
+      font-size: 1.8rem;
+      font-weight: 500;
+      margin: 0 0 2.5rem 0;
+      color: rgba(255,255,255,0.95);
+      letter-spacing: 0.5px;
+      animation: slideInUp 1s ease-out 0.3s both;
+      font-family: 'Inter', sans-serif;
     }
 
     .banner-subtitle p {
@@ -92,29 +142,63 @@
     .banner-stats {
       display: flex;
       justify-content: center;
-      gap: 3rem;
+      gap: 2rem;
       margin-top: 2rem;
     }
 
     .stat-item {
       text-align: center;
-      animation: slideUp 1s ease-out 1.5s both;
+      padding: 1.5rem 2rem;
+      background: rgba(255,255,255,0.15);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      border: 1px solid rgba(255,255,255,0.2);
+      transition: all 0.3s ease;
+      animation: popIn 0.6s ease-out both;
+      animation-delay: calc(var(--delay, 0) * 0.1s);
+    }
+
+    .stat-item:nth-child(1) { --delay: 1; }
+    .stat-item:nth-child(2) { --delay: 2; }
+    .stat-item:nth-child(3) { --delay: 3; }
+
+    .stat-item:hover {
+      transform: translateY(-5px) scale(1.05);
+      background: rgba(255,255,255,0.25);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+    }
+
+    @keyframes popIn {
+      0% { 
+        opacity: 0; 
+        transform: scale(0.8) translateY(20px);
+      }
+      100% { 
+        opacity: 1; 
+        transform: scale(1) translateY(0);
+      }
     }
 
     .stat-number {
-      font-size: 2.5rem;
-      font-weight: 700;
-      color: #00ff88;
-      text-shadow: 0 0 10px rgba(0,255,136,0.5);
+      font-size: 2.8rem;
+      font-weight: 900;
+      background: linear-gradient(135deg, #00f2fe 0%, #4facfe 50%, #f093fb 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
       display: block;
       margin-bottom: 0.5rem;
+      line-height: 1;
+      font-family: 'Inter', sans-serif;
     }
 
     .stat-label {
-      font-size: 0.9rem;
-      color: rgba(255,255,255,0.7);
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.9);
+      font-weight: 500;
       text-transform: uppercase;
       letter-spacing: 1px;
+      font-family: 'Inter', sans-serif;
     }
 
     @keyframes titleGlow {
@@ -150,21 +234,35 @@
       }
     }
 
-    /* 드론 UI 개선 */
+    /* 🎮 트랜디한 드론 UI */
     .drone-ui {
       position: absolute;
-      top: 30px;
-      right: 30px;
-      background: rgba(0,15,35,0.9);
-      padding: 20px;
-      border-radius: 15px;
+      top: 40px;
+      right: 40px;
+      background: rgba(0,0,0,0.6);
+      backdrop-filter: blur(20px) saturate(1.8);
+      padding: 25px;
+      border-radius: 25px;
+      border: 1px solid rgba(255,255,255,0.15);
       color: white;
-      font-family: 'Courier New', monospace;
-      min-width: 300px;
-      backdrop-filter: blur(15px);
-      border: 2px solid rgba(0,255,136,0.3);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      font-family: 'Inter', 'Segoe UI', sans-serif;
+      min-width: 350px;
+      box-shadow: 
+        0 25px 50px rgba(0,0,0,0.25),
+        inset 0 1px 0 rgba(255,255,255,0.1);
       z-index: 20;
+      animation: slideInRight 1s ease-out 0.8s both;
+    }
+
+    @keyframes slideInRight {
+      0% { 
+        opacity: 0; 
+        transform: translateX(50px);
+      }
+      100% { 
+        opacity: 1; 
+        transform: translateX(0);
+      }
     }
 
     .drone-status h4 {
@@ -2928,10 +3026,12 @@ document.addEventListener('DOMContentLoaded', function() {
   function createDrone() {
     const droneGroup = new THREE.Group();
     
-    // 큰 메인 바디 (확실히 보이게)
-    const bodyGeometry = new THREE.BoxGeometry(3, 0.6, 2); // 크기 대폭 증가
+    // 밝고 잘 보이는 드론 바디
+    const bodyGeometry = new THREE.BoxGeometry(3, 0.6, 2);
     const bodyMaterial = new THREE.MeshBasicMaterial({ 
-      color: 0xff0000  // 빨간색으로 확실히 보이게
+      color: 0x00ffff,  // 시안색으로 더 잘 보이게
+      emissive: 0x003333,
+      emissiveIntensity: 0.3
     });
     const body = new THREE.Mesh(bodyGeometry, bodyMaterial);
     droneGroup.add(body);
@@ -3008,7 +3108,9 @@ document.addEventListener('DOMContentLoaded', function() {
       const cloudMaterial = new THREE.MeshLambertMaterial({ 
         color: 0xffffff, 
         transparent: true,
-        opacity: 0.8 + Math.random() * 0.2
+        opacity: 0.9 + Math.random() * 0.1,
+        emissive: 0x222222,
+        emissiveIntensity: 0.1
       });
       
       const cloudSphere = new THREE.Mesh(cloudGeometry, cloudMaterial);
@@ -3090,12 +3192,7 @@ document.addEventListener('DOMContentLoaded', function() {
   const skyBox = new THREE.Mesh(skyGeometry, skyMaterial);
   scene.add(skyBox);
   
-  // 테스트용 간단한 큐브 (드론 확인용)
-  const testGeometry = new THREE.BoxGeometry(2, 2, 2);
-  const testMaterial = new THREE.MeshBasicMaterial({ color: 0xff0000 });
-  const testCube = new THREE.Mesh(testGeometry, testMaterial);
-  testCube.position.set(0, 2, 0);
-  scene.add(testCube);
+  // 테스트 큐브 제거 - 이제 드론이 보일 것임
 
   // 마우스 상호작용을 위한 Raycaster
   const raycaster = new THREE.Raycaster();
