@@ -3979,6 +3979,7 @@ figure figcaption {
   align-items: center !important;
   gap: 0.3rem !important;
   margin: 0 !important;
+  margin-left: auto !important; /* 오른쪽 정렬 */
   padding: 0 !important;
   list-style: none !important;
   z-index: 1051 !important;
