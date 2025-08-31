@@ -2,7 +2,7 @@
 
 <footer class="eco-footer">
   <!-- 🌊 깨끗한 바다 파도 애니메이션 -->
-  <div class="footer-wave">
+  <div class="footer-wave" id="ocean-container">
     <!-- 첫 번째 파도 레이어 -->
     <svg viewBox="0 0 1200 120" preserveAspectRatio="none" style="position: absolute; width: 200%; animation: wave-flow 20s linear infinite;">
       <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" 
@@ -205,3 +205,107 @@
     <span class="back-to-top-icon">🚀</span>
   </button>
 </footer>
+
+<!-- 청소 완료 메시지 -->
+<div class="cleanup-message" id="cleanupMessage">
+  <span class="cleanup-icon">🌊</span>
+  <span class="cleanup-text">바다가 깨끗해졌어요!</span>
+</div>
+
+<!-- 바다 청소 JavaScript -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const oceanContainer = document.getElementById('ocean-container');
+  const cleanupMessage = document.getElementById('cleanupMessage');
+  
+  // 쓰레기 타입과 이모지
+  const debrisTypes = [
+    { emoji: '🥤', class: 'debris-can', name: '캔' },
+    { emoji: '🍼', class: 'debris-bottle', name: '페트병' },
+    { emoji: '🛍️', class: 'debris-bag', name: '비닐봉지' },
+    { emoji: '🥡', class: 'debris-plastic', name: '플라스틱 용기' },
+    { emoji: '🍽️', class: 'debris-plastic', name: '플라스틱 접시' }
+  ];
+  
+  let debrisCount = 0;
+  let cleanedCount = 0;
+  
+  // 쓰레기 생성 함수
+  function createDebris() {
+    if (!oceanContainer) return;
+    
+    const debris = document.createElement('div');
+    const debrisType = debrisTypes[Math.floor(Math.random() * debrisTypes.length)];
+    
+    debris.className = `ocean-debris ${debrisType.class}`;
+    debris.innerHTML = debrisType.emoji;
+    debris.title = `클릭해서 ${debrisType.name} 치우기!`;
+    
+    // 랜덤 위치와 애니메이션 지연
+    const randomY = Math.random() * 80 + 10; // 10-90% 위치
+    const randomDelay = Math.random() * 3; // 0-3초 지연
+    
+    debris.style.top = randomY + '%';
+    debris.style.left = '-50px';
+    debris.style.animationDelay = randomDelay + 's';
+    
+    debrisCount++;
+    
+    // 클릭 이벤트
+    debris.addEventListener('click', function(e) {
+      e.stopPropagation();
+      cleanDebris(debris);
+    });
+    
+    oceanContainer.appendChild(debris);
+    
+    // 8초 후 자동 제거 (애니메이션 완료)
+    setTimeout(() => {
+      if (debris.parentNode && !debris.classList.contains('removing')) {
+        debris.remove();
+      }
+    }, 8000 + randomDelay * 1000);
+  }
+  
+  // 쓰레기 청소 함수
+  function cleanDebris(debris) {
+    debris.classList.add('removing');
+    cleanedCount++;
+    
+    // 청소 완료 메시지 표시
+    showCleanupMessage();
+    
+    setTimeout(() => {
+      if (debris.parentNode) {
+        debris.remove();
+      }
+    }, 600);
+  }
+  
+  // 청소 완료 메시지 표시
+  function showCleanupMessage() {
+    if (cleanupMessage) {
+      cleanupMessage.classList.add('show');
+      
+      setTimeout(() => {
+        cleanupMessage.classList.remove('show');
+      }, 2000);
+    }
+  }
+  
+  // 주기적으로 쓰레기 생성 (5-10초마다)
+  function scheduleNextDebris() {
+    const nextDelay = Math.random() * 5000 + 5000; // 5-10초
+    setTimeout(() => {
+      createDebris();
+      scheduleNextDebris();
+    }, nextDelay);
+  }
+  
+  // 초기 쓰레기 생성
+  setTimeout(() => {
+    createDebris();
+    scheduleNextDebris();
+  }, 2000);
+});
+</script>
