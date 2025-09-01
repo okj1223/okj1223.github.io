@@ -4,50 +4,35 @@
 @import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Roboto:wght@400;500&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
 
-/* 🌱 Eco Theme Variables */
+/* 🌱 Standard Theme Variables */
 :root {
-  --eco-green: #7fb3d3;        /* 파스텔 블루그린 */
-  --forest-green: #5d737e;     /* 파스텔 다크그레이 */
-  --light-green: #a8d8a8;      /* 파스텔 민트그린 */
-  --water-blue: #87ceeb;       /* 파스텔 스카이블루 */
-  --ocean-blue: #00bcd4;       /* 깨끗한 바다색 */
-  --crystal-blue: #4dd0e1;     /* 맑은 크리스탈 블루 */
-  --shallow-water: #80deea;    /* 얕은 바다색 */
-  --deep-ocean: #0097a7;       /* 깊은 바다색 */
-  --earth-brown: #c4a484;      /* 파스텔 베이지 */
-  --leaf-shadow: 0 4px 15px rgba(127, 179, 211, 0.15);
-  --smooth-transition: all 0.3s ease;
+  --primary-color: #2c3e50;
+  --secondary-color: #34495e;
+  --accent-color: #3498db;
+  --light-bg: #ffffff;
+  --gray-bg: #f8f9fa;
+  --text-color: #2c3e50;
+  --border-color: #dee2e6;
+  --shadow: 0 2px 10px rgba(0,0,0,0.1);
+  --transition: all 0.3s ease;
 }
 
-/* 🌍 Body with eco background */
+/* Standard Body */
 body {
-  font-family: 'Merriweather', serif !important;
-  background: linear-gradient(135deg, #fefffe 0%, #f8fcf8 100%);
-  position: relative;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
+  background: var(--light-bg);
+  color: var(--text-color);
   margin: 0;
   padding: 0;
 }
 
-/* 🍃 CSS-only floating leaves */
+/* Removed floating leaves for cleaner look */
 .eco-leaves {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 0;
-  overflow: hidden;
+  display: none;
 }
 
 .leaf {
-  position: absolute;
-  width: 12px;
-  height: 12px;
-  background: #b8d4b8;
-  border-radius: 0 100% 0 100%;
-  opacity: 0.3;
-  animation: leafFloat 15s infinite linear;
+  display: none;
 }
 
 .leaf:nth-child(1) { left: 10%; animation-delay: 0s; }
@@ -385,7 +370,6 @@ body::before {
   left: 50%;
   border: 1px solid rgba(184, 212, 227, 0.2);
   border-radius: 50%;
-  animation: rotate 20s linear infinite;
 }
 
 .ring-1 {
@@ -398,23 +382,18 @@ body::before {
   width: 60px;
   height: 60px;
   transform: translate(-50%, -50%);
-  animation-duration: 25s;
-  animation-direction: reverse;
 }
 
 .ring-3 {
   width: 80px;
   height: 80px;
   transform: translate(-50%, -50%);
-  animation-duration: 30s;
 }
 
 .ring-4 {
   width: 100px;
   height: 100px;
   transform: translate(-50%, -50%);
-  animation-duration: 35s;
-  animation-direction: reverse;
 }
 
 .tech-sphere {
@@ -692,13 +671,13 @@ body::before {
 }
 
 .home-projects-container {
-  max-width: 1000px !important;
+  max-width: 1200px !important;
   margin: 0 auto !important;
   padding: 0 2rem !important;
   width: 100% !important;
   display: block !important;
   position: relative !important;
-  text-align: center !important;
+  text-align: left !important;
 }
 
 .home-projects-grid {
@@ -767,37 +746,38 @@ body::before {
 
 /* 홈 프로젝트 아이템 */
 .home-project-item {
-  margin-bottom: 2.5rem !important;
+  margin-bottom: 2rem !important;
   width: 100% !important;
-  max-width: 800px !important; /* 데스크톱에서 최대 너비 제한 */
-  margin-left: auto !important; /* 중앙 정렬 */
-  margin-right: auto !important; /* 중앙 정렬 */
+  max-width: 1000px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
   display: block !important;
   position: relative !important;
   text-align: left !important;
 }
 
 .home-project-card {
-  background: rgba(255, 255, 255, 0.85) !important;
-  border-radius: 15px !important;
+  background: var(--light-bg) !important;
+  border-radius: 8px !important;
   overflow: hidden !important;
-  box-shadow: 0 2px 15px rgba(0,0,0,0.08) !important;
-  transition: var(--smooth-transition) !important;
+  box-shadow: var(--shadow) !important;
+  transition: var(--transition) !important;
   padding: 2rem !important;
   position: relative !important;
-  min-height: 220px !important;
+  min-height: 200px !important;
   clear: both !important;
   margin: 0 !important;
   width: 100% !important;
   max-width: 100% !important;
-  display: block !important;
-  border: 1px solid rgba(184, 212, 227, 0.1) !important;
+  display: flex !important;
+  flex-direction: column !important;
+  border: 1px solid var(--border-color) !important;
 }
 
 .home-project-card:hover {
-  transform: translateY(-3px) !important;
-  box-shadow: 0 6px 20px rgba(127, 179, 211, 0.12) !important;
-  border-color: #b8d4e3 !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15) !important;
+  border-color: var(--accent-color) !important;
 }
 
 .home-project-card::after {
@@ -1054,15 +1034,13 @@ body::before {
 
 /* 홈 프로젝트 미디어 */
 .home-project-media {
-  position: absolute !important;
-  top: 1.5rem !important;
-  right: 1.5rem !important;
-  width: 240px !important;
-  height: 140px !important;
-  z-index: 10 !important;
-  border-radius: 12px !important;
+  width: 100% !important;
+  max-width: 400px !important;
+  height: 225px !important;
+  margin: 1rem 0 !important;
+  border-radius: 8px !important;
   overflow: hidden !important;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08) !important;
+  box-shadow: var(--shadow) !important;
 }
 
 .home-video-link {
@@ -1080,19 +1058,22 @@ body::before {
 .home-video-wrapper {
   position: relative !important;
   width: 100% !important;
-  height: 100% !important;
-  border-radius: 12px !important;
+  aspect-ratio: 16 / 9 !important;
+  border-radius: 8px !important;
   overflow: hidden !important;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1) !important;
-  background: linear-gradient(135deg, var(--eco-green) 0%, var(--light-green) 100%) !important;
+  box-shadow: var(--shadow) !important;
+  background: var(--gray-bg) !important;
 }
 
 .home-video-wrapper iframe {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
   width: 100% !important;
   height: 100% !important;
   border: none !important;
   pointer-events: auto !important;
-  border-radius: 12px !important;
+  border-radius: 8px !important;
 }
 
 /* View All Projects 버튼 */
