@@ -677,7 +677,7 @@ body::before {
   width: 100% !important;
   display: block !important;
   position: relative !important;
-  text-align: left !important;
+  text-align: center !important;
 }
 
 .home-projects-grid {
@@ -690,45 +690,23 @@ body::before {
 /* 제목 스타일 - 에코 테마와 조화 */
 .projects-section-title {
   text-align: center !important;
-  font-size: 1.8rem !important;
-  font-weight: 300 !important;
-  color: var(--forest-green) !important;
-  margin-bottom: 1rem !important;
-  margin-top: 0 !important;
-  position: relative !important;
-  display: inline-block !important;
-  padding: 0 1rem !important;
-  letter-spacing: 0.01em !important;
-  font-family: 'Merriweather', serif !important;
+  font-size: 2.2rem !important;
+  font-weight: 600 !important;
+  color: var(--text-color) !important;
+  margin: 3rem auto 2rem auto !important;
+  width: 100% !important;
+  display: block !important;
+  padding: 0 !important;
+  letter-spacing: -0.02em !important;
+  font-family: 'Inter', sans-serif !important;
 }
 
-.projects-section-title::before {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 0;
-  width: 1rem;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(184, 212, 227, 0.6));
-  transform: translateY(-50%);
-}
-
+.projects-section-title::before,
 .projects-section-title::after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  right: 0;
-  width: 1rem;
-  height: 1px;
-  background: linear-gradient(90deg, rgba(184, 212, 227, 0.6), transparent);
-  transform: translateY(-50%);
+  display: none;
 }
 
 .projects-section-title .title-emoji {
-  background: linear-gradient(135deg, var(--eco-green) 0%, var(--light-green) 30%, var(--water-blue) 70%, var(--earth-brown) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
   margin-right: 0.5rem;
   font-size: 1.05em;
 }
@@ -769,8 +747,8 @@ body::before {
   margin: 0 !important;
   width: 100% !important;
   max-width: 100% !important;
-  display: flex !important;
-  flex-direction: column !important;
+  display: block !important;
+  text-align: center !important;
   border: 1px solid var(--border-color) !important;
 }
 
@@ -806,13 +784,12 @@ body::before {
 
 /* 홈 프로젝트 콘텐츠 */
 .home-project-content {
-  width: calc(100% - 300px) !important;
-  margin-right: 0 !important;
+  width: 100% !important;
+  margin: 0 auto !important;
   display: block !important;
-  float: left !important;
-  padding-right: 1rem !important;
+  padding: 0 !important;
   position: relative !important;
-  text-align: left !important;
+  text-align: center !important;
 }
 
 .home-project-meta {
