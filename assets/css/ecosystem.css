@@ -3644,7 +3644,7 @@ figure figcaption {
   position: fixed;
   top: 20px;
   right: 20px;
-  background: linear-gradient(135deg, #0066cc, #1e88e5);
+  background: #0066cc !important;
   color: white;
   padding: 1rem 1.5rem;
   border-radius: 10px;
