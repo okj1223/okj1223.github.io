@@ -3320,36 +3320,50 @@ figure figcaption {
 }
 
 /* 3D 바다 레이어들 */
-.footer-wave::before,
-.footer-wave::after {
-  content: '';
+.footer-wave .wave-layer-1,
+.footer-wave .wave-layer-2,
+.footer-wave .wave-layer-3 {
   position: absolute;
-  width: 120%;
-  height: 100%;
-  top: 0;
-  left: -10%;
+  width: 110%;
+  height: 80%;
+  top: 20%;
+  left: -5%;
   border-radius: 50% 50% 0 0;
   transform-style: preserve-3d;
 }
 
-.footer-wave::before {
+.footer-wave .wave-layer-1 {
   background: linear-gradient(45deg, 
-    rgba(0, 150, 255, 0.3) 0%,
-    rgba(50, 180, 255, 0.2) 50%,
-    rgba(100, 200, 255, 0.1) 100%
+    rgba(0, 120, 255, 0.9) 0%,
+    rgba(30, 150, 255, 0.7) 50%,
+    rgba(80, 180, 255, 0.6) 100%
   );
-  animation: wave3d-1 8s ease-in-out infinite;
-  z-index: 2;
+  animation: wave3d-1 6s ease-in-out infinite;
+  z-index: 10;
 }
 
-.footer-wave::after {
+.footer-wave .wave-layer-2 {
   background: linear-gradient(-45deg, 
-    rgba(0, 100, 200, 0.4) 0%,
-    rgba(30, 130, 220, 0.3) 50%,
-    rgba(80, 160, 240, 0.2) 100%
+    rgba(0, 100, 200, 0.8) 0%,
+    rgba(20, 130, 220, 0.6) 50%,
+    rgba(60, 160, 240, 0.5) 100%
   );
-  animation: wave3d-2 12s ease-in-out infinite reverse;
-  z-index: 1;
+  animation: wave3d-2 8s ease-in-out infinite reverse;
+  z-index: 9;
+  top: 25%;
+  transform: scale(1.1);
+}
+
+.footer-wave .wave-layer-3 {
+  background: linear-gradient(90deg, 
+    rgba(0, 80, 180, 0.7) 0%,
+    rgba(40, 120, 200, 0.5) 50%,
+    rgba(80, 160, 220, 0.4) 100%
+  );
+  animation: wave3d-1 10s ease-in-out infinite;
+  z-index: 8;
+  top: 30%;
+  transform: scale(1.2);
 }
 
 /* 3D 바다 추가 효과 */
@@ -3458,40 +3472,15 @@ figure figcaption {
   z-index: 3;
 }
 
+/* 기존 SVG 파도 숨김 (3D 효과를 위해) */
 .footer-wave svg {
-  position: absolute;
-  display: block;
-  width: 200%;
-  height: 100%;
-  animation: wave-flow 15s cubic-bezier(0.36, 0.45, 0.63, 0.53) infinite;
-  transform: translate3d(0, 0, 0);
+  display: none;
 }
 
-.footer-wave svg path {
-  fill: #0066cc !important;
-  opacity: 0.8;
-}
-
-.footer-wave svg:nth-child(2) path {
-  fill: #1e88e5 !important;
-  opacity: 0.7;
-}
-
-.footer-wave svg:nth-child(3) path {
-  fill: #42a5f5 !important;
-  opacity: 0.6;
-}
-
-/* 여러 겹의 파도 효과 */
+/* 여러 겹의 파도 효과 - 3D 효과를 위해 숨김 */
 .footer-wave::before,
 .footer-wave::after {
-  content: '';
-  position: absolute;
-  width: 200%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  opacity: 0.4;
+  display: none;
 }
 
 .footer-wave::before {
@@ -3511,38 +3500,38 @@ figure figcaption {
 @keyframes wave3d-1 {
   0%, 100% {
     transform: rotateX(0deg) rotateY(0deg) translateZ(0px);
-    opacity: 0.3;
+    opacity: 0.7;
   }
   25% {
     transform: rotateX(-5deg) rotateY(5deg) translateZ(20px);
-    opacity: 0.5;
+    opacity: 0.9;
   }
   50% {
     transform: rotateX(0deg) rotateY(-5deg) translateZ(10px);
-    opacity: 0.4;
+    opacity: 0.8;
   }
   75% {
     transform: rotateX(5deg) rotateY(0deg) translateZ(15px);
-    opacity: 0.6;
+    opacity: 1.0;
   }
 }
 
 @keyframes wave3d-2 {
   0%, 100% {
     transform: rotateX(0deg) rotateY(0deg) translateZ(5px) scale(1.1);
-    opacity: 0.4;
+    opacity: 0.8;
   }
   30% {
     transform: rotateX(3deg) rotateY(-8deg) translateZ(25px) scale(1.05);
-    opacity: 0.6;
+    opacity: 1.0;
   }
   60% {
     transform: rotateX(-3deg) rotateY(8deg) translateZ(15px) scale(1.15);
-    opacity: 0.3;
+    opacity: 0.7;
   }
   90% {
     transform: rotateX(0deg) rotateY(-3deg) translateZ(30px) scale(1.0);
-    opacity: 0.5;
+    opacity: 0.9;
   }
 }
 
