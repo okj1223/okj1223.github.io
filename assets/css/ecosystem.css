@@ -33,6 +33,108 @@ body {
   padding: 0;
 }
 
+/* 🌊 3D Ocean Map Styles */
+.ocean-map-section {
+  width: 100%;
+  background: linear-gradient(135deg, #006994 0%, #0099cc 50%, #87ceeb 100%);
+  padding: 2rem 0;
+  margin: 2rem 0 0 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.ocean-map-section::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.5), transparent);
+  animation: shimmer 3s infinite;
+}
+
+@keyframes shimmer {
+  0%, 100% { transform: translateX(-100%); }
+  50% { transform: translateX(100%); }
+}
+
+.ocean-map-header {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  padding: 0 1rem;
+}
+
+.ocean-map-header h3 {
+  color: white;
+  font-size: 2rem;
+  font-weight: 600;
+  margin: 0 0 0.5rem 0;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+  font-family: 'Inter', sans-serif;
+}
+
+.ocean-map-header p {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1rem;
+  margin: 0;
+  font-weight: 400;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+}
+
+.ocean-map-container {
+  width: 100%;
+  height: 400px;
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+  margin: 0 auto;
+  max-width: 1200px;
+  cursor: grab;
+}
+
+.ocean-map-container:active {
+  cursor: grabbing;
+}
+
+.ocean-map-container canvas {
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+  border-radius: 8px;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .ocean-map-section {
+    padding: 1.5rem 1rem;
+  }
+  
+  .ocean-map-header h3 {
+    font-size: 1.5rem;
+  }
+  
+  .ocean-map-header p {
+    font-size: 0.9rem;
+  }
+  
+  .ocean-map-container {
+    height: 300px;
+    margin: 0 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .ocean-map-container {
+    height: 250px;
+  }
+  
+  .ocean-map-header h3 {
+    font-size: 1.3rem;
+  }
+}
+
 /* 🍃 CSS-only floating leaves */
 .eco-leaves {
   position: fixed;
