@@ -3329,8 +3329,8 @@ figure figcaption {
   overflow: visible;
   background: linear-gradient(to bottom, 
     transparent 0%, 
-    rgba(0, 188, 212, 0.03) 50%,
-    rgba(0, 188, 212, 0.06) 100%
+    rgba(28, 107, 223, 0.15) 50%,
+    rgba(0, 150, 255, 0.25) 100%
   );
   z-index: 1;
 }
@@ -3370,6 +3370,21 @@ figure figcaption {
   transform: translate3d(0, 0, 0);
 }
 
+.footer-wave svg path {
+  fill: #0066cc !important;
+  opacity: 0.8;
+}
+
+.footer-wave svg:nth-child(2) path {
+  fill: #1e88e5 !important;
+  opacity: 0.7;
+}
+
+.footer-wave svg:nth-child(3) path {
+  fill: #42a5f5 !important;
+  opacity: 0.6;
+}
+
 /* 여러 겹의 파도 효과 */
 .footer-wave::before,
 .footer-wave::after {
@@ -3383,13 +3398,13 @@ figure figcaption {
 }
 
 .footer-wave::before {
-  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" fill="%2300bcd4" opacity="0.3"/></svg>') repeat-x;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" fill="%230066cc" opacity="0.7"/></svg>') repeat-x;
   animation: wave-flow 20s linear infinite;
   animation-direction: reverse;
 }
 
 .footer-wave::after {
-  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0,0V7.23C0,65.52,268.63,112.77,600.28,112.77S1200,65.52,1200,7.23V0Z" fill="%234dd0e1" opacity="0.2"/></svg>') repeat-x;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0,0V7.23C0,65.52,268.63,112.77,600.28,112.77S1200,65.52,1200,7.23V0Z" fill="%231e88e5" opacity="0.6"/></svg>') repeat-x;
   animation: wave-flow 25s linear infinite;
   animation-delay: -5s;
 }
