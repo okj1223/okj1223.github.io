@@ -395,24 +395,38 @@ body::before {
   width: 40px;
   height: 40px;
   transform: translate(-50%, -50%);
+  animation: orbitRotation 8s linear infinite;
 }
 
 .ring-2 {
   width: 60px;
   height: 60px;
   transform: translate(-50%, -50%);
+  animation: orbitRotation 12s linear infinite reverse;
 }
 
 .ring-3 {
   width: 80px;
   height: 80px;
   transform: translate(-50%, -50%);
+  animation: orbitRotation 16s linear infinite;
 }
 
 .ring-4 {
   width: 100px;
   height: 100px;
   transform: translate(-50%, -50%);
+  animation: orbitRotation 20s linear infinite reverse;
+}
+
+/* 궤도 회전 애니메이션 */
+@keyframes orbitRotation {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
 }
 
 .tech-sphere {
