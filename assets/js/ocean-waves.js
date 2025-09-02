@@ -56,16 +56,19 @@ class OceanWaves {
     for (let i = 0; i < 6; i++) {
       // 작은 테스트 파도
       const waveGeometry = new THREE.PlaneGeometry(40, 20, 32, 16);
-      const waveMaterial = new THREE.MeshPhongMaterial({
-        color: new THREE.Color().setHSL(0.58 + i * 0.02, 0.7, 0.5), // HSL로 명확한 파란색
+      
+      // 명시적인 파란색 배열
+      const blueColors = [0x0066CC, 0x0077DD, 0x0088EE, 0x0099FF, 0x00AAFF, 0x00BBFF];
+      const selectedColor = blueColors[i];
+      
+      console.log(`Wave ${i} color: 0x${selectedColor.toString(16)}`);
+      
+      const waveMaterial = new THREE.MeshBasicMaterial({
+        color: selectedColor, // 직접 hex 값 사용
         transparent: true,
         opacity: 0.9 - i * 0.1, // 뒤로 갈수록 투명하게
         side: THREE.DoubleSide,
-        wireframe: false,
-        shininess: 100,
-        specular: new THREE.Color(0x87ceeb), // 하늘색 반사광
-        emissive: new THREE.Color(0x002244), // 약간의 자체 발광
-        emissiveIntensity: 0.1
+        wireframe: false
       });
       
       const wave = new THREE.Mesh(waveGeometry, waveMaterial);
@@ -85,6 +88,9 @@ class OceanWaves {
       
       this.scene.add(wave);
       this.waves.push(wave);
+      
+      // 디버그: 실제 적용된 색상 확인
+      console.log(`Wave ${i} actual material color:`, wave.material.color.getHex().toString(16));
     }
   }
   
