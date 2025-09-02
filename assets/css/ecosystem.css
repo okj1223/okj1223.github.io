@@ -1556,7 +1556,7 @@ section > h2::after {
 
 .project-description p {
   margin: 0.5rem 0 0;
-  color: #555;
+  color: #333;
   line-height: 1.5;
   font-size: 0.9rem;
   font-family: 'Inter', sans-serif;
@@ -3648,7 +3648,7 @@ figure figcaption {
 }
 
 .profile-description {
-  color: #666;
+  color: #333;
   font-size: 0.9rem;
   line-height: 1.5;
   max-width: 280px;
@@ -3687,7 +3687,7 @@ figure figcaption {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  color: #666;
+  color: #333;
   text-decoration: none;
   font-size: 0.95rem;
   font-family: 'Inter', sans-serif;
@@ -3793,7 +3793,7 @@ figure figcaption {
 }
 
 .contact-text {
-  color: #666;
+  color: #333;
   font-family: 'Inter', sans-serif;
 }
 
@@ -3802,7 +3802,7 @@ figure figcaption {
   margin-top: 3rem;
   padding: 1.5rem 0;
   border-top: 1px solid rgba(127, 179, 211, 0.2);
-  background: rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.9);
 }
 
 .copyright-info {
@@ -3812,7 +3812,7 @@ figure figcaption {
 .copyright-text {
   margin: 0;
   font-size: 0.85rem;
-  color: #777;
+  color: #444;
   font-family: 'Inter', sans-serif;
 }
 

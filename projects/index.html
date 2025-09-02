@@ -258,24 +258,7 @@
       flex-direction: column !important;
     }
     
-    /* 동영상이 아래로 */
-    .home-project-media {
-      order: 2 !important;
-      width: 100% !important;
-      max-height: 300px !important;
-      overflow: hidden !important;
-      margin: 0 !important;
-      padding: 0 !important;
-    }
-    
-    /* 동영상 크기 조절 */
-    .home-project-media iframe,
-    .home-project-media video {
-      width: 100% !important;
-      height: 300px !important;
-      object-fit: cover !important;
-      border: none !important;
-    }
+    /* 동영상 스타일은 ecosystem.css에서 관리 */
     
     /* 프로젝트 컨테이너 */
     .home-projects-grid {
@@ -1942,34 +1925,7 @@ html, body {
  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
-.home-project-media {
- background: #f8fcf8;
- border-top: 1px solid rgba(127, 179, 211, 0.1);
- margin-top: auto;
-}
-
-.home-video-link, .home-image-link {
- display: block;
- transition: var(--smooth-transition);
-}
-
-.home-video-wrapper {
- position: relative;
- padding-bottom: 56.25%;
- height: 0;
- overflow: hidden;
- border-radius: 0;
-}
-
-.home-video-wrapper iframe {
- position: absolute;
- top: 0;
- left: 0;
- width: 100%;
- height: 100%;
- border: 0;
- transition: var(--smooth-transition);
-}
+/* Video styles are managed in ecosystem.css */
 
 .home-image-wrapper {
  overflow: hidden;
