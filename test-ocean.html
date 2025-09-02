@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ocean Waves Test</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+        }
+        
+        #ocean-wave-container {
+            width: 100%;
+            height: 300px;
+            background: rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .debug-info {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 10px;
+            font-family: monospace;
+            border-radius: 5px;
+            z-index: 1000;
+        }
+    </style>
+</head>
+<body>
+    <div class="debug-info">
+        <div>Ocean Waves Test Page</div>
+        <div id="debug-status">Loading...</div>
+    </div>
+    
+    <div id="ocean-wave-container"></div>
+    
+    <!-- Three.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/three@0.150.0/build/three.min.js"></script>
+    
+    <!-- Ocean Waves Script -->
+    <script src="assets/js/ocean-waves.js"></script>
+    
+    <script>
+        // Debug info
+        setTimeout(() => {
+            const status = document.getElementById('debug-status');
+            if (typeof THREE !== 'undefined') {
+                status.textContent = 'THREE.js loaded ✓';
+                status.style.color = '#4CAF50';
+            } else {
+                status.textContent = 'THREE.js failed to load ✗';
+                status.style.color = '#f44336';
+            }
+            
+            // Check if canvas was created
+            setTimeout(() => {
+                const canvas = document.querySelector('#ocean-wave-container canvas');
+                if (canvas) {
+                    status.textContent += ' | Canvas created ✓';
+                } else {
+                    status.textContent += ' | Canvas not created ✗';
+                }
+            }, 1000);
+        }, 500);
+    </script>
+</body>
+</html>

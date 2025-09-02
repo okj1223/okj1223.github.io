@@ -47,7 +47,7 @@ class OceanWaves {
     // 카메라 설정 (컨테이너 비율에 맞게) - 더 가까이
     this.camera.aspect = containerWidth / containerHeight;
     this.camera.updateProjectionMatrix();
-    this.camera.position.set(0, 20, 30);
+    this.camera.position.set(0, 15, 25);
     this.camera.lookAt(0, 0, 0);
   }
   
@@ -55,21 +55,23 @@ class OceanWaves {
     // 진짜 바다 파도 만들기 (페이지 2배 크기 고려)
     for (let i = 0; i < 6; i++) {
       // 작은 테스트 파도
-      const waveGeometry = new THREE.PlaneGeometry(20, 10, 16, 8);
-      const waveMaterial = new THREE.MeshBasicMaterial({
-        color: 0xff0000, // 일단 빨간색으로 디버깅
-        transparent: false,
-        opacity: 1.0,
+      const waveGeometry = new THREE.PlaneGeometry(40, 20, 32, 16);
+      const waveMaterial = new THREE.MeshPhongMaterial({
+        color: new THREE.Color(0x0077be + i * 0x001122), // 깊이감 있는 파란색 그라데이션
+        transparent: true,
+        opacity: 0.85 - i * 0.1, // 뒤로 갈수록 투명하게
         side: THREE.DoubleSide,
-        wireframe: false
+        wireframe: false,
+        shininess: 100,
+        specular: new THREE.Color(0x4dd0e1) // 반짝이는 효과
       });
       
       const wave = new THREE.Mesh(waveGeometry, waveMaterial);
       wave.rotation.x = -Math.PI / 2;
       wave.position.set(
-        i * 5,  // 화면 중앙에서 시작
-        0,      // 같은 높이
-        0
+        (i - 3) * 8,  // 화면 중앙에서 퍼져나가기
+        -i * 0.5,     // 레이어링 효과
+        -i * 2        // 깊이감
       );
       
       wave.userData = {
@@ -85,29 +87,34 @@ class OceanWaves {
   }
   
   setupLighting() {
-    // 주변광
-    const ambientLight = new THREE.AmbientLight(0x404040, 0.6);
+    // 주변광 - 바다의 푸른빛
+    const ambientLight = new THREE.AmbientLight(0x4d7ea8, 0.4);
     this.scene.add(ambientLight);
     
-    // 방향광
-    const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
-    directionalLight.position.set(10, 10, 5);
+    // 메인 태양광
+    const directionalLight = new THREE.DirectionalLight(0xffffff, 1.0);
+    directionalLight.position.set(30, 50, 20);
     directionalLight.castShadow = true;
+    directionalLight.shadow.camera.left = -50;
+    directionalLight.shadow.camera.right = 50;
+    directionalLight.shadow.camera.top = 50;
+    directionalLight.shadow.camera.bottom = -50;
     this.scene.add(directionalLight);
+    
+    // 보조 조명 - 파도 하이라이트
+    const pointLight = new THREE.PointLight(0x87ceeb, 0.5, 100);
+    pointLight.position.set(0, 20, 0);
+    this.scene.add(pointLight);
   }
   
   animate() {
-    this.time += 0.01; // 시간 증가
+    this.time += 0.02; // 시간 증가 (조금 더 빠르게)
     
     // 진짜 바다 파도 애니메이션
     this.waves.forEach((wave, waveIndex) => {
-      // 오른쪽에서 왼쪽으로 흐르는 움직임
-      wave.position.x -= wave.userData.speed;
-      
-      // 화면 왼쪽 끝을 벗어나면 오른쪽으로 되돌리기 
-      if (wave.position.x < -100) {
-        wave.position.x = 200;
-      }
+      // 파도가 앞뒤로 움직이는 효과 (밀려왔다 빠지는 느낌)
+      wave.position.x = wave.position.x + Math.sin(this.time + waveIndex) * 0.1;
+      wave.position.z = wave.position.z + Math.cos(this.time * 0.8 + waveIndex) * 0.05;
       
       // 사인파로 파도 출렁이는 효과 만들기
       const positions = wave.geometry.attributes.position;
