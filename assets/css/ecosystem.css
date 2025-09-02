@@ -129,7 +129,7 @@ body::before {
   background: linear-gradient(135deg, #b8d4e3 0%, #a8c8d8 50%, #98bcc8 100%);
   background-size: cover;
   background-position: center;
-  overflow: hidden;
+  overflow: visible;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -593,7 +593,7 @@ body::before {
   background: rgba(255, 255, 255, 0.1);
   border-radius: 2px;
   margin: 0 4px;
-  overflow: hidden;
+  overflow: visible;
 }
 
 .metric-fill {
@@ -737,7 +737,7 @@ body::before {
 .home-project-card {
   background: var(--light-bg) !important;
   border-radius: 8px !important;
-  overflow: hidden !important;
+  overflow: visible !important;
   box-shadow: var(--shadow) !important;
   transition: var(--transition) !important;
   padding: 2rem !important;
@@ -1016,7 +1016,7 @@ body::before {
   height: 225px !important;
   margin: 1rem 0 !important;
   border-radius: 8px !important;
-  overflow: hidden !important;
+  overflow: visible !important;
   box-shadow: var(--shadow) !important;
 }
 
@@ -1026,7 +1026,7 @@ body::before {
   height: 100% !important;
   text-decoration: none !important;
   border-radius: 12px !important;
-  overflow: hidden !important;
+  overflow: visible !important;
   position: relative !important;
   border: none !important;
 }
@@ -1037,7 +1037,7 @@ body::before {
   width: 100% !important;
   aspect-ratio: 16 / 9 !important;
   border-radius: 8px !important;
-  overflow: hidden !important;
+  overflow: visible !important;
   box-shadow: var(--shadow) !important;
   background: var(--gray-bg) !important;
 }
@@ -1073,7 +1073,7 @@ body::before {
   box-shadow: 0 2px 10px rgba(0,0,0,0.1) !important;
   border: none !important;
   position: relative !important;
-  overflow: hidden !important;
+  overflow: visible !important;
   font-family: 'Inter', sans-serif !important;
 }
 
@@ -1544,7 +1544,7 @@ section > h2::after {
   position: relative;
   padding-bottom: 56.25%;
   height: 0;
-  overflow: hidden;
+  overflow: visible;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
   background: #000;
@@ -1604,7 +1604,7 @@ section > h2::after {
 
 .cert-card {
   position: relative;
-  overflow: hidden;
+  overflow: visible;
   border-radius: 12px;
   width: 100%;
   height: 180px;
@@ -1649,7 +1649,7 @@ section > h2::after {
 
 .cert-details {
   max-height: 0;
-  overflow: hidden;
+  overflow: visible;
   padding: 0 0.5rem;
   transition: max-height 0.3s ease, padding 0.3s ease;
   font-size: 0.5rem;
@@ -1822,7 +1822,7 @@ section > h2::after {
   display: block;
   width: 100%;
   aspect-ratio: 16 / 9;
-  overflow: hidden;
+  overflow: visible;
   position: relative;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
@@ -2411,7 +2411,7 @@ figure figcaption {
 .home-projects-container,
 .project-showcase-grid,
 .project-showcase-section {
-  overflow-x: hidden !important;
+  overflow-x: auto !important;
   width: 100% !important;
   max-width: 100% !important;
 }
@@ -3026,7 +3026,7 @@ figure figcaption {
   line-height: 40px !important;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
   position: relative !important;
-  overflow: hidden !important;
+  overflow: visible !important;
 }
 
 .navbar-nav .nav-link::before {
@@ -3283,7 +3283,7 @@ figure figcaption {
   width: 100%;
   height: 150px; /* 3D를 위해 높이 증가 */
   margin-bottom: -60px; /* 위로 올린 만큼 마진 조정 */
-  overflow: hidden;
+  overflow: visible;
   background: linear-gradient(to bottom, 
     transparent 0%, 
     rgba(0, 188, 212, 0.03) 50%,
@@ -3526,7 +3526,7 @@ figure figcaption {
   box-shadow: 0 8px 25px rgba(127, 179, 211, 0.2);
   transition: var(--smooth-transition);
   position: relative;
-  overflow: hidden;
+  overflow: visible;
 }
 
 .avatar-circle::before {
