@@ -47,9 +47,9 @@ class OceanWaves {
     // 카메라 설정 (컨테이너 비율에 맞게)
     this.camera.aspect = containerWidth / containerHeight;
     this.camera.updateProjectionMatrix();
-    this.camera.position.set(0, 15, 25);
+    this.camera.position.set(0, 30, 50); // 더 높고 멀리서 내려다보기
     this.camera.lookAt(0, 0, 0);
-    console.log('📹 카메라 설정 완료');
+    console.log('📹 카메라 설정 완료:', this.camera.position);
   }
   
   createWaves() {
@@ -59,20 +59,20 @@ class OceanWaves {
     for (let i = 0; i < 3; i++) {
       console.log(`🌊 파도 ${i + 1} 생성 중...`);
       
-      const waveGeometry = new THREE.PlaneGeometry(300, 150, 128, 64);
+      const waveGeometry = new THREE.PlaneGeometry(100, 50, 32, 16);
       const waveMaterial = new THREE.MeshLambertMaterial({
-        color: i === 0 ? 0x0066cc : (i === 1 ? 0x1e88e5 : 0x42a5f5),
-        transparent: true,
-        opacity: 0.7 + (i * 0.1),
+        color: i === 0 ? 0xff0000 : (i === 1 ? 0x00ff00 : 0x0000ff), // 빨강, 초록, 파랑으로 확실히 구분
+        transparent: false, // 일단 투명도 제거
+        opacity: 1.0,
         side: THREE.DoubleSide,
-        wireframe: false
+        wireframe: true // wireframe으로 확실히 보이게
       });
       
       const wave = new THREE.Mesh(waveGeometry, waveMaterial);
       wave.rotation.x = -Math.PI / 2;
       wave.position.set(
-        300 + (i * 200),  // 오른쪽 밖에서 시작
-        -2 + (i * 1),     // 더 뚜렷한 높이 차이
+        0,  // 화면 중앙에 배치
+        i * 2,     // 높이만 다르게
         0
       );
       
@@ -106,36 +106,14 @@ class OceanWaves {
     this.time += 0.016; // 시간 증가
     
     // 모든 파도들을 애니메이션
-    this.waves.forEach((wave) => {
-      // 오른쪽에서 왼쪽으로 이동
-      wave.position.x -= wave.userData.speed;
-      
-      // 화면 왼쪽 끝을 벗어나면 오른쪽으로 되돌리기
-      if (wave.position.x < -300) {
-        wave.position.x = 400;
-      }
-      
-      // 파도 높낮이 애니메이션 (더 역동적으로)
-      const positions = wave.geometry.attributes.position;
-      for (let i = 0; i < positions.count; i++) {
-        const x = positions.getX(i);
-        const z = positions.getZ(i);
-        
-        // 여러 파도가 겹치는 효과 (더 크고 뚜렷하게)
-        const waveHeight = 
-          Math.sin((x + wave.position.x) * 0.015 + this.time + wave.userData.waveOffset) * 8 +
-          Math.cos((z + wave.position.z) * 0.02 + this.time * 1.5) * 5 +
-          Math.sin((x + z) * 0.012 + this.time * 1.2) * 3;
-          
-        positions.setY(i, waveHeight);
-      }
-      positions.needsUpdate = true;
-      
-      // 파도 전체적으로 약간 회전 (더 생동감 있게)
-      wave.rotation.z = Math.sin(this.time * 0.3 + wave.userData.waveOffset) * 0.05;
+    this.waves.forEach((wave, index) => {
+      // 단순한 Y축 회전으로 보이는지 테스트
+      wave.rotation.y = this.time * 0.5 + (index * Math.PI / 3);
+      console.log(`파도 ${index} 회전:`, wave.rotation.y);
     });
     
     this.renderer.render(this.scene, this.camera);
+    console.log('렌더링 수행됨');
     requestAnimationFrame(() => this.animate());
   }
   
