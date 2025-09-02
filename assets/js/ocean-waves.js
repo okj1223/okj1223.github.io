@@ -140,20 +140,40 @@ class OceanWaves {
 
 // 초기화 함수
 function initOceanWaves() {
+  console.log('🌊 초기화 시작!');
+  
   // THREE.js 확인
   if (typeof THREE === 'undefined') {
-    console.error('THREE.js가 로드되지 않음');
+    console.error('❌ THREE.js가 로드되지 않음');
+    // 컨테이너에 에러 메시지 표시
+    const container = document.getElementById('ocean-wave-container');
+    if (container) {
+      container.innerHTML = '<div style="color: white; text-align: center; padding: 50px;">THREE.js 로드 실패</div>';
+    }
     return;
   }
+  console.log('✅ THREE.js 로드됨');
   
   // 컨테이너 확인
   const container = document.getElementById('ocean-wave-container');
   if (!container) {
-    console.error('ocean-wave-container 요소를 찾을 수 없음');
+    console.error('❌ ocean-wave-container 요소를 찾을 수 없음');
     return;
   }
+  console.log('✅ 컨테이너 찾음:', container.offsetWidth, 'x', container.offsetHeight);
   
   try {
+    // 간단한 테스트 캔버스 먼저 만들어보기
+    const canvas = document.createElement('canvas');
+    canvas.width = container.offsetWidth;
+    canvas.height = container.offsetHeight;
+    canvas.style.background = 'blue';
+    canvas.style.position = 'absolute';
+    canvas.style.top = '0';
+    canvas.style.left = '0';
+    container.appendChild(canvas);
+    console.log('✅ 테스트 캔버스 추가됨');
+    
     const oceanWaves = new OceanWaves('ocean-wave-container');
     
     // 리사이즈 이벤트 리스너
@@ -161,7 +181,9 @@ function initOceanWaves() {
       oceanWaves.onWindowResize();
     });
   } catch (error) {
-    console.error('OceanWaves 생성 중 오류:', error);
+    console.error('❌ OceanWaves 생성 중 오류:', error);
+    // 컨테이너에 에러 메시지 표시
+    container.innerHTML = '<div style="color: white; text-align: center; padding: 50px;">3D 바다 생성 실패: ' + error.message + '</div>';
   }
 }
 
