@@ -1,22 +1,33 @@
 // 3D 오션 웨이브 시스템
 class OceanWaves {
   constructor(containerId) {
+    console.log('🏗️ OceanWaves 생성자 시작');
+    
     this.container = document.getElementById(containerId);
     if (!this.container) {
       console.error('컨테이너를 찾을 수 없음:', containerId);
       return;
     }
+    console.log('📦 컨테이너 확인됨');
     
     this.scene = new THREE.Scene();
     this.camera = new THREE.PerspectiveCamera(75, window.innerWidth / 200, 0.1, 1000);
     this.renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
     this.time = 0;
     this.waves = [];
+    console.log('⚙️ Three.js 객체들 생성됨');
     
     this.init();
+    console.log('🎬 init() 완료');
+    
     this.createWaves();
+    console.log('🌊 createWaves() 완료');
+    
     this.setupLighting();
+    console.log('💡 setupLighting() 완료');
+    
     this.animate();
+    console.log('🎥 animate() 시작');
   }
   
   init() {
@@ -163,18 +174,9 @@ function initOceanWaves() {
   console.log('✅ 컨테이너 찾음:', container.offsetWidth, 'x', container.offsetHeight);
   
   try {
-    // 간단한 테스트 캔버스 먼저 만들어보기
-    const canvas = document.createElement('canvas');
-    canvas.width = container.offsetWidth;
-    canvas.height = container.offsetHeight;
-    canvas.style.background = 'blue';
-    canvas.style.position = 'absolute';
-    canvas.style.top = '0';
-    canvas.style.left = '0';
-    container.appendChild(canvas);
-    console.log('✅ 테스트 캔버스 추가됨');
-    
+    console.log('🚀 OceanWaves 생성 시작...');
     const oceanWaves = new OceanWaves('ocean-wave-container');
+    console.log('✅ OceanWaves 생성 완료!');
     
     // 리사이즈 이벤트 리스너
     window.addEventListener('resize', () => {
