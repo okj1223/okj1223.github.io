@@ -4,8 +4,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Roboto:wght@400;500&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
 
-/* 🌱 Standard Theme Variables */
+/* 🌱 Eco Theme Variables */
 :root {
+  --eco-green: #7fb3d3;        /* 파스텔 블루그린 */
+  --forest-green: #5d737e;     /* 파스텔 다크그레이 */
+  --light-green: #a8d8a8;      /* 연한 민트 */
+  --water-blue: #87ceeb;       /* 하늘색 */
+  --earth-brown: #c4a484;      /* 베이지 브라운 */
   --primary-color: #2c3e50;
   --secondary-color: #34495e;
   --accent-color: #3498db;
@@ -15,6 +20,8 @@
   --border-color: #dee2e6;
   --shadow: 0 2px 10px rgba(0,0,0,0.1);
   --transition: all 0.3s ease;
+  --smooth-transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  --leaf-shadow: 0 4px 20px rgba(168, 216, 168, 0.3);
 }
 
 /* Standard Body */
@@ -26,13 +33,25 @@ body {
   padding: 0;
 }
 
-/* Removed floating leaves for cleaner look */
+/* 🍃 CSS-only floating leaves */
 .eco-leaves {
-  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
 }
 
 .leaf {
-  display: none;
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background: #b8d4b8;
+  border-radius: 0 100% 0 100%;
+  opacity: 0;
+  animation: leafFloat 10s linear infinite;
 }
 
 .leaf:nth-child(1) { left: 10%; animation-delay: 0s; }
@@ -1014,9 +1033,9 @@ body::before {
 /* 홈 프로젝트 미디어 */
 .home-project-media {
   width: 100% !important;
-  max-width: 400px !important;
-  height: 225px !important;
-  margin: 1rem 0 !important;
+  max-width: 800px !important;
+  height: 450px !important;
+  margin: 2rem auto !important;
   border-radius: 8px !important;
   overflow: visible !important;
   box-shadow: var(--shadow) !important;
