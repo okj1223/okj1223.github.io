@@ -57,13 +57,15 @@ class OceanWaves {
       // 작은 테스트 파도
       const waveGeometry = new THREE.PlaneGeometry(40, 20, 32, 16);
       const waveMaterial = new THREE.MeshPhongMaterial({
-        color: new THREE.Color(0x0077be + i * 0x001122), // 깊이감 있는 파란색 그라데이션
+        color: new THREE.Color().setHSL(0.58 + i * 0.02, 0.7, 0.5), // HSL로 명확한 파란색
         transparent: true,
-        opacity: 0.85 - i * 0.1, // 뒤로 갈수록 투명하게
+        opacity: 0.9 - i * 0.1, // 뒤로 갈수록 투명하게
         side: THREE.DoubleSide,
         wireframe: false,
         shininess: 100,
-        specular: new THREE.Color(0x4dd0e1) // 반짝이는 효과
+        specular: new THREE.Color(0x87ceeb), // 하늘색 반사광
+        emissive: new THREE.Color(0x002244), // 약간의 자체 발광
+        emissiveIntensity: 0.1
       });
       
       const wave = new THREE.Mesh(waveGeometry, waveMaterial);
