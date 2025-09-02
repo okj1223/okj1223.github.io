@@ -43,8 +43,8 @@ class OceanWaves {
   createWaves() {
     // 진짜 바다 파도 만들기 (페이지 2배 크기 고려)
     for (let i = 0; i < 6; i++) {
-      // 훨씬 큰 파도 만들기
-      const waveGeometry = new THREE.PlaneGeometry(400, 200, 128, 64);
+      // 큰 바다 파도 만들기 
+      const waveGeometry = new THREE.PlaneGeometry(120, 60, 64, 32);
       const waveMaterial = new THREE.MeshPhongMaterial({
         color: new THREE.Color(
           0.0 + i * 0.02,  // R: 약간의 빨강
@@ -61,8 +61,8 @@ class OceanWaves {
       const wave = new THREE.Mesh(waveGeometry, waveMaterial);
       wave.rotation.x = -Math.PI / 2;
       wave.position.set(
-        200 + i * 150,  // 오른쪽 멀리서 시작 (더 넓게)
-        -2 + i * 0.5,   // 약간씩 다른 높이
+        50 + i * 25,  // 화면 가까이에서 시작
+        0,            // 같은 높이
         0
       );
       
@@ -98,9 +98,9 @@ class OceanWaves {
       // 오른쪽에서 왼쪽으로 흐르는 움직임
       wave.position.x -= wave.userData.speed;
       
-      // 화면 왼쪽 끝을 벗어나면 오른쪽으로 되돌리기 (페이지 크기 고려)
-      if (wave.position.x < -400) {
-        wave.position.x = 600;
+      // 화면 왼쪽 끝을 벗어나면 오른쪽으로 되돌리기 
+      if (wave.position.x < -100) {
+        wave.position.x = 200;
       }
       
       // 사인파로 파도 출렁이는 효과 만들기
