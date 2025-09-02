@@ -43,26 +43,21 @@ class OceanWaves {
   createWaves() {
     // 진짜 바다 파도 만들기 (페이지 2배 크기 고려)
     for (let i = 0; i < 6; i++) {
-      // 큰 바다 파도 만들기 
-      const waveGeometry = new THREE.PlaneGeometry(120, 60, 64, 32);
-      const waveMaterial = new THREE.MeshPhongMaterial({
-        color: new THREE.Color(
-          0.0 + i * 0.02,  // R: 약간의 빨강
-          0.3 + i * 0.05,  // G: 바다의 초록
-          0.6 + i * 0.08   // B: 바다의 파랑
-        ),
-        transparent: true,
-        opacity: 0.8 - i * 0.1,  // 뒤쪽 파도일수록 투명하게
+      // 작은 테스트 파도
+      const waveGeometry = new THREE.PlaneGeometry(20, 10, 16, 8);
+      const waveMaterial = new THREE.MeshBasicMaterial({
+        color: 0xff0000, // 일단 빨간색으로 디버깅
+        transparent: false,
+        opacity: 1.0,
         side: THREE.DoubleSide,
-        shininess: 100,
-        specular: 0x004466
+        wireframe: false
       });
       
       const wave = new THREE.Mesh(waveGeometry, waveMaterial);
       wave.rotation.x = -Math.PI / 2;
       wave.position.set(
-        50 + i * 25,  // 화면 가까이에서 시작
-        0,            // 같은 높이
+        i * 5,  // 화면 중앙에서 시작
+        0,      // 같은 높이
         0
       );
       
