@@ -55,9 +55,9 @@ class OceanWaves {
       const wave = new THREE.Mesh(waveGeometry, waveMaterial);
       wave.rotation.x = -Math.PI / 2;
       wave.position.set(
-        i * 5,  // 화면 중앙 근처에 배치
-        0,
-        0
+        i * 15,  // 더 멀리 떨어뜨리기
+        i * 2,   // Y축도 다르게
+        i * 3    // Z축도 다르게  
       );
       
       wave.userData = {
@@ -88,15 +88,15 @@ class OceanWaves {
     
     // 파도들을 오른쪽에서 왼쪽으로 흐르게 하기
     this.waves.forEach((wave, index) => {
-      // 왼쪽으로 이동
-      wave.position.x -= 0.5;
+      // 각자 다른 속도로 왼쪽으로 이동
+      wave.position.x -= wave.userData.speed * 0.3;
       
       // 화면 왼쪽 끝을 벗어나면 오른쪽으로 되돌리기
-      if (wave.position.x < -50) {
-        wave.position.x = 50;
+      if (wave.position.x < -80) {
+        wave.position.x = 80;
       }
       
-      console.log(`파도 ${index} 위치: x=${wave.position.x.toFixed(1)}`);
+      console.log(`파도 ${index} 위치: x=${wave.position.x.toFixed(1)}, y=${wave.position.y}, z=${wave.position.z}`);
     });
     
     this.renderer.render(this.scene, this.camera);
