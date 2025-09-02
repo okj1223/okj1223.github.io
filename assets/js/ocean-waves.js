@@ -33,23 +33,23 @@ class OceanWaves {
     // 컨테이너에 추가
     this.container.appendChild(this.renderer.domElement);
     
-    // 카메라 설정 (컨테이너 비율에 맞게)
+    // 카메라 설정 (컨테이너 비율에 맞게) - 더 가까이
     this.camera.aspect = containerWidth / containerHeight;
     this.camera.updateProjectionMatrix();
-    this.camera.position.set(0, 30, 50);
+    this.camera.position.set(0, 20, 30); // 더 가까이
     this.camera.lookAt(0, 0, 0);
+    console.log('카메라 위치:', this.camera.position); // 디버깅용
   }
   
   createWaves() {
-    // 메인 바다 표면 생성
-    const oceanGeometry = new THREE.PlaneGeometry(200, 100, 128, 64);
-    const oceanMaterial = new THREE.MeshPhongMaterial({
-      color: 0x006994,
-      transparent: true,
-      opacity: 0.8,
+    // 메인 바다 표면 생성 (디버깅용 빨간색) - 작게
+    const oceanGeometry = new THREE.PlaneGeometry(50, 25, 32, 16);
+    const oceanMaterial = new THREE.MeshBasicMaterial({
+      color: 0xff0000, // 디버깅용 빨간색
+      transparent: false,
+      opacity: 1.0,
       side: THREE.DoubleSide,
-      shininess: 100,
-      specular: 0x004466
+      wireframe: false
     });
     
     this.ocean = new THREE.Mesh(oceanGeometry, oceanMaterial);
@@ -58,14 +58,15 @@ class OceanWaves {
     this.scene.add(this.ocean);
     this.waves.push(this.ocean);
     
-    // 여러 레이어의 파도 추가 (깊이감을 위해)
+    // 여러 레이어의 파도 추가 (디버깅용 확실한 색상)
     for (let i = 0; i < 3; i++) {
-      const layerGeometry = new THREE.PlaneGeometry(180 - i * 20, 90 - i * 10, 64, 32);
-      const layerMaterial = new THREE.MeshPhongMaterial({
-        color: new THREE.Color(0.0 + i * 0.05, 0.4 + i * 0.05, 0.6 + i * 0.1),
-        transparent: true,
-        opacity: 0.6 - i * 0.15,
-        side: THREE.DoubleSide
+      const layerGeometry = new THREE.PlaneGeometry(40 - i * 5, 20 - i * 2, 32, 16);
+      const layerMaterial = new THREE.MeshBasicMaterial({
+        color: i === 0 ? 0x00ff00 : (i === 1 ? 0x0000ff : 0xffff00), // 초록, 파랑, 노랑
+        transparent: false,
+        opacity: 1.0,
+        side: THREE.DoubleSide,
+        wireframe: false
       });
       
       const layer = new THREE.Mesh(layerGeometry, layerMaterial);
@@ -98,41 +99,14 @@ class OceanWaves {
   animate() {
     this.time += 0.01; // 시간 증가
     
-    // 모든 파도들을 자연스럽게 애니메이션
-    this.waves.forEach((wave, waveIndex) => {
-      const positions = wave.geometry.attributes.position;
-      
-      for (let i = 0; i < positions.count; i++) {
-        const x = positions.getX(i);
-        const z = positions.getZ(i);
-        
-        // 자연스러운 파도 높이 계산
-        let waveHeight = 0;
-        
-        // 여러 주파수의 파도를 겹쳐서 자연스럽게
-        waveHeight += Math.sin(x * 0.05 + this.time * 2) * 2; // 큰 파도
-        waveHeight += Math.sin(x * 0.1 + z * 0.05 + this.time * 3) * 1.5; // 중간 파도  
-        waveHeight += Math.cos(x * 0.15 + z * 0.1 + this.time * 4) * 0.8; // 작은 파도
-        waveHeight += Math.sin(z * 0.08 + this.time * 1.5) * 1.2; // 측면 파도
-        
-        // 레이어별로 다른 진폭 적용
-        if (wave.userData && wave.userData.amplitude) {
-          waveHeight *= wave.userData.amplitude / 3;
-          waveHeight += Math.sin(x * 0.02 + this.time + wave.userData.waveOffset) * wave.userData.amplitude;
-        }
-        
-        positions.setY(i, waveHeight);
-      }
-      
-      positions.needsUpdate = true;
-      
-      // 전체적으로 약간의 움직임 추가 (오른쪽에서 왼쪽으로)
-      if (wave.userData && wave.userData.speed) {
-        wave.material.map && (wave.material.map.offset.x -= wave.userData.speed * 0.001);
-      }
+    // 단순한 회전으로 일단 보이는지 확인
+    this.waves.forEach((wave, index) => {
+      wave.rotation.z = Math.sin(this.time + index) * 0.1;
+      console.log(`파도 ${index} 회전:`, wave.rotation.z);
     });
     
     this.renderer.render(this.scene, this.camera);
+    console.log('렌더링 중...');
     requestAnimationFrame(() => this.animate());
   }
   
