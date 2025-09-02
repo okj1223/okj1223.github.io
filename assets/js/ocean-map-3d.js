@@ -67,77 +67,203 @@ class OceanMap3D {
             this.oceanSegments
         );
         
-        // Ocean shader material
+        // Enhanced Ocean shader material with better wave physics
         const material = new THREE.ShaderMaterial({
             uniforms: {
                 time: { value: 0 },
-                waveHeight: { value: 3.0 },
-                waveSpeed: { value: 1.0 },
-                color1: { value: new THREE.Color('#006994') },
-                color2: { value: new THREE.Color('#0099cc') },
-                color3: { value: new THREE.Color('#66ccff') },
-                foamColor: { value: new THREE.Color('#ffffff') }
+                waveHeight: { value: 4.5 },
+                waveSpeed: { value: 1.2 },
+                waveFrequency: { value: 0.8 },
+                waveSteepness: { value: 0.3 },
+                waveDirection1: { value: new THREE.Vector2(1, 0.5) },
+                waveDirection2: { value: new THREE.Vector2(-0.7, 1) },
+                waveDirection3: { value: new THREE.Vector2(0.3, -0.8) },
+                color1: { value: new THREE.Color('#004466') },
+                color2: { value: new THREE.Color('#006994') },
+                color3: { value: new THREE.Color('#0099cc') },
+                color4: { value: new THREE.Color('#66ccff') },
+                foamColor: { value: new THREE.Color('#ffffff') },
+                deepColor: { value: new THREE.Color('#002233') }
             },
             vertexShader: `
                 uniform float time;
                 uniform float waveHeight;
                 uniform float waveSpeed;
+                uniform float waveFrequency;
+                uniform float waveSteepness;
+                uniform vec2 waveDirection1;
+                uniform vec2 waveDirection2;
+                uniform vec2 waveDirection3;
                 
                 varying vec2 vUv;
                 varying float vElevation;
                 varying vec3 vPosition;
+                varying vec3 vNormal;
                 
-                // Noise function for realistic waves
-                float noise(vec2 st) {
-                    return fract(sin(dot(st.xy, vec2(12.9898, 78.233))) * 43758.5453123);
+                // Improved noise function
+                float hash(vec2 p) {
+                    vec3 p3 = fract(vec3(p.xyx) * 0.13);
+                    p3 += dot(p3, p3.yzx + 3.333);
+                    return fract((p3.x + p3.y) * p3.z);
+                }
+                
+                float noise(vec2 p) {
+                    vec2 i = floor(p);
+                    vec2 f = fract(p);
+                    f = f * f * (3.0 - 2.0 * f);
+                    return mix(mix(hash(i), hash(i + vec2(1.0, 0.0)), f.x),
+                              mix(hash(i + vec2(0.0, 1.0)), hash(i + vec2(1.0, 1.0)), f.x), f.y);
+                }
+                
+                // Gerstner wave function for realistic ocean waves
+                vec3 gerstnerWave(vec2 direction, float amplitude, float frequency, float phase, vec2 position) {
+                    float steepness = waveSteepness / (frequency * amplitude);
+                    float c = cos(frequency * dot(direction, position) + phase);
+                    float s = sin(frequency * dot(direction, position) + phase);
+                    
+                    return vec3(
+                        steepness * amplitude * direction.x * c,
+                        amplitude * s,
+                        steepness * amplitude * direction.y * c
+                    );
                 }
                 
                 void main() {
                     vUv = uv;
                     vPosition = position;
                     
-                    vec3 pos = position;
+                    vec2 pos2D = position.xz;
+                    vec3 wavePos = position;
                     
-                    // Multiple wave layers for realistic ocean
-                    float wave1 = sin(pos.x * 0.02 + time * waveSpeed) * cos(pos.z * 0.02 + time * waveSpeed * 0.8) * waveHeight;
-                    float wave2 = sin(pos.x * 0.04 + time * waveSpeed * 1.2) * cos(pos.z * 0.03 + time * waveSpeed * 0.9) * waveHeight * 0.5;
-                    float wave3 = sin(pos.x * 0.08 + time * waveSpeed * 0.7) * sin(pos.z * 0.06 + time * waveSpeed * 1.1) * waveHeight * 0.3;
+                    // Multiple Gerstner waves for realistic ocean
+                    vec3 wave1 = gerstnerWave(normalize(waveDirection1), waveHeight, waveFrequency, time * waveSpeed, pos2D);
+                    vec3 wave2 = gerstnerWave(normalize(waveDirection2), waveHeight * 0.7, waveFrequency * 1.3, time * waveSpeed * 0.8, pos2D);
+                    vec3 wave3 = gerstnerWave(normalize(waveDirection3), waveHeight * 0.4, waveFrequency * 2.1, time * waveSpeed * 1.2, pos2D);
                     
-                    // Add some noise for texture
-                    float noiseValue = noise(pos.xz * 0.1 + time * 0.1) * waveHeight * 0.2;
+                    // Add smaller detail waves
+                    float detailWave1 = sin(pos2D.x * 0.3 + time * 2.0) * cos(pos2D.y * 0.2 + time * 1.5) * waveHeight * 0.2;
+                    float detailWave2 = noise(pos2D * 0.05 + time * 0.1) * waveHeight * 0.3;
                     
-                    pos.y = wave1 + wave2 + wave3 + noiseValue;
-                    vElevation = pos.y;
+                    // Combine all waves
+                    wavePos += wave1 + wave2 + wave3;
+                    wavePos.y += detailWave1 + detailWave2;
                     
-                    gl_Position = projectionMatrix * modelViewMatrix * vec4(pos, 1.0);
+                    vElevation = wavePos.y;
+                    
+                    // Calculate normal for better lighting
+                    float eps = 0.5;
+                    vec3 dx = vec3(eps, 0.0, 0.0);
+                    vec3 dz = vec3(0.0, 0.0, eps);
+                    
+                    float heightL = (gerstnerWave(normalize(waveDirection1), waveHeight, waveFrequency, time * waveSpeed, pos2D - dx.xz) +
+                                   gerstnerWave(normalize(waveDirection2), waveHeight * 0.7, waveFrequency * 1.3, time * waveSpeed * 0.8, pos2D - dx.xz) +
+                                   gerstnerWave(normalize(waveDirection3), waveHeight * 0.4, waveFrequency * 2.1, time * waveSpeed * 1.2, pos2D - dx.xz)).y;
+                    
+                    float heightR = (gerstnerWave(normalize(waveDirection1), waveHeight, waveFrequency, time * waveSpeed, pos2D + dx.xz) +
+                                   gerstnerWave(normalize(waveDirection2), waveHeight * 0.7, waveFrequency * 1.3, time * waveSpeed * 0.8, pos2D + dx.xz) +
+                                   gerstnerWave(normalize(waveDirection3), waveHeight * 0.4, waveFrequency * 2.1, time * waveSpeed * 1.2, pos2D + dx.xz)).y;
+                    
+                    float heightB = (gerstnerWave(normalize(waveDirection1), waveHeight, waveFrequency, time * waveSpeed, pos2D - dz.xz) +
+                                   gerstnerWave(normalize(waveDirection2), waveHeight * 0.7, waveFrequency * 1.3, time * waveSpeed * 0.8, pos2D - dz.xz) +
+                                   gerstnerWave(normalize(waveDirection3), waveHeight * 0.4, waveFrequency * 2.1, time * waveSpeed * 1.2, pos2D - dz.xz)).y;
+                    
+                    float heightF = (gerstnerWave(normalize(waveDirection1), waveHeight, waveFrequency, time * waveSpeed, pos2D + dz.xz) +
+                                   gerstnerWave(normalize(waveDirection2), waveHeight * 0.7, waveFrequency * 1.3, time * waveSpeed * 0.8, pos2D + dz.xz) +
+                                   gerstnerWave(normalize(waveDirection3), waveHeight * 0.4, waveFrequency * 2.1, time * waveSpeed * 1.2, pos2D + dz.xz)).y;
+                    
+                    vNormal = normalize(vec3(heightL - heightR, 2.0 * eps, heightB - heightF));
+                    
+                    gl_Position = projectionMatrix * modelViewMatrix * vec4(wavePos, 1.0);
                 }
             `,
             fragmentShader: `
                 uniform vec3 color1;
                 uniform vec3 color2;
                 uniform vec3 color3;
+                uniform vec3 color4;
                 uniform vec3 foamColor;
+                uniform vec3 deepColor;
                 uniform float time;
                 
                 varying vec2 vUv;
                 varying float vElevation;
                 varying vec3 vPosition;
+                varying vec3 vNormal;
+                
+                // Fresnel effect calculation
+                float fresnel(vec3 viewDirection, vec3 normal, float power) {
+                    return pow(1.0 - max(0.0, dot(viewDirection, normal)), power);
+                }
+                
+                // Noise function for texture details
+                float hash(vec2 p) {
+                    vec3 p3 = fract(vec3(p.xyx) * 0.13);
+                    p3 += dot(p3, p3.yzx + 3.333);
+                    return fract((p3.x + p3.y) * p3.z);
+                }
+                
+                float noise(vec2 p) {
+                    vec2 i = floor(p);
+                    vec2 f = fract(p);
+                    f = f * f * (3.0 - 2.0 * f);
+                    return mix(mix(hash(i), hash(i + vec2(1.0, 0.0)), f.x),
+                              mix(hash(i + vec2(0.0, 1.0)), hash(i + vec2(1.0, 1.0)), f.x), f.y);
+                }
                 
                 void main() {
-                    // Color based on elevation
-                    float mixFactor = (vElevation + 4.0) / 8.0;
-                    vec3 color = mix(color1, color2, mixFactor);
-                    color = mix(color, color3, smoothstep(1.5, 3.0, vElevation));
+                    // Base color mixing based on elevation
+                    float elevationFactor = clamp((vElevation + 6.0) / 12.0, 0.0, 1.0);
                     
-                    // Add foam on wave crests
-                    float foam = smoothstep(2.0, 3.5, vElevation);
-                    color = mix(color, foamColor, foam * 0.7);
+                    vec3 baseColor = deepColor;
+                    baseColor = mix(baseColor, color1, smoothstep(0.1, 0.3, elevationFactor));
+                    baseColor = mix(baseColor, color2, smoothstep(0.3, 0.6, elevationFactor));
+                    baseColor = mix(baseColor, color3, smoothstep(0.6, 0.8, elevationFactor));
+                    baseColor = mix(baseColor, color4, smoothstep(0.8, 1.0, elevationFactor));
                     
-                    // Add some shimmer effect
-                    float shimmer = sin(vPosition.x * 0.1 + time * 2.0) * sin(vPosition.z * 0.1 + time * 1.5) * 0.1 + 0.9;
-                    color *= shimmer;
+                    // Foam on wave crests
+                    float foamThreshold = 3.0;
+                    float foamIntensity = smoothstep(foamThreshold, foamThreshold + 2.0, vElevation);
                     
-                    gl_FragColor = vec4(color, 1.0);
+                    // Dynamic foam based on wave steepness
+                    float steepness = length(vec2(dFdx(vElevation), dFdy(vElevation)));
+                    foamIntensity += smoothstep(0.5, 1.5, steepness) * 0.3;
+                    
+                    // Animated foam texture
+                    vec2 foamUV = vPosition.xz * 0.1 + time * 0.1;
+                    float foamNoise1 = noise(foamUV * 4.0);
+                    float foamNoise2 = noise(foamUV * 8.0 + vec2(time * 0.2));
+                    float foamPattern = foamNoise1 * 0.7 + foamNoise2 * 0.3;
+                    
+                    foamIntensity *= (0.7 + foamPattern * 0.3);
+                    vec3 finalColor = mix(baseColor, foamColor, foamIntensity);
+                    
+                    // Fresnel reflection effect
+                    vec3 viewDirection = normalize(cameraPosition - vPosition);
+                    float fresnelValue = fresnel(viewDirection, vNormal, 3.0);
+                    vec3 reflectionColor = color4;
+                    finalColor = mix(finalColor, reflectionColor, fresnelValue * 0.4);
+                    
+                    // Surface shimmer and sparkles
+                    vec2 shimmerUV = vPosition.xz * 0.05 + time * 0.08;
+                    float shimmer1 = noise(shimmerUV * 3.0 + sin(time) * 0.1);
+                    float shimmer2 = noise(shimmerUV * 6.0 - cos(time * 1.2) * 0.1);
+                    float shimmerEffect = (shimmer1 * 0.6 + shimmer2 * 0.4);
+                    
+                    // Sparkles on wave peaks
+                    float sparkleThreshold = 0.85;
+                    float sparkles = step(sparkleThreshold, shimmerEffect) * smoothstep(2.0, 4.0, vElevation);
+                    finalColor += sparkles * vec3(1.0, 1.0, 0.8) * 0.5;
+                    
+                    // Overall brightness variation
+                    float brightness = 0.9 + shimmerEffect * 0.2;
+                    finalColor *= brightness;
+                    
+                    // Subtle color temperature variation based on position
+                    vec2 tempUV = vPosition.xz * 0.01 + time * 0.02;
+                    float temperature = noise(tempUV) * 0.1;
+                    finalColor += vec3(temperature * 0.1, -temperature * 0.05, -temperature * 0.1);
+                    
+                    gl_FragColor = vec4(finalColor, 1.0);
                 }
             `,
             side: THREE.DoubleSide,
