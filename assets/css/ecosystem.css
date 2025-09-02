@@ -3572,50 +3572,19 @@ figure figcaption {
   margin-bottom: 1rem;
 }
 
-.avatar-circle {
+.profile-avatar img {
   width: 80px;
   height: 80px;
-  background: linear-gradient(135deg, var(--eco-green), var(--light-green));
   border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  object-fit: cover;
   margin: 0 auto;
-  box-shadow: 0 8px 25px rgba(127, 179, 211, 0.2);
-  transition: var(--smooth-transition);
-  position: relative;
-  overflow: visible;
+  display: block;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
 }
 
-.avatar-circle::before {
-  content: '';
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
-  transition: var(--smooth-transition);
-}
-
-.avatar-circle:hover {
+.profile-avatar img:hover {
   transform: scale(1.1);
-  box-shadow: 0 12px 35px rgba(127, 179, 211, 0.3);
-}
-
-.avatar-circle:hover::before {
-  animation: shimmer 2s ease-in-out infinite;
-}
-
-@keyframes shimmer {
-  0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
-  100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
-}
-
-.avatar-icon {
-  font-size: 2rem;
-  z-index: 1;
-  position: relative;
 }
 
 .profile-name {

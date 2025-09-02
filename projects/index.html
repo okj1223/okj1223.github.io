@@ -819,9 +819,7 @@
        <div class="footer-section">
          <div class="footer-profile">
            <div class="profile-avatar">
-             <div class="avatar-circle">
-               <img src="/assets/img/profile.JPEG" alt="Oh Kyungjun" class="profile-image">
-             </div>
+             <img src="/assets/img/profile.JPEG" alt="Oh Kyungjun">
            </div>
            <h3 class="profile-name">Oh Kyungjun</h3>
            <p class="profile-title">Envirobotics Researcher</p>
@@ -2104,49 +2102,7 @@ html, body {
  padding: 1rem;
 }
 
-.profile-avatar {
- margin-bottom: 1rem;
-}
-
-.avatar-circle {
- width: 80px;
- height: 80px;
- background: linear-gradient(135deg, var(--eco-green), var(--light-green));
- border-radius: 50%;
- display: flex;
- align-items: center;
- justify-content: center;
- margin: 0 auto;
- box-shadow: 0 8px 25px rgba(127, 179, 211, 0.2);
- transition: var(--smooth-transition);
- position: relative;
- overflow: hidden;
-}
-
-.avatar-circle::before {
- content: '';
- position: absolute;
- top: -50%;
- left: -50%;
- width: 200%;
- height: 200%;
- background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
- transition: var(--smooth-transition);
-}
-
-.avatar-circle:hover {
- transform: scale(1.1);
- box-shadow: 0 12px 35px rgba(127, 179, 211, 0.3);
-}
-
-.avatar-circle:hover::before {
- animation: shimmer 2s ease-in-out infinite;
-}
-
-@keyframes shimmer {
- 0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
- 100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
-}
+/* Avatar styles are managed in ecosystem.css */
 
 .profile-image {
  width: 100%;
