@@ -1625,11 +1625,13 @@ section > h2::after {
 .cert-item {
   flex: 0 0 180px;
   box-sizing: border-box;
+  overflow: hidden;
+  position: relative;
 }
 
 .cert-card {
   position: relative;
-  overflow: visible;
+  overflow: hidden;
   border-radius: 12px;
   width: 100%;
   height: 180px;
@@ -1673,6 +1675,10 @@ section > h2::after {
 }
 
 .cert-details {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
   max-height: 0;
   overflow: hidden;
   padding: 0;
@@ -1683,15 +1689,25 @@ section > h2::after {
   color: #444;
   background: rgba(255, 255, 255, 0.95);
   font-family: 'Inter', sans-serif;
+  z-index: 10;
+  border-radius: 0 0 12px 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
 .cert-details ul {
   margin: 0;
   padding-left: 1rem;
+  list-style: disc;
 }
 
 .cert-details ul li {
   margin-bottom: 0.25rem;
+  text-align: left;
+}
+
+.cert-item:hover {
+  z-index: 100;
+  overflow: visible;
 }
 
 .cert-item:hover .cert-details {
