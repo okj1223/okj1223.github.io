@@ -3301,20 +3301,135 @@ figure figcaption {
   overflow: visible; /* 파도가 위로 보이도록 */
 }
 
-/* 3D 바다 쓰레기 청소 시스템 */
+/* 3D 바다 효과 시스템 */
 .footer-wave {
   position: relative;
-  top: -60px; /* 파도를 위로 올림 */
+  top: -60px;
   width: 100%;
-  height: 150px; /* 3D를 위해 높이 증가 */
-  margin-bottom: -60px; /* 위로 올린 만큼 마진 조정 */
+  height: 200px; /* 3D 효과를 위해 높이 증가 */
+  margin-bottom: -60px;
   overflow: visible;
+  perspective: 1000px; /* 3D 원근감 */
   background: linear-gradient(to bottom, 
     transparent 0%, 
-    rgba(28, 107, 223, 0.15) 50%,
-    rgba(0, 150, 255, 0.25) 100%
+    rgba(28, 107, 223, 0.1) 30%,
+    rgba(0, 150, 255, 0.2) 60%,
+    rgba(0, 100, 200, 0.3) 100%
   );
   z-index: 1;
+}
+
+/* 3D 바다 레이어들 */
+.footer-wave::before,
+.footer-wave::after {
+  content: '';
+  position: absolute;
+  width: 120%;
+  height: 100%;
+  top: 0;
+  left: -10%;
+  border-radius: 50% 50% 0 0;
+  transform-style: preserve-3d;
+}
+
+.footer-wave::before {
+  background: linear-gradient(45deg, 
+    rgba(0, 150, 255, 0.3) 0%,
+    rgba(50, 180, 255, 0.2) 50%,
+    rgba(100, 200, 255, 0.1) 100%
+  );
+  animation: wave3d-1 8s ease-in-out infinite;
+  z-index: 2;
+}
+
+.footer-wave::after {
+  background: linear-gradient(-45deg, 
+    rgba(0, 100, 200, 0.4) 0%,
+    rgba(30, 130, 220, 0.3) 50%,
+    rgba(80, 160, 240, 0.2) 100%
+  );
+  animation: wave3d-2 12s ease-in-out infinite reverse;
+  z-index: 1;
+}
+
+/* 3D 바다 추가 효과 */
+.footer-wave .wave-reflection {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 30%;
+  background: linear-gradient(to top,
+    rgba(255, 255, 255, 0.1) 0%,
+    transparent 100%
+  );
+  opacity: 0.6;
+  animation: reflection-shimmer 6s ease-in-out infinite;
+  z-index: 3;
+}
+
+@keyframes reflection-shimmer {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.8; }
+}
+
+/* 3D 물거품 효과 */
+.footer-wave .wave-bubbles {
+  position: absolute;
+  top: 20%;
+  left: 0;
+  width: 100%;
+  height: 60%;
+  pointer-events: none;
+  z-index: 4;
+}
+
+.footer-wave .bubble {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  animation: bubble-float 8s ease-in-out infinite;
+}
+
+.footer-wave .bubble:nth-child(1) {
+  width: 4px; height: 4px;
+  left: 10%; top: 80%;
+  animation-delay: 0s;
+}
+
+.footer-wave .bubble:nth-child(2) {
+  width: 6px; height: 6px;
+  left: 30%; top: 70%;
+  animation-delay: 2s;
+}
+
+.footer-wave .bubble:nth-child(3) {
+  width: 3px; height: 3px;
+  left: 60%; top: 85%;
+  animation-delay: 4s;
+}
+
+.footer-wave .bubble:nth-child(4) {
+  width: 5px; height: 5px;
+  left: 80%; top: 75%;
+  animation-delay: 6s;
+}
+
+@keyframes bubble-float {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.8;
+  }
+  90% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(-100px) scale(0.3);
+    opacity: 0;
+  }
 }
 
 /* 3D 캔버스 스타일 */
@@ -3392,6 +3507,45 @@ figure figcaption {
 }
 
 /* 파도 흐름 애니메이션 */
+/* 3D 바다 애니메이션들 */
+@keyframes wave3d-1 {
+  0%, 100% {
+    transform: rotateX(0deg) rotateY(0deg) translateZ(0px);
+    opacity: 0.3;
+  }
+  25% {
+    transform: rotateX(-5deg) rotateY(5deg) translateZ(20px);
+    opacity: 0.5;
+  }
+  50% {
+    transform: rotateX(0deg) rotateY(-5deg) translateZ(10px);
+    opacity: 0.4;
+  }
+  75% {
+    transform: rotateX(5deg) rotateY(0deg) translateZ(15px);
+    opacity: 0.6;
+  }
+}
+
+@keyframes wave3d-2 {
+  0%, 100% {
+    transform: rotateX(0deg) rotateY(0deg) translateZ(5px) scale(1.1);
+    opacity: 0.4;
+  }
+  30% {
+    transform: rotateX(3deg) rotateY(-8deg) translateZ(25px) scale(1.05);
+    opacity: 0.6;
+  }
+  60% {
+    transform: rotateX(-3deg) rotateY(8deg) translateZ(15px) scale(1.15);
+    opacity: 0.3;
+  }
+  90% {
+    transform: rotateX(0deg) rotateY(-3deg) translateZ(30px) scale(1.0);
+    opacity: 0.5;
+  }
+}
+
 @keyframes wave-flow {
   0% {
     transform: translateX(0) translateY(0);
