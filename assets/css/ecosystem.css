@@ -1674,9 +1674,10 @@ section > h2::after {
 
 .cert-details {
   max-height: 0;
-  overflow: visible;
-  padding: 0 0.5rem;
-  transition: max-height 0.3s ease, padding 0.3s ease;
+  overflow: hidden;
+  padding: 0;
+  opacity: 0;
+  transition: max-height 0.3s ease, padding 0.3s ease, opacity 0.3s ease;
   font-size: 0.5rem;
   line-height: 1.4;
   color: #444;
@@ -1694,8 +1695,9 @@ section > h2::after {
 }
 
 .cert-item:hover .cert-details {
-  max-height: 150px;
+  max-height: 200px;
   padding: 0.5rem;
+  opacity: 1;
 }
 
 /* 애니메이션 정의 */
