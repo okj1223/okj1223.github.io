@@ -43,11 +43,11 @@ class OceanWaves {
   createWaves() {
     // 여러 개의 파도를 만들어서 오른쪽에서 왼쪽으로 흐르게 하기
     for (let i = 0; i < 5; i++) {
-      const waveGeometry = new THREE.PlaneGeometry(60, 30, 64, 32);
+      const waveGeometry = new THREE.PlaneGeometry(20, 10, 16, 8);
       const waveMaterial = new THREE.MeshBasicMaterial({
-        color: new THREE.Color(0.0, 0.4 + i * 0.1, 0.8 + i * 0.05), // 점점 밝은 파랑
-        transparent: true,
-        opacity: 0.7,
+        color: i === 0 ? 0xff0000 : (i === 1 ? 0x00ff00 : (i === 2 ? 0x0000ff : (i === 3 ? 0xffff00 : 0xff00ff))), // 빨강,초록,파랑,노랑,보라
+        transparent: false, // 일단 투명도 끄기
+        opacity: 1.0,
         side: THREE.DoubleSide,
         wireframe: false
       });
@@ -55,7 +55,7 @@ class OceanWaves {
       const wave = new THREE.Mesh(waveGeometry, waveMaterial);
       wave.rotation.x = -Math.PI / 2;
       wave.position.set(
-        100 + i * 80,  // 오른쪽 멀리서 시작
+        i * 5,  // 화면 중앙 근처에 배치
         0,
         0
       );
@@ -89,27 +89,14 @@ class OceanWaves {
     // 파도들을 오른쪽에서 왼쪽으로 흐르게 하기
     this.waves.forEach((wave, index) => {
       // 왼쪽으로 이동
-      wave.position.x -= wave.userData.speed;
+      wave.position.x -= 0.5;
       
       // 화면 왼쪽 끝을 벗어나면 오른쪽으로 되돌리기
-      if (wave.position.x < -150) {
-        wave.position.x = 400;
+      if (wave.position.x < -50) {
+        wave.position.x = 50;
       }
       
-      // 파도 높낮이 애니메이션
-      const positions = wave.geometry.attributes.position;
-      for (let i = 0; i < positions.count; i++) {
-        const x = positions.getX(i);
-        const z = positions.getZ(i);
-        
-        // 파도 높이 계산
-        const waveHeight = 
-          Math.sin((x + wave.position.x) * 0.02 + this.time + wave.userData.waveOffset) * 4 +
-          Math.cos((z) * 0.03 + this.time * 1.5) * 2;
-          
-        positions.setY(i, waveHeight);
-      }
-      positions.needsUpdate = true;
+      console.log(`파도 ${index} 위치: x=${wave.position.x.toFixed(1)}`);
     });
     
     this.renderer.render(this.scene, this.camera);
