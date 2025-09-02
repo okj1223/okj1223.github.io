@@ -36,51 +36,38 @@ class OceanWaves {
     // 카메라 설정 (컨테이너 비율에 맞게) - 더 가까이
     this.camera.aspect = containerWidth / containerHeight;
     this.camera.updateProjectionMatrix();
-    this.camera.position.set(0, 20, 30); // 더 가까이
+    this.camera.position.set(0, 20, 30);
     this.camera.lookAt(0, 0, 0);
-    console.log('카메라 위치:', this.camera.position); // 디버깅용
   }
   
   createWaves() {
-    // 메인 바다 표면 생성 (디버깅용 빨간색) - 작게
-    const oceanGeometry = new THREE.PlaneGeometry(50, 25, 32, 16);
-    const oceanMaterial = new THREE.MeshBasicMaterial({
-      color: 0xff0000, // 디버깅용 빨간색
-      transparent: false,
-      opacity: 1.0,
-      side: THREE.DoubleSide,
-      wireframe: false
-    });
-    
-    this.ocean = new THREE.Mesh(oceanGeometry, oceanMaterial);
-    this.ocean.rotation.x = -Math.PI / 2;
-    this.ocean.position.set(0, 0, 0);
-    this.scene.add(this.ocean);
-    this.waves.push(this.ocean);
-    
-    // 여러 레이어의 파도 추가 (디버깅용 확실한 색상)
-    for (let i = 0; i < 3; i++) {
-      const layerGeometry = new THREE.PlaneGeometry(40 - i * 5, 20 - i * 2, 32, 16);
-      const layerMaterial = new THREE.MeshBasicMaterial({
-        color: i === 0 ? 0x00ff00 : (i === 1 ? 0x0000ff : 0xffff00), // 초록, 파랑, 노랑
-        transparent: false,
-        opacity: 1.0,
+    // 여러 개의 파도를 만들어서 오른쪽에서 왼쪽으로 흐르게 하기
+    for (let i = 0; i < 5; i++) {
+      const waveGeometry = new THREE.PlaneGeometry(60, 30, 64, 32);
+      const waveMaterial = new THREE.MeshBasicMaterial({
+        color: new THREE.Color(0.0, 0.4 + i * 0.1, 0.8 + i * 0.05), // 점점 밝은 파랑
+        transparent: true,
+        opacity: 0.7,
         side: THREE.DoubleSide,
         wireframe: false
       });
       
-      const layer = new THREE.Mesh(layerGeometry, layerMaterial);
-      layer.rotation.x = -Math.PI / 2;
-      layer.position.set(0, -1 - i * 0.5, 0);
+      const wave = new THREE.Mesh(waveGeometry, waveMaterial);
+      wave.rotation.x = -Math.PI / 2;
+      wave.position.set(
+        100 + i * 80,  // 오른쪽 멀리서 시작
+        0,
+        0
+      );
       
-      layer.userData = {
-        speed: 0.3 + i * 0.1,
-        waveOffset: i * Math.PI / 3,
-        amplitude: 3 - i * 0.5
+      wave.userData = {
+        speed: 1.0 + i * 0.2,      // 다른 속도로 흐르기
+        waveOffset: i * Math.PI / 4,
+        originalX: wave.position.x
       };
       
-      this.scene.add(layer);
-      this.waves.push(layer);
+      this.scene.add(wave);
+      this.waves.push(wave);
     }
   }
   
@@ -97,16 +84,35 @@ class OceanWaves {
   }
   
   animate() {
-    this.time += 0.01; // 시간 증가
+    this.time += 0.016; // 시간 증가
     
-    // 단순한 회전으로 일단 보이는지 확인
+    // 파도들을 오른쪽에서 왼쪽으로 흐르게 하기
     this.waves.forEach((wave, index) => {
-      wave.rotation.z = Math.sin(this.time + index) * 0.1;
-      console.log(`파도 ${index} 회전:`, wave.rotation.z);
+      // 왼쪽으로 이동
+      wave.position.x -= wave.userData.speed;
+      
+      // 화면 왼쪽 끝을 벗어나면 오른쪽으로 되돌리기
+      if (wave.position.x < -150) {
+        wave.position.x = 400;
+      }
+      
+      // 파도 높낮이 애니메이션
+      const positions = wave.geometry.attributes.position;
+      for (let i = 0; i < positions.count; i++) {
+        const x = positions.getX(i);
+        const z = positions.getZ(i);
+        
+        // 파도 높이 계산
+        const waveHeight = 
+          Math.sin((x + wave.position.x) * 0.02 + this.time + wave.userData.waveOffset) * 4 +
+          Math.cos((z) * 0.03 + this.time * 1.5) * 2;
+          
+        positions.setY(i, waveHeight);
+      }
+      positions.needsUpdate = true;
     });
     
     this.renderer.render(this.scene, this.camera);
-    console.log('렌더링 중...');
     requestAnimationFrame(() => this.animate());
   }
   
