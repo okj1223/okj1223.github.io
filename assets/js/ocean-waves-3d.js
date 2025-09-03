@@ -84,7 +84,7 @@
     // Create water base (static water body)
     const baseGeometry = new THREE.BoxGeometry(config.WORLD_X, 2, config.WORLD_Z);
     const baseMaterial = new THREE.MeshPhongMaterial({
-      color: 0x004466,  // Darker ocean blue for depth
+      color: 0x001f3f,  // Match background gradient color
       transparent: true,
       opacity: 0.9,
       shininess: 80
@@ -98,15 +98,15 @@
     const segments = 80;
     const geometry = new THREE.PlaneGeometry(config.WORLD_X, config.WORLD_Z, segments, segments);
     
-    // Create water material with enhanced reflection
+    // Create water material matching background
     const material = new THREE.MeshPhongMaterial({
-      color: 0x0066aa,  // Deep ocean blue
+      color: 0x001f3f,  // Same as background gradient start
       transparent: true,
       opacity: 0.9,
       side: THREE.DoubleSide,
       shininess: 200,  // Higher shininess for better reflection
       specular: 0xaaccff,  // Brighter specular highlights
-      emissive: 0x002244,  // Slight glow
+      emissive: 0x001122,  // Slight glow
       emissiveIntensity: 0.1,
       flatShading: false,
       vertexColors: false
@@ -128,12 +128,12 @@
       });
     }
 
-    // Initialize wave data - stronger, more visible waves
+    // Initialize wave data - reduced height waves
     for (let i = 0; i < 4; i++) {
       waveData.push({
         speedX: (Math.random() - 0.5) * 4,  // Faster X direction speed
         speedZ: (Math.random() - 0.5) * 3,  // Faster Z direction speed
-        amplitude: 0.6 + Math.random() * 0.8,  // Bigger amplitude for more visible waves
+        amplitude: 0.15 + Math.random() * 0.2,  // Much smaller amplitude
         frequencyX: 0.15 + Math.random() * 0.2,  // Lower frequency for bigger waves
         frequencyZ: 0.15 + Math.random() * 0.2,
         offsetX: Math.random() * Math.PI * 2,
@@ -213,18 +213,18 @@
         
         height += wavePattern + diagonalWave;
         
-        // Add more pronounced horizontal movement for dynamic effect
-        offsetX += Math.sin(waveZ) * 0.05;
-        offsetZ += Math.cos(waveX) * 0.05;
+        // Add subtle horizontal movement
+        offsetX += Math.sin(waveZ) * 0.01;
+        offsetZ += Math.cos(waveX) * 0.01;
       });
       
-      // Add stronger turbulence for more dramatic movement
+      // Add subtle turbulence
       const turbulence = Math.sin(currentTime * 4 + vert.x * 5) * 
-                        Math.cos(currentTime * 3 + vert.y * 5) * 0.15;
+                        Math.cos(currentTime * 3 + vert.y * 5) * 0.03;
       height += turbulence;
       
-      // Add rolling wave effect
-      const rollingWave = Math.sin(currentTime * 1.5 - vert.x * 0.3) * 0.3;
+      // Add subtle rolling wave effect
+      const rollingWave = Math.sin(currentTime * 1.5 - vert.x * 0.3) * 0.08;
       height += rollingWave;
       
       // Apply position changes
