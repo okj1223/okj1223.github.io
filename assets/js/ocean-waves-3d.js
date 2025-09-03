@@ -50,13 +50,18 @@
     camera.position.set(0, 12, 15);
     camera.lookAt(0, 0, 0);
 
-    // Lights
-    const ambientLight = new THREE.AmbientLight(0xffffff, 0.4);
+    // Lights - enhanced for better water reflection
+    const ambientLight = new THREE.AmbientLight(0x404040, 0.5);
     scene.add(ambientLight);
 
-    const dirLight = new THREE.DirectionalLight(0xffffff, 0.6);
+    const dirLight = new THREE.DirectionalLight(0xffffff, 0.8);
     dirLight.position.set(5, 10, 5);
     scene.add(dirLight);
+
+    // Add point light for water highlights
+    const pointLight = new THREE.PointLight(0x88ccff, 0.5);
+    pointLight.position.set(0, 5, 0);
+    scene.add(pointLight);
 
     // Create water surface
     createWaterSurface();
@@ -76,17 +81,31 @@
   }
 
   function createWaterSurface() {
-    const segments = 200;
+    // Create water base (static water body)
+    const baseGeometry = new THREE.BoxGeometry(config.WORLD_X, 2, config.WORLD_Z);
+    const baseMaterial = new THREE.MeshPhongMaterial({
+      color: 0x004466,  // Darker ocean blue for depth
+      transparent: true,
+      opacity: 0.9,
+      shininess: 80
+    });
+    
+    const waterBase = new THREE.Mesh(baseGeometry, baseMaterial);
+    waterBase.position.y = -1;
+    scene.add(waterBase);
+
+    // Create wave surface on top
+    const segments = 80;
     const geometry = new THREE.PlaneGeometry(config.WORLD_X, config.WORLD_Z, segments, segments);
     
     // Create water material with better ocean color
     const material = new THREE.MeshPhongMaterial({
-      color: 0x006994,  // Deep ocean blue
+      color: 0x0077aa,  // Ocean blue
       transparent: true,
-      opacity: config.waterAlpha,
+      opacity: 0.95,
       side: THREE.DoubleSide,
-      shininess: 100,
-      specular: 0x4488ff,
+      shininess: 150,
+      specular: 0x88ccff,
       flatShading: false,
       vertexColors: false
     });
@@ -107,12 +126,12 @@
       });
     }
 
-    // Initialize wave data
-    for (let i = 0; i < 5; i++) {
+    // Initialize wave data - fewer, bigger waves
+    for (let i = 0; i < 3; i++) {
       waveData.push({
-        speed: 1 + Math.random() * 2,
-        amplitude: 0.2 + Math.random() * 0.3,
-        frequency: 0.5 + Math.random() * 0.5,
+        speed: 1.5 + Math.random() * 1,
+        amplitude: 0.4 + Math.random() * 0.3,
+        frequency: 0.2 + Math.random() * 0.2,
         offset: Math.random() * Math.PI * 2
       });
     }
@@ -172,17 +191,15 @@
       waveData.forEach((wave, index) => {
         // Primary wave moving from right to left
         const waveX = vert.x - currentTime * wave.speed;
-        const waveZ = vert.y * 0.5; // Less variation in Z direction
         
-        // Create wave pattern
+        // Create smoother, larger wave pattern
         const mainWave = Math.sin(waveX * wave.frequency + wave.offset) * wave.amplitude;
-        const secondaryWave = Math.sin(waveX * wave.frequency * 2 + waveZ * 0.3) * wave.amplitude * 0.3;
         
-        height += mainWave + secondaryWave;
+        // Add slight variation based on Z position for more natural look
+        const zVariation = Math.sin(vert.y * 0.1 + currentTime * 0.5) * 0.05;
+        
+        height += mainWave + zVariation;
       });
-
-      // Add small random perturbation for natural look
-      height += Math.sin(currentTime * 3 + vert.x * 10) * 0.02;
       
       // Apply height to vertex
       positions[i * 3 + 2] = height;
