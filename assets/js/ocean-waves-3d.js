@@ -136,8 +136,8 @@
       });
     }
 
-    // Initialize wave data - reduced count for performance
-    for (let i = 0; i < 5; i++) { // Reduced from 8 to 5 waves
+    // Initialize wave data - further reduced for better performance
+    for (let i = 0; i < 3; i++) { // Reduced from 5 to 3 waves
       // Main flow direction with some variation
       const baseFlowDirection = Math.PI; // Left direction
       const flowVariation = (Math.random() - 0.5) * Math.PI * 0.4; // ±36 degrees variation
@@ -167,44 +167,40 @@
       { type: 'barrel', size: 0.5, color: 0x8B4513 }     // 2x larger
     ];
 
-    // Create object pool
-    for (let i = 0; i < 15; i++) {
+    // Create smaller object pool for better performance
+    for (let i = 0; i < 10; i++) { // Reduced from 15 to 10
       const objType = objectTypes[Math.floor(Math.random() * objectTypes.length)];
       let geometry, material;
 
       switch (objType.type) {
         case 'boat':
-          // Simple boat shape
-          geometry = new THREE.ConeGeometry(objType.size, objType.size * 2, 6);
-          material = new THREE.MeshPhongMaterial({ 
-            color: objType.color,
-            shininess: 30
+          // Simplified boat shape with fewer segments
+          geometry = new THREE.ConeGeometry(objType.size, objType.size * 2, 4);
+          material = new THREE.MeshLambertMaterial({ // Use Lambert for better performance
+            color: objType.color
           });
           break;
         case 'log':
-          // Cylindrical log
-          geometry = new THREE.CylinderGeometry(objType.size * 0.5, objType.size * 0.5, objType.size * 3, 8);
-          material = new THREE.MeshPhongMaterial({ 
-            color: objType.color,
-            shininess: 10
+          // Simplified log with fewer segments
+          geometry = new THREE.CylinderGeometry(objType.size * 0.5, objType.size * 0.5, objType.size * 3, 6);
+          material = new THREE.MeshLambertMaterial({ 
+            color: objType.color
           });
           break;
         case 'bottle':
-          // Bottle shape
-          geometry = new THREE.CylinderGeometry(objType.size * 0.3, objType.size * 0.5, objType.size * 4, 8);
-          material = new THREE.MeshPhongMaterial({ 
+          // Simplified bottle with fewer segments
+          geometry = new THREE.CylinderGeometry(objType.size * 0.3, objType.size * 0.5, objType.size * 4, 6);
+          material = new THREE.MeshLambertMaterial({ 
             color: objType.color,
             transparent: true,
-            opacity: 0.7,
-            shininess: 100
+            opacity: 0.7
           });
           break;
         case 'barrel':
-          // Barrel shape
-          geometry = new THREE.CylinderGeometry(objType.size * 0.8, objType.size * 0.8, objType.size * 2, 8);
-          material = new THREE.MeshPhongMaterial({ 
-            color: objType.color,
-            shininess: 20
+          // Simplified barrel with fewer segments
+          geometry = new THREE.CylinderGeometry(objType.size * 0.8, objType.size * 0.8, objType.size * 2, 6);
+          material = new THREE.MeshLambertMaterial({ 
+            color: objType.color
           });
           break;
       }
@@ -232,13 +228,13 @@
   }
 
   function createSplashEffects() {
-    // Create splash particle pool
-    for (let i = 0; i < 20; i++) {
-      const splashGeo = new THREE.SphereGeometry(0.02, 4, 4);
-      const splashMat = new THREE.MeshPhongMaterial({
+    // Create smaller splash particle pool for better performance
+    for (let i = 0; i < 12; i++) {
+      const splashGeo = new THREE.SphereGeometry(0.03, 3, 3); // Fewer triangles
+      const splashMat = new THREE.MeshBasicMaterial({ // Use Basic material for better performance
         color: 0x88ccff,
         transparent: true,
-        opacity: 0.8
+        opacity: 0.7
       });
       
       const splash = new THREE.Mesh(splashGeo, splashMat);
@@ -250,7 +246,7 @@
         active: false,
         velocity: new THREE.Vector3(),
         life: 0,
-        maxLife: 1.5
+        maxLife: 1.0 // Shorter life for faster cleanup
       });
     }
   }
@@ -473,10 +469,10 @@
   }
 
   function createSplash(position, intensity = 1) {
-    // Create multiple splash particles
-    const numParticles = Math.floor(5 + Math.random() * 8) * intensity;
+    // Fewer particles for better performance
+    const numParticles = Math.floor(3 + Math.random() * 4);
     
-    for (let i = 0; i < numParticles; i++) {
+    for (let i = 0; i < numParticles && i < 6; i++) { // Max 6 particles
       const splash = splashPool.find(s => !s.active);
       if (!splash) continue;
       
@@ -484,13 +480,13 @@
       splash.life = 0;
       splash.mesh.visible = true;
       splash.mesh.position.copy(position);
-      splash.mesh.position.y += Math.random() * 0.2;
+      splash.mesh.position.y += Math.random() * 0.15;
       
-      // Random splash velocity
+      // Simpler splash velocity
       splash.velocity.set(
-        (Math.random() - 0.5) * 2 * intensity,
-        1 + Math.random() * 2 * intensity,
-        (Math.random() - 0.5) * 2 * intensity
+        (Math.random() - 0.5) * 1.5,
+        0.8 + Math.random() * 1.2,
+        (Math.random() - 0.5) * 1.5
       );
       
       activeSplashes.push(splash);
@@ -633,9 +629,15 @@
     if (deltaTime > 0.05) { // Skip if frame took more than 50ms
       return;
     }
+    
+    // Reduce update frequency for expensive operations
+    const frameCount = Math.floor(clock.getElapsedTime() * 60);
+    const skipWaveUpdate = frameCount % 2 === 0; // Update waves every other frame
 
-    // Update water surface waves
-    updateWaterSurface();
+    // Update water surface waves (skip every other frame)
+    if (!skipWaveUpdate) {
+      updateWaterSurface();
+    }
     
     // Update floating objects
     updateFloatingObjects(deltaTime);
