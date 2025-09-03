@@ -164,45 +164,45 @@
 
   function createFloatingObjects() {
     const objectTypes = [
-      { type: 'boat', size: 0.6, color: 0x8B4513 },      // 2x larger
-      { type: 'log', size: 0.4, color: 0x654321 },       // 2x larger
-      { type: 'bottle', size: 0.3, color: 0x228B22 },    // 2x larger
-      { type: 'barrel', size: 0.5, color: 0x8B4513 }     // 2x larger
+      { type: 'boat', size: 0.7, color: 0x8B4513 },      // Even larger for easier clicking
+      { type: 'log', size: 0.5, color: 0x654321 },       // Even larger for easier clicking
+      { type: 'bottle', size: 0.4, color: 0x228B22 },    // Even larger for easier clicking
+      { type: 'barrel', size: 0.6, color: 0x8B4513 }     // Even larger for easier clicking
     ];
 
-    // Create balanced object pool for performance
-    for (let i = 0; i < 15; i++) { // Reduced from 20 to 15 for better performance
+    // Create optimized object pool for maximum performance
+    for (let i = 0; i < 12; i++) { // Further reduced from 15 to 12 for better click responsiveness
       const objType = objectTypes[Math.floor(Math.random() * objectTypes.length)];
       let geometry, material;
 
       switch (objType.type) {
         case 'boat':
-          // Simplified boat shape with fewer segments
-          geometry = new THREE.ConeGeometry(objType.size, objType.size * 2, 4);
-          material = new THREE.MeshLambertMaterial({ // Use Lambert for better performance
+          // Ultra-simplified boat shape for maximum performance
+          geometry = new THREE.ConeGeometry(objType.size, objType.size * 2, 3);
+          material = new THREE.MeshBasicMaterial({ // Basic material for maximum performance
             color: objType.color
           });
           break;
         case 'log':
-          // Simplified log with fewer segments
-          geometry = new THREE.CylinderGeometry(objType.size * 0.5, objType.size * 0.5, objType.size * 3, 6);
-          material = new THREE.MeshLambertMaterial({ 
+          // Ultra-simplified log with minimal segments
+          geometry = new THREE.CylinderGeometry(objType.size * 0.5, objType.size * 0.5, objType.size * 3, 4);
+          material = new THREE.MeshBasicMaterial({ 
             color: objType.color
           });
           break;
         case 'bottle':
-          // Simplified bottle with fewer segments
-          geometry = new THREE.CylinderGeometry(objType.size * 0.3, objType.size * 0.5, objType.size * 4, 6);
-          material = new THREE.MeshLambertMaterial({ 
+          // Ultra-simplified bottle with minimal segments
+          geometry = new THREE.CylinderGeometry(objType.size * 0.3, objType.size * 0.5, objType.size * 4, 4);
+          material = new THREE.MeshBasicMaterial({ 
             color: objType.color,
             transparent: true,
-            opacity: 0.7
+            opacity: 0.8 // Slightly less transparent for better visibility
           });
           break;
         case 'barrel':
-          // Simplified barrel with fewer segments
-          geometry = new THREE.CylinderGeometry(objType.size * 0.8, objType.size * 0.8, objType.size * 2, 6);
-          material = new THREE.MeshLambertMaterial({ 
+          // Ultra-simplified barrel with minimal segments
+          geometry = new THREE.CylinderGeometry(objType.size * 0.8, objType.size * 0.8, objType.size * 2, 4);
+          material = new THREE.MeshBasicMaterial({ 
             color: objType.color
           });
           break;
@@ -577,17 +577,22 @@
     const intersectableObjects = floatingObjects.map(obj => obj.mesh);
     const intersects = raycaster.intersectObjects(intersectableObjects);
     
-    // If no direct hit, try with larger click area (expanded raycasting)
+    // If no direct hit, try with much larger click area for easier clicking
     if (intersects.length === 0) {
-      // Try multiple nearby points for more forgiving click detection
-      const clickTolerance = 0.05;
+      // Try multiple nearby points with generous tolerance
+      const clickTolerance = 0.08; // Increased tolerance for easier clicking
       const nearbyPoints = [
         new THREE.Vector2(x - clickTolerance, y),
         new THREE.Vector2(x + clickTolerance, y),
         new THREE.Vector2(x, y - clickTolerance),
         new THREE.Vector2(x, y + clickTolerance),
         new THREE.Vector2(x - clickTolerance, y - clickTolerance),
-        new THREE.Vector2(x + clickTolerance, y + clickTolerance)
+        new THREE.Vector2(x + clickTolerance, y + clickTolerance),
+        new THREE.Vector2(x - clickTolerance, y + clickTolerance),
+        new THREE.Vector2(x + clickTolerance, y - clickTolerance),
+        // Add more diagonal points for better coverage
+        new THREE.Vector2(x - clickTolerance * 0.5, y - clickTolerance * 0.5),
+        new THREE.Vector2(x + clickTolerance * 0.5, y + clickTolerance * 0.5)
       ];
       
       for (const point of nearbyPoints) {
