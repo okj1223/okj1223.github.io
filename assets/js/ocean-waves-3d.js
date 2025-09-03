@@ -156,10 +156,10 @@
 
   function createFloatingObjects() {
     const objectTypes = [
-      { type: 'boat', size: 0.3, color: 0x8B4513 },
-      { type: 'log', size: 0.2, color: 0x654321 },
-      { type: 'bottle', size: 0.15, color: 0x228B22 },
-      { type: 'barrel', size: 0.25, color: 0x8B4513 }
+      { type: 'boat', size: 0.6, color: 0x8B4513 },      // 2x larger
+      { type: 'log', size: 0.4, color: 0x654321 },       // 2x larger
+      { type: 'bottle', size: 0.3, color: 0x228B22 },    // 2x larger
+      { type: 'barrel', size: 0.5, color: 0x8B4513 }     // 2x larger
     ];
 
     // Create object pool
@@ -398,14 +398,14 @@
   }
 
   function startObjectSpawning() {
-    // Spawn objects periodically
+    // Spawn objects less frequently since they're slower
     setInterval(() => {
       spawnFloatingObject();
-    }, 3000 + Math.random() * 2000); // Every 3-5 seconds
+    }, 4000 + Math.random() * 3000); // Every 4-7 seconds
     
     // Spawn initial objects
-    for (let i = 0; i < 3; i++) {
-      setTimeout(() => spawnFloatingObject(), i * 1000);
+    for (let i = 0; i < 2; i++) {
+      setTimeout(() => spawnFloatingObject(), i * 2000);
     }
   }
 
@@ -420,8 +420,8 @@
     const startY = config.WATER_Y;
 
     availableObj.position.set(startX, startY, startZ);
-    // Move RIGHT to LEFT (same as wave flow direction)
-    availableObj.velocity.set(0.5 + Math.random() * 0.5, 0, (Math.random() - 0.5) * 0.2);
+    // Match wave speed (much slower to match wave flow)
+    availableObj.velocity.set(0.15 + Math.random() * 0.1, 0, (Math.random() - 0.5) * 0.05);
     availableObj.active = true;
     availableObj.mesh.visible = true;
     availableObj.mesh.position.copy(availableObj.position);
