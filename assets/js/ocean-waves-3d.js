@@ -37,12 +37,18 @@
     // Scene setup
     scene = new THREE.Scene();
 
-    // Renderer setup
-    renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+    // Renderer setup with enhanced properties
+    renderer = new THREE.WebGLRenderer({ 
+      antialias: true, 
+      alpha: true,
+      powerPreference: "high-performance"
+    });
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     renderer.setSize(width, height);
     renderer.setClearColor(0x000000, 0);
     renderer.outputColorSpace = THREE.SRGBColorSpace;
+    renderer.toneMapping = THREE.ACESFilmicToneMapping;
+    renderer.toneMappingExposure = 1.2;
     container.appendChild(renderer.domElement);
 
     // Camera setup - closer for better wave visibility
@@ -81,13 +87,16 @@
   }
 
   function createWaterSurface() {
-    // Create water base (static water body)
+    // Create water base (static water body) with same material properties
     const baseGeometry = new THREE.BoxGeometry(config.WORLD_X, 2, config.WORLD_Z);
     const baseMaterial = new THREE.MeshPhongMaterial({
       color: 0x001f3f,  // Match background gradient color
       transparent: true,
       opacity: 0.9,
-      shininess: 80
+      shininess: 200,  // Same shininess as wave surface
+      specular: 0xaaccff,  // Same specular as wave surface
+      emissive: 0x001122,  // Same emissive properties
+      emissiveIntensity: 0.1
     });
     
     const waterBase = new THREE.Mesh(baseGeometry, baseMaterial);
