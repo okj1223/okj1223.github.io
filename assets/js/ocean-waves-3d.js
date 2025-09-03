@@ -414,13 +414,14 @@
     const availableObj = objectPool.find(obj => !obj.active);
     if (!availableObj) return;
 
-    // Position object at right edge
-    const startX = config.WORLD_X / 2 + 2;
+    // Position object at LEFT edge (same direction as waves)
+    const startX = -config.WORLD_X / 2 - 2;
     const startZ = (Math.random() - 0.5) * config.WORLD_Z * 0.8;
     const startY = config.WATER_Y;
 
     availableObj.position.set(startX, startY, startZ);
-    availableObj.velocity.set(-0.5 - Math.random() * 0.5, 0, (Math.random() - 0.5) * 0.2);
+    // Move RIGHT to LEFT (same as wave flow direction)
+    availableObj.velocity.set(0.5 + Math.random() * 0.5, 0, (Math.random() - 0.5) * 0.2);
     availableObj.active = true;
     availableObj.mesh.visible = true;
     availableObj.mesh.position.copy(availableObj.position);
@@ -456,8 +457,8 @@
       obj.mesh.rotation.y += obj.rotationSpeed;
       obj.mesh.rotation.z = Math.sin(currentTime * 1.5 + obj.bobOffset) * 0.1; // Gentle rolling
       
-      // Remove object if it's too far left
-      if (obj.position.x < -config.WORLD_X / 2 - 3) {
+      // Remove object if it's too far right
+      if (obj.position.x > config.WORLD_X / 2 + 3) {
         obj.active = false;
         obj.mesh.visible = false;
         floatingObjects.splice(i, 1);
