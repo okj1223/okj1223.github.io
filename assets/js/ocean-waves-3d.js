@@ -34,6 +34,9 @@
   // Animation state
   let animationId;
   let clock = new THREE.Clock();
+  
+  // Cleanup notification system
+  let cleanupNotifications = [];
 
   function init() {
     const container = document.getElementById('ocean-waves-container');
@@ -251,38 +254,7 @@
     }
   }
 
-  function spawnRipple(position) {
-    // Create ripple effect on water mesh when clicked
-    createRippleOnWater(position);
-  }
-
-  function createRippleOnWater(center) {
-    if (!waterMesh || !waterMesh.geometry) return;
-
-    const geometry = waterMesh.geometry;
-    const positions = geometry.attributes.position.array;
-    const originalVerts = waterMesh.userData.originalVertices;
-    
-    const rippleData = {
-      center: center.clone(),
-      startTime: clock.getElapsedTime(),
-      amplitude: 0.3,
-      speed: 2,
-      decay: 1
-    };
-
-    // Store ripple data for animation
-    if (!waterMesh.userData.ripples) {
-      waterMesh.userData.ripples = [];
-    }
-    waterMesh.userData.ripples.push(rippleData);
-
-    // Clean old ripples
-    waterMesh.userData.ripples = waterMesh.userData.ripples.filter(r => {
-      const age = clock.getElapsedTime() - r.startTime;
-      return age < 3; // Keep ripples for 3 seconds
-    });
-  }
+  // Ripple functions removed - no longer needed
 
   function updateWaterSurface() {
     if (!waterMesh) return;
@@ -357,27 +329,7 @@
       positions[idx + 2] = vert.z + offsetZ; // Z position
     }
 
-    // Apply click ripples if any
-    if (waterMesh.userData.ripples) {
-      waterMesh.userData.ripples.forEach(ripple => {
-        const age = currentTime - ripple.startTime;
-        const radius = age * ripple.speed;
-        const amplitude = ripple.amplitude * Math.exp(-age * ripple.decay);
-
-        for (let i = 0; i < originalVerts.length; i++) {
-          const vert = originalVerts[i];
-          const dx = vert.x - ripple.center.x;
-          const dz = vert.y - ripple.center.z;
-          const distance = Math.sqrt(dx * dx + dz * dz);
-
-          if (distance < radius + 1) {
-            const wave = Math.sin((radius - distance) * 2) * amplitude;
-            const falloff = Math.max(0, 1 - distance / (radius + 1));
-            positions[i * 3 + 2] += wave * falloff;
-          }
-        }
-      });
-    }
+    // Click ripples removed for cleaner ocean surface
 
     geometry.attributes.position.needsUpdate = true;
     geometry.computeVertexNormals();
@@ -493,8 +445,7 @@
       activeSplashes.push(splash);
     }
     
-    // Create ripple effect
-    createRippleOnWater(position);
+    // Ripple effect removed for cleaner gameplay
   }
 
   function updateFloatingObjects(deltaTime) {
@@ -614,12 +565,87 @@
 
     raycaster.setFromCamera(new THREE.Vector2(x, y), camera);
     
-    if (raycaster.ray.intersectPlane(waterPlane, clickPoint)) {
-      clickPoint.x = THREE.MathUtils.clamp(clickPoint.x, -config.WORLD_X/2, config.WORLD_X/2);
-      clickPoint.z = THREE.MathUtils.clamp(clickPoint.z, -config.WORLD_Z/2, config.WORLD_Z/2);
-      clickPoint.y = config.WATER_Y;
-      spawnRipple(clickPoint.clone());
+    // Check for intersections with floating objects
+    const intersectableObjects = floatingObjects.map(obj => obj.mesh);
+    const intersects = raycaster.intersectObjects(intersectableObjects);
+    
+    if (intersects.length > 0) {
+      // Find the clicked object and remove it
+      const clickedMesh = intersects[0].object;
+      const objIndex = floatingObjects.findIndex(obj => obj.mesh === clickedMesh);
+      
+      if (objIndex !== -1) {
+        const removedObj = floatingObjects[objIndex];
+        
+        // Remove from active objects
+        removedObj.active = false;
+        removedObj.mesh.visible = false;
+        floatingObjects.splice(objIndex, 1);
+        
+        // Show cleanup notification
+        showCleanupNotification(intersects[0].point);
+        
+        return; // Don't create ripple if object was clicked
+      }
     }
+  }
+
+  function showCleanupNotification(position) {
+    const container = document.getElementById('ocean-waves-container');
+    if (!container) return;
+    
+    // Create notification element
+    const notification = document.createElement('div');
+    notification.textContent = 'Ocean cleaned!';
+    notification.style.cssText = `
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: rgba(34, 139, 34, 0.9);
+      color: white;
+      padding: 12px 24px;
+      border-radius: 25px;
+      font-family: Arial, sans-serif;
+      font-size: 18px;
+      font-weight: bold;
+      z-index: 1000;
+      pointer-events: none;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      animation: cleanupFade 2s ease-out forwards;
+    `;
+    
+    // Add CSS animation if not already added
+    if (!document.getElementById('cleanup-notification-styles')) {
+      const style = document.createElement('style');
+      style.id = 'cleanup-notification-styles';
+      style.textContent = `
+        @keyframes cleanupFade {
+          0% {
+            opacity: 0;
+            transform: translate(-50%, -50%) scale(0.5);
+          }
+          20% {
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1.1);
+          }
+          100% {
+            opacity: 0;
+            transform: translate(-50%, -50%) scale(1) translateY(-20px);
+          }
+        }
+      `;
+      document.head.appendChild(style);
+    }
+    
+    container.appendChild(notification);
+    
+    // Remove notification after animation
+    setTimeout(() => {
+      if (notification.parentNode) {
+        notification.parentNode.removeChild(notification);
+      }
+    }, 2000);
   }
 
   function onWindowResize() {
