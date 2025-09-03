@@ -6,7 +6,7 @@
 
   // Configuration
   const config = {
-    WORLD_X: 18,
+    WORLD_X: 36,  // 2배로 증가 (18 -> 36)
     WORLD_Z: 10,
     WATER_Y: 0,
     waterAlpha: 0.85,
