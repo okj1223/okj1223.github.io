@@ -23,6 +23,10 @@
   // Wave parameters
   let waveData = [];
   
+  // Floating objects
+  let floatingObjects = [];
+  let objectPool = [];
+  
   // Animation state
   let animationId;
   let clock = new THREE.Clock();
@@ -71,11 +75,11 @@
     // Create water surface
     createWaterSurface();
 
-    // Create splash column pool
-    createColumnPool();
+    // Create floating objects
+    createFloatingObjects();
 
-    // Start auto-ripple effect
-    startAutoRipple();
+    // Start object spawning
+    startObjectSpawning();
 
     // Event listeners
     container.addEventListener('click', onContainerClick);
@@ -150,8 +154,71 @@
     }
   }
 
-  function createColumnPool() {
-    // Removed - no longer using columns for wave effect
+  function createFloatingObjects() {
+    const objectTypes = [
+      { type: 'boat', size: 0.3, color: 0x8B4513 },
+      { type: 'log', size: 0.2, color: 0x654321 },
+      { type: 'bottle', size: 0.15, color: 0x228B22 },
+      { type: 'barrel', size: 0.25, color: 0x8B4513 }
+    ];
+
+    // Create object pool
+    for (let i = 0; i < 15; i++) {
+      const objType = objectTypes[Math.floor(Math.random() * objectTypes.length)];
+      let geometry, material;
+
+      switch (objType.type) {
+        case 'boat':
+          // Simple boat shape
+          geometry = new THREE.ConeGeometry(objType.size, objType.size * 2, 6);
+          material = new THREE.MeshPhongMaterial({ 
+            color: objType.color,
+            shininess: 30
+          });
+          break;
+        case 'log':
+          // Cylindrical log
+          geometry = new THREE.CylinderGeometry(objType.size * 0.5, objType.size * 0.5, objType.size * 3, 8);
+          material = new THREE.MeshPhongMaterial({ 
+            color: objType.color,
+            shininess: 10
+          });
+          break;
+        case 'bottle':
+          // Bottle shape
+          geometry = new THREE.CylinderGeometry(objType.size * 0.3, objType.size * 0.5, objType.size * 4, 8);
+          material = new THREE.MeshPhongMaterial({ 
+            color: objType.color,
+            transparent: true,
+            opacity: 0.7,
+            shininess: 100
+          });
+          break;
+        case 'barrel':
+          // Barrel shape
+          geometry = new THREE.CylinderGeometry(objType.size * 0.8, objType.size * 0.8, objType.size * 2, 8);
+          material = new THREE.MeshPhongMaterial({ 
+            color: objType.color,
+            shininess: 20
+          });
+          break;
+      }
+
+      const mesh = new THREE.Mesh(geometry, material);
+      mesh.visible = false;
+      scene.add(mesh);
+
+      objectPool.push({
+        mesh: mesh,
+        type: objType.type,
+        size: objType.size,
+        active: false,
+        position: new THREE.Vector3(),
+        velocity: new THREE.Vector3(),
+        bobOffset: Math.random() * Math.PI * 2,
+        rotationSpeed: (Math.random() - 0.5) * 0.02
+      });
+    }
   }
 
   function spawnRipple(position) {
@@ -290,8 +357,112 @@
     // Removed - no longer using columns
   }
 
-  function startAutoRipple() {
-    // Waves are now continuous, no need for auto-ripple
+  // Function to calculate wave height at specific position
+  function getWaveHeightAtPosition(x, z, currentTime) {
+    let height = 0;
+    
+    waveData.forEach((wave, index) => {
+      const flowInfluence = wave.flowWeight;
+      const randomInfluence = 1 - flowInfluence;
+      
+      const flowX = x * wave.frequencyX + currentTime * wave.speedX * flowInfluence + wave.offsetX;
+      const randomX = x * wave.frequencyX * randomInfluence + currentTime * wave.speedX * randomInfluence + wave.phase;
+      const waveX = flowX + randomX;
+      const waveZ = z * wave.frequencyZ + currentTime * wave.speedZ + wave.offsetZ;
+      
+      let wavePattern;
+      if (index % 2 === 0) {
+        const flowBase = Math.sin(waveX) * Math.cos(waveZ * 0.5);
+        const thick = Math.sin(waveX * 1.3) * 0.3;
+        wavePattern = (flowBase + thick) * wave.amplitude * wave.thickness;
+      } else {
+        const diagonalFlow = Math.sin(waveX * 0.8 + waveZ * 0.6);
+        wavePattern = diagonalFlow * wave.amplitude * wave.thickness;
+      }
+      
+      const volumeWave = Math.sin(
+        x * Math.cos(wave.directionAngle) * 0.6 + 
+        z * Math.sin(wave.directionAngle) * 0.3 + 
+        currentTime * (0.8 + index * 0.1) * flowInfluence
+      ) * wave.amplitude * wave.thickness * 0.3;
+      
+      height += wavePattern + volumeWave;
+    });
+    
+    // Add noise
+    const noise = Math.sin(x * 5 + currentTime * 1) * 
+                 Math.cos(z * 4 - currentTime * 0.8) * 0.01;
+    height += noise;
+    
+    return height;
+  }
+
+  function startObjectSpawning() {
+    // Spawn objects periodically
+    setInterval(() => {
+      spawnFloatingObject();
+    }, 3000 + Math.random() * 2000); // Every 3-5 seconds
+    
+    // Spawn initial objects
+    for (let i = 0; i < 3; i++) {
+      setTimeout(() => spawnFloatingObject(), i * 1000);
+    }
+  }
+
+  function spawnFloatingObject() {
+    // Get available object from pool
+    const availableObj = objectPool.find(obj => !obj.active);
+    if (!availableObj) return;
+
+    // Position object at right edge
+    const startX = config.WORLD_X / 2 + 2;
+    const startZ = (Math.random() - 0.5) * config.WORLD_Z * 0.8;
+    const startY = config.WATER_Y;
+
+    availableObj.position.set(startX, startY, startZ);
+    availableObj.velocity.set(-0.5 - Math.random() * 0.5, 0, (Math.random() - 0.5) * 0.2);
+    availableObj.active = true;
+    availableObj.mesh.visible = true;
+    availableObj.mesh.position.copy(availableObj.position);
+    
+    // Random rotation for variety
+    availableObj.mesh.rotation.y = Math.random() * Math.PI * 2;
+    
+    floatingObjects.push(availableObj);
+  }
+
+  function updateFloatingObjects(deltaTime) {
+    const currentTime = clock.getElapsedTime();
+    
+    for (let i = floatingObjects.length - 1; i >= 0; i--) {
+      const obj = floatingObjects[i];
+      
+      // Update position
+      obj.position.x += obj.velocity.x * deltaTime * 60; // 60fps normalized
+      obj.position.z += obj.velocity.z * deltaTime * 60;
+      
+      // Calculate wave height at object position
+      const waveHeight = getWaveHeightAtPosition(obj.position.x, obj.position.z, currentTime);
+      obj.position.y = config.WATER_Y + waveHeight + 0.1; // Slightly above water
+      
+      // Add bobbing motion
+      const bobbing = Math.sin(currentTime * 2 + obj.bobOffset) * 0.05;
+      obj.position.y += bobbing;
+      
+      // Update mesh position
+      obj.mesh.position.copy(obj.position);
+      
+      // Rotate object slightly
+      obj.mesh.rotation.y += obj.rotationSpeed;
+      obj.mesh.rotation.z = Math.sin(currentTime * 1.5 + obj.bobOffset) * 0.1; // Gentle rolling
+      
+      // Remove object if it's too far left
+      if (obj.position.x < -config.WORLD_X / 2 - 3) {
+        obj.active = false;
+        obj.mesh.visible = false;
+        floatingObjects.splice(i, 1);
+      }
+    }
   }
 
   function onContainerClick(event) {
@@ -336,6 +507,9 @@
 
     // Update water surface waves
     updateWaterSurface();
+    
+    // Update floating objects
+    updateFloatingObjects(deltaTime);
 
     // Render
     renderer.render(scene, camera);
