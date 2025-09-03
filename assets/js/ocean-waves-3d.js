@@ -380,14 +380,14 @@
   }
 
   function startObjectSpawning() {
-    // Spawn objects much less frequently (half the rate)
+    // Spawn objects at moderate frequency - not too fast, not too slow
     setInterval(() => {
       spawnFloatingObject();
-    }, 8000 + Math.random() * 6000); // Every 8-14 seconds (doubled from 4-7)
+    }, 5000 + Math.random() * 4000); // Every 5-9 seconds (balanced)
     
-    // Spawn fewer initial objects
-    for (let i = 0; i < 1; i++) {
-      setTimeout(() => spawnFloatingObject(), i * 4000);
+    // Spawn a couple initial objects
+    for (let i = 0; i < 2; i++) {
+      setTimeout(() => spawnFloatingObject(), i * 2500);
     }
   }
 
@@ -398,7 +398,7 @@
 
     // Position object ABOVE the left edge for falling effect
     const startX = -config.WORLD_X / 2 - 1;
-    const startZ = (Math.random() - 0.5) * config.WORLD_Z * 0.8;
+    const startZ = (Math.random() - 0.5) * config.WORLD_Z * 0.6; // More restricted Z range
     const startY = config.WATER_Y + 3 + Math.random() * 2; // Start above water
 
     availableObj.position.set(startX, startY, startZ);
@@ -477,8 +477,8 @@
             obj.submersionDepth = 0;
             obj.floatTimer = 0;
             
-            // Set wave-following velocity after impact (slower horizontal speed)
-            obj.velocity.set(0.08 + Math.random() * 0.05, 0, (Math.random() - 0.5) * 0.03);
+            // Set wave-following velocity after impact (slower horizontal speed, limited Z drift)
+            obj.velocity.set(0.08 + Math.random() * 0.05, 0, (Math.random() - 0.5) * 0.02); // Even smaller Z drift
             
             // Create splash effect
             createSplash(obj.position.clone(), obj.size);
@@ -494,6 +494,10 @@
           // Start horizontal movement during buoyancy (much slower)
           obj.position.x += obj.velocity.x * deltaTime * 15; // Much slower during buoyancy
           obj.position.z += obj.velocity.z * deltaTime * 15;
+          
+          // Strict boundary enforcement during buoyancy
+          const halfZ_buoyant = config.WORLD_Z * 0.35; // Even tighter bounds during buoyancy
+          obj.position.z = THREE.MathUtils.clamp(obj.position.z, -halfZ_buoyant, halfZ_buoyant);
           
           // Transition to floating after rapid settling
           if (obj.floatTimer > Math.PI * 0.8) { // Faster transition
@@ -512,6 +516,16 @@
           // Slower horizontal movement 
           obj.position.x += obj.velocity.x * deltaTime * 25; // Much slower floating speed
           obj.position.z += obj.velocity.z * deltaTime * 25;
+          
+          // Strong boundary enforcement for floating objects
+          const halfZ_floating = config.WORLD_Z * 0.4; // Tighter bounds for floating
+          obj.position.z = THREE.MathUtils.clamp(obj.position.z, -halfZ_floating, halfZ_floating);
+          
+          // Also add X boundary check to prevent objects going too far ahead
+          const maxX = config.WORLD_X * 0.4; // Don't let them go too far right
+          if (obj.position.x > maxX) {
+            obj.position.x = maxX;
+          }
           break;
       }
       
