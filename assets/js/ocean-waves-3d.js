@@ -9,7 +9,7 @@
     WORLD_X: 36,  // 2배로 증가 (18 -> 36)
     WORLD_Z: 10,
     WATER_Y: 0,
-    waterAlpha: 0.85,
+    waterAlpha: 0.75, // More transparent
     waveSpeed: 2,
     waveHeight: 0.5,
     waveFrequency: 0.5
@@ -90,18 +90,19 @@
     const segments = 64; // Reduced from 120 to 64 for better performance
     const geometry = new THREE.BoxGeometry(config.WORLD_X, 3, config.WORLD_Z, segments, 12, segments);
     
-    // Create unified water material
+    // Create unified water material with more transparency
     const material = new THREE.MeshPhongMaterial({
-      color: 0x001f3f,  // Same as background
+      color: 0x004466,  // Slightly brighter blue for transparency
       transparent: true,
-      opacity: 0.92,
+      opacity: 0.75,    // Much more transparent (was 0.92)
       side: THREE.DoubleSide,
-      shininess: 200,
-      specular: 0xaaccff,
-      emissive: 0x001122,
-      emissiveIntensity: 0.1,
+      shininess: 250,   // Higher shininess for glass-like effect
+      specular: 0xbbddff, // Brighter specular for crystal clear effect
+      emissive: 0x001133,
+      emissiveIntensity: 0.05, // Reduced emissive for cleaner look
       flatShading: false,
-      vertexColors: false
+      vertexColors: false,
+      alphaTest: 0.1    // Better transparency rendering
     });
 
     waterMesh = new THREE.Mesh(geometry, material);

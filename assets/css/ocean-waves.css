@@ -4,7 +4,7 @@
   position: relative;
   width: 100%;
   height: 400px;
-  background: #001f3f;
+  background: linear-gradient(to bottom, #001122, #002244);
   overflow: hidden;
   margin: 0;
   padding: 0;
