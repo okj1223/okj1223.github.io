@@ -45,13 +45,13 @@
     // Scene setup
     scene = new THREE.Scene();
 
-    // Renderer setup optimized for performance
+    // Renderer setup for higher quality
     renderer = new THREE.WebGLRenderer({ 
-      antialias: window.devicePixelRatio <= 1, // Only use antialiasing on low DPI displays
+      antialias: true, // Always use antialiasing for smoother edges
       alpha: true,
       powerPreference: "high-performance"
     });
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5)); // Limit pixel ratio
+    renderer.setPixelRatio(window.devicePixelRatio); // Use full pixel ratio
     renderer.setSize(width, height);
     renderer.setClearColor(0x000000, 0);
     renderer.outputColorSpace = THREE.SRGBColorSpace;
@@ -95,8 +95,8 @@
   }
 
   function createWaterSurface() {
-    // Create unified water body using BoxGeometry with optimized segments
-    const segments = 64; // Reduced from 120 to 64 for better performance
+    // Create unified water body using BoxGeometry with higher detail
+    const segments = 96; // Increased from 64 to 96 for smoother waves
     const geometry = new THREE.BoxGeometry(config.WORLD_X, 3, config.WORLD_Z, segments, 12, segments);
     
     // Create unified water material with more transparency
@@ -136,8 +136,8 @@
       });
     }
 
-    // Initialize wave data - further reduced for better performance
-    for (let i = 0; i < 3; i++) { // Reduced from 5 to 3 waves
+    // Initialize wave data - increased for richer wave patterns
+    for (let i = 0; i < 6; i++) { // Increased from 3 to 6 waves
       // Main flow direction with some variation
       const baseFlowDirection = Math.PI; // Left direction
       const flowVariation = (Math.random() - 0.5) * Math.PI * 0.4; // ±36 degrees variation
@@ -167,8 +167,8 @@
       { type: 'barrel', size: 0.5, color: 0x8B4513 }     // 2x larger
     ];
 
-    // Create smaller object pool for better performance
-    for (let i = 0; i < 10; i++) { // Reduced from 15 to 10
+    // Create larger object pool for more activity
+    for (let i = 0; i < 20; i++) { // Increased from 10 to 20
       const objType = objectTypes[Math.floor(Math.random() * objectTypes.length)];
       let geometry, material;
 
@@ -228,10 +228,10 @@
   }
 
   function createSplashEffects() {
-    // Create smaller splash particle pool for better performance
-    for (let i = 0; i < 12; i++) {
-      const splashGeo = new THREE.SphereGeometry(0.03, 3, 3); // Fewer triangles
-      const splashMat = new THREE.MeshBasicMaterial({ // Use Basic material for better performance
+    // Create larger splash particle pool for more effects
+    for (let i = 0; i < 24; i++) { // Increased from 12 to 24
+      const splashGeo = new THREE.SphereGeometry(0.03, 6, 6); // More triangles for smoother spheres
+      const splashMat = new THREE.MeshLambertMaterial({ // Use Lambert for better lighting
         color: 0x88ccff,
         transparent: true,
         opacity: 0.7
@@ -470,10 +470,10 @@
   }
 
   function createSplash(position, intensity = 1) {
-    // Fewer particles for better performance
-    const numParticles = Math.floor(3 + Math.random() * 4);
+    // More particles for dramatic splash effects
+    const numParticles = Math.floor(8 + Math.random() * 8);
     
-    for (let i = 0; i < numParticles && i < 6; i++) { // Max 6 particles
+    for (let i = 0; i < numParticles && i < 16; i++) { // Max 16 particles
       const splash = splashPool.find(s => !s.active);
       if (!splash) continue;
       
@@ -639,21 +639,9 @@
 
     const deltaTime = clock.getDelta();
     
-    // Skip frames on low performance devices
-    if (deltaTime > 0.05) { // Skip if frame took more than 50ms
-      return;
-    }
-    
-    // Reduce update frequency for expensive operations
-    const frameCount = Math.floor(clock.getElapsedTime() * 60);
-    const skipWaveUpdate = frameCount % 2 === 0; // Update waves every other frame
-
-    // Update water surface waves (skip every other frame)
-    if (!skipWaveUpdate) {
-      updateWaterSurface();
-    }
-    
-    // Update floating objects
+    // Remove frame skipping for higher frame rates
+    // Update everything every frame for smooth animation
+    updateWaterSurface();
     updateFloatingObjects(deltaTime);
 
     // Render
