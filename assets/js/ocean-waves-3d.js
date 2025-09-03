@@ -127,19 +127,25 @@
       });
     }
 
-    // Initialize wave data - thicker, more voluminous waves
+    // Initialize wave data with dominant flow direction (right to left)
     for (let i = 0; i < 8; i++) {
+      // Main flow direction with some variation
+      const baseFlowDirection = Math.PI; // Left direction
+      const flowVariation = (Math.random() - 0.5) * Math.PI * 0.4; // ±36 degrees variation
+      const flowDirection = baseFlowDirection + flowVariation;
+      
       waveData.push({
-        speedX: (Math.random() - 0.5) * 4,  
-        speedZ: (Math.random() - 0.5) * 3,  
-        amplitude: 0.2 + Math.random() * 0.4,  // Bigger amplitudes for thickness
-        frequencyX: 0.08 + Math.random() * 0.3,  // Lower frequency for broader waves
+        speedX: -2 - Math.random() * 2,  // Mainly left (negative X) with variation
+        speedZ: (Math.random() - 0.5) * 2,  // Some Z variation but less dominant
+        amplitude: 0.2 + Math.random() * 0.4,
+        frequencyX: 0.08 + Math.random() * 0.3,
         frequencyZ: 0.08 + Math.random() * 0.3,
         offsetX: Math.random() * Math.PI * 2,
         offsetZ: Math.random() * Math.PI * 2,
-        directionAngle: Math.random() * Math.PI * 2,
+        directionAngle: flowDirection,  // Biased toward flow direction
         phase: Math.random() * Math.PI * 2,
-        thickness: 0.5 + Math.random() * 0.5  // Add thickness parameter
+        thickness: 0.5 + Math.random() * 0.5,
+        flowWeight: 0.7 + Math.random() * 0.3  // How much this wave follows main flow
       });
     }
   }
@@ -202,44 +208,51 @@
       let offsetX = 0;
       let offsetZ = 0;
 
-      // Multiple wave layers with thickness effect
+      // Multiple wave layers with flow-biased movement
       waveData.forEach((wave, index) => {
-        // Wave movement with phase offset for more randomness
-        const waveX = vert.x * wave.frequencyX + currentTime * wave.speedX + wave.offsetX + wave.phase;
+        // Wave movement with flow direction bias
+        const flowInfluence = wave.flowWeight;
+        const randomInfluence = 1 - flowInfluence;
+        
+        // Combine flow-based movement with random variation
+        const flowX = vert.x * wave.frequencyX + currentTime * wave.speedX * flowInfluence + wave.offsetX;
+        const randomX = vert.x * wave.frequencyX * randomInfluence + currentTime * wave.speedX * randomInfluence + wave.phase;
+        const waveX = flowX + randomX;
+        
         const waveZ = vert.z * wave.frequencyZ + currentTime * wave.speedZ + wave.offsetZ;
         
-        // Create thicker waves using multiple sine waves
+        // Create thicker waves with flow direction
         let wavePattern;
         if (index % 3 === 0) {
-          // Thick wave with gaussian-like profile
-          const base = Math.sin(waveX) * Math.cos(waveZ);
-          const thick1 = Math.sin(waveX * 1.5) * Math.cos(waveZ * 1.5) * 0.3;
-          const thick2 = Math.sin(waveX * 2) * Math.cos(waveZ * 2) * 0.1;
-          wavePattern = (base + thick1 + thick2) * wave.amplitude * wave.thickness;
+          // Main flow wave - stronger in X direction
+          const flowBase = Math.sin(waveX) * Math.cos(waveZ * 0.5);
+          const thick1 = Math.sin(waveX * 1.2) * Math.cos(waveZ * 0.8) * 0.3;
+          const thick2 = Math.sin(waveX * 1.8) * Math.cos(waveZ * 1.2) * 0.1;
+          wavePattern = (flowBase + thick1 + thick2) * wave.amplitude * wave.thickness * flowInfluence;
         } else if (index % 3 === 1) {
-          // Rolling thick wave
-          const base = Math.sin(waveX + waveZ);
-          const thick = Math.sin((waveX + waveZ) * 1.3) * 0.4;
-          wavePattern = (base + thick) * wave.amplitude * wave.thickness;
+          // Diagonal flow wave
+          const diagonalFlow = Math.sin(waveX * Math.cos(wave.directionAngle) + waveZ * Math.sin(wave.directionAngle));
+          const thick = Math.sin((waveX + waveZ * 0.5) * 1.3) * 0.4;
+          wavePattern = (diagonalFlow + thick) * wave.amplitude * wave.thickness;
         } else {
-          // Broad wave crest
-          const base = (Math.sin(waveX) + Math.sin(waveZ)) * 0.5;
-          const thick = Math.pow(Math.max(0, base), 0.7); // Power function for broader crests
-          wavePattern = thick * wave.amplitude * wave.thickness;
+          // Cross current - adds variation but follows general flow
+          const crossBase = Math.sin(waveX * 0.8 + waveZ);
+          const flowMod = Math.sin(waveX * 1.5) * 0.3; // Flow-aligned modulation
+          wavePattern = (crossBase + flowMod) * wave.amplitude * wave.thickness * (0.5 + flowInfluence * 0.5);
         }
         
-        // Add volume with smoother transitions
+        // Add directional volume wave that follows flow
         const volumeWave = Math.sin(
-          vert.x * Math.cos(wave.directionAngle) * 0.5 + 
-          vert.z * Math.sin(wave.directionAngle) * 0.5 + 
-          currentTime * (1.2 + index * 0.2)
+          vert.x * Math.cos(wave.directionAngle) * 0.6 + 
+          vert.z * Math.sin(wave.directionAngle) * 0.3 + 
+          currentTime * (1.5 + index * 0.2) * flowInfluence
         ) * wave.amplitude * wave.thickness * 0.4;
         
         height += wavePattern + volumeWave;
         
-        // Add varying horizontal movement
-        offsetX += Math.sin(waveZ + wave.phase) * 0.008;
-        offsetZ += Math.cos(waveX - wave.phase) * 0.008;
+        // Add flow-biased horizontal movement
+        offsetX += Math.sin(waveZ + wave.phase) * 0.008 * flowInfluence;
+        offsetZ += Math.cos(waveX - wave.phase) * 0.006 * (1 - flowInfluence * 0.5);
       });
       
       // Add random noise for natural irregularity
