@@ -54,7 +54,7 @@
       alpha: true,
       powerPreference: "high-performance"
     });
-    renderer.setPixelRatio(window.devicePixelRatio); // Use full pixel ratio
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2)); // Limit for better performance
     renderer.setSize(width, height);
     renderer.setClearColor(0x000000, 0);
     renderer.outputColorSpace = THREE.SRGBColorSpace;
@@ -98,8 +98,8 @@
   }
 
   function createWaterSurface() {
-    // Create unified water body using BoxGeometry with higher detail
-    const segments = 96; // Increased from 64 to 96 for smoother waves
+    // Create unified water body using BoxGeometry balanced for performance
+    const segments = 80; // Balanced: 80 segments for good quality and performance
     const geometry = new THREE.BoxGeometry(config.WORLD_X, 3, config.WORLD_Z, segments, 12, segments);
     
     // Create unified water material with more transparency
@@ -380,14 +380,14 @@
   }
 
   function startObjectSpawning() {
-    // Spawn objects less frequently since they're slower
+    // Spawn objects much less frequently (half the rate)
     setInterval(() => {
       spawnFloatingObject();
-    }, 4000 + Math.random() * 3000); // Every 4-7 seconds
+    }, 8000 + Math.random() * 6000); // Every 8-14 seconds (doubled from 4-7)
     
-    // Spawn initial objects
-    for (let i = 0; i < 2; i++) {
-      setTimeout(() => spawnFloatingObject(), i * 2000);
+    // Spawn fewer initial objects
+    for (let i = 0; i < 1; i++) {
+      setTimeout(() => spawnFloatingObject(), i * 4000);
     }
   }
 
@@ -568,6 +568,29 @@
     // Check for intersections with floating objects
     const intersectableObjects = floatingObjects.map(obj => obj.mesh);
     const intersects = raycaster.intersectObjects(intersectableObjects);
+    
+    // If no direct hit, try with larger click area (expanded raycasting)
+    if (intersects.length === 0) {
+      // Try multiple nearby points for more forgiving click detection
+      const clickTolerance = 0.05;
+      const nearbyPoints = [
+        new THREE.Vector2(x - clickTolerance, y),
+        new THREE.Vector2(x + clickTolerance, y),
+        new THREE.Vector2(x, y - clickTolerance),
+        new THREE.Vector2(x, y + clickTolerance),
+        new THREE.Vector2(x - clickTolerance, y - clickTolerance),
+        new THREE.Vector2(x + clickTolerance, y + clickTolerance)
+      ];
+      
+      for (const point of nearbyPoints) {
+        raycaster.setFromCamera(point, camera);
+        const nearbyIntersects = raycaster.intersectObjects(intersectableObjects);
+        if (nearbyIntersects.length > 0) {
+          intersects.push(...nearbyIntersects);
+          break;
+        }
+      }
+    }
     
     if (intersects.length > 0) {
       // Find the clicked object and remove it
