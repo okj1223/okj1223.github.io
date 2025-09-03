@@ -1,15 +1,6 @@
 <link rel="stylesheet" href="/assets/css/ecosystem.css">
 
 <footer class="eco-footer">
-  <!-- 🌊 3D Ocean Map -->
-<div class="ocean-map-section">
-  <div class="ocean-map-header">
-    <h3>Interactive 3D Ocean Map</h3>
-    <p>Drag to rotate • Scroll to zoom • Watch the waves flow</p>
-  </div>
-  <div id="ocean-map-container" class="ocean-map-container"></div>
-</div>
-
   <div class="footer-content">
     <div class="container-md">
       <div class="row">
@@ -170,15 +161,3 @@
     <span class="back-to-top-icon">🚀</span>
   </button>
 </footer>
-
-<!-- 청소 완료 메시지 -->
-<div class="cleanup-message" id="cleanupMessage">
-  <span class="cleanup-icon">🌊</span>
-  <span class="cleanup-text">Ocean cleaned up! 🌊✨</span>
-</div>
-
-<!-- Three.js Library -->
-<script src="https://cdn.jsdelivr.net/npm/three@0.150.0/build/three.min.js"></script>
-
-<!-- 3D Ocean Map Script -->
-<script src="{{ '/assets/js/ocean-map-3d.js' | relative_url }}?v={{ site.time | date: '%s' }}"></script>
