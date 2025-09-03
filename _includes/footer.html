@@ -1,6 +1,16 @@
 <link rel="stylesheet" href="/assets/css/ecosystem.css">
+<link rel="stylesheet" href="/assets/css/ocean-waves.css">
 
 <footer class="eco-footer">
+  <!-- 3D Ocean Waves Section -->
+  <div class="ocean-waves-section">
+    <div class="ocean-waves-header">
+      <h3>Interactive 3D Ocean</h3>
+      <p>Click to create ripples • Watch the waves flow</p>
+    </div>
+    <div id="ocean-waves-container"></div>
+  </div>
+
   <div class="footer-content">
     <div class="container-md">
       <div class="row">
@@ -161,3 +171,9 @@
     <span class="back-to-top-icon">🚀</span>
   </button>
 </footer>
+
+<!-- Three.js Library -->
+<script src="https://cdn.jsdelivr.net/npm/three@0.150.0/build/three.min.js"></script>
+
+<!-- 3D Ocean Waves Script -->
+<script src="{{ '/assets/js/ocean-waves-3d.js' | relative_url }}?v={{ site.time | date: '%s' }}"></script>
