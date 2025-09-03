@@ -517,15 +517,11 @@
           obj.position.x += obj.velocity.x * deltaTime * 25; // Much slower floating speed
           obj.position.z += obj.velocity.z * deltaTime * 25;
           
-          // Strong boundary enforcement for floating objects
+          // Strong boundary enforcement for floating objects (Z-axis only)
           const halfZ_floating = config.WORLD_Z * 0.4; // Tighter bounds for floating
           obj.position.z = THREE.MathUtils.clamp(obj.position.z, -halfZ_floating, halfZ_floating);
           
-          // Also add X boundary check to prevent objects going too far ahead
-          const maxX = config.WORLD_X * 0.4; // Don't let them go too far right
-          if (obj.position.x > maxX) {
-            obj.position.x = maxX;
-          }
+          // Let objects flow freely to the right edge where they'll be removed
           break;
       }
       
