@@ -103,8 +103,8 @@
     waterBase.position.y = -1;
     scene.add(waterBase);
 
-    // Create wave surface on top
-    const segments = 80;
+    // Create wave surface with more segments for smoother waves
+    const segments = 120;
     const geometry = new THREE.PlaneGeometry(config.WORLD_X, config.WORLD_Z, segments, segments);
     
     // Create water material matching background
@@ -137,18 +137,19 @@
       });
     }
 
-    // Initialize wave data - more random patterns
-    for (let i = 0; i < 6; i++) {
+    // Initialize wave data - thicker, more voluminous waves
+    for (let i = 0; i < 8; i++) {
       waveData.push({
-        speedX: (Math.random() - 0.5) * 6,  // More varied speeds
-        speedZ: (Math.random() - 0.5) * 4,  
-        amplitude: 0.1 + Math.random() * 0.25,  // Varied amplitudes
-        frequencyX: 0.1 + Math.random() * 0.5,  // More frequency variation
-        frequencyZ: 0.1 + Math.random() * 0.5,
+        speedX: (Math.random() - 0.5) * 4,  
+        speedZ: (Math.random() - 0.5) * 3,  
+        amplitude: 0.2 + Math.random() * 0.4,  // Bigger amplitudes for thickness
+        frequencyX: 0.08 + Math.random() * 0.3,  // Lower frequency for broader waves
+        frequencyZ: 0.08 + Math.random() * 0.3,
         offsetX: Math.random() * Math.PI * 2,
         offsetZ: Math.random() * Math.PI * 2,
         directionAngle: Math.random() * Math.PI * 2,
-        phase: Math.random() * Math.PI * 2  // Add phase for more randomness
+        phase: Math.random() * Math.PI * 2,
+        thickness: 0.5 + Math.random() * 0.5  // Add thickness parameter
       });
     }
   }
@@ -205,30 +206,40 @@
       let offsetX = 0;
       let offsetZ = 0;
 
-      // Multiple wave layers with different directions and phases
+      // Multiple wave layers with thickness effect
       waveData.forEach((wave, index) => {
         // Wave movement with phase offset for more randomness
         const waveX = vert.x * wave.frequencyX + currentTime * wave.speedX + wave.offsetX + wave.phase;
         const waveZ = vert.y * wave.frequencyZ + currentTime * wave.speedZ + wave.offsetZ;
         
-        // Mix different wave functions for more variety
+        // Create thicker waves using multiple sine waves
         let wavePattern;
         if (index % 3 === 0) {
-          wavePattern = Math.sin(waveX) * Math.cos(waveZ) * wave.amplitude;
+          // Thick wave with gaussian-like profile
+          const base = Math.sin(waveX) * Math.cos(waveZ);
+          const thick1 = Math.sin(waveX * 1.5) * Math.cos(waveZ * 1.5) * 0.3;
+          const thick2 = Math.sin(waveX * 2) * Math.cos(waveZ * 2) * 0.1;
+          wavePattern = (base + thick1 + thick2) * wave.amplitude * wave.thickness;
         } else if (index % 3 === 1) {
-          wavePattern = Math.sin(waveX + waveZ) * wave.amplitude;
+          // Rolling thick wave
+          const base = Math.sin(waveX + waveZ);
+          const thick = Math.sin((waveX + waveZ) * 1.3) * 0.4;
+          wavePattern = (base + thick) * wave.amplitude * wave.thickness;
         } else {
-          wavePattern = (Math.sin(waveX) + Math.sin(waveZ)) * wave.amplitude * 0.5;
+          // Broad wave crest
+          const base = (Math.sin(waveX) + Math.sin(waveZ)) * 0.5;
+          const thick = Math.pow(Math.max(0, base), 0.7); // Power function for broader crests
+          wavePattern = thick * wave.amplitude * wave.thickness;
         }
         
-        // Add diagonal wave with varying angles
-        const diagonalWave = Math.sin(
-          vert.x * Math.cos(wave.directionAngle + currentTime * 0.1) + 
-          vert.y * Math.sin(wave.directionAngle) + 
-          currentTime * (1.5 + index * 0.3)
-        ) * wave.amplitude * 0.3;
+        // Add volume with smoother transitions
+        const volumeWave = Math.sin(
+          vert.x * Math.cos(wave.directionAngle) * 0.5 + 
+          vert.y * Math.sin(wave.directionAngle) * 0.5 + 
+          currentTime * (1.2 + index * 0.2)
+        ) * wave.amplitude * wave.thickness * 0.4;
         
-        height += wavePattern + diagonalWave;
+        height += wavePattern + volumeWave;
         
         // Add varying horizontal movement
         offsetX += Math.sin(waveZ + wave.phase) * 0.008;
