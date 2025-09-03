@@ -91,6 +91,7 @@
 
     // Event listeners
     container.addEventListener('click', onContainerClick);
+    container.addEventListener('mousemove', onContainerMouseMove);
     window.addEventListener('resize', onWindowResize);
 
     // Start animation
@@ -568,62 +569,102 @@
     if (!container) return;
 
     const rect = container.getBoundingClientRect();
-    const x = ((event.clientX - rect.left) / rect.width) * 2 - 1;
-    const y = -((event.clientY - rect.top) / rect.height) * 2 + 1;
-
-    raycaster.setFromCamera(new THREE.Vector2(x, y), camera);
+    const mouseX = event.clientX - rect.left;
+    const mouseY = event.clientY - rect.top;
     
-    // Check for intersections with floating objects
-    const intersectableObjects = floatingObjects.map(obj => obj.mesh);
-    const intersects = raycaster.intersectObjects(intersectableObjects);
+    // Screen-based click detection - much more reliable than raycasting
+    let clickedObject = null;
+    let closestDistance = Infinity;
     
-    // If no direct hit, try with much larger click area for easier clicking
-    if (intersects.length === 0) {
-      // Try multiple nearby points with generous tolerance
-      const clickTolerance = 0.08; // Increased tolerance for easier clicking
-      const nearbyPoints = [
-        new THREE.Vector2(x - clickTolerance, y),
-        new THREE.Vector2(x + clickTolerance, y),
-        new THREE.Vector2(x, y - clickTolerance),
-        new THREE.Vector2(x, y + clickTolerance),
-        new THREE.Vector2(x - clickTolerance, y - clickTolerance),
-        new THREE.Vector2(x + clickTolerance, y + clickTolerance),
-        new THREE.Vector2(x - clickTolerance, y + clickTolerance),
-        new THREE.Vector2(x + clickTolerance, y - clickTolerance),
-        // Add more diagonal points for better coverage
-        new THREE.Vector2(x - clickTolerance * 0.5, y - clickTolerance * 0.5),
-        new THREE.Vector2(x + clickTolerance * 0.5, y + clickTolerance * 0.5)
-      ];
+    // Check all floating objects using screen coordinates
+    for (let i = 0; i < floatingObjects.length; i++) {
+      const obj = floatingObjects[i];
       
-      for (const point of nearbyPoints) {
-        raycaster.setFromCamera(point, camera);
-        const nearbyIntersects = raycaster.intersectObjects(intersectableObjects);
-        if (nearbyIntersects.length > 0) {
-          intersects.push(...nearbyIntersects);
-          break;
-        }
+      // Project 3D position to screen coordinates
+      const screenPosition = new THREE.Vector3();
+      screenPosition.copy(obj.position);
+      screenPosition.project(camera);
+      
+      // Convert to pixel coordinates
+      const screenX = (screenPosition.x + 1) * rect.width / 2;
+      const screenY = (-screenPosition.y + 1) * rect.height / 2;
+      
+      // Calculate distance from click to object center
+      const distance = Math.sqrt(
+        Math.pow(mouseX - screenX, 2) + Math.pow(mouseY - screenY, 2)
+      );
+      
+      // Very generous click radius based on object size
+      const clickRadius = obj.size * 150; // Much larger click area
+      
+      if (distance < clickRadius && distance < closestDistance) {
+        clickedObject = obj;
+        closestDistance = distance;
       }
     }
     
-    if (intersects.length > 0) {
-      // Find the clicked object and remove it
-      const clickedMesh = intersects[0].object;
-      const objIndex = floatingObjects.findIndex(obj => obj.mesh === clickedMesh);
+    // If we found a clicked object, remove it
+    if (clickedObject) {
+      const objIndex = floatingObjects.findIndex(obj => obj === clickedObject);
       
       if (objIndex !== -1) {
-        const removedObj = floatingObjects[objIndex];
-        
         // Remove from active objects
-        removedObj.active = false;
-        removedObj.mesh.visible = false;
+        clickedObject.active = false;
+        clickedObject.mesh.visible = false;
         floatingObjects.splice(objIndex, 1);
         
-        // Show cleanup notification
-        showCleanupNotification(intersects[0].point);
+        // Show cleanup notification at object position
+        showCleanupNotification(clickedObject.position);
         
-        return; // Don't create ripple if object was clicked
+        return; // Successfully clicked an object
       }
     }
+  }
+
+  function onContainerMouseMove(event) {
+    const container = document.getElementById('ocean-waves-container');
+    if (!container) return;
+
+    const rect = container.getBoundingClientRect();
+    const mouseX = event.clientX - rect.left;
+    const mouseY = event.clientY - rect.top;
+    
+    // Reset all objects to normal scale first
+    floatingObjects.forEach(obj => {
+      obj.mesh.scale.setScalar(1);
+    });
+    
+    // Check if hovering over any object
+    for (let i = 0; i < floatingObjects.length; i++) {
+      const obj = floatingObjects[i];
+      
+      // Project 3D position to screen coordinates
+      const screenPosition = new THREE.Vector3();
+      screenPosition.copy(obj.position);
+      screenPosition.project(camera);
+      
+      // Convert to pixel coordinates
+      const screenX = (screenPosition.x + 1) * rect.width / 2;
+      const screenY = (-screenPosition.y + 1) * rect.height / 2;
+      
+      // Calculate distance from mouse to object center
+      const distance = Math.sqrt(
+        Math.pow(mouseX - screenX, 2) + Math.pow(mouseY - screenY, 2)
+      );
+      
+      // Same generous click radius
+      const clickRadius = obj.size * 150;
+      
+      if (distance < clickRadius) {
+        // Highlight the hoverable object
+        obj.mesh.scale.setScalar(1.2); // Make it 20% bigger
+        container.style.cursor = 'pointer';
+        return;
+      }
+    }
+    
+    // No object hovered
+    container.style.cursor = 'default';
   }
 
   function showCleanupNotification(position) {
@@ -718,6 +759,7 @@
     const container = document.getElementById('ocean-waves-container');
     if (container) {
       container.removeEventListener('click', onContainerClick);
+      container.removeEventListener('mousemove', onContainerMouseMove);
       if (renderer && renderer.domElement) {
         container.removeChild(renderer.domElement);
       }
