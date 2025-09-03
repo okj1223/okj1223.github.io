@@ -126,13 +126,17 @@
       });
     }
 
-    // Initialize wave data - fewer, bigger waves
-    for (let i = 0; i < 3; i++) {
+    // Initialize wave data - multiple waves with random directions
+    for (let i = 0; i < 5; i++) {
       waveData.push({
-        speed: 1.5 + Math.random() * 1,
-        amplitude: 0.4 + Math.random() * 0.3,
-        frequency: 0.2 + Math.random() * 0.2,
-        offset: Math.random() * Math.PI * 2
+        speedX: (Math.random() - 0.5) * 3,  // Random X direction speed
+        speedZ: (Math.random() - 0.5) * 2,  // Random Z direction speed
+        amplitude: 0.3 + Math.random() * 0.4,
+        frequencyX: 0.2 + Math.random() * 0.3,
+        frequencyZ: 0.2 + Math.random() * 0.3,
+        offsetX: Math.random() * Math.PI * 2,
+        offsetZ: Math.random() * Math.PI * 2,
+        directionAngle: Math.random() * Math.PI * 2  // Random wave direction
       });
     }
   }
@@ -182,27 +186,46 @@
     const originalVerts = waterMesh.userData.originalVertices;
     const currentTime = clock.getElapsedTime();
 
-    // Apply wave effect from right to left
+    // Apply wave effects with random XYZ movement
     for (let i = 0; i < originalVerts.length; i++) {
       const vert = originalVerts[i];
       let height = 0;
+      let offsetX = 0;
+      let offsetZ = 0;
 
-      // Multiple wave layers for more realistic ocean effect
+      // Multiple wave layers with different directions
       waveData.forEach((wave, index) => {
-        // Primary wave moving from right to left
-        const waveX = vert.x - currentTime * wave.speed;
+        // Wave movement in X and Z directions
+        const waveX = vert.x * wave.frequencyX + currentTime * wave.speedX + wave.offsetX;
+        const waveZ = vert.y * wave.frequencyZ + currentTime * wave.speedZ + wave.offsetZ;
         
-        // Create smoother, larger wave pattern
-        const mainWave = Math.sin(waveX * wave.frequency + wave.offset) * wave.amplitude;
+        // Combine waves from different directions
+        const wavePattern = Math.sin(waveX) * Math.cos(waveZ) * wave.amplitude;
         
-        // Add slight variation based on Z position for more natural look
-        const zVariation = Math.sin(vert.y * 0.1 + currentTime * 0.5) * 0.05;
+        // Add diagonal wave movement
+        const diagonalWave = Math.sin(
+          vert.x * Math.cos(wave.directionAngle) + 
+          vert.y * Math.sin(wave.directionAngle) + 
+          currentTime * 2
+        ) * wave.amplitude * 0.5;
         
-        height += mainWave + zVariation;
+        height += wavePattern + diagonalWave;
+        
+        // Add small horizontal movement for more dynamic effect
+        offsetX += Math.sin(waveZ) * 0.02;
+        offsetZ += Math.cos(waveX) * 0.02;
       });
       
-      // Apply height to vertex
-      positions[i * 3 + 2] = height;
+      // Add turbulence for more random movement
+      const turbulence = Math.sin(currentTime * 4 + vert.x * 5) * 
+                        Math.cos(currentTime * 3 + vert.y * 5) * 0.05;
+      height += turbulence;
+      
+      // Apply position changes
+      const idx = i * 3;
+      positions[idx] = originalVerts[i].x + offsetX;     // X position
+      positions[idx + 1] = originalVerts[i].y + offsetZ; // Z position (Y in plane)
+      positions[idx + 2] = height;                       // Y position (height)
     }
 
     // Apply click ripples if any
