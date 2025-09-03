@@ -45,9 +45,9 @@
     renderer.outputColorSpace = THREE.SRGBColorSpace;
     container.appendChild(renderer.domElement);
 
-    // Camera setup
-    camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 50);
-    camera.position.set(0, 12, 15);
+    // Camera setup - closer for better wave visibility
+    camera = new THREE.PerspectiveCamera(50, width / height, 0.1, 50);
+    camera.position.set(0, 8, 12);
     camera.lookAt(0, 0, 0);
 
     // Lights - enhanced for better water reflection
@@ -98,14 +98,16 @@
     const segments = 80;
     const geometry = new THREE.PlaneGeometry(config.WORLD_X, config.WORLD_Z, segments, segments);
     
-    // Create water material with better ocean color
+    // Create water material with enhanced reflection
     const material = new THREE.MeshPhongMaterial({
-      color: 0x0077aa,  // Ocean blue
+      color: 0x0066aa,  // Deep ocean blue
       transparent: true,
-      opacity: 0.95,
+      opacity: 0.9,
       side: THREE.DoubleSide,
-      shininess: 150,
-      specular: 0x88ccff,
+      shininess: 200,  // Higher shininess for better reflection
+      specular: 0xaaccff,  // Brighter specular highlights
+      emissive: 0x002244,  // Slight glow
+      emissiveIntensity: 0.1,
       flatShading: false,
       vertexColors: false
     });
@@ -126,17 +128,17 @@
       });
     }
 
-    // Initialize wave data - multiple waves with random directions
-    for (let i = 0; i < 5; i++) {
+    // Initialize wave data - stronger, more visible waves
+    for (let i = 0; i < 4; i++) {
       waveData.push({
-        speedX: (Math.random() - 0.5) * 3,  // Random X direction speed
-        speedZ: (Math.random() - 0.5) * 2,  // Random Z direction speed
-        amplitude: 0.3 + Math.random() * 0.4,
-        frequencyX: 0.2 + Math.random() * 0.3,
-        frequencyZ: 0.2 + Math.random() * 0.3,
+        speedX: (Math.random() - 0.5) * 4,  // Faster X direction speed
+        speedZ: (Math.random() - 0.5) * 3,  // Faster Z direction speed
+        amplitude: 0.6 + Math.random() * 0.8,  // Bigger amplitude for more visible waves
+        frequencyX: 0.15 + Math.random() * 0.2,  // Lower frequency for bigger waves
+        frequencyZ: 0.15 + Math.random() * 0.2,
         offsetX: Math.random() * Math.PI * 2,
         offsetZ: Math.random() * Math.PI * 2,
-        directionAngle: Math.random() * Math.PI * 2  // Random wave direction
+        directionAngle: Math.random() * Math.PI * 2
       });
     }
   }
@@ -211,15 +213,19 @@
         
         height += wavePattern + diagonalWave;
         
-        // Add small horizontal movement for more dynamic effect
-        offsetX += Math.sin(waveZ) * 0.02;
-        offsetZ += Math.cos(waveX) * 0.02;
+        // Add more pronounced horizontal movement for dynamic effect
+        offsetX += Math.sin(waveZ) * 0.05;
+        offsetZ += Math.cos(waveX) * 0.05;
       });
       
-      // Add turbulence for more random movement
+      // Add stronger turbulence for more dramatic movement
       const turbulence = Math.sin(currentTime * 4 + vert.x * 5) * 
-                        Math.cos(currentTime * 3 + vert.y * 5) * 0.05;
+                        Math.cos(currentTime * 3 + vert.y * 5) * 0.15;
       height += turbulence;
+      
+      // Add rolling wave effect
+      const rollingWave = Math.sin(currentTime * 1.5 - vert.x * 0.3) * 0.3;
+      height += rollingWave;
       
       // Apply position changes
       const idx = i * 3;
