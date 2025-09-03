@@ -27,6 +27,10 @@
   let floatingObjects = [];
   let objectPool = [];
   
+  // Splash effects
+  let splashPool = [];
+  let activeSplashes = [];
+  
   // Animation state
   let animationId;
   let clock = new THREE.Clock();
@@ -75,8 +79,9 @@
     // Create water surface
     createWaterSurface();
 
-    // Create floating objects
+    // Create floating objects and splash effects
     createFloatingObjects();
+    createSplashEffects();
 
     // Start object spawning
     startObjectSpawning();
@@ -216,7 +221,36 @@
         position: new THREE.Vector3(),
         velocity: new THREE.Vector3(),
         bobOffset: Math.random() * Math.PI * 2,
-        rotationSpeed: (Math.random() - 0.5) * 0.02
+        rotationSpeed: (Math.random() - 0.5) * 0.02,
+        // Falling and floating states
+        state: 'idle', // 'falling', 'submerged', 'floating'
+        fallSpeed: 0,
+        submersionDepth: 0,
+        floatTimer: 0
+      });
+    }
+  }
+
+  function createSplashEffects() {
+    // Create splash particle pool
+    for (let i = 0; i < 20; i++) {
+      const splashGeo = new THREE.SphereGeometry(0.02, 4, 4);
+      const splashMat = new THREE.MeshPhongMaterial({
+        color: 0x88ccff,
+        transparent: true,
+        opacity: 0.8
+      });
+      
+      const splash = new THREE.Mesh(splashGeo, splashMat);
+      splash.visible = false;
+      scene.add(splash);
+      
+      splashPool.push({
+        mesh: splash,
+        active: false,
+        velocity: new THREE.Vector3(),
+        life: 0,
+        maxLife: 1.5
       });
     }
   }
@@ -414,10 +448,10 @@
     const availableObj = objectPool.find(obj => !obj.active);
     if (!availableObj) return;
 
-    // Position object at LEFT edge (same direction as waves)
-    const startX = -config.WORLD_X / 2 - 2;
+    // Position object ABOVE the left edge for falling effect
+    const startX = -config.WORLD_X / 2 - 1;
     const startZ = (Math.random() - 0.5) * config.WORLD_Z * 0.8;
-    const startY = config.WATER_Y;
+    const startY = config.WATER_Y + 3 + Math.random() * 2; // Start above water
 
     availableObj.position.set(startX, startY, startZ);
     // Match wave speed (much slower to match wave flow)
@@ -426,10 +460,44 @@
     availableObj.mesh.visible = true;
     availableObj.mesh.position.copy(availableObj.position);
     
+    // Set falling state
+    availableObj.state = 'falling';
+    availableObj.fallSpeed = 0;
+    availableObj.submersionDepth = 0;
+    availableObj.floatTimer = 0;
+    
     // Random rotation for variety
     availableObj.mesh.rotation.y = Math.random() * Math.PI * 2;
     
     floatingObjects.push(availableObj);
+  }
+
+  function createSplash(position, intensity = 1) {
+    // Create multiple splash particles
+    const numParticles = Math.floor(5 + Math.random() * 8) * intensity;
+    
+    for (let i = 0; i < numParticles; i++) {
+      const splash = splashPool.find(s => !s.active);
+      if (!splash) continue;
+      
+      splash.active = true;
+      splash.life = 0;
+      splash.mesh.visible = true;
+      splash.mesh.position.copy(position);
+      splash.mesh.position.y += Math.random() * 0.2;
+      
+      // Random splash velocity
+      splash.velocity.set(
+        (Math.random() - 0.5) * 2 * intensity,
+        1 + Math.random() * 2 * intensity,
+        (Math.random() - 0.5) * 2 * intensity
+      );
+      
+      activeSplashes.push(splash);
+    }
+    
+    // Create ripple effect
+    createRippleOnWater(position);
   }
 
   function updateFloatingObjects(deltaTime) {
@@ -438,30 +506,90 @@
     for (let i = floatingObjects.length - 1; i >= 0; i--) {
       const obj = floatingObjects[i];
       
-      // Update position
-      obj.position.x += obj.velocity.x * deltaTime * 60; // 60fps normalized
+      // Update horizontal position
+      obj.position.x += obj.velocity.x * deltaTime * 60;
       obj.position.z += obj.velocity.z * deltaTime * 60;
       
-      // Calculate wave height at object position
       const waveHeight = getWaveHeightAtPosition(obj.position.x, obj.position.z, currentTime);
-      obj.position.y = config.WATER_Y + waveHeight + 0.1; // Slightly above water
+      const waterSurfaceY = config.WATER_Y + waveHeight;
       
-      // Add bobbing motion
-      const bobbing = Math.sin(currentTime * 2 + obj.bobOffset) * 0.05;
-      obj.position.y += bobbing;
+      // State machine for falling and floating
+      switch (obj.state) {
+        case 'falling':
+          // Apply gravity
+          obj.fallSpeed += 9.8 * deltaTime * 0.5; // Reduced gravity for slower fall
+          obj.position.y -= obj.fallSpeed * deltaTime;
+          
+          // Check if hit water surface
+          if (obj.position.y <= waterSurfaceY) {
+            obj.position.y = waterSurfaceY;
+            obj.state = 'submerged';
+            obj.submersionDepth = 0;
+            obj.floatTimer = 0;
+            
+            // Create splash effect
+            createSplash(obj.position.clone(), obj.size);
+          }
+          break;
+          
+        case 'submerged':
+          // Sink slightly below surface then rise
+          obj.floatTimer += deltaTime * 3;
+          const sinkDepth = Math.sin(obj.floatTimer) * obj.size * 0.3;
+          obj.position.y = waterSurfaceY - Math.max(0, sinkDepth);
+          
+          // Transition to floating after settling
+          if (obj.floatTimer > Math.PI) {
+            obj.state = 'floating';
+          }
+          break;
+          
+        case 'floating':
+          // Normal floating behavior
+          obj.position.y = waterSurfaceY + obj.size * 0.2; // Float slightly above surface
+          
+          // Add bobbing motion
+          const bobbing = Math.sin(currentTime * 2 + obj.bobOffset) * 0.05;
+          obj.position.y += bobbing;
+          break;
+      }
       
       // Update mesh position
       obj.mesh.position.copy(obj.position);
       
       // Rotate object slightly
       obj.mesh.rotation.y += obj.rotationSpeed;
-      obj.mesh.rotation.z = Math.sin(currentTime * 1.5 + obj.bobOffset) * 0.1; // Gentle rolling
+      if (obj.state === 'floating') {
+        obj.mesh.rotation.z = Math.sin(currentTime * 1.5 + obj.bobOffset) * 0.1;
+      }
       
       // Remove object if it's too far right
       if (obj.position.x > config.WORLD_X / 2 + 3) {
         obj.active = false;
         obj.mesh.visible = false;
         floatingObjects.splice(i, 1);
+      }
+    }
+    
+    // Update splash particles
+    for (let i = activeSplashes.length - 1; i >= 0; i--) {
+      const splash = activeSplashes[i];
+      splash.life += deltaTime;
+      
+      // Update splash position
+      splash.mesh.position.add(splash.velocity.clone().multiplyScalar(deltaTime));
+      splash.velocity.y -= 9.8 * deltaTime * 2; // Gravity on splash particles
+      
+      // Fade out splash
+      const fadeProgress = splash.life / splash.maxLife;
+      splash.mesh.material.opacity = 0.8 * (1 - fadeProgress);
+      splash.mesh.scale.setScalar(1 + fadeProgress * 2);
+      
+      // Remove expired splash
+      if (splash.life >= splash.maxLife) {
+        splash.active = false;
+        splash.mesh.visible = false;
+        activeSplashes.splice(i, 1);
       }
     }
   }
