@@ -137,17 +137,18 @@
       });
     }
 
-    // Initialize wave data - reduced height waves
-    for (let i = 0; i < 4; i++) {
+    // Initialize wave data - more random patterns
+    for (let i = 0; i < 6; i++) {
       waveData.push({
-        speedX: (Math.random() - 0.5) * 4,  // Faster X direction speed
-        speedZ: (Math.random() - 0.5) * 3,  // Faster Z direction speed
-        amplitude: 0.15 + Math.random() * 0.2,  // Much smaller amplitude
-        frequencyX: 0.15 + Math.random() * 0.2,  // Lower frequency for bigger waves
-        frequencyZ: 0.15 + Math.random() * 0.2,
+        speedX: (Math.random() - 0.5) * 6,  // More varied speeds
+        speedZ: (Math.random() - 0.5) * 4,  
+        amplitude: 0.1 + Math.random() * 0.25,  // Varied amplitudes
+        frequencyX: 0.1 + Math.random() * 0.5,  // More frequency variation
+        frequencyZ: 0.1 + Math.random() * 0.5,
         offsetX: Math.random() * Math.PI * 2,
         offsetZ: Math.random() * Math.PI * 2,
-        directionAngle: Math.random() * Math.PI * 2
+        directionAngle: Math.random() * Math.PI * 2,
+        phase: Math.random() * Math.PI * 2  // Add phase for more randomness
       });
     }
   }
@@ -204,37 +205,41 @@
       let offsetX = 0;
       let offsetZ = 0;
 
-      // Multiple wave layers with different directions
+      // Multiple wave layers with different directions and phases
       waveData.forEach((wave, index) => {
-        // Wave movement in X and Z directions
-        const waveX = vert.x * wave.frequencyX + currentTime * wave.speedX + wave.offsetX;
+        // Wave movement with phase offset for more randomness
+        const waveX = vert.x * wave.frequencyX + currentTime * wave.speedX + wave.offsetX + wave.phase;
         const waveZ = vert.y * wave.frequencyZ + currentTime * wave.speedZ + wave.offsetZ;
         
-        // Combine waves from different directions
-        const wavePattern = Math.sin(waveX) * Math.cos(waveZ) * wave.amplitude;
+        // Mix different wave functions for more variety
+        let wavePattern;
+        if (index % 3 === 0) {
+          wavePattern = Math.sin(waveX) * Math.cos(waveZ) * wave.amplitude;
+        } else if (index % 3 === 1) {
+          wavePattern = Math.sin(waveX + waveZ) * wave.amplitude;
+        } else {
+          wavePattern = (Math.sin(waveX) + Math.sin(waveZ)) * wave.amplitude * 0.5;
+        }
         
-        // Add diagonal wave movement
+        // Add diagonal wave with varying angles
         const diagonalWave = Math.sin(
-          vert.x * Math.cos(wave.directionAngle) + 
+          vert.x * Math.cos(wave.directionAngle + currentTime * 0.1) + 
           vert.y * Math.sin(wave.directionAngle) + 
-          currentTime * 2
-        ) * wave.amplitude * 0.5;
+          currentTime * (1.5 + index * 0.3)
+        ) * wave.amplitude * 0.3;
         
         height += wavePattern + diagonalWave;
         
-        // Add subtle horizontal movement
-        offsetX += Math.sin(waveZ) * 0.01;
-        offsetZ += Math.cos(waveX) * 0.01;
+        // Add varying horizontal movement
+        offsetX += Math.sin(waveZ + wave.phase) * 0.008;
+        offsetZ += Math.cos(waveX - wave.phase) * 0.008;
       });
       
-      // Add subtle turbulence
-      const turbulence = Math.sin(currentTime * 4 + vert.x * 5) * 
-                        Math.cos(currentTime * 3 + vert.y * 5) * 0.03;
-      height += turbulence;
-      
-      // Add subtle rolling wave effect
-      const rollingWave = Math.sin(currentTime * 1.5 - vert.x * 0.3) * 0.08;
-      height += rollingWave;
+      // Add random noise for natural irregularity
+      const noise = (Math.sin(vert.x * 7.3 + currentTime * 2.1) * 
+                    Math.cos(vert.y * 5.7 - currentTime * 1.8) +
+                    Math.sin(vert.x * 13.1 - vert.y * 11.3 + currentTime * 3.3)) * 0.02;
+      height += noise;
       
       // Apply position changes
       const idx = i * 3;
