@@ -98,9 +98,9 @@
   }
 
   function createWaterSurface() {
-    // Create unified water body using BoxGeometry balanced for performance
-    const segments = 80; // Balanced: 80 segments for good quality and performance
-    const geometry = new THREE.BoxGeometry(config.WORLD_X, 3, config.WORLD_Z, segments, 12, segments);
+    // Create unified water body using BoxGeometry optimized for maximum performance
+    const segments = 64; // Reduced for better frame rate
+    const geometry = new THREE.BoxGeometry(config.WORLD_X, 3, config.WORLD_Z, segments, 8, segments);
     
     // Create unified water material with more transparency
     const material = new THREE.MeshPhongMaterial({
@@ -139,8 +139,8 @@
       });
     }
 
-    // Initialize wave data - increased for richer wave patterns
-    for (let i = 0; i < 6; i++) { // Increased from 3 to 6 waves
+    // Initialize wave data - optimized for performance
+    for (let i = 0; i < 4; i++) { // Reduced from 6 to 4 waves for better performance
       // Main flow direction with some variation
       const baseFlowDirection = Math.PI; // Left direction
       const flowVariation = (Math.random() - 0.5) * Math.PI * 0.4; // ±36 degrees variation
@@ -170,8 +170,8 @@
       { type: 'barrel', size: 0.5, color: 0x8B4513 }     // 2x larger
     ];
 
-    // Create larger object pool for more activity
-    for (let i = 0; i < 20; i++) { // Increased from 10 to 20
+    // Create balanced object pool for performance
+    for (let i = 0; i < 15; i++) { // Reduced from 20 to 15 for better performance
       const objType = objectTypes[Math.floor(Math.random() * objectTypes.length)];
       let geometry, material;
 
@@ -231,10 +231,10 @@
   }
 
   function createSplashEffects() {
-    // Create larger splash particle pool for more effects
-    for (let i = 0; i < 24; i++) { // Increased from 12 to 24
-      const splashGeo = new THREE.SphereGeometry(0.03, 6, 6); // More triangles for smoother spheres
-      const splashMat = new THREE.MeshLambertMaterial({ // Use Lambert for better lighting
+    // Create optimized splash particle pool for performance
+    for (let i = 0; i < 18; i++) { // Reduced from 24 to 18 for better performance
+      const splashGeo = new THREE.SphereGeometry(0.03, 4, 4); // Fewer segments for better performance
+      const splashMat = new THREE.MeshBasicMaterial({ // Basic material for maximum performance
         color: 0x88ccff,
         transparent: true,
         opacity: 0.7
@@ -303,12 +303,10 @@
           wavePattern = diagonalFlow * wave.amplitude * wave.thickness;
         }
         
-        // Add directional volume wave that follows flow (slower)
+        // Simplified directional wave for performance
         const volumeWave = Math.sin(
-          vert.x * Math.cos(wave.directionAngle) * 0.6 + 
-          vert.z * Math.sin(wave.directionAngle) * 0.3 + 
-          currentTime * (0.8 + index * 0.1) * flowInfluence  // Reduced speed multiplier
-        ) * wave.amplitude * wave.thickness * 0.3;  // Reduced amplitude
+          (vert.x + vert.z) * 0.5 + currentTime * flowInfluence
+        ) * wave.amplitude * 0.2;  // Much simpler calculation
         
         height += wavePattern + volumeWave;
         
@@ -422,10 +420,10 @@
   }
 
   function createSplash(position, intensity = 1) {
-    // More particles for dramatic splash effects
-    const numParticles = Math.floor(8 + Math.random() * 8);
+    // Optimized particles for performance
+    const numParticles = Math.floor(5 + Math.random() * 5);
     
-    for (let i = 0; i < numParticles && i < 16; i++) { // Max 16 particles
+    for (let i = 0; i < numParticles && i < 10; i++) { // Max 10 particles
       const splash = splashPool.find(s => !s.active);
       if (!splash) continue;
       
