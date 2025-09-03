@@ -134,9 +134,9 @@
       const flowDirection = baseFlowDirection + flowVariation;
       
       waveData.push({
-        speedX: -2 - Math.random() * 2,  // Mainly left (negative X) with variation
-        speedZ: (Math.random() - 0.5) * 2,  // Some Z variation but less dominant
-        amplitude: 0.2 + Math.random() * 0.4,
+        speedX: -1 - Math.random() * 1,  // Slower speed: -1 to -2 (was -2 to -4)
+        speedZ: (Math.random() - 0.5) * 1,  // Reduced Z variation: ±0.5 (was ±1)
+        amplitude: 0.15 + Math.random() * 0.25,  // Slightly reduced amplitude
         frequencyX: 0.08 + Math.random() * 0.3,
         frequencyZ: 0.08 + Math.random() * 0.3,
         offsetX: Math.random() * Math.PI * 2,
@@ -233,12 +233,12 @@
           wavePattern = diagonalFlow * wave.amplitude * wave.thickness;
         }
         
-        // Add directional volume wave that follows flow
+        // Add directional volume wave that follows flow (slower)
         const volumeWave = Math.sin(
           vert.x * Math.cos(wave.directionAngle) * 0.6 + 
           vert.z * Math.sin(wave.directionAngle) * 0.3 + 
-          currentTime * (1.5 + index * 0.2) * flowInfluence
-        ) * wave.amplitude * wave.thickness * 0.4;
+          currentTime * (0.8 + index * 0.1) * flowInfluence  // Reduced speed multiplier
+        ) * wave.amplitude * wave.thickness * 0.3;  // Reduced amplitude
         
         height += wavePattern + volumeWave;
         
@@ -247,9 +247,9 @@
         offsetZ += Math.cos(waveX - wave.phase) * 0.006 * (1 - flowInfluence * 0.5);
       });
       
-      // Simplified noise for performance
-      const noise = Math.sin(vert.x * 5 + currentTime * 2) * 
-                   Math.cos(vert.z * 4 - currentTime * 1.5) * 0.015;
+      // Simplified noise for performance (slower and reduced)
+      const noise = Math.sin(vert.x * 5 + currentTime * 1) * 
+                   Math.cos(vert.z * 4 - currentTime * 0.8) * 0.01;  // Reduced amplitude
       height += noise;
       
       // Apply position changes only to top surface
