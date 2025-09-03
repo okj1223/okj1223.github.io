@@ -450,8 +450,8 @@
     const startY = config.WATER_Y + 3 + Math.random() * 2; // Start above water
 
     availableObj.position.set(startX, startY, startZ);
-    // Match wave speed (much slower to match wave flow)
-    availableObj.velocity.set(0.15 + Math.random() * 0.1, 0, (Math.random() - 0.5) * 0.05);
+    // NO horizontal movement during fall - straight drop!
+    availableObj.velocity.set(0, 0, 0);
     availableObj.active = true;
     availableObj.mesh.visible = true;
     availableObj.mesh.position.copy(availableObj.position);
@@ -461,6 +461,7 @@
     availableObj.fallSpeed = 0;
     availableObj.submersionDepth = 0;
     availableObj.floatTimer = 0;
+    availableObj.targetZ = startZ; // Remember original Z for straight fall
     
     // Random rotation for variety
     availableObj.mesh.rotation.y = Math.random() * Math.PI * 2;
@@ -502,9 +503,8 @@
     for (let i = floatingObjects.length - 1; i >= 0; i--) {
       const obj = floatingObjects[i];
       
-      // Update horizontal position
-      obj.position.x += obj.velocity.x * deltaTime * 60;
-      obj.position.z += obj.velocity.z * deltaTime * 60;
+      // Only update horizontal position for floating objects
+      // (falling and submerged states handle their own movement)
       
       const waveHeight = getWaveHeightAtPosition(obj.position.x, obj.position.z, currentTime);
       const waterSurfaceY = config.WATER_Y + waveHeight;
@@ -512,9 +512,12 @@
       // State machine for falling and floating
       switch (obj.state) {
         case 'falling':
-          // Apply gravity
-          obj.fallSpeed += 9.8 * deltaTime * 0.5; // Reduced gravity for slower fall
+          // Apply stronger gravity for faster, more realistic fall
+          obj.fallSpeed += 9.8 * deltaTime * 1.5; // Faster fall
           obj.position.y -= obj.fallSpeed * deltaTime;
+          
+          // Keep Z position fixed during fall (straight drop)
+          obj.position.z = obj.targetZ;
           
           // Check if hit water surface
           if (obj.position.y <= waterSurfaceY) {
@@ -523,30 +526,41 @@
             obj.submersionDepth = 0;
             obj.floatTimer = 0;
             
+            // Set wave-following velocity after impact
+            obj.velocity.set(0.15 + Math.random() * 0.1, 0, (Math.random() - 0.5) * 0.05);
+            
             // Create splash effect
             createSplash(obj.position.clone(), obj.size);
           }
           break;
           
         case 'submerged':
-          // Sink slightly below surface then rise
-          obj.floatTimer += deltaTime * 3;
-          const sinkDepth = Math.sin(obj.floatTimer) * obj.size * 0.3;
+          // Faster buoyancy response - rapid sink and rise
+          obj.floatTimer += deltaTime * 8; // Much faster buoyancy
+          const sinkDepth = Math.sin(obj.floatTimer) * obj.size * 0.4; // Deeper sink
           obj.position.y = waterSurfaceY - Math.max(0, sinkDepth);
           
-          // Transition to floating after settling
-          if (obj.floatTimer > Math.PI) {
+          // Start horizontal movement during buoyancy
+          obj.position.x += obj.velocity.x * deltaTime * 30; // Slower than normal during buoyancy
+          obj.position.z += obj.velocity.z * deltaTime * 30;
+          
+          // Transition to floating after rapid settling
+          if (obj.floatTimer > Math.PI * 0.8) { // Faster transition
             obj.state = 'floating';
           }
           break;
           
         case 'floating':
-          // Normal floating behavior
-          obj.position.y = waterSurfaceY + obj.size * 0.2; // Float slightly above surface
+          // Normal floating behavior with regular wave speed
+          obj.position.y = waterSurfaceY + obj.size * 0.2;
           
           // Add bobbing motion
           const bobbing = Math.sin(currentTime * 2 + obj.bobOffset) * 0.05;
           obj.position.y += bobbing;
+          
+          // Normal horizontal movement
+          obj.position.x += obj.velocity.x * deltaTime * 60;
+          obj.position.z += obj.velocity.z * deltaTime * 60;
           break;
       }
       
