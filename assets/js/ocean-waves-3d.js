@@ -87,53 +87,43 @@
   }
 
   function createWaterSurface() {
-    // Create water base (static water body) with same material properties
-    const baseGeometry = new THREE.BoxGeometry(config.WORLD_X, 2, config.WORLD_Z);
-    const baseMaterial = new THREE.MeshPhongMaterial({
-      color: 0x001f3f,  // Match background gradient color
-      transparent: true,
-      opacity: 0.9,
-      shininess: 200,  // Same shininess as wave surface
-      specular: 0xaaccff,  // Same specular as wave surface
-      emissive: 0x001122,  // Same emissive properties
-      emissiveIntensity: 0.1
-    });
-    
-    const waterBase = new THREE.Mesh(baseGeometry, baseMaterial);
-    waterBase.position.y = -1;
-    scene.add(waterBase);
-
-    // Create wave surface with more segments for smoother waves
+    // Create unified water body using BoxGeometry with animated vertices
     const segments = 120;
-    const geometry = new THREE.PlaneGeometry(config.WORLD_X, config.WORLD_Z, segments, segments);
+    const geometry = new THREE.BoxGeometry(config.WORLD_X, 3, config.WORLD_Z, segments, 20, segments);
     
-    // Create water material matching background
+    // Create unified water material
     const material = new THREE.MeshPhongMaterial({
-      color: 0x001f3f,  // Same as background gradient start
+      color: 0x001f3f,  // Same as background
       transparent: true,
-      opacity: 0.9,
+      opacity: 0.92,
       side: THREE.DoubleSide,
-      shininess: 200,  // Higher shininess for better reflection
-      specular: 0xaaccff,  // Brighter specular highlights
-      emissive: 0x001122,  // Slight glow
+      shininess: 200,
+      specular: 0xaaccff,
+      emissive: 0x001122,
       emissiveIntensity: 0.1,
       flatShading: false,
       vertexColors: false
     });
 
     waterMesh = new THREE.Mesh(geometry, material);
-    waterMesh.rotation.x = -Math.PI / 2;
-    waterMesh.position.y = config.WATER_Y;
+    waterMesh.position.y = config.WATER_Y - 1.5; // Center the box at water level
     scene.add(waterMesh);
 
-    // Store initial vertices for wave animation
+    // Store initial vertices for wave animation (only animate top face)
     waterMesh.userData.originalVertices = [];
     const positions = geometry.attributes.position.array;
+    
+    // Identify and store only top surface vertices for animation
     for (let i = 0; i < positions.length; i += 3) {
+      const x = positions[i];
+      const y = positions[i + 1];
+      const z = positions[i + 2];
+      
       waterMesh.userData.originalVertices.push({
-        x: positions[i],
-        y: positions[i + 1],
-        z: positions[i + 2]
+        x: x,
+        y: y,
+        z: z,
+        isTopSurface: Math.abs(y - 1.5) < 0.1 // Top face vertices
       });
     }
 
@@ -199,9 +189,15 @@
     const originalVerts = waterMesh.userData.originalVertices;
     const currentTime = clock.getElapsedTime();
 
-    // Apply wave effects with random XYZ movement
+    // Apply wave effects only to top surface vertices
     for (let i = 0; i < originalVerts.length; i++) {
       const vert = originalVerts[i];
+      
+      // Skip if not a top surface vertex
+      if (!vert.isTopSurface) {
+        continue;
+      }
+      
       let height = 0;
       let offsetX = 0;
       let offsetZ = 0;
@@ -210,7 +206,7 @@
       waveData.forEach((wave, index) => {
         // Wave movement with phase offset for more randomness
         const waveX = vert.x * wave.frequencyX + currentTime * wave.speedX + wave.offsetX + wave.phase;
-        const waveZ = vert.y * wave.frequencyZ + currentTime * wave.speedZ + wave.offsetZ;
+        const waveZ = vert.z * wave.frequencyZ + currentTime * wave.speedZ + wave.offsetZ;
         
         // Create thicker waves using multiple sine waves
         let wavePattern;
@@ -235,7 +231,7 @@
         // Add volume with smoother transitions
         const volumeWave = Math.sin(
           vert.x * Math.cos(wave.directionAngle) * 0.5 + 
-          vert.y * Math.sin(wave.directionAngle) * 0.5 + 
+          vert.z * Math.sin(wave.directionAngle) * 0.5 + 
           currentTime * (1.2 + index * 0.2)
         ) * wave.amplitude * wave.thickness * 0.4;
         
@@ -248,15 +244,15 @@
       
       // Add random noise for natural irregularity
       const noise = (Math.sin(vert.x * 7.3 + currentTime * 2.1) * 
-                    Math.cos(vert.y * 5.7 - currentTime * 1.8) +
-                    Math.sin(vert.x * 13.1 - vert.y * 11.3 + currentTime * 3.3)) * 0.02;
+                    Math.cos(vert.z * 5.7 - currentTime * 1.8) +
+                    Math.sin(vert.x * 13.1 - vert.z * 11.3 + currentTime * 3.3)) * 0.02;
       height += noise;
       
-      // Apply position changes
+      // Apply position changes only to top surface
       const idx = i * 3;
-      positions[idx] = originalVerts[i].x + offsetX;     // X position
-      positions[idx + 1] = originalVerts[i].y + offsetZ; // Z position (Y in plane)
-      positions[idx + 2] = height;                       // Y position (height)
+      positions[idx] = vert.x + offsetX;     // X position
+      positions[idx + 1] = vert.y + height; // Y position (height) - keep original Y and add wave height
+      positions[idx + 2] = vert.z + offsetZ; // Z position
     }
 
     // Apply click ripples if any
