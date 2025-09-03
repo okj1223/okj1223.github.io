@@ -526,8 +526,8 @@
             obj.submersionDepth = 0;
             obj.floatTimer = 0;
             
-            // Set wave-following velocity after impact
-            obj.velocity.set(0.15 + Math.random() * 0.1, 0, (Math.random() - 0.5) * 0.05);
+            // Set wave-following velocity after impact (slower horizontal speed)
+            obj.velocity.set(0.08 + Math.random() * 0.05, 0, (Math.random() - 0.5) * 0.03);
             
             // Create splash effect
             createSplash(obj.position.clone(), obj.size);
@@ -540,9 +540,9 @@
           const sinkDepth = Math.sin(obj.floatTimer) * obj.size * 0.4; // Deeper sink
           obj.position.y = waterSurfaceY - Math.max(0, sinkDepth);
           
-          // Start horizontal movement during buoyancy
-          obj.position.x += obj.velocity.x * deltaTime * 30; // Slower than normal during buoyancy
-          obj.position.z += obj.velocity.z * deltaTime * 30;
+          // Start horizontal movement during buoyancy (much slower)
+          obj.position.x += obj.velocity.x * deltaTime * 15; // Much slower during buoyancy
+          obj.position.z += obj.velocity.z * deltaTime * 15;
           
           // Transition to floating after rapid settling
           if (obj.floatTimer > Math.PI * 0.8) { // Faster transition
@@ -558,9 +558,9 @@
           const bobbing = Math.sin(currentTime * 2 + obj.bobOffset) * 0.05;
           obj.position.y += bobbing;
           
-          // Normal horizontal movement
-          obj.position.x += obj.velocity.x * deltaTime * 60;
-          obj.position.z += obj.velocity.z * deltaTime * 60;
+          // Slower horizontal movement 
+          obj.position.x += obj.velocity.x * deltaTime * 25; // Much slower floating speed
+          obj.position.z += obj.velocity.z * deltaTime * 25;
           break;
       }
       
