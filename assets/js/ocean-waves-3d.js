@@ -37,18 +37,17 @@
     // Scene setup
     scene = new THREE.Scene();
 
-    // Renderer setup with enhanced properties
+    // Renderer setup optimized for performance
     renderer = new THREE.WebGLRenderer({ 
-      antialias: true, 
+      antialias: window.devicePixelRatio <= 1, // Only use antialiasing on low DPI displays
       alpha: true,
       powerPreference: "high-performance"
     });
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5)); // Limit pixel ratio
     renderer.setSize(width, height);
     renderer.setClearColor(0x000000, 0);
     renderer.outputColorSpace = THREE.SRGBColorSpace;
-    renderer.toneMapping = THREE.ACESFilmicToneMapping;
-    renderer.toneMappingExposure = 1.2;
+    // Remove tone mapping for better performance
     container.appendChild(renderer.domElement);
 
     // Camera setup - closer for better wave visibility
@@ -87,9 +86,9 @@
   }
 
   function createWaterSurface() {
-    // Create unified water body using BoxGeometry with animated vertices
-    const segments = 120;
-    const geometry = new THREE.BoxGeometry(config.WORLD_X, 3, config.WORLD_Z, segments, 20, segments);
+    // Create unified water body using BoxGeometry with optimized segments
+    const segments = 64; // Reduced from 120 to 64 for better performance
+    const geometry = new THREE.BoxGeometry(config.WORLD_X, 3, config.WORLD_Z, segments, 12, segments);
     
     // Create unified water material
     const material = new THREE.MeshPhongMaterial({
@@ -127,8 +126,8 @@
       });
     }
 
-    // Initialize wave data with dominant flow direction (right to left)
-    for (let i = 0; i < 8; i++) {
+    // Initialize wave data - reduced count for performance
+    for (let i = 0; i < 5; i++) { // Reduced from 8 to 5 waves
       // Main flow direction with some variation
       const baseFlowDirection = Math.PI; // Left direction
       const flowVariation = (Math.random() - 0.5) * Math.PI * 0.4; // ±36 degrees variation
@@ -221,24 +220,17 @@
         
         const waveZ = vert.z * wave.frequencyZ + currentTime * wave.speedZ + wave.offsetZ;
         
-        // Create thicker waves with flow direction
+        // Simplified wave patterns for better performance
         let wavePattern;
-        if (index % 3 === 0) {
-          // Main flow wave - stronger in X direction
+        if (index % 2 === 0) {
+          // Main flow wave - simplified calculation
           const flowBase = Math.sin(waveX) * Math.cos(waveZ * 0.5);
-          const thick1 = Math.sin(waveX * 1.2) * Math.cos(waveZ * 0.8) * 0.3;
-          const thick2 = Math.sin(waveX * 1.8) * Math.cos(waveZ * 1.2) * 0.1;
-          wavePattern = (flowBase + thick1 + thick2) * wave.amplitude * wave.thickness * flowInfluence;
-        } else if (index % 3 === 1) {
-          // Diagonal flow wave
-          const diagonalFlow = Math.sin(waveX * Math.cos(wave.directionAngle) + waveZ * Math.sin(wave.directionAngle));
-          const thick = Math.sin((waveX + waveZ * 0.5) * 1.3) * 0.4;
-          wavePattern = (diagonalFlow + thick) * wave.amplitude * wave.thickness;
+          const thick = Math.sin(waveX * 1.3) * 0.3;
+          wavePattern = (flowBase + thick) * wave.amplitude * wave.thickness;
         } else {
-          // Cross current - adds variation but follows general flow
-          const crossBase = Math.sin(waveX * 0.8 + waveZ);
-          const flowMod = Math.sin(waveX * 1.5) * 0.3; // Flow-aligned modulation
-          wavePattern = (crossBase + flowMod) * wave.amplitude * wave.thickness * (0.5 + flowInfluence * 0.5);
+          // Diagonal flow wave - simplified
+          const diagonalFlow = Math.sin(waveX * 0.8 + waveZ * 0.6);
+          wavePattern = diagonalFlow * wave.amplitude * wave.thickness;
         }
         
         // Add directional volume wave that follows flow
@@ -255,10 +247,9 @@
         offsetZ += Math.cos(waveX - wave.phase) * 0.006 * (1 - flowInfluence * 0.5);
       });
       
-      // Add random noise for natural irregularity
-      const noise = (Math.sin(vert.x * 7.3 + currentTime * 2.1) * 
-                    Math.cos(vert.z * 5.7 - currentTime * 1.8) +
-                    Math.sin(vert.x * 13.1 - vert.z * 11.3 + currentTime * 3.3)) * 0.02;
+      // Simplified noise for performance
+      const noise = Math.sin(vert.x * 5 + currentTime * 2) * 
+                   Math.cos(vert.z * 4 - currentTime * 1.5) * 0.015;
       height += noise;
       
       // Apply position changes only to top surface
@@ -336,11 +327,14 @@
     animationId = requestAnimationFrame(animate);
 
     const deltaTime = clock.getDelta();
+    
+    // Skip frames on low performance devices
+    if (deltaTime > 0.05) { // Skip if frame took more than 50ms
+      return;
+    }
 
     // Update water surface waves
     updateWaterSurface();
-
-    // Removed column update
 
     // Render
     renderer.render(scene, camera);
