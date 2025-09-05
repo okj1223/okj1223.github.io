@@ -310,13 +310,13 @@ where $\tau$ is the vehicle's time constant.
 $$s^2 \tau + s(1 + K_d) + K_p = 0$$
 
 **Stability conditions** (Routh-Hurwitz criterion):
-1. $\tau > 0$ (always satisfied physically)
-2. $1 + K_d > 0$ → $K_d > -1$
-3. $K_p > 0$
+1. $$\tau > 0$$ (always satisfied physically)
+2. $$1 + K_d > 0$$ → $$K_d > -1$$
+3. $$K_p > 0$$
 
 **Performance index-based tuning**:
-- Overshoot < 5%: $\zeta \geq 0.69$
-- Settling time < 2s: $\omega_n \geq 2.3$
+- Overshoot < 5%: $$\zeta \geq 0.69$$
+- Settling time < 2s: $$\omega_n \geq 2.3$$
 
 From this, we derived:
 $$K_p = 0.0025, \quad K_d = 0.007$$
@@ -359,7 +359,7 @@ subject to safety constraints.
 
 <figure>
   <img class="project-image"
-       src="{{ '/project/turtlebot3-autonomous-system/traffic_light_detection.jpg' | relative_url }}"
+       src="{{ '/project/turtlebot3-autonomous-system/traffic_light_detection.png' | relative_url }}"
        alt="Traffic light detection with HSV color analysis"
        loading="lazy">
   <figcaption>Figure 3.1: Traffic light detection system showing HSV color space analysis, geometric validation, and real-time recognition results
@@ -371,12 +371,12 @@ Traffic light color classification is essentially a classification problem in 3D
 **Red Distribution** (Wrapped Normal Distribution):
 $$p(h|red) = \frac{1}{\sqrt{2\pi}\sigma_r} \left( e^{-\frac{(h-\mu_{r1})^2}{2\sigma_r^2}} + e^{-\frac{(h-\mu_{r2})^2}{2\sigma_r^2}} \right)$$
 
-where $\mu_{r1} = 10°, \mu_{r2} = 170°$ are the two peaks of red, and $\sigma_r = 8°$ is the standard deviation.
+where $$\mu_{r1} = 10°, \mu_{r2} = 170°$$ are the two peaks of red, and $$\sigma_r = 8°$$ is the standard deviation.
 
 **Green Distribution**:
 $$p(h|green) = \frac{1}{\sqrt{2\pi}\sigma_g} e^{-\frac{(h-\mu_g)^2}{2\sigma_g^2}}$$
 
-where $\mu_g = 65°, \sigma_g = 12°$.
+where $$\mu_g = 65°, \sigma_g = 12°$$.
 
 #### 3.1.2 Color Discrimination Through Bayesian Classification
 
@@ -424,18 +424,18 @@ After color classification, geometric characteristics are validated. The geometr
 **Circularity**:
 $$C = \frac{4\pi A}{P^2}$$
 
-For a perfect circle, $C = 1$, and the value decreases for other shapes.
+For a perfect circle, $$C = 1$$, and the value decreases for other shapes.
 
 **Compactness**:
 $$Comp = \frac{A}{A_{convex}}$$
 
-where $A_{convex}$ is the area of the convex hull.
+where $$A_{convex}$$ is the area of the convex hull.
 
 **Aspect Ratio**:
 The ratio of major to minor axis is calculated through ellipse fitting:
 $$AR = \frac{major\_axis}{minor\_axis}$$
 
-For traffic lights, $0.8 \leq AR \leq 1.2$ should hold.
+For traffic lights, $$0.8 \leq AR \leq 1.2$$ should hold.
 
 ```python
 def geometric_validation(self, contour):
@@ -651,7 +651,7 @@ While we used standard DH notation to define relationships between links, the ac
 
 <figure>
   <img class="project-image"
-       src="{{ '/project/turtlebot3-autonomous-system/turtlebot3_arm_joints.jpg' | relative_url }}"
+       src="{{ '/project/turtlebot3-autonomous-system/turtlebot3_arm_joints.png' | relative_url }}"
        alt="TurtleBot3 OPAL robot arm with joint and link annotations"
        loading="lazy">
   <figcaption>Figure 4.2: TurtleBot3 OPAL robot arm showing joint axes, link lengths, and DH parameter definitions for the 4-DOF serial manipulator
@@ -768,7 +768,7 @@ The 4-DOF problem was systematically decomposed as follows:
 $$\theta_1 = \text{atan2}(y_{target}, x_{target})$$
 
 **Stage 2: Planar Projection**
-Projected distance: $r = \sqrt{x_{target}^2 + y_{target}^2}$
+Projected distance: $$r = \sqrt{x_{target}^2 + y_{target}^2}$$
 
 **Stage 3: 2-Link Planar Problem**
 Effective coordinates of target point:
@@ -778,7 +778,7 @@ Distance to target point:
 $$R = \sqrt{x_{eff}^2 + z_{eff}^2}$$
 
 **Apply Law of Cosines**:
-When triangle sides are $r_1, r_2, R$:
+When triangle sides are $$r_1, r_2, R$$:
 
 $$\cos(\phi_1) = \frac{r_1^2 + R^2 - r_2^2}{2 \cdot r_1 \cdot R}$$
 
