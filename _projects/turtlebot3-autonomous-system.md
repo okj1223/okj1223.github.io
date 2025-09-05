@@ -39,7 +39,7 @@ To overcome these limitations, this research set the following objectives:
 
 <figure>
   <img class="project-image"
-       src="{{ '/project/turtlebot3-autonomous-system/digital_twin_gazebo_map.jpg' | relative_url }}"
+       src="{{ '/project/turtlebot3-autonomous-system/digital_twin_gazebo_map.png' | relative_url }}"
        alt="Digital twin virtual environment in Gazebo simulator"
        loading="lazy">
   <figcaption>Figure 1.1: Digital twin virtual environment recreated in Gazebo simulator for algorithm validation and testing
@@ -55,20 +55,7 @@ The entire system was designed based on the philosophy of "Graceful Degradation.
        loading="lazy">
   <figcaption>Figure 1.2: Hierarchical system architecture showing perception, planning, and control layers with coordination and safety mechanisms
 
-```
-┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
-│   Perception    │    │    Planning     │    │    Control      │
-│                 │    │                 │    │                 │
-│ • Lane Detection│◄──►│ • Path Planning │◄──►│ • Motion Ctrl   │
-│ • Object Recog  │    │ • Task Alloc    │    │ • Arm Control   │
-│ • Localization  │    │ • State Machine │    │ • Safety Sys    │
-└─────────────────┘    └─────────────────┘    └─────────────────┘
-         ▲                       ▲                       ▲
-         │              ┌─────────────────┐              │
-         └──────────────►│ Coordination    │◄─────────────┘
-                        │ & Safety Layer  │
-                        └─────────────────┘
-```
+
 
 ## 2. Advanced Lane Detection and Following System
 
@@ -86,11 +73,10 @@ Lane detection is the foundation of autonomous driving, but in real environments
 
 <figure>
   <img class="project-image"
-       src="{{ '/project/turtlebot3-autonomous-system/lane_detection_rqt.gif' | relative_url }}"
+       src="{{ '/project/turtlebot3-autonomous-system/lane_detection_rqt.png' | relative_url }}"
        alt="Real-time lane detection and path generation visualization"
        loading="lazy">
-  <figcaption>Figure 2.1: Real-time lane detection system showing HSV color space processing, geometric validation, and path generation in RQT visualization</figcaption>
-</figure>
+  <figcaption>Figure 2.1: Real-time lane detection system showing HSV color space processing, geometric validation, and path generation in RQT visualization
 
 #### 2.1.2 HSV Color Space-Based Adaptive Detection
 
@@ -376,8 +362,7 @@ subject to safety constraints.
        src="{{ '/project/turtlebot3-autonomous-system/traffic_light_detection.jpg' | relative_url }}"
        alt="Traffic light detection with HSV color analysis"
        loading="lazy">
-  <figcaption>Figure 3.1: Traffic light detection system showing HSV color space analysis, geometric validation, and real-time recognition results</figcaption>
-</figure>
+  <figcaption>Figure 3.1: Traffic light detection system showing HSV color space analysis, geometric validation, and real-time recognition results
 
 #### 3.1.1 Mathematical Modeling of Color Classification
 
@@ -493,11 +478,10 @@ def geometric_validation(self, contour):
 
 <figure>
   <img class="project-image"
-       src="{{ '/project/turtlebot3-autonomous-system/barrier_detection.gif' | relative_url }}"
+       src="{{ '/project/turtlebot3-autonomous-system/barrier_detection.png' | relative_url }}"
        alt="Real-time barrier state detection and analysis"
        loading="lazy">
-  <figcaption>Figure 3.2: Barrier detection system showing LED point clustering, virtual line generation, and state classification (UP/DOWN) with temporal consistency analysis</figcaption>
-</figure>
+  <figcaption>Figure 3.2: Barrier detection system showing LED point clustering, virtual line generation, and state classification (UP/DOWN) with temporal consistency analysis
 
 #### 3.2.1 Mathematical Foundation of Hough Transform
 
@@ -654,11 +638,10 @@ The implementation of inverse kinematics for the 4-DOF manipulator was the most 
 
 <figure>
   <img class="project-image"
-       src="{{ '/project/turtlebot3-autonomous-system/kinematics_basics.jpg' | relative_url }}"
+       src="{{ '/project/turtlebot3-autonomous-system/kinematics_basics.png' | relative_url }}"
        alt="Fundamental principles of robot kinematics"
        loading="lazy">
-  <figcaption>Figure 4.1: Basic kinematics concepts showing forward and inverse kinematics relationships, coordinate frames, and transformation matrices</figcaption>
-</figure>
+  <figcaption>Figure 4.1: Basic kinematics concepts showing forward and inverse kinematics relationships, coordinate frames, and transformation matrices
 
 ### 4.1 Kinematic Modeling and Coordinate System Definition
 
@@ -671,8 +654,7 @@ While we used standard DH notation to define relationships between links, the ac
        src="{{ '/project/turtlebot3-autonomous-system/turtlebot3_arm_joints.jpg' | relative_url }}"
        alt="TurtleBot3 OPAL robot arm with joint and link annotations"
        loading="lazy">
-  <figcaption>Figure 4.2: TurtleBot3 OPAL robot arm showing joint axes, link lengths, and DH parameter definitions for the 4-DOF serial manipulator</figcaption>
-</figure>
+  <figcaption>Figure 4.2: TurtleBot3 OPAL robot arm showing joint axes, link lengths, and DH parameter definitions for the 4-DOF serial manipulator
 
 **Modified DH Parameters**:
 
@@ -773,11 +755,10 @@ def analyze_singularity(self, theta):
 
 <figure>
   <img class="project-image"
-       src="{{ '/project/turtlebot3-autonomous-system/solvepnp_3d_visualization.jpg' | relative_url }}"
+       src="{{ '/project/turtlebot3-autonomous-system/solvepnp_3d_visualization.png' | relative_url }}"
        alt="SolvePnP algorithm 3D visualization"
        loading="lazy">
-  <figcaption>Figure 4.3: SolvePnP algorithm visualization showing how real-world 3D marker coordinates are transformed to 2D camera coordinates using camera parameters and pose estimation</figcaption>
-</figure>
+  <figcaption>Figure 4.3: SolvePnP algorithm visualization showing how real-world 3D marker coordinates are transformed to 2D camera coordinates using camera parameters and pose estimation
 
 #### 4.2.1 Geometric Decomposition and Closed-Form Solution
 
@@ -851,11 +832,10 @@ def solve_2link_planar_ik(self, x_eff, z_eff):
 
 <figure>
   <img class="project-image"
-       src="{{ '/project/turtlebot3-autonomous-system/camera_coordinate_3d.jpg' | relative_url }}"
+       src="{{ '/project/turtlebot3-autonomous-system/camera_coordinate_3d.png' | relative_url }}"
        alt="3D camera coordinate system representation"
        loading="lazy">
-  <figcaption>Figure 4.4: 3D representation of camera-based coordinate system showing transformation from marker coordinates to robot base frame for inverse kinematics calculations</figcaption>
-</figure>
+  <figcaption>Figure 4.4: 3D representation of camera-based coordinate system showing transformation from marker coordinates to robot base frame for inverse kinematics calculations
 
 #### 4.2.2 Mathematical Formulation of Wrist Joint Optimization Problem
 
@@ -1757,8 +1737,7 @@ class LaneFollowingEvaluator:
        src="{{ '/project/turtlebot3-autonomous-system/aruco_marker_detection.gif' | relative_url }}"
        alt="Real-time ArUco marker detection and pose estimation"
        loading="lazy">
-  <figcaption>Figure 6.1: Real-time ArUco marker detection showing pose estimation, coordinate transformation, and gripper positioning for Pick & Place operations</figcaption>
-</figure>
+  <figcaption>Figure 6.1: Real-time ArUco marker detection showing pose estimation, coordinate transformation, and gripper positioning for Pick & Place operations
 
 ### 6.2 Environmental Perception Performance Analysis
 
