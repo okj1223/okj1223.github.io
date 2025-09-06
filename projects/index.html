@@ -1078,7 +1078,8 @@ backToTopButton.addEventListener('click', () => {
 document.addEventListener('DOMContentLoaded', function() {
  const projectsPerPage = 5;
  const allProjects = document.querySelectorAll('.project-page');
- const totalProjects = 9;
+ // 실제 프로젝트 개수를 자동으로 계산
+ const totalProjects = document.querySelectorAll('.home-project-item').length;
  const totalPages = Math.ceil(totalProjects / projectsPerPage);
  
  let currentPage = 1;
@@ -1093,6 +1094,12 @@ document.addEventListener('DOMContentLoaded', function() {
  function init() {
    totalPagesSpan.textContent = totalPages;
    totalProjectsSpan.textContent = totalProjects;
+   
+   // 배너의 프로젝트 개수도 자동 업데이트
+   const bannerProjectCount = document.querySelector('.stat-number');
+   if (bannerProjectCount && bannerProjectCount.textContent.includes('+')) {
+     bannerProjectCount.textContent = totalProjects + '+';
+   }
    showPage(1);
    updatePaginationControls();
  }
