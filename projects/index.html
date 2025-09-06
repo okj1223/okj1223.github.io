@@ -403,7 +403,7 @@
    <div id="projectsGrid" class="home-projects-grid">
      
      <!-- Page 1 Projects (1-5) -->
-     <div class="project-page" data-page="1" style="display: block !important;">
+     <div class="project-page" data-page="1">
        <article class="home-project-item">
          <div class="home-project-card">
            <a href="/projects/turtlebot3-autonomous-system/" class="home-project-link">
@@ -680,7 +680,7 @@
      </div>
 
      <!-- Page 2 Projects (6+) -->
-     <div class="project-page" data-page="2" style="display: none;">
+     <div class="project-page" data-page="2">
 
        <article class="home-project-item">
          <div class="home-project-card">
@@ -1243,6 +1243,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
 .project-page.active {
  display: block !important;
+}
+
+.project-page[data-page="1"] {
+ display: block;
 }
 
 /* CSS 변수 정의 */
