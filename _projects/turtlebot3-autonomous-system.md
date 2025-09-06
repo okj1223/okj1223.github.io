@@ -1383,25 +1383,25 @@ class ForwardOnlyController:
 
 An Extended Kalman Filter was implemented to accurately estimate robot state by fusing information from multiple sensors.
 
-**State Vector**: $\mathbf{x} = [x, y, \theta, \dot{x}, \dot{y}, \dot{\theta}]^T$
+**State Vector**: $$\mathbf{x} = [x, y, \theta, \dot{x}, \dot{y}, \dot{\theta}]^T$$
 
 **Motion Model**:
-$\mathbf{x}_{k+1} = f(\mathbf{x}_k, \mathbf{u}_k) + \mathbf{w}_k$
+$$\mathbf{x}_{k+1} = f(\mathbf{x}_k, \mathbf{u}_k) + \mathbf{w}_k$$
 
 where:
-$f(\mathbf{x}_k, \mathbf{u}_k) = \begin{bmatrix}
+$$f(\mathbf{x}_k, \mathbf{u}_k) = \begin{bmatrix}
 x_k + \dot{x}_k \Delta t \\
 y_k + \dot{y}_k \Delta t \\
 \theta_k + \dot{\theta}_k \Delta t \\
 \dot{x}_k + a_x \Delta t \\
 \dot{y}_k + a_y \Delta t \\
 \dot{\theta}_k + a_\theta \Delta t
-\end{bmatrix}$
+\end{bmatrix}$$
 
 **Observation Models**:
-- **Encoder**: $\mathbf{z}_{enc} = [\dot{x}, \dot{y}, \dot{\theta}]^T$
-- **Camera**: $\mathbf{z}_{cam} = [x_{marker}, y_{marker}]^T$
-- **LiDAR**: $\mathbf{z}_{lidar} = [d_1, d_2, ..., d_n]^T$
+- **Encoder**: $$\mathbf{z}_{enc} = [\dot{x}, \dot{y}, \dot{\theta}]^T$$
+- **Camera**: $$\mathbf{z}_{cam} = [x_{marker}, y_{marker}]^T$$
+- **LiDAR**: $$\mathbf{z}_{lidar} = [d_1, d_2, ..., d_n]^T$$
 
 ```python
 class ExtendedKalmanFilter:
