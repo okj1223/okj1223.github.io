@@ -369,6 +369,28 @@
 <div class="home-projects-section">
  <div class="home-projects-container">
    
+   <!-- 상단 페이지네이션 컨트롤 -->
+   <div class="pagination-controls" style="margin: 2rem 0 1rem 0;">
+     <button id="topPrevBtn" class="pagination-btn" disabled>
+       <svg viewBox="0 0 24 24" fill="currentColor">
+         <path d="M15.41,16.58L10.83,12L15.41,7.41L14,6L8,12L14,18L15.41,16.58Z"/>
+       </svg>
+       Previous
+     </button>
+     
+     <div class="page-numbers">
+       <button class="page-number-btn active" data-page="1">1</button>
+       <button class="page-number-btn" data-page="2">2</button>
+     </div>
+     
+     <button id="topNextBtn" class="pagination-btn">
+       Next
+       <svg viewBox="0 0 24 24" fill="currentColor">
+         <path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z"/>
+       </svg>
+     </button>
+   </div>
+
    <!-- 페이지네이션 정보 표시 -->
    <div style="text-align: center; margin-bottom: 2rem;">
      <div class="pagination-info">
@@ -1089,6 +1111,8 @@ document.addEventListener('DOMContentLoaded', function() {
  const totalProjectsSpan = document.getElementById('totalProjectsCount');
  const prevBtn = document.getElementById('prevBtn');
  const nextBtn = document.getElementById('nextBtn');
+ const topPrevBtn = document.getElementById('topPrevBtn');
+ const topNextBtn = document.getElementById('topNextBtn');
  const pageNumberBtns = document.querySelectorAll('.page-number-btn');
  
  function init() {
@@ -1135,6 +1159,8 @@ document.addEventListener('DOMContentLoaded', function() {
  function updatePaginationControls() {
    prevBtn.disabled = (currentPage === 1);
    nextBtn.disabled = (currentPage === totalPages);
+   topPrevBtn.disabled = (currentPage === 1);
+   topNextBtn.disabled = (currentPage === totalPages);
    
    pageNumberBtns.forEach(btn => {
      const pageNum = parseInt(btn.dataset.page);
@@ -1154,6 +1180,20 @@ document.addEventListener('DOMContentLoaded', function() {
  });
  
  nextBtn.addEventListener('click', () => {
+   if (currentPage < totalPages) {
+     showPage(currentPage + 1);
+     updatePaginationControls();
+   }
+ });
+
+ topPrevBtn.addEventListener('click', () => {
+   if (currentPage > 1) {
+     showPage(currentPage - 1);
+     updatePaginationControls();
+   }
+ });
+
+ topNextBtn.addEventListener('click', () => {
    if (currentPage < totalPages) {
      showPage(currentPage + 1);
      updatePaginationControls();
