@@ -15,13 +15,13 @@
    <link rel="stylesheet" href="/assets/css/ecosystem.css">
   
   <style>
-    /* Standard Banner */
+    /* Clean Modern Banner */
     .drone-banner-environment {
       position: relative;
       width: 100%;
-      min-height: 60vh;
+      min-height: 50vh;
       overflow: hidden;
-      background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+      background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -33,9 +33,12 @@
       position: relative;
       text-align: center;
       z-index: 10;
-      max-width: 800px;
-      padding: 2rem;
+      max-width: 900px;
+      padding: 3rem 2rem;
       color: white;
+      background: rgba(0, 0, 0, 0.3);
+      border-radius: 12px;
+      backdrop-filter: blur(10px);
     }
 
     @keyframes floatIn {
@@ -52,30 +55,13 @@
     }
 
     .banner-title h1 {
-      font-size: 4.5rem;
-      font-weight: 800;
+      font-size: 3.5rem;
+      font-weight: 600;
       margin: 0 0 1rem 0;
-      background: linear-gradient(
-        135deg, 
-        #fff 0%, 
-        #f093fb 25%, 
-        #f5576c 50%, 
-        #4facfe 75%, 
-        #00f2fe 100%
-      );
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      background-size: 200% 200%;
-      animation: gradientText 4s ease-in-out infinite;
-      line-height: 1.1;
+      color: #ffffff;
+      line-height: 1.2;
       font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
-      letter-spacing: -2px;
-    }
-
-    @keyframes gradientText {
-      0%, 100% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
+      letter-spacing: -0.02em;
     }
 
     .banner-title h2 {
@@ -99,8 +85,8 @@
     .banner-stats {
       display: flex;
       justify-content: center;
-      gap: 2rem;
-      margin-top: 2rem;
+      gap: 2.5rem;
+      margin-top: 2.5rem;
     }
 
     .stat-item {
@@ -704,7 +690,7 @@
              <a href="/projects/automated-mixing-system/" class="home-image-link">
                <div class="home-image-wrapper">
                  <img 
-                   src="/project/automated-mixing-system/automated-mixing-system.jpg"
+                   src="/project/automated-mixing-system/automated-mixing-system.png"
                    alt="Intelligent Automated Mixing System Architecture"
                    title="Multi-layer system architecture with Arduino and Raspberry Pi controllers"
                    loading="lazy">
@@ -1363,70 +1349,7 @@ html, body {
  66% { transform: translate(-5%, -20%) rotate(240deg); }
 }
 
-.floating-orbs {
- position: absolute;
- width: 100%;
- height: 100%;
-}
-
-.orb {
- position: absolute;
- border-radius: 50%;
- filter: blur(1px);
- animation: floatOrb 12s ease-in-out infinite;
-}
-
-.orb-1 {
- width: 100px;
- height: 100px;
- background: radial-gradient(circle, rgba(127, 179, 211, 0.3) 0%, transparent 70%);
- top: 20%;
- left: 10%;
- animation-delay: 0s;
-}
-
-.orb-2 {
- width: 60px;
- height: 60px;
- background: radial-gradient(circle, rgba(168, 216, 168, 0.4) 0%, transparent 70%);
- top: 60%;
- right: 15%;
- animation-delay: 2s;
-}
-
-.orb-3 {
- width: 80px;
- height: 80px;
- background: radial-gradient(circle, rgba(135, 206, 235, 0.25) 0%, transparent 70%);
- bottom: 30%;
- left: 15%;
- animation-delay: 4s;
-}
-
-.orb-4 {
- width: 40px;
- height: 40px;
- background: radial-gradient(circle, rgba(196, 164, 132, 0.3) 0%, transparent 70%);
- top: 40%;
- right: 40%;
- animation-delay: 6s;
-}
-
-.orb-5 {
- width: 120px;
- height: 120px;
- background: radial-gradient(circle, rgba(127, 179, 211, 0.2) 0%, transparent 70%);
- top: 10%;
- right: 20%;
- animation-delay: 8s;
-}
-
-@keyframes floatOrb {
- 0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.3; }
- 25% { transform: translate(20px, -30px) scale(1.1); opacity: 0.6; }
- 50% { transform: translate(-10px, -60px) scale(0.9); opacity: 0.4; }
- 75% { transform: translate(-30px, -20px) scale(1.05); opacity: 0.7; }
-}
+/* 반짝거리는 요소들 제거 */
 
 .neural-network {
  position: absolute;
