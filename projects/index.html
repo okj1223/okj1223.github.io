@@ -53,29 +53,19 @@
 
     .banner-title h1 {
       font-size: 4.5rem;
-      font-weight: 800;
+      font-weight: 700;
       margin: 0 0 1rem 0;
-      background: linear-gradient(
-        135deg, 
-        #fff 0%, 
-        #f093fb 25%, 
-        #f5576c 50%, 
-        #4facfe 75%, 
-        #00f2fe 100%
-      );
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      background-size: 200% 200%;
-      animation: gradientText 4s ease-in-out infinite;
+      color: #ffffff;
       line-height: 1.1;
       font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
-      letter-spacing: -2px;
+      letter-spacing: -1.5px;
+      text-shadow: 0 2px 20px rgba(255, 255, 255, 0.15);
+      transition: all 0.3s ease;
     }
-
-    @keyframes gradientText {
-      0%, 100% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
+    
+    .banner-title h1:hover {
+      transform: translateY(-2px);
+      text-shadow: 0 4px 25px rgba(255, 255, 255, 0.25);
     }
 
     .banner-title h2 {
@@ -332,10 +322,10 @@
   <!-- 배너 텍스트 오버레이 -->
   <div class="banner-text-overlay">
     <div class="banner-title">
-      <h1>Projects Portfolio</h1>
+      <h1>Engineering Works</h1>
     </div>
     <div class="banner-subtitle">
-      <p>Full-Stack Robotics Developer • Environmental Engineering • AI Systems</p>
+      <p>Robotics & Automation • AI-Driven Systems • Industrial Innovation</p>
       <div class="banner-stats">
         <div class="stat-item">
           <span class="stat-number">9+</span>
