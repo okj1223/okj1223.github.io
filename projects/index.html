@@ -1130,14 +1130,16 @@ document.addEventListener('DOMContentLoaded', function() {
  }
  
  function showPage(pageNum) {
+   // 모든 페이지에서 active 클래스 제거
    allProjects.forEach(page => {
-     page.style.display = 'none';
+     page.classList.remove('active');
    });
    
+   // 해당 페이지에 active 클래스 추가
    const targetPage = document.querySelector(`[data-page="${pageNum}"]`);
    console.log('Looking for page:', pageNum, 'Found:', targetPage);
    if (targetPage) {
-     targetPage.style.display = 'block';
+     targetPage.classList.add('active');
      targetPage.style.animation = 'none';
      setTimeout(() => {
        targetPage.style.animation = 'fadeInUp 0.6s ease-out';
@@ -1146,7 +1148,7 @@ document.addEventListener('DOMContentLoaded', function() {
      // 페이지를 찾지 못한 경우 1페이지를 강제로 표시
      const firstPage = document.querySelector('[data-page="1"]');
      if (firstPage) {
-       firstPage.style.display = 'block';
+       firstPage.classList.add('active');
      }
    }
    
@@ -1234,11 +1236,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
 <!-- CSS 스타일 -->
 <style>
-/* EMERGENCY: Force show all project cards */
+/* 페이지네이션 작동하도록 수정 */
 .project-page {
+ display: none;
+}
+
+.project-page.active {
  display: block !important;
- opacity: 1 !important;
- visibility: visible !important;
 }
 
 /* CSS 변수 정의 */
