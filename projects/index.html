@@ -1101,6 +1101,11 @@ document.addEventListener('DOMContentLoaded', function() {
  const projectsPerPage = 5;
  const allProjects = document.querySelectorAll('.project-page');
  console.log('Found project pages:', allProjects.length, allProjects);
+ 
+ // 각 페이지의 데이터 확인
+ allProjects.forEach((page, index) => {
+   console.log(`Page ${index + 1}:`, page.dataset.page, 'Projects:', page.querySelectorAll('.home-project-item').length);
+ });
  // 실제 프로젝트 개수를 자동으로 계산
  const totalProjects = document.querySelectorAll('.home-project-item').length;
  const totalPages = Math.ceil(totalProjects / projectsPerPage);
@@ -1130,8 +1135,12 @@ document.addEventListener('DOMContentLoaded', function() {
  }
  
  function showPage(pageNum) {
+   console.log('=== SHOWPAGE CALLED ===');
+   console.log('Page requested:', pageNum);
+   
    // 모든 페이지에서 active 클래스 제거
    allProjects.forEach(page => {
+     console.log('Removing active from page:', page.dataset.page);
      page.classList.remove('active');
    });
    
@@ -1139,18 +1148,27 @@ document.addEventListener('DOMContentLoaded', function() {
    const targetPage = document.querySelector(`[data-page="${pageNum}"]`);
    console.log('Looking for page:', pageNum, 'Found:', targetPage);
    if (targetPage) {
+     console.log('Adding active to page:', pageNum);
      targetPage.classList.add('active');
+     console.log('Page', pageNum, 'classes:', targetPage.className);
      targetPage.style.animation = 'none';
      setTimeout(() => {
        targetPage.style.animation = 'fadeInUp 0.6s ease-out';
      }, 10);
    } else {
+     console.log('Page not found, showing page 1');
      // 페이지를 찾지 못한 경우 1페이지를 강제로 표시
      const firstPage = document.querySelector('[data-page="1"]');
      if (firstPage) {
        firstPage.classList.add('active');
      }
    }
+   
+   // 현재 보이는 페이지들 확인
+   document.querySelectorAll('.project-page').forEach(page => {
+     const isVisible = window.getComputedStyle(page).display !== 'none';
+     console.log(`Page ${page.dataset.page} visible:`, isVisible, 'classes:', page.className);
+   });
    
    // 프로젝트 그리드 섹션으로 스크롤 (배너 아래로)
    const projectsGrid = document.getElementById('projectsGrid');
