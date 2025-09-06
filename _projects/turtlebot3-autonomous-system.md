@@ -2247,11 +2247,4 @@ These achievements are expected to serve as important milestones for the practic
 
 ---
 
-**Research Team Information**:
-
-Kim Si-young: System integration and intersection navigation algorithm development  
-Shin Seung-hwan: Lane detection and SLAM system implementation  
-Oh Kyung-jun: Barrier detection and Pick & Place system development  
-Jeon Hyo-jae: Obstacle avoidance and traffic light recognition system implementation
-
 *This research was conducted as part of a digital twin-based robot system development project.*
