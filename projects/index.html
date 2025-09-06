@@ -332,10 +332,10 @@
   <!-- 배너 텍스트 오버레이 -->
   <div class="banner-text-overlay">
     <div class="banner-title">
-      <h1>Engineering Works</h1>
+      <h1>Projects Portfolio</h1>
     </div>
     <div class="banner-subtitle">
-      <p>Robotics & Automation • AI-Driven Systems • Industrial Innovation</p>
+      <p>Full-Stack Robotics Developer • Environmental Engineering • AI Systems</p>
       <div class="banner-stats">
         <div class="stat-item">
           <span class="stat-number">9+</span>
@@ -369,32 +369,11 @@
 <div class="home-projects-section">
  <div class="home-projects-container">
    
-   <!-- 상단 페이지네이션 -->
+   <!-- 페이지네이션 정보 표시 -->
    <div style="text-align: center; margin-bottom: 2rem;">
      <div class="pagination-info">
-       <span class="page-indicator">Page <span id="currentPageTop">1</span> of <span id="totalPagesTop">2</span></span>
-       <span class="total-projects">(<span id="totalProjectsCountTop">9</span> projects total)</span>
-     </div>
-     
-     <div class="pagination-controls">
-       <button id="prevBtnTop" class="pagination-btn" disabled>
-         <svg viewBox="0 0 24 24" fill="currentColor">
-           <path d="M15.41,16.58L10.83,12L15.41,7.41L14,6L8,12L14,18L15.41,16.58Z"/>
-         </svg>
-         Previous
-       </button>
-       
-       <div class="page-numbers">
-         <button class="page-number-btn-top active" data-page="1">1</button>
-         <button class="page-number-btn-top" data-page="2">2</button>
-       </div>
-       
-       <button id="nextBtnTop" class="pagination-btn">
-         Next
-         <svg viewBox="0 0 24 24" fill="currentColor">
-           <path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z"/>
-         </svg>
-       </button>
+       <span class="page-indicator">Page <span id="currentPage">1</span> of <span id="totalPages">2</span></span>
+       <span class="total-projects">(<span id="totalProjectsCount">9</span> projects total)</span>
      </div>
    </div>
 
@@ -1105,7 +1084,6 @@ document.addEventListener('DOMContentLoaded', function() {
  
  let currentPage = 1;
  
- // 하단 페이지네이션 요소들
  const currentPageSpan = document.getElementById('currentPage');
  const totalPagesSpan = document.getElementById('totalPages');
  const totalProjectsSpan = document.getElementById('totalProjectsCount');
@@ -1113,22 +1091,9 @@ document.addEventListener('DOMContentLoaded', function() {
  const nextBtn = document.getElementById('nextBtn');
  const pageNumberBtns = document.querySelectorAll('.page-number-btn');
  
- // 상단 페이지네이션 요소들
- const currentPageTopSpan = document.getElementById('currentPageTop');
- const totalPagesTopSpan = document.getElementById('totalPagesTop');
- const totalProjectsTopSpan = document.getElementById('totalProjectsCountTop');
- const prevBtnTop = document.getElementById('prevBtnTop');
- const nextBtnTop = document.getElementById('nextBtnTop');
- const pageNumberTopBtns = document.querySelectorAll('.page-number-btn-top');
- 
  function init() {
-   // 하단 페이지네이션 초기화
-   if (totalPagesSpan) totalPagesSpan.textContent = totalPages;
-   if (totalProjectsSpan) totalProjectsSpan.textContent = totalProjects;
-   
-   // 상단 페이지네이션 초기화
-   if (totalPagesTopSpan) totalPagesTopSpan.textContent = totalPages;
-   if (totalProjectsTopSpan) totalProjectsTopSpan.textContent = totalProjects;
+   totalPagesSpan.textContent = totalPages;
+   totalProjectsSpan.textContent = totalProjects;
    
    // 배너의 프로젝트 개수도 자동 업데이트
    const bannerProjectCount = document.querySelector('.stat-number');
@@ -1164,31 +1129,14 @@ document.addEventListener('DOMContentLoaded', function() {
    }
    
    currentPage = pageNum;
-   if (currentPageSpan) currentPageSpan.textContent = pageNum;
-   if (currentPageTopSpan) currentPageTopSpan.textContent = pageNum;
+   currentPageSpan.textContent = pageNum;
  }
  
  function updatePaginationControls() {
-   // 하단 페이지네이션 업데이트
-   if (prevBtn) prevBtn.disabled = (currentPage === 1);
-   if (nextBtn) nextBtn.disabled = (currentPage === totalPages);
+   prevBtn.disabled = (currentPage === 1);
+   nextBtn.disabled = (currentPage === totalPages);
    
-   // 상단 페이지네이션 업데이트
-   if (prevBtnTop) prevBtnTop.disabled = (currentPage === 1);
-   if (nextBtnTop) nextBtnTop.disabled = (currentPage === totalPages);
-   
-   // 하단 페이지 번호 버튼들
    pageNumberBtns.forEach(btn => {
-     const pageNum = parseInt(btn.dataset.page);
-     btn.classList.toggle('active', pageNum === currentPage);
-     
-     if (pageNum > totalPages) {
-       btn.style.display = 'none';
-     }
-   });
-   
-   // 상단 페이지 번호 버튼들
-   pageNumberTopBtns.forEach(btn => {
      const pageNum = parseInt(btn.dataset.page);
      btn.classList.toggle('active', pageNum === currentPage);
      
@@ -1213,35 +1161,6 @@ document.addEventListener('DOMContentLoaded', function() {
  });
  
  pageNumberBtns.forEach(btn => {
-   btn.addEventListener('click', () => {
-     const pageNum = parseInt(btn.dataset.page);
-     if (pageNum <= totalPages) {
-       showPage(pageNum);
-       updatePaginationControls();
-     }
-   });
- });
- 
- // 상단 페이지네이션 이벤트 리스너
- if (prevBtnTop) {
-   prevBtnTop.addEventListener('click', () => {
-     if (currentPage > 1) {
-       showPage(currentPage - 1);
-       updatePaginationControls();
-     }
-   });
- }
- 
- if (nextBtnTop) {
-   nextBtnTop.addEventListener('click', () => {
-     if (currentPage < totalPages) {
-       showPage(currentPage + 1);
-       updatePaginationControls();
-     }
-   });
- }
- 
- pageNumberTopBtns.forEach(btn => {
    btn.addEventListener('click', () => {
      const pageNum = parseInt(btn.dataset.page);
      if (pageNum <= totalPages) {
