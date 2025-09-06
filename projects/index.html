@@ -1256,7 +1256,7 @@ document.addEventListener('DOMContentLoaded', function() {
 <style>
 /* 페이지네이션 작동하도록 수정 */
 .project-page {
- display: none;
+ display: none !important;
 }
 
 .project-page.active {
@@ -1264,7 +1264,7 @@ document.addEventListener('DOMContentLoaded', function() {
 }
 
 .project-page[data-page="1"] {
- display: block;
+ display: block !important;
 }
 
 /* CSS 변수 정의 */
