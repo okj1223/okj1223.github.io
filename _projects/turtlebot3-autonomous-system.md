@@ -479,7 +479,7 @@ def geometric_validation(self, contour):
 
 <figure>
   <img class="project-image"
-       src="{{ '/project/turtlebot3-autonomous-system/barrier_detection.PNG' | relative_url }}"
+       src="{{ '/project/turtlebot3-autonomous-system/barrier_detection.png' | relative_url }}"
        alt="Real-time barrier state detection and analysis"
        loading="lazy">
   <figcaption>Figure 3.2: Barrier detection system showing LED point clustering, virtual line generation, and state classification (UP/DOWN) with temporal consistency analysis
