@@ -1,3 +1,10 @@
+---
+layout: project
+date: 2025-09-05
+title: "Digital Twin-Based TurtleBot3 Autonomous Driving System Development and Implementation"
+description: "A comprehensive autonomous driving system for TurtleBot3 robots featuring advanced computer vision, inverse kinematics, and multi-sensor fusion, achieving 95% task success rate in Pick & Place operations and 98% object recognition accuracy."
+permalink: /projects/turtlebot3-autonomous-system/
+---
 # Digital Twin-Based TurtleBot3 Autonomous Driving System Development and Implementation
 
 ## Abstract
@@ -35,20 +42,18 @@ To overcome these limitations, this research set the following objectives:
        src="{{ '/project/turtlebot3-autonomous-system/digital_twin_gazebo_map.jpg' | relative_url }}"
        alt="Digital twin virtual environment in Gazebo simulator"
        loading="lazy">
-  <figcaption>Figure 1.1: Digital twin virtual environment recreated in Gazebo simulator for algorithm validation and testing</figcaption>
-</figure>
-
+  <figcaption>Figure 1.1: Digital twin virtual environment recreated in Gazebo simulator for algorithm validation and testing
+  
 ### 1.4 System Architecture Philosophy
 
 The entire system was designed based on the philosophy of "Graceful Degradation." That is, even if some sensors or modules experience problems, the entire system doesn't completely stop but continues to operate with reduced performance.
 
 <figure>
-  <img class="project-image"
-       src="{{ '/project/turtlebot3-autonomous-system/system_architecture_diagram.jpg' | relative_url }}"
+  <img class="flowchart"
+       src="{{ '/project/turtlebot3-autonomous-system/system_architecture_diagram.png' | relative_url }}"
        alt="Overall system architecture diagram"
        loading="lazy">
-  <figcaption>Figure 1.2: Hierarchical system architecture showing perception, planning, and control layers with coordination and safety mechanisms</figcaption>
-</figure>
+  <figcaption>Figure 1.2: Hierarchical system architecture showing perception, planning, and control layers with coordination and safety mechanisms
 
 ```
 ┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
