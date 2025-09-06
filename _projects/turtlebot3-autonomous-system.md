@@ -3,6 +3,7 @@ layout: project
 date: 2025-09-05
 title: "Digital Twin-Based TurtleBot3 Autonomous Driving System Development and Implementation"
 description: "A comprehensive autonomous driving system for TurtleBot3 robots featuring advanced computer vision, inverse kinematics, and multi-sensor fusion, achieving 95% task success rate in Pick & Place operations and 98% object recognition accuracy."
+video_url: "https://www.youtube.com/embed/WX1D9GZJOB4"
 permalink: /projects/turtlebot3-autonomous-system/
 ---
 # Digital Twin-Based TurtleBot3 Autonomous Driving System Development and Implementation
