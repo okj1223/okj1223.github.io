@@ -1951,32 +1951,6 @@ Repository structure:
 └── /tests
 ```
 
-### Appendix B: Bill of Materials
-
-[Detailed component list with specifications and suppliers - maintained separately]
-
-### Appendix C: Electrical Schematics
-
-[Complete electrical drawings available in CAD format - maintained separately]
-
-### Appendix D: Mechanical Drawings
-
-[Piping diagrams and mechanical assembly drawings - maintained separately]
-
-### Appendix E: Test Procedures
-
-[Comprehensive test procedures and checklists - maintained separately]
-
-### Appendix F: Maintenance Schedule
-
-[Preventive maintenance schedule and procedures - maintained separately]
-
-### Appendix G: Troubleshooting Guide
-
-[Common issues and resolution procedures - maintained separately]
-
-### Appendix H: Security Notice
-
 > **Documentation Security Notice:**
 > 
 > Due to company security policies and intellectual property considerations, certain proprietary algorithms, detailed schematics, and complete system photographs have been withheld from this public documentation. The information presented provides comprehensive technical understanding while maintaining necessary confidentiality.
