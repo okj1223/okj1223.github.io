@@ -181,36 +181,94 @@
     /* 반응형 디자인 */
     @media (max-width: 768px) {
       .drone-banner-environment {
-        min-height: 60vh;  /* 모바일에서 더 적당한 크기 */
+        min-height: 50vh;
       }
-      
+
       .banner-text-overlay {
-        max-width: 90%;
-        padding: 1rem;
+        max-width: 95%;
+        padding: 1.5rem 1rem;
       }
-      
+
       .banner-title h1 {
-        font-size: 2.5rem;
+        font-size: 2.2rem;
       }
-      
+
       .banner-title h2 {
-        font-size: 1.5rem;
+        font-size: 1.3rem;
       }
-      
+
       .banner-subtitle p {
-        font-size: 1rem;
+        font-size: 0.95rem;
+        line-height: 1.5;
       }
-      
+
       .banner-stats {
         flex-direction: column;
         gap: 1rem;
         align-items: center;
       }
-      
+
       .stat-item {
         min-width: 120px;
+        padding: 1rem 1.5rem;
       }
-      
+
+      .stat-number {
+        font-size: 2.2rem;
+      }
+    }
+
+    /* 매우 작은 화면 (480px 이하) */
+    @media (max-width: 480px) {
+      .drone-banner-environment {
+        min-height: 45vh;
+      }
+
+      .banner-text-overlay {
+        max-width: 98%;
+        padding: 1rem 0.8rem;
+      }
+
+      .banner-title h1 {
+        font-size: 1.8rem;
+        line-height: 1.1;
+      }
+
+      .banner-title h2 {
+        font-size: 1.1rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .banner-subtitle p {
+        font-size: 0.9rem;
+        line-height: 1.4;
+        margin-bottom: 1.5rem;
+      }
+
+      .banner-stats {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.8rem;
+        margin-top: 1.5rem;
+      }
+
+      .stat-item {
+        min-width: 90px;
+        max-width: 100px;
+        padding: 0.8rem 1rem;
+        flex: 0 0 auto;
+      }
+
+      .stat-number {
+        font-size: 1.8rem;
+        margin-bottom: 0.3rem;
+      }
+
+      .stat-label {
+        font-size: 0.8rem;
+        line-height: 1.2;
+      }
     }
     
     /* 🎯 프로젝트 카드 완전 수정 */
