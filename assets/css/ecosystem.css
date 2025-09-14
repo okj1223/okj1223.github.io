@@ -893,7 +893,7 @@ body::before {
 .home-project-card {
   background: rgba(255, 255, 255, 0.95) !important;
   border-radius: 20px !important;
-  overflow: visible !important;
+  overflow: hidden !important;
   box-shadow: 0 6px 20px rgba(127, 179, 211, 0.12) !important;
   transition: var(--transition) !important;
   padding: 2rem !important;
@@ -1174,7 +1174,7 @@ body::before {
   height: 450px !important;
   margin: 2rem auto !important;
   border-radius: 8px !important;
-  overflow: visible !important;
+  overflow: hidden !important;
   box-shadow: var(--shadow) !important;
 }
 
@@ -1184,18 +1184,17 @@ body::before {
   height: 100% !important;
   text-decoration: none !important;
   border-radius: 12px !important;
-  overflow: visible !important;
+  overflow: hidden !important;
   position: relative !important;
   border: none !important;
 }
-
 
 .home-video-wrapper {
   position: relative !important;
   width: 100% !important;
   aspect-ratio: 16 / 9 !important;
   border-radius: 8px !important;
-  overflow: visible !important;
+  overflow: hidden !important;
   box-shadow: var(--shadow) !important;
   background: var(--gray-bg) !important;
 }
@@ -1209,6 +1208,7 @@ body::before {
   border: none !important;
   pointer-events: auto !important;
   border-radius: 8px !important;
+  object-fit: cover !important;
 }
 
 /* View All Projects 버튼 - 통합 스타일 */
@@ -2219,16 +2219,79 @@ figure figcaption {
 /* ── Mobile Responsiveness ── */
 @media (max-width: 768px) {
   #banner {
-    height: 60vh;
+    height: 70vh;
   }
-  
+
   .banner-title {
     font-size: 2rem;
   }
-  
+
   .banner-subtitle {
     font-size: 1rem;
+    margin-bottom: 2rem !important;
   }
+
+  .banner-extra {
+    margin-bottom: 3rem !important;
+  }
+
+  .cv-button-wrapper {
+    bottom: 5%;
+  }
+
+  .cv-button {
+    padding: 8px 16px;
+    font-size: 12px;
+    margin: 0 4px;
+  }
+}
+
+@media (max-width: 480px) {
+  #banner {
+    height: 65vh;
+  }
+
+  .banner-title {
+    font-size: 1.6rem;
+    margin-bottom: 0.5rem !important;
+  }
+
+  .banner-subtitle {
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem !important;
+    line-height: 1.4 !important;
+  }
+
+  .banner-name {
+    font-size: 0.8rem !important;
+    margin-bottom: 1rem !important;
+  }
+
+  .banner-extra {
+    margin-bottom: 2.5rem !important;
+  }
+
+  .banner-line1, .banner-line2 {
+    font-size: 0.8rem !important;
+    margin-bottom: 0.5rem !important;
+  }
+
+  .cv-button-wrapper {
+    bottom: 3%;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: center;
+  }
+
+  .cv-button {
+    padding: 6px 12px;
+    font-size: 11px;
+    margin: 0;
+    width: 140px;
+    text-align: center;
+  }
+}
   
   /* 모바일에서는 홈 프로젝트 아이템 전체 너비 사용 */
   .home-project-item {
