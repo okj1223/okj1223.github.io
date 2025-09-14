@@ -2244,6 +2244,11 @@ figure figcaption {
     font-size: 12px;
     margin: 0 4px;
   }
+
+  /* 네비게이션 글자 크기 조금 축소 */
+  .navbar-nav .nav-link {
+    font-size: 0.85rem !important;
+  }
 }
 
 @media (max-width: 480px) {
@@ -2294,6 +2299,11 @@ figure figcaption {
     margin: 0;
     width: 140px;
     text-align: center;
+  }
+
+  /* 네비게이션 글자 크기 축소 */
+  .navbar-nav .nav-link {
+    font-size: 0.8rem !important;
   }
 }
   
