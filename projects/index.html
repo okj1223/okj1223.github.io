@@ -277,12 +277,12 @@
       }
     }
     
-    /* 🎯 프로젝트 카드 완전 수정 */
+    /* 🎯 프로젝트 카드 완전 수정 - 홈화면처럼 넓게 */
     .home-project-card {
-      min-height: 450px !important;
+      min-height: 400px !important;
       width: 100% !important;
-      max-width: 1000px !important;
-      margin: 0 auto 2rem auto !important;
+      max-width: 1200px !important;
+      margin: 0 auto 1.5rem auto !important;
       display: flex !important;
       flex-direction: column !important;
       overflow: hidden !important;
@@ -290,7 +290,7 @@
       border-radius: 20px !important;
       box-shadow: 0 6px 20px rgba(127, 179, 211, 0.12) !important;
     }
-    
+
     /* 프로젝트 링크는 세로 배치 */
     .home-project-link {
       display: flex !important;
@@ -298,35 +298,68 @@
       height: 100% !important;
       text-decoration: none !important;
     }
-    
-    /* 텍스트 콘텐츠가 위로 */
+
+    /* 텍스트 콘텐츠가 위로 - 패딩 축소 */
     .home-project-content {
       flex: 1 !important;
-      padding: 2rem !important;
+      padding: 1.5rem !important;
       order: 1 !important;
       display: flex !important;
       flex-direction: column !important;
     }
-    
+
+    /* 모바일에서 더 컴팩트하게 */
+    @media (max-width: 768px) {
+      .home-project-card {
+        min-height: 350px !important;
+        margin: 0 auto 1rem auto !important;
+      }
+
+      .home-project-content {
+        padding: 1rem !important;
+      }
+
+      .home-projects-grid {
+        gap: 1rem !important;
+        padding: 0 1rem !important;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .home-project-card {
+        min-height: 300px !important;
+        margin: 0 auto 0.8rem auto !important;
+      }
+
+      .home-project-content {
+        padding: 0.8rem !important;
+      }
+
+      .home-projects-grid {
+        gap: 0.8rem !important;
+        padding: 0 0.5rem !important;
+      }
+    }
+
     /* 동영상 스타일은 ecosystem.css에서 관리 */
-    
-    /* 프로젝트 컨테이너 */
+
+    /* 프로젝트 컨테이너 - 홈화면처럼 넓게 */
     .home-projects-grid {
       display: grid !important;
       grid-template-columns: 1fr !important;
-      gap: 2rem !important;
-      max-width: 900px !important;
+      gap: 1.5rem !important;
+      max-width: 1200px !important;
       margin: 0 auto !important;
-      padding: 0 2rem !important;
+      padding: 0 1.5rem !important;
     }
-    
+
     .home-project-item {
       width: 100% !important;
     }
-    
+
     /* 페이지네이션 수정 */
     .projects-pagination {
-      max-width: 900px !important;
+      max-width: 1200px !important;
       margin: 2rem auto !important;
       text-align: center !important;
     }
