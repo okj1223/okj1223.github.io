@@ -1171,7 +1171,7 @@ body::before {
 .home-project-media {
   width: 100% !important;
   max-width: 800px !important;
-  height: 450px !important;
+  height: auto !important;
   margin: 2rem auto !important;
   border-radius: 8px !important;
   overflow: hidden !important;
@@ -2314,7 +2314,7 @@ figure figcaption {
   .home-project-media {
     position: static !important;
     width: 100% !important;
-    height: 180px !important;
+    height: auto !important;
     margin: 1rem 0 0 0 !important;
     top: auto !important;
     right: auto !important;
@@ -2352,7 +2352,7 @@ figure figcaption {
   }
 
   .home-project-media {
-    height: 160px !important;
+    height: auto !important;
   }
 
   .projects-section-title {
@@ -2371,7 +2371,7 @@ figure figcaption {
   }
 
   .home-project-media {
-    height: 140px !important;
+    height: auto !important;
   }
 
   .projects-section-title {
@@ -2555,7 +2555,7 @@ figure figcaption {
   }
   
   .home-project-media {
-    height: 140px !important;
+    height: auto !important;
   }
   
   .projects-section-title {
