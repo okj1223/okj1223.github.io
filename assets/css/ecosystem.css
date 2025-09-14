@@ -2247,6 +2247,10 @@ figure figcaption {
 }
 
 @media (max-width: 480px) {
+  html, body {
+    overflow-x: hidden !important;
+  }
+
   #banner {
     height: 65vh;
   }
