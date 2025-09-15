@@ -279,10 +279,10 @@
     
     /* 🎯 프로젝트 카드 완전 수정 - 홈화면처럼 넓게 */
     .home-project-card {
-      min-height: 400px !important;
+      min-height: 320px !important;
       width: 100% !important;
       max-width: 1200px !important;
-      margin: 0 auto 1.5rem auto !important;
+      margin: 0 auto 1.2rem auto !important;
       display: flex !important;
       flex-direction: column !important;
       overflow: hidden !important;
@@ -299,10 +299,10 @@
       text-decoration: none !important;
     }
 
-    /* 텍스트 콘텐츠가 위로 - 패딩 축소 */
+    /* 텍스트 콘텐츠가 위로 - 패딩 대폭 축소 */
     .home-project-content {
       flex: 1 !important;
-      padding: 1.5rem !important;
+      padding: 1.2rem !important;
       order: 1 !important;
       display: flex !important;
       flex-direction: column !important;
@@ -310,22 +310,6 @@
 
     /* 모바일에서 더 컴팩트하게 */
     @media (max-width: 768px) {
-      .home-project-card {
-        min-height: 250px !important;
-        margin: 0 auto 1rem auto !important;
-      }
-
-      .home-project-content {
-        padding: 1rem !important;
-      }
-
-      .home-projects-grid {
-        gap: 1rem !important;
-        padding: 0 1rem !important;
-      }
-    }
-
-    @media (max-width: 480px) {
       .home-project-card {
         min-height: 220px !important;
         margin: 0 auto 0.8rem auto !important;
@@ -336,7 +320,23 @@
       }
 
       .home-projects-grid {
-        gap: 0.8rem !important;
+        gap: 1rem !important;
+        padding: 0 1rem !important;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .home-project-card {
+        min-height: 180px !important;
+        margin: 0 auto 0.6rem auto !important;
+      }
+
+      .home-project-content {
+        padding: 0.6rem !important;
+      }
+
+      .home-projects-grid {
+        gap: 0.6rem !important;
         padding: 0 0.5rem !important;
       }
     }
@@ -1913,7 +1913,7 @@ html, body {
  width: 100%;
  max-width: 1200px;
  margin: 0 auto;
- padding: 0 2rem;
+ padding: 0 1.5rem;
  position: relative;
  z-index: 10;
 }

@@ -495,8 +495,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 
                 // 모바일에서 메뉴 닫기
                 const navbarCollapse = document.querySelector('.navbar-collapse');
-                if (navbarCollapse.classList.contains('show')) {
-                    document.querySelector('.navbar-toggler').click();
+                const navbarToggler = document.querySelector('.navbar-toggler');
+                if (navbarCollapse && navbarCollapse.classList.contains('show') && navbarToggler) {
+                    navbarCollapse.classList.remove('show');
+                    navbarToggler.setAttribute('aria-expanded', 'false');
+                    document.body.style.overflow = '';
                 }
             }
         });
@@ -556,24 +559,33 @@ document.addEventListener('DOMContentLoaded', function() {
     const navbarToggler = document.querySelector('.navbar-toggler');
     const navbarCollapse = document.querySelector('.navbar-collapse');
     
-    if (navbarToggler) {
-        navbarToggler.addEventListener('click', function() {
-            // 햄버거 아이콘 애니메이션은 CSS로 처리됨
-            
-            // 모바일 메뉴 열릴 때 바디 스크롤 방지
-            setTimeout(() => {
-                if (navbarCollapse.classList.contains('show')) {
-                    document.body.style.overflow = 'hidden';
-                } else {
-                    document.body.style.overflow = '';
-                }
-            }, 100);
+    if (navbarToggler && navbarCollapse) {
+        navbarToggler.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            // Bootstrap의 토글 기능 수동 구현
+            const isExpanded = navbarToggler.getAttribute('aria-expanded') === 'true';
+
+            if (isExpanded) {
+                // 메뉴 닫기
+                navbarCollapse.classList.remove('show');
+                navbarToggler.setAttribute('aria-expanded', 'false');
+                document.body.style.overflow = '';
+            } else {
+                // 메뉴 열기
+                navbarCollapse.classList.add('show');
+                navbarToggler.setAttribute('aria-expanded', 'true');
+                document.body.style.overflow = 'hidden';
+            }
         });
         
         // 모바일 메뉴 외부 클릭시 닫기
         document.addEventListener('click', function(e) {
             if (!navbar.contains(e.target) && navbarCollapse.classList.contains('show')) {
-                navbarToggler.click();
+                navbarCollapse.classList.remove('show');
+                navbarToggler.setAttribute('aria-expanded', 'false');
+                document.body.style.overflow = '';
             }
         });
     }
@@ -594,7 +606,8 @@ document.addEventListener('DOMContentLoaded', function() {
         clearTimeout(resizeTimeout);
         resizeTimeout = setTimeout(() => {
             if (window.innerWidth > 1199 && navbarCollapse.classList.contains('show')) {
-                navbarToggler.click();
+                navbarCollapse.classList.remove('show');
+                navbarToggler.setAttribute('aria-expanded', 'false');
             }
             document.body.style.overflow = '';
         }, 250);
