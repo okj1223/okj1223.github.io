@@ -826,6 +826,19 @@ body::before {
   text-align: center !important;
 }
 
+/* 홈페이지 상위 컨테이너 제약 제거 */
+body .container-md,
+body .container,
+body .row,
+body .col-xl-8,
+body .col-lg-10,
+body [class*="col-"] {
+  max-width: 100% !important;
+  width: 100% !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
 /* 홈페이지 프로젝트 컨테이너 - 최고 우선순위 */
 body .home-projects-container,
 .container .home-projects-container,
