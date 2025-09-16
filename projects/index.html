@@ -277,8 +277,8 @@
       }
     }
     
-    /* 🎯 프로젝트 카드 완전 수정 - 홈화면처럼 넓게 */
-    .home-project-card {
+    /* 🎯 프로젝트 페이지 전용 카드 스타일 */
+    body.projects-page .home-project-card {
       min-height: 320px !important;
       width: 100% !important;
       max-width: 1200px !important;
@@ -292,7 +292,7 @@
     }
 
     /* 프로젝트 링크는 세로 배치 */
-    .home-project-link {
+    body.projects-page .home-project-link {
       display: flex !important;
       flex-direction: column !important;
       height: 100% !important;
@@ -300,7 +300,7 @@
     }
 
     /* 텍스트 콘텐츠가 위로 - 패딩 대폭 축소 */
-    .home-project-content {
+    body.projects-page .home-project-content {
       flex: 1 !important;
       padding: 1.2rem !important;
       order: 1 !important;
@@ -308,36 +308,36 @@
       flex-direction: column !important;
     }
 
-    /* 모바일에서 카드 더 넓고 패딩 증가 */
+    /* 모바일에서 카드 더 넓고 패딩 증가 - 프로젝트 페이지 전용 */
     @media (max-width: 768px) {
-      .home-project-card {
+      body.projects-page .home-project-card {
         min-height: 280px !important;
         margin: 0 auto 1.2rem auto !important;
         max-width: 95% !important;
       }
 
-      .home-project-content {
+      body.projects-page .home-project-content {
         padding: 1.8rem !important;
       }
 
-      .home-projects-grid {
+      body.projects-page .home-projects-grid {
         gap: 1.5rem !important;
         padding: 0 1.5rem !important;
       }
     }
 
     @media (max-width: 480px) {
-      .home-project-card {
+      body.projects-page .home-project-card {
         min-height: 260px !important;
         margin: 0 auto 1rem auto !important;
         max-width: 92% !important;
       }
 
-      .home-project-content {
+      body.projects-page .home-project-content {
         padding: 1.5rem !important;
       }
 
-      .home-projects-grid {
+      body.projects-page .home-projects-grid {
         gap: 1.2rem !important;
         padding: 0 1rem !important;
       }
@@ -367,7 +367,7 @@
     }
   </style>
 </head>
-<body>
+<body class="projects-page">
 
 <!-- 네비게이션 바 -->
 <nav class="navbar-custom">
