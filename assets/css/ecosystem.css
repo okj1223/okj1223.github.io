@@ -826,7 +826,11 @@ body::before {
   text-align: center !important;
 }
 
-.home-projects-container {
+/* 홈페이지 프로젝트 컨테이너 - 최고 우선순위 */
+body .home-projects-container,
+.container .home-projects-container,
+.container-fluid .home-projects-container,
+div.home-projects-container {
   max-width: 800px !important;
   margin: 0 auto !important;
   padding: 0 2rem !important;
@@ -836,7 +840,11 @@ body::before {
   text-align: center !important;
 }
 
-.home-projects-grid {
+/* 홈페이지 프로젝트 그리드 - 최고 우선순위 */
+body .home-projects-grid,
+.container .home-projects-grid,
+.container-fluid .home-projects-grid,
+div.home-projects-grid {
   display: block !important;
   width: 100% !important;
   margin: 0 !important;
@@ -890,7 +898,12 @@ body::before {
   text-align: left !important;
 }
 
-.home-project-card {
+/* 홈페이지 프로젝트 카드 - 최고 우선순위 */
+body .home-project-card,
+.container .home-project-card,
+.container-fluid .home-project-card,
+div.home-project-card,
+article .home-project-card {
   background: rgba(255, 255, 255, 0.95) !important;
   border-radius: 20px !important;
   overflow: hidden !important;
