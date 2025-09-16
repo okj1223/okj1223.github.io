@@ -898,7 +898,7 @@ body::before {
   transition: var(--transition) !important;
   padding: 1.5rem !important;
   position: relative !important;
-  min-height: 280px !important;
+  min-height: 450px !important;
   clear: both !important;
   margin: 0 !important;
   width: 100% !important;
