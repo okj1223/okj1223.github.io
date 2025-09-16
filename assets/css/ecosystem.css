@@ -827,7 +827,7 @@ body::before {
 }
 
 .home-projects-container {
-  max-width: 1200px !important;
+  max-width: 900px !important;
   margin: 0 auto !important;
   padding: 0 2rem !important;
   width: 100% !important;
