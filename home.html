@@ -6,6 +6,43 @@ permalink: /home.html
 <!-- CSS 파일 연결 -->
 <link rel="stylesheet" href="{{ '/assets/css/ecosystem.css' | relative_url }}">
 
+<!-- 강제 컨테이너 스타일 -->
+<style>
+  .container-md, .container, .row, [class*="col-"] {
+    max-width: 100% !important;
+    width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  .home-projects-container {
+    max-width: 1200px !important;
+    width: 100% !important;
+    margin: 0 auto !important;
+  }
+</style>
+
+<!-- JavaScript로 강제 스타일 적용 -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // 모든 Bootstrap 컨테이너 제약 제거
+    const containers = document.querySelectorAll('.container, .container-md, .container-fluid, .row, [class*="col-"]');
+    containers.forEach(el => {
+        el.style.setProperty('max-width', '100%', 'important');
+        el.style.setProperty('width', '100%', 'important');
+        el.style.setProperty('padding', '0', 'important');
+        el.style.setProperty('margin', '0', 'important');
+    });
+
+    // 프로젝트 컨테이너 강제 설정
+    const projectContainer = document.querySelector('.home-projects-container');
+    if (projectContainer) {
+        projectContainer.style.setProperty('max-width', '1200px', 'important');
+        projectContainer.style.setProperty('width', '100%', 'important');
+        projectContainer.style.setProperty('margin', '0 auto', 'important');
+    }
+});
+</script>
+
 <!-- at the very top of _layouts/home.html -->
 {% if site.banner-img %}
 <div id="banner" style="background-image: url('{{ site.banner-img | relative_url }}'); position: relative;">
@@ -217,7 +254,7 @@ permalink: /home.html
 
 <!-- Latest Projects 섹션 - 새로운 스타일 -->
 <section class="home-projects-section">
-  <div class="home-projects-container">
+  <div class="home-projects-container" style="max-width: 1200px !important; width: 100% !important; margin: 0 auto !important;">
     <h2 class="projects-section-title">
     Latest Projects
     </h2>
