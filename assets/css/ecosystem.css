@@ -831,7 +831,7 @@ body .home-projects-container,
 .container .home-projects-container,
 .container-fluid .home-projects-container,
 div.home-projects-container {
-  max-width: 800px !important;
+  max-width: 1000px !important;
   margin: 0 auto !important;
   padding: 0 2rem !important;
   width: 100% !important;
