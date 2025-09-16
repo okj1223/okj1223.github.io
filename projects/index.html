@@ -2922,8 +2922,90 @@ html, body {
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-  // Basic page initialization
-  console.log('Projects page loaded');
+  // 🎯 프로젝트 페이지 카드 중앙 정렬 강제 적용
+  function forceProjectsCenterAlignment() {
+    console.log('Applying center alignment to projects page...');
+
+    // 모든 프로젝트 콘텐츠 중앙 정렬
+    const projectContents = document.querySelectorAll('.home-project-content');
+    projectContents.forEach(el => {
+      el.style.setProperty('text-align', 'center', 'important');
+      el.style.setProperty('display', 'flex', 'important');
+      el.style.setProperty('flex-direction', 'column', 'important');
+      el.style.setProperty('align-items', 'center', 'important');
+      el.style.setProperty('justify-content', 'center', 'important');
+    });
+
+    // 메타 정보 중앙 정렬
+    const projectMetas = document.querySelectorAll('.home-project-meta');
+    projectMetas.forEach(el => {
+      el.style.setProperty('justify-content', 'center', 'important');
+      el.style.setProperty('text-align', 'center', 'important');
+    });
+
+    // 제목 중앙 정렬
+    const projectTitles = document.querySelectorAll('.home-project-title');
+    projectTitles.forEach(el => {
+      el.style.setProperty('text-align', 'center', 'important');
+    });
+
+    // 설명 중앙 정렬
+    const projectDescriptions = document.querySelectorAll('.home-project-description');
+    projectDescriptions.forEach(el => {
+      el.style.setProperty('text-align', 'center', 'important');
+    });
+
+    // 임팩트 지표 중앙 정렬
+    const projectImpacts = document.querySelectorAll('.home-project-impact');
+    projectImpacts.forEach(el => {
+      el.style.setProperty('justify-content', 'center', 'important');
+      el.style.setProperty('text-align', 'center', 'important');
+    });
+
+    // 기술 태그 중앙 정렬
+    const projectTechs = document.querySelectorAll('.home-project-tech');
+    projectTechs.forEach(el => {
+      el.style.setProperty('justify-content', 'center', 'important');
+      el.style.setProperty('text-align', 'center', 'important');
+    });
+
+    // 프로젝트 링크 중앙 정렬
+    const projectLinks = document.querySelectorAll('.home-project-link');
+    projectLinks.forEach(el => {
+      el.style.setProperty('text-align', 'center', 'important');
+      el.style.setProperty('display', 'flex', 'important');
+      el.style.setProperty('flex-direction', 'column', 'important');
+      el.style.setProperty('align-items', 'center', 'important');
+    });
+
+    console.log(`Center alignment applied to ${projectContents.length} project cards`);
+  }
+
+  // DOM 로딩 완료 후 즉시 적용
+  forceProjectsCenterAlignment();
+
+  // 500ms 후 다시 한 번 적용 (지연 로딩 대비)
+  setTimeout(forceProjectsCenterAlignment, 500);
+
+  // 1초 후 한 번 더 적용 (추가 안전장치)
+  setTimeout(forceProjectsCenterAlignment, 1000);
+
+  // MutationObserver로 DOM 변경 감시
+  const observer = new MutationObserver(forceProjectsCenterAlignment);
+  observer.observe(document.body, {
+    childList: true,
+    subtree: true,
+    attributes: true,
+    attributeFilter: ['class', 'style']
+  });
+
+  // 페이지네이션 버튼 클릭 시 다시 적용
+  const paginationBtns = document.querySelectorAll('.pagination-btn, .page-number-btn');
+  paginationBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      setTimeout(forceProjectsCenterAlignment, 100);
+    });
+  });
 });
 </script>
 

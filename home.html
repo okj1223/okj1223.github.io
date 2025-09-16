@@ -46,6 +46,58 @@ document.addEventListener('DOMContentLoaded', function() {
         projectContainer.style.setProperty('width', '100%', 'important');
         projectContainer.style.setProperty('margin', '0 auto', 'important');
     }
+
+    // 🎯 홈페이지 프로젝트 카드 중앙 정렬 강제 적용
+    function forceCenterAlignment() {
+        // 모든 프로젝트 콘텐츠 중앙 정렬
+        const projectContents = document.querySelectorAll('.home-project-content');
+        projectContents.forEach(el => {
+            el.style.setProperty('text-align', 'center', 'important');
+            el.style.setProperty('display', 'flex', 'important');
+            el.style.setProperty('flex-direction', 'column', 'important');
+            el.style.setProperty('align-items', 'center', 'important');
+        });
+
+        // 메타 정보 중앙 정렬
+        const projectMetas = document.querySelectorAll('.home-project-meta');
+        projectMetas.forEach(el => {
+            el.style.setProperty('justify-content', 'center', 'important');
+        });
+
+        // 제목 중앙 정렬
+        const projectTitles = document.querySelectorAll('.home-project-title');
+        projectTitles.forEach(el => {
+            el.style.setProperty('text-align', 'center', 'important');
+        });
+
+        // 설명 중앙 정렬
+        const projectDescriptions = document.querySelectorAll('.home-project-description');
+        projectDescriptions.forEach(el => {
+            el.style.setProperty('text-align', 'center', 'important');
+        });
+
+        // 임팩트 지표 중앙 정렬
+        const projectImpacts = document.querySelectorAll('.home-project-impact');
+        projectImpacts.forEach(el => {
+            el.style.setProperty('justify-content', 'center', 'important');
+        });
+
+        // 기술 태그 중앙 정렬
+        const projectTechs = document.querySelectorAll('.home-project-tech');
+        projectTechs.forEach(el => {
+            el.style.setProperty('justify-content', 'center', 'important');
+        });
+    }
+
+    // DOM 로딩 완료 후 즉시 적용
+    forceCenterAlignment();
+
+    // 500ms 후 다시 한 번 적용 (지연 로딩 대비)
+    setTimeout(forceCenterAlignment, 500);
+
+    // MutationObserver로 DOM 변경 감시
+    const observer = new MutationObserver(forceCenterAlignment);
+    observer.observe(document.body, { childList: true, subtree: true });
 });
 </script>
 

@@ -988,6 +988,7 @@ article .home-project-card {
   gap: 0.8rem !important;
   margin-bottom: 0.8rem !important;
   flex-wrap: wrap !important;
+  justify-content: center !important;
 }
 
 .home-project-year {
@@ -1020,6 +1021,7 @@ article .home-project-card {
   margin-bottom: 0.8rem !important;
   color: var(--forest-green) !important;
   transition: color 0.3s ease !important;
+  text-align: center !important;
   line-height: 1.4 !important;
   margin-top: 0 !important;
   text-decoration: none !important;
@@ -1032,7 +1034,7 @@ article .home-project-card {
   line-height: 1.6 !important;
   color: #555 !important;
   margin-bottom: 1rem !important;
-  text-align: justify !important;
+  text-align: center !important;
   text-decoration: none !important;
   font-family: 'Inter', sans-serif !important;
 }
@@ -1047,6 +1049,7 @@ article .home-project-card {
   border-radius: 10px !important;
   border-left: 3px solid var(--eco-green) !important;
   flex-wrap: wrap !important;
+  justify-content: center !important;
   clear: left !important;
   border-top: none !important;
   border-right: none !important;
@@ -1088,6 +1091,7 @@ article .home-project-card {
   gap: 0.4rem !important;
   clear: left !important;
   margin-top: 0 !important;
+  justify-content: center !important;
 }
 
 .home-tech-tag {
