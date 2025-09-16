@@ -277,6 +277,19 @@
       }
     }
     
+    /* 🎯 프로젝트 페이지 전용 - 상위 컨테이너 제약 제거 */
+    body.projects-page .container-md,
+    body.projects-page .container,
+    body.projects-page .row,
+    body.projects-page .col-xl-8,
+    body.projects-page .col-lg-10,
+    body.projects-page [class*="col-"] {
+      max-width: 100% !important;
+      width: 100% !important;
+      padding: 0 !important;
+      margin: 0 !important;
+    }
+
     /* 🎯 프로젝트 페이지 전용 카드 스타일 */
     body.projects-page .home-project-card {
       min-height: 320px !important;
