@@ -827,7 +827,7 @@ body::before {
 }
 
 .home-projects-container {
-  max-width: 900px !important;
+  max-width: 800px !important;
   margin: 0 auto !important;
   padding: 0 2rem !important;
   width: 100% !important;
@@ -896,9 +896,9 @@ body::before {
   overflow: hidden !important;
   box-shadow: 0 6px 20px rgba(127, 179, 211, 0.12) !important;
   transition: var(--transition) !important;
-  padding: 2rem !important;
+  padding: 1.5rem !important;
   position: relative !important;
-  min-height: 450px !important;
+  min-height: 280px !important;
   clear: both !important;
   margin: 0 !important;
   width: 100% !important;
