@@ -264,14 +264,12 @@ body::before {
 /* ── Enhanced Banner Styles ── */
 #banner {
   position: relative;
-  width: 100vw;
-  margin-left: calc(50% - 50vw);
-  margin-right: calc(50% - 50vw);
+  width: 100%;
   height: 80vh;
   background: linear-gradient(135deg, #b8d4e3 0%, #a8c8d8 50%, #98bcc8 100%);
   background-size: cover;
   background-position: center;
-  overflow: visible;
+  overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -368,6 +366,9 @@ body::before {
   left: 50%;
   transform: translateX(-50%);
   z-index: 10;
+  display: flex;
+  gap: 12px;
+  white-space: nowrap;
 }
 
 .cv-button {
