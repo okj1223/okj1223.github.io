@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(wc -l /home/robros0/Desktop/my_website/assets/css/*.css)",
+      "Bash(wc -l /home/robros0/Desktop/my_website/assets/js/*.js)"
+    ]
+  }
+}

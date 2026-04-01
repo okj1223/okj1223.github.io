@@ -816,34 +816,14 @@ body::before {
 
 /* 홈페이지 프로젝트 섹션 스타일 */
 .home-projects-section {
-  padding: 2rem 0 !important; /* 패딩 감소 */
+  padding: 2rem 0 !important;
   background: rgba(248, 252, 248, 0.3) !important;
-  width: 100vw !important;
-  margin-left: calc(-50vw + 50%) !important;
-  margin-right: calc(-50vw + 50%) !important;
+  width: 100% !important;
   position: relative !important;
   display: block !important;
   text-align: center !important;
 }
 
-/* 홈페이지 상위 컨테이너 제약 제거하되 중앙 정렬 유지 */
-body .container-md,
-body .container,
-body .row {
-  max-width: 100% !important;
-  width: 100% !important;
-  padding: 0 !important;
-  margin: 0 auto !important;
-}
-
-body .col-xl-8,
-body .col-lg-10,
-body [class*="col-"] {
-  max-width: 100% !important;
-  width: 100% !important;
-  padding: 0 1rem !important;
-  margin: 0 auto !important;
-}
 
 /* 홈페이지 프로젝트 컨테이너 - 최고 우선순위 */
 body .home-projects-container,
@@ -925,7 +905,7 @@ div.home-project-card,
 article .home-project-card {
   background: rgba(255, 255, 255, 0.95) !important;
   border-radius: 20px !important;
-  overflow: hidden !important;
+  overflow: visible !important;
   box-shadow: 0 6px 20px rgba(127, 179, 211, 0.12) !important;
   transition: var(--transition) !important;
   padding: 1.5rem !important;
@@ -2262,6 +2242,11 @@ figure figcaption {
     font-size: 2rem;
   }
 
+  .eco-system-left,
+  .eco-system-right {
+    display: none;
+  }
+
   .banner-subtitle {
     font-size: 1rem;
     margin-bottom: 2rem !important;
@@ -2728,15 +2713,15 @@ figure figcaption {
 .home-projects-container,
 .project-showcase-grid,
 .project-showcase-section {
-  overflow-x: auto !important;
+  overflow: visible !important;
   width: 100% !important;
   max-width: 100% !important;
 }
 
-/* 3. 백업 안전장치 - 모든 텍스트 요소에 적용 */
-* {
-  word-break: keep-all !important;      /* 한글/영어 단어 단위 줄바꿈 */
-  overflow-wrap: break-word !important; /* 긴 단어는 강제 줄바꿈 */
+/* 3. 백업 안전장치 - 텍스트 요소에만 적용 */
+p, h1, h2, h3, h4, h5, h6, li, td, th, span, a, label {
+  word-break: keep-all;
+  overflow-wrap: break-word;
 }
 
 /* 4. 특별히 문제가 되는 요소들 추가 수정 */
@@ -3615,8 +3600,6 @@ figure figcaption {
   width: 100%;
   height: 250px !important; /* 명시적 높이 */
   position: relative;
-  background: red !important; /* 디버깅용 */
-  border: 5px solid yellow !important;
 }
 
 #ocean-wave-container canvas {
