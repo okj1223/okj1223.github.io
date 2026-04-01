@@ -75,6 +75,20 @@ Catalyst surface cleaning in industrial facilities is a critical process directl
 | Operating Temperature | -63°C | Dry ice storage/transport condition |
 
 
+### 2.2a System Pressure Reference Map
+
+Different calculation sections use different pressure conventions. The table below maps each value to its location and type to prevent cross-section confusion.
+
+| System Location | Pressure Type | Value | Used In |
+|-----------------|--------------|-------|---------|
+| Compressor outlet | Gauge | **8 bar(g)** | Design spec (§2.2) |
+| Compressor outlet | Absolute (static) | **9.01 bar(a)** | Primary-pipe ρ₁ (§3.2.1) |
+| Secondary hose (avg for ρ calc) | Absolute (static, avg) | **~4 bar(a)** | Hose Darcy-Weisbach loss (§3.2.1) |
+| Nozzle inlet | Absolute (stagnation P₀) | **6.0 bar(a)** | Choked-flow nozzle design (§3.3) |
+| Nozzle throat (critical) | Absolute (static P*) | **3.17 bar(a)** | P* = 0.528 × P₀ (§3.3.2) |
+
+> **Note:** The secondary-hose average of ~4 bar(a) and the nozzle stagnation of 6 bar(a) imply approximately 3 bar of unaccounted pressure drop between those two points (beyond the 1.3 bar total calculated in §3.2.1). This gap suggests either a pressure regulator between supply and hose, or that the secondary-hose calculation is for a reduced-pressure operating mode. A full system pressure balance from compressor outlet to nozzle inlet should be validated against physical measurement.
+
 ### 2.3 Control System Architecture
 
 
@@ -116,18 +130,38 @@ Vt = √[(4gd(ρₚ - ρf))/(3Cdρf)]
 
 Where:
 - d = 2.0×10⁻³ m (pellet diameter)
-- ρₚ = 1,560 kg/m³ (pellet density)  
-- ρf = 4.85 kg/m³ (air density at 4 bar)
-- Cd = 0.44 (spherical particle, Re > 1000)
+- ρₚ = 1,560 kg/m³ (pellet density)
+- ρf = 4.85 kg/m³ (air density at 4 bar abs, 298 K)
+- Cd = 0.44 (Newton's law regime, Re > 1000)
 
-**Result**: Vt = 31.2 m/s
+**Step-by-step calculation**:
+```
+Numerator:   4 × 9.81 × 2.0×10⁻³ × (1560 − 4.85) = 121.81
+Denominator: 3 × 0.44 × 4.85                       =   6.402
+
+Vt² = 121.81 / 6.402 = 19.02
+Vt  = √19.02 = 4.37 m/s
+```
+
+**Re self-consistency check**:
+```
+Re = ρf × Vt × d / μ = 4.85 × 4.37 × 0.002 / 1.8×10⁻⁵ = 2355 > 1000
+→ Cd = 0.44 confirmed ✓
+```
+
+**Result**: Vt = **4.37 m/s**
 
 **Minimum Conveying Velocity**:
 ```
-Vmin = Fl × Vt × √(ρf,std/ρf) = 1.3 × 31.2 × √(1.225/4.85) = 18.5 m/s
+Vmin = Fl × Vt × √(ρf,std/ρf)
+     = 1.3 × 4.37 × √(1.225/4.85)
+     = 5.68 × 0.503
+     = 2.86 m/s
 ```
 
-**Design Velocity**: 25.0 m/s (35% safety margin)
+**Design Velocity**: 25.0 m/s
+
+This is **8.7× above Vmin** (not 35% as a tight margin, but heavily over-specified). The operating velocity is set by the nozzle exit velocity requirement (~100 m/s at exit, ~25 m/s in the hose), not by the conveying minimum. Vmin = 2.86 m/s simply confirms the design velocity presents no settling risk.
 
 
 ### 3.2 Compressible Flow Analysis

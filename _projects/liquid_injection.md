@@ -247,9 +247,10 @@ The load cell mounting system requires precise mechanical design to ensure:
 #### 4.2.2 Load-Based Thickness Calculation and Safety Analysis
 
 **Design Load Specification:**
-- **Maximum Load Cell Capacity**: 1.0 kg
-- **Experimental Load Range**: 0.1 - 0.8 kg
-- **Safety Factor Applied**: 3.0 (conservative design)
+- **Load Cell Rated Capacity**: 5.0 kg (sensor full-scale; see §4.3.3)
+- **Design Operating Maximum**: 1.0 kg (structural frame design basis; worst-case experiment load)
+- **Experimental Load Range**: 0.1 – 0.8 kg (normal operating window)
+- **Safety Factor Applied**: 3.0 (applied to design operating maximum, not rated capacity)
 
 **PLA Material Properties:**
 - **Tensile Strength**: 50 MPa
@@ -281,12 +282,18 @@ $$t_{required} = \sqrt{\frac{6FL}{b \sigma_{allowable}}}$$
 
 Using allowable stress = 80 MPa / 3.0 = 26.67 MPa:
 
-$$t_{required} = \sqrt{\frac{6 \times 29.43 \times 0.06}{0.12 \times 26.67 \times 10^6}} = 1.78 \text{ mm}$$
+$$t_{required} = \sqrt{\frac{6 \times 29.43 \times 0.06}{0.12 \times 26.67 \times 10^6}} = \sqrt{\frac{10.595}{3.200 \times 10^6}} = \sqrt{3.311 \times 10^{-6}} = 1.82 \text{ mm}$$
 
 **Final Design Decision:**
-Selected thickness: **6 mm** (safety factor = 6/1.78 = 3.37)
+Selected thickness: **6 mm**
 
-This provides exceptional rigidity and eliminates deflection-induced measurement errors.
+Because bending stress scales as $\sigma \propto 1/t^2$, the true stress-based safety factor at the selected thickness is:
+
+$$SF_{stress} = \left(\frac{t_{selected}}{t_{required}}\right)^2 = \left(\frac{6}{1.82}\right)^2 = 3.30^2 = \mathbf{10.9}$$
+
+(A simple thickness ratio of 6/1.82 = 3.30 would only apply if stress scaled linearly with thickness, which it does not for bending.)
+
+This provides substantial rigidity and significantly reduces deflection-induced measurement errors.
 
 #### 4.2.3 Object Positioning Guide System
 
@@ -303,15 +310,14 @@ Weight measurement variations due to object placement can introduce systematic e
 
 For off-center loading, the apparent weight error is:
 
-$$\text{Error} = \frac{W \times d}{L_{effective}} \times 100\%$$
+$$\text{Error (\%)} = \frac{d}{L_{effective}} \times 100\%$$
 
 where:
-- W = actual weight
-- d = offset distance from center
-- L_effective = load cell effective length
+- d = offset distance from center (mm)
+- L_effective = effective sensing span of the platform = 100 mm
 
-With guide system: d_max ≤ 1mm, Error ≤ 0.1%
-Without guides: d_max ≤ 10mm, Error ≤ 1.0%
+With guide system: d_max ≤ 1 mm → Error ≤ 1.0%
+Without guides: d_max ≤ 10 mm → Error ≤ 10.0%
 
 #### 4.2.4 KS Standard Fastener Integration
 

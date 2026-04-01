@@ -6,119 +6,181 @@
   <title>{{ page.title }}</title>
   <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}" />
   <link rel="stylesheet" href="{{ '/assets/css/ecosystem.css' | relative_url }}" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
-    /* wrapper 전체를 화면에 꽉 채우고 중앙 정렬 */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body { height: 100%; overflow: hidden; background: #0a141e; }
+
+    /* ── Wrapper ───────────────────────────────── */
     .intro-wrapper {
       position: fixed;
-      inset: 0;                       /* top:0; right:0; bottom:0; left:0; */
+      inset: 0;
       display: flex;
       flex-direction: column;
-      align-items: center;           /* 가로 중앙 */
-      justify-content: center;       /* 세로 중앙 */
-      overflow: hidden;
-      background: rgba(0,0,0,0.4);   /* 필요하면 반투명 오버레이 */
-      z-index: 0;
+      align-items: center;
+      justify-content: center;
     }
 
-    /* 배경 비디오 */
+    /* ── Video ─────────────────────────────────── */
     #intro-video {
       position: absolute;
       inset: 0;
       width: 100%;
       height: 100%;
       object-fit: cover;
-      z-index: -1;
+      z-index: 0;
     }
 
-    /* 태그라인 */
-    .intro-tagline {
+    /* ── Overlay — bottom-weighted for readability */
+    .intro-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        160deg,
+        rgba(8, 18, 28, 0.30) 0%,
+        rgba(8, 18, 28, 0.62) 100%
+      );
       z-index: 1;
+    }
+
+    /* ── Content ───────────────────────────────── */
+    .intro-content {
+      position: relative;
+      z-index: 2;
       text-align: center;
-      font-family: 'Georgia', serif;
-      color: #ffffff;
-      text-shadow:
-        0 2px 4px rgba(0,0,0,0.6),
-        0 0 10px rgba(255,255,255,0.3);
-      animation: fadeInDown 1s ease-out both;
+      color: #fff;
+      max-width: 680px;
+      padding: 0 2rem;
+      animation: fadeUp 0.85s ease-out both;
     }
-    .intro-tagline h1 {
-      font-size: 2.5rem;
-      margin: 0 0 1rem;
-      font-weight: 600;
-      letter-spacing: 1px;
-      line-height: 1.2;
-      text-shadow:
-        2px 2px 4px rgba(0,0,0,0.7),
-        0 0 8px rgba(255,255,255,0.4);
-    }
-    .intro-tagline h2 {
-      font-size: 1.5rem;
-      margin: 0 0 1.25rem;
-      font-weight: 400;
-      letter-spacing: 0.5px;
-      line-height: 1.3;
-      text-shadow:
-        1px 1px 3px rgba(0,0,0,0.6),
-        0 0 6px rgba(255,255,255,0.3);
-    }
-    .intro-tagline .name {
-      font-size: 1.25rem;
-      font-style: italic;
-      margin-top: 0.5rem;
-      opacity: 0.85;
-      letter-spacing: 0.8px;
-      text-shadow:
-        1px 1px 2px rgba(0,0,0,0.5),
-        0 0 5px rgba(255,255,255,0.2);
-    }
-    @keyframes fadeInDown {
-      from { opacity: 0; transform: translateY(-20px); }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
       to   { opacity: 1; transform: translateY(0); }
     }
 
-    /* 버튼 – 하단 중앙 */
-    #skip-button {
-      margin-top: 2rem;
-      z-index: 1;
-      padding: 12px 24px;
-      background: #1ABC9C;
-      color: #fff;
-      border: none;
-      border-radius: 4px;
-      font-size: 16px;
-      cursor: pointer;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-      transition: background 0.3s ease;
+    /* ── Eyebrow — discipline label ────────────── */
+    .intro-eyebrow {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.50);
+      margin-bottom: 1.4rem;
     }
+
+    /* ── Headline ──────────────────────────────── */
+    .intro-content h1 {
+      font-family: 'Inter', sans-serif;
+      font-size: clamp(1.9rem, 4.5vw, 2.9rem);
+      font-weight: 300;
+      line-height: 1.22;
+      letter-spacing: -0.025em;
+      color: #fff;
+      margin-bottom: 1.1rem;
+      text-shadow: 0 2px 14px rgba(0, 0, 0, 0.38);
+    }
+
+    .intro-content h1 strong {
+      font-weight: 600;
+    }
+
+    /* ── Descriptor ────────────────────────────── */
+    .intro-descriptor {
+      font-family: 'Inter', sans-serif;
+      font-size: clamp(0.88rem, 2vw, 1.02rem);
+      font-weight: 400;
+      line-height: 1.7;
+      color: rgba(255, 255, 255, 0.68);
+      margin-bottom: 0.6rem;
+    }
+
+    /* ── Name byline ───────────────────────────── */
+    .intro-byline {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.38);
+      margin-bottom: 2.4rem;
+    }
+
+    /* ── CTA ───────────────────────────────────── */
+    #skip-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.65rem 1.7rem;
+      background: rgba(255, 255, 255, 0.10);
+      color: rgba(255, 255, 255, 0.92);
+      border: 1px solid rgba(255, 255, 255, 0.30);
+      border-radius: 4px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      cursor: pointer;
+      transition: background 0.18s ease, border-color 0.18s ease, color 0.18s ease;
+    }
+
     #skip-button:hover {
-      background: #16A085;
+      background: rgba(255, 255, 255, 0.20);
+      border-color: rgba(255, 255, 255, 0.55);
+      color: #fff;
+    }
+
+    /* ── Mobile ────────────────────────────────── */
+    @media (max-width: 480px) {
+      .intro-content h1 {
+        font-size: 1.65rem;
+        letter-spacing: -0.015em;
+      }
+      .intro-descriptor {
+        font-size: 0.85rem;
+        line-height: 1.6;
+      }
+      .intro-eyebrow {
+        font-size: 0.6rem;
+        letter-spacing: 0.14em;
+      }
+      .intro-content {
+        padding: 0 1.2rem;
+      }
     }
   </style>
 </head>
 <body>
   <div class="intro-wrapper">
-    <video
-      id="intro-video"
-      autoplay
-      muted
-      playsinline
-      loop
-    >
+
+    <video id="intro-video" autoplay muted playsinline loop>
       <source src="{{ '/assets/videos/intro.mp4' | relative_url }}" type="video/mp4">
     </video>
 
-    <div class="intro-tagline">
-      <h1>Engineering Tomorrow’s Environment & Robots</h1>
-      <h2>Full‑Stack Robotics Developer<br/>Hardware & Software</h2>
-      <p class="name">Oh Kyungjun</p>
-    </div>
+    <div class="intro-overlay"></div>
 
-    <button
-      id="skip-button"
-      data-href="{{ '/home.html' | relative_url }}"
-    >
-      GO to Home
-    </button>
+    <div class="intro-content">
+
+      <p class="intro-eyebrow">
+        Environmental Robotics &nbsp;·&nbsp; Industrial Automation &nbsp;·&nbsp; Full-Stack Engineering
+      </p>
+
+      <h1><strong>Building Systems</strong><br>That Work in the Real World</h1>
+
+      <p class="intro-descriptor">
+        Hardware design, software integration, and intelligent control —<br>
+        from concept to deployment.
+      </p>
+
+      <p class="intro-byline">Oh Kyungjun</p>
+
+      <button id="skip-button" data-href="{{ '/home.html' | relative_url }}">
+        View Portfolio &nbsp;→
+      </button>
+
+    </div>
   </div>
 
   <script src="{{ '/assets/js/intro.js' | relative_url }}"></script>

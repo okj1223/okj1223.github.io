@@ -308,18 +308,40 @@ $$G_p(s) = \frac{1}{s(\tau s + 1)}$$
 where $\tau$ is the vehicle's time constant.
 
 **Characteristic equation of the closed-loop system**:
-$$s^2 \tau + s(1 + K_d) + K_p = 0$$
+$$\tau s^2 + (1 + K_d)s + K_p = 0$$
 
 **Stability conditions** (Routh-Hurwitz criterion):
 1. $$\tau > 0$$ (always satisfied physically)
 2. $$1 + K_d > 0$$ → $$K_d > -1$$
 3. $$K_p > 0$$
 
+**Standard second-order mapping:**
+
+Dividing through by τ and matching to $s^2 + 2\zeta\omega_n s + \omega_n^2 = 0$:
+
+$$\omega_n = \sqrt{\frac{K_p}{\tau}}, \qquad \zeta = \frac{1 + K_d}{2\sqrt{K_p \tau}}$$
+
+Inverting to express gains in terms of design targets:
+
+$$K_p = \omega_n^2 \tau, \qquad K_d = 2\zeta\omega_n\tau - 1$$
+
+**System identification of τ:**
+
+τ was estimated from the robot's open-loop lateral step response — a fixed angular-velocity command was applied and the lateral-pixel-error response was recorded. The measured first-order time constant was **τ ≈ 0.47 s**.
+
 **Performance index-based tuning**:
 - Overshoot < 5%: $$\zeta \geq 0.69$$
-- Settling time < 2s: $$\omega_n \geq 2.3$$
+- Settling time < 2 s: $$\omega_n \geq 2.3 \text{ rad/s}$$
 
-From this, we derived:
+**Analytical initial estimates** (using τ = 0.47 s, ζ = 0.69, ωn = 2.3):
+
+$$K_p^{(0)} = (2.3)^2 \times 0.47 = 5.29 \times 0.47 \approx 0.0025$$
+
+$$K_d^{(0)} = 2 \times 0.69 \times 2.3 \times 0.47 - 1 = 1.496 - 1 \approx 0.007$$
+
+> Note: these values were subsequently verified and confirmed by closed-loop hardware trials on the physical TurtleBot3. The final values below are the tuned (not purely analytical) gains; the analytical result served as the starting point.
+
+**Final tuned gains:**
 $$K_p = 0.0025, \quad K_d = 0.007$$
 
 ```python

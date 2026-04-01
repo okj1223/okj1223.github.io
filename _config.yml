@@ -27,7 +27,7 @@ collections:
 ###############################################
 
 navbar-links:
-  Home: "/"
+  Home: "/home.html"
   About Me: "/aboutme/"
   Projects: "/projects/"
 

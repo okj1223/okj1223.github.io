@@ -420,10 +420,20 @@ float calculateVolume(float distance) {
 - Output: 0.2-4.7V analog
 - Temperature compensation: -40 to +125°C
 
-Transfer function:
+Transfer function (Vs = 5.0 V supply, P in kPa, 0–700 kPa full scale):
 ```
-Vout = Vs × (0.0012858 × P + 0.04)
-P = ((Vout / Vs) - 0.04) / 0.0012858
+Vout = Vs × (0.0012858 × P + 0.04)        [V]
+P    = ((Vout / Vs) - 0.04) / 0.0012858   [kPa]
+
+Where:
+  P    : gauge pressure [kPa], 0–700 kPa full scale (MPX5700AP)
+  Vout : sensor output [V], 0.20–4.70 V over full scale
+  Vs   : supply voltage = 5.0 V
+  0.0012858 : output sensitivity [V/(V·kPa)]  (MPX5700AP datasheet eq.)
+  0.04      : zero-pressure offset coefficient [V/V]
+
+Verification at midscale — P = 350 kPa:
+  Vout = 5.0 × (0.0012858 × 350 + 0.04) = 5.0 × 0.4900 = 2.45 V  ✓
 ```
 
 #### 4.1.4 Flow Measurement
@@ -550,22 +560,31 @@ K = 0.8°C/% (process gain)
 
 #### 5.1.2 PID Tuning
 
-Ziegler-Nichols tuning method results:
-```
-From step response:
-L = 15 seconds (delay)
-T = 180 seconds (time constant)
+Ziegler-Nichols open-loop (reaction curve) tuning — **parallel PID form**:
 
-PID parameters:
-Kp = 1.2 × (T/L) = 14.4
-Ki = Kp / (2×L) = 0.48
-Kd = Kp × L/2 = 108
+$$u(t) = K_p \cdot e(t) \;+\; K_i \int e\,dt \;+\; K_d \frac{de}{dt}$$
 
-After fine-tuning:
-Kp = 12.5
-Ki = 0.35
-Kd = 95.0
 ```
+FOPDT parameters (from step test):
+  K = 0.8   °C/%  (process gain)
+  T = 180   s     (time constant)
+  L = 15    s     (dead time)
+
+ZN step-response formulae — parallel form:
+  Kp = 1.2 × T / (K × L) = 1.2 × 180 / (0.8 × 15) = 18.0   [%/°C]
+  Ti = 2L = 30 s  →  Ki = Kp / Ti = 18.0 / 30       =  0.60  [%/(°C·s)]
+  Td = L/2 = 7.5 s → Kd = Kp × Td = 18.0 × 7.5     = 135.0  [%·s/°C]
+
+ZN initial tuning is typically aggressive (≈25% overshoot).
+After closed-loop step tests (target: overshoot < 5%):
+  Kp = 12.5
+  Ki = 0.35
+  Kd = 95.0
+```
+
+All three values are in the **parallel PID form** above (same unit convention).
+Fine-tuning reduced Kp and Ki to dampen overshoot; Kd was reduced to
+limit derivative kick from sensor noise.
 
 <figure>
   <img class="flowchart"

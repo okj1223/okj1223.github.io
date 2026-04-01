@@ -16,7 +16,7 @@ This paper presents a comprehensive industrial safety robot system developed by 
 - System Response Time: 350±35 ms
 - Multi-robot Coordination Success: 96%
 - Communication Reliability: 99.8%
-- ROI: 200% with 6-month payback period
+- Projected ROI: 426% with ~2.8-month payback (see Section 11 for assumptions)
 
 <figure>
   <img class="project-image"
@@ -71,8 +71,12 @@ $$\min_{x_{ij}} \sum_{i,j} R_i(t) \cdot x_{ij} \quad \text{subject to} \quad \su
 
 *Where $C_j$ represents deployment costs and $B$ is the budget constraint.*
 
+> *Conceptual model — theoretical deployment optimization framework. Parameters $C_j$, $B$, and $R_i(t)$ were not estimated from experimental data in this project.*
+
 **Safety Performance Index (SPI):**
 $$\text{SPI} = \frac{\sum_{i} w_i \cdot \text{Metric}_i}{\sum_{i} w_i} \times 100$$
+
+> *Conceptual model — SPI weights $w_i$ are illustrative; no calibration experiment was performed to derive them.*
 
 ### 1.3 Root Cause Analysis
 
@@ -112,18 +116,26 @@ Statistical analysis indicates **78.2% of industrial accidents** stem from behav
 
 ### 2.2 Reliability Analysis
 
-For a distributed system with $n$ robots, system reliability $R_{system}$ follows:
+Three distinct models apply depending on the operational requirement. Using them interchangeably is incorrect.
 
-$$R_{system} = 1 - \prod_{i=1}^n (1 - R_i)$$
+**Model 1 — All-operational (series):** every robot must function.
+$$R_{all} = \prod_{i=1}^n R_i = R_i^n$$
 
-**With fault tolerance mechanisms:**
-$$R_{system}^{fault-tolerant} = \sum_{k=k_{min}}^n \binom{n}{k} R_i^k (1-R_i)^{n-k}$$
+**Model 2 — At-least-one (full parallel):** system functions if any single robot is operational.
+$$R_{\geq 1} = 1 - \prod_{i=1}^n (1-R_i) = 1-(1-R_i)^n$$
 
-Where $k_{min}$ is the minimum number of operational robots needed.
+**Model 3 — k-out-of-n (partial redundancy):** system functions if at least $k_{min}$ of $n$ robots are operational.
+$$R_{\geq k} = \sum_{j=k_{min}}^n \binom{n}{j} R_i^{\,j}(1-R_i)^{n-j}$$
 
-**Results for $n=4$ robots, $R_i = 0.95$, $k_{min} = 2$:**
-- Without fault tolerance: $R_{system} = 0.8145$
-- With fault tolerance: $R_{system}^{fault-tolerant} = 0.9995$ ✓
+**Calculated results for $n=4$, $R_i=0.95$, $k_{min}=2$:**
+
+| Model | Formula | Result |
+|-------|---------|--------|
+| All-operational ($k=4$) | $0.95^4$ | **0.8145** |
+| At-least-one ($k\geq 1$) | $1-(0.05)^4$ | **0.9999** |
+| **k≥2-out-of-4** | $\sum_{j=2}^{4}\binom{4}{j}0.95^j\,0.05^{4-j}$ | **0.9995** |
+
+The operational design basis is **k≥2-out-of-4**: the coverage task remains valid with 2 of 4 robots functional, giving $R = 0.9995$.
 
 ### 2.3 System Performance Requirements
 
@@ -175,10 +187,14 @@ $$C(x,y,t) = \sigma(\mathbf{w}^T \phi(x,y,t) + b) \cdot \tau(t)$$
 
 Where $\tau(t) = e^{-\alpha|t-t_0|}$ provides temporal weighting.
 
+> *Conceptual model — decay parameter $\alpha$ and feature map $\phi$ are not fit to experimental data; the implemented system uses YOLOv8 confidence scores directly.*
+
 **Multi-Class PPE Compliance Assessment:**
 $$\text{PPE}_{score} = \prod_{i \in \{\text{helmet, vest, boots}\}} \left[ \max_{j} C_i^{(j)} \right]^{w_i}$$
 
 Where $w_i$ represents class-specific importance weights.
+
+> *Conceptual model — $w_i$ values were not empirically calibrated; the deployed system uses equal weighting ($w_i = 1$) with a single binary compliance threshold.*
 
 **Safety Zone Analysis:**
 $$\text{Safety}(x,y) = \begin{cases} 
@@ -264,6 +280,8 @@ $$\mathbf{n}(x,y) = \frac{\nabla h(x,y) \times \mathbf{k}}{|\nabla h(x,y) \times
 **Crack Growth Prediction:**
 $$L(t) = L_0 \cdot e^{\alpha \sqrt{t}} + \beta \cdot \sigma_{stress}$$
 
+> *Conceptual model — growth coefficients $\alpha$, $\beta$ require material-specific testing and stress measurements not performed in this project. This formula is included as a structural monitoring design reference, not a validated predictor.*
+
 ### 4.4 Performance Validation Results
 
 | Metric | Traditional Method | Our System | Improvement |
@@ -298,11 +316,17 @@ $$L(t) = L_0 \cdot e^{\alpha \sqrt{t}} + \beta \cdot \sigma_{stress}$$
 **Distributed Consensus Algorithm:**
 $$\mathbf{x}_i^{(k+1)} = \mathbf{x}_i^{(k)} + \epsilon \sum_{j \in \mathcal{N}_i} a_{ij}(\mathbf{x}_j^{(k)} - \mathbf{x}_i^{(k)})$$
 
+> *Conceptual model — convergence parameter $\epsilon$ and adjacency weights $a_{ij}$ were set heuristically; formal convergence analysis was not conducted.*
+
 **Task Allocation with Uncertainty:**
 $$\max \sum_{i,j} (U_{ij} - \sigma_{ij}^2) \cdot x_{ij}$$
 
+> *Conceptual model — utility values $U_{ij}$ and uncertainty $\sigma_{ij}^2$ are illustrative; the implemented dispatcher uses a simpler priority-queue heuristic.*
+
 **Dynamic Priority Adjustment:**
 $$P_i(t) = P_{base} \cdot e^{\lambda_1 t} \cdot (1 + \lambda_2 \cdot \text{emergency\_level})$$
+
+> *Conceptual model — $\lambda_1$, $\lambda_2$ were not fitted to data; included as a design intention for future adaptive scheduling.*
 
 **Coordination Performance Metrics:**
 
@@ -410,13 +434,15 @@ $$T_{total} = T_{detection} + T_{processing} + T_{communication} + T_{response} 
 
 **Performance vs Scale:**
 
+> *1–4 robot rows are from lab measurements. 8-robot row is from controlled testbed (not full field deployment). 16-robot row is a simulation-based projection; it has not been validated on physical hardware.*
+
 | Robot Count | Detection Rate | Communication Load | CPU Usage | Memory Usage |
 | ----------- | -------------- | ------------------ | --------- | ------------ |
 | 1 | 98.5% | 12 KB/s | 45% | 2.1 GB |
 | 2 | 97.2% | 28 KB/s | 62% | 3.8 GB |
 | 4 | 94.8% | 65 KB/s | 78% | 7.2 GB |
 | **8** | **91.3%** | **145 KB/s** | **89%** | **13.5 GB** |
-| 16 | 86.7% | 312 KB/s | 96% | 26.8 GB |
+| 16 *(projected)* | 86.7% | 312 KB/s | 96% | 26.8 GB |
 
 **Scalability Limit Analysis:**
 $$\text{Max\_Robots} = \frac{\text{Bandwidth}_{available}}{\text{Bandwidth}_{per\_robot} \cdot (1 + \text{overhead\_factor})}$$
@@ -559,6 +585,8 @@ $$\text{Processing\_Load} = \alpha \cdot \text{Local} + \beta \cdot \text{Edge} 
 ### 10.1 Detailed Performance Metrics
 
 **Detection System Excellence:**
+
+> *Test conditions: YOLOv8n on NVIDIA Jetson AGX; held-out validation split (20% of 8,150 images); IoU threshold 0.5; confidence threshold 0.5; single-robot inference only.*
 
 | Metric | Human Detection | PPE Detection | Crack Detection | Fall Detection |
 | ------ | --------------- | ------------- | --------------- | -------------- |
@@ -812,20 +840,19 @@ $M(t) = M_{max} \cdot \frac{1 - e^{-rt}}{1 + ae^{-rt}}$
 
 ### 15.1 Key Achievements Summary
 
-This research represents a **paradigm shift** in industrial safety monitoring, successfully demonstrating that autonomous multi-robot systems can achieve **human-level safety vigilance** while operating 24/7 with 99.8% reliability.
+This project demonstrates a functional multi-robot safety monitoring system validated across PPE compliance, crack detection, and autonomous navigation tasks.
 
-**Technical Breakthroughs:**
-1. **93% detection accuracy** across multiple hazard types
-2. **24.7% noise reduction** through advanced Kalman filtering
-3. **96% coordination success** in multi-robot scenarios
-4. **426% ROI** with 2.8-month payback period
-5. **Sub-400ms response time** for critical safety events
+**Measured Technical Results:**
+1. **93% detection accuracy** (YOLOv8n, held-out validation set, 8,150 images)
+2. **24.7% noise reduction** via Kalman filtering compared to raw bounding-box tracking
+3. **96% coordination success** in 4-robot lab scenarios
+4. **350±35 ms end-to-end response time** for critical safety events
+5. **99.2–97.2% uptime** over 6-month continuous operation (single-site)
 
-**Industry Impact:**
-- **First commercial-grade** multi-robot safety system
-- **Established new benchmarks** for real-time industrial monitoring
-- **Proven scalability** from 1 to 8+ robots with minimal performance degradation
-- **Validated reliability** through 6-month continuous operation
+**Scope and Limitations:**
+- Scalability beyond 4 robots is based on testbed measurements (8 robots) and simulation projections (16 robots); field validation at larger scales has not been performed.
+- ROI projections depend on accident-cost assumptions and should be treated as estimates (see Section 11 for methodology).
+- Deployment infrastructure (Docker + K8s) was prototyped; production-scale deployment has not been validated.
 
 ### 15.2 Scientific Significance
 

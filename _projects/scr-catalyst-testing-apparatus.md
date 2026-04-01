@@ -539,38 +539,40 @@ Generally 6% O₂ for coal-fired power or measured values as-is
 
 #### 5.2.1 First-Order Reaction Rate Model
 
-SCR reaction is generally modeled as first-order with respect to NOx:
+The SCR DeNOx reaction is widely modeled as pseudo-first-order in NO concentration under ammonia excess. For a plug-flow monolith reactor, the integral form gives the **area-velocity-based rate constant** K (m/h):
 
-```
-K = -ln(C_out/C_in) × Av
-```
+$$K = -\ln\!\left(\frac{C_{out}}{C_{in}}\right) \times A_v$$
 
 Where:
-- K: Catalyst activity (m/h)
-- Av: Area velocity (m³/m²·h)
+- K: Catalyst activity coefficient (m/h) — intrinsic kinetic indicator, independent of reactor scale
+- A_v: Area velocity (m/h) = superficial gas velocity referenced to catalyst face area
+
+> This formulation follows the area-velocity approach standard for honeycomb monolith SCR catalysts (cf. EPA Air Pollution Control Technology Fact Sheet: SCR; VGB PowerTech SCR Guideline). An equivalent volumetric formulation uses GHSV (h⁻¹) referenced to catalyst bed volume: K_vol = −ln(C_out/C_in) × GHSV. The area-velocity form is preferred here because catalyst face area is directly measured, whereas bed volume requires porosity assumptions.
+
+**Note — η vs. K distinction:**  
+NOx removal efficiency η (§5.1) is a system-level metric that depends on flow conditions and catalyst geometry. K is the intrinsic catalyst property that enables comparison across different reactor configurations and catalyst ages.
 
 #### 5.2.2 Area Velocity Calculation
 
-```
-Av = Q / A_catalyst
-```
+$$A_v = \frac{Q}{A_{catalyst}}$$
 
 Where:
-- Q: Gas flow rate (m³/h, standard conditions)
-- A_catalyst: Catalyst cross-sectional area (m²)
+- Q: Volumetric gas flow rate (m³/h, at operating conditions)
+- A_catalyst: Catalyst cross-sectional face area (m²)
 
 **Calculation example**:
 - Total flow rate: 27.5 L/min = 1.65 m³/h
-- Catalyst cross-sectional area: 0.0225 m² (150mm × 150mm)
-- Av = 1.65 / 0.0225 = 73.3 m³/m²·h
+- Catalyst cross-sectional area: 0.0225 m² (150 mm × 150 mm)
+- A_v = 1.65 / 0.0225 = **73.3 m/h**
 
 #### 5.2.3 Activity Calculation Example
 
-```
-K = -ln(20/350) × 73.3 = -ln(0.057) × 73.3 = 2.86 × 73.3 = 210 m/h
-```
+Using the removal efficiency result from §5.1.3 (η = 94.3%, C_in = 350 ppm, C_out = 20 ppm):
 
-This represents excellent activity. (New catalyst: 150-300 m/h)
+$$K = -\ln\!\left(\frac{20}{350}\right) \times 73.3 = -\ln(0.0571) \times 73.3 = 2.863 \times 73.3 = \mathbf{210 \text{ m/h}}$$
+
+**Comparison basis:**  
+Fresh commercial SCR catalysts for stationary power applications typically exhibit K = 150–300 m/h under standard test conditions (350 °C, 6% O₂), as reported in catalyst vendor qualification data and peer-reviewed SCR performance surveys (e.g., Tronconi et al., *Catal. Today* 1996; typical OEM specifications for V₂O₅/WO₃/TiO₂ monoliths). A value of 210 m/h places this catalyst in the mid-range of a fresh catalyst, indicating good catalytic activity for the test conditions applied.
 
 ### 5.3 SO₂/SO₃ Conversion Rate Analysis
 

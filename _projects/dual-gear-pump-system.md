@@ -510,8 +510,10 @@ Test conditions:
 - Discharge height: 50m
 - Hose length: Discharge 50m × 2
 
-| Frequency(Hz) | Speed(rpm) | Flow(L/min) | Discharge Pressure(bar) | Motor Current(A) |
-|---------------|------------|-------------|------------------------|------------------|
+*Discharge Pressure is measured at the pump outlet flange, before the delivery hose.*
+
+| Frequency(Hz) | Speed(rpm) | Flow(L/min) | Discharge Pressure — pump outlet (bar) | Motor Current(A) |
+|---------------|------------|-------------|----------------------------------------|------------------|
 | 30 | 900 | 12.3 | 38.2 | 4.2 |
 | 40 | 1200 | 16.1 | 39.8 | 5.6 |
 | 50 | 1500 | 19.8 | 41.2 | 6.8 |
@@ -519,10 +521,12 @@ Test conditions:
 
 #### 8.2.2 Catalyst Injection Performance
 
-- Injection pressure: 4.1 bar (102.5% of 4 bar target)
+- Injection pressure: **4.1 bar** (102.5% of 4 bar target) — *measured at the nozzle tip, after the 50 m delivery hose*
 - Injection pattern: Uniform fan pattern for effective catalyst coverage
 - Injection distance: 8-10m horizontal reach
 - Injection angle: Approximately 30° fan for optimal catalyst distribution
+
+> **Pressure relationship:** The pump discharges at 41.2 bar (§8.2.1). The delivery hose and static head (~50 m lift ≈ 4.9 bar) account for the remaining losses, leaving 4.1 bar residual pressure at the nozzle. These two values represent different measurement points in the same system; the ~37 bar difference is consumed by hose friction and minor losses along the 50 m delivery line.
 
 ### 8.3 Reliability Testing
 
@@ -553,12 +557,13 @@ Test results:
 
 #### 9.1.1 Performance Target Achievement
 
-| Item | Target Value | Measured Value | Achievement Rate |
-|------|--------------|----------------|------------------|
-| Catalyst injection pressure | 4.0 bar | 4.1 bar | 102.5% |
-| Total flow rate | 20 L/min | 19.8 L/min | 99.0% |
-| Static head | 50m | 50m | 100% |
-| Discharge distance | 50m | 50m | 100% |
+| Item | Measurement Point | Target Value | Measured Value | Achievement Rate |
+|------|-------------------|--------------|----------------|------------------|
+| Catalyst injection pressure | Nozzle tip | 4.0 bar | 4.1 bar | 102.5% |
+| Pump discharge pressure | Pump outlet flange | 43.1 bar | 41.2 bar | 95.6% |
+| Total flow rate | Pump outlet | 20 L/min | 19.8 L/min | 99.0% |
+| Static head | Elevation difference | 50m | 50m | 100% |
+| Discharge distance | Horizontal reach | 50m | 50m | 100% |
 
 All major performance indicators achieved their target values for effective catalyst regeneration.
 
@@ -574,9 +579,12 @@ All major performance indicators achieved their target values for effective cata
 #### 9.2.1 Theoretical vs. Measured Performance
 
 Comparison of theoretical calculations and measured values:
-- Required head calculation: 418.8m (43.1 bar)
-- Measured discharge pressure: 41.2 bar @ 50Hz
-- Error: -4.4% (compared to theoretical value)
+- Required head calculation: 418.8m (43.1 bar) — total system head, measured from pump outlet to nozzle
+- Measured discharge pressure: 41.2 bar @ 50Hz — at pump outlet flange
+- Residual injection pressure: 4.1 bar — at nozzle tip (= discharge − line losses − static head)
+- Error (discharge vs. theoretical): −4.4%
+
+The 41.2 bar pump discharge and 4.1 bar nozzle injection refer to different points in the system. The difference (~37 bar) is the sum of hose friction losses and static head along the 50 m delivery line.
 
 Error analysis:
 1. Actual volumetric efficiency higher than assumed (85%)
