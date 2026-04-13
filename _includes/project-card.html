@@ -1,0 +1,76 @@
+{% assign category_tokens = include.card.filter_categories | join: ' ' %}
+<article class="home-project-item" data-category="{{ category_tokens }}">
+  <div class="home-project-card">
+    <a href="{{ include.project.url | relative_url }}" class="home-project-link">
+      <div class="home-project-content">
+        <div class="home-project-meta">
+          <time class="home-project-year">{{ include.project.date | date: "%Y.%m.%d" }}</time>
+          <span class="home-project-category">{{ include.card.category_label }}</span>
+        </div>
+        <h2 class="home-project-title">{{ include.card.card_title | default: include.project.title }}</h2>
+        <p class="home-project-description">{{ include.card.card_description | default: include.project.description }}</p>
+        {% if include.card.impacts %}
+        <div class="home-project-impact">
+          {% for impact in include.card.impacts limit: 3 %}
+          <div class="home-impact-item">
+            <span class="home-impact-value">{{ impact.value }}</span>
+            <span class="home-impact-label">{{ impact.label }}</span>
+          </div>
+          {% endfor %}
+        </div>
+        {% endif %}
+        {% if include.card.tech_tags %}
+        <div class="home-project-tech">
+          {% for tag in include.card.tech_tags %}
+          <span class="home-tech-tag {{ tag.style }}">{{ tag.label }}</span>
+          {% endfor %}
+        </div>
+        {% endif %}
+      </div>
+    </a>
+
+    {% if include.card.media %}
+    <div class="home-project-media">
+      {% assign media_href = include.card.media.href | default: include.project.url %}
+      {% assign media_src = include.card.media.src %}
+      {% assign is_external_href = false %}
+      {% assign is_external_src = false %}
+      {% if media_href contains '://' %}
+        {% assign is_external_href = true %}
+      {% endif %}
+      {% if media_src contains '://' %}
+        {% assign is_external_src = true %}
+      {% endif %}
+
+      {% if include.card.media.type == 'video' %}
+      <a
+        href="{% if is_external_href %}{{ media_href }}{% else %}{{ media_href | relative_url }}{% endif %}"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="home-video-link">
+        <div class="home-video-wrapper">
+          <iframe
+            src="{% if is_external_src %}{{ media_src }}{% else %}{{ media_src | relative_url }}{% endif %}"
+            title="{{ include.card.media.title | default: include.card.card_title | default: include.project.title }}"
+            frameborder="0"
+            allowfullscreen>
+          </iframe>
+        </div>
+      </a>
+      {% else %}
+      <a
+        href="{% if is_external_href %}{{ media_href }}{% else %}{{ media_href | relative_url }}{% endif %}"
+        class="home-image-link">
+        <div class="home-image-wrapper">
+          <img
+            src="{% if is_external_src %}{{ media_src }}{% else %}{{ media_src | relative_url }}{% endif %}"
+            alt="{{ include.card.media.alt | default: include.project.title }}"
+            title="{{ include.card.media.title | default: include.project.title }}"
+            loading="lazy">
+        </div>
+      </a>
+      {% endif %}
+    </div>
+    {% endif %}
+  </div>
+</article>

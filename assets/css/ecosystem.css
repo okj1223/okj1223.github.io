@@ -1279,6 +1279,36 @@ article .home-project-card {
   object-fit: cover !important;
 }
 
+.home-image-link {
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  text-decoration: none !important;
+  border-radius: 12px !important;
+  overflow: hidden !important;
+}
+
+.home-image-wrapper {
+  position: relative !important;
+  width: 100% !important;
+  aspect-ratio: 16 / 9 !important;
+  border-radius: 8px !important;
+  overflow: hidden !important;
+  background: var(--gray-bg) !important;
+}
+
+.home-image-wrapper img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  display: block !important;
+  transition: transform 0.3s ease !important;
+}
+
+.home-image-link:hover img {
+  transform: scale(1.03) !important;
+}
+
 /* View All Projects 버튼 - 통합 스타일 */
 .view-all-projects {
   text-align: center !important;

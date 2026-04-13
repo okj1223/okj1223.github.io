@@ -3,6 +3,9 @@ layout: projects-list
 title: Projects Portfolio
 body-class: projects-page
 permalink: /projects/
+description: "Technical portfolio of robotics, AI, control, and industrial automation projects, including recent humanoid manipulation and autonomous system work."
+share-description: "Technical portfolio of robotics, AI, control, and industrial automation projects, including recent humanoid manipulation and autonomous system work."
+subtitle: "Technical portfolio of robotics, AI, control, and industrial automation projects, including recent humanoid manipulation and autonomous system work."
 ---
 
 <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -589,7 +592,7 @@ permalink: /projects/
       <p>Full-Stack Robotics Developer • Environmental Engineering • AI Systems</p>
       <div class="banner-stats">
         <div class="stat-item">
-          <span class="stat-number">9+</span>
+          <span class="stat-number">{{ site.projects | size }}+</span>
           <span class="stat-label">Projects</span>
         </div>
         <div class="stat-item">
@@ -623,13 +626,23 @@ permalink: /projects/
    <!-- 페이지네이션 정보 표시 -->
    <div style="text-align: center; margin-bottom: 2rem;">
      <div class="pagination-info">
-       <span class="page-indicator">Page <span id="currentPage">1</span> of <span id="totalPages">2</span></span>
-       <span class="total-projects">(<span id="totalProjectsCount">9</span> projects total)</span>
+       <span class="page-indicator">Page <span id="currentPage">1</span> of <span id="totalPages">1</span></span>
+       <span class="total-projects">(<span id="totalProjectsCount">{{ site.projects | size }}</span> projects total)</span>
      </div>
    </div>
 
    <!-- 프로젝트 그리드 컨테이너 -->
    <div id="projectsGrid" class="home-projects-grid">
+     {% assign sorted_projects = site.projects | sort: "date" | reverse %}
+     {% for project in sorted_projects %}
+       {% assign matching_cards = site.data.project_cards | where: "url", project.url %}
+       {% assign card = matching_cards | first %}
+       {% if card %}
+         {% include project-card.html project=project card=card %}
+       {% endif %}
+     {% endfor %}
+
+     {% comment %}
      
      <!-- Page 1 Projects (1-5) -->
      <div class="project-page" data-page="1">
@@ -1128,6 +1141,7 @@ permalink: /projects/
          </div>
        </article>
      </div>
+     {% endcomment %}
    </div>
 
    <!-- 페이지네이션 컨트롤 -->
@@ -1166,121 +1180,148 @@ permalink: /projects/
 <script>
 document.addEventListener('DOMContentLoaded', function () {
   var currentFilter = 'all';
-  var currentPage   = 1;
+  var currentPage = 1;
+  var itemsPerPage = 5;
 
-  var filterBtns       = document.querySelectorAll('.proj-filter-btn');
-  var articles         = document.querySelectorAll('.home-project-item');
-  var pages            = document.querySelectorAll('.project-page');
-  var pagination       = document.querySelector('.pagination-controls');
-  var pageInfo         = document.querySelector('.pagination-info');
-  var currentPageSpan  = document.getElementById('currentPage');
-  var totalPagesSpan   = document.getElementById('totalPages');
-  var totalProjectsSpan= document.getElementById('totalProjectsCount');
-  var prevBtn          = document.getElementById('prevBtn');
-  var nextBtn          = document.getElementById('nextBtn');
-  var pageNumberBtns   = document.querySelectorAll('.page-number-btn');
+  var filterBtns = document.querySelectorAll('.proj-filter-btn');
+  var articles = Array.from(document.querySelectorAll('.home-project-item'));
+  var pagination = document.querySelector('.pagination-controls');
+  var pageInfo = document.querySelector('.pagination-info');
+  var currentPageSpan = document.getElementById('currentPage');
+  var totalPagesSpan = document.getElementById('totalPages');
+  var totalProjectsSpan = document.getElementById('totalProjectsCount');
+  var prevBtn = document.getElementById('prevBtn');
+  var nextBtn = document.getElementById('nextBtn');
+  var pageNumbers = document.querySelector('.page-numbers');
 
-  var totalProjects = articles.length;
-  var totalPages    = pages.length;
+  function matchesFilter(article) {
+    var cats = (article.dataset.category || '').split(' ');
+    return cats.indexOf(currentFilter) !== -1;
+  }
+
+  function getFilteredArticles() {
+    if (currentFilter === 'all') {
+      return articles;
+    }
+    return articles.filter(matchesFilter);
+  }
+
+  function buildPageButtons(totalPages) {
+    if (!pageNumbers) return;
+
+    pageNumbers.innerHTML = '';
+
+    for (var page = 1; page <= totalPages; page++) {
+      var button = document.createElement('button');
+      button.className = 'page-number-btn' + (page === currentPage ? ' active' : '');
+      button.dataset.page = String(page);
+      button.textContent = String(page);
+      pageNumbers.appendChild(button);
+    }
+  }
 
   function render() {
-    if (currentFilter === 'all') {
-      // pagination mode
-      if (pagination) pagination.style.display = '';
-      if (pageInfo)   pageInfo.style.display   = '';
+    var filteredArticles = getFilteredArticles();
+    var totalProjects = articles.length;
 
-      pages.forEach(function(p, i) {
-        p.style.display = (i + 1 === currentPage) ? '' : 'none';
+    if (currentFilter === 'all') {
+      var totalPages = Math.max(1, Math.ceil(filteredArticles.length / itemsPerPage));
+      var startIndex = (currentPage - 1) * itemsPerPage;
+      var endIndex = startIndex + itemsPerPage;
+
+      if (currentPage > totalPages) {
+        currentPage = totalPages;
+        startIndex = (currentPage - 1) * itemsPerPage;
+        endIndex = startIndex + itemsPerPage;
+      }
+
+      if (pagination) pagination.style.display = '';
+      if (pageInfo) pageInfo.style.display = '';
+
+      articles.forEach(function(article, index) {
+        article.style.display = index >= startIndex && index < endIndex ? '' : 'none';
       });
-      articles.forEach(function(a) { a.style.display = ''; });
 
       if (currentPageSpan) currentPageSpan.textContent = currentPage;
-      if (prevBtn) prevBtn.disabled = (currentPage === 1);
-      if (nextBtn) nextBtn.disabled = (currentPage === totalPages);
-      pageNumberBtns.forEach(function(btn) {
-        var n = parseInt(btn.dataset.page);
-        btn.classList.toggle('active', n === currentPage);
-        btn.style.display = n > totalPages ? 'none' : '';
-      });
+      if (totalPagesSpan) totalPagesSpan.textContent = totalPages;
+      if (totalProjectsSpan) totalProjectsSpan.textContent = totalProjects;
+      if (prevBtn) prevBtn.disabled = currentPage === 1;
+      if (nextBtn) nextBtn.disabled = currentPage === totalPages;
 
-      // fade-in animation on current page
-      var target = document.querySelector('[data-page="' + currentPage + '"]');
-      if (target) {
-        target.style.animation = 'none';
-        setTimeout(function() { target.style.animation = 'fadeInUp 0.6s ease-out'; }, 10);
-      }
+      buildPageButtons(totalPages);
     } else {
-      // filter mode — hide pagination, show all pages, filter articles
       if (pagination) pagination.style.display = 'none';
-      if (pageInfo)   pageInfo.style.display   = 'none';
+      if (pageInfo) pageInfo.style.display = 'none';
 
-      pages.forEach(function(p) { p.style.display = ''; });
-      articles.forEach(function(a) {
-        var cats = (a.dataset.category || '').split(' ');
-        a.style.display = cats.indexOf(currentFilter) !== -1 ? '' : 'none';
+      articles.forEach(function(article) {
+        article.style.display = matchesFilter(article) ? '' : 'none';
       });
     }
   }
 
-  // filter button clicks
   filterBtns.forEach(function(btn) {
     btn.addEventListener('click', function() {
-      filterBtns.forEach(function(b) { b.classList.remove('active'); });
+      filterBtns.forEach(function(button) { button.classList.remove('active'); });
       this.classList.add('active');
       currentFilter = this.dataset.filter;
-      if (currentFilter === 'all') currentPage = 1;
+      currentPage = 1;
       render();
     });
   });
 
-  // pagination clicks
-  if (prevBtn) prevBtn.addEventListener('click', function() {
-    if (currentFilter !== 'all') return;
-    if (currentPage > 1) { currentPage--; render(); scrollToGrid(); }
-  });
-  if (nextBtn) nextBtn.addEventListener('click', function() {
-    if (currentFilter !== 'all') return;
-    if (currentPage < totalPages) { currentPage++; render(); scrollToGrid(); }
-  });
-  pageNumberBtns.forEach(function(btn) {
-    btn.addEventListener('click', function() {
-      if (currentFilter !== 'all') return;
-      var n = parseInt(btn.dataset.page);
-      if (n >= 1 && n <= totalPages) { currentPage = n; render(); scrollToGrid(); }
+  if (prevBtn) {
+    prevBtn.addEventListener('click', function() {
+      if (currentFilter !== 'all' || currentPage === 1) return;
+      currentPage--;
+      render();
+      scrollToGrid();
     });
-  });
+  }
 
-  // keyboard navigation (pagination mode only)
-  document.addEventListener('keydown', function(e) {
+  if (nextBtn) {
+    nextBtn.addEventListener('click', function() {
+      var totalPages = Math.max(1, Math.ceil(articles.length / itemsPerPage));
+      if (currentFilter !== 'all' || currentPage >= totalPages) return;
+      currentPage++;
+      render();
+      scrollToGrid();
+    });
+  }
+
+  if (pageNumbers) {
+    pageNumbers.addEventListener('click', function(event) {
+      var target = event.target.closest('.page-number-btn');
+      if (!target || currentFilter !== 'all') return;
+
+      currentPage = parseInt(target.dataset.page, 10);
+      render();
+      scrollToGrid();
+    });
+  }
+
+  document.addEventListener('keydown', function(event) {
+    var totalPages = Math.max(1, Math.ceil(articles.length / itemsPerPage));
+
     if (currentFilter !== 'all') return;
-    if (e.key === 'ArrowLeft' && currentPage > 1)           { currentPage--; render(); }
-    if (e.key === 'ArrowRight' && currentPage < totalPages)  { currentPage++; render(); }
+    if (event.key === 'ArrowLeft' && currentPage > 1) {
+      currentPage--;
+      render();
+    }
+    if (event.key === 'ArrowRight' && currentPage < totalPages) {
+      currentPage++;
+      render();
+    }
   });
 
   function scrollToGrid() {
     var grid = document.getElementById('projectsGrid');
-    if (grid && currentPage > 1) {
-      window.scrollTo({ top: grid.offsetTop - 100, behavior: 'smooth' });
-    }
+    if (!grid) return;
+    window.scrollTo({ top: grid.offsetTop - 100, behavior: 'smooth' });
   }
 
-  // back to top
-  var backToTop = document.getElementById('backToTop');
-  if (backToTop) {
-    window.addEventListener('scroll', function() {
-      backToTop.classList.toggle('visible', window.scrollY > 300);
-    });
-    backToTop.addEventListener('click', function() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-  }
-
-  // initialise counters
-  if (totalProjectsSpan) totalProjectsSpan.textContent = totalProjects;
-  if (totalPagesSpan)    totalPagesSpan.textContent    = totalPages;
   var bannerCount = document.querySelector('.stat-number');
   if (bannerCount && bannerCount.textContent.indexOf('+') !== -1) {
-    bannerCount.textContent = totalProjects + '+';
+    bannerCount.textContent = articles.length + '+';
   }
 
   render();

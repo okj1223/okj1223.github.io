@@ -1,6 +1,9 @@
 ---
 layout: base
 permalink: /home.html
+description: "Portfolio website of Oh Kyungjun, featuring humanoid robotics, autonomous systems, AI inspection, and industrial automation projects."
+share-description: "Portfolio website of Oh Kyungjun, featuring humanoid robotics, autonomous systems, AI inspection, and industrial automation projects."
+subtitle: "Portfolio website of Oh Kyungjun, featuring humanoid robotics, autonomous systems, AI inspection, and industrial automation projects."
 ---
 
 <!-- CSS 파일 연결 -->
@@ -222,121 +225,16 @@ permalink: /home.html
     <h2 class="projects-section-title">
     Latest Projects
     </h2>
-    <p class="projects-section-subtitle">Showcasing recent innovations in environmental robotics and automation</p>
-    
-    <article class="home-project-item">
-      <div class="home-project-card">
-        <a href="/projects/turtlebot3-autonomous-system/" class="home-project-link">
-          <div class="home-project-content">
-            <div class="home-project-meta">
-              <time class="home-project-year">2025.09.05</time>
-              <span class="home-project-category">Robotics • Autonomous Driving • Digital Twin</span>
-            </div>
-            <h2 class="home-project-title">Digital Twin-Based TurtleBot3 Autonomous Driving System</h2>
-            <p class="home-project-description">
-              Comprehensive autonomous driving system featuring advanced computer vision, inverse kinematics, and multi-sensor fusion. 
-              Achieving 95% task success rate in Pick & Place operations and 98% object recognition accuracy through digital twin technology.
-            </p>
-            <div class="home-project-impact">
-              <div class="home-impact-item">
-                <span class="home-impact-value">95%</span>
-                <span class="home-impact-label">Pick & Place Success</span>
-              </div>
-              <div class="home-impact-item">
-                <span class="home-impact-value">98%</span>
-                <span class="home-impact-label">Detection Accuracy</span>
-              </div>
-              <div class="home-impact-item">
-                <span class="home-impact-value">8hr+</span>
-                <span class="home-impact-label">Continuous Operation</span>
-              </div>
-            </div>
-            <div class="home-project-tech">
-              <span class="home-tech-tag prog">ROS2</span>
-              <span class="home-tech-tag ai">Computer Vision</span>
-              <span class="home-tech-tag eng">Inverse Kinematics</span>
-              <span class="home-tech-tag data">Digital Twin</span>
-              <span class="home-tech-tag prog">Python</span>
-              <span class="home-tech-tag design">Gazebo</span>
-              <span class="home-tech-tag ai">ArUco</span>
-              <span class="home-tech-tag eng">SLAM</span>
-            </div>
-          </div>
-        </a>
-        
-        <!-- Video link -->
-        <div class="home-project-media">
-          <a href="https://www.youtube.com/embed/WX1D9GZJOB4" target="_blank" class="home-video-link">
-            <div class="home-video-wrapper">
-              <iframe 
-                src="https://www.youtube.com/embed/WX1D9GZJOB4" 
-                title="Digital Twin-Based TurtleBot3 Autonomous Driving System Demo"
-                frameborder="0" 
-                allowfullscreen>
-              </iframe>
-            </div>
-          </a>
-        </div>
-      </div>
-    </article>
+    <p class="projects-section-subtitle">Showcasing recent work across humanoid robotics, autonomy, and intelligent automation</p>
 
-
-    <article class="home-project-item">
-      <div class="home-project-card">
-        <a href="/projects/pcb_inspection/" class="home-project-link">
-          <div class="home-project-content">
-            <div class="home-project-meta">
-              <time class="home-project-year">2025.08.21</time>
-              <span class="home-project-category">AI • Robotics • Manufacturing</span>
-            </div>
-            <h2 class="home-project-title">AI-Based PCB Quality Control System</h2>
-            <p class="home-project-description">
-              Intelligent automation system combining computer vision, robotics, and voice commands for PCB inspection. 
-              This autonomous system detects defects, sorts products, and responds to voice commands while achieving 
-              industrial-grade accuracy at a fraction of traditional costs.
-            </p>
-            <div class="home-project-impact">
-              <div class="home-impact-item">
-                <span class="home-impact-value">94.5%</span>
-                <span class="home-impact-label">Detection Accuracy</span>
-              </div>
-              <div class="home-impact-item">
-                <span class="home-impact-value">97%</span>
-                <span class="home-impact-label">Voice Command Accuracy</span>
-              </div>
-              <div class="home-impact-item">
-                <span class="home-impact-value">85%</span>
-                <span class="home-impact-label">Cost Reduction vs Industrial</span>
-              </div>
-            </div>
-            <div class="home-project-tech">
-              <span class="home-tech-tag ai">YOLOv11</span>
-              <span class="home-tech-tag prog">ROS2</span>
-              <span class="home-tech-tag ai">Computer Vision</span>
-              <span class="home-tech-tag comm">MQTT</span>
-              <span class="home-tech-tag ai">Voice Recognition</span>
-              <span class="home-tech-tag ai">LLM</span>
-              <span class="home-tech-tag design">3D Printing</span>
-              <span class="home-tech-tag eng">Robotics</span>
-            </div>
-          </div>
-        </a>
-        
-        <!-- Video link -->
-        <div class="home-project-media">
-          <a href="https://www.youtube.com/embed/gpQtFfs4qww" target="_blank" class="home-video-link">
-            <div class="home-video-wrapper">
-              <iframe 
-                src="https://www.youtube.com/embed/gpQtFfs4qww" 
-                title="AI-Based PCB Quality Control System Demo"
-                frameborder="0" 
-                allowfullscreen>
-              </iframe>
-            </div>
-          </a>
-        </div>
-      </div>
-    </article>
+    {% assign latest_projects = site.projects | sort: "date" | reverse %}
+    {% for project in latest_projects limit: 2 %}
+      {% assign matching_cards = site.data.project_cards | where: "url", project.url %}
+      {% assign card = matching_cards | first %}
+      {% if card %}
+        {% include project-card.html project=project card=card %}
+      {% endif %}
+    {% endfor %}
 
     <!-- View All Projects 버튼 -->
     <div class="view-all-projects">

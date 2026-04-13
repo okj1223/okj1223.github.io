@@ -182,6 +182,16 @@ document.addEventListener('DOMContentLoaded', function() {
       wrap.appendChild(table);
     }
   });
+
+  content.querySelectorAll('.code-toggle-button').forEach(button => {
+    button.addEventListener('click', function() {
+      const card = this.closest('.code-toggle');
+      if (!card) return;
+
+      const isOpen = card.classList.toggle('is-open');
+      this.setAttribute('aria-expanded', String(isOpen));
+    });
+  });
 });
 </script>
 
@@ -572,6 +582,133 @@ body {
   border: none !important;
   text-align: left !important; /* pre 안의 code도 왼쪽 정렬 */
   direction: ltr !important;
+}
+
+.project-content details {
+  margin: 1.2rem 0 1.6rem !important;
+  border: 1px solid rgba(127, 179, 211, 0.28) !important;
+  border-radius: 14px !important;
+  background: linear-gradient(180deg, rgba(248, 252, 251, 0.96), rgba(242, 248, 246, 0.92)) !important;
+  overflow: hidden !important;
+  box-shadow: 0 10px 28px rgba(93, 115, 126, 0.08) !important;
+}
+
+.project-content summary {
+  list-style: none !important;
+  cursor: pointer !important;
+  padding: 1rem 1.2rem !important;
+  font-family: 'Inter', sans-serif !important;
+  font-size: 0.96rem !important;
+  font-weight: 700 !important;
+  color: #2f5360 !important;
+  background: rgba(184, 212, 227, 0.18) !important;
+  border-bottom: 1px solid transparent !important;
+  transition: background 0.2s ease !important;
+}
+
+.project-content summary::-webkit-details-marker {
+  display: none !important;
+}
+
+.project-content summary::before {
+  content: "+";
+  display: inline-flex !important;
+  width: 1.35rem !important;
+  height: 1.35rem !important;
+  margin-right: 0.7rem !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border-radius: 999px !important;
+  background: rgba(74, 143, 168, 0.18) !important;
+  color: #316477 !important;
+  font-size: 1rem !important;
+  line-height: 1 !important;
+}
+
+.project-content details[open] summary {
+  background: rgba(127, 179, 211, 0.24) !important;
+  border-bottom-color: rgba(127, 179, 211, 0.25) !important;
+}
+
+.project-content details[open] summary::before {
+  content: "-";
+}
+
+.project-content details > *:not(summary) {
+  margin-left: 1.2rem !important;
+  margin-right: 1.2rem !important;
+}
+
+.project-content details > p:last-child,
+.project-content details > .highlighter-rouge:last-child,
+.project-content details > pre:last-child {
+  margin-bottom: 1.2rem !important;
+}
+
+.project-content .code-toggle {
+  margin: 1.2rem 0 1.6rem !important;
+  border: 1px solid rgba(127, 179, 211, 0.28) !important;
+  border-radius: 14px !important;
+  background: linear-gradient(180deg, rgba(248, 252, 251, 0.96), rgba(242, 248, 246, 0.92)) !important;
+  overflow: hidden !important;
+  box-shadow: 0 10px 28px rgba(93, 115, 126, 0.08) !important;
+}
+
+.project-content .code-toggle > p {
+  margin: 0 !important;
+}
+
+.project-content .code-toggle-button {
+  width: 100% !important;
+  display: flex !important;
+  align-items: center !important;
+  border: none !important;
+  background: rgba(184, 212, 227, 0.18) !important;
+  color: #2f5360 !important;
+  cursor: pointer !important;
+  padding: 1rem 1.2rem !important;
+  font-family: 'Inter', sans-serif !important;
+  font-size: 0.96rem !important;
+  font-weight: 700 !important;
+  text-align: left !important;
+}
+
+.project-content .code-toggle-button::before {
+  content: "+" !important;
+  display: inline-flex !important;
+  width: 1.35rem !important;
+  height: 1.35rem !important;
+  margin-right: 0.7rem !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border-radius: 999px !important;
+  background: rgba(74, 143, 168, 0.18) !important;
+  color: #316477 !important;
+  font-size: 1rem !important;
+  line-height: 1 !important;
+  flex-shrink: 0 !important;
+}
+
+.project-content .code-toggle.is-open .code-toggle-button {
+  background: rgba(127, 179, 211, 0.24) !important;
+  border-bottom: 1px solid rgba(127, 179, 211, 0.25) !important;
+}
+
+.project-content .code-toggle.is-open .code-toggle-button::before {
+  content: "-" !important;
+}
+
+.project-content .code-toggle-panel {
+  display: none !important;
+  padding: 0 1.2rem 1.2rem !important;
+}
+
+.project-content .code-toggle.is-open .code-toggle-panel {
+  display: block !important;
+}
+
+.project-content .code-toggle-panel pre {
+  margin: 1rem 0 0 !important;
 }
 
 /* Back to Projects 버튼 */
