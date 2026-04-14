@@ -4,6 +4,7 @@
 // - snippet card / code example behavior
 document.addEventListener('DOMContentLoaded', function() {
   const tocNav = document.getElementById('toc-nav');
+  const tocSidebar = document.getElementById('toc-sidebar');
   const content = document.querySelector('.project-content');
   
   if (!tocNav || !content) return;
@@ -76,6 +77,21 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     });
   });
+
+  if (tocSidebar) {
+    // Keep desktop wheel scrolling on the page itself so the sticky TOC
+    // does not trap the user's scroll when the pointer is over the sidebar.
+    tocSidebar.addEventListener('wheel', function(event) {
+      if (window.innerWidth <= 960) return;
+      if (Math.abs(event.deltaY) <= Math.abs(event.deltaX)) return;
+
+      event.preventDefault();
+      window.scrollBy({
+        top: event.deltaY,
+        behavior: 'auto'
+      });
+    }, { passive: false });
+  }
   
   // 스크롤 시 현재 섹션 하이라이트
   function updateActiveLink() {
