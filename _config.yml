@@ -312,7 +312,7 @@ defaults:
     values:
       layout: "page"
       css:
-        - "/assets/css/project-detail.css?v=20260414-2"
+        - "/assets/css/project-detail.css?v=20260415-1"
       ext-css:
         - "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/github-dark.min.css"
       ext-js:

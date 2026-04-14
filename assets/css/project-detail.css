@@ -407,6 +407,7 @@ body {
 #toc-nav {
   flex: 1 1 auto !important;
   min-height: 0 !important;
+  max-height: calc(100vh - 180px) !important;
   overflow-y: auto !important;
   scrollbar-gutter: stable !important;
   padding-right: 0.2rem !important;
@@ -799,6 +800,7 @@ body {
   }
 
   #toc-nav {
+    max-height: none !important;
     overflow-y: visible !important;
     padding-right: 0 !important;
   }
