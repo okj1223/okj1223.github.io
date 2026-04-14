@@ -57,20 +57,14 @@ document.addEventListener('DOMContentLoaded', function() {
     if (!activeLink || !tocNav || window.innerWidth <= 960) return;
     if (tocNav.scrollHeight <= tocNav.clientHeight) return;
 
-    const sidebarRect = tocNav.getBoundingClientRect();
+    const navRect = tocNav.getBoundingClientRect();
     const linkRect = activeLink.getBoundingClientRect();
-    const padding = 12;
-    const visibleTop = sidebarRect.top + padding;
-    const visibleBottom = sidebarRect.bottom - padding;
+    const linkTopInNav = tocNav.scrollTop + (linkRect.top - navRect.top);
+    const targetScrollTop = linkTopInNav - (tocNav.clientHeight * 0.35);
+    const maxScrollTop = tocNav.scrollHeight - tocNav.clientHeight;
+    const clampedScrollTop = Math.max(0, Math.min(maxScrollTop, targetScrollTop));
 
-    if (linkRect.top < visibleTop) {
-      tocNav.scrollTop += linkRect.top - visibleTop;
-      return;
-    }
-
-    if (linkRect.bottom > visibleBottom) {
-      tocNav.scrollTop += linkRect.bottom - visibleBottom;
-    }
+    tocNav.scrollTop = clampedScrollTop;
   }
 
   tocLinks.forEach(link => {
