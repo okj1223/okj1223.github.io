@@ -1,9 +1,6 @@
 ---
-layout: default
+layout: base
 ---
-
-<!-- 🌿 에코 테마 CSS 강제 로드 -->
-<link rel="stylesheet" href="{{ '/assets/css/ecosystem.css' | relative_url }}">
 
 <!-- 상세 페이지 본문 시작 -->
 <section class="project-hero">
@@ -297,6 +294,21 @@ document.addEventListener('DOMContentLoaded', function() {
     button.textContent = `Toggle code: ${langLabel} snippet`;
   });
 
+  content.querySelectorAll('.code-toggle-button').forEach(button => {
+    const labelText = button.textContent.trim();
+    let label = button.querySelector('.code-toggle-label');
+
+    if (!label) {
+      button.textContent = '';
+      label = document.createElement('span');
+      label.className = 'code-toggle-label';
+      button.appendChild(label);
+    }
+
+    label.textContent = labelText;
+    button.setAttribute('aria-label', labelText);
+  });
+
   Array.from(content.querySelectorAll('h2')).forEach(heading => {
     const headingText = cleanContextText(heading.textContent || '');
     if (!/appendix/i.test(headingText)) return;
@@ -339,20 +351,25 @@ document.addEventListener('DOMContentLoaded', function() {
 /* 🌿 프로젝트 페이지 전용 에코 테마 스타일 */
 
 /* 기본 body 설정 */
+html {
+  overflow-x: hidden !important;
+}
+
 body {
   font-family: 'Merriweather', serif !important;
   background: linear-gradient(135deg, #fefffe 0%, #f8fcf8 100%) !important;
   position: relative;
+  overflow-x: hidden !important;
 }
 
 /* 프로젝트 히어로 섹션 */
 .project-hero {
-  padding: 6rem 0 4rem !important;
+  padding: clamp(6.5rem, 9vw, 8rem) 0 clamp(2.25rem, 4vw, 4rem) !important;
   text-align: center;
   background: linear-gradient(135deg, rgba(248, 252, 248, 0.7) 0%, rgba(240, 248, 240, 0.7) 50%, rgba(232, 245, 232, 0.7) 100%);
   border-bottom: 1px solid rgba(184, 212, 227, 0.2);
   position: relative;
-  margin-top: 0px; /* 네비게이션 높이만큼 여백 */
+  margin-top: 0 !important;
 }
 
 .project-title {
@@ -362,6 +379,10 @@ body {
   font-family: var(--font-display, 'Merriweather', serif) !important;
   font-weight: 300 !important;
   line-height: 1.3;
+  max-width: 24ch !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  overflow-wrap: break-word !important;
 }
 
 .project-subtitle {
@@ -370,21 +391,36 @@ body {
   font-family: var(--font-sans, 'Inter', sans-serif) !important;
   font-weight: 400 !important;
   opacity: 0.9;
+  max-width: 60rem !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  overflow-wrap: break-word !important;
+}
+
+.project-hero .container,
+.project-overview .container,
+.project-back .container {
+  max-width: min(100%, 1400px) !important;
+  box-sizing: border-box !important;
 }
 
 /* 📋 TOC와 프로젝트 레이아웃 스타일 */
 .project-layout {
   display: flex !important;
   gap: 2rem !important;
+  width: min(100%, 1400px) !important;
   max-width: 1400px !important;
   margin: 0 auto !important;
   align-items: flex-start !important;
-  padding: 2rem 1rem !important;
+  padding: 1.5rem 1rem 2rem !important;
+  box-sizing: border-box !important;
 }
 
 .project-content {
   flex: 1 !important;
   min-width: 0 !important;
+  width: 100% !important;
+  max-width: 100% !important;
   text-align: left !important;
   background: var(--clr-surface, #fff) !important;
   padding: 2rem !important;
@@ -420,7 +456,7 @@ body {
 
 .project-quick-summary-grid {
   display: grid !important;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)) !important;
+  grid-template-columns: repeat(auto-fit, minmax(min(180px, 100%), 1fr)) !important;
   gap: 0.9rem !important;
 }
 
@@ -458,6 +494,7 @@ body {
   text-align: left !important;
   font-family: 'Inter', sans-serif !important;
   scroll-margin-top: 100px !important;
+  overflow-wrap: break-word !important;
 }
 
 /* h2 — major section divider */
@@ -504,6 +541,7 @@ body {
   line-height: 1.8 !important;
   color: #3a3a3a !important;
   margin-bottom: 1.25rem !important;
+  overflow-wrap: break-word !important;
 }
 
 .project-content ul,
@@ -514,6 +552,7 @@ body {
 .project-content li {
   margin-bottom: 0.4rem !important;
   line-height: 1.7 !important;
+  overflow-wrap: break-word !important;
 }
 
 /* 이미지 크기 조절 */
@@ -540,6 +579,19 @@ body {
   margin: 1rem auto !important;
 }
 
+.project-content > *,
+.project-content *::before,
+.project-content *::after,
+.project-toc,
+.project-quick-summary,
+.project-summary-card {
+  box-sizing: border-box !important;
+}
+
+.project-content > * {
+  max-width: 100% !important;
+}
+
 /* 플로우차트/다이어그램용 클래스 - 꽉찬 너비, 배경/그림자 제거 */
 .project-content .flowchart,
 .project-content .diagram,
@@ -555,6 +607,7 @@ body {
   background: transparent !important; /* 배경 투명 */
   margin: 2rem auto !important;
   border: none !important; /* 테두리도 제거 */
+  height: auto !important;
 }
 
 /* 작은 이미지용 클래스 */
@@ -581,13 +634,16 @@ body {
 /* 표 — 읽기 중심, 반응형 스크롤 */
 .project-content .table-wrap {
   overflow-x: auto !important;
+  overflow-y: hidden !important;
   margin: 2rem 0 !important;
   border-radius: 8px !important;
   border: 1px solid rgba(184, 212, 227, 0.35) !important;
+  -webkit-overflow-scrolling: touch !important;
 }
 
 .project-content table {
-  width: 100% !important;
+  width: max-content !important;
+  min-width: 100% !important;
   margin: 0 !important;
   text-align: left !important;
   border-collapse: collapse !important;
@@ -640,6 +696,7 @@ body {
   margin: 2rem auto !important;
   display: block !important;
   width: 100% !important;
+  max-width: 100% !important;
   aspect-ratio: 16 / 9;
   overflow: hidden !important;
   position: relative !important;
@@ -755,6 +812,8 @@ body {
   line-height: 1.5 !important;
   text-align: left !important; /* 코드는 무조건 왼쪽 정렬 */
   direction: ltr !important; /* 텍스트 방향 강제 지정 */
+  max-width: 100% !important;
+  -webkit-overflow-scrolling: touch !important;
 }
 
 .project-content code {
@@ -798,6 +857,13 @@ body {
   background: rgba(184, 212, 227, 0.18) !important;
   border-bottom: 1px solid transparent !important;
   transition: background 0.2s ease !important;
+  display: flex !important;
+  align-items: flex-start !important;
+  gap: 0.7rem !important;
+  white-space: normal !important;
+  overflow-wrap: break-word !important;
+  word-break: normal !important;
+  line-height: 1.5 !important;
 }
 
 .project-content summary::-webkit-details-marker {
@@ -809,7 +875,6 @@ body {
   display: inline-flex !important;
   width: 1.35rem !important;
   height: 1.35rem !important;
-  margin-right: 0.7rem !important;
   align-items: center !important;
   justify-content: center !important;
   border-radius: 999px !important;
@@ -817,6 +882,8 @@ body {
   color: #316477 !important;
   font-size: 1rem !important;
   line-height: 1 !important;
+  flex-shrink: 0 !important;
+  margin-top: 0.05rem !important;
 }
 
 .project-content details[open] summary {
@@ -855,7 +922,7 @@ body {
 .project-content .code-toggle-button {
   width: 100% !important;
   display: flex !important;
-  align-items: center !important;
+  align-items: flex-start !important;
   border: none !important;
   background: rgba(184, 212, 227, 0.18) !important;
   color: #2f5360 !important;
@@ -865,6 +932,11 @@ body {
   font-size: 0.96rem !important;
   font-weight: 700 !important;
   text-align: left !important;
+  gap: 0.7rem !important;
+  white-space: normal !important;
+  overflow-wrap: break-word !important;
+  word-break: normal !important;
+  line-height: 1.5 !important;
 }
 
 .project-content .code-toggle-button::before {
@@ -872,7 +944,6 @@ body {
   display: inline-flex !important;
   width: 1.35rem !important;
   height: 1.35rem !important;
-  margin-right: 0.7rem !important;
   align-items: center !important;
   justify-content: center !important;
   border-radius: 999px !important;
@@ -881,6 +952,7 @@ body {
   font-size: 1rem !important;
   line-height: 1 !important;
   flex-shrink: 0 !important;
+  margin-top: 0.05rem !important;
 }
 
 .project-content .code-toggle.is-open .code-toggle-button {
@@ -895,6 +967,8 @@ body {
 .project-content .code-toggle-panel {
   display: none !important;
   padding: 0 1.2rem 1.2rem !important;
+  max-width: 100% !important;
+  overflow-x: hidden !important;
 }
 
 .project-content .code-toggle.is-open .code-toggle-panel {
@@ -903,6 +977,21 @@ body {
 
 .project-content .code-toggle-panel pre {
   margin: 1rem 0 0 !important;
+}
+
+.project-content .code-toggle-label {
+  flex: 1 1 auto !important;
+  min-width: 0 !important;
+}
+
+.project-content mjx-container[display="true"],
+.project-content .MathJax_Display,
+.project-content .mjx-block,
+.project-content .katex-display {
+  max-width: 100% !important;
+  overflow-x: auto !important;
+  overflow-y: hidden !important;
+  -webkit-overflow-scrolling: touch !important;
 }
 
 /* Back to Projects 버튼 */
@@ -949,6 +1038,7 @@ body {
   
   .project-toc {
     width: 100% !important;
+    max-width: 100% !important;
     position: static !important;
     max-height: 150px !important;
     order: -1 !important;
@@ -990,12 +1080,11 @@ body {
 /* 모바일 반응형 */
 @media (max-width: 768px) {
   .project-hero {
-    padding: 5rem 0 3rem !important;
-    margin-top: 60px !important;
+    padding: 5.75rem 0 2.5rem !important;
   }
   
   .project-title {
-    font-size: 2rem !important;
+    font-size: 1.95rem !important;
   }
   
   .project-subtitle {
@@ -1003,7 +1092,7 @@ body {
   }
   
   .project-layout {
-    padding: 0.5rem !important;
+    padding: 0.75rem !important;
     gap: 1rem !important;
   }
   
@@ -1013,6 +1102,10 @@ body {
 
   .project-quick-summary {
     padding: 1rem !important;
+  }
+
+  .project-quick-summary-grid {
+    grid-template-columns: 1fr !important;
   }
   
   .project-toc {
@@ -1030,7 +1123,7 @@ body {
   
   .project-content pre {
     font-size: 0.8rem !important;
-    padding: 1rem !important;
+    padding: 0.95rem !important;
     margin: 1rem 0 !important;
   }
   
@@ -1042,8 +1135,8 @@ body {
   /* 모바일에서 이미지 더 작게 */
   .project-content img,
   .project-content figure img {
-    max-width: 95% !important;
-    max-height: 300px !important;
+    max-width: 100% !important;
+    max-height: none !important;
   }
   
   /* 모바일에서도 플로우차트는 꽉찬 너비 유지 */
@@ -1054,7 +1147,77 @@ body {
   .project-content figure .diagram,
   .project-content figure .architecture {
     max-width: 100% !important;
-    max-height: 400px !important; /* 모바일에서만 높이 제한 */
+    max-height: none !important;
+  }
+
+  .project-content .code-toggle-button,
+  .project-content summary {
+    padding: 0.95rem 1rem !important;
+    font-size: 0.92rem !important;
+  }
+
+  .project-content .code-toggle-panel {
+    padding: 0 1rem 1rem !important;
+  }
+
+  .project-content table th,
+  .project-content table td {
+    padding: 0.6rem 0.8rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .project-hero .container,
+  .project-overview .container,
+  .project-back .container {
+    padding-left: 0.9rem !important;
+    padding-right: 0.9rem !important;
+  }
+
+  .project-hero {
+    padding: 5.25rem 0 2.2rem !important;
+  }
+
+  .project-title {
+    font-size: 1.72rem !important;
+    line-height: 1.22 !important;
+  }
+
+  .project-subtitle {
+    font-size: 0.96rem !important;
+    line-height: 1.55 !important;
+  }
+
+  .project-layout {
+    padding: 0.55rem !important;
+  }
+
+  .project-content {
+    padding: 0.9rem !important;
+  }
+
+  .project-content h2 {
+    font-size: 1.3rem !important;
+    margin-top: 2.35rem !important;
+  }
+
+  .project-content h3 {
+    font-size: 1.06rem !important;
+    padding-left: 0.6rem !important;
+  }
+
+  .project-content p,
+  .project-content ul,
+  .project-content ol,
+  .project-content blockquote,
+  .project-summary-value {
+    font-size: 0.97rem !important;
+    line-height: 1.72 !important;
+  }
+
+  .project-content pre {
+    font-size: 0.76rem !important;
+    padding: 0.85rem !important;
   }
 }
 

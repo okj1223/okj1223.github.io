@@ -80,7 +80,7 @@ SCR systems are critical for NOₓ emission reduction in power plants, cement ki
 
 The automated cleaning system employs a **rail-mounted mobile platform** with precision positioning, Arduino-based control, and fluid atomization technology. The design philosophy prioritizes **simplicity, reliability, and maintainability** over complex solutions.
 
-<figure>
+<figure markdown="0">
   <img class="flowchart"
        src="{{ '/project/automated-catalyst-cleaning/architecture-diagram.png' | relative_url }}"
        alt="System Architecture"
@@ -848,7 +848,7 @@ Where:
 ### 4.1 Precision Machining Operations
 
 #### 4.1.1 Diamond Wheel Grinding
-<figure>
+<figure markdown="0">
   <img class="project-image"
        src="{{ '/project/automated-catalyst-cleaning/grinding.gif' | relative_url }}"
        alt="High-Precision Grinding Process"
@@ -872,7 +872,7 @@ I personally executed high-precision surface grinding operations using industria
 - Roundness testing: <0.01 mm TIR
 
 #### 4.1.2 CNC Machining Operations
-<figure>
+<figure markdown="0">
   <img class="project-image"
        src="{{ '/project/automated-catalyst-cleaning/nozzle_handle.jpg' | relative_url }}"
        alt="CNC Milling of Nozzle Handle"
@@ -891,7 +891,7 @@ I personally executed high-precision surface grinding operations using industria
 - **Cycle Time Optimization:** 30% reduction via advanced CAM strategies
 
 #### 4.1.3 Rail Processing Operations
-<figure>
+<figure markdown="0">
   <img class="project-image"
        src="{{ '/project/automated-catalyst-cleaning/tap_machine.jpg' | relative_url }}"
        alt="Tapping Machine Rail Processing"
@@ -907,7 +907,7 @@ I personally executed high-precision surface grinding operations using industria
 - **Surface Treatment:** Hard anodizing for wear resistance
 
 ### 4.2 Advanced Assembly Integration
-<figure>
+<figure markdown="0">
   <img class="project-image"
        src="{{ '/project/automated-catalyst-cleaning/cleaning_robot_components.jpg' | relative_url }}"
        alt="Component Assembly Sequence"
@@ -927,7 +927,7 @@ I personally executed high-precision surface grinding operations using industria
 
 ### 5.1 3D Parametric Modeling
 
-<figure>
+<figure markdown="0">
   <img class="project-image"
        src="{{ '/project/automated-catalyst-cleaning/3dworking1.gif' | relative_url }}"
        alt="Inventor Parametric Assembly Workflow" 
@@ -935,7 +935,7 @@ I personally executed high-precision surface grinding operations using industria
   <figcaption>Figure 6. 3D parametric assembly workflow in Autodesk Inventor</figcaption>
 </figure>
 
-<figure>
+<figure markdown="0">
   <img class="project-image"
        src="{{ '/project/automated-catalyst-cleaning/3dworking2.PNG' | relative_url }}"
        alt="AutoCAD Detailed Part Drawing" 

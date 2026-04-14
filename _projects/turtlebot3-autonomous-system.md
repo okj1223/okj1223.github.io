@@ -55,7 +55,7 @@ To overcome these limitations, this research set the following objectives:
 3. **Digital Twin-Based Validation**: Systematic analysis and correction of gaps between virtual and real environments
 4. **Securing Industrial Applicability**: Achieving reliability levels usable in actual industrial settings
 
-<figure>
+<figure markdown="0">
   <img class="project-image"
        src="{{ '/project/turtlebot3-autonomous-system/digital_twin_gazebo_map.png' | relative_url }}"
        alt="Digital twin virtual environment in Gazebo simulator"
@@ -67,7 +67,7 @@ To overcome these limitations, this research set the following objectives:
 
 The entire system was designed based on the philosophy of "Graceful Degradation." That is, even if some sensors or modules experience problems, the entire system doesn't completely stop but continues to operate with reduced performance.
 
-<figure>
+<figure markdown="0">
   <img class="flowchart"
        src="{{ '/project/turtlebot3-autonomous-system/system_architecture_diagram.png' | relative_url }}"
        alt="Overall system architecture diagram"
@@ -91,7 +91,7 @@ Lane detection is the foundation of autonomous driving, but in real environments
 
 **Limited Color Contrast**: Indoor lanes are usually made with tape, which has lower color contrast than outdoor road paint. Also, colors fade or become dirty over extended use periods.
 
-<figure>
+<figure markdown="0">
   <img class="project-image"
        src="{{ '/project/turtlebot3-autonomous-system/lane_detection_rqt.png' | relative_url }}"
        alt="Real-time lane detection and path generation visualization"
@@ -432,7 +432,7 @@ subject to safety constraints.
 
 ### 3.1 Multi-Spectral Traffic Light Recognition System
 
-<figure>
+<figure markdown="0">
   <img class="project-image"
        src="{{ '/project/turtlebot3-autonomous-system/traffic_light_detection.png' | relative_url }}"
        alt="Traffic light detection with HSV color analysis"
@@ -560,7 +560,7 @@ For traffic lights, $0.8 \leq AR \leq 1.2$ should hold.
 
 ### 3.2 Advanced Line Analysis for Barrier State Detection
 
-<figure>
+<figure markdown="0">
   <img class="project-image"
        src="{{ '/project/turtlebot3-autonomous-system/barrier_detection.png' | relative_url }}"
        alt="Real-time barrier state detection and analysis"
@@ -733,7 +733,7 @@ A state transition model was implemented to ensure temporal stability of barrier
 
 The implementation of inverse kinematics for the 4-DOF manipulator was the most challenging and complex part of this project. Behind what appears to be a simple mathematical problem lie countless practical considerations, and we experienced many trials and errors in bridging the gap between theory and reality.
 
-<figure>
+<figure markdown="0">
   <img class="project-image"
        src="{{ '/project/turtlebot3-autonomous-system/kinematics_basics.png' | relative_url }}"
        alt="Fundamental principles of robot kinematics"
@@ -747,7 +747,7 @@ The implementation of inverse kinematics for the 4-DOF manipulator was the most 
 
 While we used standard DH notation to define relationships between links, the actual hardware did not perfectly match the theoretical DH model. This is an important issue often overlooked in robotics.
 
-<figure>
+<figure markdown="0">
   <img class="project-image"
        src="{{ '/project/turtlebot3-autonomous-system/turtlebot3_arm_joints.png' | relative_url }}"
        alt="TurtleBot3 OPAL robot arm with joint and link annotations"
@@ -863,7 +863,7 @@ where $J_v$ is the linear velocity Jacobian and $J_\omega$ is the angular veloci
 
 ### 4.2 Mathematical Development of Analytical Inverse Kinematics
 
-<figure>
+<figure markdown="0">
   <img class="project-image"
        src="{{ '/project/turtlebot3-autonomous-system/solvepnp_3d_visualization.png' | relative_url }}"
        alt="SolvePnP algorithm 3D visualization"
@@ -945,7 +945,7 @@ $$\theta_3 = \pi - \phi_1 - \phi_2 + \theta_{3,offset}$$
 </div>
 </div>
 
-<figure>
+<figure markdown="0">
   <img class="project-image"
        src="{{ '/project/turtlebot3-autonomous-system/camera_coordinate_3d.png' | relative_url }}"
        alt="3D camera coordinate system representation"
@@ -1911,7 +1911,7 @@ Comprehensive metrics were defined for performance evaluation:
 
 **Success Rate Definition**: Successfully positioning gripper within 5mm radius of marker center and grasping the object
 
-<figure>
+<figure markdown="0">
   <img class="project-image"
        src="{{ '/project/turtlebot3-autonomous-system/aruco_marker_detection.gif' | relative_url }}"
        alt="Real-time ArUco marker detection and pose estimation"

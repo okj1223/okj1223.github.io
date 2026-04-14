@@ -29,7 +29,7 @@ quick_summary:
 
 This study presents the design and implementation of a bench-scale testing apparatus for evaluating the performance of Selective Catalytic Reduction (SCR) catalysts used in flue gas denitrification systems of thermal power plants. The apparatus was designed based on the German VGB-R 302 standard and EPRI guidelines to reproduce actual power plant flue gas conditions at laboratory scale.
 
-<figure>
+<figure markdown="0">
   <img class="project-image"
        src="{{ '/project/scr-catalyst-testing-apparatus/completed_apparatus.jpg' | relative_url }}"
        alt="Completed SCR catalyst performance testing apparatus"
@@ -183,7 +183,7 @@ This SCR catalyst performance evaluation apparatus consists of the following maj
 4. **Control system**: HMI-based integrated monitoring
 5. **Analysis system**: Continuous flue gas composition analysis
 
-<figure>
+<figure markdown="0">
   <img class="project-image"
        src="{{ '/project/scr-catalyst-testing-apparatus/completed_apparatus.jpg' | relative_url }}"
        alt="Overall system architecture"
@@ -219,7 +219,7 @@ MFCs with the following specifications are installed in each gas line for precis
 
 Each MFC is individually calibrated for the corresponding gas to ensure accurate flow measurement.
 
-<figure>
+<figure markdown="0">
   <img class="project-image"
        src="{{ '/project/scr_catalyst/mfc_panel.png' | relative_url }}"
        alt="Mass Flow Controller panel"
@@ -1241,7 +1241,7 @@ We plan to develop this into a representative SCR technology verification center
 
 #### A.3 Gas Supply Piping and Instrumentation Diagram
 
-<figure>
+<figure markdown="0">
   <img class="flowchart"
        src="{{ '/project/scr_catalyst/piping_diagram.png' | relative_url }}"
        alt="Gas supply piping and instrumentation diagram"

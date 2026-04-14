@@ -34,7 +34,7 @@ This paper presents a comprehensive industrial safety robot system developed by 
 - Communication Reliability: 99.8%
 - Projected ROI: 426% with ~2.8-month payback (see Section 11 for assumptions)
 
-<figure>
+<figure markdown="0">
   <img class="project-image"
        src="{{ '/project/crack-ppe-detection/system_overview.png' | relative_url }}"
        alt="system architecture"
@@ -65,7 +65,7 @@ Industrial safety remains a persistent challenge despite technological advanceme
 | Post-refusal protection satisfaction | 13.8%         | >60%         |
 | **Fatal accident rate (per 100K)**   | **0.43**      | **<0.20**    |
 
-<figure>
+<figure markdown="0">
   <img class="project-image"
        src="{{ '/project/crack-ppe-detection/fatality_rate_graph.png' | relative_url }}"
        alt="Trend of Industrial"
@@ -108,7 +108,7 @@ Statistical analysis indicates **78.2% of industrial accidents** stem from behav
 | Communication Barriers | $I_{effective} = I_{transmitted} \cdot \alpha$    | Visual/audio alerts      | 76%           |
 | **Equipment Failure**  | $\lambda(t) = \lambda_0 + \beta t$                | **Predictive maintenance** | **94%**       |
 
-<figure>
+<figure markdown="0">
   <img class="project-image"
        src="{{ '/project/crack-ppe-detection/accident-circle.png' | relative_url }}"
        alt="Distribution of Accident"
@@ -189,7 +189,7 @@ The operational design basis is **k≥2-out-of-4**: the coverage task remains va
 | YOLOv11n  | 0.851   | 4.5±1.22       | 5.9             | 6.5       | 172         |
 | EfficientDet-D0 | 0.834 | 6.8±1.85 | 6.5            | 2.5       | 195         |
 
-<figure>
+<figure markdown="0">
   <img class="project-image"
        src="{{ '/project/crack-ppe-detection/model_comparison.png' | relative_url }}"
        alt="Box plots"
@@ -226,7 +226,7 @@ $$
 \end{cases}
 $$
 
-<figure>
+<figure markdown="0">
   <img class="project-image"
        src="{{ '/project/crack-ppe-detection/detection_framework.png' | relative_url }}"
        alt="Visual representation"
@@ -284,7 +284,7 @@ $$I_{multiscale}(x,y) = \sum_{s=1}^S w_s \cdot G_{\sigma_s} * I(x,y)$$
 | Major | 2-5 mm | 200-500 mm | 400-2500 mm² | Immediate action |
 | Critical | >5 mm | >500 mm | >2500 mm² | **Emergency shutdown** |
 
-<figure>
+<figure markdown="0">
   <img class="project-image"
        src="{{ '/project/crack-ppe-detection/hsv_segmentation.png' | relative_url }}"
        alt="HSV color space"
@@ -329,7 +329,7 @@ $$L(t) = L_0 \cdot e^{\alpha \sqrt{t}} + \beta \cdot \sigma_{stress}$$
 3. **Emergency Planner:** Rapid collision avoidance
 4. **Coordination Layer:** Multi-robot conflict resolution
 
-<figure>
+<figure markdown="0">
   <img class="project-image"
        src="{{ '/project/crack-ppe-detection/nav_arc.PNG' | relative_url }}"
        alt="Navigation architecture"
@@ -401,7 +401,7 @@ $$
 \end{cases}
 $$
 
-<figure>
+<figure markdown="0">
   <img class="project-image"
        src="{{ '/project/crack-ppe-detection/protocol_comparison.png' | relative_url }}"
        alt="Protocol comparison"
@@ -507,7 +507,7 @@ $$\text{Max\_Robots} = \frac{\text{Bandwidth}_{available}}{\text{Bandwidth}_{per
 - **3D Visualization:** Real-time robot positioning and environment
 - **Historical Trends:** Long-term performance analysis
 
-<figure>
+<figure markdown="0">
   <img class="project-image"
        src="{{ '/project/crack-ppe-detection/dash.gif' | relative_url }}"
        alt="Web-based dashboard"
@@ -532,7 +532,7 @@ $$\text{Max\_Robots} = \frac{\text{Bandwidth}_{available}}{\text{Bandwidth}_{per
 | Critical | <10s | Safety team | SMS + Call |
 | **Emergency** | **<3s** | **All personnel** | **Multi-channel** |
 
-<figure>
+<figure markdown="0">
   <img class="project-image"
        src="{{ '/project/crack-ppe-detection/aplication.gif' | relative_url }}"
        alt="Mobile application"

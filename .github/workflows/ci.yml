@@ -11,6 +11,8 @@ jobs:
           ruby-version: '3.3'
       - name: Install dependencies
         run: bundle install && bundle exec appraisal install
+      - name: Validate project card metadata
+        run: ruby scripts/validate_project_cards.rb
       - name: Setup Pages
         id: configure-pages
         uses: actions/configure-pages@v5

@@ -25,7 +25,7 @@ quick_summary:
 
 ## Completed System
 
-<figure>
+<figure markdown="0">
   <img class="project-image"
        src="{{ '/project/dry-ice-blaster-feeding-system/completed_dry_ice_blaster.png' | relative_url }}"
        alt="Completed Dry Ice Blaster Feeding System"
@@ -72,7 +72,7 @@ Catalyst surface cleaning in industrial facilities is a critical process directl
 ### 2.1 Overall System Configuration
 
 
-<figure>
+<figure markdown="0">
   <img class="flowchart"
        src="{{ '/project/dry-ice-blaster-feeding-system/overall_architecture.png' | relative_url }}"
        alt="System Overall Architecture"
@@ -111,7 +111,7 @@ Different calculation sections use different pressure conventions. The table bel
 ### 2.3 Control System Architecture
 
 
-<figure>
+<figure markdown="0">
   <img class="flowchart"
        src="{{ '/project/dry-ice-blaster-feeding-system/control_system.png' | relative_url }}"
        alt="Control System Configuration"

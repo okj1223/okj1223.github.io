@@ -4,15 +4,14 @@ permalink: /home.html
 description: "Portfolio website of Oh Kyungjun, featuring humanoid robotics, autonomous systems, AI inspection, and industrial automation projects."
 share-description: "Portfolio website of Oh Kyungjun, featuring humanoid robotics, autonomous systems, AI inspection, and industrial automation projects."
 subtitle: "Portfolio website of Oh Kyungjun, featuring humanoid robotics, autonomous systems, AI inspection, and industrial automation projects."
+js:
+  - "/assets/js/eco-panels.js"
+  - "/assets/js/home-skills.js"
 ---
 
-<!-- CSS 파일 연결 -->
-<link rel="stylesheet" href="{{ '/assets/css/ecosystem.css' | relative_url }}">
 
-
-<!-- at the very top of _layouts/home.html -->
 {% if site.banner-img %}
-<div id="banner" style="background-image: url('{{ site.banner-img | relative_url }}'); position: relative;">
+<div id="banner" data-banner-image="{{ site.banner-img | relative_url }}">
   <div class="banner-overlay">
     <h1 class="banner-title">{{ site.banner-title }}</h1>
     <p class="banner-subtitle">{{ site.banner-subtitle }}</p>
@@ -166,21 +165,21 @@ subtitle: "Portfolio website of Oh Kyungjun, featuring humanoid robotics, autono
       <div class="metric-row">
         <span class="metric-label">CO₂</span>
         <div class="metric-bar">
-          <div class="metric-fill" id="co2-bar" style="width: 65%"></div>
+          <div class="metric-fill metric-fill--co2" id="co2-bar"></div>
         </div>
         <span class="metric-value" id="co2-val">342</span>
       </div>
       <div class="metric-row">
         <span class="metric-label">PWR</span>
         <div class="metric-bar">
-          <div class="metric-fill" id="pwr-bar" style="width: 87%"></div>
+          <div class="metric-fill metric-fill--pwr" id="pwr-bar"></div>
         </div>
         <span class="metric-value" id="pwr-val">87</span>
       </div>
       <div class="metric-row">
         <span class="metric-label">EFF</span>
         <div class="metric-bar">
-          <div class="metric-fill" id="eff-bar" style="width: 94%"></div>
+          <div class="metric-fill metric-fill--eff" id="eff-bar"></div>
         </div>
         <span class="metric-value" id="eff-val">94</span>
       </div>
@@ -499,6 +498,3 @@ subtitle: "Portfolio website of Oh Kyungjun, featuring humanoid robotics, autono
     </ul>
   </div>
 </section>
-
-<!-- JavaScript 파일 연결 -->
-<script src="{{ '/assets/js/ecosystem.js' | relative_url }}"></script>

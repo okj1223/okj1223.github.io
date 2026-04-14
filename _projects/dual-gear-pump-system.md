@@ -28,7 +28,7 @@ quick_summary:
 
 This study presents the design and fabrication of a portable dual gear pump system for catalyst regeneration applications in industrial facilities. The objective was to transport high-viscosity catalyst regeneration solution over long distances (discharge 50m) and high head (static head over 50m) while achieving approximately 4 bar injection pressure for effective catalyst cleaning and reactivation. The system consists of two gear pumps, three-phase induction motors, LS ELECTRIC inverters, analog flowmeters and pressure gauges, weatherproof control panels, and 4040/4080 aluminum profile frames. The design process involved precise head analysis using Darcy-Weisbach equations and minor loss calculations, establishing suction conditions to prevent cavitation through NPSH calculations. The final dual pump configuration successfully achieved approximately 20 L/min total flow rate with independent control capability.
 
-<figure>
+<figure markdown="0">
   <img class="project-image"
        src="{{ '/project/dual-gear-pump-system/complete-system-main.jpg' | relative_url }}"
        alt="Fabricated Dual Gear Pump System"
@@ -298,7 +298,7 @@ This provides sufficient margin compared to typical gear pump NPSHR (0.5-2m).
 
 ## 4. Major Component Selection and Design
 
-<figure>
+<figure markdown="0">
   <img class="flowchart"
        src="{{ '/project/dual-gear-pump-system/system-architecture.png' | relative_url }}"
        alt="System Architecture"
@@ -317,7 +317,7 @@ Key reasons for selecting gear pumps:
 4. Self-priming capability: Easy initial priming for field operations
 5. Structural simplicity: Easy maintenance in industrial environments
 
-<figure>
+<figure markdown="0">
   <img class="project-image"
        src="{{ '/project/dual-gear-pump-system/gear-pump-internal.PNG' | relative_url }}"
        alt="Gear Pump Internal Structure"
@@ -368,7 +368,7 @@ Inverter application purposes:
 - Overcurrent, undervoltage, and overheating protection for reliable operation
 - Immediate response to changing catalyst regeneration requirements
 
-<figure>
+<figure markdown="0">
   <img class="project-image"
        src="{{ '/project/dual-gear-pump-system/control-panel-interior.jpg' | relative_url }}"
        alt="Control Panel Interior"
@@ -437,7 +437,7 @@ Control inputs:
 
 ### 5.2 Wiring Design
 
-<figure>
+<figure markdown="0">
   <img class="flowchart"
        src="{{ '/project/dual-gear-pump-system/wiring-diagram.png' | relative_url }}"
        alt="Electrical Wiring Diagram"

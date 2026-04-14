@@ -66,7 +66,7 @@ Current industrial solutions cost over $100,000 and require extensive customizat
 
 Our system follows a modular event-based architecture where each component communicates through MQTT and ROS2. Think of it as a symphony where each instrument (module) plays its part in perfect harmony.
 
-<figure>
+<figure markdown="0">
   <img class="flowchart"
        src="{{ '/project/pcb_inspection/archi.png' | relative_url }}"
        alt="System architecture"
@@ -102,7 +102,7 @@ Our system follows a modular event-based architecture where each component commu
 
 ### Conveyor System: Mechanical Engineering Design Analysis
 
-<figure>
+<figure markdown="0">
   <img class="project-image"
        src="{{ '/project/pcb_inspection/conveyor-belt-prototype-v1-assembled-arduino-rails.jpg' | relative_url }}"
        alt="3D-printed conveyor belt prototype fully assembled with rubber belt, rails, and Arduino control board"
@@ -110,7 +110,7 @@ Our system follows a modular event-based architecture where each component commu
   <figcaption>Figure 2.1: Fully assembled 3D-printed conveyor belt (rails + Arduino control).</figcaption>
 </figure>
 
-<figure>
+<figure markdown="0">
   <img class="project-image"
        src="{{ '/project/pcb_inspection/conveyor-belt-prototype-v1-frame-motors-no-belt.jpg' | relative_url }}"
        alt="3D-printed conveyor belt frame with twin yellow DC gear motors and roller, belt removed and no wiring"
@@ -362,7 +362,7 @@ Calculation result:
 </div>
 </div>
 
-<figure>
+<figure markdown="0">
   <img class="project-image"
        src="{{ '/project/pcb_inspection_robot/conveyor_3d_modeling.gif' | relative_url }}"
        alt="3D modeling process of conveyor frame"
@@ -370,7 +370,7 @@ Calculation result:
   <figcaption>Figure 3.1: 3D modeling process of conveyor frame using Fusion software. Structural optimization design considering PLA material properties</figcaption>
 </figure>
 
-<figure>
+<figure markdown="0">
   <img class="project-image"
        src="{{ '/project/pcb_inspection/conveyor-belt-prototype-v1-frame-3d-printing.gif' | relative_url }}"
        alt="3D printing process using Creality Ender 3 V3 KE"
@@ -666,7 +666,7 @@ Core structure of YOLOv11n customized for PCB inspection:
 </div>
 </div>
 
-<figure>
+<figure markdown="0">
   <img class="project-image"
        src="{{ '/project/pcb_inspection/yolo_detection_realtime.jpg' | relative_url }}"
        alt="Real-time YOLO detection on PCB assembly line"
@@ -1377,7 +1377,7 @@ def _try_cache_spec_from_payload(payload: dict) -&gt; bool:
 </div>
 </div>
 
-<figure>
+<figure markdown="0">
   <img class="project-image"
        src="{{ '/project/pcb_inspection/web_circuit_designer.PNG' | relative_url }}"
        alt="Web-based circuit design interface"
@@ -1616,7 +1616,7 @@ To reduce noise from single frames, collect multiple frames over 1 second and de
 </div>
 </div>
 
-<figure>
+<figure markdown="0">
   <img class="project-image"
        src="{{ '/project/pcb_inspection/circuit_judgment_overlay.jpg' | relative_url }}"
        alt="Real-time circuit judgment overlay"
@@ -2049,7 +2049,7 @@ Through this integrated system, complete automation of the PCB inspection proces
 
 This system implements a 2-stage verification pipeline that hierarchically combines **KWS (Keyword Spotting)** and **Speaker Verification**.
 
-<figure>
+<figure markdown="0">
   <img class="flowchart"
        src="{{ '/project/pcb_inspection/voice_control_system_architecture.png' | relative_url }}"
        alt="Voice control system architecture"
@@ -2057,7 +2057,7 @@ This system implements a 2-stage verification pipeline that hierarchically combi
   <figcaption>Figure 6.1: Voice control system architecture with dual-stage authentication</figcaption>
 </figure>
 
-<figure>
+<figure markdown="0">
   <img class="flowchart"
        src="{{ '/project/pcb_inspection/STT_system_architecture.png' | relative_url }}"
        alt="STT system architecture"
@@ -2113,7 +2113,7 @@ $$y = x + \alpha \cdot n, \quad \alpha = \frac{\sigma_{\text{noise}}}{||n||_2}$$
 
 ### 6.3.1 Mel Filter Bank Design
 
-<figure>
+<figure markdown="0">
   <img class="project-image"
        src="{{ '/project/pcb_inspection/voice_to_2D_tensor.jpg' | relative_url }}"
        alt="Voice to 2D tensor conversion"
@@ -2121,7 +2121,7 @@ $$y = x + \alpha \cdot n, \quad \alpha = \frac{\sigma_{\text{noise}}}{||n||_2}$$
   <figcaption>Figure 6.3: Voice signal to 2D tensor conversion process</figcaption>
 </figure>
 
-<figure>
+<figure markdown="0">
   <img class="project-image"
        src="{{ '/project/pcb_inspection/Log-Mel_changing.PNG' | relative_url }}"
        alt="Log-Mel spectrogram transformation"
@@ -2167,7 +2167,7 @@ $$
 
 ### 6.4.1 Network Architecture
 
-<figure>
+<figure markdown="0">
   <img class="flowchart"
        src="{{ '/project/pcb_inspection/2D_CNN.jpg' | relative_url }}"
        alt="Small 2D CNN architecture"

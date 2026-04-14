@@ -187,7 +187,7 @@ The mathematical foundation ensures industrial-grade precision and repeatability
 
 The experimental setup implements a distributed hardware architecture connecting multiple subsystems through standardized communication protocols. The complete system architecture consists of four primary hardware components integrated through MQTT communication protocol.
 
-<figure>
+<figure markdown="0">
   <img class="flowchart"
        src="{{ '/project/liquid_injection/hardware_architecture.png' | relative_url }}"
        alt="Hardware Architecture Diagram"
@@ -259,7 +259,7 @@ The load cell mounting system requires precise mechanical design to ensure:
 - Integration with existing experimental setup
 - Elimination of weight measurement variations due to object positioning
 
-<figure>
+<figure markdown="0">
   <img class="project-image"
        src="{{ '/project/liquid_injection/frame_design_3d.gif' | relative_url }}"
        alt="3D Frame Design"
@@ -423,7 +423,7 @@ All threaded connections follow Korean Standard (KS) specifications:
 
 #### 4.2.6 3D Printing Execution and Results
 
-<figure>
+<figure markdown="0">
   <img class="project-image"
        src="{{ '/project/liquid_injection/3d_printing_process.gif' | relative_url }}"
        alt="3D Printing Process"
@@ -444,7 +444,7 @@ All threaded connections follow Korean Standard (KS) specifications:
 4. **Surface Finishing**: Light sanding of contact surfaces only
 5. **Final Inspection**: Comprehensive dimensional verification
 
-<figure>
+<figure markdown="0">
   <img class="project-image"
        src="{{ '/project/liquid_injection/completed_frame.jpg' | relative_url }}"
        alt="Completed Frame Assembly"
@@ -470,7 +470,7 @@ where:
 
 The load cell implements a full Wheatstone bridge configuration for maximum sensitivity and temperature compensation:
 
-<figure>
+<figure markdown="0">
   <img class="project-image"
        src="{{ '/project/liquid_injection/loadcell_internal.png' | relative_url }}"
        alt="Load Cell Internal Structure"
@@ -518,7 +518,7 @@ For metallic strain gauges: α ≈ 0.003/°C
 
 The HX711 is a precision 24-bit analog-to-digital converter specifically designed for load cell applications:
 
-<figure>
+<figure markdown="0">
   <img class="project-image"
        src="{{ '/project/liquid_injection/hx711_soldering.jpg' | relative_url }}"
        alt="HX711 Soldering Process"
@@ -549,7 +549,7 @@ The HX711 is a precision 24-bit analog-to-digital converter specifically designe
 | A+ | Signal+ | Load Cell White | White |
 | A- | Signal- | Load Cell Green | Green |
 
-<figure>
+<figure markdown="0">
   <img class="flowchart"
        src="{{ '/project/liquid_injection/electrical_schematic.webp' | relative_url }}"
        alt="Electrical Schematic"

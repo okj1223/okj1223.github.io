@@ -810,6 +810,18 @@ body::before {
   transition: width 0.5s ease;
 }
 
+.metric-fill--co2 {
+  width: 65%;
+}
+
+.metric-fill--pwr {
+  width: 87%;
+}
+
+.metric-fill--eff {
+  width: 94%;
+}
+
 .metric-value {
   color: var(--eco-green);
   width: 20px;

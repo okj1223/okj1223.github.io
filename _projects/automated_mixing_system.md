@@ -131,7 +131,7 @@ The existing manual process consisted of 14 discrete steps:
 </div>
 </div>
 
-<figure>
+<figure markdown="0">
   <img class="flowchart"
        src="{{ '/project/automated-mixing-system/manual_process_timeline.png' | relative_url }}"
        alt="Manual process timeline flowchart"
@@ -161,7 +161,7 @@ Based on analysis of the manual process, the following automated process require
 </div>
 </div>
 
-<figure>
+<figure markdown="0">
   <img class="flowchart"
        src="{{ '/project/automated-mixing-system/automated_process_flow.png' | relative_url }}"
        alt="Automated process flow diagram"
@@ -256,7 +256,7 @@ The system employs a hierarchical architecture with distinct functional layers:
 </div>
 </div>
 
-<figure>
+<figure markdown="0">
   <img class="flowchart"
        src="{{ '/project/automated-mixing-system/system_architecture.png' | relative_url }}"
        alt="Multi-layer system architecture"
@@ -342,7 +342,7 @@ The system operates through eight distinct states with defined transition condit
 </div>
 </div>
 
-<figure>
+<figure markdown="0">
   <img class="flowchart"
        src="{{ '/project/automated-mixing-system/state_machine.png' | relative_url }}"
        alt="System state machine diagram"
@@ -373,7 +373,7 @@ typedef struct {
 </div>
 </div>
 
-<figure>
+<figure markdown="0">
   <img class="flowchart"
        src="{{ '/project/automated-mixing-system/packet_structure.png' | relative_url }}"
        alt="Communication packet structure"
@@ -412,7 +412,7 @@ C = -4.183 × 10⁻¹² (T &lt; 0°C)
 </div>
 </div>
 
-<figure>
+<figure markdown="0">
   <img class="flowchart"
        src="{{ '/project/automated-mixing-system/rtd_calibration.png' | relative_url }}"
        alt="RTD calibration curve"
@@ -455,7 +455,7 @@ Volume calculation for conical bottom tank:
 </div>
 </div>
 
-<figure>
+<figure markdown="0">
   <img class="flowchart"
        src="{{ '/project/automated-mixing-system/tank_geometry.png' | relative_url }}"
        alt="Tank geometry for volume calculation"
@@ -535,7 +535,7 @@ Relay 8: Alarm/beacon
 </div>
 </div>
 
-<figure>
+<figure markdown="0">
   <img class="flowchart"
        src="{{ '/project/automated-mixing-system/relay_assignment.png' | relative_url }}"
        alt="Relay module channel assignments"
@@ -561,7 +561,7 @@ Relay 8: Alarm/beacon
 </div>
 </div>
 
-<figure>
+<figure markdown="0">
   <img class="flowchart"
        src="{{ '/project/automated-mixing-system/current_loop_interface.png' | relative_url }}"
        alt="4-20mA current loop interface circuit"
@@ -624,7 +624,7 @@ K = 0.8°C/% (process gain)
 </div>
 </div>
 
-<figure>
+<figure markdown="0">
   <img class="flowchart"
        src="{{ '/project/automated-mixing-system/transfer_function.png' | relative_url }}"
        alt="System transfer function block diagram"
@@ -664,7 +664,7 @@ All three values are in the **parallel PID form** above (same unit convention).
 Fine-tuning reduced Kp and Ki to dampen overshoot; Kd was reduced to
 limit derivative kick from sensor noise.
 
-<figure>
+<figure markdown="0">
   <img class="flowchart"
        src="{{ '/project/automated-mixing-system/pid_tuning.png' | relative_url }}"
        alt="PID tuning parameters"
@@ -727,7 +727,7 @@ Primary loop controls temperature setpoint, secondary loop controls heater power
 </div>
 </div>
 
-<figure>
+<figure markdown="0">
   <img class="flowchart"
        src="{{ '/project/automated-mixing-system/cascade_control.png' | relative_url }}"
        alt="Cascade control architecture"
@@ -763,7 +763,7 @@ D = 0₃ (Zero matrix)
 </div>
 </div>
 
-<figure>
+<figure markdown="0">
   <img class="flowchart"
        src="{{ '/project/automated-mixing-system/state_space.png' | relative_url }}"
        alt="State space representation"
@@ -792,7 +792,7 @@ System parameters:
 </div>
 </div>
 
-<figure>
+<figure markdown="0">
   <img class="flowchart"
        src="{{ '/project/automated-mixing-system/flow_calculation.png' | relative_url }}"
        alt="Flow rate calculation"
@@ -818,7 +818,7 @@ H_total = 5.0 m
 </div>
 </div>
 
-<figure>
+<figure markdown="0">
   <img class="flowchart"
        src="{{ '/project/automated-mixing-system/head_calculation.png' | relative_url }}"
        alt="System head calculation"
@@ -860,7 +860,7 @@ def system_curve(Q):
 </div>
 </div>
 
-<figure>
+<figure markdown="0">
   <img class="flowchart"
        src="{{ '/project/automated-mixing-system/pump_curves.png' | relative_url }}"
        alt="Pump and system curves"
@@ -889,7 +889,7 @@ Velocity constraint: 1-2 m/s for chemical service
 </div>
 </div>
 
-<figure>
+<figure markdown="0">
   <img class="flowchart"
        src="{{ '/project/automated-mixing-system/pipe_velocity.png' | relative_url }}"
        alt="Pipe velocity verification"
@@ -916,7 +916,7 @@ Selected: Cv = 4.5 (80% margin)
 </div>
 </div>
 
-<figure>
+<figure markdown="0">
   <img class="flowchart"
        src="{{ '/project/automated-mixing-system/cv_calculation.png' | relative_url }}"
        alt="Valve Cv calculation"
@@ -1003,7 +1003,7 @@ void loop() {
 </div>
 </div>
 
-<figure>
+<figure markdown="0">
   <img class="flowchart"
        src="{{ '/project/automated-mixing-system/arduino_flow.png' | relative_url }}"
        alt="Arduino main loop flowchart"
@@ -1118,7 +1118,7 @@ class MixingSystemController:
 </div>
 </div>
 
-<figure>
+<figure markdown="0">
   <img class="flowchart"
        src="{{ '/project/automated-mixing-system/raspi_architecture.png' | relative_url }}"
        alt="Raspberry Pi software architecture"
@@ -1172,7 +1172,7 @@ mixing/alarm/triggered   - Alarm notifications
 </div>
 </div>
 
-<figure>
+<figure markdown="0">
   <img class="flowchart"
        src="{{ '/project/automated-mixing-system/mqtt_topics.png' | relative_url }}"
        alt="MQTT topic hierarchy"
@@ -1215,7 +1215,7 @@ mixing/alarm/triggered   - Alarm notifications
 </div>
 </div>
 
-<figure>
+<figure markdown="0">
   <img class="flowchart"
        src="{{ '/project/automated-mixing-system/power_distribution.png' | relative_url }}"
        alt="Power distribution diagram"
@@ -1252,7 +1252,7 @@ mixing/alarm/triggered   - Alarm notifications
 </div>
 </div>
 
-<figure>
+<figure markdown="0">
   <img class="flowchart"
        src="{{ '/project/automated-mixing-system/control_circuit.png' | relative_url }}"
        alt="Control circuit schematic"
@@ -1278,7 +1278,7 @@ mixing/alarm/triggered   - Alarm notifications
 </div>
 </div>
 
-<figure>
+<figure markdown="0">
   <img class="flowchart"
        src="{{ '/project/automated-mixing-system/safety_circuit.png' | relative_url }}"
        alt="Safety interlock circuit"
@@ -1329,7 +1329,7 @@ Grounding strategy:
 </div>
 </div>
 
-<figure>
+<figure markdown="0">
   <img class="flowchart"
        src="{{ '/project/automated-mixing-system/pcb_layout.png' | relative_url }}"
        alt="PCB component layout"
@@ -1376,7 +1376,7 @@ Grounding strategy:
 </div>
 </div>
 
-<figure>
+<figure markdown="0">
   <img class="flowchart"
        src="{{ '/project/automated-mixing-system/pid_diagram.png' | relative_url }}"
        alt="Process and Instrumentation Diagram"
@@ -1415,7 +1415,7 @@ Grounding strategy:
 </div>
 </div>
 
-<figure>
+<figure markdown="0">
   <img class="flowchart"
        src="{{ '/project/automated-mixing-system/pipe_support.png' | relative_url }}"
        alt="Pipe support spacing calculation"
@@ -1462,7 +1462,7 @@ Data packet format (20 bytes):
 </div>
 </div>
 
-<figure>
+<figure markdown="0">
   <img class="flowchart"
        src="{{ '/project/automated-mixing-system/packet_format.png' | relative_url }}"
        alt="Serial communication packet structure"
@@ -1520,7 +1520,7 @@ QoS 2 (Exactly once):
 </div>
 </div>
 
-<figure>
+<figure markdown="0">
   <img class="flowchart"
        src="{{ '/project/automated-mixing-system/mqtt_qos.png' | relative_url }}"
        alt="MQTT QoS level assignments"
@@ -1588,7 +1588,7 @@ CREATE TABLE alarms (
 </div>
 </div>
 
-<figure>
+<figure markdown="0">
   <img class="flowchart"
        src="{{ '/project/automated-mixing-system/database_schema.png' | relative_url }}"
        alt="Database schema diagram"
@@ -1653,7 +1653,7 @@ Acceptance Criteria:
 </div>
 </div>
 
-<figure>
+<figure markdown="0">
   <img class="flowchart"
        src="{{ '/project/automated-mixing-system/test_protocol.png' | relative_url }}"
        alt="System integration test protocol"
@@ -1708,7 +1708,7 @@ E-stop response times:
 </div>
 </div>
 
-<figure>
+<figure markdown="0">
   <img class="flowchart"
        src="{{ '/project/automated-mixing-system/failure_testing.png' | relative_url }}"
        alt="Failure mode test scenarios"
@@ -1732,7 +1732,7 @@ E-stop response times:
 | Transfer | 4 min | 2.8 min | 30% |
 | **Total** | **52 min** | **33 min** | **37%** |
 
-<figure>
+<figure markdown="0">
   <img class="flowchart"
        src="{{ '/project/automated-mixing-system/cycle_time.png' | relative_url }}"
        alt="Cycle time comparison"
@@ -1764,7 +1764,7 @@ def calculate_cpk(data, usl, lsl):
 </div>
 </div>
 
-<figure>
+<figure markdown="0">
   <img class="flowchart"
        src="{{ '/project/automated-mixing-system/spc_charts.png' | relative_url }}"
        alt="Statistical process control charts"
@@ -1788,7 +1788,7 @@ Availability = (4320 - 48 - 12) / 4320 = 98.6%
 </div>
 </div>
 
-<figure>
+<figure markdown="0">
   <img class="flowchart"
        src="{{ '/project/automated-mixing-system/availability.png' | relative_url }}"
        alt="System availability chart"
@@ -1855,7 +1855,7 @@ Availability = (4320 - 48 - 12) / 4320 = 98.6%
 | Mixing | No flow | Pump failure | Poor mixing | Flow monitoring |
 | Transfer | High pressure | Blockage | Pipe damage | Relief valve |
 
-<figure>
+<figure markdown="0">
   <img class="flowchart"
        src="{{ '/project/automated-mixing-system/hazop_matrix.png' | relative_url }}"
        alt="HAZOP analysis matrix"
@@ -1913,7 +1913,7 @@ H: High risk (mitigation required)
 </div>
 </div>
 
-<figure>
+<figure markdown="0">
   <img class="flowchart"
        src="{{ '/project/automated-mixing-system/sil_levels.png' | relative_url }}"
        alt="SIL determination chart"
@@ -1998,7 +1998,7 @@ H: High risk (mitigation required)
 </div>
 </div>
 
-<figure>
+<figure markdown="0">
   <img class="flowchart"
        src="{{ '/project/automated-mixing-system/ml_architecture.png' | relative_url }}"
        alt="Machine learning integration architecture"
@@ -2073,7 +2073,7 @@ class AnomalyDetector:
 </div>
 </div>
 
-<figure>
+<figure markdown="0">
   <img class="flowchart"
        src="{{ '/project/automated-mixing-system/digital_twin.png' | relative_url }}"
        alt="Digital twin architecture"
