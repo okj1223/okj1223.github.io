@@ -131,17 +131,15 @@ document.addEventListener('DOMContentLoaded', function() {
     keepActiveLinkVisible(activeLink);
   }
   
-  // 스크롤 이벤트 (throttled)
-  let ticking = false;
-  window.addEventListener('scroll', function() {
-    if (!ticking) {
-      requestAnimationFrame(function() {
-        updateActiveLink();
-        ticking = false;
-      });
-      ticking = true;
-    }
-  });
+  // Update active TOC state directly on scroll so long pages do not get stuck
+  // behind rAF throttling while the user is reading.
+  window.addEventListener('scroll', updateActiveLink, { passive: true });
+  document.addEventListener('scroll', updateActiveLink, { passive: true });
+  window.addEventListener('resize', updateActiveLink);
+
+  // Fallback sync keeps the sidebar state aligned on browsers/pages where
+  // scroll events on long, heavy documents can occasionally lag or be missed.
+  window.setInterval(updateActiveLink, 250);
   
   // 초기 활성 링크 설정
   updateActiveLink();
