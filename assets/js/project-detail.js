@@ -276,62 +276,167 @@ document.addEventListener('DOMContentLoaded', function() {
     return cleaned && !isGenericDescriptor(cleaned) ? cleaned : '';
   }
 
+  function getDescriptorWords(text) {
+    return (text || '')
+      .replace(/[()]/g, ' ')
+      .match(/[A-Za-z0-9][A-Za-z0-9.+/_-]*/g) || [];
+  }
+
+  function looksLikeTitledDescriptor(text) {
+    const connectorWords = new Set([
+      'a', 'an', 'and', 'as', 'at', 'by', 'for', 'from', 'in', 'into',
+      'of', 'on', 'or', 'the', 'through', 'to', 'with', 'within'
+    ]);
+    const words = getDescriptorWords(text).filter((word) => /[A-Za-z]/.test(word));
+    const lexicalWords = words.filter((word) => !connectorWords.has(word.toLowerCase()));
+
+    if (!lexicalWords.length) return false;
+
+    const titledWords = lexicalWords.filter((word) => (
+      /^[A-Z0-9][A-Z0-9.+/_-]*$/.test(word) ||
+      /^[A-Z][A-Za-z0-9.+/_-]*$/.test(word)
+    ));
+
+    return titledWords.length / lexicalWords.length >= 0.6;
+  }
+
+  function toDisplayTitle(text) {
+    const connectorWords = new Set([
+      'a', 'an', 'and', 'as', 'at', 'by', 'for', 'from', 'in', 'into',
+      'of', 'on', 'or', 'the', 'through', 'to', 'with', 'within'
+    ]);
+
+    return (text || '')
+      .split(/\s+/)
+      .map((word, index) => {
+        if (!word) return word;
+        if (/[()_]/.test(word)) return word;
+        if (/^[A-Z0-9.+/_-]+$/.test(word)) return word;
+        if (/[A-Z].*[A-Z]/.test(word)) return word;
+
+        const lower = word.toLowerCase();
+        if (connectorWords.has(lower) && index !== 0) return lower;
+
+        return lower.charAt(0).toUpperCase() + lower.slice(1);
+      })
+      .join(' ');
+  }
+
+  function normalizeDescriptorText(text) {
+    const cleaned = cleanContextText(text || '');
+    if (!cleaned) return '';
+    if (/[()_]/.test(cleaned)) return cleaned;
+    if (/^(?:ros2|git|npm|pnpm|yarn|python|bash|sh|docker|kubectl|cmake|make|curl)(?:\s+[a-z0-9:_./-]+){1,3}$/i.test(cleaned)) return cleaned;
+
+    const shortened = cleaned
+      .replace(/\s+(?:for|with)\b.*$/i, '')
+      .replace(/\s+that\b.*$/i, '')
+      .replace(/\s+to\b.*$/i, '');
+
+    const displayText = shortened.split(/\s+/).length >= 2 ? shortened : cleaned;
+    return looksLikeTitledDescriptor(displayText) ? displayText : toDisplayTitle(displayText);
+  }
+
+  function isSentenceLikeDescriptor(text) {
+    const cleaned = (text || '').trim();
+    const wordCount = getDescriptorWords(cleaned).length;
+    if (!cleaned || wordCount < 5) return false;
+    if (looksLikeTitledDescriptor(cleaned)) return false;
+
+    return (
+      /^[a-z]/.test(cleaned) ||
+      wordCount >= 7 ||
+      /[,.]/.test(cleaned) ||
+      /\b(is|was|were|are|be|being|been|that|which|using|used|performed|analyzed|verify|includes|supports|adapts|understanding)\b/i.test(cleaned)
+    );
+  }
+
   function isWeakCodeContext(text) {
     const cleaned = (text || '').trim();
     if (!cleaned) return true;
 
-    const wordCount = cleaned.split(/\s+/).length;
+    const wordCount = getDescriptorWords(cleaned).length;
     if (wordCount <= 2) return true;
+    if (isSentenceLikeDescriptor(cleaned)) return true;
+    if (/\b(example|examples|snippet|snippets|illustrative|public-safe|public safe)\b/i.test(cleaned)) return true;
+    if (/^i\s+/i.test(cleaned)) return true;
 
     return /^(total|encoder|decoder|result|results|summary|overview|method|value|values)$/i.test(cleaned);
   }
 
+  function isGenericCodeSymbol(text) {
+    return /^(?:main\(\)|[A-Z]+ payload|JSON payload|YAML payload|Code payload)$/i.test((text || '').trim());
+  }
+
+  function isWeakFunctionSymbol(name) {
+    return /^(?:main|run|test)$/i.test((name || '').trim());
+  }
+
   function extractCodeSymbol(info) {
-    const firstMeaningfulLine = info.lines.find((line) => {
+    const meaningfulLines = info.lines.filter((line) => {
       const trimmed = line.trim();
-      return trimmed && !trimmed.startsWith('#') && !trimmed.startsWith('//');
+      return (
+        trimmed &&
+        !trimmed.startsWith('#') &&
+        !trimmed.startsWith('//') &&
+        !trimmed.startsWith('@') &&
+        !/^(?:from|import)\s+/.test(trimmed)
+      );
     });
 
-    if (!firstMeaningfulLine) return '';
+    if (!meaningfulLines.length) return '';
 
-    const line = firstMeaningfulLine.trim();
+    const firstMeaningfulLine = meaningfulLines[0].trim();
     let match = null;
 
     if (['bash', 'shell', 'sh'].includes(info.lang)) {
-      return line.replace(/\s*\\$/, '').split(/\s+/).slice(0, 3).join(' ');
+      return firstMeaningfulLine.replace(/\s*\\$/, '').split(/\s+/).slice(0, 3).join(' ');
     }
 
     if (['json', 'yaml', 'yml'].includes(info.lang)) {
       return `${humanizeLanguage(info.card, info.lang)} payload`;
     }
 
-    match = line.match(/^class\s+([A-Za-z_][\w]*)/);
+    match = meaningfulLines
+      .map((line) => line.match(/^(?:async\s+)?def\s+([A-Za-z_][\w]*)\s*\(/))
+      .find(Boolean);
+    if (match && !isWeakFunctionSymbol(match[1])) return `${match[1]}()`;
+
+    match = meaningfulLines
+      .map((line) => line.match(/^(?:async\s+)?function\s+([A-Za-z_][\w]*)\s*\(/))
+      .find(Boolean);
+    if (match && !isWeakFunctionSymbol(match[1])) return `${match[1]}()`;
+
+    match = meaningfulLines
+      .map((line) => line.match(/^(?:void|int|float|double|bool|char|size_t|auto)\s+([A-Za-z_][\w]*)\s*\(/))
+      .find(Boolean);
+    if (match && !isWeakFunctionSymbol(match[1])) return `${match[1]}()`;
+
+    match = meaningfulLines
+      .map((line) => line.match(/^class\s+([A-Za-z_][\w]*)/))
+      .find(Boolean);
     if (match) return `${match[1]} class`;
 
-    match = line.match(/^def\s+([A-Za-z_][\w]*)\s*\(/);
-    if (match) return `${match[1]}()`;
-
-    match = line.match(/^(?:async\s+)?function\s+([A-Za-z_][\w]*)\s*\(/);
-    if (match) return `${match[1]}()`;
-
-    match = line.match(/^enum\s+([A-Za-z_][\w]*)/);
+    match = meaningfulLines
+      .map((line) => line.match(/^enum\s+([A-Za-z_][\w]*)/))
+      .find(Boolean);
     if (match) return `${match[1]} enum`;
-
-    match = line.match(/^(?:void|int|float|double|bool|char|size_t|auto)\s+([A-Za-z_][\w]*)\s*\(/);
-    if (match) return `${match[1]}()`;
 
     return '';
   }
 
   function resolveCodeDescriptor(info, buttonText) {
     const explicitDescriptor = extractDescriptor(buttonText || '');
+    const explicitDisplay = normalizeDescriptorText(explicitDescriptor);
+    const contextDisplay = normalizeDescriptorText(info.context || '');
     const codeSymbol = extractCodeSymbol(info);
 
-    if (explicitDescriptor && !isWeakCodeContext(explicitDescriptor)) return explicitDescriptor;
-    if (info.context && !isWeakCodeContext(info.context)) return info.context;
+    if (explicitDescriptor && !isWeakCodeContext(explicitDescriptor)) return explicitDisplay;
+    if (info.context && !isWeakCodeContext(info.context)) return contextDisplay;
+    if (codeSymbol && !isGenericCodeSymbol(codeSymbol)) return codeSymbol;
+    if (explicitDisplay) return explicitDisplay;
+    if (contextDisplay) return contextDisplay;
     if (codeSymbol) return codeSymbol;
-    if (explicitDescriptor) return explicitDescriptor;
-    if (info.context) return info.context;
     return '';
   }
 
