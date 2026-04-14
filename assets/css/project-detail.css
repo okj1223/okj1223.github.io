@@ -377,12 +377,14 @@ body {
 .project-toc {
   grid-column: 3 !important;
   justify-self: start !important;
+  display: flex !important;
+  flex-direction: column !important;
   width: 100% !important;
   max-width: var(--project-toc-width) !important;
   position: sticky !important;
   top: 96px !important;
   max-height: calc(100vh - 112px) !important;
-  overflow-y: auto !important;
+  overflow: hidden !important;
   padding: 1rem !important;
   background: var(--clr-surface, #fff) !important;
   border: 1px solid var(--clr-mist, #b8d4e3) !important;
@@ -393,12 +395,21 @@ body {
 }
 
 .project-toc h4 {
+  flex: 0 0 auto !important;
   margin: 0 0 0.8rem 0 !important;
   font-size: 0.9rem !important;
   font-weight: 600 !important;
   color: var(--forest-green, #5d737e) !important;
   border-bottom: 2px solid var(--eco-green, #7fb3d3) !important;
   padding-bottom: 0.4rem !important;
+}
+
+#toc-nav {
+  flex: 1 1 auto !important;
+  min-height: 0 !important;
+  overflow-y: auto !important;
+  scrollbar-gutter: stable !important;
+  padding-right: 0.2rem !important;
 }
 
 /* TOC 리스트 스타일 */
@@ -783,7 +794,13 @@ body {
     max-width: 100% !important;
     position: static !important;
     max-height: 150px !important;
+    overflow: visible !important;
     order: -1 !important;
+  }
+
+  #toc-nav {
+    overflow-y: visible !important;
+    padding-right: 0 !important;
   }
   
   .project-toc h4 {

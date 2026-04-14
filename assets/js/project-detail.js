@@ -54,22 +54,22 @@ document.addEventListener('DOMContentLoaded', function() {
   let activeTargetId = '';
 
   function keepActiveLinkVisible(activeLink) {
-    if (!activeLink || !tocSidebar || window.innerWidth <= 960) return;
-    if (tocSidebar.scrollHeight <= tocSidebar.clientHeight) return;
+    if (!activeLink || !tocNav || window.innerWidth <= 960) return;
+    if (tocNav.scrollHeight <= tocNav.clientHeight) return;
 
-    const sidebarRect = tocSidebar.getBoundingClientRect();
+    const sidebarRect = tocNav.getBoundingClientRect();
     const linkRect = activeLink.getBoundingClientRect();
     const padding = 12;
     const visibleTop = sidebarRect.top + padding;
     const visibleBottom = sidebarRect.bottom - padding;
 
     if (linkRect.top < visibleTop) {
-      tocSidebar.scrollTop += linkRect.top - visibleTop;
+      tocNav.scrollTop += linkRect.top - visibleTop;
       return;
     }
 
     if (linkRect.bottom > visibleBottom) {
-      tocSidebar.scrollTop += linkRect.bottom - visibleBottom;
+      tocNav.scrollTop += linkRect.bottom - visibleBottom;
     }
   }
 
