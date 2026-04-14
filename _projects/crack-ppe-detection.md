@@ -23,7 +23,8 @@ This paper presents a comprehensive industrial safety robot system developed by 
        src="{{ '/project/crack-ppe-detection/system_overview.png' | relative_url }}"
        alt="system architecture"
        loading="lazy">
-  <figcaption>Figure 1. Complete system architecture showing multi-robot coordination and MQTT-based communication
+  <figcaption>Figure 1. Complete system architecture showing multi-robot coordination and MQTT-based communication</figcaption>
+</figure>
 
 ---
 
@@ -53,7 +54,8 @@ Industrial safety remains a persistent challenge despite technological advanceme
        src="{{ '/project/crack-ppe-detection/fatality_rate_graph.png' | relative_url }}"
        alt="Trend of Industrial"
        loading="lazy">
-  <figcaption>Figure 2. Trend of Industrial Accident Rates and Fatalities in South Korea (2019-2024)
+  <figcaption>Figure 2. Trend of Industrial Accident Rates and Fatalities in South Korea (2019-2024)</figcaption>
+</figure>
 
 ### 1.2 Mathematical Risk Framework
 
@@ -95,7 +97,8 @@ Statistical analysis indicates **78.2% of industrial accidents** stem from behav
        src="{{ '/project/crack-ppe-detection/accident-circle.png' | relative_url }}"
        alt="Distribution of Accident"
        loading="lazy">
-  <figcaption>Figure 3. Distribution of Accident Causes by Category with Prevention Strategies
+  <figcaption>Figure 3. Distribution of Accident Causes by Category with Prevention Strategies</figcaption>
+</figure>
 
 ---
 
@@ -175,7 +178,8 @@ The operational design basis is **k≥2-out-of-4**: the coverage task remains va
        src="{{ '/project/crack-ppe-detection/model_comparison.png' | relative_url }}"
        alt="Box plots"
        loading="lazy">
-  <figcaption>Figure 4. Comprehensive model performance comparison including energy efficiency metrics
+  <figcaption>Figure 4. Comprehensive model performance comparison including energy efficiency metrics</figcaption>
+</figure>
 
 ### 3.2 Mathematical Framework for Detection
 
@@ -197,18 +201,22 @@ Where $w_i$ represents class-specific importance weights.
 > *Conceptual model — $w_i$ values were not empirically calibrated; the deployed system uses equal weighting ($w_i = 1$) with a single binary compliance threshold.*
 
 **Safety Zone Analysis:**
-$$\text{Safety}(x,y) = \begin{cases} 
+
+$$
+\text{Safety}(x,y) = \begin{cases} 
 1 & \text{if } \text{PPE}_{score} > \theta_{safe} \\
 \text{Warning} & \text{if } \theta_{warn} < \text{PPE}_{score} \leq \theta_{safe} \\
 0 & \text{if } \text{PPE}_{score} \leq \theta_{warn}
-\end{cases}$$
+\end{cases}
+$$
 
 <figure>
   <img class="project-image"
        src="{{ '/project/crack-ppe-detection/detection_framework.png' | relative_url }}"
        alt="Visual representation"
        loading="lazy">
-  <figcaption>Figure 5. Enhanced detection framework with temporal analysis and safety zone mapping
+  <figcaption>Figure 5. Enhanced detection framework with temporal analysis and safety zone mapping</figcaption>
+</figure>
 
 ### 3.3 Advanced Kalman Filter Design
 
@@ -265,7 +273,8 @@ $$I_{multiscale}(x,y) = \sum_{s=1}^S w_s \cdot G_{\sigma_s} * I(x,y)$$
        src="{{ '/project/crack-ppe-detection/hsv_segmentation.png' | relative_url }}"
        alt="HSV color space"
        loading="lazy">
-  <figcaption>Figure 6. Multi-scale crack detection showing progression from detection to 3D reconstruction
+  <figcaption>Figure 6. Multi-scale crack detection showing progression from detection to 3D reconstruction</figcaption>
+</figure>
 
 ### 4.3 3D Volumetric Analysis
 
@@ -309,7 +318,8 @@ $$L(t) = L_0 \cdot e^{\alpha \sqrt{t}} + \beta \cdot \sigma_{stress}$$
        src="{{ '/project/crack-ppe-detection/nav_arc.PNG' | relative_url }}"
        alt="Navigation architecture"
        loading="lazy">
-  <figcaption>Figure 7. Hierarchical navigation system with multi-layer decision making
+  <figcaption>Figure 7. Hierarchical navigation system with multi-layer decision making</figcaption>
+</figure>
 
 ### 5.2 Enhanced Multi-Robot Coordination
 
@@ -366,18 +376,22 @@ $$v_{max}(t) = v_{nominal} \cdot \min(1, \frac{d_{obstacle}}{d_{threshold}})$$
 | REST API | Low | Excellent | High | Low |
 
 **Advanced QoS Strategy:**
-$$\text{QoS}_{adaptive} = \begin{cases} 
+
+$$
+\text{QoS}_{adaptive} = \begin{cases} 
 0 & \text{if } \text{bandwidth} > \text{threshold}_{high} \\
 1 & \text{if } \text{threshold}_{low} < \text{bandwidth} \leq \text{threshold}_{high} \\
 2 & \text{if } \text{bandwidth} \leq \text{threshold}_{low}
-\end{cases}$$
+\end{cases}
+$$
 
 <figure>
   <img class="project-image"
        src="{{ '/project/crack-ppe-detection/protocol_comparison.png' | relative_url }}"
        alt="Protocol comparison"
        loading="lazy">
-  <figcaption>Figure 8. Comprehensive communication protocol analysis including edge computing integration
+  <figcaption>Figure 8. Comprehensive communication protocol analysis including edge computing integration</figcaption>
+</figure>
 
 ### 6.2 Message Optimization & Compression
 
@@ -482,7 +496,8 @@ $$\text{Max\_Robots} = \frac{\text{Bandwidth}_{available}}{\text{Bandwidth}_{per
        src="{{ '/project/crack-ppe-detection/dash.gif' | relative_url }}"
        alt="Web-based dashboard"
        loading="lazy">
-  <figcaption>Figure 9. Advanced dashboard with predictive analytics and 3D environment visualization
+  <figcaption>Figure 9. Advanced dashboard with predictive analytics and 3D environment visualization</figcaption>
+</figure>
 
 **Dashboard Performance:**
 - Real-time updates: 10 Hz
@@ -506,7 +521,8 @@ $$\text{Max\_Robots} = \frac{\text{Bandwidth}_{available}}{\text{Bandwidth}_{per
        src="{{ '/project/crack-ppe-detection/aplication.gif' | relative_url }}"
        alt="Mobile application"
        loading="lazy">
-  <figcaption>Figure 10. Mobile application with AR overlay and voice-activated emergency controls
+  <figcaption>Figure 10. Mobile application with AR overlay and voice-activated emergency controls</figcaption>
+</figure>
 
 **Mobile App Features:**
 - **AR Overlay:** Real-time safety information on camera view
@@ -546,16 +562,20 @@ $$w_i(\mathbf{R}_i) = \frac{|\mathbf{R}_i|^{-1}}{\sum_{j=1}^n |\mathbf{R}_j|^{-1
 $$\min_{f,q} \sum_{i=1}^n (T_i \cdot w_i) \quad \text{subject to} \quad \sum_{i=1}^n T_i \leq T_{deadline}$$
 
 **Adaptive Processing Pipeline:**
-```python
-class AdaptiveProcessor:
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Python snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-python">class AdaptiveProcessor:
     def adjust_parameters(self, load_factor):
-        if load_factor > 0.9:
+        if load_factor &gt; 0.9:
             self.confidence_threshold = min(0.85, self.confidence_threshold + 0.05)
             self.nms_threshold = max(0.3, self.nms_threshold - 0.05)
-        elif load_factor < 0.5:
+        elif load_factor &lt; 0.5:
             self.confidence_threshold = max(0.5, self.confidence_threshold - 0.02)
             self.nms_threshold = min(0.5, self.nms_threshold + 0.02)
-```
+</code></pre>
+</div>
+</div>
 
 **Performance Improvements:**
 - Peak load handling: 150% → **250%** (+67%)
@@ -1015,8 +1035,10 @@ We extend our profound gratitude to:
 
 #### A.2 Software Architecture (Complete Stack)
 
-```yaml
-# Complete Software Dependencies
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example YAML snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-yaml"># Complete Software Dependencies
 core_systems:
   os: "Ubuntu 22.04.3 LTS (Jammy Jellyfish)"
   kernel: "5.15.0-rt Real-Time Kernel"
@@ -1057,12 +1079,16 @@ monitoring:
   metrics: "prometheus-client==0.17.1"
   logging: "loguru==0.7.0"
   profiling: "py-spy==0.3.14"
-```
+</code></pre>
+</div>
+</div>
 
 #### A.3 Advanced Configuration Parameters
 
-```yaml
-# Advanced System Configuration
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example YAML snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-yaml"># Advanced System Configuration
 system_config:
   performance:
     cpu_governor: "performance"
@@ -1189,14 +1215,18 @@ system_config:
     rotation: "1 GB"
     retention: "30 days"
     remote_logging: true
-```
+</code></pre>
+</div>
+</div>
 
 ### Appendix B: Extended Code Implementations
 
 #### B.1 Advanced Multi-Robot Coordination System
 
-```python
-#!/usr/bin/env python3
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Python snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-python">#!/usr/bin/env python3
 """
 Advanced Multi-Robot Coordination System
 Implements distributed consensus algorithm with Byzantine fault tolerance
@@ -1326,7 +1356,7 @@ class DistributedCoordinator(Node):
             
             self.get_logger().info(f"Human detection task created: {task_id}")
     
-    def calculate_priority(self, task_type: TaskType, position) -> float:
+    def calculate_priority(self, task_type: TaskType, position) -&gt; float:
         """Calculate task priority based on multiple factors"""
         base_priority = {
             TaskType.EMERGENCY: 1.0,
@@ -1372,7 +1402,7 @@ class DistributedCoordinator(Node):
         
         self.broadcast_consensus_message(consensus_msg)
     
-    def find_optimal_robot(self, task: Task) -> str:
+    def find_optimal_robot(self, task: Task) -&gt; str:
         """Find optimal robot for task assignment using Hungarian algorithm"""
         available_robots = [robot_id for robot_id, status in self.robot_status.items()
                            if status.state in [RobotState.IDLE, RobotState.MOVING]]
@@ -1409,7 +1439,7 @@ class DistributedCoordinator(Node):
             
             # Process pending consensus votes
             for task_id, votes in list(self.consensus_votes.items()):
-                if len(votes) >= (2 * self.byzantine_threshold + 1):
+                if len(votes) &gt;= (2 * self.byzantine_threshold + 1):
                     # Sufficient votes received, make decision
                     assignment = self.resolve_consensus(votes)
                     
@@ -1431,7 +1461,7 @@ class DistributedCoordinator(Node):
             # Clean up old consensus rounds
             self.cleanup_old_consensus(current_time)
     
-    def resolve_consensus(self, votes: Dict[str, str]) -> Optional[str]:
+    def resolve_consensus(self, votes: Dict[str, str]) -&gt; Optional[str]:
         """Resolve consensus using majority voting with Byzantine fault tolerance"""
         vote_counts = {}
         for voter, assignment in votes.items():
@@ -1444,7 +1474,7 @@ class DistributedCoordinator(Node):
         best_assignment = None
         
         for assignment, voters in vote_counts.items():
-            if len(voters) > max_votes and len(voters) > self.byzantine_threshold:
+            if len(voters) &gt; max_votes and len(voters) &gt; self.byzantine_threshold:
                 max_votes = len(voters)
                 best_assignment = assignment
         
@@ -1473,7 +1503,7 @@ class DistributedCoordinator(Node):
         dy = target_y - current_pos[1]
         distance = np.sqrt(dx**2 + dy**2)
         
-        if distance > 0.1:  # If not at target
+        if distance &gt; 0.1:  # If not at target
             # Normalize direction
             dx /= distance
             dy /= distance
@@ -1489,7 +1519,7 @@ class DistributedCoordinator(Node):
             # Reached target
             self.current_state = RobotState.INVESTIGATING
             
-    def get_current_position(self) -> Tuple[float, float]:
+    def get_current_position(self) -&gt; Tuple[float, float]:
         """Get current robot position (would integrate with localization)"""
         # Placeholder - would get from TF2 or odometry
         return (0.0, 0.0)
@@ -1519,25 +1549,25 @@ class DistributedCoordinator(Node):
         with self.state_lock:
             self.robot_status[self.robot_id] = status
     
-    def get_battery_level(self) -> float:
+    def get_battery_level(self) -&gt; float:
         """Get current battery level (placeholder)"""
         return 85.0  # Would integrate with actual battery monitoring
     
-    def get_current_task_id(self) -> Optional[str]:
+    def get_current_task_id(self) -&gt; Optional[str]:
         """Get ID of currently executing task"""
         for task_id, task in self.active_tasks.items():
             if task.assigned_robot == self.robot_id:
                 return task_id
         return None
     
-    def calculate_capability_score(self) -> float:
+    def calculate_capability_score(self) -&gt; float:
         """Calculate robot capability score based on current status"""
         battery_factor = self.get_battery_level() / 100.0
         state_factor = 1.0 if self.current_state == RobotState.IDLE else 0.5
         
         return min(1.0, battery_factor * state_factor)
     
-    def compute_task_hash(self, task: Task) -> str:
+    def compute_task_hash(self, task: Task) -&gt; str:
         """Compute cryptographic hash of task for consensus verification"""
         task_str = f"{task.task_id}{task.task_type.value}{task.priority}{task.position}"
         return hashlib.sha256(task_str.encode()).hexdigest()
@@ -1607,7 +1637,7 @@ class DistributedCoordinator(Node):
             
             self.consensus_votes[task_id][voter] = vote
     
-    def evaluate_proposal(self, proposal: dict) -> str:
+    def evaluate_proposal(self, proposal: dict) -&gt; str:
         """Evaluate consensus proposal and return preferred assignment"""
         task_id = proposal['task_id']
         
@@ -1625,7 +1655,7 @@ class DistributedCoordinator(Node):
         for task_id in list(self.consensus_votes.keys()):
             if task_id in self.pending_tasks:
                 task = self.pending_tasks[task_id]
-                if current_time - task.created_time > timeout:
+                if current_time - task.created_time &gt; timeout:
                     # Consensus timed out, clean up
                     del self.consensus_votes[task_id]
                     del self.pending_tasks[task_id]
@@ -1640,7 +1670,7 @@ class DistributedCoordinator(Node):
             # Check for dead robots (missed heartbeats)
             dead_robots = []
             for robot_id, status in self.robot_status.items():
-                if current_time - status.last_heartbeat > 10.0:  # 10 second timeout
+                if current_time - status.last_heartbeat &gt; 10.0:  # 10 second timeout
                     dead_robots.append(robot_id)
             
             # Remove dead robots and reassign their tasks
@@ -1677,7 +1707,7 @@ class DistributedCoordinator(Node):
         for task_id, task in self.active_tasks.items():
             if task.assigned_robot == self.robot_id:
                 # Check if task is completed (simplified logic)
-                if current_time - task.created_time > task.estimated_duration:
+                if current_time - task.created_time &gt; task.estimated_duration:
                     completed_tasks.append(task_id)
                     self.current_state = RobotState.IDLE
         
@@ -1727,12 +1757,16 @@ def main(args=None):
 
 if __name__ == '__main__':
     main()
-```
+</code></pre>
+</div>
+</div>
 
 #### B.2 Advanced Computer Vision Pipeline
 
-```python
-#!/usr/bin/env python3
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Python snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-python">#!/usr/bin/env python3
 """
 Advanced Computer Vision Pipeline for Industrial Safety
 Implements multi-modal detection with temporal tracking
@@ -1816,7 +1850,7 @@ class MultiModalDetector(Node):
         
         self.get_logger().info("Multi-modal detector initialized")
     
-    def load_models(self) -> Dict[str, YOLO]:
+    def load_models(self) -&gt; Dict[str, YOLO]:
         """Load all YOLO models"""
         models = {}
         
@@ -1914,7 +1948,7 @@ class MultiModalDetector(Node):
         except Exception as e:
             self.get_logger().error(f"Image processing error: {e}")
     
-    def run_multimodal_detection(self, image: np.ndarray) -> List[Detection]:
+    def run_multimodal_detection(self, image: np.ndarray) -&gt; List[Detection]:
         """Run detection on all models"""
         all_detections = []
         current_time = time.time()
@@ -1955,7 +1989,7 @@ class MultiModalDetector(Node):
         
         return all_detections
     
-    def detect_cracks_hsv(self, image: np.ndarray) -> List[Detection]:
+    def detect_cracks_hsv(self, image: np.ndarray) -&gt; List[Detection]:
         """Enhanced crack detection using HSV segmentation"""
         crack_detections = []
         
@@ -1977,7 +2011,7 @@ class MultiModalDetector(Node):
             for contour in contours:
                 area = cv2.contourArea(contour)
                 
-                if area > 100:  # Minimum area threshold
+                if area &gt; 100:  # Minimum area threshold
                     # Get bounding rectangle
                     x, y, w, h = cv2.boundingRect(contour)
                     
@@ -1985,7 +2019,7 @@ class MultiModalDetector(Node):
                     aspect_ratio = max(w, h) / min(w, h)
                     confidence = min(0.95, area / 1000.0) * (1.0 / (1.0 + abs(aspect_ratio - 3.0)))
                     
-                    if confidence > 0.3:
+                    if confidence &gt; 0.3:
                         detection = Detection(
                             class_id=4,  # crack class
                             confidence=confidence,
@@ -2051,7 +2085,7 @@ class MultiModalDetector(Node):
         # Remove old tracks
         self.cleanup_old_tracks(current_time)
     
-    def match_detections_to_tracks(self, detections: List[Detection]) -> Tuple[List[Tuple[int, Detection]], List[Detection]]:
+    def match_detections_to_tracks(self, detections: List[Detection]) -&gt; Tuple[List[Tuple[int, Detection]], List[Detection]]:
         """Match detections to existing tracks using Hungarian algorithm"""
         if not self.tracked_objects or not detections:
             return [], detections
@@ -2092,11 +2126,11 @@ class MultiModalDetector(Node):
                 if j in used_detections:
                     continue
                     
-                if cost_matrix[i, j] < min_cost and cost_matrix[i, j] < 50.0:  # Distance threshold
+                if cost_matrix[i, j] &lt; min_cost and cost_matrix[i, j] &lt; 50.0:  # Distance threshold
                     min_cost = cost_matrix[i, j]
                     best_detection_idx = j
             
-            if best_detection_idx >= 0:
+            if best_detection_idx &gt;= 0:
                 matched_pairs.append((track_id, detections[best_detection_idx]))
                 used_tracks.add(track_id)
                 used_detections.add(best_detection_idx)
@@ -2106,7 +2140,7 @@ class MultiModalDetector(Node):
         
         return matched_pairs, unmatched_detections
     
-    def create_kalman_filter(self, initial_position: Tuple[float, float]) -> KalmanFilter:
+    def create_kalman_filter(self, initial_position: Tuple[float, float]) -&gt; KalmanFilter:
         """Create and initialize Kalman filter for object tracking"""
         kf = KalmanFilter(dim_x=4, dim_z=2)
         
@@ -2140,12 +2174,12 @@ class MultiModalDetector(Node):
         max_age = 2.0  # seconds
         
         old_tracks = [track_id for track_id, tracked_obj in self.tracked_objects.items()
-                     if current_time - tracked_obj.last_update > max_age]
+                     if current_time - tracked_obj.last_update &gt; max_age]
         
         for track_id in old_tracks:
             del self.tracked_objects[track_id]
     
-    def analyze_safety_compliance(self, image: np.ndarray, detections: List[Detection]) -> List[Dict]:
+    def analyze_safety_compliance(self, image: np.ndarray, detections: List[Detection]) -&gt; List[Dict]:
         """Analyze PPE compliance and safety violations"""
         safety_events = []
         
@@ -2179,7 +2213,7 @@ class MultiModalDetector(Node):
             # Calculate crack severity
             severity = self.assess_crack_severity(crack, image)
             
-            if severity['level'] > 1:  # Only report moderate or severe cracks
+            if severity['level'] &gt; 1:  # Only report moderate or severe cracks
                 world_pos = self.pixel_to_world_coordinates(crack.center)
                 
                 safety_event = {
@@ -2213,7 +2247,7 @@ class MultiModalDetector(Node):
         
         return safety_events
     
-    def check_ppe_compliance(self, person: Detection, ppe_detections: List[Detection]) -> Dict:
+    def check_ppe_compliance(self, person: Detection, ppe_detections: List[Detection]) -&gt; Dict:
         """Check PPE compliance for a person"""
         required_ppe = ['helmet', 'vest', 'boots']
         ppe_class_map = {1: 'helmet', 2: 'vest', 3: 'boots'}
@@ -2224,7 +2258,7 @@ class MultiModalDetector(Node):
         for ppe in ppe_detections:
             distance = self.calculate_detection_distance(person, ppe)
             
-            if distance < 100:  # pixels - would be calibrated based on image resolution
+            if distance &lt; 100:  # pixels - would be calibrated based on image resolution
                 ppe_type = ppe_class_map.get(ppe.class_id)
                 if ppe_type:
                     found_ppe.add(ppe_type)
@@ -2238,12 +2272,12 @@ class MultiModalDetector(Node):
             'compliance_score': len(found_ppe) / len(required_ppe)
         }
     
-    def calculate_detection_distance(self, det1: Detection, det2: Detection) -> float:
+    def calculate_detection_distance(self, det1: Detection, det2: Detection) -&gt; float:
         """Calculate distance between two detections"""
         return np.sqrt((det1.center[0] - det2.center[0])**2 + 
                       (det1.center[1] - det2.center[1])**2)
     
-    def assess_crack_severity(self, crack: Detection, image: np.ndarray) -> Dict:
+    def assess_crack_severity(self, crack: Detection, image: np.ndarray) -&gt; Dict:
         """Assess crack severity based on size and characteristics"""
         x1, y1, x2, y2 = crack.bbox
         
@@ -2259,11 +2293,11 @@ class MultiModalDetector(Node):
         actual_area = self.calculate_3d_area(crack.center, (width, height))
         
         # Severity classification
-        if actual_area < 25:  # mm²
+        if actual_area &lt; 25:  # mm²
             level = 0  # Minor
-        elif actual_area < 400:  # mm²
+        elif actual_area &lt; 400:  # mm²
             level = 1  # Moderate
-        elif actual_area < 2500:  # mm²
+        elif actual_area &lt; 2500:  # mm²
             level = 2  # Major
         else:
             level = 3  # Critical
@@ -2279,7 +2313,7 @@ class MultiModalDetector(Node):
             'priority': level / 3.0
         }
     
-    def calculate_3d_area(self, center: Tuple[float, float], pixel_dims: Tuple[int, int]) -> float:
+    def calculate_3d_area(self, center: Tuple[float, float], pixel_dims: Tuple[int, int]) -&gt; float:
         """Calculate real-world area using depth information"""
         if not hasattr(self, 'depth_image') or self.camera_matrix is None:
             return pixel_dims[0] * pixel_dims[1] * 0.1  # Fallback estimation
@@ -2289,7 +2323,7 @@ class MultiModalDetector(Node):
             cx, cy = int(center[0]), int(center[1])
             depth = self.depth_image[cy, cx] / 1000.0  # Convert mm to m
             
-            if depth > 0:
+            if depth &gt; 0:
                 # Camera intrinsics
                 fx = self.camera_matrix[0, 0]
                 fy = self.camera_matrix[1, 1]
@@ -2306,7 +2340,7 @@ class MultiModalDetector(Node):
         
         return pixel_dims[0] * pixel_dims[1] * 0.1  # Fallback
     
-    def pixel_to_world_coordinates(self, pixel_pos: Tuple[float, float]) -> Optional[Tuple[float, float, float]]:
+    def pixel_to_world_coordinates(self, pixel_pos: Tuple[float, float]) -&gt; Optional[Tuple[float, float, float]]:
         """Convert pixel coordinates to world coordinates"""
         if not hasattr(self, 'depth_image') or self.camera_matrix is None:
             return None
@@ -2315,7 +2349,7 @@ class MultiModalDetector(Node):
             x, y = int(pixel_pos[0]), int(pixel_pos[1])
             depth = self.depth_image[y, x] / 1000.0  # Convert mm to m
             
-            if depth > 0:
+            if depth &gt; 0:
                 # Camera intrinsics
                 fx = self.camera_matrix[0, 0]
                 fy = self.camera_matrix[1, 1]
@@ -2349,7 +2383,7 @@ class MultiModalDetector(Node):
             
             self.detection_pub.publish(point_msg)
     
-    def create_visualization(self, image: np.ndarray, detections: List[Detection]) -> np.ndarray:
+    def create_visualization(self, image: np.ndarray, detections: List[Detection]) -&gt; np.ndarray:
         """Create visualization image with detection overlays"""
         vis_image = image.copy()
         
@@ -2390,7 +2424,7 @@ class MultiModalDetector(Node):
         # Add performance information
         if self.inference_times:
             avg_time = np.mean(list(self.inference_times))
-            fps = 1000.0 / avg_time if avg_time > 0 else 0
+            fps = 1000.0 / avg_time if avg_time &gt; 0 else 0
             
             perf_text = f"FPS: {fps:.1f} | Detections: {len(detections)}"
             cv2.putText(vis_image, perf_text, (10, 30), 
@@ -2409,14 +2443,14 @@ class MultiModalDetector(Node):
     
     def log_performance(self):
         """Log performance statistics"""
-        if self.inference_times and self.frame_count > 0:
+        if self.inference_times and self.frame_count &gt; 0:
             avg_time = np.mean(list(self.inference_times))
             std_time = np.std(list(self.inference_times))
             max_time = np.max(list(self.inference_times))
             min_time = np.min(list(self.inference_times))
             
             elapsed_time = time.time() - self.start_time
-            overall_fps = self.frame_count / elapsed_time if elapsed_time > 0 else 0
+            overall_fps = self.frame_count / elapsed_time if elapsed_time &gt; 0 else 0
             
             self.get_logger().info(
                 f"Performance Stats - "
@@ -2443,12 +2477,16 @@ def main(args=None):
 
 if __name__ == '__main__':
     main()
-```
+</code></pre>
+</div>
+</div>
 
 #### B.3 Industrial Dashboard Backend
 
-```python
-#!/usr/bin/env python3
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Python snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-python">#!/usr/bin/env python3
 """
 Industrial Safety Dashboard Backend
 Real-time data processing and web interface for safety monitoring
@@ -2556,7 +2594,7 @@ class SafetyDashboard:
                 "total_events": len(self.event_history),
                 "active_events": len(self.active_events),
                 "robots_online": len([r for r in self.robot_status.values() 
-                                    if (datetime.now() - r.last_heartbeat).seconds < 30]),
+                                    if (datetime.now() - r.last_heartbeat).seconds &lt; 30]),
                 "average_response_time": self.calculate_average_response_time(),
                 "system_uptime": self.get_system_uptime()
             }
@@ -2802,7 +2840,7 @@ class SafetyDashboard:
             "robot": asdict(status)
         })
     
-    def send_robot_command(self, robot_id: str, command: dict) -> bool:
+    def send_robot_command(self, robot_id: str, command: dict) -&gt; bool:
         """Send command to specific robot via MQTT"""
         try:
             topic = f"robot/{robot_id}/commands"
@@ -2815,28 +2853,28 @@ class SafetyDashboard:
             logger.error(f"Error sending robot command: {e}")
             return False
     
-    def calculate_average_response_time(self) -> float:
+    def calculate_average_response_time(self) -&gt; float:
         """Calculate average system response time"""
         if not self.performance_metrics:
             return 0.0
         
         return np.mean([m.get('response_time', 0) for m in self.performance_metrics])
     
-    def get_system_uptime(self) -> str:
+    def get_system_uptime(self) -&gt; str:
         """Get system uptime string"""
         # Placeholder - would track actual start time
         return "24h 15m"
     
-    def get_dashboard_html(self) -> str:
+    def get_dashboard_html(self) -&gt; str:
         """Generate dashboard HTML"""
         return '''
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Industrial Safety Dashboard</title>
-    <style>
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Industrial Safety Dashboard&lt;/title&gt;
+    &lt;style&gt;
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f5f5f5; }
         .dashboard { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; padding: 20px; }
@@ -2850,66 +2888,66 @@ class SafetyDashboard:
         .severity-critical { border-left-color: #ff0000; }
         .severity-major { border-left-color: #ff8800; }
         .severity-moderate { border-left-color: #ffaa00; }
-    </style>
-</head>
-<body>
-    <div class="dashboard">
-        <div class="header panel">
-            <h1>🏭 Industrial Safety Dashboard</h1>
-            <p>Real-time monitoring and control system</p>
-        </div>
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div class="dashboard"&gt;
+        &lt;div class="header panel"&gt;
+            &lt;h1&gt;🏭 Industrial Safety Dashboard&lt;/h1&gt;
+            &lt;p&gt;Real-time monitoring and control system&lt;/p&gt;
+        &lt;/div&gt;
         
-        <div class="panel">
-            <h2>🚨 Active Safety Events</h2>
-            <div id="events-container">
-                <p>Loading events...</p>
-            </div>
-        </div>
+        &lt;div class="panel"&gt;
+            &lt;h2&gt;🚨 Active Safety Events&lt;/h2&gt;
+            &lt;div id="events-container"&gt;
+                &lt;p&gt;Loading events...&lt;/p&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
         
-        <div class="panel">
-            <h2>🤖 Robot Status</h2>
-            <div id="robots-container">
-                <p>Loading robot status...</p>
-            </div>
-        </div>
+        &lt;div class="panel"&gt;
+            &lt;h2&gt;🤖 Robot Status&lt;/h2&gt;
+            &lt;div id="robots-container"&gt;
+                &lt;p&gt;Loading robot status...&lt;/p&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
         
-        <div class="panel">
-            <h2>📊 System Metrics</h2>
-            <div id="metrics-container">
-                <div class="metric">
-                    <span>Total Events:</span>
-                    <span id="total-events">-</span>
-                </div>
-                <div class="metric">
-                    <span>Active Events:</span>
-                    <span id="active-events">-</span>
-                </div>
-                <div class="metric">
-                    <span>Robots Online:</span>
-                    <span id="robots-online">-</span>
-                </div>
-                <div class="metric">
-                    <span>Avg Response Time:</span>
-                    <span id="response-time">-</span>
-                </div>
-                <div class="metric">
-                    <span>System Uptime:</span>
-                    <span id="uptime">-</span>
-                </div>
-            </div>
-        </div>
+        &lt;div class="panel"&gt;
+            &lt;h2&gt;📊 System Metrics&lt;/h2&gt;
+            &lt;div id="metrics-container"&gt;
+                &lt;div class="metric"&gt;
+                    &lt;span&gt;Total Events:&lt;/span&gt;
+                    &lt;span id="total-events"&gt;-&lt;/span&gt;
+                &lt;/div&gt;
+                &lt;div class="metric"&gt;
+                    &lt;span&gt;Active Events:&lt;/span&gt;
+                    &lt;span id="active-events"&gt;-&lt;/span&gt;
+                &lt;/div&gt;
+                &lt;div class="metric"&gt;
+                    &lt;span&gt;Robots Online:&lt;/span&gt;
+                    &lt;span id="robots-online"&gt;-&lt;/span&gt;
+                &lt;/div&gt;
+                &lt;div class="metric"&gt;
+                    &lt;span&gt;Avg Response Time:&lt;/span&gt;
+                    &lt;span id="response-time"&gt;-&lt;/span&gt;
+                &lt;/div&gt;
+                &lt;div class="metric"&gt;
+                    &lt;span&gt;System Uptime:&lt;/span&gt;
+                    &lt;span id="uptime"&gt;-&lt;/span&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
         
-        <div class="panel">
-            <h2>🎛️ Control Panel</h2>
-            <div id="control-panel">
-                <button onclick="emergencyStop()">🛑 Emergency Stop All</button>
-                <button onclick="resumeOperations()">▶️ Resume Operations</button>
-                <button onclick="runDiagnostics()">🔧 Run Diagnostics</button>
-            </div>
-        </div>
-    </div>
+        &lt;div class="panel"&gt;
+            &lt;h2&gt;🎛️ Control Panel&lt;/h2&gt;
+            &lt;div id="control-panel"&gt;
+                &lt;button onclick="emergencyStop()"&gt;🛑 Emergency Stop All&lt;/button&gt;
+                &lt;button onclick="resumeOperations()"&gt;▶️ Resume Operations&lt;/button&gt;
+                &lt;button onclick="runDiagnostics()"&gt;🔧 Run Diagnostics&lt;/button&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
 
-    <script>
+    &lt;script&gt;
         let ws;
         let reconnectInterval;
 
@@ -2979,11 +3017,11 @@ class SafetyDashboard:
             container.innerHTML = '';
             
             if (events.length === 0) {
-                container.innerHTML = '<p>No active events</p>';
+                container.innerHTML = '&lt;p&gt;No active events&lt;/p&gt;';
                 return;
             }
             
-            events.forEach(event => {
+            events.forEach(event =&gt; {
                 const eventElement = createEventElement(event);
                 container.appendChild(eventElement);
             });
@@ -2997,20 +3035,20 @@ class SafetyDashboard:
             const timestamp = new Date(event.timestamp).toLocaleString();
             
             div.innerHTML = `
-                <div style="display: flex; justify-content: space-between; align-items: center;">
-                    <div>
-                        <strong>${event.event_type.replace('_', ' ').toUpperCase()}</strong>
-                        <br>
-                        <small>Robot: ${event.robot_id} | Time: ${timestamp}</small>
-                        <br>
-                        <small>Position: (${event.position.x?.toFixed(2)}, ${event.position.y?.toFixed(2)})</small>
-                        <br>
-                        <small>Confidence: ${(event.confidence * 100).toFixed(1)}%</small>
-                    </div>
-                    <div>
-                        ${!event.resolved ? `<button onclick="resolveEvent('${event.event_id}')">✅ Resolve</button>` : '<span style="color: green;">✅ Resolved</span>'}
-                    </div>
-                </div>
+                &lt;div style="display: flex; justify-content: space-between; align-items: center;"&gt;
+                    &lt;div&gt;
+                        &lt;strong&gt;${event.event_type.replace('_', ' ').toUpperCase()}&lt;/strong&gt;
+                        &lt;br&gt;
+                        &lt;small&gt;Robot: ${event.robot_id} | Time: ${timestamp}&lt;/small&gt;
+                        &lt;br&gt;
+                        &lt;small&gt;Position: (${event.position.x?.toFixed(2)}, ${event.position.y?.toFixed(2)})&lt;/small&gt;
+                        &lt;br&gt;
+                        &lt;small&gt;Confidence: ${(event.confidence * 100).toFixed(1)}%&lt;/small&gt;
+                    &lt;/div&gt;
+                    &lt;div&gt;
+                        ${!event.resolved ? `&lt;button onclick="resolveEvent('${event.event_id}')"&gt;✅ Resolve&lt;/button&gt;` : '&lt;span style="color: green;"&gt;✅ Resolved&lt;/span&gt;'}
+                    &lt;/div&gt;
+                &lt;/div&gt;
             `;
             
             return div;
@@ -3020,7 +3058,7 @@ class SafetyDashboard:
             const container = document.getElementById('robots-container');
             container.innerHTML = '';
             
-            robots.forEach(robot => {
+            robots.forEach(robot =&gt; {
                 const robotElement = createRobotElement(robot);
                 container.appendChild(robotElement);
             });
@@ -3033,27 +3071,27 @@ class SafetyDashboard:
             
             const lastHeartbeat = new Date(robot.last_heartbeat);
             const now = new Date();
-            const isOnline = (now - lastHeartbeat) < 30000; // 30 seconds
+            const isOnline = (now - lastHeartbeat) &lt; 30000; // 30 seconds
             const statusClass = isOnline ? 'status-online' : 'status-offline';
             
             div.innerHTML = `
-                <div style="display: flex; justify-content: space-between; align-items: center;">
-                    <div>
-                        <strong>${robot.robot_id}</strong>
-                        <span class="${statusClass}">●</span>
-                        <br>
-                        <small>State: ${robot.state}</small>
-                        <br>
-                        <small>Battery: ${robot.battery_level}%</small>
-                        <br>
-                        <small>Position: (${robot.position.x?.toFixed(2)}, ${robot.position.y?.toFixed(2)})</small>
-                        ${robot.current_task ? `<br><small>Task: ${robot.current_task}</small>` : ''}
-                    </div>
-                    <div>
-                        <button onclick="sendRobotCommand('${robot.robot_id}', 'status')">📊 Status</button>
-                        <button onclick="sendRobotCommand('${robot.robot_id}', 'return_home')">🏠 Return</button>
-                    </div>
-                </div>
+                &lt;div style="display: flex; justify-content: space-between; align-items: center;"&gt;
+                    &lt;div&gt;
+                        &lt;strong&gt;${robot.robot_id}&lt;/strong&gt;
+                        &lt;span class="${statusClass}"&gt;●&lt;/span&gt;
+                        &lt;br&gt;
+                        &lt;small&gt;State: ${robot.state}&lt;/small&gt;
+                        &lt;br&gt;
+                        &lt;small&gt;Battery: ${robot.battery_level}%&lt;/small&gt;
+                        &lt;br&gt;
+                        &lt;small&gt;Position: (${robot.position.x?.toFixed(2)}, ${robot.position.y?.toFixed(2)})&lt;/small&gt;
+                        ${robot.current_task ? `&lt;br&gt;&lt;small&gt;Task: ${robot.current_task}&lt;/small&gt;` : ''}
+                    &lt;/div&gt;
+                    &lt;div&gt;
+                        &lt;button onclick="sendRobotCommand('${robot.robot_id}', 'status')"&gt;📊 Status&lt;/button&gt;
+                        &lt;button onclick="sendRobotCommand('${robot.robot_id}', 'return_home')"&gt;🏠 Return&lt;/button&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
             `;
             
             return div;
@@ -3089,7 +3127,7 @@ class SafetyDashboard:
             if (eventElement) {
                 const button = eventElement.querySelector('button');
                 if (button) {
-                    button.outerHTML = '<span style="color: green;">✅ Resolved</span>';
+                    button.outerHTML = '&lt;span style="color: green;"&gt;✅ Resolved&lt;/span&gt;';
                 }
             }
         }
@@ -3127,7 +3165,7 @@ class SafetyDashboard:
             
             // Limit to last 10 events in display
             const events = container.querySelectorAll('.event');
-            if (events.length > 10) {
+            if (events.length &gt; 10) {
                 container.removeChild(events[events.length - 1]);
             }
             
@@ -3176,9 +3214,9 @@ class SafetyDashboard:
 
         // Start WebSocket connection
         connectWebSocket();
-    </script>
+    &lt;/script&gt;
     
-    <style>
+    &lt;style&gt;
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(-10px); }
             to { opacity: 1; transform: translateY(0); }
@@ -3249,9 +3287,9 @@ class SafetyDashboard:
                 padding: 15px;
             }
         }
-    </style>
-</body>
-</html>
+    &lt;/style&gt;
+&lt;/body&gt;
+&lt;/html&gt;
         '''
 
 # FastAPI app instance
@@ -3292,7 +3330,7 @@ async def cleanup_old_data(dashboard_instance):
             # Remove resolved events older than 24 hours
             old_events = [
                 event_id for event_id, event in dashboard_instance.active_events.items()
-                if event.resolved and (current_time - event.timestamp) > timedelta(hours=24)
+                if event.resolved and (current_time - event.timestamp) &gt; timedelta(hours=24)
             ]
             
             for event_id in old_events:
@@ -3301,7 +3339,7 @@ async def cleanup_old_data(dashboard_instance):
             # Remove offline robots (no heartbeat for 5 minutes)
             offline_robots = [
                 robot_id for robot_id, status in dashboard_instance.robot_status.items()
-                if (current_time - status.last_heartbeat) > timedelta(minutes=5)
+                if (current_time - status.last_heartbeat) &gt; timedelta(minutes=5)
             ]
             
             for robot_id in offline_robots:
@@ -3318,14 +3356,18 @@ async def cleanup_old_data(dashboard_instance):
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run(app, host="0.0.0.0", port=8000, log_level="info")
-```
+</code></pre>
+</div>
+</div>
 
 ### Appendix C: Deployment Configuration
 
 #### C.1 Docker Compose Configuration
 
-```yaml
-# docker-compose.yml
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example YAML snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-yaml"># docker-compose.yml
 version: '3.8'
 
 services:
@@ -3470,12 +3512,16 @@ networks:
     ipam:
       config:
         - subnet: 172.20.0.0/16
-```
+</code></pre>
+</div>
+</div>
 
 #### C.2 Kubernetes Deployment
 
-```yaml
-# k8s-deployment.yaml
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example YAML snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-yaml"># k8s-deployment.yaml
 apiVersion: v1
 kind: Namespace
 metadata:
@@ -3579,7 +3625,9 @@ spec:
           limits:
             memory: "2Gi"
             cpu: "1000m"
-```
+</code></pre>
+</div>
+</div>
 
 ---
 

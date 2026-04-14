@@ -54,7 +54,8 @@ Our system follows a modular event-based architecture where each component commu
        src="{{ '/project/pcb_inspection/archi.png' | relative_url }}"
        alt="System architecture"
        loading="lazy">
-  <figcaption>Figure 2.1: Overall system architecture of AI-based PCB intelligent QC inspection and control system
+  <figcaption>Figure 2.1: Overall system architecture of AI-based PCB intelligent QC inspection and control system</figcaption>
+</figure>
 
 ### Key Design Decisions
 
@@ -89,14 +90,16 @@ Our system follows a modular event-based architecture where each component commu
        src="{{ '/project/pcb_inspection/conveyor-belt-prototype-v1-assembled-arduino-rails.jpg' | relative_url }}"
        alt="3D-printed conveyor belt prototype fully assembled with rubber belt, rails, and Arduino control board"
        loading="lazy">
-  <figcaption>Figure 2.1: Fully assembled 3D-printed conveyor belt (rails + Arduino control).
+  <figcaption>Figure 2.1: Fully assembled 3D-printed conveyor belt (rails + Arduino control).</figcaption>
+</figure>
 
 <figure>
   <img class="project-image"
        src="{{ '/project/pcb_inspection/conveyor-belt-prototype-v1-frame-motors-no-belt.jpg' | relative_url }}"
        alt="3D-printed conveyor belt frame with twin yellow DC gear motors and roller, belt removed and no wiring"
        loading="lazy">
-  <figcaption>Figure 2.2: 3D-printed conveyor frame with motors installed, belt removed.
+  <figcaption>Figure 2.2: 3D-printed conveyor frame with motors installed, belt removed.</figcaption>
+</figure>
 
 #### 3.1 Design Requirements and Load Analysis
 
@@ -106,24 +109,32 @@ Our system follows a modular event-based architecture where each component commu
 - **Maximum load**: 5 boards simultaneously → total 125g
 - **Safety factor**: 2.0 applied → design load 250g
 
-```
-Load Analysis:
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Text snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-text">Load Analysis:
 - Static load: W_static = 0.25 kg
 - Dynamic load: W_dynamic = W_static × (1 + α) 
   where α = acceleration coefficient = 0.3
 - Total design load: W_design = 0.25 × (1 + 0.3) × 2.0 = 0.65 kg
-```
+</code></pre>
+</div>
+</div>
 
 **Conveyor Speed Design**
 Speed calculation to achieve target throughput of 15 PCB/min:
 
-```
-Inspection time: t_inspect = 3.2s (experimentally measured)
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Text snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-text">Inspection time: t_inspect = 3.2s (experimentally measured)
 Board spacing: L_spacing = 100mm (collision prevention)
 Conveyor length: L_total = 800mm
 
 Required speed: v = L_spacing / (60/15) = 100mm / 4s = 25 mm/s = 1.5 m/min
-```
+</code></pre>
+</div>
+</div>
 
 #### 3.2 Drive System Design and Motor Selection
 
@@ -131,8 +142,10 @@ Required speed: v = L_spacing / (60/15) = 100mm / 4s = 25 mm/s = 1.5 m/min
 
 The torque requirements for the conveyor belt system were calculated considering the following parameters:
 
-```
-System Parameters:
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Text snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-text">System Parameters:
 - Pulley radius: r = 15mm (3D printed pulley)
 - Belt friction coefficient: μ = 0.3 (PLA-rubber belt contact)
 - Bearing friction coefficient: μ_bearing = 0.01
@@ -142,7 +155,9 @@ Torque calculation:
 T_load = W × r × μ = 0.65 × 9.8 × 0.015 × 0.3 = 0.029 N⋅m
 T_bearing = W × r × μ_bearing = 0.65 × 9.8 × 0.015 × 0.01 = 0.00095 N⋅m
 T_total = T_load + T_bearing = 0.030 N⋅m
-```
+</code></pre>
+</div>
+</div>
 
 **Motor Selection and Verification**
 
@@ -152,21 +167,27 @@ Standard Arduino-compatible DC gear motor (TT Motor) specifications:
 - **Rated speed**: 200 RPM @ 6V
 - **Gear ratio**: 1:48
 
-```
-Performance verification:
-Torque margin = T_motor / T_required = 0.078 / 0.030 = 2.6 > 2.0 ✓
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Text snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-text">Performance verification:
+Torque margin = T_motor / T_required = 0.078 / 0.030 = 2.6 &gt; 2.0 ✓
 Speed verification:
 - Motor output speed: 200 RPM = 3.33 RPS
 - Pulley circumferential speed: v = 2πr × RPS = 2π × 0.015 × 3.33 = 0.314 m/s
 - Target speed ratio: 0.314 / 0.025 = 12.6× margin ✓
-```
+</code></pre>
+</div>
+</div>
 
 #### 3.3 Electrical Design and Control System
 
 **Power Requirements Analysis**
 
-```
-Motor power consumption:
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Text snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-text">Motor power consumption:
 - Single motor rated current: 150mA @ 6V
 - 4 motors total current: 600mA
 - Startup current (instantaneous): 1.2A (2× rated)
@@ -174,14 +195,18 @@ Motor power consumption:
 Arduino Uno power consumption:
 - Operating current: 50mA @ 5V
 - Total system power: P = 6V × 0.6A + 5V × 0.05A = 3.85W
-```
+</code></pre>
+</div>
+</div>
 
 **Battery System Design**
 
 Selected battery: 18650 Li-ion 3.7V 2500mAh × 2 in series
 
-```
-Battery calculation:
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Text snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-text">Battery calculation:
 - Nominal voltage: 3.7V × 2 = 7.4V
 - Capacity: 2500mAh
 - Discharge depth: 80% (battery life consideration)
@@ -189,7 +214,9 @@ Battery calculation:
 
 Operating time calculation:
 t_operation = (2000mAh) / (650mA) = 3.08 hours
-```
+</code></pre>
+</div>
+</div>
 
 **Motor Driver Circuit Design**
 
@@ -199,8 +226,10 @@ Using Arduino Motor Shield V3 to implement the following functions:
 - **Overcurrent protection**: Automatic cutoff above 2A
 - **Thermal protection**: Performance degradation above 70°C
 
-```cpp
-// Motor driver pin definitions and initialization
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example C++ snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-cpp">// Motor driver pin definitions and initialization
 const int PIN_DIR_A = 2;   // Motor A direction control
 const int PIN_PWM_A = 3;   // Motor A speed control (PWM)
 const int PIN_EN = 8;      // Driver enable
@@ -248,14 +277,16 @@ float monitor_current() {
     float voltage = raw_value * (5.0 / 1023.0);
     float current = voltage / 0.1; // Assuming 100mV/A sensor
     
-    if (current > 1.5) { // Overcurrent detection
+    if (current &gt; 1.5) { // Overcurrent detection
         stop_motor();
         Serial.println("OVERCURRENT PROTECTION ACTIVATED");
     }
     
     return current;
 }
-```
+</code></pre>
+</div>
+</div>
 
 #### 3.4 Mechanical Structure Design and 3D Printing
 
@@ -263,8 +294,10 @@ float monitor_current() {
 
 Using Creality Ender 3 V3 KE for PLA printing, the following parts were manufactured:
 
-```
-Main 3D printed parts:
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Text snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-text">Main 3D printed parts:
 1. Main frame (300mm × 150mm × 50mm)
    - Material: PLA
    - Infill: 20%
@@ -283,13 +316,17 @@ Main 3D printed parts:
 4. PCB guide rails
    - Height: 2mm (PCB thickness 1.6mm + clearance)
    - Width: 55mm (Arduino Uno width + clearance)
-```
+</code></pre>
+</div>
+</div>
 
 **Structural Analysis Simulation**
 
 Stress analysis considering PLA material properties:
-```
-PLA Material Properties:
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Text snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-text">PLA Material Properties:
 - Tensile strength: 37 MPa
 - Elastic modulus: 3.5 GPa
 - Density: 1.24 g/cm³
@@ -303,22 +340,26 @@ where:
 - I: Second moment of area (rectangular) = b×h³/12
 
 Calculation result:
-σ_max = 2.4 MPa << 37 MPa (safety factor 15.4)
-```
+σ_max = 2.4 MPa &lt;&lt; 37 MPa (safety factor 15.4)
+</code></pre>
+</div>
+</div>
 
 <figure>
   <img class="project-image"
        src="{{ '/project/pcb_inspection_robot/conveyor_3d_modeling.gif' | relative_url }}"
        alt="3D modeling process of conveyor frame"
        loading="lazy">
-  <figcaption>Figure 3.1: 3D modeling process of conveyor frame using Fusion software. Structural optimization design considering PLA material properties
+  <figcaption>Figure 3.1: 3D modeling process of conveyor frame using Fusion software. Structural optimization design considering PLA material properties</figcaption>
+</figure>
 
 <figure>
   <img class="project-image"
        src="{{ '/project/pcb_inspection/conveyor-belt-prototype-v1-frame-3d-printing.gif' | relative_url }}"
        alt="3D printing process using Creality Ender 3 V3 KE"
        loading="lazy">
-  <figcaption>Figure 3.2: Actual printing process of conveyor parts using Creality Ender 3 V3 KE. Settings: 0.2mm layer height, 20% infill
+  <figcaption>Figure 3.2: Actual printing process of conveyor parts using Creality Ender 3 V3 KE. Settings: 0.2mm layer height, 20% infill</figcaption>
+</figure>
 
 #### 3.1.5 Dynamic Analysis and Performance Optimization
 
@@ -326,8 +367,10 @@ Calculation result:
 
 Calculating appropriate tension for the timing belt to prevent slip:
 
-```
-Required tension calculation:
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Text snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-text">Required tension calculation:
 F_tension = T_motor / r_pulley + F_friction
 where:
 - T_motor = 0.078 N⋅m (motor torque)
@@ -337,19 +380,25 @@ where:
 F_tension = 0.078/0.015 + 1.91 = 5.2 + 1.91 = 7.11 N
 
 Safety factor 1.5 applied: F_required = 7.11 × 1.5 = 10.7 N
-```
+</code></pre>
+</div>
+</div>
 
 **Vibration Analysis and Damping**
 
 Calculating the natural frequency of the system:
-```
-f_natural = (1/2π) × √(k/m)
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Text snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-text">f_natural = (1/2π) × √(k/m)
 where:
 - k: System stiffness ≈ 10,000 N/m (experimentally measured)
 - m: Equivalent mass = 0.25 kg (PCB) + 0.1 kg (belt equivalent mass) = 0.35 kg
 
 f_natural = (1/2π) × √(10,000/0.35) = 26.9 Hz
-```
+</code></pre>
+</div>
+</div>
 
 Motor rotation frequency (200 RPM = 3.33 Hz) is sufficiently lower than the natural frequency, confirming no resonance issues.
 
@@ -359,8 +408,10 @@ Motor rotation frequency (200 RPM = 3.33 Hz) is sufficiently lower than the natu
 
 Algorithm that automatically adjusts speed during PCB detection:
 
-```cpp
-enum ConveyorState {
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example C++ snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-cpp">enum ConveyorState {
     IDLE,
     ACCELERATING,
     CONSTANT_SPEED,
@@ -388,7 +439,7 @@ public:
             case ACCELERATING:
                 // S-curve acceleration profile
                 float accel_time = (millis() - state_start_time) / 1000.0;
-                if (accel_time < 2.0) {
+                if (accel_time &lt; 2.0) {
                     current_pwm = PWM_NOMINAL * (1 - cos(PI * accel_time / 2));
                 } else {
                     current_state = CONSTANT_SPEED;
@@ -411,17 +462,21 @@ public:
         }
         
         analogWrite(PIN_PWM_A, abs(current_pwm));
-        digitalWrite(PIN_DIR_A, current_pwm >= 0 ? HIGH : LOW);
+        digitalWrite(PIN_DIR_A, current_pwm &gt;= 0 ? HIGH : LOW);
     }
 };
-```
+</code></pre>
+</div>
+</div>
 
 **Power Efficiency Optimization**
 
 Adaptive power management for extended battery life:
 
-```cpp
-void optimize_power_consumption() {
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example C++ snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-cpp">void optimize_power_consumption() {
     float battery_voltage = read_battery_voltage();
     float current_draw = monitor_current();
     
@@ -430,19 +485,21 @@ void optimize_power_consumption() {
     int compensated_pwm = PWM_NOMINAL * voltage_compensation;
     
     // Low power mode entry condition
-    if (battery_voltage < 6.5) {
+    if (battery_voltage &lt; 6.5) {
         // 20% speed reduction for 40% power savings
         compensated_pwm *= 0.8;
         Serial.println("Low power mode activated");
     }
     
     // Motor driver deactivation during idle time
-    if (idle_time > 30000) { // 30 second idle
+    if (idle_time &gt; 30000) { // 30 second idle
         digitalWrite(PIN_EN, LOW);
         Serial.println("Motor driver disabled for power saving");
     }
 }
-```
+</code></pre>
+</div>
+</div>
 
 #### 3.7 Performance Verification and Measured Data
 
@@ -460,8 +517,10 @@ Performance verification through 200 consecutive operation tests:
 
 **Reliability Analysis**
 
-```
-MTBF (Mean Time Between Failures) calculation:
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Text snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-text">MTBF (Mean Time Between Failures) calculation:
 - Total operating time: 500 hours
 - Failures occurred: 3 times (belt slip 2 times, motor overheating 1 time)
 - MTBF = 500 / 3 = 167 hours
@@ -470,7 +529,9 @@ Major failure modes:
 1. Belt slip (40% rate): Resolved by tension adjustment
 2. Motor overheating (20% rate): Resolved by duty cycle limitation
 3. Power abnormality (40% rate): Added low-voltage protection circuit
-```
+</code></pre>
+</div>
+</div>
 
 Through this in-depth design analysis and optimization, we can see that even a seemingly simple conveyor system actually requires precise engineering. Particularly, the kickstart algorithm for overcoming static friction was a key technology that improved system reliability by over 90%.
 
@@ -486,21 +547,27 @@ Through this in-depth design analysis and optimization, we can see that even a s
 
 YOLOv11n shows significant improvements in inference speed and accuracy compared to previous versions:
 
-```
-Performance comparison (PCB inspection specialized):
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Text snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-text">Performance comparison (PCB inspection specialized):
                    YOLOv8n    YOLOv11n   Improvement
 Inference speed (RTX3060)  18.2ms     12.3ms    +32.4%
 mAP@0.5             0.887      0.929     +4.7%
 Model size           6.2MB      5.8MB     -6.5%
 FLOPS              8.7G       6.9G      -20.7%
-```
+</code></pre>
+</div>
+</div>
 
 **Network Architecture Optimization**
 
 Core structure of YOLOv11n customized for PCB inspection:
 
-```python
-class PCBYOLOv11n:
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Python snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-python">class PCBYOLOv11n:
     def __init__(self, model_path="uno_final_dec.pt"):
         self.model = YOLO(model_path)
         
@@ -525,7 +592,7 @@ class PCBYOLOv11n:
         # 1. Resolution normalization
         H, W = frame.shape[:2]
         long_side = max(H, W)
-        if long_side > 512:  # DETECT_LONG_SIDE
+        if long_side &gt; 512:  # DETECT_LONG_SIDE
             scale = 512 / long_side
             new_w, new_h = int(W * scale), int(H * scale)
             frame = cv2.resize(frame, (new_w, new_h), interpolation=cv2.INTER_AREA)
@@ -535,7 +602,7 @@ class PCBYOLOv11n:
         lab[:,:,0] = cv2.createCLAHE(clipLimit=3.0, tileGridSize=(8,8)).apply(lab[:,:,0])
         enhanced = cv2.cvtColor(lab, cv2.COLOR_LAB2BGR)
         
-        return enhanced, scale if long_side > 512 else 1.0
+        return enhanced, scale if long_side &gt; 512 else 1.0
     
     def run_detection(self, frame):
         """Execute YOLO inference"""
@@ -578,14 +645,17 @@ class PCBYOLOv11n:
             })
         
         return detections
-```
+</code></pre>
+</div>
+</div>
 
 <figure>
   <img class="project-image"
        src="{{ '/project/pcb_inspection/yolo_detection_realtime.jpg' | relative_url }}"
        alt="Real-time YOLO detection on PCB assembly line"
        loading="lazy">
-  <figcaption>Figure 4.1: Real-time YOLOv11n detection process on conveyor belt. Accurate position and status detection of Arduino boards and various electronic components
+  <figcaption>Figure 4.1: Real-time YOLOv11n detection process on conveyor belt. Accurate position and status detection of Arduino boards and various electronic components</figcaption>
+</figure>
 
 
 #### 4.1.2 Template-based Quality Judgment System
@@ -594,8 +664,10 @@ class PCBYOLOv11n:
 
 Since PCB orientation may not be consistent, normalize the coordinate system based on the vector from board center to USB connector:
 
-```python
-def normalize_point_with_theta(pix_pt, board_box, theta_align):
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Python snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-python">def normalize_point_with_theta(pix_pt, board_box, theta_align):
     """
     To place board center as origin and 'board→USB' direction as +X,
     rotate all points by -theta_align around center → normalize by half-width/half-height.
@@ -626,14 +698,18 @@ def rotate_point(p, center, theta):
     yr = dx * s + dy * c + cy
     
     return (xr, yr)
-```
+</code></pre>
+</div>
+</div>
 
 **Template Matching and Greedy Algorithm**
 
 Perform optimal matching between reference template and currently detected components:
 
-```python
-def greedy_match(ref_pts, cur_pts):
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Python snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-python">def greedy_match(ref_pts, cur_pts):
     """
     Greedy matching between reference points and current points
     Match sequentially from closest distance to establish 1:1 correspondence
@@ -672,14 +748,18 @@ def greedy_match(ref_pts, cur_pts):
     unmatched_cur = set(range(len(cur_pts))) - used_c
     
     return matches, unmatched_ref, unmatched_cur
-```
+</code></pre>
+</div>
+</div>
 
 #### 4.1.3 Quality Judgment Logic and Threshold Settings
 
 **Multi-criteria Quality Assessment**
 
-```python
-def judge_frame(model, frame, template, whitelist=None):
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Python snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-python">def judge_frame(model, frame, template, whitelist=None):
     """Comprehensive quality judgment per frame"""
     
     # 1. Execute YOLO detection
@@ -745,7 +825,7 @@ def judge_frame(model, frame, template, whitelist=None):
         # Position error verification for matched components
         for ri, ci, dist in matches:
             # POS_TOL_NORM = 0.30 (allow up to 30% of normalized diagonal ratio)
-            ok = (dist <= POS_TOL_NORM * diag)
+            ok = (dist &lt;= POS_TOL_NORM * diag)
             if not ok:
                 ok_all = False
                 issues.append(f"{cname}: position error {dist:.3f}")
@@ -768,12 +848,16 @@ def judge_frame(model, frame, template, whitelist=None):
             ok_all = False
     
     return canvas, ok_all, issues
-```
+</code></pre>
+</div>
+</div>
 
 **Threshold Optimization and Performance Analysis**
 
-```
-Key parameter optimization results:
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Text snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-text">Key parameter optimization results:
 - CONF_THRES = 0.50: Minimize false positives
 - POS_TOL_NORM = 0.30: Allow 30% error in normalized coordinates
 - OK_RATIO = 0.60: OK if 60%+ of total frames are normal
@@ -790,7 +874,9 @@ POS_TOL_NORM  Accuracy   Error Rate  Processing Speed
 0.30          0.929      0.08        Normal    ← Selected
 0.40          0.912      0.06        Normal
 0.50          0.889      0.04        Normal
-```
+</code></pre>
+</div>
+</div>
 
 #### 4.1.4 Real-time Trigger System
 
@@ -798,8 +884,10 @@ POS_TOL_NORM  Accuracy   Error Rate  Processing Speed
 
 Trigger inspection when PCB reaches specific position on conveyor belt:
 
-```python
-def trigger_detection_system():
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Python snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-python">def trigger_detection_system():
     """Real-time PCB detection and trigger system"""
     
     # Trigger line setting
@@ -826,8 +914,8 @@ def trigger_detection_system():
             frame_count += 1
             
             # Judgment completion
-            if frame_count >= N_FRAMES_TO_JUDGE:  # 25 frames
-                final_ok = (ok_count >= int(N_FRAMES_TO_JUDGE * OK_RATIO))
+            if frame_count &gt;= N_FRAMES_TO_JUDGE:  # 25 frames
+                final_ok = (ok_count &gt;= int(N_FRAMES_TO_JUDGE * OK_RATIO))
                 
                 # Send result via MQTT
                 mqtt_publish_result(final_ok)
@@ -845,9 +933,9 @@ def trigger_detection_system():
             _, cy = box_center(board_box)
             
             # Apply hysteresis
-            if cy >= line_y + hyst_px:
+            if cy &gt;= line_y + hyst_px:
                 curr_state = True
-            elif cy <= line_y - hyst_px:
+            elif cy &lt;= line_y - hyst_px:
                 curr_state = False
             else:
                 curr_state = prev_state
@@ -865,12 +953,16 @@ def trigger_detection_system():
         
         # UI update
         self._update_waiting_ui(frame, line_y, board_box)
-```
+</code></pre>
+</div>
+</div>
 
 **MQTT Communication and Result Transmission**
 
-```python
-def mqtt_publish_result(is_ok: bool):
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Python snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-python">def mqtt_publish_result(is_ok: bool):
     """Send inspection result via MQTT"""
     
     payload = json.dumps({
@@ -896,15 +988,19 @@ def mqtt_publish_result(is_ok: bool):
     client.publish(PUB_TOPIC, payload, qos=MQTT_QOS, retain=False)
     client.disconnect()
     
-    print(f"[MQTT] {PUB_TOPIC} <- {payload}")
-```
+    print(f"[MQTT] {PUB_TOPIC} &lt;- {payload}")
+</code></pre>
+</div>
+</div>
 
 #### 4.1.5 Performance Optimization and Experimental Results
 
 **Real-time Processing Performance**
 
-```
-Processing performance benchmark (RTX 3060):
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Text snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-text">Processing performance benchmark (RTX 3060):
 - Preprocessing time: 2.1ms
 - YOLO inference: 12.3ms  
 - Post-processing: 3.8ms
@@ -921,12 +1017,16 @@ Speed         Detection Rate  Accuracy  Processing Delay
 20 PCB/min    97.8%          93.1%     0.4s  
 25 PCB/min    95.1%          91.2%     0.6s
 30 PCB/min    89.3%          87.8%     0.9s
-```
+</code></pre>
+</div>
+</div>
 
 **Detection Performance by Various Defect Types**
 
-```
-Performance analysis by defect type (500 test samples):
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Text snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-text">Performance analysis by defect type (500 test samples):
 
 Missing Components:
 - IC chip missing: 96.8% (152/157)
@@ -948,7 +1048,9 @@ Overall System Accuracy:
 - Normal board accuracy: 96.8% (435/450)
 - Defect board detection rate: 92.0% (46/50)
 - Total accuracy: 96.2% (481/500)
-```
+</code></pre>
+</div>
+</div>
 
 The core of the computer vision pipeline is the balance between real-time performance and high accuracy. Through the lightweight structure of YOLOv11n and template-based verification, we achieved both the speed and reliability required in industrial environments.
 
@@ -967,8 +1069,10 @@ The RealSense D435i camera is mounted on the Doosan Robotics M0609 robot arm end
 1. **PCB Centroid Position Detection**: Calculate precise 3D coordinates of the board to enable robot precise approach
 2. **Circuit Quality Judgment**: Compare actual boards with circuit models from web DB to verify connection status
 
-```python
-class VisionThread:
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Python snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-python">class VisionThread:
     def __init__(self, model: YOLO|None, names_map, baseline_angle: float):
         self.model = model
         self.names = names_map or {}
@@ -999,7 +1103,9 @@ class VisionThread:
             "enc_radius": 0.0,   # Cluster radius
             "enc_depth_m": 0.0   # Cluster depth
         }
-```
+</code></pre>
+</div>
+</div>
 
 #### 5.1.2 PCB Centroid Position Detection Algorithm
 
@@ -1007,8 +1113,10 @@ class VisionThread:
 
 After the robot moves to TARGET_POSE, it performs two automatic center alignments:
 
-```python
-def auto_centering_phase1(self):
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Python snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-python">def auto_centering_phase1(self):
     """Phase 1 center alignment: Based on entire board"""
     model_auto1 = YOLO(MODEL_PATH_AUTO1)  # Board detection dedicated model
     self.set_model(model_auto1, names_dict(model_auto1.names), baseline_angle=0.0)
@@ -1017,13 +1125,13 @@ def auto_centering_phase1(self):
     t_end = time.time() + 1.0
     best = {"cxcy": None, "depth_m": 0.0}
     
-    while time.time() < t_end:
+    while time.time() &lt; t_end:
         s = self.get_state()
-        if s["cxcy"] is not None and s["depth_m"] > 0:
+        if s["cxcy"] is not None and s["depth_m"] &gt; 0:
             best = {"cxcy": s["cxcy"], "depth_m": s["depth_m"]}
         time.sleep(0.02)
     
-    if best["cxcy"] is not None and best["depth_m"] > 0:
+    if best["cxcy"] is not None and best["depth_m"] &gt; 0:
         cx, cy = best["cxcy"]
         Z = float(best["depth_m"])
         
@@ -1069,25 +1177,29 @@ def auto_centering_phase2(self):
     t_end = time.time() + 1.0
     best = {"cxcy": None, "depth_m": 0.0}
     
-    while time.time() < t_end:
+    while time.time() &lt; t_end:
         s = self.get_state()
         enc_c = s.get("enc_center", None)
         enc_z = float(s.get("enc_depth_m", 0.0) or 0.0)
         
-        if enc_c is not None and enc_z > 0:
+        if enc_c is not None and enc_z &gt; 0:
             best = {"cxcy": (int(enc_c[0]), int(enc_c[1])), "depth_m": enc_z}
         time.sleep(0.02)
     
     # Move to cluster center using same logic as Phase 1
     # ...
-```
+</code></pre>
+</div>
+</div>
 
 **Cluster-based Center Point Calculation**
 
 Algorithm to find the center of the densest cluster by analyzing component density:
 
-```python
-def _calculate_dense_cluster_center(self, detection_result):
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Python snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-python">def _calculate_dense_cluster_center(self, detection_result):
     """Calculate center of densest cluster from non-board bbox centers"""
     if detection_result.boxes is None or len(detection_result.boxes) == 0:
         return None, 0.0
@@ -1103,7 +1215,7 @@ def _calculate_dense_cluster_center(self, detection_result):
             continue
         candidate_points.append(((x1 + x2) / 2.0, (y1 + y2) / 2.0))
     
-    if len(candidate_points) < 3:
+    if len(candidate_points) &lt; 3:
         return None, 0.0
     
     P = np.array(candidate_points, dtype=np.float32)
@@ -1115,14 +1227,14 @@ def _calculate_dense_cluster_center(self, detection_result):
     
     for i in range(len(P)):
         distances = np.linalg.norm(P - P[i], axis=1)
-        mask = (distances <= eps)
+        mask = (distances &lt;= eps)
         count = int(mask.sum())
         
-        if count > best_count:
+        if count &gt; best_count:
             best_count = count
             best_mask = mask
     
-    if best_count >= 3:
+    if best_count &gt;= 3:
         cluster_points = P[best_mask]
         cluster_center = cluster_points.mean(axis=0)
         cluster_radius = float(np.max(np.linalg.norm(cluster_points - cluster_center, axis=1)))
@@ -1130,7 +1242,9 @@ def _calculate_dense_cluster_center(self, detection_result):
         return (int(round(cluster_center[0])), int(round(cluster_center[1]))), cluster_radius
     
     return None, 0.0
-```
+</code></pre>
+</div>
+</div>
 
 #### 5.1.3 Web DB-based Circuit Model Management System
 
@@ -1138,8 +1252,10 @@ def _calculate_dense_cluster_center(self, detection_result):
 
 Circuit models uploaded from web interface are stored in the following JSON format:
 
-```json
-{
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example JSON snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-json">{
   "schema": "v1",
   "job_id": "PCB_INSPECT_001",
   "components": [
@@ -1155,12 +1271,16 @@ Circuit models uploaded from web interface are stored in the following JSON form
     ["IC1", "R1"]
   ]
 }
-```
+</code></pre>
+</div>
+</div>
 
 **MQTT-based Spec Reception and Caching**
 
-```python
-class MqttCommand:
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Python snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-python">class MqttCommand:
     def _on_message(self, client, userdata, msg):
         try:
             payload = json.loads(msg.payload.decode("utf-8"))
@@ -1178,7 +1298,7 @@ class MqttCommand:
         # 2) Circuit spec caching
         _try_cache_spec_from_payload(payload)
 
-def _try_cache_spec_from_payload(payload: dict) -> bool:
+def _try_cache_spec_from_payload(payload: dict) -&gt; bool:
     """Extract and cache circuit spec from received payload"""
     if not isinstance(payload, dict): 
         return False
@@ -1236,14 +1356,17 @@ def _try_cache_spec_from_payload(payload: dict) -> bool:
     
     print(f"[MQTT] spec cached: {len(components)} comps, {len(edges_clean)} edges")
     return True
-```
+</code></pre>
+</div>
+</div>
 
 <figure>
   <img class="project-image"
        src="{{ '/project/pcb_inspection/web_circuit_designer.PNG' | relative_url }}"
        alt="Web-based circuit design interface"
        loading="lazy">
-  <figcaption>Figure 5.1: Web-based circuit design interface. Build circuit models by placing components via drag & drop and drawing connection lines
+  <figcaption>Figure 5.1: Web-based circuit design interface. Build circuit models by placing components via drag & drop and drawing connection lines</figcaption>
+</figure>
 
 
 #### 5.1.4 Real-time Circuit Quality Judgment System
@@ -1252,8 +1375,10 @@ def _try_cache_spec_from_payload(payload: dict) -> bool:
 
 Detect both endpoints of cables on actual PCB to verify connection status between components:
 
-```python
-def _cable_endpoints_from_crop(crop_bgr: np.ndarray):
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Python snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-python">def _cable_endpoints_from_crop(crop_bgr: np.ndarray):
     """Extract both endpoints from cable crop image"""
     h, w = crop_bgr.shape[:2]
     
@@ -1282,8 +1407,8 @@ def _cable_endpoints_from_crop(crop_bgr: np.ndarray):
             break
     
     # Fit line to skeleton points
-    ys, xs = np.where(skeleton > 0)
-    if xs.size >= 20:
+    ys, xs = np.where(skeleton &gt; 0)
+    if xs.size &gt;= 20:
         points = np.column_stack((xs, ys)).astype(np.float32)
         vx, vy, x0, y0 = cv2.fitLine(points, cv2.DIST_L2, 0, 0.01, 0.01).flatten()
         
@@ -1304,12 +1429,16 @@ def _cable_endpoints_from_crop(crop_bgr: np.ndarray):
     
     # Fallback to bbox endpoints if skeletonization fails
     return list(_estimate_two_pins_from_box(0, 0, w, h))
-```
+</code></pre>
+</div>
+</div>
 
 **Connection Status Measurement and Verification**
 
-```python
-def _measure_edges(components, cables, r_snap=18.0):
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Python snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-python">def _measure_edges(components, cables, r_snap=18.0):
     """Measure connection status between cables and components"""
     pins_by_ref = _build_pins_by_ref(components)
     edges = set()
@@ -1321,12 +1450,12 @@ def _measure_edges(components, cables, r_snap=18.0):
         for ref, pin_list in pins_by_ref.items():
             for i, (px, py) in enumerate(pin_list):
                 d = math.hypot(px - pt[0], py - pt[1])
-                if d < best[2]:
+                if d &lt; best[2]:
                     best = (ref, i, d)
         return best
     
     for cable in cables:
-        if len(cable["ends"]) < 2:
+        if len(cable["ends"]) &lt; 2:
             continue
         
         point_a, point_b = cable["ends"][0], cable["ends"][1]
@@ -1336,10 +1465,10 @@ def _measure_edges(components, cables, r_snap=18.0):
         ref_b, pin_b, dist_b = nearest_pin(point_b)
         
         # Replace with entire component if no pin within snap distance
-        if ref_a is None or dist_a > r_snap:
+        if ref_a is None or dist_a &gt; r_snap:
             ref_a, dist_a = _nearest_component(point_a, components)
             pin_a = None
-        if ref_b is None or dist_b > r_snap:
+        if ref_b is None or dist_b &gt; r_snap:
             ref_b, dist_b = _nearest_component(point_b, components)
             pin_b = None
         
@@ -1371,11 +1500,13 @@ def _compare(spec_edges: set, measured: set):
     """Compare spec with measured values"""
     missing = sorted(list(spec_edges - measured))
     extra = sorted(list(measured - spec_edges))
-    ok = sorted(list(spec_edges & measured))
+    ok = sorted(list(spec_edges &amp; measured))
     
     verdict = "PASS" if (not missing and not extra) else "FAIL"
     return verdict, ok, missing, extra
-```
+</code></pre>
+</div>
+</div>
 
 #### 5.1.5 Stabilized Judgment System
 
@@ -1383,8 +1514,10 @@ def _compare(spec_edges: set, measured: set):
 
 To reduce noise from single frames, collect multiple frames over 1 second and determine final result through voting:
 
-```python
-class StabilizedJudgment:
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Python snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-python">class StabilizedJudgment:
     def __init__(self):
         self._judge_collect_start = 0.0
         self._judge_collect_for = 1.0  # 1 second collection
@@ -1423,7 +1556,7 @@ class StabilizedJudgment:
             self._judge_frames.append(frame_package)
             
             # Keep maximum 60 frames
-            if len(self._judge_frames) > 60:
+            if len(self._judge_frames) &gt; 60:
                 self._judge_frames.pop(0)
             
             # Temporary judgment of current frame
@@ -1448,35 +1581,40 @@ class StabilizedJudgment:
             # Majority voting method
             N = max(1, len(self._judge_frames))
             vote_threshold = max(1, int(0.5 * N))
-            final_edges = {e for e, count in self._edge_counts.items() if count >= vote_threshold}
+            final_edges = {e for e, count in self._edge_counts.items() if count &gt;= vote_threshold}
             
             final_verdict, final_ok, final_missing, final_extra = _compare(spec_obj["edges"], final_edges)
             
             # Select frame closest to final edges
             best_idx, best_score = 0, -1
             for i, frame_pkg in enumerate(self._judge_frames):
-                score = len(frame_pkg["edges_spec"] & final_edges) * 2 - len(final_edges - frame_pkg["edges_spec"])
-                if score > best_score:
+                score = len(frame_pkg["edges_spec"] &amp; final_edges) * 2 - len(final_edges - frame_pkg["edges_spec"])
+                if score &gt; best_score:
                     best_idx, best_score = i, score
             
             best_frame = self._judge_frames[best_idx] if self._judge_frames else None
         
         return final_verdict, final_ok, final_missing, final_extra, best_frame
-```
+</code></pre>
+</div>
+</div>
 
 <figure>
   <img class="project-image"
        src="{{ '/project/pcb_inspection/circuit_judgment_overlay.jpg' | relative_url }}"
        alt="Real-time circuit judgment overlay"
        loading="lazy">
-  <figcaption>Figure 5.2: Real-time circuit judgment overlay. Visual display of cable connection status, component positions, and measurement results vs spec
+  <figcaption>Figure 5.2: Real-time circuit judgment overlay. Visual display of cable connection status, component positions, and measurement results vs spec</figcaption>
+</figure>
 
 #### 5.1.6 Hand-Eye Calibration and Coordinate Transformation
 
 **Precise Coordinate Calculation Based on Transformation Matrix**
 
-```python
-def cam_point_m_to_base_mm(current_posx, T_g2c, X_m, Y_m, Z_m):
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Python snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-python">def cam_point_m_to_base_mm(current_posx, T_g2c, X_m, Y_m, Z_m):
     """Convert point in camera coordinate system to robot base coordinate system"""
     if isinstance(current_posx, tuple):
         pose_list = list(current_posx[0])
@@ -1510,14 +1648,18 @@ def posx_to_T_base2gripper(posx_list):
     T[:3, 3] = [x, y, z]
     
     return T
-```
+</code></pre>
+</div>
+</div>
 
 #### 5.1.7 Performance Analysis and Optimization
 
 **Center Alignment Accuracy**
 
-```
-Center alignment performance test results (50 repetitions):
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Text snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-text">Center alignment performance test results (50 repetitions):
 Phase 1 alignment (board-based):
 - X-axis accuracy: ±2.1mm (1σ)
 - Y-axis accuracy: ±1.8mm (1σ)
@@ -1532,12 +1674,16 @@ Overall system:
 - Final position accuracy: ±1.5mm (1σ)
 - Total alignment time: 3.2 ± 0.4s
 - Judgment reliability: 92.3%
-```
+</code></pre>
+</div>
+</div>
 
 **Circuit Judgment Performance**
 
-```
-Circuit quality judgment results (100 test circuits):
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Text snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-text">Circuit quality judgment results (100 test circuits):
 Normal circuits (50):
 - Correct judgment: 47 (94.0%)
 - False positive (FAIL): 3 (6.0%)
@@ -1557,7 +1703,9 @@ Processing performance:
 - Phase 2 center alignment: 1.5 ± 0.4s  
 - Circuit judgment: 2.0 ± 0.5s
 - Total inspection time: 4.7 ± 0.8s
-```
+</code></pre>
+</div>
+</div>
 
 ### 5.2 Web-based Circuit Design and Management System
 
@@ -1573,8 +1721,10 @@ The web interface is designed to allow intuitive drag & drop circuit diagram con
 
 **Database Schema**
 
-```sql
--- Circuit model table
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example SQL snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-sql">-- Circuit model table
 CREATE TABLE circuit_models (
     id SERIAL PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
@@ -1608,14 +1758,18 @@ CREATE TABLE circuit_versions (
     created_by VARCHAR(100),
     created_at TIMESTAMP DEFAULT NOW()
 );
-```
+</code></pre>
+</div>
+</div>
 
 #### 5.2.2 Real-time Inspection Result Visualization
 
 Inspection results can be monitored in real-time on the web dashboard:
 
-```javascript
-// Real-time result reception via WebSocket
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example JavaScript snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-javascript">// Real-time result reception via WebSocket
 class InspectionDashboard {
     constructor() {
         this.ws = new WebSocket('wss://inspection-server/ws');
@@ -1624,7 +1778,7 @@ class InspectionDashboard {
     }
     
     setupEventHandlers() {
-        this.ws.onmessage = (event) => {
+        this.ws.onmessage = (event) =&gt; {
             const data = JSON.parse(event.data);
             
             switch(data.type) {
@@ -1662,21 +1816,25 @@ class InspectionDashboard {
         this.drawCircuitBackground(ctx);
         
         // Color coding by connection status
-        connections.forEach(conn => {
+        connections.forEach(conn =&gt; {
             const color = conn.status === 'OK' ? '#00ff00' : 
                          conn.status === 'MISSING' ? '#ff0000' : '#ffff00';
             this.drawConnection(ctx, conn.from, conn.to, color);
         });
     }
 }
-```
+</code></pre>
+</div>
+</div>
 
 #### 5.2.3 AI-based Automatic Circuit Generation
 
 Feature that automatically suggests common circuit patterns using machine learning:
 
-```python
-class CircuitPatternGenerator:
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Python snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-python">class CircuitPatternGenerator:
     def __init__(self):
         self.pattern_db = self.load_common_patterns()
         self.ml_model = self.load_trained_model()
@@ -1724,7 +1882,9 @@ class CircuitPatternGenerator:
             "violations": violations,
             "warnings": self.generate_warnings(circuit_spec)
         }
-```
+</code></pre>
+</div>
+</div>
 
 ### 5.3 Integrated System Performance Optimization
 
@@ -1732,8 +1892,10 @@ class CircuitPatternGenerator:
 
 Asynchronous processing structure for ensuring real-time performance:
 
-```python
-class IntegratedVisionSystem:
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Python snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-python">class IntegratedVisionSystem:
     def __init__(self):
         self.vision_thread = VisionThread(None, {}, 0.0)
         self.command_processor = threading.Thread(target=self._process_commands, daemon=True)
@@ -1796,12 +1958,16 @@ class IntegratedVisionSystem:
                 continue
             except Exception as e:
                 print(f"[RESULT-PUBLISHER] Error: {e}")
-```
+</code></pre>
+</div>
+</div>
 
 #### 5.3.2 Memory and CPU Optimization
 
-```python
-class PerformanceOptimizer:
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Python snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-python">class PerformanceOptimizer:
     def __init__(self):
         self.frame_buffer = collections.deque(maxlen=10)
         self.result_cache = {}
@@ -1814,7 +1980,7 @@ class PerformanceOptimizer:
         
         if frame_hash in self.result_cache:
             cache_age = time.time() - self.result_cache[frame_hash]['timestamp']
-            if cache_age < 0.1:  # 100ms cache validity
+            if cache_age &lt; 0.1:  # 100ms cache validity
                 return self.result_cache[frame_hash]['result']
         
         # GPU memory pre-allocation
@@ -1831,7 +1997,7 @@ class PerformanceOptimizer:
         }
         
         # Periodic cache cleanup
-        if time.time() - self.last_cleanup > 5.0:
+        if time.time() - self.last_cleanup &gt; 5.0:
             self._cleanup_cache()
             self.last_cleanup = time.time()
         
@@ -1843,14 +2009,16 @@ class PerformanceOptimizer:
         expired_keys = []
         
         for key, value in self.result_cache.items():
-            if current_time - value['timestamp'] > 1.0:
+            if current_time - value['timestamp'] &gt; 1.0:
                 expired_keys.append(key)
         
         for key in expired_keys:
             del self.result_cache[key]
         
         print(f"[CACHE] Cleaned {len(expired_keys)} expired entries")
-```
+</code></pre>
+</div>
+</div>
 
 Through this integrated system, complete automation of the PCB inspection process has been realized. The combination of RealSense 3D vision and web-based circuit design tools allows users to intuitively set inspection standards, while the robot performs precise and reliable quality judgments based on these standards.
 
@@ -1869,28 +2037,34 @@ This system implements a 2-stage verification pipeline that hierarchically combi
        src="{{ '/project/pcb_inspection/voice_control_system_architecture.png' | relative_url }}"
        alt="Voice control system architecture"
        loading="lazy">
-  <figcaption>Figure 6.1: Voice control system architecture with dual-stage authentication
+  <figcaption>Figure 6.1: Voice control system architecture with dual-stage authentication</figcaption>
+</figure>
 
 <figure>
   <img class="flowchart"
        src="{{ '/project/pcb_inspection/STT_system_architecture.png' | relative_url }}"
        alt="STT system architecture"
        loading="lazy">
-  <figcaption>Figure 6.2: Speech-to-text processing pipeline
+  <figcaption>Figure 6.2: Speech-to-text processing pipeline</figcaption>
+</figure>
 
 ## 6.2 Dataset Construction and Augmentation
 
 ### 6.2.1 Hierarchical Dataset Structure
 
-```
-data/
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Text snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-text">data/
 ├── user_pos/     (N=30-50)  # User "Hey,Rokey" utterances
 ├── other_spk/    (N=50-100) # Other speaker voices (same/similar utterances)
 ├── noise/        (N=20-50)  # Environmental noise (3-second clips)
 └── tts_neg/      (N=16-32)  # TTS-generated hard negatives
     ├── coqui/    # Tacotron2-DDC (Korean)
     └── gtts/     # Google TTS fallback
-```
+</code></pre>
+</div>
+</div>
 
 ### 6.2.2 Data Augmentation Formulas
 
@@ -1935,18 +2109,22 @@ $$y = x + \alpha \cdot n, \quad \alpha = \frac{\sigma_{\text{noise}}}{||n||_2}$$
        src="{{ '/project/pcb_inspection/Log-Mel_changing.PNG' | relative_url }}"
        alt="Log-Mel spectrogram transformation"
        loading="lazy">
-  <figcaption>Figure 6.4: Log-Mel spectrogram transformation stages
+  <figcaption>Figure 6.4: Log-Mel spectrogram transformation stages</figcaption>
+</figure>
 
 **Mel Scale Conversion:**
 $$m = 2595 \cdot \log_{10}(1 + f/700)$$
 $$f = 700 \cdot (10^{m/2595} - 1)$$
 
 **Triangular Filter Weights (40 channels, 20Hz-7600Hz):**
-$$$W[m, k] = \begin{cases}
+
+$$
+W[m, k] = \begin{cases}
 \frac{k - f[m-1]}{f[m] - f[m-1]}, & f[m-1] \leq k < f[m] \\
 \frac{f[m+1] - k}{f[m+1] - f[m]}, & f[m] \leq k < f[m+1] \\
 0, & \text{otherwise}
-\end{cases}$$
+\end{cases}
+$$
 
 ### 6.3.2 Feature Extraction Pipeline
 
@@ -1977,7 +2155,8 @@ $$$W[m, k] = \begin{cases}
        src="{{ '/project/pcb_inspection/2D_CNN.jpg' | relative_url }}"
        alt="Small 2D CNN architecture"
        loading="lazy">
-  <figcaption>Figure 6.5: Lightweight 2D CNN architecture for keyword spotting
+  <figcaption>Figure 6.5: Lightweight 2D CNN architecture for keyword spotting</figcaption>
+</figure>
 
 **Total Parameters:** 78,993 (≈ 309KB)
 
@@ -1987,10 +2166,12 @@ $$$W[m, k] = \begin{cases}
 $$\mathcal{L} = -\sum_{i=1}^{N} w_i \cdot [y_i \log(p_i) + (1-y_i)\log(1-p_i)]$$
 
 where:
-$$w_i = \begin{cases}
+$$
+w_i = \begin{cases}
 \frac{0.5}{N_{\text{pos}}}, & \text{if } y_i = 1 \\
 \frac{0.5}{N_{\text{neg}}}, & \text{if } y_i = 0
-\end{cases}$$
+\end{cases}
+$$
 
 **AdamW Optimizer:**
 $$\theta_t = \theta_{t-1} - \eta \cdot \left(\frac{\hat{m}_t}{\sqrt{\hat{v}_t} + \epsilon} + \lambda \cdot \theta_{t-1}\right)$$
@@ -2020,10 +2201,12 @@ $$\hat{\mathbf{u}} = \frac{\mathbf{u}}{||\mathbf{u}||_2}$$
 
 $$s(x, \hat{\mathbf{u}}) = \hat{\mathbf{e}}_x \cdot \hat{\mathbf{u}} = \sum_{i=1}^{192} \hat{\mathbf{e}}_x[i] \cdot \hat{\mathbf{u}}[i]$$
 
-$$\text{Decision} = \begin{cases}
+$$
+\text{Decision} = \begin{cases}
 \text{Accept}, & \text{if } s(x, \hat{\mathbf{u}}) > \tau_{\text{spk}} \\
 \text{Reject}, & \text{otherwise}
-\end{cases}$$
+\end{cases}
+$$
 
 ### 6.5.4 Adaptive Threshold Setting
 
@@ -2051,11 +2234,13 @@ $$\text{Final} = \text{Stage1} \land \text{Stage2}$$
 
 $$\text{Confidence} = \sqrt{P(\text{keyword}|x) \cdot s(x, \hat{\mathbf{u}})}$$
 
-$$\text{Action} = \begin{cases}
+$$
+\text{Action} = \begin{cases}
 \text{Execute}, & \text{if confidence} > 0.8 \\
 \text{Confirm}, & \text{if } 0.5 < \text{confidence} \leq 0.8 \\
 \text{Reject}, & \text{if confidence} \leq 0.5
-\end{cases}$$
+\end{cases}
+$$
 
 ## 6.7 Training Results and Performance Analysis
 
@@ -2081,14 +2266,18 @@ $$\text{Action} = \begin{cases}
 
 ### 6.8.1 ONNX Conversion and Quantization
 
-```python
-# Dynamic Quantization
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Python snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-python"># Dynamic Quantization
 quantized_model = quantize_dynamic(
     model_fp32,
     qconfig_spec={nn.Linear, nn.Conv2d},
     dtype=torch.qint8
 )
-```
+</code></pre>
+</div>
+</div>
 
 **Performance Benchmark:**
 - Inference time: 1.2ms @ Raspberry Pi 4
@@ -2097,8 +2286,10 @@ quantized_model = quantize_dynamic(
 
 ### 6.8.2 Streaming Processing Implementation
 
-```python
-class StreamingKWS:
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Python snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-python">class StreamingKWS:
     def __init__(self):
         self.buffer = RingBuffer(size=int(1.28 * 16000))
         self.hop_size = 0.1  # 100ms sliding window
@@ -2114,23 +2305,27 @@ class StreamingKWS:
             # KWS inference
             kws_score = self.kws_model(features)
             
-            if kws_score > self.tau_kws:
+            if kws_score &gt; self.tau_kws:
                 # Speaker verification
                 embedding = self.extract_embedding(self.buffer.data)
                 spk_score = self.cosine_similarity(embedding, self.user_embed)
                 
-                if spk_score > self.tau_spk:
+                if spk_score &gt; self.tau_spk:
                     return {"detected": True, "confidence": np.sqrt(kws_score * spk_score)}
                     
         return {"detected": False}
-```
+</code></pre>
+</div>
+</div>
 
 ## 6.9 Real-time STT Processing Node
 
 ### 6.9.1 Audio Streaming Pipeline
 
-```python
-class STTNode:
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Python snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-python">class STTNode:
     def __init__(self):
         # Audio parameters
         self.fs = 16000
@@ -2142,11 +2337,15 @@ class STTNode:
         
         # State machine
         self.state = 'IDLE'  # IDLE → LISTENING → BUSY
-```
+</code></pre>
+</div>
+</div>
 
 **Audio Callback Processing:**
-```python
-def _audio_callback(self, indata, frames, time_info, status):
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Python snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-python">def _audio_callback(self, indata, frames, time_info, status):
     chunk = indata.copy().reshape(-1)
     self._ring.extend(chunk.tolist())
     
@@ -2155,22 +2354,26 @@ def _audio_callback(self, indata, frames, time_info, status):
     wake_threshold = max(WAKE_RMS_THRESHOLD, 
                         ENERGY_SILENCE_RMS * WAKE_RMS_GATE_MULTIPLIER)
     
-    if rms > wake_threshold:
+    if rms &gt; wake_threshold:
         self._wake_energy_accum += dt
-        if self._wake_energy_accum >= WAKE_MIN_ENERGY_DURATION:
+        if self._wake_energy_accum &gt;= WAKE_MIN_ENERGY_DURATION:
             threading.Thread(target=self._try_detect_wakeword)
-```
+</code></pre>
+</div>
+</div>
 
 ### 6.9.2 Dynamic Threshold Calibration
 
 Automatic KWS threshold adjustment based on ambient noise right after boot:
 
-```python
-def _kws_autocalibration(self):
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Python snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-python">def _kws_autocalibration(self):
     probs = []
     t_end = time.time() + KWS_CALIBRATION_SEC  # 4-second sampling
     
-    while time.time() < t_end:
+    while time.time() &lt; t_end:
         seg = self._ring[-need:]
         m = self._logmel_from_int16(seg)
         p = self._kws_forward_prob(m)
@@ -2186,24 +2389,28 @@ def _kws_autocalibration(self):
         p95 + KWS_P95_BOOST,                # P95 + 0.02
         mean + KWS_SIGMA_BOOST * std        # μ + 3σ
     )
-```
+</code></pre>
+</div>
+</div>
 
 ### 6.9.3 Enhanced Speaker Verification Algorithm
 
 **Multi-crop with Jittering:**
-```python
-def _personal_wake_detect(self):
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Python snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-python">def _personal_wake_detect(self):
     # KWS probability calculation
     prob = self._kws_forward_prob(logmel)
     
     # Soft bypass condition
-    force_enter = (prob >= SPK_FORCE_FLOOR) or 
-                  (prob >= max(0.0, dyn_thresh - SPK_FORCE_DELTA))
+    force_enter = (prob &gt;= SPK_FORCE_FLOOR) or 
+                  (prob &gt;= max(0.0, dyn_thresh - SPK_FORCE_DELTA))
     
     # Recent 3 out of 2 pass verification
     self._prob_hist.append(prob)
-    passes = sum(1 for p in self._prob_hist if p >= thresh)
-    if passes < KWS_CONSEC_PASS and not force_enter:
+    passes = sum(1 for p in self._prob_hist if p &gt;= thresh)
+    if passes &lt; KWS_CONSEC_PASS and not force_enter:
         return False
     
     # Speaker verification: Multi-crop with temporal jittering
@@ -2223,18 +2430,22 @@ def _personal_wake_detect(self):
         sims.append(sim)
     
     # K-of-N voting (2 out of 3)
-    per_crop_pass = [(s >= self._spk_thresh + SPK_MARGIN) for s in sims]
+    per_crop_pass = [(s &gt;= self._spk_thresh + SPK_MARGIN) for s in sims]
     num_pass = sum(per_crop_pass)
-    std_ok = (np.std(sims) <= SPK_MAX_STD)
+    std_ok = (np.std(sims) &lt;= SPK_MAX_STD)
     
-    return (num_pass >= 2) and std_ok
-```
+    return (num_pass &gt;= 2) and std_ok
+</code></pre>
+</div>
+</div>
 
 ### 6.9.4 VAD and Automatic Termination
 
 **Energy-based VAD:**
-```python
-# Parameters
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Python snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-python"># Parameters
 ENERGY_SPEECH_RMS = 800.0    # Speech threshold
 ENERGY_SILENCE_RMS = 350.0   # Silence threshold
 STOP_SILENCE_SEC = 0.9       # Silence duration
@@ -2243,25 +2454,29 @@ MIN_UTTERANCE_SEC = 0.6      # Minimum utterance length
 def process_audio(self, chunk):
     rms = self._rms_int16(chunk)
     
-    if rms < ENERGY_SILENCE_RMS:
+    if rms &lt; ENERGY_SILENCE_RMS:
         self._silence_accum += dt
-    elif rms > ENERGY_SILENCE_RMS * 1.2:
+    elif rms &gt; ENERGY_SILENCE_RMS * 1.2:
         self._silence_accum = 0.0
         self._has_voice = True
     
     # Automatic termination condition
     if (self._has_voice and 
-        self._utter_time >= MIN_UTTERANCE_SEC and 
-        self._silence_accum >= STOP_SILENCE_SEC):
+        self._utter_time &gt;= MIN_UTTERANCE_SEC and 
+        self._silence_accum &gt;= STOP_SILENCE_SEC):
         self._finish_and_transcribe()
-```
+</code></pre>
+</div>
+</div>
 
 ### 6.9.5 Cancel Word Detection
 
 Real-time cancel word detection to prevent misrecognition:
 
-```python
-CANCEL_TEXTS = ["no", "cancel"]
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Python snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-python">CANCEL_TEXTS = ["no", "cancel"]
 CANCEL_WINDOW_SEC = 1.0
 
 def _try_detect_cancelword(self):
@@ -2273,14 +2488,18 @@ def _try_detect_cancelword(self):
         # Send cancel command via MQTT
         payload = {"text": text, "intent": "cancel"}
         self._mqtt_publish(MQTT_TOPIC, payload)
-```
+</code></pre>
+</div>
+</div>
 
 ## 6.10 Speech-to-Text Conversion (STT)
 
 ### 6.10.1 OpenAI Whisper API Integration
 
-```python
-def _quick_transcribe(self, int16_pcm: np.ndarray) -> str:
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Python snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-python">def _quick_transcribe(self, int16_pcm: np.ndarray) -&gt; str:
     with tempfile.NamedTemporaryFile(suffix='.wav') as tmp:
         sf.write(tmp.name, int16_pcm, self.fs, subtype='PCM_16')
         
@@ -2292,12 +2511,16 @@ def _quick_transcribe(self, int16_pcm: np.ndarray) -> str:
                 prompt="rokey, hey rokey"  # Wakeword hint
             )
     return resp.text.strip()
-```
+</code></pre>
+</div>
+</div>
 
 ### 6.10.2 MQTT Communication Protocol
 
-```python
-# MQTT Configuration
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Python snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-python"># MQTT Configuration
 MQTT_HOST = "g11c1e1e.ala.eu-central-1.emqxsl.com"
 MQTT_PORT = 8883
 MQTT_TOPIC = "stt/voice_command"
@@ -2310,14 +2533,18 @@ payload = {
 }
 
 self._mqtt_publish(MQTT_TOPIC, json.dumps(payload))
-```
+</code></pre>
+</div>
+</div>
 
 ## 6.11 Performance Optimization Techniques
 
 ### 6.11.1 Memory-efficient Ring Buffer
 
-```python
-class RingBuffer:
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Python snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-python">class RingBuffer:
     def __init__(self, size):
         self.buffer = deque(maxlen=size)
     
@@ -2327,12 +2554,16 @@ class RingBuffer:
     def get_window(self, seconds):
         samples = int(seconds * 16000)
         return np.array(self.buffer)[-samples:]
-```
+</code></pre>
+</div>
+</div>
 
 ### 6.11.2 Thread Safety
 
-```python
-self._buf_lock = threading.Lock()
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Python snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-python">self._buf_lock = threading.Lock()
 self._wake_busy = False
 self._cancel_busy = False
 
@@ -2345,12 +2576,16 @@ def _try_detect_wakeword(self):
         pass
     finally:
         self._wake_busy = False
-```
+</code></pre>
+</div>
+</div>
 
 ### 6.11.3 Refractory Period Management
 
-```python
-# Input suppression during TTS response
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Python snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-python"># Input suppression during TTS response
 TTS_REFRACTORY_SEC = 5.0
 CHIME_REFRACTORY_SEC = 0.35
 
@@ -2360,7 +2595,9 @@ def _suppress_for(self, sec: float):
         self._suppress_input_until, 
         suppress_until
     )
-```
+</code></pre>
+</div>
+</div>
 
 ## 6.12 LLM-based Command Interpretation System
 
@@ -2368,20 +2605,26 @@ def _suppress_for(self, sec: float):
 
 2-stage pipeline converting natural language commands to robot control commands:
 
-```
-[STT Text] → [Heuristic Filter] → [LLM Classification] → [Action Mapping]
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Text snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-text">[STT Text] → [Heuristic Filter] → [LLM Classification] → [Action Mapping]
                     ↓                              ↓
               [Immediate Processing]            [Fallback Rules]
-```
+</code></pre>
+</div>
+</div>
 
 ### 6.12.2 Heuristic Pre-filtering
 
 Fast path processing before LLM calls:
 
-```python
-CANCEL_WORDS = ["no", "cancel"]
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Python snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-python">CANCEL_WORDS = ["no", "cancel"]
 
-def _map_to_action(self, text: str) -> dict:
+def _map_to_action(self, text: str) -&gt; dict:
     t = text.lower()
     
     # Immediate cancel word processing (skip LLM)
@@ -2392,13 +2635,17 @@ def _map_to_action(self, text: str) -> dict:
     if intent == "cancel":
         self._publish_action({"action": "cancel"})
         return  # Skip LLM call
-```
+</code></pre>
+</div>
+</div>
 
 ### 6.12.3 LLM Prompt Engineering
 
 **System Prompt Design:**
-```python
-SYSTEM_PROMPT = """
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Python snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-python">SYSTEM_PROMPT = """
 Convert the phrase to EXACT JSON.
 Korean allowed. Output one of: start/stop/inspect_circuit/cancel.
 - If it means cancel/negation like 'no','cancel' 
@@ -2409,11 +2656,15 @@ Korean allowed. Output one of: start/stop/inspect_circuit/cancel.
 - If stop motor → {"action":"stop"}
 Output JSON ONLY.
 """
-```
+</code></pre>
+</div>
+</div>
 
 **Zero-shot Classification:**
-```python
-def _llm_classify(self, text: str) -> dict:
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Python snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-python">def _llm_classify(self, text: str) -&gt; dict:
     resp = self.client.chat.completions.create(
         model="gpt-4o",
         messages=[
@@ -2430,14 +2681,18 @@ def _llm_classify(self, text: str) -> dict:
     # Allow only permitted actions
     ALLOWED = {"start", "stop", "inspect_circuit", "cancel"}
     return {"action": act if act in ALLOWED else "stop"}
-```
+</code></pre>
+</div>
+</div>
 
 ### 6.12.4 Fallback Rule-based Classification
 
 Keyword matching when LLM fails:
 
-```python
-def _fallback_classify(self, text: str) -> dict:
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Python snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-python">def _fallback_classify(self, text: str) -&gt; dict:
     t = text.lower()
     
     # Circuit inspection related
@@ -2456,13 +2711,17 @@ def _fallback_classify(self, text: str) -> dict:
     # Default: stop for safety
     else:
         return {"action": "stop"}
-```
+</code></pre>
+</div>
+</div>
 
 ### 6.12.5 Asynchronous Message Processing
 
 **Queue-based Worker Pattern:**
-```python
-class LLMNodeMQTT:
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Python snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-python">class LLMNodeMQTT:
     def __init__(self):
         self.rx_q = queue.Queue(maxsize=200)
         self.worker = threading.Thread(
@@ -2485,39 +2744,55 @@ class LLMNodeMQTT:
             item = self.rx_q.get()  # Blocking
             out = self._map_to_action(item["text"])
             self._publish_action(out)
-```
+</code></pre>
+</div>
+</div>
 
 ### 6.12.6 MQTT Communication Protocol
 
 **Input Message Format:**
-```json
-{
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example JSON snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-json">{
     "text": "inspect circuit board",
     "ts": 1703001234.567,
     "intent": "command"  // optional: "cancel"
 }
-```
+</code></pre>
+</div>
+</div>
 
 **Output Action Format:**
-```json
-{
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example JSON snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-json">{
     "action": "inspect_circuit"  // "start" | "stop" | "cancel"
 }
-```
+</code></pre>
+</div>
+</div>
 
 **Topic Structure:**
-```
-stt/voice_command  →  [LLM Node]  →  llm/action
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Text snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-text">stt/voice_command  →  [LLM Node]  →  llm/action
                            ↓
                     [Robot Control Node]
-```
+</code></pre>
+</div>
+</div>
 
 ## 6.13 System Integration and Deployment
 
 ### 6.13.1 Complete Pipeline Flow
 
-```
-[Microphone] → [STT Node] → [MQTT: stt/voice_command] → [LLM Node]
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Text snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-text">[Microphone] → [STT Node] → [MQTT: stt/voice_command] → [LLM Node]
                 ↓                                         ↓
         [Wakeword Detection]                        [Intent Classification]
         [Speaker Authentication]                    [Action Mapping]
@@ -2525,7 +2800,9 @@ stt/voice_command  →  [LLM Node]  →  llm/action
                                               [MQTT: llm/action]
                                                          ↓
                                                   [Robot Control]
-```
+</code></pre>
+</div>
+</div>
 
 ### 6.13.2 Latency Analysis
 
@@ -2541,25 +2818,39 @@ stt/voice_command  →  [LLM Node]  →  llm/action
 ### 6.13.3 Reliability Assurance Mechanisms
 
 **1. Message Queuing:**
-```python
-# Maximum 200 message buffering
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Python snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-python"># Maximum 200 message buffering
 self.rx_q = queue.Queue(maxsize=200)
-```
+</code></pre>
+</div>
+</div>
 
 **2. MQTT QoS 1 (At least once delivery):**
-```python
-self.mqtt.publish(topic, payload, qos=1, retain=False)
-```
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Python snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-python">self.mqtt.publish(topic, payload, qos=1, retain=False)
+</code></pre>
+</div>
+</div>
 
 **3. Reconnection Logic:**
-```python
-self.mqtt.reconnect_delay_set(min_delay=1, max_delay=10)
-```
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Python snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-python">self.mqtt.reconnect_delay_set(min_delay=1, max_delay=10)
+</code></pre>
+</div>
+</div>
 
 ### 6.13.4 Model File Structure
 
-```
-/home/okj1812/
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Text snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-text">/home/okj1812/
 ├── models/
 │   ├── kws_model.onnx      # 317KB - KWS CNN
 │   ├── user_embed.npy      # 896B  - Speaker embedding
@@ -2568,7 +2859,9 @@ self.mqtt.reconnect_delay_set(min_delay=1, max_delay=10)
 └── nodes/
     ├── stt_node.py         # Voice input processing
     └── llm_node.py         # Command interpretation
-```
+</code></pre>
+</div>
+</div>
 
 ### 6.13.5 System Requirements
 
@@ -2591,22 +2884,28 @@ self.mqtt.reconnect_delay_set(min_delay=1, max_delay=10)
 
 The system uses MQTT as the central nervous system for coordination between components:
 
-```yaml
-Topics:
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example YAML snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-yaml">Topics:
   - pcb/detection_result: Vision system publishes defect status
   - robot/pick_command: QC publisher triggers robot actions
   - motor/control: Conveyor belt start/stop
   - voice/command: Voice system publishes parsed commands
   - tts/announce: Text-to-speech notifications
   - system/status: Overall system health monitoring
-```
+</code></pre>
+</div>
+</div>
 
 ### Event-driven Workflow
 
 The magic happens when all components work together in an event-driven workflow:
 
-```python
-def main_workflow():
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Python snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-python">def main_workflow():
     """Main system workflow - event-based"""
     
     # 1. Voice command: "start"
@@ -2629,7 +2928,9 @@ def main_workflow():
     # 5. Voice feedback
     status = "good product" if qc_result["is_ok"] else "defective product"
     tts_system.announce(f"{status} detected")
-```
+</code></pre>
+</div>
+</div>
 
 ---
 
@@ -2697,8 +2998,10 @@ Our first model achieved 99% accuracy on training data but failed miserably on r
 
 These parameters required the most tuning to get right:
 
-```python
-# Vision thresholds (very sensitive!)
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Python snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-python"># Vision thresholds (very sensitive!)
 OK_RATIO = 0.80          # USB area ratio threshold
 CONF_THRES = 0.4         # YOLO confidence threshold
 POS_TOL_NORM = 0.15      # Position tolerance error
@@ -2712,7 +3015,9 @@ KICKSTART_DURATION = 200 # Milliseconds
 WAKE_WINDOW_MS = 2000    # Command capture window
 VAD_THRESHOLD = 0.02     # Voice activity detection
 SPEAKER_SIMILARITY = 0.85 # Speaker authentication threshold
-```
+</code></pre>
+</div>
+</div>
 
 ---
 
@@ -2796,49 +3101,67 @@ The innovative approaches developed in this project:
 ### Practical Implementation Guide
 
 **Stage 1: Minimum Viable Product (MVP)**
-```python
-# Start with basic conveyor + camera system
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Python snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-python"># Start with basic conveyor + camera system
 - Arduino motor control
 - Single webcam + YOLO detection
 - Basic quality judgment logic
 - Expected development time: 1-2 weeks
-```
+</code></pre>
+</div>
+</div>
 
 **Stage 2: Robot Integration**
-```python
-# Add robot arm and pick-and-place
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Python snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-python"># Add robot arm and pick-and-place
 - ROS2 environment setup
 - MoveIt motion planning
 - Coordinate transformation calibration
 - Expected development time: 2-3 weeks
-```
+</code></pre>
+</div>
+</div>
 
 **Stage 3: Advanced Features**
-```python
-# Add voice control and 3D vision
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Python snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-python"># Add voice control and 3D vision
 - Custom STT/KWS model training
 - RealSense 3D detection
 - LLM command parsing
 - Expected development time: 3-4 weeks
-```
+</code></pre>
+</div>
+</div>
 
 ### Troubleshooting Guide
 
 **Common problems and solutions:**
 
 **Issue 1: Coordinate Transform Accuracy**
-```python
-# Solution: Automatic calibration using checkerboard pattern
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Python snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-python"># Solution: Automatic calibration using checkerboard pattern
 def auto_calibrate_camera_robot():
     # OpenCV checkerboard detection
     # Match robot endpoint with camera coordinates
     # Automatic transformation matrix calculation
     pass
-```
+</code></pre>
+</div>
+</div>
 
 **Issue 2: YOLO Model Overfitting**
-```python
-# Solution: Strong data augmentation and regularization
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Python snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-python"># Solution: Strong data augmentation and regularization
 augmentation_config = {
     'mixup': 0.1,
     'mosaic': 1.0,
@@ -2847,17 +3170,23 @@ augmentation_config = {
     'hsv_s': 0.7,
     'hsv_v': 0.4
 }
-```
+</code></pre>
+</div>
+</div>
 
 **Issue 3: Voice Recognition Noise**
-```python
-# Solution: Adaptive noise filtering
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Python snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-python"># Solution: Adaptive noise filtering
 def adaptive_noise_filtering(audio_signal):
     # Estimate background noise profile
     # Apply Wiener filter
     # Use spectral subtraction method
     return filtered_audio
-```
+</code></pre>
+</div>
+</div>
 
 ### Scaling Scenarios
 
@@ -2889,4 +3218,3 @@ The future of manufacturing is here. And it's closer than you think.
 ---
 
 *Feel free to reach out if you have questions or want to collaborate - I love talking about the intersection of robotics, computer vision, AI and manufacturing.*
-

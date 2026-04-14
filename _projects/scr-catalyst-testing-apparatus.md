@@ -17,7 +17,8 @@ This study presents the design and implementation of a bench-scale testing appar
        src="{{ '/project/scr-catalyst-testing-apparatus/completed_apparatus.jpg' | relative_url }}"
        alt="Completed SCR catalyst performance testing apparatus"
        loading="lazy">
-  <figcaption>Figure 1.1: Completed SCR catalyst performance testing apparatus
+  <figcaption>Figure 1.1: Completed SCR catalyst performance testing apparatus</figcaption>
+</figure>
 
 The system generates precise simulated flue gas through five independent gas supply lines (N₂, O₂, NO, SO₂, NH₃) with mass flow controllers (MFC), and maintains uniform catalyst temperature at 300°C through four-zone independent electric heating system. Performance evaluation experiments were conducted on commercial V₂O₅-TiO₂ honeycomb SCR catalyst samples, with continuous measurement of NOx concentrations before and after the catalyst using a Testo 350K flue gas analyzer to quantitatively evaluate denitrification efficiency.
 
@@ -78,19 +79,31 @@ This paper aims to systematically describe the apparatus design principles, majo
 The following chemical reactions primarily occur in the SCR process:
 
 **Standard SCR reaction:**
-```
-4NO + 4NH₃ + O₂ → 4N₂ + 6H₂O
-```
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Text snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-text">4NO + 4NH₃ + O₂ → 4N₂ + 6H₂O
+</code></pre>
+</div>
+</div>
 
 **Fast SCR reaction (when NO₂ is present):**
-```
-NO + NO₂ + 2NH₃ → 2N₂ + 3H₂O
-```
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Text snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-text">NO + NO₂ + 2NH₃ → 2N₂ + 3H₂O
+</code></pre>
+</div>
+</div>
 
 **Slow SCR reaction (when only NO₂ is present):**
-```
-6NO₂ + 8NH₃ → 7N₂ + 12H₂O
-```
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Text snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-text">6NO₂ + 8NH₃ → 7N₂ + 12H₂O
+</code></pre>
+</div>
+</div>
 
 Among these reactions, the fast SCR reaction is the fastest, showing maximum reaction rate under NO:NO₂ = 1:1 conditions. However, since NO is the main component in actual flue gas, the standard SCR reaction is dominant.
 
@@ -111,21 +124,33 @@ Among these reactions, the fast SCR reaction is the fastest, showing maximum rea
 ### 2.3 Catalyst Performance Indicators
 
 **NOx removal efficiency (η)**:
-```
-η = (C_in - C_out) / C_in × 100%
-```
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Text snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-text">η = (C_in - C_out) / C_in × 100%
+</code></pre>
+</div>
+</div>
 where C_in and C_out are NOx concentrations at catalyst inlet and outlet, respectively.
 
 **Catalyst activity (K)**:
-```
-K = -ln(C_out/C_in) × Av
-```
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Text snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-text">K = -ln(C_out/C_in) × Av
+</code></pre>
+</div>
+</div>
 where Av is the area velocity (m³/m²·h).
 
 **SO₂/SO₃ conversion rate**:
-```
-SO₂ conversion rate (%) = (SO₃ formed) / (SO₂ inlet) × 100%
-```
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Text snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-text">SO₂ conversion rate (%) = (SO₃ formed) / (SO₂ inlet) × 100%
+</code></pre>
+</div>
+</div>
 
 This is an undesirable side reaction that should generally be below 1-2%.
 
@@ -146,7 +171,8 @@ This SCR catalyst performance evaluation apparatus consists of the following maj
        src="{{ '/project/scr-catalyst-testing-apparatus/completed_apparatus.jpg' | relative_url }}"
        alt="Overall system architecture"
        loading="lazy">
-  <figcaption>Figure 3.1: Overall system architecture of SCR catalyst performance testing apparatus
+  <figcaption>Figure 3.1: Overall system architecture of SCR catalyst performance testing apparatus</figcaption>
+</figure>
 
 ### 3.2 Gas Supply System
 
@@ -501,9 +527,13 @@ This experiment follows the following step-by-step protocol based on VGB-R 302 s
 
 NOx removal efficiency (η) is calculated by the following equation:
 
-```
-η = [(C_in - C_out) / C_in] × 100 (%)
-```
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Text snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-text">η = [(C_in - C_out) / C_in] × 100 (%)
+</code></pre>
+</div>
+</div>
 
 Where:
 - C_in: Catalyst inlet NOx concentration (ppm, dry basis)
@@ -512,14 +542,22 @@ Where:
 #### 5.1.2 Concentration Basis Correction
 
 **Wet basis to dry basis conversion**:
-```
-C_dry = C_wet × [100 / (100 - H₂O%)]
-```
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Text snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-text">C_dry = C_wet × [100 / (100 - H₂O%)]
+</code></pre>
+</div>
+</div>
 
 **Oxygen concentration basis normalization** (if needed):
-```
-C_normalized = C_measured × [(21 - O₂_ref) / (21 - O₂_measured)]
-```
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Text snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-text">C_normalized = C_measured × [(21 - O₂_ref) / (21 - O₂_measured)]
+</code></pre>
+</div>
+</div>
 
 Generally 6% O₂ for coal-fired power or measured values as-is
 
@@ -531,9 +569,13 @@ Generally 6% O₂ for coal-fired power or measured values as-is
 - Outlet O₂ concentration: 18.2%
 
 **NOx removal efficiency**:
-```
-η = [(350 - 20) / 350] × 100 = 94.3%
-```
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Text snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-text">η = [(350 - 20) / 350] × 100 = 94.3%
+</code></pre>
+</div>
+</div>
 
 ### 5.2 Catalyst Activity Calculation
 
@@ -580,9 +622,13 @@ Fresh commercial SCR catalysts for stationary power applications typically exhib
 
 SO₂ concentration change measurement through analyzer:
 
-```
-SO₂ conversion rate (%) = [(SO₂_in - SO₂_out) / SO₂_in] × 100
-```
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Text snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-text">SO₂ conversion rate (%) = [(SO₂_in - SO₂_out) / SO₂_in] × 100
+</code></pre>
+</div>
+</div>
 
 #### 5.3.2 Indirect Estimation Method
 
@@ -598,14 +644,22 @@ Since SO₃ is difficult to measure directly, the following methods are used:
 
 Under NH₃/NOx = 1.0 conditions:
 
-```
-NH₃ slip (ppm) ≈ (1 - η) × C_in
-```
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Text snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-text">NH₃ slip (ppm) ≈ (1 - η) × C_in
+</code></pre>
+</div>
+</div>
 
 Example: η = 94.3%, C_in = 350 ppm
-```
-NH₃ slip ≈ (1 - 0.943) × 350 = 20 ppm
-```
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Text snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-text">NH₃ slip ≈ (1 - 0.943) × 350 = 20 ppm
+</code></pre>
+</div>
+</div>
 
 #### 5.4.2 Direct Measurement (if needed)
 
@@ -619,9 +673,13 @@ NH₃ slip ≈ (1 - 0.943) × 350 = 20 ppm
 
 **Type A uncertainty** (statistical):
 Calculation using standard deviation
-```
-u_A = s / √n
-```
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Text snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-text">u_A = s / √n
+</code></pre>
+</div>
+</div>
 
 **Type B uncertainty** (instrument accuracy):
 Uncertainty according to analyzer specifications
@@ -631,21 +689,33 @@ Uncertainty according to analyzer specifications
 
 #### 5.5.2 Combined Uncertainty
 
-```
-u_c = √(u_A² + u_B²)
-```
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Text snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-text">u_c = √(u_A² + u_B²)
+</code></pre>
+</div>
+</div>
 
 **Expanded uncertainty** (95% confidence):
-```
-U = k × u_c (k = 2)
-```
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Text snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-text">U = k × u_c (k = 2)
+</code></pre>
+</div>
+</div>
 
 #### 5.5.3 Result Reporting Format
 
-```
-NOx removal efficiency: 94.3 ± 2.1% (95% confidence)
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Text snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-text">NOx removal efficiency: 94.3 ± 2.1% (95% confidence)
 Catalyst activity: 210 ± 15 m/h (95% confidence)
-```
+</code></pre>
+</div>
+</div>
 
 ### 5.6 Performance Criteria and Judgment
 
@@ -661,9 +731,13 @@ Catalyst activity: 210 ± 15 m/h (95% confidence)
 #### 5.6.2 Used Catalyst Performance Judgment
 
 **Remaining activity ratio**:
-```
-Activity ratio (%) = (Current activity / Initial activity) × 100
-```
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Text snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-text">Activity ratio (%) = (Current activity / Initial activity) × 100
+</code></pre>
+</div>
+</div>
 
 **Replacement recommendation criteria**:
 - Activity ratio < 50%: Immediate replacement
@@ -767,9 +841,13 @@ Performance evaluation according to temperature changes in 270-330°C range:
 | 330 | 96.1 | 235 |
 
 **Arrhenius equation application**:
-```
-k = A × exp(-Ea/RT)
-```
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Text snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-text">k = A × exp(-Ea/RT)
+</code></pre>
+</div>
+</div>
 
 Activation energy (Ea): 28.4 kJ/mol (similar to literature values)
 
@@ -1113,8 +1191,10 @@ We plan to develop this into a representative SCR technology verification center
 
 #### A.1 Overall System Layout
 
-```
-                    [Exhaust Scrubber]
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Text snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-text">                    [Exhaust Scrubber]
                            ↑
     [N2] ─┐              [Flue Gas Analyzer]
     [O2] ─┤                  ↑
@@ -1123,7 +1203,9 @@ We plan to develop this into a representative SCR technology verification center
     [NH3]─┘              [Heating System]
            
     [HMI Control Room]         [Power Supply]
-```
+</code></pre>
+</div>
+</div>
 
 #### A.2 Reactor Detailed Structure
 
@@ -1147,7 +1229,8 @@ We plan to develop this into a representative SCR technology verification center
        src="{{ '/project/scr_catalyst/piping_diagram.png' | relative_url }}"
        alt="Gas supply piping and instrumentation diagram"
        loading="lazy">
-  <figcaption>Figure A.3: Gas supply piping and instrumentation diagram (P&ID)
+  <figcaption>Figure A.3: Gas supply piping and instrumentation diagram (P&ID)</figcaption>
+</figure>
 
 ### Appendix B. Operating Procedures
 

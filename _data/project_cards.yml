@@ -3,8 +3,8 @@
     - robotics
     - ai
   category_label: "Humanoid Robotics - Imitation Learning - Logistics AI"
-  card_title: "Teleoperated Humanoid Learning Pipeline for Warehouse Manipulation"
-  card_description: "Research assistant work at Robros on teleoperated data collection, QA taxonomy design, and hybrid learning workflow support for humanoid packing and box-transfer PoCs."
+  card_title: "Multi-Modal Humanoid Learning Pipeline for Warehouse Manipulation"
+  card_description: "Research assistant work at Robros on master-arm and MANUS glove teleoperation, dataset QA taxonomy design, and hybrid imitation-learning / reinforcement-learning workflow support for humanoid packing and box-transfer PoCs."
   impacts:
     - value: "~10k"
       label: "Collection Attempts"
@@ -17,6 +17,8 @@
       style: "robot-hw"
     - label: "Teleoperation"
       style: "eng"
+    - label: "MANUS Glove"
+      style: "sensor"
     - label: "Imitation Learning"
       style: "ai"
     - label: "VLM Conditioning"

@@ -70,7 +70,8 @@ The automated cleaning system employs a **rail-mounted mobile platform** with pr
        src="{{ '/project/automated-catalyst-cleaning/architecture-diagram.png' | relative_url }}"
        alt="System Architecture"
        loading="lazy">
-  <figcaption>Figure 1. System architecture diagram showing control flow and mechanical subsystems
+  <figcaption>Figure 1. System architecture diagram showing control flow and mechanical subsystems</figcaption>
+</figure>
 
 **Core Components Integration:**
 - **Control Unit:** Arduino Uno with custom state machine firmware
@@ -99,9 +100,11 @@ The automated cleaning system employs a **rail-mounted mobile platform** with pr
 
 #### 2.2.2 Advanced Firmware Implementation
 
-```cpp
-#include <AccelStepper.h>
-#include <SoftwareSerial.h>
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example C++ snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-cpp">#include &lt;AccelStepper.h&gt;
+#include &lt;SoftwareSerial.h&gt;
 
 // ─── Pin Definitions ─────────────────────────────────────────
 #define DIR_PIN           2    // Stepper driver direction control
@@ -136,7 +139,7 @@ SystemState currentState = INIT;
 // Drive:      M3 lead screw, pitch = 3.0 mm/rev
 // Motor:      200 full-steps/rev × 1/16 microstepping (DRV8825) = 3200 microsteps/rev
 // Resolution: 3.0 mm / 3200 steps ≈ 0.938 µm/step (theoretical)
-// Open-loop accuracy: ±0.5 mm (limited by backlash & stiction, not step resolution)
+// Open-loop accuracy: ±0.5 mm (limited by backlash &amp; stiction, not step resolution)
 
 // ─── Configuration Parameters ────────────────────────────────
 struct CleaningConfig {
@@ -179,13 +182,13 @@ char  rs485Buf[CMD_BUF_LEN];   uint8_t rs485Len = 0;
 
 // Accumulates bytes until '\n'; uppercases in place, null-terminates.
 // Returns true exactly once per complete command; resets len on that call.
-bool fillCmdBuf(Stream& src, char* buf, uint8_t& len) {
+bool fillCmdBuf(Stream&amp; src, char* buf, uint8_t&amp; len) {
   while (src.available()) {
     char c = (char)src.read();
     if (c == '\r') continue;
     if (c == '\n') {
-      if (len > 0) { buf[len] = '\0'; len = 0; return true; }
-    } else if (len < CMD_BUF_LEN - 1) {
+      if (len &gt; 0) { buf[len] = '\0'; len = 0; return true; }
+    } else if (len &lt; CMD_BUF_LEN - 1) {
       buf[len++] = toupper((unsigned char)c);
     }
   }
@@ -214,16 +217,16 @@ void setup() {
   rs485.begin(9600);
   digitalWrite(RS485_DE_PIN, LOW);  // Receive mode
   
-  Serial.println(F(">> SCR Catalyst Cleaning Robot v2.1"));
-  Serial.println(F(">> System Status: INITIALIZING"));
+  Serial.println(F("&gt;&gt; SCR Catalyst Cleaning Robot v2.1"));
+  Serial.println(F("&gt;&gt; System Status: INITIALIZING"));
   
   // Perform comprehensive system self-check
   if (performSystemSelfCheck()) {
     currentState = IDLE;
-    Serial.println(F(">> System Status: READY"));
+    Serial.println(F("&gt;&gt; System Status: READY"));
   } else {
     currentState = FAULT;
-    Serial.println(F(">> System Status: FAULT - Self-check failed"));
+    Serial.println(F("&gt;&gt; System Status: FAULT - Self-check failed"));
   }
   
   // Initialize performance tracking
@@ -274,20 +277,20 @@ void checkEmergencyConditions() {
   }
   
   // Check stepper driver fault (current sensing)
-  if (analogRead(A0) > 900) {  // Overcurrent detection
+  if (analogRead(A0) &gt; 900) {  // Overcurrent detection
     emergencyShutdown("Stepper driver overcurrent detected");
     return;
   }
   
   // Check battery voltage
   status.batteryVoltage = (analogRead(A1) * 5.0 * 10.0) / 1024.0;  // Voltage divider
-  if (status.batteryVoltage < 20.0) {
+  if (status.batteryVoltage &lt; 20.0) {
     emergencyShutdown("Low battery voltage detected");
     return;
   }
   
   // Check for position sensor fault
-  if (digitalRead(LIMIT_LEFT_PIN) == LOW && digitalRead(LIMIT_RIGHT_PIN) == LOW) {
+  if (digitalRead(LIMIT_LEFT_PIN) == LOW &amp;&amp; digitalRead(LIMIT_RIGHT_PIN) == LOW) {
     emergencyShutdown("Position sensor fault - both limits active");
     return;
   }
@@ -302,7 +305,7 @@ void emergencyShutdown(const char* reason) {
   currentState = FAULT;
   status.errorCode = getErrorCode(reason);
   
-  Serial.print(F(">> EMERGENCY SHUTDOWN: "));
+  Serial.print(F("&gt;&gt; EMERGENCY SHUTDOWN: "));
   Serial.println(reason);
   
   // Send emergency notification via RS-485
@@ -393,11 +396,11 @@ void handleHomingState() {
 
 void handleSprayState() {
   // Active cleaning spray cycle
-  if (millis() - status.timestamp >= config.sprayDuration) {
+  if (millis() - status.timestamp &gt;= config.sprayDuration) {
     closeValve();
     
     // Check if more cells to clean
-    if (status.cellsCompleted < config.totalCells && 
+    if (status.cellsCompleted &lt; config.totalCells &amp;&amp; 
         digitalRead(LIMIT_RIGHT_PIN) == HIGH) {
       
       // Move to next cell
@@ -461,7 +464,7 @@ void handleFaultState() {
   }
   
   // Automatic recovery attempt after 30 seconds
-  if (millis() - faultStartTime > 30000) {
+  if (millis() - faultStartTime &gt; 30000) {
     if (attemptFaultRecovery()) {
       currentState = INIT;
       faultStartTime = 0;
@@ -489,15 +492,15 @@ void handleMaintenanceState() {
 
 // ─── System Diagnostic Functions ─────────────────────────────
 bool performSystemSelfCheck() {
-  Serial.println(F(">> Performing comprehensive system self-check..."));
+  Serial.println(F("&gt;&gt; Performing comprehensive system self-check..."));
   
   bool allChecksPass = true;
   
   // Test stepper motor operation
-  Serial.print(F(">> Testing stepper motor... "));
+  Serial.print(F("&gt;&gt; Testing stepper motor... "));
   stepper.move(100);
   unsigned long testStart = millis();
-  while (stepper.distanceToGo() != 0 && millis() - testStart < 5000) {
+  while (stepper.distanceToGo() != 0 &amp;&amp; millis() - testStart &lt; 5000) {
     stepper.run();
   }
   
@@ -509,11 +512,11 @@ bool performSystemSelfCheck() {
   }
   
   // Test limit switches
-  Serial.print(F(">> Testing limit switches... "));
+  Serial.print(F("&gt;&gt; Testing limit switches... "));
   bool leftSwitch = digitalRead(LIMIT_LEFT_PIN);
   bool rightSwitch = digitalRead(LIMIT_RIGHT_PIN);
   
-  if (leftSwitch == HIGH && rightSwitch == HIGH) {
+  if (leftSwitch == HIGH &amp;&amp; rightSwitch == HIGH) {
     Serial.println(F("✓ PASS"));
   } else {
     Serial.println(F("✗ FAIL - Switch already triggered"));
@@ -521,14 +524,14 @@ bool performSystemSelfCheck() {
   }
   
   // Test solenoid valve
-  Serial.print(F(">> Testing solenoid valve... "));
+  Serial.print(F("&gt;&gt; Testing solenoid valve... "));
   digitalWrite(SOLENOID_PIN, HIGH);
   delay(100);
   digitalWrite(SOLENOID_PIN, LOW);
   Serial.println(F("✓ PASS"));
   
   // Test emergency stop
-  Serial.print(F(">> Testing emergency stop... "));
+  Serial.print(F("&gt;&gt; Testing emergency stop... "));
   if (digitalRead(EMERGENCY_PIN) == HIGH) {
     Serial.println(F("✓ PASS"));
   } else {
@@ -537,31 +540,31 @@ bool performSystemSelfCheck() {
   }
   
   // Test communication interfaces
-  Serial.print(F(">> Testing RS-485 communication... "));
+  Serial.print(F("&gt;&gt; Testing RS-485 communication... "));
   digitalWrite(RS485_DE_PIN, HIGH);
   rs485.println("TEST");
   digitalWrite(RS485_DE_PIN, LOW);
   Serial.println(F("✓ PASS"));
   
-  Serial.print(F(">> Self-check "));
+  Serial.print(F("&gt;&gt; Self-check "));
   Serial.println(allChecksPass ? F("PASSED") : F("FAILED"));
   
   return allChecksPass;
 }
 
 bool performSystemCalibration() {
-  Serial.println(F(">> Performing system calibration..."));
+  Serial.println(F("&gt;&gt; Performing system calibration..."));
   
   // Calibrate step-to-distance ratio
   // This would involve measuring actual movement vs. commanded steps
   float actualDistance = measureActualMovement(config.stepsPerCell);
   float calibrationFactor = config.cellPitch / actualDistance;
   
-  if (abs(calibrationFactor - 1.0) < 0.05) {  // Within 5% tolerance
-    Serial.println(F(">> Calibration successful"));
+  if (abs(calibrationFactor - 1.0) &lt; 0.05) {  // Within 5% tolerance
+    Serial.println(F("&gt;&gt; Calibration successful"));
     return true;
   } else {
-    Serial.print(F(">> Calibration failed - factor: "));
+    Serial.print(F("&gt;&gt; Calibration failed - factor: "));
     Serial.println(calibrationFactor, 4);
     return false;
   }
@@ -577,15 +580,15 @@ float measureActualMovement(long steps) {
 void updatePerformanceMetrics() {
   static unsigned long lastUpdate = 0;
   
-  if (millis() - lastUpdate >= 1000) {  // Update every second
+  if (millis() - lastUpdate &gt;= 1000) {  // Update every second
     metrics.totalRuntime = millis();
     
-    if (metrics.totalCycles > 0) {
+    if (metrics.totalCycles &gt; 0) {
       metrics.averageCycleTime = metrics.totalRuntime / metrics.totalCycles;
     }
     
     // Calculate cleaning efficiency based on completed cycles
-    if (status.cellsCompleted > 0) {
+    if (status.cellsCompleted &gt; 0) {
       metrics.cleaningEfficiency = (float)status.cellsCompleted / config.totalCells * 100.0;
     }
     
@@ -596,8 +599,8 @@ void updatePerformanceMetrics() {
 void sendStatusUpdate() {
   static unsigned long lastStatusUpdate = 0;
   
-  if (millis() - lastStatusUpdate >= 5000) {  // Every 5 seconds
-    Serial.print(F(">> Status - State: "));
+  if (millis() - lastStatusUpdate &gt;= 5000) {  // Every 5 seconds
+    Serial.print(F("&gt;&gt; Status - State: "));
     Serial.print(getStateString(currentState));
     Serial.print(F(", Cells: "));
     Serial.print(status.cellsCompleted);
@@ -623,13 +626,13 @@ void processSerialCommands() {
     printPerformanceMetrics();
   } else if (strncmp(cmdBuf, "SET_SPRAY_TIME ", 15) == 0) {
     int newTime = atoi(cmdBuf + 15);
-    if (newTime > 0 && newTime < 10000) {
+    if (newTime &gt; 0 &amp;&amp; newTime &lt; 10000) {
       config.sprayDuration = (unsigned long)newTime;
-      Serial.println(F(">> Spray duration updated"));
+      Serial.println(F("&gt;&gt; Spray duration updated"));
     }
   } else if (strcmp(cmdBuf, "MAINTENANCE") == 0) {
     currentState = MAINTENANCE;
-    Serial.println(F(">> Entering maintenance mode"));
+    Serial.println(F("&gt;&gt; Entering maintenance mode"));
   }
 }
 
@@ -663,7 +666,7 @@ void completeCycle() {
   metrics.totalCycles++;
   
   unsigned long cycleTime = millis() - status.cycleStartTime;
-  Serial.print(F(">> Cycle completed in "));
+  Serial.print(F("&gt;&gt; Cycle completed in "));
   Serial.print(cycleTime / 1000);
   Serial.println(F(" seconds"));
 }
@@ -735,7 +738,9 @@ void resetWatchdog() {
   // Placeholder for watchdog timer reset
   // Implementation would depend on specific watchdog hardware
 }
-```
+</code></pre>
+</div>
+</div>
 
 ---
 
@@ -833,7 +838,8 @@ Where:
        src="{{ '/project/automated-catalyst-cleaning/grinding.gif' | relative_url }}"
        alt="High-Precision Grinding Process"
        loading="lazy">
-  <figcaption>Figure 2. Diamond-wheel surface grinding achieving ±0.02 mm tolerance on drive shaft
+  <figcaption>Figure 2. Diamond-wheel surface grinding achieving ±0.02 mm tolerance on drive shaft</figcaption>
+</figure>
 
 I personally executed high-precision surface grinding operations using industrial diamond tooling:
 
@@ -856,7 +862,8 @@ I personally executed high-precision surface grinding operations using industria
        src="{{ '/project/automated-catalyst-cleaning/nozzle_handle.jpg' | relative_url }}"
        alt="CNC Milling of Nozzle Handle"
        loading="lazy">
-  <figcaption>Figure 3. 5-axis CNC machining of ergonomic nozzle handle from 6061-T6 aluminum
+  <figcaption>Figure 3. 5-axis CNC machining of ergonomic nozzle handle from 6061-T6 aluminum</figcaption>
+</figure>
 
 **Advanced CNC Programming:**
 - **Machine:** 5-axis VMC with 0.001 mm resolution
@@ -874,7 +881,8 @@ I personally executed high-precision surface grinding operations using industria
        src="{{ '/project/automated-catalyst-cleaning/tap_machine.jpg' | relative_url }}"
        alt="Tapping Machine Rail Processing"
        loading="lazy">
-  <figcaption>Figure 4. Precision keyway slotting on vertical milling machine
+  <figcaption>Figure 4. Precision keyway slotting on vertical milling machine</figcaption>
+</figure>
 
 **Precision Rail Manufacturing:**
 - **Material:** Custom aluminum extrusion, 6063-T5
@@ -889,7 +897,8 @@ I personally executed high-precision surface grinding operations using industria
        src="{{ '/project/automated-catalyst-cleaning/cleaning_robot_components.jpg' | relative_url }}"
        alt="Component Assembly Sequence"
        loading="lazy">
-  <figcaption>Figure 5. Systematic assembly sequence with torque-controlled fastening
+  <figcaption>Figure 5. Systematic assembly sequence with torque-controlled fastening</figcaption>
+</figure>
 
 **Assembly Process Excellence:**
 - **Torque Specifications:** All critical fasteners torqued to 15 N·m ±0.5 N·m
@@ -908,14 +917,16 @@ I personally executed high-precision surface grinding operations using industria
        src="{{ '/project/automated-catalyst-cleaning/3dworking1.gif' | relative_url }}"
        alt="Inventor Parametric Assembly Workflow" 
        loading="lazy">
-  <figcaption>Figure 6. 3D parametric assembly workflow in Autodesk Inventor
+  <figcaption>Figure 6. 3D parametric assembly workflow in Autodesk Inventor</figcaption>
+</figure>
 
 <figure>
   <img class="project-image"
        src="{{ '/project/automated-catalyst-cleaning/3dworking2.PNG' | relative_url }}"
        alt="AutoCAD Detailed Part Drawing" 
        loading="lazy">
-  <figcaption>Figure 7. Technical drawing with GD&T specifications in AutoCAD
+  <figcaption>Figure 7. Technical drawing with GD&T specifications in AutoCAD</figcaption>
+</figure>
 
 **Design Methodology:**
 - **Parametric Modeling:** Fully associative 3D models with design tables
@@ -1045,8 +1056,10 @@ The 1.1× margin is tight. In field deployment, phase current was set to 85% of 
 - **Predictive Maintenance:** Algorithm detects nozzle wear patterns
 
 **Machine Learning Integration:**
-```python
-# Predictive maintenance algorithm (simplified)
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Python snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-python"># Predictive maintenance algorithm (simplified)
 def predict_maintenance_needs(sensor_data):
     """
     ML-based prediction of maintenance requirements
@@ -1056,13 +1069,15 @@ def predict_maintenance_needs(sensor_data):
     # Trained model for component health assessment
     health_score = trained_model.predict(features)
     
-    if health_score < 0.7:
+    if health_score &lt; 0.7:
         schedule_maintenance()
-    elif health_score < 0.85:
+    elif health_score &lt; 0.85:
         increase_monitoring_frequency()
     
     return health_score
-```
+</code></pre>
+</div>
+</div>
 
 ### 7.2 Industry 4.0 Integration
 

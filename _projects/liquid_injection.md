@@ -175,7 +175,8 @@ The experimental setup implements a distributed hardware architecture connecting
        src="{{ '/project/liquid_injection/hardware_architecture.png' | relative_url }}"
        alt="Hardware Architecture Diagram"
        loading="lazy">
-  <figcaption>Figure 4.1: Complete hardware system architecture showing data flow between components
+  <figcaption>Figure 4.1: Complete hardware system architecture showing data flow between components</figcaption>
+</figure>
 
 #### 4.1.1 System Architecture Components
 
@@ -213,8 +214,10 @@ $$\text{MQTT Broker} \xrightarrow{\text{WiFi}} \text{Robot Controller} \xrightar
 
 **Message Protocol Definition:**
 
-```json
-{
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example JSON snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-json">{
   "timestamp": "2025-08-06T14:30:25.123Z",
   "weight": {
     "value": 145.67,
@@ -224,7 +227,9 @@ $$\text{MQTT Broker} \xrightarrow{\text{WiFi}} \text{Robot Controller} \xrightar
   },
   "system_status": "active"
 }
-```
+</code></pre>
+</div>
+</div>
 
 ### 4.2 Load Cell Frame Design and 3D Manufacturing
 
@@ -242,7 +247,8 @@ The load cell mounting system requires precise mechanical design to ensure:
        src="{{ '/project/liquid_injection/frame_design_3d.gif' | relative_url }}"
        alt="3D Frame Design"
        loading="lazy">
-  <figcaption>Figure 4.2: CAD model of the custom load cell mounting frame showing key dimensions, mounting points, and integrated object positioning guides
+  <figcaption>Figure 4.2: CAD model of the custom load cell mounting frame showing key dimensions, mounting points, and integrated object positioning guides</figcaption>
+</figure>
 
 #### 4.2.2 Load-Based Thickness Calculation and Safety Analysis
 
@@ -405,7 +411,8 @@ All threaded connections follow Korean Standard (KS) specifications:
        src="{{ '/project/liquid_injection/3d_printing_process.gif' | relative_url }}"
        alt="3D Printing Process"
        loading="lazy">
-  <figcaption>Figure 4.3: Creality Ender-3 V3 KE during precision printing process showing layer-by-layer construction with 100% infill density
+  <figcaption>Figure 4.3: Creality Ender-3 V3 KE during precision printing process showing layer-by-layer construction with 100% infill density</figcaption>
+</figure>
 
 **Manufacturing Execution:**
 - **Print Duration**: 1 hours 45 minutes (100% infill extends time significantly)
@@ -425,7 +432,8 @@ All threaded connections follow Korean Standard (KS) specifications:
        src="{{ '/project/liquid_injection/completed_frame.jpg' | relative_url }}"
        alt="Completed Frame Assembly"
        loading="lazy">
-  <figcaption>Figure 4.4: Completed load cell frame assembly showing integrated object positioning guides and KS-standard fastener installation
+  <figcaption>Figure 4.4: Completed load cell frame assembly showing integrated object positioning guides and KS-standard fastener installation</figcaption>
+</figure>
 
 ### 4.3 Load Cell Principle of Operation
 
@@ -450,7 +458,8 @@ The load cell implements a full Wheatstone bridge configuration for maximum sens
        src="{{ '/project/liquid_injection/loadcell_internal.png' | relative_url }}"
        alt="Load Cell Internal Structure"
        loading="lazy">
-  <figcaption>Figure 4.5: Internal structure of the load cell showing strain gauge placement and bridge configuration
+  <figcaption>Figure 4.5: Internal structure of the load cell showing strain gauge placement and bridge configuration</figcaption>
+</figure>
 
 **Bridge Circuit Analysis:**
 
@@ -497,7 +506,8 @@ The HX711 is a precision 24-bit analog-to-digital converter specifically designe
        src="{{ '/project/liquid_injection/hx711_soldering.jpg' | relative_url }}"
        alt="HX711 Soldering Process"
        loading="lazy">
-  <figcaption>Figure 4.6: Precision soldering process for HX711 module connections showing proper wire gauge and connection techniques
+  <figcaption>Figure 4.6: Precision soldering process for HX711 module connections showing proper wire gauge and connection techniques</figcaption>
+</figure>
 
 **Key Specifications:**
 - **Resolution**: 24-bit sigma-delta ADC
@@ -527,7 +537,8 @@ The HX711 is a precision 24-bit analog-to-digital converter specifically designe
        src="{{ '/project/liquid_injection/electrical_schematic.webp' | relative_url }}"
        alt="Electrical Schematic"
        loading="lazy">
-  <figcaption>Figure 4.7: Complete electrical schematic showing HX711-Arduino-Load Cell connections
+  <figcaption>Figure 4.7: Complete electrical schematic showing HX711-Arduino-Load Cell connections</figcaption>
+</figure>
 
 **Circuit Analysis:**
 
@@ -848,15 +859,15 @@ The flow behavior exhibits three distinct regimes:
 
 **Regime I: Quasi-Static (θ < 170°)**
 
-$$Q(\theta) \approx 0.05 \cdot e^{0.02(\theta - 167°)} \text{ ml/s}$$
+$$Q(\theta) \approx 0.05 \cdot e^{0.02(\theta - 167^\circ)} \text{ ml/s}$$
 
 **Regime II: Transition (170° ≤ θ ≤ 185°)**
 
-$$Q(\theta) = 0.139(\theta - 167°)^{0.98} \text{ ml/s}$$
+$$Q(\theta) = 0.139(\theta - 167^\circ)^{0.98} \text{ ml/s}$$
 
 **Regime III: High-Flow (θ > 185°)**
 
-$$Q(\theta) = Q_{max} \left[ 1 - e^{-k(\theta - 185°)} \right] + Q_{linear}$$
+$$Q(\theta) = Q_{max} \left[ 1 - e^{-k(\theta - 185^\circ)} \right] + Q_{linear}$$
 
 ### 7.2 Temporal Flow Dynamics Comparison
 
@@ -1515,7 +1526,23 @@ This research establishes several fundamental contributions to the field of robo
 **Unified Fluid-Robot Dynamics Model:**
 The integration of fluid dynamics with robotic kinematics through the coupled differential equation:
 
-$$\begin{bmatrix} \dot{\mathbf{q}} \\ \dot{\mathbf{h}} \\ \dot{\mathbf{Q}} \end{bmatrix} = \mathbf{f}\begin{pmatrix} \begin{bmatrix} \mathbf{q} \\ \mathbf{h} \\ \mathbf{Q} \end{bmatrix}, \mathbf{u}, t \end{pmatrix}$$
+$$
+\begin{bmatrix}
+\dot{\mathbf{q}} \\
+\dot{\mathbf{h}} \\
+\dot{\mathbf{Q}}
+\end{bmatrix}
+=
+\mathbf{f}\left(
+\begin{bmatrix}
+\mathbf{q} \\
+\mathbf{h} \\
+\mathbf{Q}
+\end{bmatrix},
+\mathbf{u},
+t
+\right)
+$$
 
 represents a novel approach to multi-physics system modeling in robotics.
 
@@ -1926,8 +1953,10 @@ $$= h_0 - \int_0^t \frac{Q(\tau)}{A_{surface}(\tau)} d\tau + L_{container}\sin(\
 
 #### C.1 EKF Implementation (Python)
 
-```python
-import numpy as np
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Python snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-python">import numpy as np
 from scipy.linalg import cholesky
 
 class ExtendedKalmanFilter:
@@ -1964,12 +1993,16 @@ class ExtendedKalmanFilter:
         # Update state and covariance
         self.x = self.x + K @ y
         self.P = (np.eye(self.dim_x) - K @ H) @ self.P
-```
+</code></pre>
+</div>
+</div>
 
 #### C.2 UKF Implementation (Python)
 
-```python
-class UnscentedKalmanFilter:
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Python snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-python">class UnscentedKalmanFilter:
     def __init__(self, dim_x, dim_z, alpha=0.001, beta=2.0, kappa=0):
         self.dim_x = dim_x
         self.dim_z = dim_z
@@ -2008,7 +2041,9 @@ class UnscentedKalmanFilter:
             sigma_points[i + 1 + self.dim_x] = self.x - sqrt[i]
             
         return sigma_points
-```
+</code></pre>
+</div>
+</div>
 
 ### Appendix D: Hardware Specifications
 

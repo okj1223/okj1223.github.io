@@ -93,8 +93,10 @@ The modular nature of the Arduino-Raspberry Pi combination allows for incrementa
 
 The existing manual process consisted of 14 discrete steps:
 
-```
-Manual Process Timeline:
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Text snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-text">Manual Process Timeline:
 ├── T+0:00  - Generator activation
 ├── T+2:00  - Water heater switchboard activation
 ├── T+5:00  - Temperature monitoring begins
@@ -109,21 +111,26 @@ Manual Process Timeline:
 ├── T+46:00 - Pump activation for transfer
 ├── T+50:00 - Transfer completion
 └── T+52:00 - System shutdown
-```
+</code></pre>
+</div>
+</div>
 
 <figure>
   <img class="flowchart"
        src="{{ '/project/automated-mixing-system/manual_process_timeline.png' | relative_url }}"
        alt="Manual process timeline flowchart"
        loading="lazy">
-  <figcaption>Figure 2.1: Manual process timeline showing 14 discrete operator interventions with cumulative time analysis
+  <figcaption>Figure 2.1: Manual process timeline showing 14 discrete operator interventions with cumulative time analysis</figcaption>
+</figure>
 
 #### 2.1.2 Automated Process Requirements
 
 Based on analysis of the manual process, the following automated process requirements were established:
 
-```
-Automated Process Flow:
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Text snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-text">Automated Process Flow:
 ├── T+0:00  - System initialization
 ├── T+0:30  - Automatic heater activation
 ├── T+18:00 - Temperature setpoint reached (PID controlled)
@@ -134,14 +141,17 @@ Automated Process Flow:
 ├── T+30:00 - Automatic transfer initiation
 ├── T+32:45 - Transfer complete (flow sensor verified)
 └── T+33:00 - Automatic cleanup and ready state
-```
+</code></pre>
+</div>
+</div>
 
 <figure>
   <img class="flowchart"
        src="{{ '/project/automated-mixing-system/automated_process_flow.png' | relative_url }}"
        alt="Automated process flow diagram"
        loading="lazy">
-  <figcaption>Figure 2.2: Automated process flow with sensor feedback loops and reduced cycle time
+  <figcaption>Figure 2.2: Automated process flow with sensor feedback loops and reduced cycle time</figcaption>
+</figure>
 
 ### 2.2 Technical Specifications
 
@@ -183,8 +193,10 @@ Safety design incorporated multiple layers of protection:
 
 The system employs a hierarchical architecture with distinct functional layers:
 
-```
-┌─────────────────────────────────────────────────────────────┐
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Text snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-text">┌─────────────────────────────────────────────────────────────┐
 │                     Cloud Infrastructure                      │
 │  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐      │
 │  │ Data Storage │  │  Analytics   │  │  Dashboard   │      │
@@ -224,14 +236,17 @@ The system employs a hierarchical architecture with distinct functional layers:
 │  │ Sensors  │  │  Valves  │  │  Pumps   │  │  Heaters │   │
 │  └──────────┘  └──────────┘  └──────────┘  └──────────┘   │
 └─────────────────────────────────────────────────────────────┘
-```
+</code></pre>
+</div>
+</div>
 
 <figure>
   <img class="flowchart"
        src="{{ '/project/automated-mixing-system/system_architecture.png' | relative_url }}"
        alt="Multi-layer system architecture"
        loading="lazy">
-  <figcaption>Figure 3.1: Hierarchical system architecture showing cloud, edge computing, real-time control, and physical process layers
+  <figcaption>Figure 3.1: Hierarchical system architecture showing cloud, edge computing, real-time control, and physical process layers</figcaption>
+</figure>
 
 ### 3.2 Controller Selection Rationale
 
@@ -276,8 +291,10 @@ The system employs a hierarchical architecture with distinct functional layers:
 
 The system operates through eight distinct states with defined transition conditions:
 
-```
-                    ┌─────────┐
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Text snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-text">                    ┌─────────┐
                     │  IDLE   │◄──────────────┐
                     └────┬────┘               │
                          │ Start Command      │
@@ -305,14 +322,17 @@ The system operates through eight distinct states with defined transition condit
                     │ CLEANUP │               │
                     └────┬────┘               │
                          └────────────────────┘
-```
+</code></pre>
+</div>
+</div>
 
 <figure>
   <img class="flowchart"
        src="{{ '/project/automated-mixing-system/state_machine.png' | relative_url }}"
        alt="System state machine diagram"
        loading="lazy">
-  <figcaption>Figure 3.2: System state machine with eight operational states and transition conditions
+  <figcaption>Figure 3.2: System state machine with eight operational states and transition conditions</figcaption>
+</figure>
 
 ### 3.4 Communication Architecture
 
@@ -320,8 +340,10 @@ The system operates through eight distinct states with defined transition condit
 
 Arduino-Raspberry Pi communication uses a custom binary protocol over serial (115200 baud):
 
-```c
-// Packet structure (20 bytes)
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example C snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-c">// Packet structure (20 bytes)
 typedef struct {
     uint32_t timestamp;     // 4 bytes - milliseconds since start
     float temperature;      // 4 bytes - degrees Celsius
@@ -331,14 +353,17 @@ typedef struct {
     uint8_t checksum;      // 1 byte - CRC8
     uint8_t terminator;    // 1 byte - 0xFF
 } SensorPacket;
-```
+</code></pre>
+</div>
+</div>
 
 <figure>
   <img class="flowchart"
        src="{{ '/project/automated-mixing-system/packet_structure.png' | relative_url }}"
        alt="Communication packet structure"
        loading="lazy">
-  <figcaption>Figure 3.3: Binary communication packet structure for inter-controller data exchange
+  <figcaption>Figure 3.3: Binary communication packet structure for inter-controller data exchange</figcaption>
+</figure>
 
 ---
 
@@ -357,22 +382,27 @@ Selection criteria:
 - Industrial grade construction
 
 Calibration equation (Callendar-Van Dusen):
-```
-R(T) = R₀(1 + AT + BT² + C(T-100)T³)
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Text snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-text">R(T) = R₀(1 + AT + BT² + C(T-100)T³)
 
 Where:
 R₀ = 100Ω at 0°C
 A = 3.9083 × 10⁻³
 B = -5.775 × 10⁻⁷
-C = -4.183 × 10⁻¹² (T < 0°C)
-```
+C = -4.183 × 10⁻¹² (T &lt; 0°C)
+</code></pre>
+</div>
+</div>
 
 <figure>
   <img class="flowchart"
        src="{{ '/project/automated-mixing-system/rtd_calibration.png' | relative_url }}"
        alt="RTD calibration curve"
        loading="lazy">
-  <figcaption>Figure 4.1: PT100 RTD resistance-temperature relationship using Callendar-Van Dusen equation
+  <figcaption>Figure 4.1: PT100 RTD resistance-temperature relationship using Callendar-Van Dusen equation</figcaption>
+</figure>
 
 #### 4.1.2 Level Measurement
 
@@ -385,12 +415,14 @@ Model: HC-SR04 with temperature compensation
 - Update rate: 10 Hz
 
 Volume calculation for conical bottom tank:
-```c
-float calculateVolume(float distance) {
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example C snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-c">float calculateVolume(float distance) {
     float liquidHeight = TANK_HEIGHT - distance;
     float volume = 0;
     
-    if (liquidHeight <= CONE_HEIGHT) {
+    if (liquidHeight &lt;= CONE_HEIGHT) {
         // Conical section
         float r = (liquidHeight / CONE_HEIGHT) * TANK_RADIUS;
         volume = (PI * liquidHeight * r * r) / 3.0;
@@ -403,14 +435,17 @@ float calculateVolume(float distance) {
     }
     return volume; // liters
 }
-```
+</code></pre>
+</div>
+</div>
 
 <figure>
   <img class="flowchart"
        src="{{ '/project/automated-mixing-system/tank_geometry.png' | relative_url }}"
        alt="Tank geometry for volume calculation"
        loading="lazy">
-  <figcaption>Figure 4.2: Tank geometry showing conical bottom and cylindrical section for accurate volume calculation
+  <figcaption>Figure 4.2: Tank geometry showing conical bottom and cylindrical section for accurate volume calculation</figcaption>
+</figure>
 
 #### 4.1.3 Pressure Monitoring
 
@@ -421,8 +456,10 @@ float calculateVolume(float distance) {
 - Temperature compensation: -40 to +125°C
 
 Transfer function (Vs = 5.0 V supply, P in kPa, 0–700 kPa full scale):
-```
-Vout = Vs × (0.0012858 × P + 0.04)        [V]
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Text snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-text">Vout = Vs × (0.0012858 × P + 0.04)        [V]
 P    = ((Vout / Vs) - 0.04) / 0.0012858   [kPa]
 
 Where:
@@ -434,7 +471,9 @@ Where:
 
 Verification at midscale — P = 350 kPa:
   Vout = 5.0 × (0.0012858 × 350 + 0.04) = 5.0 × 0.4900 = 2.45 V  ✓
-```
+</code></pre>
+</div>
+</div>
 
 #### 4.1.4 Flow Measurement
 
@@ -465,8 +504,10 @@ Three 2/2-way normally closed solenoid valves control fluid routing:
 - Response time: 10ms
 
 Relay assignment:
-```
-Relay 1: Generator control
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Text snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-text">Relay 1: Generator control
 Relay 2: Heater power
 Relay 3: Pump motor
 Relay 4: Mixer motor
@@ -474,14 +515,17 @@ Relay 5: Water inlet valve
 Relay 6: Drain valve
 Relay 7: Transfer valve
 Relay 8: Alarm/beacon
-```
+</code></pre>
+</div>
+</div>
 
 <figure>
   <img class="flowchart"
        src="{{ '/project/automated-mixing-system/relay_assignment.png' | relative_url }}"
        alt="Relay module channel assignments"
        loading="lazy">
-  <figcaption>Figure 4.3: 8-channel relay module assignment for system actuators
+  <figcaption>Figure 4.3: 8-channel relay module assignment for system actuators</figcaption>
+</figure>
 
 ### 4.3 Signal Conditioning
 
@@ -489,27 +533,34 @@ Relay 8: Alarm/beacon
 
 4-20mA current loop interface for industrial sensors:
 
-```
-Sensor (4-20mA) ─────┬─────[250Ω]─────┬───── GND
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Text snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-text">Sensor (4-20mA) ─────┬─────[250Ω]─────┬───── GND
                      │                 │
                      │              [0.1µF]
                      │                 │
                      └───[10kΩ]────ADC Input (1-5V)
-```
+</code></pre>
+</div>
+</div>
 
 <figure>
   <img class="flowchart"
        src="{{ '/project/automated-mixing-system/current_loop_interface.png' | relative_url }}"
        alt="4-20mA current loop interface circuit"
        loading="lazy">
-  <figcaption>Figure 4.4: Current loop to voltage conversion circuit for industrial sensor interfacing
+  <figcaption>Figure 4.4: Current loop to voltage conversion circuit for industrial sensor interfacing</figcaption>
+</figure>
 
 #### 4.3.2 Digital Filtering
 
 Butterworth low-pass filter implementation for noise reduction:
 
-```c
-class ButterworthFilter {
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example C snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-c">class ButterworthFilter {
 private:
     float a[3] = {1.0000, -1.5610, 0.6414};
     float b[3] = {0.0201, 0.0402, 0.0201};
@@ -529,7 +580,9 @@ public:
         return y[0];
     }
 };
-```
+</code></pre>
+</div>
+</div>
 
 ---
 
@@ -540,8 +593,10 @@ public:
 #### 5.1.1 Temperature Control Loop
 
 System transfer function modeling:
-```
-        K·e^(-θs)
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Text snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-text">        K·e^(-θs)
 G(s) = -----------
          τs + 1
 
@@ -549,14 +604,17 @@ Where:
 K = 0.8°C/% (process gain)
 τ = 180 seconds (time constant)
 θ = 15 seconds (dead time)
-```
+</code></pre>
+</div>
+</div>
 
 <figure>
   <img class="flowchart"
        src="{{ '/project/automated-mixing-system/transfer_function.png' | relative_url }}"
        alt="System transfer function block diagram"
        loading="lazy">
-  <figcaption>Figure 5.1: First-order plus dead time (FOPDT) model for temperature control system
+  <figcaption>Figure 5.1: First-order plus dead time (FOPDT) model for temperature control system</figcaption>
+</figure>
 
 #### 5.1.2 PID Tuning
 
@@ -564,8 +622,10 @@ Ziegler-Nichols open-loop (reaction curve) tuning — **parallel PID form**:
 
 $$u(t) = K_p \cdot e(t) \;+\; K_i \int e\,dt \;+\; K_d \frac{de}{dt}$$
 
-```
-FOPDT parameters (from step test):
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Text snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-text">FOPDT parameters (from step test):
   K = 0.8   °C/%  (process gain)
   T = 180   s     (time constant)
   L = 15    s     (dead time)
@@ -576,11 +636,13 @@ ZN step-response formulae — parallel form:
   Td = L/2 = 7.5 s → Kd = Kp × Td = 18.0 × 7.5     = 135.0  [%·s/°C]
 
 ZN initial tuning is typically aggressive (≈25% overshoot).
-After closed-loop step tests (target: overshoot < 5%):
+After closed-loop step tests (target: overshoot &lt; 5%):
   Kp = 12.5
   Ki = 0.35
   Kd = 95.0
-```
+</code></pre>
+</div>
+</div>
 
 All three values are in the **parallel PID form** above (same unit convention).
 Fine-tuning reduced Kp and Ki to dampen overshoot; Kd was reduced to
@@ -591,12 +653,15 @@ limit derivative kick from sensor noise.
        src="{{ '/project/automated-mixing-system/pid_tuning.png' | relative_url }}"
        alt="PID tuning parameters"
        loading="lazy">
-  <figcaption>Figure 5.2: PID controller tuning using Ziegler-Nichols method with fine-tuning adjustments
+  <figcaption>Figure 5.2: PID controller tuning using Ziegler-Nichols method with fine-tuning adjustments</figcaption>
+</figure>
 
 #### 5.1.3 Anti-Windup Implementation
 
-```c
-class PIDController {
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example C snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-c">class PIDController {
 private:
     float kp, ki, kd;
     float setpoint;
@@ -614,8 +679,8 @@ public:
         integral += error * dt;
         
         // Anti-windup
-        if (integral > outputMax/ki) integral = outputMax/ki;
-        if (integral < outputMin/ki) integral = outputMin/ki;
+        if (integral &gt; outputMax/ki) integral = outputMax/ki;
+        if (integral &lt; outputMin/ki) integral = outputMin/ki;
         
         float derivative = (error - previousError) / dt;
         float output = kp * error + ki * integral + kd * derivative;
@@ -628,30 +693,39 @@ public:
         return output;
     }
 };
-```
+</code></pre>
+</div>
+</div>
 
 ### 5.2 Cascade Control Architecture
 
 Primary loop controls temperature setpoint, secondary loop controls heater power:
 
-```
-Setpoint → [Primary PID] → Power SP → [Secondary PID] → PWM → Heater
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Text snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-text">Setpoint → [Primary PID] → Power SP → [Secondary PID] → PWM → Heater
     ↑                                                              ↓
     └────────────── Temperature Feedback ←────────────────────────┘
-```
+</code></pre>
+</div>
+</div>
 
 <figure>
   <img class="flowchart"
        src="{{ '/project/automated-mixing-system/cascade_control.png' | relative_url }}"
        alt="Cascade control architecture"
        loading="lazy">
-  <figcaption>Figure 5.3: Cascade control structure with primary temperature loop and secondary power control loop
+  <figcaption>Figure 5.3: Cascade control structure with primary temperature loop and secondary power control loop</figcaption>
+</figure>
 
 ### 5.3 State Space Representation
 
 System dynamics in state space form:
-```
-ẋ = Ax + Bu
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Text snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-text">ẋ = Ax + Bu
 y = Cx + Du
 
 State vector: x = [temperature, level, pressure]ᵀ
@@ -669,14 +743,17 @@ B = [0.08   0     0  ]
 
 C = I₃ (Identity matrix)
 D = 0₃ (Zero matrix)
-```
+</code></pre>
+</div>
+</div>
 
 <figure>
   <img class="flowchart"
        src="{{ '/project/automated-mixing-system/state_space.png' | relative_url }}"
        alt="State space representation"
        loading="lazy">
-  <figcaption>Figure 5.4: State space model showing system dynamics with state, input, and output vectors
+  <figcaption>Figure 5.4: State space model showing system dynamics with state, input, and output vectors</figcaption>
+</figure>
 
 ---
 
@@ -691,22 +768,29 @@ System parameters:
 - Transfer time: ≤ 5 minutes
 - Required flow rate:
 
-```
-Q = V / t = 100 L / 5 min = 20 L/min = 1.2 m³/h
-```
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Text snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-text">Q = V / t = 100 L / 5 min = 20 L/min = 1.2 m³/h
+</code></pre>
+</div>
+</div>
 
 <figure>
   <img class="flowchart"
        src="{{ '/project/automated-mixing-system/flow_calculation.png' | relative_url }}"
        alt="Flow rate calculation"
        loading="lazy">
-  <figcaption>Figure 6.1: Flow rate determination based on volume and time requirements
+  <figcaption>Figure 6.1: Flow rate determination based on volume and time requirements</figcaption>
+</figure>
 
 #### 6.1.2 System Head Calculation
 
 Total Dynamic Head (TDH) components:
-```
-H_total = H_static + H_friction + H_velocity + H_fittings
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Text snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-text">H_total = H_static + H_friction + H_velocity + H_fittings
 
 Where:
 H_static = 2.5 m (elevation)
@@ -714,14 +798,17 @@ H_friction = 1.8 m (pipe losses)
 H_velocity = 0.2 m (velocity head)
 H_fittings = 0.5 m (valves, elbows)
 H_total = 5.0 m
-```
+</code></pre>
+</div>
+</div>
 
 <figure>
   <img class="flowchart"
        src="{{ '/project/automated-mixing-system/head_calculation.png' | relative_url }}"
        alt="System head calculation"
        loading="lazy">
-  <figcaption>Figure 6.2: Total dynamic head calculation breakdown
+  <figcaption>Figure 6.2: Total dynamic head calculation breakdown</figcaption>
+</figure>
 
 ### 6.2 Pump Selection: Wilo MH-305
 
@@ -737,8 +824,10 @@ H_total = 5.0 m
 
 #### 6.2.2 Operating Point Determination
 
-```python
-# Pump curve equation
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Python snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-python"># Pump curve equation
 def pump_curve(Q):
     H0 = 8.0  # Shutoff head (m)
     k = 0.0032  # Pump constant
@@ -751,14 +840,17 @@ def system_curve(Q):
     return H_static + k_system * (Q * 60)**2
 
 # Operating point: Q = 20.4 L/min, H = 5.1 m
-```
+</code></pre>
+</div>
+</div>
 
 <figure>
   <img class="flowchart"
        src="{{ '/project/automated-mixing-system/pump_curves.png' | relative_url }}"
        alt="Pump and system curves"
        loading="lazy">
-  <figcaption>Figure 6.3: Pump performance curve intersection with system resistance curve showing operating point
+  <figcaption>Figure 6.3: Pump performance curve intersection with system resistance curve showing operating point</figcaption>
+</figure>
 
 #### 6.2.3 Selection Justification
 
@@ -773,21 +865,28 @@ def system_curve(Q):
 #### 6.3.1 Pipe Sizing
 
 Velocity constraint: 1-2 m/s for chemical service
-```
-v = Q / A = 0.333 L/s / (π × 0.016² m²) = 1.65 m/s ✓
-```
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Text snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-text">v = Q / A = 0.333 L/s / (π × 0.016² m²) = 1.65 m/s ✓
+</code></pre>
+</div>
+</div>
 
 <figure>
   <img class="flowchart"
        src="{{ '/project/automated-mixing-system/pipe_velocity.png' | relative_url }}"
        alt="Pipe velocity verification"
        loading="lazy">
-  <figcaption>Figure 6.4: Pipe sizing verification showing acceptable velocity range
+  <figcaption>Figure 6.4: Pipe sizing verification showing acceptable velocity range</figcaption>
+</figure>
 
 #### 6.3.2 Valve Cv Calculation
 
-```
-Cv = Q × √(SG/ΔP)
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Text snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-text">Cv = Q × √(SG/ΔP)
 
 Where:
 Q = 5.3 GPM (20 L/min)
@@ -797,14 +896,17 @@ SG = 1.1 (specific gravity)
 Cv = 5.3 × √(1.1/5) = 2.48
 
 Selected: Cv = 4.5 (80% margin)
-```
+</code></pre>
+</div>
+</div>
 
 <figure>
   <img class="flowchart"
        src="{{ '/project/automated-mixing-system/cv_calculation.png' | relative_url }}"
        alt="Valve Cv calculation"
        loading="lazy">
-  <figcaption>Figure 6.5: Solenoid valve flow coefficient calculation for proper sizing
+  <figcaption>Figure 6.5: Solenoid valve flow coefficient calculation for proper sizing</figcaption>
+</figure>
 
 ---
 
@@ -814,8 +916,10 @@ Selected: Cv = 4.5 (80% margin)
 
 #### 7.1.1 Main Control Loop
 
-```c
-#include <Arduino.h>
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example C snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-c">#include &lt;Arduino.h&gt;
 #include "SystemConfig.h"
 #include "SensorManager.h"
 #include "ActuatorController.h"
@@ -855,7 +959,7 @@ void loop() {
     wdt_reset();
     
     // Fixed interval control loop
-    if (currentMillis - previousMillis >= LOOP_INTERVAL) {
+    if (currentMillis - previousMillis &gt;= LOOP_INTERVAL) {
         previousMillis = currentMillis;
         
         // Read sensors
@@ -879,19 +983,24 @@ void loop() {
         sendTelemetry();
     }
 }
-```
+</code></pre>
+</div>
+</div>
 
 <figure>
   <img class="flowchart"
        src="{{ '/project/automated-mixing-system/arduino_flow.png' | relative_url }}"
        alt="Arduino main loop flowchart"
        loading="lazy">
-  <figcaption>Figure 7.1: Arduino firmware main control loop structure with 10Hz update rate
+  <figcaption>Figure 7.1: Arduino firmware main control loop structure with 10Hz update rate</figcaption>
+</figure>
 
 #### 7.1.2 State Machine Implementation
 
-```c
-enum SystemState {
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example C snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-c">enum SystemState {
     STATE_IDLE,
     STATE_HEATING,
     STATE_FILLING,
@@ -914,14 +1023,14 @@ void updateStateMachine() {
             break;
             
         case STATE_HEATING:
-            if (temperature >= TARGET_TEMP) {
+            if (temperature &gt;= TARGET_TEMP) {
                 currentState = STATE_FILLING;
                 openWaterValve();
             }
             break;
             
         case STATE_FILLING:
-            if (level >= TARGET_VOLUME) {
+            if (level &gt;= TARGET_VOLUME) {
                 closeWaterValve();
                 currentState = STATE_WAITING;
                 notifyOperator();
@@ -931,14 +1040,18 @@ void updateStateMachine() {
         // Additional states...
     }
 }
-```
+</code></pre>
+</div>
+</div>
 
 ### 7.2 Raspberry Pi Application
 
 #### 7.2.1 System Architecture
 
-```python
-import asyncio
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Python snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-python">import asyncio
 import serial
 import struct
 import json
@@ -972,7 +1085,7 @@ class MixingSystemController:
                 if len(data) == 20:
                     # Unpack binary data
                     timestamp, temp, pressure, level, status, checksum = \
-                        struct.unpack('<IfffffB', data)
+                        struct.unpack('&lt;IfffffB', data)
                     
                     if self.verify_checksum(data[:-1], checksum):
                         sensor_data = {
@@ -985,19 +1098,24 @@ class MixingSystemController:
                         await self.process_data(sensor_data)
                         
             await asyncio.sleep(0.01)
-```
+</code></pre>
+</div>
+</div>
 
 <figure>
   <img class="flowchart"
        src="{{ '/project/automated-mixing-system/raspi_architecture.png' | relative_url }}"
        alt="Raspberry Pi software architecture"
        loading="lazy">
-  <figcaption>Figure 7.2: Raspberry Pi application architecture with async data processing
+  <figcaption>Figure 7.2: Raspberry Pi application architecture with async data processing</figcaption>
+</figure>
 
 #### 7.2.2 Web Interface
 
-```python
-app = Flask(__name__)
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Python snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-python">app = Flask(__name__)
 
 @app.route('/')
 def dashboard():
@@ -1016,28 +1134,35 @@ def start_batch():
     config = request.json
     controller.start_batch(config)
     return jsonify({'success': True})
-```
+</code></pre>
+</div>
+</div>
 
 ### 7.3 Communication Protocol
 
 #### 7.3.1 MQTT Topics Structure
 
-```
-mixing/system/status      - System state updates
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Text snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-text">mixing/system/status      - System state updates
 mixing/sensor/temperature - Temperature readings
 mixing/sensor/level      - Level readings
 mixing/sensor/pressure   - Pressure readings
 mixing/batch/start       - Batch start commands
 mixing/batch/complete    - Batch completion events
 mixing/alarm/triggered   - Alarm notifications
-```
+</code></pre>
+</div>
+</div>
 
 <figure>
   <img class="flowchart"
        src="{{ '/project/automated-mixing-system/mqtt_topics.png' | relative_url }}"
        alt="MQTT topic hierarchy"
        loading="lazy">
-  <figcaption>Figure 7.3: MQTT topic structure for system communication
+  <figcaption>Figure 7.3: MQTT topic structure for system communication</figcaption>
+</figure>
 
 ---
 
@@ -1047,8 +1172,10 @@ mixing/alarm/triggered   - Alarm notifications
 
 #### 8.1.1 Main Power Architecture
 
-```
-3-Phase 380V Supply
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Text snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-text">3-Phase 380V Supply
     │
     ├─[32A Main Breaker]
     │
@@ -1068,19 +1195,24 @@ mixing/alarm/triggered   - Alarm notifications
             ├─[24V/10A]
             ├─[12V/5A]
             └─[5V/3A]
-```
+</code></pre>
+</div>
+</div>
 
 <figure>
   <img class="flowchart"
        src="{{ '/project/automated-mixing-system/power_distribution.png' | relative_url }}"
        alt="Power distribution diagram"
        loading="lazy">
-  <figcaption>Figure 8.1: Complete power distribution from 3-phase supply to DC control voltages
+  <figcaption>Figure 8.1: Complete power distribution from 3-phase supply to DC control voltages</figcaption>
+</figure>
 
 #### 8.1.2 Control Circuit Design
 
-```
-                    +24V
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Text snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-text">                    +24V
                      │
                      ├─[5A Fuse]
                      │
@@ -1100,35 +1232,43 @@ mixing/alarm/triggered   - Alarm notifications
     [Pin 25]──────────────────────┘        │   │        │
                                            │   │        │
                                           GND  GND      GND
-```
+</code></pre>
+</div>
+</div>
 
 <figure>
   <img class="flowchart"
        src="{{ '/project/automated-mixing-system/control_circuit.png' | relative_url }}"
        alt="Control circuit schematic"
        loading="lazy">
-  <figcaption>Figure 8.2: Relay control circuit with flyback protection diodes
+  <figcaption>Figure 8.2: Relay control circuit with flyback protection diodes</figcaption>
+</figure>
 
 ### 8.2 Safety Interlock System
 
 #### 8.2.1 Hardware Safety Circuit
 
-```
-E-Stop ──┬── NC ──┬── NC ──┬── NC ──┬── +24V
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Text snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-text">E-Stop ──┬── NC ──┬── NC ──┬── NC ──┬── +24V
          │        │        │        │
       [ES1]    [LS1]    [PS1]    [TS1]
          │        │        │        │
          └────────┴────────┴────────┴── Safety Relay
                                             │
                                         [Arduino INT]
-```
+</code></pre>
+</div>
+</div>
 
 <figure>
   <img class="flowchart"
        src="{{ '/project/automated-mixing-system/safety_circuit.png' | relative_url }}"
        alt="Safety interlock circuit"
        loading="lazy">
-  <figcaption>Figure 8.3: Hardware safety interlock with series-connected normally closed switches
+  <figcaption>Figure 8.3: Hardware safety interlock with series-connected normally closed switches</figcaption>
+</figure>
 
 #### 8.2.2 Grounding and Shielding
 
@@ -1150,8 +1290,10 @@ Grounding strategy:
 
 #### 8.3.2 Component Placement
 
-```
-┌─────────────────────────────────────┐
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Text snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-text">┌─────────────────────────────────────┐
 │  Power Supply Section    │ Digital   │
 │  ┌────┐ ┌────┐ ┌────┐  │ Section   │
 │  │24V │ │12V │ │5V  │  │           │
@@ -1167,14 +1309,17 @@ Grounding strategy:
 │  │  Signal Cond.  │    │ ┌──────┐  │
 │  └────────────────┘    │ │Terminal│ │
 └─────────────────────────────────────┘
-```
+</code></pre>
+</div>
+</div>
 
 <figure>
   <img class="flowchart"
        src="{{ '/project/automated-mixing-system/pcb_layout.png' | relative_url }}"
        alt="PCB component layout"
        loading="lazy">
-  <figcaption>Figure 8.4: PCB layout showing segregation of power, analog, and digital sections
+  <figcaption>Figure 8.4: PCB layout showing segregation of power, analog, and digital sections</figcaption>
+</figure>
 
 ---
 
@@ -1184,8 +1329,10 @@ Grounding strategy:
 
 #### 9.1.1 Process Flow Diagram
 
-```
-                    TI      PI
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Text snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-text">                    TI      PI
                     101     101
                      │       │
          ┌───────────┼───────┼──────────┐
@@ -1209,14 +1356,17 @@ Grounding strategy:
          │          └──────────┘       │
          │                             │
          └─────────────────────────────┘
-```
+</code></pre>
+</div>
+</div>
 
 <figure>
   <img class="flowchart"
        src="{{ '/project/automated-mixing-system/pid_diagram.png' | relative_url }}"
        alt="Process and Instrumentation Diagram"
        loading="lazy">
-  <figcaption>Figure 9.1: P&ID showing mixing tank with instrumentation and control elements
+  <figcaption>Figure 9.1: P&ID showing mixing tank with instrumentation and control elements</figcaption>
+</figure>
 
 ### 9.2 Piping Specifications
 
@@ -1231,8 +1381,10 @@ Grounding strategy:
 
 #### 9.2.2 Support Spacing
 
-```python
-def calculate_support_spacing(material, size, temp):
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Python snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-python">def calculate_support_spacing(material, size, temp):
     base_spacing = {
         'PVC': {1.0: 1.5, 1.25: 1.8, 1.5: 2.1},
         'CPVC': {1.0: 1.2, 1.25: 1.5, 1.5: 1.8},
@@ -1243,14 +1395,17 @@ def calculate_support_spacing(material, size, temp):
     spacing = base_spacing[material][size] * temp_factor
     
     return spacing  # meters
-```
+</code></pre>
+</div>
+</div>
 
 <figure>
   <img class="flowchart"
        src="{{ '/project/automated-mixing-system/pipe_support.png' | relative_url }}"
        alt="Pipe support spacing calculation"
        loading="lazy">
-  <figcaption>Figure 9.2: Pipe support spacing based on material and temperature
+  <figcaption>Figure 9.2: Pipe support spacing based on material and temperature</figcaption>
+</figure>
 
 ### 9.3 Instrumentation Installation
 
@@ -1280,48 +1435,59 @@ Pressure sensor:
 #### 10.1.1 Binary Protocol Structure
 
 Data packet format (20 bytes):
-```
-┌──────────┬──────────┬──────────┬──────────┬──────────┬──────────┬──────────┐
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Text snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-text">┌──────────┬──────────┬──────────┬──────────┬──────────┬──────────┬──────────┐
 │Timestamp │   Temp   │ Pressure │  Level   │  Status  │ Checksum │Terminator│
 │ 4 bytes  │ 4 bytes  │ 4 bytes  │ 4 bytes  │ 2 bytes  │ 1 byte   │ 1 byte   │
 └──────────┴──────────┴──────────┴──────────┴──────────┴──────────┴──────────┘
-```
+</code></pre>
+</div>
+</div>
 
 <figure>
   <img class="flowchart"
        src="{{ '/project/automated-mixing-system/packet_format.png' | relative_url }}"
        alt="Serial communication packet structure"
        loading="lazy">
-  <figcaption>Figure 10.1: Binary packet structure for Arduino-Raspberry Pi communication
+  <figcaption>Figure 10.1: Binary packet structure for Arduino-Raspberry Pi communication</figcaption>
+</figure>
 
 #### 10.1.2 Error Detection
 
 CRC-8 checksum implementation:
-```c
-uint8_t calculateCRC8(uint8_t *data, size_t length) {
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example C snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-c">uint8_t calculateCRC8(uint8_t *data, size_t length) {
     uint8_t crc = 0x00;
     
-    for (size_t i = 0; i < length; i++) {
+    for (size_t i = 0; i &lt; length; i++) {
         crc ^= data[i];
-        for (uint8_t j = 0; j < 8; j++) {
-            if (crc & 0x80) {
-                crc = (crc << 1) ^ 0x07;
+        for (uint8_t j = 0; j &lt; 8; j++) {
+            if (crc &amp; 0x80) {
+                crc = (crc &lt;&lt; 1) ^ 0x07;
             } else {
-                crc <<= 1;
+                crc &lt;&lt;= 1;
             }
         }
     }
     return crc;
 }
-```
+</code></pre>
+</div>
+</div>
 
 ### 10.2 Network Protocols
 
 #### 10.2.1 MQTT Implementation
 
 Topic hierarchy and QoS levels:
-```
-QoS 0 (At most once):
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Text snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-text">QoS 0 (At most once):
 - mixing/sensor/temperature
 - mixing/sensor/level
 - mixing/sensor/pressure
@@ -1334,20 +1500,25 @@ QoS 2 (Exactly once):
 - mixing/batch/start
 - mixing/batch/complete
 - mixing/alarm/critical
-```
+</code></pre>
+</div>
+</div>
 
 <figure>
   <img class="flowchart"
        src="{{ '/project/automated-mixing-system/mqtt_qos.png' | relative_url }}"
        alt="MQTT QoS level assignments"
        loading="lazy">
-  <figcaption>Figure 10.2: MQTT Quality of Service levels for different message types
+  <figcaption>Figure 10.2: MQTT Quality of Service levels for different message types</figcaption>
+</figure>
 
 #### 10.2.2 RESTful API Design
 
 API endpoints:
-```
-GET  /api/status          - Current system status
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Text snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-text">GET  /api/status          - Current system status
 GET  /api/sensors         - Real-time sensor data
 GET  /api/batch/{id}      - Batch information
 POST /api/batch/start     - Start new batch
@@ -1355,14 +1526,18 @@ POST /api/batch/stop      - Stop current batch
 GET  /api/history         - Historical data
 GET  /api/alarms          - Active alarms
 POST /api/alarms/ack/{id} - Acknowledge alarm
-```
+</code></pre>
+</div>
+</div>
 
 ### 10.3 Data Logging
 
 #### 10.3.1 Database Schema
 
-```sql
-CREATE TABLE sensor_data (
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example SQL snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-sql">CREATE TABLE sensor_data (
     id SERIAL PRIMARY KEY,
     timestamp TIMESTAMP NOT NULL,
     temperature FLOAT,
@@ -1393,14 +1568,17 @@ CREATE TABLE alarms (
     ack_time TIMESTAMP,
     ack_user VARCHAR(50)
 );
-```
+</code></pre>
+</div>
+</div>
 
 <figure>
   <img class="flowchart"
        src="{{ '/project/automated-mixing-system/database_schema.png' | relative_url }}"
        alt="Database schema diagram"
        loading="lazy">
-  <figcaption>Figure 10.3: Database schema for process data logging and batch records
+  <figcaption>Figure 10.3: Database schema for process data logging and batch records</figcaption>
+</figure>
 
 ---
 
@@ -1434,8 +1612,10 @@ Solenoid valve response times:
 
 #### 11.2.1 Test Protocol
 
-```markdown
-Test ID: SIT-001
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Markdown snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-markdown">Test ID: SIT-001
 Test Type: Full Cycle Operation
 
 Procedure:
@@ -1453,14 +1633,17 @@ Acceptance Criteria:
 - Volume accuracy ±1.0L
 - No safety violations
 - Complete data record
-```
+</code></pre>
+</div>
+</div>
 
 <figure>
   <img class="flowchart"
        src="{{ '/project/automated-mixing-system/test_protocol.png' | relative_url }}"
        alt="System integration test protocol"
        loading="lazy">
-  <figcaption>Figure 11.1: Integration test protocol flowchart
+  <figcaption>Figure 11.1: Integration test protocol flowchart</figcaption>
+</figure>
 
 #### 11.2.2 Performance Validation
 
@@ -1485,8 +1668,10 @@ E-stop response times:
 
 #### 11.3.2 Failure Mode Testing
 
-```c
-void testFailureModes() {
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example C snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-c">void testFailureModes() {
     // Test 1: Sensor failure
     simulateSensorFailure(TEMP_SENSOR);
     assert(currentState == STATE_ERROR);
@@ -1503,14 +1688,17 @@ void testFailureModes() {
     simulatePowerCycle();
     assert(dataIntegrity == PRESERVED);
 }
-```
+</code></pre>
+</div>
+</div>
 
 <figure>
   <img class="flowchart"
        src="{{ '/project/automated-mixing-system/failure_testing.png' | relative_url }}"
        alt="Failure mode test scenarios"
        loading="lazy">
-  <figcaption>Figure 11.2: Failure mode testing coverage matrix
+  <figcaption>Figure 11.2: Failure mode testing coverage matrix</figcaption>
+</figure>
 
 ---
 
@@ -1533,14 +1721,17 @@ void testFailureModes() {
        src="{{ '/project/automated-mixing-system/cycle_time.png' | relative_url }}"
        alt="Cycle time comparison"
        loading="lazy">
-  <figcaption>Figure 12.1: Process cycle time comparison between manual and automated operation
+  <figcaption>Figure 12.1: Process cycle time comparison between manual and automated operation</figcaption>
+</figure>
 
 #### 12.1.2 Quality Metrics
 
 Statistical Process Control (SPC) results:
 
-```python
-# Process capability indices
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Python snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-python"># Process capability indices
 def calculate_cpk(data, usl, lsl):
     mean = np.mean(data)
     std = np.std(data)
@@ -1553,33 +1744,41 @@ def calculate_cpk(data, usl, lsl):
 
 # Temperature: Cpk = 1.98 (Six Sigma)
 # Volume: Cpk = 1.77 (Very capable)
-```
+</code></pre>
+</div>
+</div>
 
 <figure>
   <img class="flowchart"
        src="{{ '/project/automated-mixing-system/spc_charts.png' | relative_url }}"
        alt="Statistical process control charts"
        loading="lazy">
-  <figcaption>Figure 12.2: SPC charts showing process capability improvements
+  <figcaption>Figure 12.2: SPC charts showing process capability improvements</figcaption>
+</figure>
 
 ### 12.2 System Reliability
 
 #### 12.2.1 Availability Calculation
 
-```
-Operating time: 4,320 hours
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Text snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-text">Operating time: 4,320 hours
 Scheduled maintenance: 48 hours
 Unscheduled downtime: 12 hours
 
 Availability = (4320 - 48 - 12) / 4320 = 98.6%
-```
+</code></pre>
+</div>
+</div>
 
 <figure>
   <img class="flowchart"
        src="{{ '/project/automated-mixing-system/availability.png' | relative_url }}"
        alt="System availability chart"
        loading="lazy">
-  <figcaption>Figure 12.3: System availability over 6-month operational period
+  <figcaption>Figure 12.3: System availability over 6-month operational period</figcaption>
+</figure>
 
 #### 12.2.2 MTBF Analysis
 
@@ -1603,8 +1802,10 @@ Availability = (4320 - 48 - 12) / 4320 = 98.6%
 
 #### 12.3.2 Heat Recovery Potential
 
-```python
-def heat_recovery_analysis():
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Python snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-python">def heat_recovery_analysis():
     discharge_temp = 75  # °C
     inlet_temp = 20  # °C
     flow_rate = 100  # L/batch
@@ -1619,7 +1820,9 @@ def heat_recovery_analysis():
         'recoverable': Q_recoverable,
         'inlet_temp_rise': temp_rise
     }
-```
+</code></pre>
+</div>
+</div>
 
 ---
 
@@ -1641,12 +1844,15 @@ def heat_recovery_analysis():
        src="{{ '/project/automated-mixing-system/hazop_matrix.png' | relative_url }}"
        alt="HAZOP analysis matrix"
        loading="lazy">
-  <figcaption>Figure 13.1: HAZOP study results with identified hazards and safeguards
+  <figcaption>Figure 13.1: HAZOP study results with identified hazards and safeguards</figcaption>
+</figure>
 
 #### 13.1.2 Risk Assessment Matrix
 
-```
-         Severity →
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Text snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-text">         Severity →
     ↓    Low    Med    High   Critical
 Freq
 High     L      M      H      H
@@ -1657,14 +1863,18 @@ Rare     L      L      L      M
 L: Low risk (acceptable)
 M: Medium risk (ALARP)
 H: High risk (mitigation required)
-```
+</code></pre>
+</div>
+</div>
 
 ### 13.2 Safety Integrity Level
 
 #### 13.2.1 SIL Calculation
 
-```python
-def calculate_sil():
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Python snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-python">def calculate_sil():
     # Component PFD values
     pfd = {
         'sensor': 1e-3,
@@ -1675,29 +1885,34 @@ def calculate_sil():
     
     system_pfd = sum(pfd.values())
     
-    if system_pfd < 1e-2:
+    if system_pfd &lt; 1e-2:
         return 'SIL 2'
-    elif system_pfd < 1e-1:
+    elif system_pfd &lt; 1e-1:
         return 'SIL 1'
     else:
         return 'SIL 0'
         
 # Result: SIL 2 (PFD = 4.1e-3)
-```
+</code></pre>
+</div>
+</div>
 
 <figure>
   <img class="flowchart"
        src="{{ '/project/automated-mixing-system/sil_levels.png' | relative_url }}"
        alt="SIL determination chart"
        loading="lazy">
-  <figcaption>Figure 13.2: Safety Integrity Level achievement with component reliability analysis
+  <figcaption>Figure 13.2: Safety Integrity Level achievement with component reliability analysis</figcaption>
+</figure>
 
 ### 13.3 Emergency Response
 
 #### 13.3.1 Shutdown Sequence
 
-```c
-void emergencyShutdown() {
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example C snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-c">void emergencyShutdown() {
     // Priority 1: Stop all motion
     digitalWrite(MIXER_PIN, LOW);
     digitalWrite(PUMP_PIN, LOW);
@@ -1717,7 +1932,9 @@ void emergencyShutdown() {
     // Priority 6: Notify operators
     sendEmergencyAlert();
 }
-```
+</code></pre>
+</div>
+</div>
 
 #### 13.3.2 Recovery Procedure
 
@@ -1737,8 +1954,10 @@ void emergencyShutdown() {
 
 #### 14.1.1 Predictive Control
 
-```python
-class PredictiveController:
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Python snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-python">class PredictiveController:
     def __init__(self):
         self.model = self.load_model()
         self.scaler = self.load_scaler()
@@ -1759,19 +1978,24 @@ class PredictiveController:
             'mixing_time': predictions[1],
             'mixing_speed': predictions[2]
         }
-```
+</code></pre>
+</div>
+</div>
 
 <figure>
   <img class="flowchart"
        src="{{ '/project/automated-mixing-system/ml_architecture.png' | relative_url }}"
        alt="Machine learning integration architecture"
        loading="lazy">
-  <figcaption>Figure 14.1: Machine learning model integration for predictive process control
+  <figcaption>Figure 14.1: Machine learning model integration for predictive process control</figcaption>
+</figure>
 
 #### 14.1.2 Anomaly Detection
 
-```python
-from sklearn.ensemble import IsolationForest
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Python snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-python">from sklearn.ensemble import IsolationForest
 
 class AnomalyDetector:
     def __init__(self):
@@ -1789,14 +2013,18 @@ class AnomalyDetector:
         if self.model.predict(X)[0] == -1:
             return True  # Anomaly detected
         return False
-```
+</code></pre>
+</div>
+</div>
 
 ### 14.2 Digital Twin Development
 
 #### 14.2.1 Physics-Based Simulation
 
-```python
-class DigitalTwin:
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Python snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-python">class DigitalTwin:
     def __init__(self):
         self.state = self.initialize_state()
         self.physics_model = self.load_physics()
@@ -1825,21 +2053,26 @@ class DigitalTwin:
         
         result = minimize(cost, x0=np.ones(100)*0.5)
         return result.x
-```
+</code></pre>
+</div>
+</div>
 
 <figure>
   <img class="flowchart"
        src="{{ '/project/automated-mixing-system/digital_twin.png' | relative_url }}"
        alt="Digital twin architecture"
        loading="lazy">
-  <figcaption>Figure 14.2: Digital twin implementation for real-time simulation and optimization
+  <figcaption>Figure 14.2: Digital twin implementation for real-time simulation and optimization</figcaption>
+</figure>
 
 ### 14.3 Industry 4.0 Integration
 
 #### 14.3.1 OPC UA Server
 
-```python
-from opcua import Server
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Python snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-python">from opcua import Server
 
 class OPCUAServer:
     def __init__(self):
@@ -1860,12 +2093,16 @@ class OPCUAServer:
         self.temp.set_value(data['temperature'])
         self.level.set_value(data['level'])
         self.state.set_value(data['state'])
-```
+</code></pre>
+</div>
+</div>
 
 #### 14.3.2 MES Integration
 
-```python
-class MESConnector:
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Python snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-python">class MESConnector:
     def __init__(self, config):
         self.endpoint = config['endpoint']
         self.auth = config['credentials']
@@ -1891,7 +2128,9 @@ class MESConnector:
             auth=self.auth
         )
         return response.status_code == 200
-```
+</code></pre>
+</div>
+</div>
 
 ---
 
@@ -1955,8 +2194,10 @@ As industry continues its evolution toward greater intelligence and connectivity
 The complete source code for both Arduino and Raspberry Pi components is maintained in the project repository. Due to the extensive nature of the code (>5000 lines), key excerpts have been included throughout this documentation.
 
 Repository structure:
-```
-/automated-mixing-system
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Text snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-text">/automated-mixing-system
 ├── /arduino
 │   ├── main.ino
 │   ├── /lib
@@ -1968,7 +2209,9 @@ Repository structure:
 ├── /documentation
 ├── /schematics
 └── /tests
-```
+</code></pre>
+</div>
+</div>
 
 > **Documentation Security Notice:**
 > 

@@ -13,7 +13,8 @@ description: "Where theoretical fluid dynamics meets hands-on fabrication, we di
        src="{{ '/project/dry-ice-blaster-feeding-system/completed_dry_ice_blaster.png' | relative_url }}"
        alt="Completed Dry Ice Blaster Feeding System"
        loading="lazy">
-  <figcaption>Overall view of the completed dry ice blaster feeding system
+  <figcaption>Overall view of the completed dry ice blaster feeding system</figcaption>
+</figure>
 
 
 ## 1. Project Background and Objectives
@@ -59,7 +60,8 @@ Catalyst surface cleaning in industrial facilities is a critical process directl
        src="{{ '/project/dry-ice-blaster-feeding-system/overall_architecture.png' | relative_url }}"
        alt="System Overall Architecture"
        loading="lazy">
-  <figcaption>Complete system architecture and component layout
+  <figcaption>Complete system architecture and component layout</figcaption>
+</figure>
 
 
 ### 2.2 Key Design Parameters
@@ -97,7 +99,8 @@ Different calculation sections use different pressure conventions. The table bel
        src="{{ '/project/dry-ice-blaster-feeding-system/control_system.png' | relative_url }}"
        alt="Control System Configuration"
        loading="lazy">
-  <figcaption>Electrical control system configuration and signal flow
+  <figcaption>Electrical control system configuration and signal flow</figcaption>
+</figure>
 
 
 ---
@@ -115,18 +118,26 @@ Different calculation sections use different pressure conventions. The table bel
 - Sublimation temperature: -78.5°C (1 atm)
 
 **Mass Flow Calculations**:
-```
-Target feed rate: 1.5 kg/min = 0.025 kg/s
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Text snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-text">Target feed rate: 1.5 kg/min = 0.025 kg/s
 Pellets per second: N = 0.025 / 6.53×10⁻⁶ = 3,826 pellets/s
 Individual kinetic energy (at 100 m/s): Ek = ½mₚv² = 32.65 mJ
-```
+</code></pre>
+</div>
+</div>
 
 #### 3.1.2 Minimum Conveying Velocity
 
 **Terminal Velocity Calculation**:
-```
-Vt = √[(4gd(ρₚ - ρf))/(3Cdρf)]
-```
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Text snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-text">Vt = √[(4gd(ρₚ - ρf))/(3Cdρf)]
+</code></pre>
+</div>
+</div>
 
 Where:
 - d = 2.0×10⁻³ m (pellet diameter)
@@ -135,29 +146,41 @@ Where:
 - Cd = 0.44 (Newton's law regime, Re > 1000)
 
 **Step-by-step calculation**:
-```
-Numerator:   4 × 9.81 × 2.0×10⁻³ × (1560 − 4.85) = 121.81
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Text snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-text">Numerator:   4 × 9.81 × 2.0×10⁻³ × (1560 − 4.85) = 121.81
 Denominator: 3 × 0.44 × 4.85                       =   6.402
 
 Vt² = 121.81 / 6.402 = 19.02
 Vt  = √19.02 = 4.37 m/s
-```
+</code></pre>
+</div>
+</div>
 
 **Re self-consistency check**:
-```
-Re = ρf × Vt × d / μ = 4.85 × 4.37 × 0.002 / 1.8×10⁻⁵ = 2355 > 1000
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Text snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-text">Re = ρf × Vt × d / μ = 4.85 × 4.37 × 0.002 / 1.8×10⁻⁵ = 2355 &gt; 1000
 → Cd = 0.44 confirmed ✓
-```
+</code></pre>
+</div>
+</div>
 
 **Result**: Vt = **4.37 m/s**
 
 **Minimum Conveying Velocity**:
-```
-Vmin = Fl × Vt × √(ρf,std/ρf)
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Text snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-text">Vmin = Fl × Vt × √(ρf,std/ρf)
      = 1.3 × 4.37 × √(1.225/4.85)
      = 5.68 × 0.503
      = 2.86 m/s
-```
+</code></pre>
+</div>
+</div>
 
 **Design Velocity**: 25.0 m/s
 
@@ -170,8 +193,10 @@ This is **8.7× above Vmin** (not 35% as a tight margin, but heavily over-specif
 
 **1″ × 50m Primary Section**:
 
-```
-Inlet conditions (compressor outlet):
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Text snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-text">Inlet conditions (compressor outlet):
 P₁ = 9.01 bar (absolute), T₁ = 298 K
 ρ₁ = P₁/(RT₁) = 9.01×10⁵/(287×298) = 10.54 kg/m³
 
@@ -186,12 +211,16 @@ Friction factor (Moody diagram): f₁ = 0.025
 
 Pressure loss:
 ΔP₁ = f₁(L/D)(ρ₁V₁²/2) = 0.025×(50/0.0254)×(10.54×6.37²/2) = 0.105 bar
-```
+</code></pre>
+</div>
+</div>
 
 **3/4″ × 25m Secondary Section**:
 
-```
-Flow conditions at 4 bar average:
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Text snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-text">Flow conditions at 4 bar average:
 ρ₂ = 4.76 kg/m³, V₂ = 25.2 m/s
 Re₂ = 1.27×10⁵, f₂ = 0.023 (hose friction)
 
@@ -202,7 +231,9 @@ Two-phase multiplier:
 Solid loading ratio = ṁₛₒₗᵢd/ṁₐᵢᵣ = 0.025/0.034 = 0.735
 Additional solid loss: ΔPₛₒₗᵢd = 1.3 × 0.735 × 0.456 = 0.436 bar
 Total loss: ΔP₂,total = 0.456 + 0.436 = 0.892 bar
-```
+</code></pre>
+</div>
+</div>
 
 **System Total Pressure Loss**: 0.105 + 0.892 + 0.3 (fittings) = **1.3 bar**
 
@@ -212,10 +243,14 @@ Total loss: ΔP₂,total = 0.456 + 0.436 = 0.892 bar
 #### 3.3.1 Convergent-Divergent Nozzle Theory
 
 **Isentropic Flow Relations**:
-```
-P/ρᵞ = constant
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Text snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-text">P/ρᵞ = constant
 Critical pressure ratio: P*/P₀ = (2/(γ+1))^(γ/(γ-1)) = 0.528
-```
+</code></pre>
+</div>
+</div>
 
 **Design Conditions**:
 - Inlet stagnation pressure: P₀ = 6.0 bar
@@ -226,22 +261,30 @@ Critical pressure ratio: P*/P₀ = (2/(γ+1))^(γ/(γ-1)) = 0.528
 #### 3.3.2 Throat Area Calculation
 
 **Critical Conditions**:
-```
-P* = 0.528 × 6×10⁵ = 3.168×10⁵ Pa
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Text snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-text">P* = 0.528 × 6×10⁵ = 3.168×10⁵ Pa
 T* = 293 × (2/2.4) = 244.2 K
 ρ* = 3.168×10⁵/(287×244.2) = 4.52 kg/m³
 a* = √(1.4×287×244.2) = 313.4 m/s
-```
+</code></pre>
+</div>
+</div>
 
 **Mass Flow Function**:
-```
-ṁ = CdA*ρ*a* = Cd × A* × 4.52 × 313.4
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Text snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-text">ṁ = CdA*ρ*a* = Cd × A* × 4.52 × 313.4
 
 Required throat area:
 A* = ṁ/(Cd×ρ*×a*) = 0.034/(0.9×4.52×313.4) = 2.67×10⁻⁵ m²
 
 Equivalent diameter: d* = √(4A*/π) = 5.83 mm ≈ 6.0 mm
-```
+</code></pre>
+</div>
+</div>
 
 #### 3.3.3 Divergent Section Design
 
@@ -261,15 +304,23 @@ With such high area ratio, the flow becomes over-expanded:
 #### 3.4.1 Drag Force Analysis
 
 **Newton's Second Law for Pellet Motion**:
-```
-mₚ(dVₚ/dt) = Fd = ½CdρfAₚ(Vf - Vₚ)|Vf - Vₚ|
-```
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Text snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-text">mₚ(dVₚ/dt) = Fd = ½CdρfAₚ(Vf - Vₚ)|Vf - Vₚ|
+</code></pre>
+</div>
+</div>
 
 **Characteristic Time and Distance**:
-```
-τ = mₚ/(½CdρfAₚ) = 6.53×10⁻⁶/(½×0.44×4.85×3.14×10⁻⁶) = 1.96×10⁻³ s
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Text snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-text">τ = mₚ/(½CdρfAₚ) = 6.53×10⁻⁶/(½×0.44×4.85×3.14×10⁻⁶) = 1.96×10⁻³ s
 L₉₀% = Vf × τ × ln(10) = 100 × 1.96×10⁻³ × 2.3 = 0.45 m
-```
+</code></pre>
+</div>
+</div>
 
 **Conclusion**: Pellets reach 90% of air velocity within 45 cm from nozzle exit.
 
@@ -277,13 +328,17 @@ L₉₀% = Vf × τ × ln(10) = 100 × 1.96×10⁻³ × 2.3 = 0.45 m
 #### 3.4.2 Sublimation Analysis
 
 **Heat Transfer Calculation**:
-```
-Nusselt number: Nu = 2 + 0.6Re^0.5Pr^0.33 = 64.0
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Text snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-text">Nusselt number: Nu = 2 + 0.6Re^0.5Pr^0.33 = 64.0
 Heat transfer coefficient: h = 832 W/(m²·K)
 Heat transfer rate: q = hAₚ(T∞ - Ts) = 1.028 W
 Sublimation rate: ṁsub = 1.8×10⁻⁶ kg/s
 Complete sublimation time: 3.6 seconds
-```
+</code></pre>
+</div>
+</div>
 
 **Flight Time vs Sublimation**: 2-3 ms << 3.6 s → **Negligible mass loss during flight**
 
@@ -309,8 +364,10 @@ Complete sublimation time: 3.6 seconds
 #### 4.1.2 Wall Thickness Calculation
 
 **ASME Formula for Cylindrical Pressure Vessels**:
-```
-t = (P × D)/(2S × E - 1.2P)
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Text snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-text">t = (P × D)/(2S × E - 1.2P)
 
 Where:
 P = 0.8 MPa (design pressure)
@@ -325,21 +382,27 @@ t = 20.32/399.04 = 0.051 mm
 Required thickness: tmin = 0.051 + 0.5 (corrosion) = 0.551 mm
 Actual thickness: tactual = 2.0 mm
 Safety factor: 2.0/0.551 = 3.6
-```
+</code></pre>
+</div>
+</div>
 
 
 #### 4.1.3 Stress Analysis
 
 **Operating Stresses**:
-```
-Hoop stress: σh = (P × D)/(2t) = (0.8 × 25.4)/(2 × 2.0) = 5.08 MPa
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Text snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-text">Hoop stress: σh = (P × D)/(2t) = (0.8 × 25.4)/(2 × 2.0) = 5.08 MPa
 Axial stress: σa = (P × D)/(4t) = (0.8 × 25.4)/(4 × 2.0) = 2.54 MPa
 
 Weld joint allowable stress:
 σallow,weld = (520 MPa × 0.85)/4 = 110.5 MPa
 
-Safety factor: SF = 110.5/5.08 = 21.8 > 4.0 ✓
-```
+Safety factor: SF = 110.5/5.08 = 21.8 &gt; 4.0 ✓
+</code></pre>
+</div>
+</div>
 
 ### 4.2 TIG Welding Process Design
 
@@ -363,8 +426,10 @@ Safety factor: SF = 110.5/5.08 = 21.8 > 4.0 ✓
 #### 4.2.2 Welding Penetration Calculation
 
 **Heat Input and Penetration Relationship**:
-```
-Penetration depth: h = K × I^n × v^(-m)
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Text snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-text">Penetration depth: h = K × I^n × v^(-m)
 For SUS316L TIG: h = 0.1 × I^0.7 × v^(-0.3)
 
 Required penetration: 2.0 mm (100% thickness)
@@ -372,14 +437,20 @@ Travel speed: v = 1.67 mm/s (100 mm/min)
 
 Required current: I = (h/(0.1 × v^(-0.3)))^(1/0.7)
 I = (2.0/(0.1 × 1.67^(-0.3)))^1.43 = 78.5 A ≈ 80A
-```
+</code></pre>
+</div>
+</div>
 
 **Current Density Verification**:
-```
-Electrode diameter: 2.4 mm
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Text snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-text">Electrode diameter: 2.4 mm
 Current density: J = 80A/(π×1.2²) = 17.7 A/mm²
 Acceptable range: 10-25 A/mm² ✓
-```
+</code></pre>
+</div>
+</div>
 
 #### 4.2.3 Welding Procedure Specification (WPS)
 
@@ -424,13 +495,17 @@ Acceptable range: 10-25 A/mm² ✓
 #### 4.3.2 Mechanical Properties
 
 **Tensile Test Results (KS B 0802)**:
-```
-Base Material: σu = 520 MPa, σy = 270 MPa, δ = 45%
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Text snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-text">Base Material: σu = 520 MPa, σy = 270 MPa, δ = 45%
 Weld Joint: σu = 545 MPa, σy = 290 MPa, δ = 42%
 
 Joint Efficiency: ηjoint = 545/520 = 1.05 (105%)
 Over-matching achieved! ✓
-```
+</code></pre>
+</div>
+</div>
 
 **Hardness Survey (HV10)**:
 - Base metal: 180-200 HV
@@ -448,13 +523,17 @@ Over-matching achieved! ✓
 #### 4.4.1 Thermal Distortion Prediction
 
 **Thermal Expansion Analysis**:
-```
-Coefficient: α = 18×10⁻⁶/°C (SUS316L)
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Text snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-text">Coefficient: α = 18×10⁻⁶/°C (SUS316L)
 Heat input zone: L = 20 mm
 Temperature rise: ΔT = 400°C
 
 Expected distortion: ΔL = α×L×ΔT = 0.144 mm
-```
+</code></pre>
+</div>
+</div>
 
 **Control Measures Applied**:
 1. **Symmetrical welding**: Alternate 180° sequence
@@ -471,11 +550,15 @@ Expected distortion: ΔL = α×L×ΔT = 0.144 mm
 #### 4.4.2 Residual Stress Management
 
 **Stress Estimation**:
-```
-Maximum tensile residual stress: σres ≈ 0.5 × σy = 135 MPa
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Text snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-text">Maximum tensile residual stress: σres ≈ 0.5 × σy = 135 MPa
 Location: Weld start/stop areas
 Influence zone: ±5mm from weld centerline
-```
+</code></pre>
+</div>
+</div>
 
 **Stress Relief Treatment**:
 - Method: Vibratory stress relief (VSR)
@@ -485,12 +568,16 @@ Influence zone: ±5mm from weld centerline
 - **Effectiveness**: 30-40% stress reduction
 
 **Final Stress State**:
-```
-Operating stress: σop = 5.08 MPa
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Text snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-text">Operating stress: σop = 5.08 MPa
 Residual stress (after VSR): σres = 80 MPa  
 Combined stress: σtotal = 85.08 MPa
-Safety factor: SF = 270/85.08 = 3.17 > 2.5 ✓
-```
+Safety factor: SF = 270/85.08 = 3.17 &gt; 2.5 ✓
+</code></pre>
+</div>
+</div>
 
 ---
 
@@ -521,14 +608,18 @@ Safety factor: SF = 270/85.08 = 3.17 > 2.5 ✓
 - Safety factor: 2.5 minimum
 
 **Frame Analysis**:
-```
-Maximum bending moment: M = WL/8 = (135×9.8×2.0)/8 = 331 N·m
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Text snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-text">Maximum bending moment: M = WL/8 = (135×9.8×2.0)/8 = 331 N·m
 Section modulus (4080 profile): S = 8.6×10⁻⁶ m³
 Bending stress: σb = M/S = 331/(8.6×10⁻⁶) = 38.5 MPa
 
 Aluminum allowable stress: 110 MPa (6061-T6)
-Safety factor: SF = 110/38.5 = 2.86 > 2.5 ✓
-```
+Safety factor: SF = 110/38.5 = 2.86 &gt; 2.5 ✓
+</code></pre>
+</div>
+</div>
 
 ### 5.2 Hopper Design and Fabrication
 
@@ -541,34 +632,46 @@ Safety factor: SF = 110/38.5 = 2.86 > 2.5 ✓
 - Access: Removable lid for cleaning
 
 **Wall Stress Analysis**:
-```
-Distributed load: q = 50×9.8/(0.5×0.8) = 1,225 Pa
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Text snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-text">Distributed load: q = 50×9.8/(0.5×0.8) = 1,225 Pa
 Plate dimensions: 500mm × 800mm × 2.0mm thick
 Maximum stress (simply supported): σmax = 86.2 MPa
-Safety factor: SF = 270/86.2 = 3.13 > 2.5 ✓
-```
+Safety factor: SF = 270/86.2 = 3.13 &gt; 2.5 ✓
+</code></pre>
+</div>
+</div>
 
 #### 5.2.2 Fillet Weld Design
 
 **Load Transfer Analysis**:
-```
-Total load: P = 50×9.8 = 490 N
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Text snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-text">Total load: P = 50×9.8 = 490 N
 Weld length: L = 2×(500+800) = 2,600 mm
 Required throat size: a = P/(0.707×τallow×L) = 0.18 mm
 
 Applied fillet size: 3.0 mm
 Safety factor: SF = 3.0/0.18 = 16.7
-```
+</code></pre>
+</div>
+</div>
 
 **Heat Input Control**:
-```
-Welding parameters: 80A, 13V, 2mm/s travel
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Text snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-text">Welding parameters: 80A, 13V, 2mm/s travel
 Heat input: HI = (13×80×0.8)/2 = 416 J/mm
 Acceptable range: 200-800 J/mm ✓
 
 HAZ width prediction: 1.02 mm
 Measured HAZ width: 0.8-1.2 mm ✓
-```
+</code></pre>
+</div>
+</div>
 
 
 ---
@@ -580,8 +683,10 @@ Measured HAZ width: 0.8-1.2 mm ✓
 #### 6.1.1 Drive System Requirements
 
 **Feeder Capacity Calculation**:
-```
-Rotary disc specifications:
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Text snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-text">Rotary disc specifications:
 - Number of holes: 12
 - Hole diameter: 2.5 mm  
 - Disc thickness: 4.0 mm
@@ -592,7 +697,9 @@ Mass per revolution: mrev = 12×1560×1.96×10⁻⁸×0.6 = 0.22 g
 
 Target feed rate: 0.3-2.0 kg/min
 Required speed range: 1.4-9.1 rpm
-```
+</code></pre>
+</div>
+</div>
 
 #### 6.1.2 Motor Specification
 
@@ -604,12 +711,16 @@ Required speed range: 1.4-9.1 rpm
 - Output torque: ~20 N·m (estimated)
 
 **Speed Control Range**:
-```
-PWM control: 20-200% of base speed
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Text snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-text">PWM control: 20-200% of base speed
 Speed range: 2.4-24 rpm  
 Feed rate range: 0.32-3.2 kg/min
 Target coverage: 0.3-2.0 kg/min ✓
-```
+</code></pre>
+</div>
+</div>
 
 
 ### 6.2 Inverter-Based Control System
@@ -625,12 +736,16 @@ Target coverage: 0.3-2.0 kg/min ✓
 
 **Control Strategy**:
 
-```
-Inverter → 0-10V Analog Output → DC PWM Controller → DC Motors
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Text snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-text">Inverter → 0-10V Analog Output → DC PWM Controller → DC Motors
 Speed reference: 0-10V = 0-100% motor speed
-Response time: <100ms for speed changes
+Response time: &lt;100ms for speed changes
 Accuracy: ±2% of set point
-```
+</code></pre>
+</div>
+</div>
 
 #### 6.2.2 Parameter Configuration
 
@@ -657,23 +772,31 @@ Accuracy: ±2% of set point
 #### 7.1.1 Phase 1: Pneumatic System Verification
 
 **Pressure System Testing**:
-```
-Test sequence:
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Text snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-text">Test sequence:
 1. Individual compressor test: 8.2 bar achieved ✓
 2. Separator function test: Auto-drain operational ✓  
 3. Line pressure verification: 
    - After separator: 8.0 bar ✓
    - At manifold: 7.8 bar ✓
    - Before nozzle: 6.5 bar ✓
-4. Leak test: <0.1 bar/min pressure drop ✓
-```
+4. Leak test: &lt;0.1 bar/min pressure drop ✓
+</code></pre>
+</div>
+</div>
 
 **Flow Rate Verification**:
-```
-Measured flow rate: 3.2 m³/min (target: 3.4 m³/min)
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Text snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-text">Measured flow rate: 3.2 m³/min (target: 3.4 m³/min)
 Deviation: -5.9% (acceptable)
 Pressure losses matched calculations within 8%
-```
+</code></pre>
+</div>
+</div>
 
 #### 7.1.2 Phase 2: Feeding System Testing
 
@@ -703,13 +826,17 @@ Pressure losses matched calculations within 8%
 - Manual agitation provided temporary relief
 
 **Root Cause Analysis**:
-```
-Contributing factors:
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Text snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-text">Contributing factors:
 1. Electrostatic charging (dry pellets + plastic hopper liner)
 2. Moisture absorption → surface stickiness
 3. Inadequate discharge angle (45° initial design)
 4. Vibration insufficient to break bridges
-```
+</code></pre>
+</div>
+</div>
 
 **Engineering Solutions Implemented**:
 1. **Electrostatic dissipation**: Grounded wire mesh installation
@@ -729,13 +856,17 @@ Contributing factors:
 - Spray pattern became increasingly uneven
 
 **Root Cause Analysis**:
-```
-Moisture sources identified:
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Text snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-text">Moisture sources identified:
 1. Residual moisture in compressed air (despite separators)
 2. Atmospheric moisture ingress during pellet loading
 3. Pellet sublimation creating localized high humidity
 4. Insufficient preheating of nozzle assembly
-```
+</code></pre>
+</div>
+</div>
 
 **Solutions Developed**:
 1. **Enhanced dehumidification**: Added third separator stage
@@ -754,13 +885,17 @@ Moisture sources identified:
 - Ineffective cleaning at pattern edges
 
 **Technical Analysis**:
-```
-Flow analysis revealed:
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Text snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-text">Flow analysis revealed:
 - Flow separation at throat exit (sharp corner)
 - Insufficient diffuser expansion angle (8°)
 - Turbulent mixing creating dead zones
 - Non-optimal area ratio (Ae/A* = 56.2)
-```
+</code></pre>
+</div>
+</div>
 
 **Design Modifications**:
 1. **Throat geometry**: Added R0.5mm radius at exit
@@ -792,8 +927,10 @@ Flow analysis revealed:
 | Energy efficiency | 1.5 kW/kg | 1.2 kW/kg | Exceeded |
 
 **Cleaning Performance Results**:
-```
-Test conditions:
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Text snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-text">Test conditions:
 - Target: Catalyst with 3mm contamination layer
 - Distance: 200mm from nozzle
 - Dwell time: 5 minutes
@@ -804,7 +941,9 @@ Results:
 - Surface damage: 0% (visual inspection)
 - Residue remaining: 0% (complete sublimation)
 - Process time: 15 minutes (vs 40 minutes chemical)
-```
+</code></pre>
+</div>
+</div>
 
 
 #### 7.3.2 Reliability and Durability Testing
@@ -816,13 +955,17 @@ Results:
 - **Results**: 99.2% uptime, only stopped for pellet refill
 
 **Component Wear Analysis**:
-```
-After 100 hours operation:
-- Nozzle throat wear: <0.05mm (negligible)
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Text snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-text">After 100 hours operation:
+- Nozzle throat wear: &lt;0.05mm (negligible)
 - Feeder disc wear: 0.1mm on hole edges (acceptable)
 - Hose internal wear: No visible damage
 - Motor bearing condition: Normal (vibration analysis)
-```
+</code></pre>
+</div>
+</div>
 
 ---
 
@@ -856,13 +999,17 @@ After 100 hours operation:
 | **Net Annual Savings** | | | **$105,000** |
 
 **Return on Investment**:
-```
-Payback period = Initial investment / Annual savings
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Text snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-text">Payback period = Initial investment / Annual savings
 Payback period = $20,000 / $105,000 = 0.19 years ≈ 2.3 months
 
 NPV (5 years, 8% discount): $398,000
 IRR: 525% (exceptional return)
-```
+</code></pre>
+</div>
+</div>
 
 
 ### 8.2 Quality and Productivity Improvements
@@ -919,8 +1066,10 @@ IRR: 525% (exceptional return)
 #### 9.1.2 Performance Optimization
 
 **Technical Upgrades**:
-```
-Advanced nozzle design:
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Text snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-text">Advanced nozzle design:
 - Variable geometry throat (adjustable 5-8mm)
 - Multi-port design for different spray patterns
 - Integrated temperature monitoring
@@ -931,7 +1080,9 @@ Enhanced control system:
 - Trend logging and analysis
 - Alarm management system
 - Production reporting integration
-```
+</code></pre>
+</div>
+</div>
 
 ### 9.2 Mid-term Development (2 years)
 
@@ -1193,23 +1344,33 @@ This project demonstrated that the most rewarding engineering challenges are tho
 - Target supply rate: 1.5 kg/min = 0.025 kg/s
 
 **Single Pellet Characteristics**:
-```
-Volume: V = (4/3)π(d/2)³ = (4/3)π(1.0×10⁻³)³ = 4.19×10⁻⁹ m³
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Text snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-text">Volume: V = (4/3)π(d/2)³ = (4/3)π(1.0×10⁻³)³ = 4.19×10⁻⁹ m³
 Mass: m = ρ × V = 1,560 × 4.19×10⁻⁹ = 6.53×10⁻⁶ kg = 6.53 mg
-```
+</code></pre>
+</div>
+</div>
 
 **Supply Rate Conversion**:
-```
-Pellets per second: N = 0.025 / 6.53×10⁻⁶ = 3,826 pellets/s
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Text snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-text">Pellets per second: N = 0.025 / 6.53×10⁻⁶ = 3,826 pellets/s
 Individual kinetic energy (100 m/s): E = ½mv² = 32.65 mJ
 Total kinetic energy rate: P = N × E = 125 W
-```
+</code></pre>
+</div>
+</div>
 
 #### A.2 Comprehensive Pressure Loss Analysis
 
 **1″ × 50m Primary Section**:
-```
-Flow conditions:
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Text snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-text">Flow conditions:
 - Internal diameter: D₁ = 25.4 mm
 - Cross-sectional area: A₁ = π×(0.0254/2)² = 5.07×10⁻⁴ m²
 - Average pressure: P₁ = 9 bar = 9×10⁵ Pa (absolute)
@@ -1229,11 +1390,15 @@ Friction calculations:
 - Relative roughness: ε/D = 0.045/25.4 = 0.0018 (commercial steel)
 - Friction factor (Moody): f₁ = 0.025
 - Pressure loss: ΔP₁ = f₁(L/D)(ρ₁V₁²/2) = 10,518 Pa = 0.105 bar
-```
+</code></pre>
+</div>
+</div>
 
 **3/4″ × 25m Secondary Section**:
-```
-Flow conditions:
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Text snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-text">Flow conditions:
 - Internal diameter: D₂ = 19.05 mm
 - Average pressure: P₂ = 4 bar = 4×10⁵ Pa (absolute)
 - Density: ρ₂ = 4×10⁵/(287×293) = 4.76 kg/m³
@@ -1246,26 +1411,34 @@ Two-phase flow analysis:
 - Multiplier factor: K = 1.3 (empirical for dilute phase)
 - Additional solid loss: ΔP₂,solid = K × (ṁₛ/ṁₐ) × ΔP₂,air = 0.436 bar
 - Total section loss: ΔP₂,total = 0.892 bar
-```
+</code></pre>
+</div>
+</div>
 
 **Secondary Losses**:
-```
-Component equivalent lengths:
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Text snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-text">Component equivalent lengths:
 - 90° elbows (4): 4 × 30D = 4 × 30 × 0.01905 = 2.29 m
 - Ball valves (2): 2 × 20D = 2 × 20 × 0.01905 = 0.76 m
 - Quick couplers (4): 4 × 5D = 4 × 5 × 0.01905 = 0.38 m
 - Total equivalent length: Leq = 3.43 m
 
 Additional pressure loss: ΔPsec = f(Leq/D)(ρV²/2) = 0.30 bar
-```
+</code></pre>
+</div>
+</div>
 
 **System Total Pressure Loss**: 0.105 + 0.892 + 0.30 = **1.297 bar**
 
 #### A.3 Nozzle Design Calculations
 
 **Choked Flow Analysis**:
-```
-Upstream stagnation conditions:
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Text snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-text">Upstream stagnation conditions:
 - Pressure: P₀ = 6.0 bar = 6×10⁵ Pa
 - Temperature: T₀ = 293 K
 - Air properties: γ = 1.4, R = 287 J/(kg·K)
@@ -1283,11 +1456,15 @@ Mass flow function:
 Throat area calculation:
 A* = ṁ/(Cd×ρ*×a*) = 0.034/(0.9×4.52×313.4) = 2.67×10⁻⁵ m²
 Equivalent diameter: d* = √(4A*/π) = 5.83 mm ≈ 6.0 mm
-```
+</code></pre>
+</div>
+</div>
 
 **Divergent Section Analysis**:
-```
-Exit geometry:
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Text snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-text">Exit geometry:
 - Slit dimensions: 10 mm × 150 mm
 - Exit area: Ae = 1.5×10⁻³ m²
 - Area ratio: Ae/A* = 56.2
@@ -1297,7 +1474,9 @@ Over-expansion calculation:
 - Exit pressure: Pe = P₀[1 + ((γ-1)/2)Me²]^(-γ/(γ-1)) = 0.035 × P₀
 - Theoretical exit velocity: Ve = Me × ae = 3.2 × 225.9 = 723 m/s
 - Actual velocity (losses): Vactual ≈ 100-120 m/s (viscous effects)
-```
+</code></pre>
+</div>
+</div>
 
 ### Appendix B: Welding Documentation
 
@@ -1337,8 +1516,10 @@ Over-expansion calculation:
 **Test Results Summary**:
 
 **Tensile Test (ASTM A370)**:
-```
-Specimen dimensions: 6mm diameter × 30mm gauge length
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Text snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-text">Specimen dimensions: 6mm diameter × 30mm gauge length
 Test temperature: Room temperature (22°C)
 
 Results:
@@ -1353,11 +1534,15 @@ Base metal properties (reference):
 - Elongation in 50mm: 45%
 
 Joint efficiency: 545/520 = 1.05 (105%) ✓
-```
+</code></pre>
+</div>
+</div>
 
 **Bend Test (ASTM A370)**:
-```
-Test method: Guided bend test
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Text snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-text">Test method: Guided bend test
 Bend radius: 4t (8mm)
 Bend angle: 180°
 
@@ -1365,12 +1550,16 @@ Results:
 - Root bend: No defects, complete bend achieved
 - Face bend: No defects, complete bend achieved
 - Side bend: No defects, complete bend achieved
-Maximum defect size: <1mm (acceptable per AWS D1.1)
-```
+Maximum defect size: &lt;1mm (acceptable per AWS D1.1)
+</code></pre>
+</div>
+</div>
 
 **Hardness Survey (ASTM E384)**:
-```
-Test method: Vickers hardness (HV10)
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Text snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-text">Test method: Vickers hardness (HV10)
 Load: 98.07 N (10 kgf)
 Dwell time: 15 seconds
 
@@ -1380,12 +1569,16 @@ Base Metal (BM)   | 185, 192, 188   | 188
 Heat Affected Zone| 195, 203, 198   | 199
 Weld Metal (WM)   | 178, 185, 182   | 182
 
-Maximum hardness difference: 21 HV (acceptable, <50 HV limit)
-```
+Maximum hardness difference: 21 HV (acceptable, &lt;50 HV limit)
+</code></pre>
+</div>
+</div>
 
 **Macro-etching Examination**:
-```
-Etchant: Aqua regia (3HCl:1HNO₃)
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Text snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-text">Etchant: Aqua regia (3HCl:1HNO₃)
 Magnification: 10X
 
 Observations:
@@ -1394,13 +1587,17 @@ Observations:
 - Sound weld profile with proper reinforcement
 - Smooth transition from weld metal to base metal
 - Heat affected zone width: 0.8-1.2mm (typical for TIG)
-```
+</code></pre>
+</div>
+</div>
 
 #### B.3 Non-Destructive Testing Records
 
 **Visual Inspection (VT) - AWS D1.1**:
-```
-Inspector: Certified Welding Inspector (CWI)
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Text snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-text">Inspector: Certified Welding Inspector (CWI)
 Standard: AWS D1.1 Table 6.1
 Acceptance criteria: Complete penetration welds
 
@@ -1414,11 +1611,15 @@ Inspection results:
 - Porosity: None visible
 
 Overall assessment: ACCEPTABLE
-```
+</code></pre>
+</div>
+</div>
 
 **Liquid Penetrant Testing (PT) - ASTM E1417**:
-```
-Method: Solvent removable, visible dye
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Text snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-text">Method: Solvent removable, visible dye
 Sensitivity level: Level 3 (high sensitivity)
 Test temperature: 18-27°C
 
@@ -1427,18 +1628,22 @@ Procedure:
 2. Penetrant application: 10-minute dwell time
 3. Excess penetrant removal: Solvent wiping
 4. Developer application: Dry powder developer
-5. Inspection: Under white light (>500 lux)
+5. Inspection: Under white light (&gt;500 lux)
 
 Results:
 - Linear indications: None detected
 - Rounded indications: None detected
 - Surface porosity: None detected
 - Overall assessment: ACCEPTABLE - No relevant indications
-```
+</code></pre>
+</div>
+</div>
 
 **Pressure Testing - ASME Section VIII**:
-```
-Test medium: Nitrogen gas (dry, oil-free)
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Text snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-text">Test medium: Nitrogen gas (dry, oil-free)
 Test pressure: 12.0 bar (1.5 × MAWP)
 Hold time: 10 minutes minimum
 Temperature: Ambient (20°C)
@@ -1453,10 +1658,12 @@ Procedure:
 Results:
 - Initial pressure: 12.00 bar
 - Final pressure (after 10 min): 11.95 bar
-- Pressure drop: 0.05 bar (acceptable, <0.10 bar limit)
+- Pressure drop: 0.05 bar (acceptable, &lt;0.10 bar limit)
 - Visual inspection: No leakage detected
 - Overall assessment: PASSED
-```
+</code></pre>
+</div>
+</div>
 
 ### Appendix C: Commissioning Test Data
 
@@ -1477,8 +1684,10 @@ Results:
 #### C.2 Detailed Test Results
 
 **Test #1: Baseline Performance (6.0 bar, 0.5 kg/min)**:
-```
-System startup time: 8 minutes (including preheating)
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Text snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-text">System startup time: 8 minutes (including preheating)
 Pellet feed accuracy: 0.48 kg/min (96.0% of target)
 Spray pattern uniformity: ±12% variation
 Nozzle exit velocity: 85 m/s (measured by laser Doppler)
@@ -1490,11 +1699,15 @@ Observations:
 - Consistent spray pattern maintained
 - Minimal ice formation on nozzle exterior
 - All safety systems functional
-```
+</code></pre>
+</div>
+</div>
 
 **Test #7: Extended Operation (6.5 bar, 1.5 kg/min, 150 min)**:
-```
-Continuous operation duration: 150 minutes (2.5 hours)
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Text snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-text">Continuous operation duration: 150 minutes (2.5 hours)
 Pellet consumption: 225 kg total
 Average feed rate: 1.48 kg/min (98.7% accuracy)
 System interruptions: 0 (100% availability)
@@ -1508,16 +1721,20 @@ Time (min) | Feed Rate (kg/min) | Spray Velocity (m/s) | Notes
 90-120     | 1.47               | 95                    | Minimal ice formation
 120-150    | 1.46               | 94                    | 4% total degradation
 
-Conclusion: System maintains >94% performance after 2.5 hours
-```
+Conclusion: System maintains &gt;94% performance after 2.5 hours
+</code></pre>
+</div>
+</div>
 
 #### C.3 Failure Mode Testing
 
 **Simulated Failure Conditions**:
 
 **Power Interruption Test**:
-```
-Test procedure:
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Text snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-text">Test procedure:
 1. Normal operation at 1.5 kg/min feed rate
 2. Simulate 30-second power outage
 3. Automatic restart sequence
@@ -1529,11 +1746,15 @@ Results:
 - Restart time: 12 minutes (including preheating)
 - Performance recovery: 100% within 5 minutes
 - Safety systems: All functioned correctly
-```
+</code></pre>
+</div>
+</div>
 
 **High Humidity Operation**:
-```
-Test conditions:
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Text snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-text">Test conditions:
 - Ambient humidity: 85% RH
 - Temperature: 30°C
 - Duration: 60 minutes
@@ -1545,15 +1766,19 @@ Results:
 - Purging effectiveness: 90% ice removal in 30 seconds
 - Operational workaround: 5-minute purge cycles
 - Long-term solution: Enhanced dehumidification implemented
-```
+</code></pre>
+</div>
+</div>
 
 ### Appendix D: Economic Analysis Details
 
 #### D.1 Cost-Benefit Analysis Model
 
 **Development Cost Breakdown (USD)**:
-```
-Engineering and Design:
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Text snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-text">Engineering and Design:
 - CAD modeling and drawings: $1,500
 - Calculations and analysis: $1,200
 - Documentation and reports: $800
@@ -1582,11 +1807,15 @@ Other Costs:
 Total Other: $2,000
 
 TOTAL PROJECT COST: $19,500
-```
+</code></pre>
+</div>
+</div>
 
 **Annual Operating Cost Comparison**:
-```
-Chemical Cleaning Method (Baseline):
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Text snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-text">Chemical Cleaning Method (Baseline):
 Direct costs:
 - Cleaning chemicals: $60,000/year
 - Protective equipment: $5,000/year
@@ -1615,13 +1844,17 @@ Indirect costs:
 
 TOTAL ANNUAL COST (Dry Ice): $56,000/year
 NET ANNUAL SAVINGS: $107,000/year
-```
+</code></pre>
+</div>
+</div>
 
 #### D.2 Return on Investment Analysis
 
 **Financial Metrics**:
-```
-Initial Investment: $19,500
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Text snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-text">Initial Investment: $19,500
 Annual Net Savings: $107,000
 Project Life: 10 years
 Discount Rate: 8%
@@ -1640,11 +1873,15 @@ Profitability Index:
 PI = $717,991 / $19,500 = 36.8
 
 Risk-adjusted NPV (15% discount rate): $538,247
-```
+</code></pre>
+</div>
+</div>
 
 **Sensitivity Analysis**:
-```
-Parameter variation impacts on NPV:
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Text snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-text">Parameter variation impacts on NPV:
 
 Annual Savings Change | NPV Change | Risk Level
 ±50% | ±$359,000 | High impact
@@ -1657,13 +1894,17 @@ Initial Cost Change | NPV Change | Risk Level
 ±10% | ±$1,950 | Negligible impact
 
 Conclusion: Project is highly robust to cost variations but sensitive to benefit realization
-```
+</code></pre>
+</div>
+</div>
 
 #### D.3 Risk Assessment and Mitigation
 
 **Technical Risks**:
-```
-Risk: Premature component failure
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Text snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-text">Risk: Premature component failure
 Probability: Medium (30%)
 Impact: Medium ($15,000 repair cost)
 Mitigation: Preventive maintenance program, spare parts inventory
@@ -1677,11 +1918,15 @@ Risk: Technology obsolescence
 Probability: Very Low (5%)
 Impact: High ($50,000 replacement cost)
 Mitigation: Modular design, upgrade pathways planned
-```
+</code></pre>
+</div>
+</div>
 
 **Commercial Risks**:
-```
-Risk: Dry ice price volatility
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Text snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-text">Risk: Dry ice price volatility
 Probability: High (70%)
 Impact: Medium (±$15,000/year)
 Mitigation: Long-term supply contracts, alternative suppliers
@@ -1695,15 +1940,19 @@ Risk: Competitive technology emergence
 Probability: Medium (40%)
 Impact: Low (market position impact)
 Mitigation: Continuous innovation, patent protection
-```
+</code></pre>
+</div>
+</div>
 
 ### Appendix E: Standard Operating Procedures
 
 #### E.1 Daily Startup Procedure
 
 **Pre-Startup Checklist (Duration: 15 minutes)**:
-```
-□ Verify compressor oil levels (both units)
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Text snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-text">□ Verify compressor oil levels (both units)
 □ Check separator drain valves (auto-drain functional)
 □ Inspect hopper for residual pellets or ice formation
 □ Verify all electrical connections secure
@@ -1717,11 +1966,15 @@ Safety verification:
 □ Work area cleared of unnecessary personnel
 □ Ventilation system operational
 □ Fire suppression system ready
-```
+</code></pre>
+</div>
+</div>
 
 **Startup Sequence (Duration: 20 minutes)**:
-```
-Step 1: System Preparation (5 minutes)
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Text snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-text">Step 1: System Preparation (5 minutes)
 - Energize main electrical panel
 - Start ventilation system
 - Begin compressor warm-up cycle
@@ -1740,13 +1993,17 @@ Step 3: Feeding System Preparation (5 minutes)
 - Start pellet agitation system (intermittent mode)
 - Verify feeder motor operation (no-load test)
 - Set initial feed rate (start at 50% of target)
-```
+</code></pre>
+</div>
+</div>
 
 #### E.2 Normal Operation Procedure
 
 **Operational Parameters**:
-```
-Standard Operating Conditions:
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Text snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-text">Standard Operating Conditions:
 - Supply pressure: 6.0-7.0 bar
 - Feed rate: 1.0-2.0 kg/min (application dependent)
 - Nozzle distance: 150-300 mm from target
@@ -1760,11 +2017,15 @@ Quality Control Checkpoints (every 30 minutes):
 □ Confirm system pressure stability
 □ Document cleaning effectiveness per area
 □ Record pellet consumption rate
-```
+</code></pre>
+</div>
+</div>
 
 **Process Optimization Guidelines**:
-```
-For Light Contamination:
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Text snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-text">For Light Contamination:
 - Pressure: 5.0-6.0 bar
 - Feed rate: 0.8-1.2 kg/min
 - Distance: 200-250 mm
@@ -1781,13 +2042,17 @@ For Delicate Surfaces:
 - Feed rate: 0.5-0.8 kg/min
 - Distance: 250-300 mm
 - Multiple gentle passes with quick traverse
-```
+</code></pre>
+</div>
+</div>
 
 #### E.3 Shutdown and Maintenance Procedures
 
 **Normal Shutdown Sequence (Duration: 15 minutes)**:
-```
-Step 1: Process Termination (5 minutes)
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Text snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-text">Step 1: Process Termination (5 minutes)
 - Complete current cleaning cycle
 - Reduce feed rate to zero gradually
 - Stop pellet feeding system
@@ -1804,11 +2069,15 @@ Step 3: Final Preparation (5 minutes)
 - Clean nozzle and immediate area
 - Document operational data (hours, consumption, issues)
 - Secure system for next operation or maintenance
-```
+</code></pre>
+</div>
+</div>
 
 **Weekly Maintenance Tasks (Duration: 2 hours)**:
-```
-Pneumatic System:
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Text snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-text">Pneumatic System:
 □ Separator filter cleaning/replacement
 □ Compressor oil level and condition check
 □ Air line inspection for wear or damage
@@ -1828,7 +2097,9 @@ Control System:
 □ Parameter backup and verification
 □ Safety system function test
 □ Documentation update
-```
+</code></pre>
+</div>
+</div>
 
 ---
 

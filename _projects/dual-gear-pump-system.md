@@ -17,7 +17,8 @@ This study presents the design and fabrication of a portable dual gear pump syst
        src="{{ '/project/dual-gear-pump-system/complete-system-main.jpg' | relative_url }}"
        alt="Fabricated Dual Gear Pump System"
        loading="lazy">
-  <figcaption>Completed dual gear pump system for catalyst regeneration with aluminum frame, dual pumps, and weatherproof control panel
+  <figcaption>Completed dual gear pump system for catalyst regeneration with aluminum frame, dual pumps, and weatherproof control panel</figcaption>
+</figure>
 
 ---
 
@@ -61,9 +62,13 @@ Fluid properties for design calculations were established as follows:
 
 Flow through nozzles was calculated using the orifice equation:
 
-```
-Q = Cd × A × √(2Δp/ρ)
-```
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Text snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-text">Q = Cd × A × √(2Δp/ρ)
+</code></pre>
+</div>
+</div>
 
 Where:
 - Q: Flow rate (m³/s)
@@ -80,9 +85,13 @@ Assuming an actual orifice diameter of 1.6mm for the handheld 5-bolt catalyst in
 
 Friction losses in piping were calculated using the Darcy-Weisbach equation:
 
-```
-hf = f × (L/D) × (v²/2g)
-```
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Text snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-text">hf = f × (L/D) × (v²/2g)
+</code></pre>
+</div>
+</div>
 
 Where:
 - hf: Friction loss head (m)
@@ -96,23 +105,35 @@ Where:
 
 The pipe friction factor in turbulent flow was calculated using the Blasius formula:
 
-```
-f = 0.316 × Re^(-0.25)    (Re < 10⁵)
-```
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Text snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-text">f = 0.316 × Re^(-0.25)    (Re &lt; 10⁵)
+</code></pre>
+</div>
+</div>
 
 The Reynolds number is calculated as:
 
-```
-Re = (v × D) / ν
-```
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Text snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-text">Re = (v × D) / ν
+</code></pre>
+</div>
+</div>
 
 #### 2.3.3 Minor Losses
 
 Minor losses due to valves, fittings, connectors, elbows, etc., were calculated using:
 
-```
-hm = KΣ × (v²/2g)
-```
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Text snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-text">hm = KΣ × (v²/2g)
+</code></pre>
+</div>
+</div>
 
 The total loss coefficient (K) for various fittings was assumed to be 20 based on reference data.
 
@@ -131,60 +152,96 @@ Calculation conditions for single discharge line:
 - Average velocity: v = Q/A ≈ 5.42 m/s
 
 Reynolds number calculation:
-```
-Re = (5.42 × 0.00635) / (1.5×10⁻⁶) ≈ 2.29×10⁴
-```
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Text snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-text">Re = (5.42 × 0.00635) / (1.5×10⁻⁶) ≈ 2.29×10⁴
+</code></pre>
+</div>
+</div>
 
 Pipe friction factor (Blasius formula):
-```
-f = 0.316 × (2.29×10⁴)^(-0.25) ≈ 0.025
-```
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Text snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-text">f = 0.316 × (2.29×10⁴)^(-0.25) ≈ 0.025
+</code></pre>
+</div>
+</div>
 
 Friction loss head:
-```
-hf = 0.025 × (50/0.00635) × (5.42²/(2×9.81)) ≈ 300m
-```
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Text snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-text">hf = 0.025 × (50/0.00635) × (5.42²/(2×9.81)) ≈ 300m
+</code></pre>
+</div>
+</div>
 
 Minor loss head:
-```
-hm = 20 × (5.42²/(2×9.81)) ≈ 30m
-```
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Text snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-text">hm = 20 × (5.42²/(2×9.81)) ≈ 30m
+</code></pre>
+</div>
+</div>
 
 #### 3.1.2 Static Head and Nozzle Head
 
 Static head was set at 50m discharge height, and the head corresponding to 4 bar spray pressure at the nozzle is:
 
-```
-hn = Δp/(ρ×g) = (4×10⁵)/(1050×9.81) ≈ 38.8m
-```
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Text snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-text">hn = Δp/(ρ×g) = (4×10⁵)/(1050×9.81) ≈ 38.8m
+</code></pre>
+</div>
+</div>
 
 #### 3.1.3 Total Required Head
 
 Total required head for single discharge line:
-```
-Htot = Hs + hf + hm + hn = 50 + 300 + 30 + 38.8 = 418.8m
-```
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Text snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-text">Htot = Hs + hf + hm + hn = 50 + 300 + 30 + 38.8 = 418.8m
+</code></pre>
+</div>
+</div>
 
 Corresponding pump discharge pressure:
-```
-p = ρ × g × Htot = 1050 × 9.81 × 418.8 ≈ 4.31×10⁶ Pa = 43.1 bar
-```
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Text snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-text">p = ρ × g × Htot = 1050 × 9.81 × 418.8 ≈ 4.31×10⁶ Pa = 43.1 bar
+</code></pre>
+</div>
+</div>
 
 ### 3.2 Pump Power Calculation
 
 #### 3.2.1 Hydraulic Power
 
 Hydraulic power for total flow rate of 20.6 L/min:
-```
-Ph = p × Q = 43.1×10⁵ × (20.6/60000) = 1.48 kW
-```
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Text snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-text">Ph = p × Q = 43.1×10⁵ × (20.6/60000) = 1.48 kW
+</code></pre>
+</div>
+</div>
 
 #### 3.2.2 Motor Output Determination
 
 Assuming pump and mechanical efficiency η = 0.70:
-```
-Pm = Ph/η = 1.48/0.70 ≈ 2.1 kW
-```
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Text snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-text">Pm = Ph/η = 1.48/0.70 ≈ 2.1 kW
+</code></pre>
+</div>
+</div>
 
 Considering field operating conditions (viscosity changes, temperature rise, wear, etc.), a safety factor was applied, and 3.7kW (5HP) motors were selected.
 
@@ -200,16 +257,24 @@ Loss calculation for suction line (3/4" × 25m):
 - Pipe friction factor: f ≈ 0.028
 
 Friction loss head:
-```
-hf,suction = 0.028 × (25/0.019) × (1.21²/(2×9.81)) ≈ 2.76m
-```
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Text snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-text">hf,suction = 0.028 × (25/0.019) × (1.21²/(2×9.81)) ≈ 2.76m
+</code></pre>
+</div>
+</div>
 
 #### 3.3.2 NPSH Available Calculation
 
-```
-NPSHA = Patm/(ρg) - Pv/(ρg) - hf,suction - hstatic
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Text snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-text">NPSHA = Patm/(ρg) - Pv/(ρg) - hf,suction - hstatic
 NPSHA = 10.3 - 0.3 - 2.76 - 0 = 7.24m
-```
+</code></pre>
+</div>
+</div>
 
 This provides sufficient margin compared to typical gear pump NPSHR (0.5-2m).
 
@@ -222,7 +287,8 @@ This provides sufficient margin compared to typical gear pump NPSHR (0.5-2m).
        src="{{ '/project/dual-gear-pump-system/system-architecture.png' | relative_url }}"
        alt="System Architecture"
        loading="lazy">
-  <figcaption>Figure 4.1: Complete system architecture showing flow paths and control integration
+  <figcaption>Figure 4.1: Complete system architecture showing flow paths and control integration</figcaption>
+</figure>
 
 ### 4.1 Pump Selection
 
@@ -240,7 +306,8 @@ Key reasons for selecting gear pumps:
        src="{{ '/project/dual-gear-pump-system/gear-pump-internal.PNG' | relative_url }}"
        alt="Gear Pump Internal Structure"
        loading="lazy">
-  <figcaption>Figure 4.1-1: Internal structure of gear pump showing meshing gears and flow chambers for positive displacement operation
+  <figcaption>Figure 4.1-1: Internal structure of gear pump showing meshing gears and flow chambers for positive displacement operation</figcaption>
+</figure>
 
 #### 4.1.2 Selected Specifications
 
@@ -262,10 +329,14 @@ Selected gear pump specifications:
 - Rated current: Approximately 7.3A
 
 Rated current calculation:
-```
-I = P/(√3 × V × η × cosφ)
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Text snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-text">I = P/(√3 × V × η × cosφ)
 I = 3700/(1.732 × 380 × 0.9 × 0.85) ≈ 7.3A
-```
+</code></pre>
+</div>
+</div>
 
 #### 4.2.2 Shaft Coupling
 
@@ -286,7 +357,8 @@ Inverter application purposes:
        src="{{ '/project/dual-gear-pump-system/control-panel-interior.jpg' | relative_url }}"
        alt="Control Panel Interior"
        loading="lazy">
-  <figcaption>Figure 4.2: Control panel interior showing dual inverters, MCCBs, ELBs, and wiring arrangement
+  <figcaption>Figure 4.2: Control panel interior showing dual inverters, MCCBs, ELBs, and wiring arrangement</figcaption>
+</figure>
 
 #### 4.3.2 Key Parameter Settings
 
@@ -327,9 +399,13 @@ Inverter application purposes:
 #### 5.1.1 Main Circuit Configuration
 
 Power supply system:
-```
-AC 3φ 380V → MCCB → ELB → Inverter(2 units) → Motor(3.7kW×2)
-```
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Text snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-text">AC 3φ 380V → MCCB → ELB → Inverter(2 units) → Motor(3.7kW×2)
+</code></pre>
+</div>
+</div>
 
 Main protection devices:
 - Molded Case Circuit Breaker (MCCB): 20A, 3-pole
@@ -350,7 +426,8 @@ Control inputs:
        src="{{ '/project/dual-gear-pump-system/wiring-diagram.png' | relative_url }}"
        alt="Electrical Wiring Diagram"
        loading="lazy">
-  <figcaption>Figure 5.1: Complete electrical wiring diagram showing power distribution and control circuits
+  <figcaption>Figure 5.1: Complete electrical wiring diagram showing power distribution and control circuits</figcaption>
+</figure>
 
 #### 5.2.1 Power Wiring
 
@@ -455,9 +532,13 @@ Suction piping design principles:
 #### 7.2.1 Manifold Configuration
 
 Discharge manifold sequence:
-```
-Pump discharge → Check valve → Pressure gauge tap → Flowmeter → Branch pipe(1/4"×2)
-```
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Text snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-text">Pump discharge → Check valve → Pressure gauge tap → Flowmeter → Branch pipe(1/4"×2)
+</code></pre>
+</div>
+</div>
 
 #### 7.2.2 Major Components
 
@@ -678,32 +759,48 @@ This project represents a successful engineering case that comprehensively appli
 ### Appendix A. Major Calculation Formulas
 
 #### A.1 Orifice Flow Formula
-```
-Q = Cd × A × √(2Δp/ρ)
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Text snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-text">Q = Cd × A × √(2Δp/ρ)
 Where: Q = Flow rate (m³/s), Cd = Discharge coefficient, A = Orifice area (m²)
        Δp = Pressure difference (Pa), ρ = Density (kg/m³)
-```
+</code></pre>
+</div>
+</div>
 
 #### A.2 Darcy-Weisbach Friction Loss Formula
-```
-hf = f × (L/D) × (v²/2g)
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Text snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-text">hf = f × (L/D) × (v²/2g)
 Where: hf = Friction loss head (m), f = Pipe friction factor, L = Pipe length (m)
        D = Pipe diameter (m), v = Average velocity (m/s), g = Gravitational acceleration (m/s²)
-```
+</code></pre>
+</div>
+</div>
 
 #### A.3 Reynolds Number
-```
-Re = (ρ × v × D) / μ = (v × D) / ν
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Text snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-text">Re = (ρ × v × D) / μ = (v × D) / ν
 Where: Re = Reynolds number, ρ = Density (kg/m³), v = Velocity (m/s)
        D = Pipe diameter (m), μ = Dynamic viscosity (Pa·s), ν = Kinematic viscosity (m²/s)
-```
+</code></pre>
+</div>
+</div>
 
 #### A.4 NPSH Available
-```
-NPSHA = Patm/(ρg) - Pv/(ρg) - hf,suction - hstatic
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Text snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-text">NPSHA = Patm/(ρg) - Pv/(ρg) - hf,suction - hstatic
 Where: NPSHA = Net positive suction head available (m), Patm = Atmospheric pressure (Pa), Pv = Vapor pressure (Pa)
        hf,suction = Suction pipe friction loss (m), hstatic = Suction static head (m)
-```
+</code></pre>
+</div>
+</div>
 
 ### Appendix B. Major Component Specifications
 

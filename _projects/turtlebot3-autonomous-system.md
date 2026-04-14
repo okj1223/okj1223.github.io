@@ -43,7 +43,8 @@ To overcome these limitations, this research set the following objectives:
        src="{{ '/project/turtlebot3-autonomous-system/digital_twin_gazebo_map.png' | relative_url }}"
        alt="Digital twin virtual environment in Gazebo simulator"
        loading="lazy">
-  <figcaption>Figure 1.1: Digital twin virtual environment recreated in Gazebo simulator for algorithm validation and testing
+  <figcaption>Figure 1.1: Digital twin virtual environment recreated in Gazebo simulator for algorithm validation and testing</figcaption>
+</figure>
   
 ### 1.4 System Architecture Philosophy
 
@@ -54,7 +55,8 @@ The entire system was designed based on the philosophy of "Graceful Degradation.
        src="{{ '/project/turtlebot3-autonomous-system/system_architecture_diagram.png' | relative_url }}"
        alt="Overall system architecture diagram"
        loading="lazy">
-  <figcaption>Figure 1.2: Hierarchical system architecture showing perception, planning, and control layers with coordination and safety mechanisms
+  <figcaption>Figure 1.2: Hierarchical system architecture showing perception, planning, and control layers with coordination and safety mechanisms</figcaption>
+</figure>
 
 
 
@@ -77,7 +79,8 @@ Lane detection is the foundation of autonomous driving, but in real environments
        src="{{ '/project/turtlebot3-autonomous-system/lane_detection_rqt.png' | relative_url }}"
        alt="Real-time lane detection and path generation visualization"
        loading="lazy">
-  <figcaption>Figure 2.1: Real-time lane detection system showing HSV color space processing, geometric validation, and path generation in RQT visualization
+  <figcaption>Figure 2.1: Real-time lane detection system showing HSV color space processing, geometric validation, and path generation in RQT visualization</figcaption>
+</figure>
 
 #### 2.1.2 HSV Color Space-Based Adaptive Detection
 
@@ -93,8 +96,10 @@ $$H' \approx H, \quad S' \approx S, \quad V' = V \times k$$
 
 That is, hue (H) and saturation (S) remain relatively stable.
 
-```python
-def adaptive_hsv_thresholding(self, image):
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Python snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-python">def adaptive_hsv_thresholding(self, image):
     hsv = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
     
     # Yellow lane detection (dynamic range adjustment)
@@ -113,12 +118,16 @@ def adaptive_hsv_thresholding(self, image):
     ])
     
     return cv2.inRange(hsv, yellow_lower, yellow_upper)
-```
+</code></pre>
+</div>
+</div>
 
 **Dynamic Threshold Adjustment Algorithm**:
 
-```python
-def update_dynamic_thresholds(self, detection_result):
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Python snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-python">def update_dynamic_thresholds(self, detection_result):
     # Feedback control based on detected pixel count
     pixel_ratio = detection_result.pixel_count / self.total_pixels
     
@@ -134,7 +143,9 @@ def update_dynamic_thresholds(self, detection_result):
         MIN_VALUE_LOWER_BOUND,
         MIN_VALUE_UPPER_BOUND
     )
-```
+</code></pre>
+</div>
+</div>
 
 This PI controller attempts to maintain the ratio of detected lane pixels at a target value (2-3% of total pixels).
 
@@ -148,8 +159,10 @@ The biggest problem in indoor environments was fluorescent light reflections bei
 
 That is, while the hue is similar, there's a significant difference in saturation (Chroma).
 
-```python
-def white_suppression_mask(self, hsv_image):
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Python snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-python">def white_suppression_mask(self, hsv_image):
     # Identify high-brightness, low-saturation areas
     white_candidates = cv2.inRange(hsv_image, 
                                   (0, 0, WHITE_VALUE_THRESHOLD),      # 230
@@ -160,7 +173,9 @@ def white_suppression_mask(self, hsv_image):
     white_mask = cv2.morphologyEx(white_candidates, cv2.MORPH_CLOSE, kernel)
     
     return white_mask
-```
+</code></pre>
+</div>
+</div>
 
 **Experimental Basis for Threshold Determination**: WHITE_VALUE_THRESHOLD=230 was derived by analyzing 1000 indoor images. The average V value of direct fluorescent reflections was 245±8, while the average V value of actual lanes was 180±25. 230 was the optimal point that effectively separated these two distributions.
 
@@ -180,8 +195,10 @@ $$\kappa = \frac{|2a|}{(1 + (2ay + b)^2)^{3/2}}$$
 
 The curvature of actual lanes is limited due to physical constraints. In indoor environments, maximum curvature is approximately 0.1 m⁻¹ or less.
 
-```python
-def validate_lane_geometry(self, lane_coefficients):
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Python snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-python">def validate_lane_geometry(self, lane_coefficients):
     a, b, c = lane_coefficients
     
     # Calculate curvature (at image center)
@@ -189,24 +206,28 @@ def validate_lane_geometry(self, lane_coefficients):
     curvature = abs(2 * a) / (1 + (2 * a * y_center + b)**2)**(3/2)
     
     # Check physical constraints
-    if curvature > self.max_physical_curvature:
+    if curvature &gt; self.max_physical_curvature:
         return False, "excessive_curvature"
     
     # Continuity check (compared to previous frame)
     if self.previous_coefficients is not None:
         coeff_diff = np.abs(np.array([a, b, c]) - self.previous_coefficients)
-        if np.any(coeff_diff > self.max_coefficient_change):
+        if np.any(coeff_diff &gt; self.max_coefficient_change):
             return False, "discontinuous_change"
     
     return True, "valid"
-```
+</code></pre>
+</div>
+</div>
 
 #### 2.2.2 Advanced Sliding Window Algorithm
 
 The basic sliding window was improved to implement adaptive window sizing and prediction-based center point estimation.
 
-```python
-class AdaptiveSlidingWindow:
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Python snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-python">class AdaptiveSlidingWindow:
     def __init__(self):
         self.base_window_width = 100
         self.confidence_threshold = 0.7
@@ -214,15 +235,15 @@ class AdaptiveSlidingWindow:
         
     def update_window_size(self, pixel_density):
         # Adjust window size based on pixel density
-        if pixel_density > 0.8:
+        if pixel_density &gt; 0.8:
             return self.base_window_width * 0.8  # Narrow if high density
-        elif pixel_density < 0.3:
+        elif pixel_density &lt; 0.3:
             return self.base_window_width * 1.5  # Widen if low density
         else:
             return self.base_window_width
     
     def predict_next_center(self, center_history):
-        if len(center_history) < 3:
+        if len(center_history) &lt; 3:
             return center_history[-1]
         
         # Predict trend with quadratic polynomial
@@ -233,7 +254,9 @@ class AdaptiveSlidingWindow:
         predicted_x = np.polyval(coeffs, len(center_history))
         
         return predicted_x
-```
+</code></pre>
+</div>
+</div>
 
 ### 2.3 Real-Time Performance Optimization
 
@@ -241,8 +264,10 @@ Various optimization techniques were applied to ensure stable performance under 
 
 #### 2.3.1 Multi-Resolution Image Processing
 
-```python
-def multi_resolution_processing(self, image):
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Python snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-python">def multi_resolution_processing(self, image):
     # Stage 1: Rough detection at low resolution
     small_image = cv2.resize(image, None, fx=0.5, fy=0.5)
     coarse_lanes = self.detect_lanes_fast(small_image)
@@ -258,14 +283,18 @@ def multi_resolution_processing(self, image):
     fine_lanes = self.detect_lanes_precise(roi_image)
     
     return self.transform_to_global_coordinates(fine_lanes, roi_bounds)
-```
+</code></pre>
+</div>
+</div>
 
 This approach reduced processing time by an average of 35%.
 
 #### 2.3.2 Moving Average-Based Temporal Filtering
 
-```python
-class TemporalLaneFilter:
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Python snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-python">class TemporalLaneFilter:
     def __init__(self, window_size=5, confidence_weight=True):
         self.window_size = window_size
         self.coefficient_history = deque(maxlen=window_size)
@@ -291,7 +320,9 @@ class TemporalLaneFilter:
             filtered_coeffs = np.mean(self.coefficient_history, axis=0)
         
         return filtered_coeffs
-```
+</code></pre>
+</div>
+</div>
 
 ### 2.4 PD Controller Design and Tuning
 
@@ -311,9 +342,9 @@ where $\tau$ is the vehicle's time constant.
 $$\tau s^2 + (1 + K_d)s + K_p = 0$$
 
 **Stability conditions** (Routh-Hurwitz criterion):
-1. $$\tau > 0$$ (always satisfied physically)
-2. $$1 + K_d > 0$$ → $$K_d > -1$$
-3. $$K_p > 0$$
+1. $\tau > 0$ (always satisfied physically)
+2. $1 + K_d > 0$, which implies $K_d > -1$
+3. $K_p > 0$
 
 **Standard second-order mapping:**
 
@@ -344,8 +375,10 @@ $$K_d^{(0)} = 2 \times 0.69 \times 2.3 \times 0.47 - 1 = 1.496 - 1 \approx 0.007
 **Final tuned gains:**
 $$K_p = 0.0025, \quad K_d = 0.007$$
 
-```python
-def pd_control_with_feedforward(self, current_error, derivative_error, curvature):
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Python snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-python">def pd_control_with_feedforward(self, current_error, derivative_error, curvature):
     # Basic PD control
     control_output = self.Kp * current_error + self.Kd * derivative_error
     
@@ -358,7 +391,9 @@ def pd_control_with_feedforward(self, current_error, derivative_error, curvature
     total_output = (control_output + curvature_compensation) / speed_factor
     
     return self.saturate(total_output, self.max_angular_velocity)
-```
+</code></pre>
+</div>
+</div>
 
 #### 2.4.2 Adaptive Speed Control
 
@@ -385,7 +420,8 @@ subject to safety constraints.
        src="{{ '/project/turtlebot3-autonomous-system/traffic_light_detection.png' | relative_url }}"
        alt="Traffic light detection with HSV color analysis"
        loading="lazy">
-  <figcaption>Figure 3.1: Traffic light detection system showing HSV color space analysis, geometric validation, and real-time recognition results
+  <figcaption>Figure 3.1: Traffic light detection system showing HSV color space analysis, geometric validation, and real-time recognition results</figcaption>
+</figure>
 
 #### 3.1.1 Mathematical Modeling of Color Classification
 
@@ -394,12 +430,12 @@ Traffic light color classification is essentially a classification problem in 3D
 **Red Distribution** (Wrapped Normal Distribution):
 $$p(h|red) = \frac{1}{\sqrt{2\pi}\sigma_r} \left( e^{-\frac{(h-\mu_{r1})^2}{2\sigma_r^2}} + e^{-\frac{(h-\mu_{r2})^2}{2\sigma_r^2}} \right)$$
 
-where $$\mu_{r1} = 10°, \mu_{r2} = 170°$$ are the two peaks of red, and $$\sigma_r = 8°$$ is the standard deviation.
+where $\mu_{r1} = 10^\circ$ and $\mu_{r2} = 170^\circ$ are the two peaks of red, and $\sigma_r = 8^\circ$ is the standard deviation.
 
 **Green Distribution**:
 $$p(h|green) = \frac{1}{\sqrt{2\pi}\sigma_g} e^{-\frac{(h-\mu_g)^2}{2\sigma_g^2}}$$
 
-where $$\mu_g = 65°, \sigma_g = 12°$$.
+where $\mu_g = 65^\circ$ and $\sigma_g = 12^\circ$.
 
 #### 3.1.2 Color Discrimination Through Bayesian Classification
 
@@ -407,8 +443,10 @@ A Bayesian classifier is used to discriminate traffic light colors:
 
 $$P(class|observation) = \frac{P(observation|class) \cdot P(class)}{P(observation)}$$
 
-```python
-class BayesianColorClassifier:
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Python snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-python">class BayesianColorClassifier:
     def __init__(self):
         # Prior probabilities (based on actual observation frequencies)
         self.prior_red = 0.4
@@ -438,7 +476,9 @@ class BayesianColorClassifier:
             'green': posterior_green / total,
             'none': posterior_none / total
         }
-```
+</code></pre>
+</div>
+</div>
 
 #### 3.1.3 Mathematical Foundation of Geometric Validation
 
@@ -447,21 +487,23 @@ After color classification, geometric characteristics are validated. The geometr
 **Circularity**:
 $$C = \frac{4\pi A}{P^2}$$
 
-For a perfect circle, $$C = 1$$, and the value decreases for other shapes.
+For a perfect circle, $C = 1$, and the value decreases for other shapes.
 
 **Compactness**:
 $$Comp = \frac{A}{A_{convex}}$$
 
-where $$A_{convex}$$ is the area of the convex hull.
+where $A_{convex}$ is the area of the convex hull.
 
 **Aspect Ratio**:
 The ratio of major to minor axis is calculated through ellipse fitting:
 $$AR = \frac{major\_axis}{minor\_axis}$$
 
-For traffic lights, $$0.8 \leq AR \leq 1.2$$ should hold.
+For traffic lights, $0.8 \leq AR \leq 1.2$ should hold.
 
-```python
-def geometric_validation(self, contour):
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Python snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-python">def geometric_validation(self, contour):
     # Calculate basic geometric characteristics
     area = cv2.contourArea(contour)
     perimeter = cv2.arcLength(contour, True)
@@ -473,29 +515,31 @@ def geometric_validation(self, contour):
     circularity = 4 * np.pi * area / (perimeter ** 2)
     
     # Ellipse fitting (only when sufficient points exist)
-    if len(contour) >= 5:
+    if len(contour) &gt;= 5:
         ellipse = cv2.fitEllipse(contour)
         (center, axes, angle) = ellipse
         major_axis = max(axes)
         minor_axis = min(axes)
-        aspect_ratio = major_axis / minor_axis if minor_axis > 0 else float('inf')
+        aspect_ratio = major_axis / minor_axis if minor_axis &gt; 0 else float('inf')
     else:
         aspect_ratio = 1.0
     
     # Compactness based on convex hull
     hull = cv2.convexHull(contour)
     hull_area = cv2.contourArea(hull)
-    compactness = area / hull_area if hull_area > 0 else 0
+    compactness = area / hull_area if hull_area &gt; 0 else 0
     
     # Comprehensive validation
     validation_score = (
         0.4 * min(circularity / 0.75, 1.0) +
         0.3 * min(compactness / 0.8, 1.0) +
-        0.3 * (1.0 if 0.8 <= aspect_ratio <= 1.2 else 0.0)
+        0.3 * (1.0 if 0.8 &lt;= aspect_ratio &lt;= 1.2 else 0.0)
     )
     
-    return validation_score > 0.7, validation_score
-```
+    return validation_score &gt; 0.7, validation_score
+</code></pre>
+</div>
+</div>
 
 ### 3.2 Advanced Line Analysis for Barrier State Detection
 
@@ -504,7 +548,8 @@ def geometric_validation(self, contour):
        src="{{ '/project/turtlebot3-autonomous-system/barrier_detection.png' | relative_url }}"
        alt="Real-time barrier state detection and analysis"
        loading="lazy">
-  <figcaption>Figure 3.2: Barrier detection system showing LED point clustering, virtual line generation, and state classification (UP/DOWN) with temporal consistency analysis
+  <figcaption>Figure 3.2: Barrier detection system showing LED point clustering, virtual line generation, and state classification (UP/DOWN) with temporal consistency analysis</figcaption>
+</figure>
 
 #### 3.2.1 Mathematical Foundation of Hough Transform
 
@@ -517,8 +562,10 @@ where $(\rho, \theta)$ are the distance from origin to line and the angle of the
 **Probabilistic Hough Transform**:
 Instead of processing all pixels, only randomly selected pixels are processed to reduce computational load.
 
-```python
-def advanced_hough_line_detection(self, edge_image):
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Python snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-python">def advanced_hough_line_detection(self, edge_image):
     # Adaptive parameter setting
     min_line_length = max(30, int(0.05 * min(edge_image.shape)))
     max_line_gap = max(10, int(0.02 * min(edge_image.shape)))
@@ -545,21 +592,25 @@ def advanced_hough_line_detection(self, edge_image):
         x1, y1, x2, y2 = line[0]
         angle = np.arctan2(y2 - y1, x2 - x1)
         
-        if abs(angle) <= theta_range:
+        if abs(angle) &lt;= theta_range:
             filtered_lines.append(line)
     
     return filtered_lines
-```
+</code></pre>
+</div>
+</div>
 
 #### 3.2.2 Virtual Line Generation Through Point Cloud Clustering
 
 DBSCAN clustering was applied to generate virtual lines connecting barrier LED points.
 
-```python
-from sklearn.cluster import DBSCAN
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Python snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-python">from sklearn.cluster import DBSCAN
 
 def cluster_led_points(self, red_objects):
-    if len(red_objects) < 3:
+    if len(red_objects) &lt; 3:
         return []
     
     # Extract point coordinates
@@ -577,7 +628,7 @@ def cluster_led_points(self, red_objects):
         
         cluster_points = points[labels == cluster_id]
         
-        if len(cluster_points) >= 3:
+        if len(cluster_points) &gt;= 3:
             # Find principal direction using PCA
             pca = PCA(n_components=2)
             pca.fit(cluster_points)
@@ -602,14 +653,18 @@ def cluster_led_points(self, red_objects):
             })
     
     return virtual_lines
-```
+</code></pre>
+</div>
+</div>
 
 #### 3.2.3 State Determination Through Temporal Consistency
 
 A state transition model was implemented to ensure temporal stability of barrier states:
 
-```python
-class BarrierStateEstimator:
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Python snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-python">class BarrierStateEstimator:
     def __init__(self):
         self.state_history = deque(maxlen=10)
         self.confidence_history = deque(maxlen=10)
@@ -623,9 +678,9 @@ class BarrierStateEstimator:
     
     def update_state(self, detected_angle, detection_confidence):
         # Observation model
-        if abs(detected_angle) <= 20:  # Horizontal
+        if abs(detected_angle) &lt;= 20:  # Horizontal
             observation_state = 'DOWN'
-        elif abs(detected_angle) >= 70:  # Vertical
+        elif abs(detected_angle) &gt;= 70:  # Vertical
             observation_state = 'UP'
         else:
             observation_state = 'MOVING'
@@ -653,7 +708,9 @@ class BarrierStateEstimator:
         self.confidence_history.append(self.state_confidence)
         
         return self.current_state, self.state_confidence
-```
+</code></pre>
+</div>
+</div>
 
 ## 4. Advanced Inverse Kinematics for 4-DOF Serial Manipulator
 
@@ -664,7 +721,8 @@ The implementation of inverse kinematics for the 4-DOF manipulator was the most 
        src="{{ '/project/turtlebot3-autonomous-system/kinematics_basics.png' | relative_url }}"
        alt="Fundamental principles of robot kinematics"
        loading="lazy">
-  <figcaption>Figure 4.1: Basic kinematics concepts showing forward and inverse kinematics relationships, coordinate frames, and transformation matrices
+  <figcaption>Figure 4.1: Basic kinematics concepts showing forward and inverse kinematics relationships, coordinate frames, and transformation matrices</figcaption>
+</figure>
 
 ### 4.1 Kinematic Modeling and Coordinate System Definition
 
@@ -677,7 +735,8 @@ While we used standard DH notation to define relationships between links, the ac
        src="{{ '/project/turtlebot3-autonomous-system/turtlebot3_arm_joints.png' | relative_url }}"
        alt="TurtleBot3 OPAL robot arm with joint and link annotations"
        loading="lazy">
-  <figcaption>Figure 4.2: TurtleBot3 OPAL robot arm showing joint axes, link lengths, and DH parameter definitions for the 4-DOF serial manipulator
+  <figcaption>Figure 4.2: TurtleBot3 OPAL robot arm showing joint axes, link lengths, and DH parameter definitions for the 4-DOF serial manipulator</figcaption>
+</figure>
 
 **Modified DH Parameters**:
 
@@ -688,8 +747,10 @@ While we used standard DH notation to define relationships between links, the ac
 | 3     | 0.124     | 0                | 0         | $\theta_3 + \theta_{3,offset}$ |
 | 4     | 0.150     | 0                | 0         | $\theta_4 + \theta_{4,offset}$ |
 
-```python
-def compute_dh_transform(self, a, alpha, d, theta):
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Python snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-python">def compute_dh_transform(self, a, alpha, d, theta):
     """Calculate transformation matrix from DH parameters"""
     cos_theta = np.cos(theta)
     sin_theta = np.sin(theta)
@@ -704,7 +765,9 @@ def compute_dh_transform(self, a, alpha, d, theta):
     ])
     
     return T
-```
+</code></pre>
+</div>
+</div>
 
 **Difficulty in Deriving Measured Values**:
 
@@ -724,10 +787,13 @@ Singularities in a 4-DOF RRRR manipulator occur when the determinant of the Jaco
 $$\det(J(\theta)) = 0$$
 
 **Jacobian Matrix Composition**:
-$$J = \begin{bmatrix}
+
+$$
+J = \begin{bmatrix}
 J_v \\
 J_\omega
-\end{bmatrix}$$
+\end{bmatrix}
+$$
 
 where $J_v$ is the linear velocity Jacobian and $J_\omega$ is the angular velocity Jacobian.
 
@@ -748,8 +814,10 @@ where $J_v$ is the linear velocity Jacobian and $J_\omega$ is the angular veloci
    
    Occurs when shoulder or elbow is at specific angles.
 
-```python
-def analyze_singularity(self, theta):
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Python snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-python">def analyze_singularity(self, theta):
     """Singularity analysis and manipulability calculation"""
     J = self.compute_jacobian(theta)
     
@@ -760,7 +828,7 @@ def analyze_singularity(self, theta):
     manipulability = np.sqrt(np.linalg.det(J @ J.T))
     
     # Calculate condition number
-    condition_number = s[0] / s[-1] if s[-1] > 1e-6 else float('inf')
+    condition_number = s[0] / s[-1] if s[-1] &gt; 1e-6 else float('inf')
     
     # Evaluate singularity proximity
     singularity_proximity = 1.0 / (manipulability + 1e-6)
@@ -770,9 +838,11 @@ def analyze_singularity(self, theta):
         'condition_number': condition_number,
         'singularity_proximity': singularity_proximity,
         'singular_values': s,
-        'is_near_singularity': condition_number > 100 or manipulability < 0.01
+        'is_near_singularity': condition_number &gt; 100 or manipulability &lt; 0.01
     }
-```
+</code></pre>
+</div>
+</div>
 
 ### 4.2 Mathematical Development of Analytical Inverse Kinematics
 
@@ -781,7 +851,8 @@ def analyze_singularity(self, theta):
        src="{{ '/project/turtlebot3-autonomous-system/solvepnp_3d_visualization.png' | relative_url }}"
        alt="SolvePnP algorithm 3D visualization"
        loading="lazy">
-  <figcaption>Figure 4.3: SolvePnP algorithm visualization showing how real-world 3D marker coordinates are transformed to 2D camera coordinates using camera parameters and pose estimation
+  <figcaption>Figure 4.3: SolvePnP algorithm visualization showing how real-world 3D marker coordinates are transformed to 2D camera coordinates using camera parameters and pose estimation</figcaption>
+</figure>
 
 #### 4.2.1 Geometric Decomposition and Closed-Form Solution
 
@@ -801,7 +872,7 @@ Distance to target point:
 $$R = \sqrt{x_{eff}^2 + z_{eff}^2}$$
 
 **Apply Law of Cosines**:
-When triangle sides are $$r_1, r_2, R$$:
+When the triangle side lengths are $r_1$, $r_2$, and $R$:
 
 $$\cos(\phi_1) = \frac{r_1^2 + R^2 - r_2^2}{2 \cdot r_1 \cdot R}$$
 
@@ -814,13 +885,15 @@ $$\theta_2 = \gamma + \phi_1 + \theta_{2,offset}$$
 
 $$\theta_3 = \pi - \phi_1 - \phi_2 + \theta_{3,offset}$$
 
-```python
-def solve_2link_planar_ik(self, x_eff, z_eff):
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Python snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-python">def solve_2link_planar_ik(self, x_eff, z_eff):
     """2-link planar inverse kinematics solution"""
     R = np.sqrt(x_eff**2 + z_eff**2)
     
     # Reachability check
-    if R > (self.r1 + self.r2) or R < abs(self.r1 - self.r2):
+    if R &gt; (self.r1 + self.r2) or R &lt; abs(self.r1 - self.r2):
         return None, "unreachable"
     
     # Law of cosines
@@ -851,14 +924,17 @@ def solve_2link_planar_ik(self, x_eff, z_eff):
     solutions.append(('elbow_up', theta2_up, theta3_up))
     
     return solutions, "success"
-```
+</code></pre>
+</div>
+</div>
 
 <figure>
   <img class="project-image"
        src="{{ '/project/turtlebot3-autonomous-system/camera_coordinate_3d.png' | relative_url }}"
        alt="3D camera coordinate system representation"
        loading="lazy">
-  <figcaption>Figure 4.4: 3D representation of camera-based coordinate system showing transformation from marker coordinates to robot base frame for inverse kinematics calculations
+  <figcaption>Figure 4.4: 3D representation of camera-based coordinate system showing transformation from marker coordinates to robot base frame for inverse kinematics calculations</figcaption>
+</figure>
 
 #### 4.2.2 Mathematical Formulation of Wrist Joint Optimization Problem
 
@@ -879,8 +955,10 @@ $$f_{limits}(\theta_4) = \sum_{i=1}^{4} \max(0, |\theta_i| - \theta_{i,limit})^2
 **Singularity Avoidance Function**:
 $$f_{singularity}(\theta_4) = \frac{1}{\text{manipulability}(\theta) + \epsilon}$$
 
-```python
-def optimize_wrist_angle(self, theta2, theta3, target_orientation=np.pi/2):
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Python snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-python">def optimize_wrist_angle(self, theta2, theta3, target_orientation=np.pi/2):
     """Wrist angle optimization"""
     def objective_function(theta4):
         theta = [self.theta1, theta2, theta3, theta4]
@@ -892,7 +970,7 @@ def optimize_wrist_angle(self, theta2, theta3, target_orientation=np.pi/2):
         # Joint limit violation penalty
         limit_penalty = 0
         for i, (th, (th_min, th_max)) in enumerate(zip(theta, self.joint_limits)):
-            if th < th_min or th > th_max:
+            if th &lt; th_min or th &gt; th_max:
                 limit_penalty += (min(th - th_max, th_min - th) ** 2)
         
         # Singularity proximity penalty
@@ -924,14 +1002,18 @@ def optimize_wrist_angle(self, theta2, theta3, target_orientation=np.pi/2):
     )
     
     return result.x if result.success else theta4_initial
-```
+</code></pre>
+</div>
+</div>
 
 #### 4.2.3 Multiple Solution Handling and Solution Selection Strategy
 
 Inverse kinematics problems generally have multiple solutions. A strategy was developed to select the optimal solution:
 
-```python
-def select_best_solution(self, solutions, current_joints=None):
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Python snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-python">def select_best_solution(self, solutions, current_joints=None):
     """Select optimal solution from multiple solutions"""
     if not solutions:
         return None
@@ -980,7 +1062,9 @@ def select_best_solution(self, solutions, current_joints=None):
     best_solution = max(scored_solutions, key=lambda x: x['score'])
     
     return best_solution['solution']
-```
+</code></pre>
+</div>
+</div>
 
 ### 4.3 Numerical Stability and Error Propagation Analysis
 
@@ -1000,8 +1084,10 @@ $$\delta \boldsymbol{\theta} = J^{-1} \delta \mathbf{x}$$
 Error magnitude:
 $$\|\delta \boldsymbol{\theta}\| \leq \kappa(J) \cdot \|J^{-1}\| \cdot \|\delta \mathbf{x}\|$$
 
-```python
-def analyze_numerical_stability(self, workspace_samples=1000):
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Python snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-python">def analyze_numerical_stability(self, workspace_samples=1000):
     """Numerical stability analysis across entire workspace"""
     condition_numbers = []
     positions = []
@@ -1017,7 +1103,7 @@ def analyze_numerical_stability(self, workspace_samples=1000):
         
         try:
             U, s, Vt = np.linalg.svd(J)
-            condition_number = s[0] / s[-1] if s[-1] > 1e-12 else float('inf')
+            condition_number = s[0] / s[-1] if s[-1] &gt; 1e-12 else float('inf')
             
             condition_numbers.append(condition_number)
             positions.append(pos)
@@ -1031,11 +1117,13 @@ def analyze_numerical_stability(self, workspace_samples=1000):
         'std_condition_number': np.std(condition_numbers),
         'max_condition_number': np.max(condition_numbers),
         'min_condition_number': np.min(condition_numbers),
-        'ill_conditioned_ratio': len([c for c in condition_numbers if c > 100]) / len(condition_numbers)
+        'ill_conditioned_ratio': len([c for c in condition_numbers if c &gt; 100]) / len(condition_numbers)
     }
     
     return analysis_result
-```
+</code></pre>
+</div>
+</div>
 
 #### 4.3.2 Iterative Newton-Raphson Refinement
 
@@ -1045,8 +1133,10 @@ $$\boldsymbol{\theta}^{(k+1)} = \boldsymbol{\theta}^{(k)} + J^{-1}(\boldsymbol{\
 
 where $\mathbf{e}^{(k)} = \mathbf{x}_{target} - \mathbf{x}(\boldsymbol{\theta}^{(k)})$ is the position error at the current iteration.
 
-```python
-def newton_raphson_refinement(self, initial_theta, target_pose, max_iterations=10, tolerance=1e-4):
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Python snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-python">def newton_raphson_refinement(self, initial_theta, target_pose, max_iterations=10, tolerance=1e-4):
     """Solution refinement through Newton-Raphson method"""
     theta = np.array(initial_theta, dtype=float)
     
@@ -1058,7 +1148,7 @@ def newton_raphson_refinement(self, initial_theta, target_pose, max_iterations=1
         position_error = np.array(target_pose[:3]) - np.array(current_pose[:3])
         
         # Convergence check
-        if np.linalg.norm(position_error) < tolerance:
+        if np.linalg.norm(position_error) &lt; tolerance:
             break
         
         # Calculate Jacobian
@@ -1084,7 +1174,9 @@ def newton_raphson_refinement(self, initial_theta, target_pose, max_iterations=1
             break
     
     return theta.tolist(), iteration, np.linalg.norm(position_error)
-```
+</code></pre>
+</div>
+</div>
 
 ### 4.4 Real-Time Performance Optimization
 
@@ -1092,8 +1184,10 @@ def newton_raphson_refinement(self, initial_theta, target_pose, max_iterations=1
 
 A 3D lookup table storing pre-computed solutions for frequently used workspace regions was implemented:
 
-```python
-class InverseKinematicsLUT:
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Python snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-python">class InverseKinematicsLUT:
     def __init__(self, resolution=0.01, workspace_bounds=None):
         self.resolution = resolution
         self.workspace_bounds = workspace_bounds or {
@@ -1156,7 +1250,7 @@ class InverseKinematicsLUT:
                         corner_solutions.append(solution)
                         weights.append(weight)
         
-        if len(corner_solutions) >= 4:
+        if len(corner_solutions) &gt;= 4:
             # Interpolate with weighted average
             weights = np.array(weights)
             weights /= np.sum(weights)
@@ -1166,14 +1260,18 @@ class InverseKinematicsLUT:
         else:
             # Fallback to analytical solution
             return self.solve_ik_analytical(x, y, z)
-```
+</code></pre>
+</div>
+</div>
 
 #### 4.4.2 Adaptive Precision Control
 
 A system was implemented to dynamically adjust computational complexity based on task precision requirements:
 
-```python
-class AdaptivePrecisionIK:
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Python snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-python">class AdaptivePrecisionIK:
     def __init__(self):
         self.precision_levels = {
             'coarse': {'tolerance': 1e-2, 'max_iterations': 2},
@@ -1190,7 +1288,7 @@ class AdaptivePrecisionIK:
         # Stage 1: Fast analytical solution
         analytical_solution = self.solve_analytical_ik(target_pose)
         
-        if time_budget and (time.time() - start_time) > time_budget * 0.7:
+        if time_budget and (time.time() - start_time) &gt; time_budget * 0.7:
             return analytical_solution  # Return analytical solution only due to time limit
         
         # Stage 2: Refinement based on precision
@@ -1212,7 +1310,9 @@ class AdaptivePrecisionIK:
                 'final_error': final_error,
                 'computation_time': time.time() - start_time
             }
-```
+</code></pre>
+</div>
+</div>
 
 ### 4.5 Challenges and Solutions in Real Implementation
 
@@ -1226,8 +1326,10 @@ Compensating for differences between theoretical DH parameters and actual hardwa
 2. **Data Collection**: Manually position robot at each reference point and record encoder values
 3. **Optimization**: Calculate correction parameters that minimize measurement error
 
-```python
-def calibrate_kinematic_parameters(self, calibration_data):
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Python snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-python">def calibrate_kinematic_parameters(self, calibration_data):
     """Kinematic parameter calibration"""
     def objective_function(params):
         # Apply calibration parameters
@@ -1281,7 +1383,9 @@ def apply_calibration_params(self, params):
     """Apply calibration parameters"""
     self.r1, self.r2, self.r3 = params[:3]
     self.th1_offset, self.th2_offset, self.th3_offset, self.th4_offset = params[3:7]
-```
+</code></pre>
+</div>
+</div>
 
 **Calibration Results**: After calibration with 50 reference points, average position error decreased from 12.3mm to 2.1mm.
 
@@ -1301,8 +1405,10 @@ The real-time constraint requiring stable operation at 50Hz control frequency wa
 
 While 2ms in a 20ms control cycle provided sufficient margin, the worst case of 3.64ms required additional optimization.
 
-```python
-class RealTimeIKSolver:
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Python snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-python">class RealTimeIKSolver:
     def __init__(self):
         self.performance_monitor = PerformanceMonitor()
         self.adaptive_timeout = 15.0  # ms
@@ -1316,7 +1422,7 @@ class RealTimeIKSolver:
         
         elapsed_ms = (time.perf_counter() - start_time) * 1000
         
-        if elapsed_ms > max_time_ms * 0.8:
+        if elapsed_ms &gt; max_time_ms * 0.8:
             # Return analytical solution only if time is insufficient
             return analytical_result, 'analytical_only'
         
@@ -1331,7 +1437,9 @@ class RealTimeIKSolver:
             
         except TimeoutError:
             return analytical_result, 'timeout_fallback'
-```
+</code></pre>
+</div>
+</div>
 
 ## 5. Integrated Control System Architecture
 
@@ -1341,15 +1449,19 @@ The control architecture of the entire system was designed with a hierarchical s
 
 #### 5.1.1 Control Layer Structure
 
-```
-┌──────────────────────────────────────────────────┐ ← High-level mission management
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Text snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-text">┌──────────────────────────────────────────────────┐ ← High-level mission management
 │                Mission Layer                        │
 ├────────────────────────────────────────────────────┤
 │                Behavioral Layer                     │ ← Behavior selection and coordination
 ├────────────────────────────────────────────────────┤  
 │                Execution Layer                      │ ← Low-level control execution
 └────────────────────────────────────────────────────┘
-```
+</code></pre>
+</div>
+</div>
 
 **Mission Layer**: Overall mission planning and state management
 **Behavioral Layer**: Sensor input-based behavior selection and arbitration
@@ -1369,8 +1481,10 @@ For stability in real environments, we adopted a different approach from existin
 - Predictable robot behavior
 - Easy debugging and maintenance
 
-```python
-class ForwardOnlyController:
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Python snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-python">class ForwardOnlyController:
     def __init__(self):
         self.base_forward_speed = 0.12  # m/s
         self.safety_layers = [
@@ -1397,7 +1511,9 @@ class ForwardOnlyController:
                 break
         
         return final_command
-```
+</code></pre>
+</div>
+</div>
 
 ### 5.2 Multi-Sensor Fusion and State Estimation
 
@@ -1411,22 +1527,27 @@ An Extended Kalman Filter was implemented to accurately estimate robot state by 
 $$\mathbf{x}_{k+1} = f(\mathbf{x}_k, \mathbf{u}_k) + \mathbf{w}_k$$
 
 where:
-$$f(\mathbf{x}_k, \mathbf{u}_k) = \begin{bmatrix}
+
+$$
+f(\mathbf{x}_k, \mathbf{u}_k) = \begin{bmatrix}
 x_k + \dot{x}_k \Delta t \\
 y_k + \dot{y}_k \Delta t \\
 \theta_k + \dot{\theta}_k \Delta t \\
 \dot{x}_k + a_x \Delta t \\
 \dot{y}_k + a_y \Delta t \\
 \dot{\theta}_k + a_\theta \Delta t
-\end{bmatrix}$$
+\end{bmatrix}
+$$
 
 **Observation Models**:
 - **Encoder**: $$\mathbf{z}_{enc} = [\dot{x}, \dot{y}, \dot{\theta}]^T$$
 - **Camera**: $$\mathbf{z}_{cam} = [x_{marker}, y_{marker}]^T$$
 - **LiDAR**: $$\mathbf{z}_{lidar} = [d_1, d_2, ..., d_n]^T$$
 
-```python
-class ExtendedKalmanFilter:
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Python snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-python">class ExtendedKalmanFilter:
     def __init__(self):
         # Initial state [x, y, theta, vx, vy, omega]
         self.state = np.zeros(6)
@@ -1496,14 +1617,18 @@ class ExtendedKalmanFilter:
         
         # Covariance update
         self.P = (np.eye(6) - K @ H) @ self.P
-```
+</code></pre>
+</div>
+</div>
 
 #### 5.2.2 Adaptive Fusion Based on Sensor Reliability
 
 Real-time sensor reliability is evaluated to dynamically adjust fusion weights.
 
-```python
-class AdaptiveSensorFusion:
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Python snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-python">class AdaptiveSensorFusion:
     def __init__(self):
         self.sensor_reliability = {
             'encoder': 0.9,
@@ -1522,7 +1647,7 @@ class AdaptiveSensorFusion:
         self.reliability_history[sensor_name].append(measurement_quality)
         
         # Calculate reliability with moving average
-        if len(self.reliability_history[sensor_name]) > 10:
+        if len(self.reliability_history[sensor_name]) &gt; 10:
             self.sensor_reliability[sensor_name] = np.mean(
                 list(self.reliability_history[sensor_name])[-20:]
             )
@@ -1548,7 +1673,9 @@ class AdaptiveSensorFusion:
                 fused_position += weights[sensor] * np.array(estimate)
         
         return fused_position
-```
+</code></pre>
+</div>
+</div>
 
 ### 5.3 Priority-Based Behavior Arbitration System
 
@@ -1556,8 +1683,10 @@ class AdaptiveSensorFusion:
 
 This system coordinates when various behavior modules simultaneously request control commands.
 
-```python
-class BehaviorArbitrator:
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Python snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-python">class BehaviorArbitrator:
     def __init__(self):
         self.behaviors = {
             'emergency_stop': {'priority': 100, 'active': False},
@@ -1611,14 +1740,18 @@ class BehaviorArbitrator:
         """Deactivate behavior"""
         if behavior_name in self.behaviors:
             self.behaviors[behavior_name]['active'] = False
-```
+</code></pre>
+</div>
+</div>
 
 #### 5.3.2 Application of Subsumption Architecture
 
 Hierarchical behavior control was implemented referencing Brooks' subsumption architecture.
 
-```python
-class SubsumptionLayer:
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Python snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-python">class SubsumptionLayer:
     def __init__(self, name, priority):
         self.name = name
         self.priority = priority
@@ -1655,7 +1788,7 @@ class AvoidanceLayer(SubsumptionLayer):
         lidar_data = sensor_data.get('lidar', [])
         min_distance = min(lidar_data) if lidar_data else float('inf')
         
-        if min_distance < self.min_distance:
+        if min_distance &lt; self.min_distance:
             # Obstacle avoidance behavior
             action = Twist()
             action.linear.x = 0.0
@@ -1681,7 +1814,9 @@ class LaneFollowingLayer(SubsumptionLayer):
         action.angular.z = self.pd_controller.compute(error)
         
         return action
-```
+</code></pre>
+</div>
+</div>
 
 ## 6. Experimental Results and Performance Analysis
 
@@ -1697,8 +1832,10 @@ Comprehensive metrics were defined for performance evaluation:
 - **Success Rate**: Ratio of driving within tolerance over total distance
 
 **Measurement Method**:
-```python
-class LaneFollowingEvaluator:
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Python snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-python">class LaneFollowingEvaluator:
     def __init__(self):
         self.lateral_errors = []
         self.heading_errors = []
@@ -1734,9 +1871,11 @@ class LaneFollowingEvaluator:
             'lateral_rms': np.sqrt(np.mean(lateral_errors**2)),
             'heading_mean': np.mean(heading_errors),
             'heading_std': np.std(heading_errors),
-            'success_rate': len(lateral_errors[lateral_errors < 0.05]) / len(lateral_errors)
+            'success_rate': len(lateral_errors[lateral_errors &lt; 0.05]) / len(lateral_errors)
         }
-```
+</code></pre>
+</div>
+</div>
 
 #### 6.1.2 Pick & Place Task Performance
 
@@ -1760,7 +1899,8 @@ class LaneFollowingEvaluator:
        src="{{ '/project/turtlebot3-autonomous-system/aruco_marker_detection.gif' | relative_url }}"
        alt="Real-time ArUco marker detection and pose estimation"
        loading="lazy">
-  <figcaption>Figure 6.1: Real-time ArUco marker detection showing pose estimation, coordinate transformation, and gripper positioning for Pick & Place operations
+  <figcaption>Figure 6.1: Real-time ArUco marker detection showing pose estimation, coordinate transformation, and gripper positioning for Pick & Place operations</figcaption>
+</figure>
 
 ### 6.2 Environmental Perception Performance Analysis
 
@@ -1802,8 +1942,10 @@ Object detection performance was evaluated under various environmental condition
 
 Processing time was analyzed by module for the entire system:
 
-```python
-class PerformanceProfiler:
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Python snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-python">class PerformanceProfiler:
     def __init__(self):
         self.timing_data = defaultdict(list)
         self.memory_data = defaultdict(list)
@@ -1843,7 +1985,9 @@ class PerformanceProfiler:
             }
         
         return report
-```
+</code></pre>
+</div>
+</div>
 
 **Profiling Results** (Average of 1000 executions):
 
@@ -1860,8 +2004,10 @@ Average 50.7ms in a 20Hz control cycle (50ms) was near the limit, requiring addi
 
 #### 6.3.2 Memory Usage Analysis
 
-```python
-def analyze_memory_usage():
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Python snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-python">def analyze_memory_usage():
     """Detailed memory usage analysis"""
     import psutil
     import gc
@@ -1880,7 +2026,9 @@ def analyze_memory_usage():
         'percent': memory_percent,
         'available_mb': psutil.virtual_memory().available / 1024 / 1024
     }
-```
+</code></pre>
+</div>
+</div>
 
 **Memory Usage Profile**:
 - **Base System**: 245 MB
@@ -1897,8 +2045,10 @@ This was well within the 4GB RAM capacity of the Jetson Nano.
 
 An 8-hour continuous operation test was performed to verify system stability:
 
-```python
-class StabilityTester:
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Python snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-python">class StabilityTester:
     def __init__(self):
         self.start_time = time.time()
         self.error_log = []
@@ -1908,7 +2058,7 @@ class StabilityTester:
         """Long-term stability test"""
         end_time = self.start_time + duration_hours * 3600
         
-        while time.time() < end_time:
+        while time.time() &lt; end_time:
             try:
                 # Check system status
                 system_status = self.check_system_health()
@@ -1930,7 +2080,9 @@ class StabilityTester:
                 })
         
         return self.generate_stability_report()
-```
+</code></pre>
+</div>
+</div>
 
 **8-Hour Test Results**:
 - **Total Distance Traveled**: 12.3 km
@@ -1963,8 +2115,10 @@ class StabilityTester:
 - **Reality**: Imperfect data containing 10-20% noise
 
 **Response Strategy**: 
-```python
-class RobustSensorProcessing:
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Python snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-python">class RobustSensorProcessing:
     def __init__(self):
         self.noise_models = {
             'camera': GaussianNoise(std=0.02),
@@ -1983,7 +2137,9 @@ class RobustSensorProcessing:
         filtered_data = noise_model.apply_filter(cleaned_data)
         
         return filtered_data
-```
+</code></pre>
+</div>
+</div>
 
 #### 7.1.2 Weight of Real-Time Constraints
 
@@ -1997,8 +2153,10 @@ class RobustSensorProcessing:
 
 While each module worked perfectly independently, unexpected interactions occurred during integration:
 
-```python
-class SystemIntegrationManager:
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Python snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-python">class SystemIntegrationManager:
     def __init__(self):
         self.module_dependencies = {
             'lane_following': ['camera', 'control'],
@@ -2023,7 +2181,9 @@ class SystemIntegrationManager:
         
         if failed_module in fallback_strategies:
             self.activate_fallback(fallback_strategies[failed_module])
-```
+</code></pre>
+</div>
+</div>
 
 ### 7.3 Importance of Debugging and Validation
 
@@ -2031,8 +2191,10 @@ class SystemIntegrationManager:
 
 Visual debugging tools were essential for understanding complex algorithm behavior:
 
-```python
-class VisualDebugger:
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Python snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-python">class VisualDebugger:
     def __init__(self):
         self.debug_publishers = {
             'lane_detection': rospy.Publisher('/debug/lane_overlay', Image),
@@ -2053,7 +2215,9 @@ class VisualDebugger:
         self.debug_publishers[debug_type].publish(
             self.cv_bridge.cv2_to_imgmsg(overlay_image)
         )
-```
+</code></pre>
+</div>
+</div>
 
 Visual debugging allowed intuitive understanding of actual algorithm behavior and rapid problem identification.
 
@@ -2069,8 +2233,10 @@ While individual module unit tests all passed, different problems emerged in the
 
 Gradual replacement of traditional computer vision techniques with deep learning:
 
-```python
-class DeepLearningIntegration:
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Python snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-python">class DeepLearningIntegration:
     def __init__(self):
         self.traditional_detector = TraditionalDetector()
         self.dl_detector = YOLOv8Detector()
@@ -2081,20 +2247,24 @@ class DeepLearningIntegration:
         # Try deep learning first
         dl_result = self.dl_detector.detect(image)
         
-        if dl_result.confidence > self.confidence_threshold:
+        if dl_result.confidence &gt; self.confidence_threshold:
             return dl_result
         else:
             # Fallback to traditional method if confidence is low
             traditional_result = self.traditional_detector.detect(image)
             return self.merge_results(dl_result, traditional_result)
-```
+</code></pre>
+</div>
+</div>
 
 #### 8.1.2 Adaptive Control System
 
 Control system that automatically adapts to environmental changes:
 
-```python
-class AdaptiveController:
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Python snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-python">class AdaptiveController:
     def __init__(self):
         self.control_params = {'Kp': 0.0025, 'Kd': 0.007}
         self.adaptation_rate = 0.01
@@ -2104,12 +2274,12 @@ class AdaptiveController:
         """Parameter adaptation based on performance metrics"""
         self.performance_history.append(performance_metric)
         
-        if len(self.performance_history) >= 50:
+        if len(self.performance_history) &gt;= 50:
             # Analyze performance trend
             recent_performance = np.mean(list(self.performance_history)[-20:])
             past_performance = np.mean(list(self.performance_history)[-50:-20])
             
-            if recent_performance < past_performance * 0.9:
+            if recent_performance &lt; past_performance * 0.9:
                 # Performance degradation detected - adjust parameters
                 self.tune_parameters()
     
@@ -2119,14 +2289,18 @@ class AdaptiveController:
         for param in self.control_params:
             gradient = self.estimate_gradient(param)
             self.control_params[param] += self.adaptation_rate * gradient
-```
+</code></pre>
+</div>
+</div>
 
 ### 8.2 Mid-Term Development Plan (Within 1 year)
 
 #### 8.2.1 Multi-Robot Collaboration System
 
-```python
-class MultiRobotCoordinator:
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Python snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-python">class MultiRobotCoordinator:
     def __init__(self):
         self.robot_fleet = {}
         self.task_queue = PriorityQueue()
@@ -2147,14 +2321,18 @@ class MultiRobotCoordinator:
         collision_free_paths = self.plan_coordinated_paths(assignments)
         
         return assignments, collision_free_paths
-```
+</code></pre>
+</div>
+</div>
 
 #### 8.2.2 Advanced SLAM System
 
 Real-time map construction and localization:
 
-```python
-class AdvancedSLAM:
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Python snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-python">class AdvancedSLAM:
     def __init__(self):
         self.pose_graph = PoseGraph()
         self.loop_detector = LoopClosureDetector()
@@ -2175,14 +2353,18 @@ class AdvancedSLAM:
         if loop_closure:
             # Global optimization
             self.map_optimizer.optimize(self.pose_graph)
-```
+</code></pre>
+</div>
+</div>
 
 ### 8.3 Long-Term Vision (2-3 years)
 
 #### 8.3.1 Fully Autonomous Adaptive System
 
-```python
-class AutonomousAdaptationSystem:
+<div class="code-toggle">
+<button class="code-toggle-button" type="button" aria-expanded="false">Toggle code: Example Python snippet</button>
+<div class="code-toggle-panel">
+<pre><code class="language-python">class AutonomousAdaptationSystem:
     def __init__(self):
         self.world_model = DynamicWorldModel()
         self.meta_learning = MetaLearningEngine()
@@ -2200,7 +2382,9 @@ class AutonomousAdaptationSystem:
         system_health = self.self_diagnosis.check_health()
         if system_health.status != 'healthy':
             self.self_repair(system_health.issues)
-```
+</code></pre>
+</div>
+</div>
 
 ## 9. Conclusion
 
