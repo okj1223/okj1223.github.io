@@ -994,13 +994,13 @@ Results:
 
 | Category | Amount (USD) | Percentage | Details |
 |----------|--------------|------------|----------|
-| Engineering Design | $4,000 | 20% | CAD work, calculations, documentation |
-| Raw Materials | $8,000 | 40% | SUS304/316L, hoses, fittings |
-| Machining & Fabrication | $3,000 | 15% | External CNC work, cutting |
-| Welding Labor | $2,000 | 10% | TIG welding time (self-performed) |
-| Components | $2,500 | 12.5% | Motors, inverter, sensors |
-| Testing & Commissioning | $500 | 2.5% | Site testing, optimization |
-| **Total Investment** | **$20,000** | **100%** |
+| Engineering Design | <span class="mathjax-ignore">$4,000</span> | 20% | CAD work, calculations, documentation |
+| Raw Materials | <span class="mathjax-ignore">$8,000</span> | 40% | SUS304/316L, hoses, fittings |
+| Machining & Fabrication | <span class="mathjax-ignore">$3,000</span> | 15% | External CNC work, cutting |
+| Welding Labor | <span class="mathjax-ignore">$2,000</span> | 10% | TIG welding time (self-performed) |
+| Components | <span class="mathjax-ignore">$2,500</span> | 12.5% | Motors, inverter, sensors |
+| Testing & Commissioning | <span class="mathjax-ignore">$500</span> | 2.5% | Site testing, optimization |
+| **Total Investment** | **<span class="mathjax-ignore">$20,000</span>** | **100%** |
 
 #### 8.1.2 Operating Cost Comparison
 
@@ -1008,12 +1008,12 @@ Results:
 
 | Item | Chemical Method | Dry Ice Method | Annual Savings |
 |------|----------------|----------------|----------------|
-| Cleaning chemicals | $60,000 | $0 | $60,000 |
-| Waste disposal | $20,000 | $0 | $20,000 |
-| Labor costs | $120,000 | $60,000 | $60,000 |
-| Equipment maintenance | $15,000 | $10,000 | $5,000 |
-| Dry ice pellets | $0 | $40,000 | -$40,000 |
-| **Net Annual Savings** | | | **$105,000** |
+| Cleaning chemicals | <span class="mathjax-ignore">$60,000</span> | <span class="mathjax-ignore">$0</span> | <span class="mathjax-ignore">$60,000</span> |
+| Waste disposal | <span class="mathjax-ignore">$20,000</span> | <span class="mathjax-ignore">$0</span> | <span class="mathjax-ignore">$20,000</span> |
+| Labor costs | <span class="mathjax-ignore">$120,000</span> | <span class="mathjax-ignore">$60,000</span> | <span class="mathjax-ignore">$60,000</span> |
+| Equipment maintenance | <span class="mathjax-ignore">$15,000</span> | <span class="mathjax-ignore">$10,000</span> | <span class="mathjax-ignore">$5,000</span> |
+| Dry ice pellets | <span class="mathjax-ignore">$0</span> | <span class="mathjax-ignore">$40,000</span> | <span class="mathjax-ignore">-$40,000</span> |
+| **Net Annual Savings** | | | **<span class="mathjax-ignore">$105,000</span>** |
 
 **Return on Investment**:
 <div class="code-toggle">
@@ -2195,7 +2195,7 @@ This comprehensive engineering portfolio documents the complete development life
 **Key Achievements**:
 - 98.5% system availability achieved
 - 96.5% contamination removal efficiency  
-- $107,000 annual cost savings delivered
+- <span class="mathjax-ignore">$107,000</span> annual cost savings delivered
 - Zero safety incidents during 100+ hours operation
 - 105% weld joint efficiency (over-matching)
 - ±2.4% pellet feed accuracy maintained

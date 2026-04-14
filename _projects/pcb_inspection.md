@@ -56,7 +56,7 @@ The goal was ambitious: build an end-to-end system with the following capabiliti
 
 ### Why This Matters
 
-Current industrial solutions cost over $100,000 and require extensive customization. Our approach creates a flexible and affordable system that small-scale manufacturers can actually afford by using off-the-shelf components and open-source software.
+Current industrial solutions cost over <span class="mathjax-ignore">$100,000</span> and require extensive customization. Our approach creates a flexible and affordable system that small-scale manufacturers can actually afford by using off-the-shelf components and open-source software.
 
 ---
 
@@ -3077,15 +3077,15 @@ The key insights that made this possible:
 
 ### Want to Build Your Own?
 
-All code and documentation are available on GitHub. Hardware costs under $15,000, and setup time for an experienced team is about one week.
+All code and documentation are available on GitHub. Hardware costs under <span class="mathjax-ignore">$15,000,</span> and setup time for an experienced team is about one week.
 
 **Hardware Shopping List:**
-- 6-DOF robot arm: $8,000
-- Intel RealSense D435i: $400  
-- Logitech C920 webcam: $70
-- Arduino Uno + motors: $150
-- 3D printing frame: $200
-- Computing device (RTX 3060): $400
+- 6-DOF robot arm: <span class="mathjax-ignore">$8,000</span>
+- Intel RealSense D435i: <span class="mathjax-ignore">$400</span>  
+- Logitech C920 webcam: <span class="mathjax-ignore">$70</span>
+- Arduino Uno + motors: <span class="mathjax-ignore">$150</span>
+- 3D printing frame: <span class="mathjax-ignore">$200</span>
+- Computing device (RTX 3060): <span class="mathjax-ignore">$400</span>
 
 The future of manufacturing is autonomous, intelligent, and surprisingly affordable. This project is just the beginning.
 
@@ -3097,7 +3097,7 @@ The future of manufacturing is autonomous, intelligent, and surprisingly afforda
 | Processing Speed | 15 PCB/min | 10-12 PCB/min | +25-50% |
 | False Positive Rate | 0.06% | 0.1-0.2% | -40-70% |
 | Voice Command Accuracy | 97% | 89-92% | +5-9% |
-| System Cost | $15K | $100K+ | -85% |
+| System Cost | <span class="mathjax-ignore">$15K</span> | <span class="mathjax-ignore">$100K+</span> | -85% |
 
 ### Technical Contributions
 
@@ -3208,17 +3208,17 @@ def adaptive_noise_filtering(audio_signal):
 ### Scaling Scenarios
 
 **Small-scale Manufacturers (1000 PCB/month)**
-- Basic system: $15K
+- Basic system: <span class="mathjax-ignore">$15K</span>
 - ROI period: 8 months
 - Labor savings: 0.5 FTE
 
 **Medium-scale Manufacturers (10000 PCB/month)**
-- Multi-line system: $45K
+- Multi-line system: <span class="mathjax-ignore">$45K</span>
 - ROI period: 4 months
 - Labor savings: 2 FTE
 
 **Large-scale Manufacturers (100000+ PCB/month)**
-- Fully automated line: $150K
+- Fully automated line: <span class="mathjax-ignore">$150K</span>
 - ROI period: 2 months
 - Labor savings: 8+ FTE
 

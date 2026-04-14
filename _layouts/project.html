@@ -72,21 +72,8 @@ layout: base
 </section>
 
 <!-- 🌿 에코 테마 배경 요소들 추가 -->
-<div class="eco-leaves">
-  <div class="leaf"></div>
-  <div class="leaf"></div>
-  <div class="leaf"></div>
-  <div class="leaf"></div>
-  <div class="leaf"></div>
-  <div class="leaf"></div>
-  <div class="leaf"></div>
-  <div class="leaf"></div>
-</div>
-
-<div class="bg-grid-pattern">
-  <div class="grid-lines horizontal"></div>
-  <div class="grid-lines vertical"></div>
-</div>
+{% include eco-leaves.html %}
+{% include bg-grid-pattern.html %}
 
 <!-- 자동 TOC 생성 JavaScript -->
 <script>
@@ -138,6 +125,17 @@ document.addEventListener('DOMContentLoaded', function() {
   
   // 스무스 스크롤 이벤트
   const tocLinks = tocNav.querySelectorAll('.toc-link');
+  let activeTargetId = '';
+
+  function keepActiveLinkVisible(activeLink) {
+    if (!activeLink || window.innerWidth <= 960) return;
+
+    activeLink.scrollIntoView({
+      block: 'nearest',
+      inline: 'nearest'
+    });
+  }
+
   tocLinks.forEach(link => {
     link.addEventListener('click', function(e) {
       e.preventDefault();
@@ -166,13 +164,19 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     });
     
+    if (current === activeTargetId) return;
+    activeTargetId = current;
+
+    let activeLink = null;
+
     // 활성 링크 업데이트
     tocLinks.forEach(link => {
-      link.classList.remove('active');
-      if (link.getAttribute('data-target') === current) {
-        link.classList.add('active');
-      }
+      const isActive = link.getAttribute('data-target') === current;
+      link.classList.toggle('active', isActive);
+      if (isActive) activeLink = link;
     });
+
+    keepActiveLinkVisible(activeLink);
   }
   
   // 스크롤 이벤트 (throttled)
@@ -270,32 +274,118 @@ document.addEventListener('DOMContentLoaded', function() {
       html: 'HTML',
       css: 'CSS',
       text: 'Text',
-      txt: 'Text'
+      txt: 'Text',
+      plaintext: 'Text'
     };
 
     return labels[lang] || (lang ? lang.toUpperCase() : 'Code');
   }
 
-  content.querySelectorAll('.code-toggle').forEach(card => {
-    const button = card.querySelector('.code-toggle-button');
-    if (!button) return;
+  function getSnippetInfo(card) {
+    const pre = card.querySelector('pre');
+    const code = pre ? pre.querySelector('code') : null;
+    if (!pre || !code) return null;
 
-    const text = button.textContent.trim();
-    const genericMatch = text.match(/^Toggle code:\s*Example\s+(.+?)\s+snippet$/i);
-    if (!genericMatch) return;
+    const className = Array.from(code.classList).find(cls => cls.startsWith('language-')) || '';
+    const lang = className ? className.replace('language-', '').toLowerCase() : 'text';
+    const rawText = (code.textContent || '').replace(/\s+$/, '');
+    const lines = rawText ? rawText.split('\n') : [];
+    const nonEmptyLines = lines.filter(line => line.trim());
+    const longestLine = nonEmptyLines.reduce((max, line) => Math.max(max, line.length), 0);
 
-    const context = findNearestCodeContext(card);
-    if (context) {
-      button.textContent = `Toggle code: ${context}`;
-      return;
+    return {
+      card,
+      pre,
+      code,
+      lang,
+      rawText,
+      lines,
+      lineCount: nonEmptyLines.length,
+      longestLine,
+      context: findNearestCodeContext(card)
+    };
+  }
+
+  function isTextSnippet(info) {
+    return ['text', 'txt', 'plaintext'].includes(info.lang);
+  }
+
+  function classifyTextSnippet(info) {
+    const haystack = `${info.context} ${info.rawText}`.toLowerCase();
+    const hasBoxDrawing = /[┌┐└┘│├┤─]/.test(info.rawText);
+    const hasReactionArrow = /(?:->|→)/.test(info.rawText);
+    const hasChemicalSpecies = /(NH₃|NO₂|NO\b|SO₂|SO₃|N₂|H₂O|O₂|CO₂|H₂|O₃)/.test(info.rawText);
+
+    if (hasBoxDrawing) return 'diagram';
+    if (hasReactionArrow && hasChemicalSpecies) return 'reaction';
+    if (info.lineCount <= 2 && /[=≈×÷√ΔΣημρτπ]/.test(info.rawText)) return 'formula';
+    if (/calculation|analysis|required|verification|torque|load|battery|power|mtbf/.test(haystack)) return 'calculation';
+    if (/parameter|specification|characteristic|comparison|benchmark|result|protocol/.test(haystack)) return 'reference';
+    return 'note';
+  }
+
+  function describeTextSnippet(kind) {
+    const labels = {
+      diagram: 'System sketch',
+      reaction: 'Reaction equation',
+      formula: 'Formula',
+      calculation: 'Calculation note',
+      reference: 'Technical reference',
+      note: 'Technical note'
+    };
+
+    return labels[kind] || 'Technical note';
+  }
+
+  function isGenericDescriptor(text) {
+    return /^(?:toggle code:\s*)?(?:example\s+)?(?:python|bash|shell|json|yaml|c\+\+|c|javascript|sql|markdown|text|code)(?:\s+snippet)?$/i.test(text.trim());
+  }
+
+  function extractDescriptor(buttonText) {
+    const cleaned = buttonText
+      .replace(/^Toggle code:\s*/i, '')
+      .replace(/^Example\s+/i, '')
+      .replace(/\s+snippet$/i, '')
+      .trim();
+
+    return cleaned && !isGenericDescriptor(cleaned) ? cleaned : '';
+  }
+
+  function describeCodeSnippet(info) {
+    const langLabel = humanizeLanguage(info.card, info.lang);
+    const byLanguage = {
+      bash: 'command example',
+      shell: 'command example',
+      sh: 'command example',
+      json: 'message example',
+      yaml: 'configuration example',
+      yml: 'configuration example',
+      sql: 'query example'
+    };
+
+    if (info.context) return `example: ${info.context}`;
+    return byLanguage[info.lang] || `${langLabel} example`;
+  }
+
+  function buildToggleLabels(button, info) {
+    const explicitDescriptor = extractDescriptor(button.textContent || '');
+    const descriptor = explicitDescriptor || describeCodeSnippet(info);
+
+    if (/^(example:|.+ example$|.+ command$|.+ builder$|.+ schema$|.+ snippet$)/i.test(descriptor)) {
+      return {
+        show: `Show ${descriptor}`,
+        hide: `Hide ${descriptor}`
+      };
     }
 
-    const langLabel = humanizeLanguage(card, genericMatch[1]);
-    button.textContent = `Toggle code: ${langLabel} snippet`;
-  });
+    return {
+      show: `Show example: ${descriptor}`,
+      hide: `Hide example: ${descriptor}`
+    };
+  }
 
-  content.querySelectorAll('.code-toggle-button').forEach(button => {
-    const labelText = button.textContent.trim();
+  function setToggleButtonLabel(button, isOpen) {
+    const labelText = isOpen ? button.dataset.hideLabel : button.dataset.showLabel;
     let label = button.querySelector('.code-toggle-label');
 
     if (!label) {
@@ -307,6 +397,84 @@ document.addEventListener('DOMContentLoaded', function() {
 
     label.textContent = labelText;
     button.setAttribute('aria-label', labelText);
+    button.setAttribute('aria-expanded', String(isOpen));
+  }
+
+  function createSnippetHeader(title, meta) {
+    const header = document.createElement('div');
+    header.className = 'snippet-card-header';
+
+    const titleEl = document.createElement('span');
+    titleEl.className = 'snippet-card-title';
+    titleEl.textContent = title;
+    header.appendChild(titleEl);
+
+    if (meta && meta.toLowerCase() !== title.toLowerCase()) {
+      const metaEl = document.createElement('span');
+      metaEl.className = 'snippet-card-meta';
+      metaEl.textContent = meta;
+      header.appendChild(metaEl);
+    }
+
+    return header;
+  }
+
+  function unwrapSnippetCard(card, info, options) {
+    const panel = card.querySelector('.code-toggle-panel');
+    if (!panel || !info.pre) return;
+    const variantClasses = (options.variant || '').split(/\s+/).filter(Boolean);
+    const preservedClasses = Array.from(card.classList).filter(
+      cls => cls !== 'code-toggle' && cls !== 'is-open'
+    );
+
+    const header = createSnippetHeader(options.title, options.meta);
+    const body = document.createElement('div');
+    body.className = 'snippet-card-panel';
+    body.appendChild(info.pre);
+
+    card.className = [...preservedClasses, 'snippet-card', ...variantClasses]
+      .concat(options.kind ? [`snippet-kind-${options.kind}`] : [])
+      .join(' ');
+
+    card.innerHTML = '';
+    card.appendChild(header);
+    card.appendChild(body);
+  }
+
+  function shouldInlineCodeSnippet(info) {
+    return info.lineCount > 0 && info.lineCount <= 12 && info.longestLine <= 110;
+  }
+
+  content.querySelectorAll('.code-toggle').forEach(card => {
+    const button = card.querySelector('.code-toggle-button');
+    const info = getSnippetInfo(card);
+    if (!button || !info) return;
+
+    if (isTextSnippet(info)) {
+      const kind = classifyTextSnippet(info);
+      unwrapSnippetCard(card, info, {
+        title: info.context || describeTextSnippet(kind),
+        meta: describeTextSnippet(kind),
+        variant: 'snippet-card-text',
+        kind
+      });
+      return;
+    }
+
+    if (shouldInlineCodeSnippet(info)) {
+      const langLabel = humanizeLanguage(card, info.lang);
+      unwrapSnippetCard(card, info, {
+        title: info.context || `${langLabel} example`,
+        meta: `${langLabel} example`,
+        variant: 'snippet-card-code snippet-card-inline'
+      });
+      return;
+    }
+
+    const labels = buildToggleLabels(button, info);
+    button.dataset.showLabel = labels.show;
+    button.dataset.hideLabel = labels.hide;
+    setToggleButtonLabel(button, card.classList.contains('is-open'));
   });
 
   Array.from(content.querySelectorAll('h2')).forEach(heading => {
@@ -341,7 +509,7 @@ document.addEventListener('DOMContentLoaded', function() {
       if (!card) return;
 
       const isOpen = card.classList.toggle('is-open');
-      this.setAttribute('aria-expanded', String(isOpen));
+      setToggleButtonLabel(this, isOpen);
     });
   });
 });
@@ -406,21 +574,29 @@ body {
 
 /* 📋 TOC와 프로젝트 레이아웃 스타일 */
 .project-layout {
-  display: flex !important;
-  gap: 2rem !important;
-  width: min(100%, 1400px) !important;
-  max-width: 1400px !important;
+  --project-content-max: 860px;
+  --project-toc-width: 250px;
+  display: grid !important;
+  grid-template-columns:
+    minmax(0, var(--project-toc-width))
+    minmax(0, var(--project-content-max))
+    minmax(0, var(--project-toc-width)) !important;
+  gap: clamp(1rem, 2vw, 2rem) !important;
+  width: min(100%, 1440px) !important;
+  max-width: 1440px !important;
   margin: 0 auto !important;
   align-items: flex-start !important;
+  justify-content: center !important;
   padding: 1.5rem 1rem 2rem !important;
   box-sizing: border-box !important;
 }
 
 .project-content {
-  flex: 1 !important;
+  grid-column: 2 !important;
+  justify-self: center !important;
   min-width: 0 !important;
   width: 100% !important;
-  max-width: 100% !important;
+  max-width: var(--project-content-max) !important;
   text-align: left !important;
   background: var(--clr-surface, #fff) !important;
   padding: 2rem !important;
@@ -716,10 +892,13 @@ body {
 
 /* TOC 사이드바 */
 .project-toc {
-  width: 240px !important;
+  grid-column: 3 !important;
+  justify-self: start !important;
+  width: 100% !important;
+  max-width: var(--project-toc-width) !important;
   position: sticky !important;
-  top: 100px !important;
-  max-height: calc(100vh - 120px) !important;
+  top: 96px !important;
+  max-height: calc(100vh - 112px) !important;
   overflow-y: auto !important;
   padding: 1rem !important;
   background: var(--clr-surface, #fff) !important;
@@ -727,6 +906,7 @@ body {
   border-radius: var(--radius-lg, 14px) !important;
   box-shadow: var(--shadow-sm) !important;
   flex-shrink: 0 !important;
+  scrollbar-gutter: stable !important;
 }
 
 .project-toc h4 {
@@ -906,6 +1086,83 @@ body {
   margin-bottom: 1.2rem !important;
 }
 
+.project-content .snippet-card {
+  margin: 1.2rem 0 1.6rem !important;
+  border: 1px solid rgba(127, 179, 211, 0.28) !important;
+  border-radius: 14px !important;
+  background: linear-gradient(180deg, rgba(248, 252, 251, 0.96), rgba(242, 248, 246, 0.92)) !important;
+  overflow: hidden !important;
+  box-shadow: 0 10px 28px rgba(93, 115, 126, 0.08) !important;
+}
+
+.project-content .snippet-card-header {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 0.8rem !important;
+  padding: 0.9rem 1.2rem !important;
+  background: rgba(184, 212, 227, 0.16) !important;
+  border-bottom: 1px solid rgba(127, 179, 211, 0.2) !important;
+}
+
+.project-content .snippet-card-title {
+  font-family: 'Inter', sans-serif !important;
+  font-size: 0.96rem !important;
+  font-weight: 700 !important;
+  color: #2f5360 !important;
+  line-height: 1.4 !important;
+}
+
+.project-content .snippet-card-meta {
+  flex-shrink: 0 !important;
+  padding: 0.2rem 0.55rem !important;
+  border-radius: 999px !important;
+  background: rgba(74, 143, 168, 0.14) !important;
+  color: #4a7a8e !important;
+  font-family: 'Inter', sans-serif !important;
+  font-size: 0.72rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.04em !important;
+  text-transform: uppercase !important;
+}
+
+.project-content .snippet-card-panel {
+  padding: 1rem 1.2rem 1.2rem !important;
+}
+
+.project-content .snippet-card pre {
+  margin: 0 !important;
+}
+
+.project-content .snippet-card-code pre {
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.project-content .snippet-card-text pre {
+  background: rgba(250, 252, 253, 0.96) !important;
+  color: #35515f !important;
+  border: 1px solid rgba(184, 212, 227, 0.45) !important;
+  box-shadow: none !important;
+  white-space: pre-wrap !important;
+  word-break: break-word !important;
+}
+
+.project-content .snippet-card-text.snippet-kind-formula pre,
+.project-content .snippet-card-text.snippet-kind-reaction pre {
+  text-align: center !important;
+  font-size: 1rem !important;
+  line-height: 1.8 !important;
+}
+
+.project-content .snippet-card-text.snippet-kind-diagram pre {
+  background: #f4f9fb !important;
+  color: #2f5360 !important;
+  font-size: 0.82rem !important;
+  white-space: pre !important;
+  overflow-x: auto !important;
+}
+
 .project-content .code-toggle {
   margin: 1.2rem 0 1.6rem !important;
   border: 1px solid rgba(127, 179, 211, 0.28) !important;
@@ -1026,9 +1283,9 @@ body {
 }
 
 /* 태블릿 반응형 */
-@media (max-width: 1024px) {
+@media (max-width: 960px) {
   .project-layout {
-    flex-direction: column !important;
+    grid-template-columns: minmax(0, 1fr) !important;
     padding: 1rem !important;
   }
 
@@ -1037,6 +1294,8 @@ body {
   }
   
   .project-toc {
+    grid-column: 1 !important;
+    justify-self: stretch !important;
     width: 100% !important;
     max-width: 100% !important;
     position: static !important;
@@ -1092,6 +1351,7 @@ body {
   }
   
   .project-layout {
+    grid-template-columns: minmax(0, 1fr) !important;
     padding: 0.75rem !important;
     gap: 1rem !important;
   }

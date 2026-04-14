@@ -1,12 +1,16 @@
-{% if page.mathjax %}
-<script type="text/javascript">
-  MathJax = {
+{% if page.mathjax or page.collection == "projects" %}
+<script>
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['\\[', '\\]']],
+      processEscapes: true
+    },
     options: {
-      skipHtmlTags: [
-        'script', 'noscript', 'style', 'textarea', 'pre', 'code'
-      ]
+      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+      ignoreHtmlClass: 'mathjax-ignore'
     }
   };
 </script>
-<script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 {% endif %}

@@ -28,11 +28,11 @@ quick_summary:
 
 ## Executive Summary
 
-I led the development of an **Automated Catalyst Cleaning Robot** designed for SCR (Selective Catalytic Reduction) units in industrial air treatment systems. This project addresses a critical industry challenge: SCR catalysts cost **$50,000-$200,000 per unit** and require frequent cleaning in hazardous environments unsuitable for human operators.
+I led the development of an **Automated Catalyst Cleaning Robot** designed for SCR (Selective Catalytic Reduction) units in industrial air treatment systems. This project addresses a critical industry challenge: SCR catalysts cost **<span class="mathjax-ignore">$50,000-$200,000</span> per unit** and require frequent cleaning in hazardous environments unsuitable for human operators.
 
 **Key Performance Achievements:**
 - **58% cycle time reduction** (120 min → 50 min per module)
-- **$120K annual productivity savings** through reduced downtime
+- **<span class="mathjax-ignore">$120K</span> annual productivity savings** through reduced downtime
 - **100% elimination** of OSHA recordable safety incidents
 - **20% catalyst life extension** verified through 6-month field trials
 - **ROI of 200%** with 6-month payback period
@@ -50,11 +50,11 @@ SCR systems are critical for NOₓ emission reduction in power plants, cement ki
 
 | Challenge Category | Impact Metric | Annual Cost (per facility) |
 |-------------------|---------------|---------------------------|
-| **High replacement costs** | $50,000-$200,000 per catalyst module | $2.5-12.5M |
-| **Safety hazards** | 120°C temperatures, toxic NOₓ/VOC residues | $800K (insurance/incidents) |
-| **Productivity losses** | 40-hour annual maintenance windows | $1.2M (lost production) |
-| **Inconsistent cleaning** | 15-25% cleaning variability | $600K (premature replacement) |
-| **Regulatory compliance** | OSHA confined space requirements | $200K (compliance costs) |
+| **High replacement costs** | <span class="mathjax-ignore">$50,000-$200,000</span> per catalyst module | <span class="mathjax-ignore">$2.5-12.5M</span> |
+| **Safety hazards** | 120°C temperatures, toxic NOₓ/VOC residues | <span class="mathjax-ignore">$800K</span> (insurance/incidents) |
+| **Productivity losses** | 40-hour annual maintenance windows | <span class="mathjax-ignore">$1.2M</span> (lost production) |
+| **Inconsistent cleaning** | 15-25% cleaning variability | <span class="mathjax-ignore">$600K</span> (premature replacement) |
+| **Regulatory compliance** | OSHA confined space requirements | <span class="mathjax-ignore">$200K</span> (compliance costs) |
 
 ### 1.2 Technical Requirements Specification
 
@@ -1034,16 +1034,16 @@ The 1.1× margin is tight. In field deployment, phase current was set to 85% of 
 
 | Category | Annual Savings (USD) | Calculation Method |
 |----------|----------------------|-------------------|
-| **Labor Reduction** | $45,000 | 80% reduction × $56,250 labor cost |
-| **Downtime Reduction** | $120,000 | 70 hours saved × $1,714/hour |
-| **Catalyst Life Extension** | $75,000 | 20% × $375,000 replacement cost |
-| **Safety Incident Reduction** | $25,000 | Insurance premium reduction |
-| **Total Annual Benefits** | **$265,000** | **Verified over 12 months** |
+| **Labor Reduction** | <span class="mathjax-ignore">$45,000</span> | 80% reduction × <span class="mathjax-ignore">$56,250</span> labor cost |
+| **Downtime Reduction** | <span class="mathjax-ignore">$120,000</span> | 70 hours saved × <span class="mathjax-ignore">$1,714/hour</span> |
+| **Catalyst Life Extension** | <span class="mathjax-ignore">$75,000</span> | 20% × <span class="mathjax-ignore">$375,000</span> replacement cost |
+| **Safety Incident Reduction** | <span class="mathjax-ignore">$25,000</span> | Insurance premium reduction |
+| **Total Annual Benefits** | **<span class="mathjax-ignore">$265,000</span>** | **Verified over 12 months** |
 
 **Investment Analysis:**
-- **Initial Investment:** $132,000
-- **Annual Operating Costs:** $18,000
-- **Net Annual Benefit:** $247,000
+- **Initial Investment:** <span class="mathjax-ignore">$132,000</span>
+- **Annual Operating Costs:** <span class="mathjax-ignore">$18,000</span>
+- **Net Annual Benefit:** <span class="mathjax-ignore">$247,000</span>
 - **ROI:** 187%
 - **Payback Period:** 6.4 months
 
@@ -1255,6 +1255,6 @@ The success of this project validates the power of engineering excellence combin
 **Project Specifications Summary:**
 - **Timeline:** 8 months (concept to commissioning)
 - **Team Size:** 5 engineers (mechanical, electrical, software)
-- **Budget:** $132,000 development and implementation
+- **Budget:** <span class="mathjax-ignore">$132,000</span> development and implementation
 - **Current Status:** Successfully deployed and operational since January 2025
 - **Awards:** Winner of Industrial Innovation Excellence Award 2025

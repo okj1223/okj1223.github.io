@@ -46,7 +46,7 @@ kramdown:
 ###########################
 
 # 배너에 사용할 이미지 경로 (assets/img/ 아래 파일명)
-banner-img: "/assets/img/banner.png"
+banner-img: "/assets/img/banner.webp"
 
 # 배너 위에 표시할 타이틀 텍스트
 banner-title: "Envirobotics Researcher"
@@ -312,6 +312,12 @@ defaults:
       type: "projects"
     values:
       layout: "page"
+      ext-css:
+        - "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/github-dark.min.css"
+      ext-js:
+        - "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"
+      js:
+        - "/assets/js/project-code-highlight.js"
 
 # Exclude these files from production site
 exclude:

@@ -1672,8 +1672,8 @@ $$t_{payback} = \frac{C_{total}}{S_{annual} - C_{operating}}$$
 where S_annual represents annual savings from improved efficiency.
 
 **Estimated Values:**
-- Initial Investment: $45,000
-- Annual Savings: $18,500
+- Initial Investment: <span class="mathjax-ignore">$45,000</span>
+- Annual Savings: <span class="mathjax-ignore">$18,500</span>
 - Payback Period: 2.4 years
 
 #### 11.4.2 Environmental Benefits
@@ -1710,8 +1710,8 @@ Core algorithms and sensor fusion methods represent patentable innovations with 
 - **Laboratory Automation**: High-throughput sample preparation
 
 **Market Size Estimation:**
-Global industrial automation market: $326.1B (2023)
-Addressable subset: ~$2.8B
+Global industrial automation market: <span class="mathjax-ignore">$326.1B</span> (2023)
+Addressable subset: <span class="mathjax-ignore">~$2.8B</span>
 Potential market share: 0.1-0.5%
 
 ---

@@ -1,0 +1,147 @@
+<div class="eco-system-left">
+  <div class="scroll-progress-track">
+    <div class="progress-line" id="scroll-progress-line"></div>
+    <div class="progress-nodes">
+      {% for node in include.nodes %}
+      <div class="progress-node" data-section="{{ node.section }}">
+        <svg viewBox="0 0 24 24" class="node-icon">
+          {% case node.icon %}
+          {% when "star" %}
+          <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+          {% when "wrench" %}
+          <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+          {% when "mail" %}
+          <rect x="2" y="4" width="20" height="16" rx="2"/>
+          <path d="m22 7-10 5L2 7"/>
+          {% when "briefcase" %}
+          <path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+          <rect x="4" y="6" width="16" height="14" rx="2"/>
+          {% else %}
+          <circle cx="12" cy="12" r="8"/>
+          {% endcase %}
+        </svg>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+
+  <div class="tech-fusion-viz">
+    <div class="fusion-center">
+      <div class="center-core"></div>
+      <div class="orbital-ring ring-1">
+        <div class="tech-sphere env">
+          <svg viewBox="0 0 24 24" class="sphere-icon">
+            <path d="M17 8C8 10 5.9 16.17 3.82 21.34l1.89.66.95-2.66c.48-.17.98-.31 1.34-.49C9.37 16.5 10.4 14.7 11.5 13c2.27-3.5 4.5-7 4.5-11z"/>
+            <path d="M12.83 2.18C15.1 2.18 17 4.18 17 6.5s-1.9 4.32-4.17 4.32S8.66 8.82 8.66 6.5s1.9-4.32 4.17-4.32z"/>
+          </svg>
+        </div>
+      </div>
+      <div class="orbital-ring ring-2">
+        <div class="tech-sphere robot">
+          <svg viewBox="0 0 24 24" class="sphere-icon">
+            <rect x="4" y="11" width="16" height="10" rx="2"/>
+            <circle cx="8" cy="15" r="1"/>
+            <circle cx="16" cy="15" r="1"/>
+            <path d="M9 7h6v4H9z"/>
+            <path d="M12 3v4"/>
+            <circle cx="12" cy="2" r="1"/>
+          </svg>
+        </div>
+      </div>
+      <div class="orbital-ring ring-3">
+        <div class="tech-sphere elec">
+          <svg viewBox="0 0 24 24" class="sphere-icon">
+            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+          </svg>
+        </div>
+      </div>
+      <div class="orbital-ring ring-4">
+        <div class="tech-sphere comp">
+          <svg viewBox="0 0 24 24" class="sphere-icon">
+            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+            <line x1="8" y1="21" x2="16" y2="21"/>
+            <line x1="12" y1="17" x2="12" y2="21"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="eco-system-right">
+  <div class="data-stream">
+    <div class="stream-line stream-1">
+      <div class="data-packet"></div>
+      <div class="data-packet"></div>
+      <div class="data-packet"></div>
+    </div>
+    <div class="stream-line stream-2">
+      <div class="data-packet"></div>
+      <div class="data-packet"></div>
+    </div>
+    <div class="stream-line stream-3">
+      <div class="data-packet"></div>
+      <div class="data-packet"></div>
+      <div class="data-packet"></div>
+    </div>
+  </div>
+
+  <div class="tech-stack-strip">
+    <div class="tech-icon-item" data-tech="Python">
+      <svg viewBox="0 0 24 24" class="tech-svg">
+        <path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zm5.568 16.568C16.568 17.568 15.568 18 14.5 18H9.5c-1.068 0-2.068-.432-2.068-1.432V7.432C7.432 6.432 8.432 6 9.5 6h5c1.068 0 2.068.432 2.068 1.432v9.136z"/>
+      </svg>
+    </div>
+    <div class="tech-icon-item" data-tech="ROS2">
+      <svg viewBox="0 0 24 24" class="tech-svg">
+        <circle cx="12" cy="12" r="3"/>
+        <path d="M12 1v6m0 10v6m11-7h-6m-10 0H1m15.5-6.5l-4.24 4.24M6.74 17.26L2.5 21.5m15-15l-4.24 4.24M6.74 6.74L2.5 2.5"/>
+      </svg>
+    </div>
+    <div class="tech-icon-item" data-tech="Docker">
+      <svg viewBox="0 0 24 24" class="tech-svg">
+        <rect x="2" y="8" width="4" height="4"/>
+        <rect x="7" y="8" width="4" height="4"/>
+        <rect x="12" y="8" width="4" height="4"/>
+        <rect x="17" y="8" width="4" height="4"/>
+        <rect x="7" y="3" width="4" height="4"/>
+        <rect x="12" y="3" width="4" height="4"/>
+      </svg>
+    </div>
+    <div class="tech-icon-item" data-tech="Arduino">
+      <svg viewBox="0 0 24 24" class="tech-svg">
+        <circle cx="12" cy="12" r="10"/>
+        <circle cx="8" cy="10" r="2"/>
+        <circle cx="16" cy="10" r="2"/>
+        <path d="M8 14h8"/>
+      </svg>
+    </div>
+  </div>
+
+  <div class="env-monitor-hud">
+    <div class="hud-header">SYSTEM STATUS</div>
+    <div class="hud-metrics">
+      <div class="metric-row">
+        <span class="metric-label">CO₂</span>
+        <div class="metric-bar">
+          <div class="metric-fill metric-fill--co2" id="co2-bar"></div>
+        </div>
+        <span class="metric-value" id="co2-val">342</span>
+      </div>
+      <div class="metric-row">
+        <span class="metric-label">PWR</span>
+        <div class="metric-bar">
+          <div class="metric-fill metric-fill--pwr" id="pwr-bar"></div>
+        </div>
+        <span class="metric-value" id="pwr-val">87</span>
+      </div>
+      <div class="metric-row">
+        <span class="metric-label">EFF</span>
+        <div class="metric-bar">
+          <div class="metric-fill metric-fill--eff" id="eff-bar"></div>
+        </div>
+        <span class="metric-value" id="eff-val">94</span>
+      </div>
+    </div>
+  </div>
+</div>
