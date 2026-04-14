@@ -637,9 +637,7 @@ subtitle: "Technical portfolio of robotics, AI, control, and industrial automati
      {% for project in sorted_projects %}
        {% assign matching_cards = site.data.project_cards | where: "url", project.url %}
        {% assign card = matching_cards | first %}
-       {% if card %}
-         {% include project-card.html project=project card=card %}
-       {% endif %}
+       {% include project-card.html project=project card=card %}
      {% endfor %}
 
      {% comment %}

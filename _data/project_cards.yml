@@ -1,10 +1,11 @@
+# Card-specific overrides only.
+# Titles, descriptions, and media fall back to each project frontmatter.
+
 - url: /projects/robros-humanoid-manipulation-data-pipeline/
   filter_categories:
     - robotics
     - ai
   category_label: "Humanoid Robotics - Imitation Learning - Logistics AI"
-  card_title: "Multi-Modal Humanoid Learning Pipeline for Warehouse Manipulation"
-  card_description: "Research assistant work at Robros on master-arm and MANUS glove teleoperation, dataset QA taxonomy design, and hybrid imitation-learning / reinforcement-learning workflow support for humanoid packing and box-transfer PoCs."
   impacts:
     - value: "~10k"
       label: "Collection Attempts"
@@ -31,20 +32,12 @@
       style: "prog ros"
     - label: "Logistics"
       style: "system"
-  media:
-    type: image
-    href: /projects/robros-humanoid-manipulation-data-pipeline/
-    src: /project/robros-humanoid-manipulation-data-pipeline/system-overview.svg
-    alt: "Conceptual learning pipeline for humanoid warehouse manipulation"
-    title: "Conceptual system overview for Robros humanoid manipulation data and learning workflow"
 
 - url: /projects/turtlebot3-autonomous-system/
   filter_categories:
     - robotics
     - ai
   category_label: "Robotics - Autonomous Driving - Digital Twin"
-  card_title: "Digital Twin-Based TurtleBot3 Autonomous Driving System"
-  card_description: "Comprehensive autonomous driving system featuring advanced computer vision, inverse kinematics, and multi-sensor fusion. Achieving 95% task success rate in Pick & Place operations and 98% object recognition accuracy through digital twin technology."
   impacts:
     - value: "95%"
       label: "Pick & Place Success"
@@ -69,19 +62,12 @@
       style: "ai"
     - label: "SLAM"
       style: "eng"
-  media:
-    type: video
-    href: "https://www.youtube.com/watch?v=WX1D9GZJOB4"
-    src: "https://www.youtube.com/embed/WX1D9GZJOB4"
-    title: "Digital Twin-Based TurtleBot3 Autonomous Driving System Demo"
 
 - url: /projects/pcb_inspection/
   filter_categories:
     - ai
     - robotics
   category_label: "AI - Robotics - Manufacturing"
-  card_title: "AI-Based PCB Quality Control System"
-  card_description: "Intelligent automation system combining computer vision, robotics, and voice commands for PCB inspection. This autonomous system detects defects, sorts products, and responds to voice commands while achieving industrial-grade accuracy at a fraction of traditional costs."
   impacts:
     - value: "94.5%"
       label: "Detection Accuracy"
@@ -106,19 +92,12 @@
       style: "design"
     - label: "Robotics"
       style: "eng"
-  media:
-    type: video
-    href: "https://www.youtube.com/watch?v=gpQtFfs4qww"
-    src: "https://www.youtube.com/embed/gpQtFfs4qww"
-    title: "AI-Based PCB Quality Control System Demo"
 
 - url: /projects/liquid_injection/
   filter_categories:
     - control
     - robotics
   category_label: "Precision Control - Robotics"
-  card_title: "Robot-Based Precision Concentration Control System"
-  card_description: "An autonomous ROS2-based system for high-precision liquid pouring using industrial robotic arms, load cells, and MQTT communication. Achieving target concentration within +/-0.5% error range through intelligent fluid dynamic modeling and adaptive control algorithms."
   impacts:
     - value: "+/-0.5%"
       label: "Precision Accuracy"
@@ -143,11 +122,6 @@
       style: "prog"
     - label: "Arduino"
       style: "prog"
-  media:
-    type: video
-    href: "https://www.youtube.com/watch?v=yVg4EGmNAvk"
-    src: "https://www.youtube.com/embed/yVg4EGmNAvk"
-    title: "Robot-Based Precision Concentration Control System Demo"
 
 - url: /projects/crack-ppe-detection/
   filter_categories:
@@ -155,8 +129,6 @@
     - robotics
     - environmental
   category_label: "Environmental Safety - AI"
-  card_title: "Industrial Safety Robot System"
-  card_description: "Advanced environmental monitoring system that preserves human life through intelligent robotics. Our multi-robot safety platform combines computer vision, sensor fusion, and predictive analytics to create safer industrial environments."
   impacts:
     - value: "93%"
       label: "Detection Accuracy"
@@ -175,11 +147,6 @@
       style: "comm"
     - label: "Python"
       style: "prog"
-  media:
-    type: video
-    href: "https://www.youtube.com/watch?v=gsk4GZmsjrw"
-    src: "https://www.youtube.com/embed/gsk4GZmsjrw"
-    title: "Industrial Safety Robot System Demo"
 
 - url: /projects/automated-catalyst-cleaning/
   filter_categories:
@@ -187,8 +154,6 @@
     - environmental
     - mechanical
   category_label: "Environmental Automation - Engineering"
-  card_title: "Automated Catalyst Cleaning Robot"
-  card_description: "Sustainable automation solution for industrial catalyst maintenance. This eco-friendly robotic system reduces chemical waste, eliminates human exposure to toxic environments, and extends catalyst lifespan through precision cleaning technology."
   impacts:
     - value: "58%"
       label: "Cycle Time Reduction"
@@ -207,19 +172,12 @@
       style: "design"
     - label: "C++"
       style: "prog"
-  media:
-    type: video
-    href: "https://www.youtube.com/watch?v=7pVAK6bW15U"
-    src: "https://www.youtube.com/embed/7pVAK6bW15U"
-    title: "Automated Catalyst Cleaning Robot Demo"
 
 - url: /projects/automated-mixing-system/
   filter_categories:
     - control
     - mechanical
   category_label: "Industrial Automation - Chemical Processing"
-  card_title: "Development of Intelligent Automated Mixing System for Industrial Chemical Processing"
-  card_description: "Advanced dual-controller automation system combining Arduino and Raspberry Pi for precision chemical mixing. Achieves tight temperature and volume control through intelligent PID tuning and process monitoring."
   impacts:
     - value: "37%"
       label: "Cycle Time Reduction"
@@ -242,20 +200,12 @@
       style: "comm"
     - label: "PT100 RTD"
       style: "sensor"
-  media:
-    type: image
-    href: /projects/automated-mixing-system/
-    src: /project/automated-mixing-system/automated-mixing-system.png
-    alt: "Intelligent automated mixing system architecture"
-    title: "Multi-layer system architecture with Arduino and Raspberry Pi controllers"
 
 - url: /projects/dual-gear-pump-system/
   filter_categories:
     - mechanical
     - environmental
   category_label: "Fluid Dynamics - Industrial Systems"
-  card_title: "High-Pressure Dual Gear Pump System for Catalyst Regeneration"
-  card_description: "A portable dual gear pump system designed for industrial catalyst regeneration processes. Features hydraulic analysis, inverter control, and modular frame design for high-pressure field operation."
   impacts:
     - value: "43+ bar"
       label: "Max Pressure"
@@ -278,20 +228,12 @@
       style: "prog"
     - label: "Hydraulic Calc"
       style: "data"
-  media:
-    type: image
-    href: /projects/dual-gear-pump-system/
-    src: /project/dual-gear-pump-system/complete-system-page.jpg
-    alt: "High-pressure dual gear pump system"
-    title: "Complete dual gear pump system with aluminum frame and control panel"
 
 - url: /projects/scr-catalyst-testing-apparatus/
   filter_categories:
     - environmental
     - control
   category_label: "Environmental Engineering - Catalyst Technology"
-  card_title: "SCR DeNOx Catalyst Performance Testing Apparatus"
-  card_description: "A bench-scale testing apparatus compliant with VGB-R 302 for evaluating SCR catalyst performance. Features precision gas mixing, temperature control, and real-time NOx analysis for catalyst quality assessment."
   impacts:
     - value: "94.3%"
       label: "NOx Removal"
@@ -314,20 +256,12 @@
       style: "system"
     - label: "NOx Analysis"
       style: "data"
-  media:
-    type: image
-    href: /projects/scr-catalyst-testing-apparatus/
-    src: /project/scr-catalyst-testing-apparatus/completed_apparatus.jpg
-    alt: "SCR DeNOx catalyst performance testing apparatus"
-    title: "Complete SCR catalyst testing system with control panel and analysis equipment"
 
 - url: /projects/dry-ice-blaster-feeding-system/
   filter_categories:
     - mechanical
     - environmental
   category_label: "Pressure Vessels - TIG Welding - Pneumatic Systems"
-  card_title: "Dry Ice Blaster Feeding System for Catalyst Cleaning"
-  card_description: "An innovative cryogenic pellet feeding system engineered for industrial catalyst surface cleaning. Features ASME pressure vessel design, TIG welding fabrication, and two-phase flow optimization for stable operation."
   impacts:
     - value: "2.3 mo"
       label: "ROI Payback"
@@ -350,9 +284,3 @@
       style: "prog"
     - label: "Two-Phase Flow"
       style: "data"
-  media:
-    type: image
-    href: /projects/dry-ice-blaster-feeding-system/
-    src: /project/dry-ice-blaster-feeding-system/completed_dry_ice_blaster.png
-    alt: "Dry ice blaster feeding system"
-    title: "Complete dry ice blaster system with TIG welded nozzles and aluminum frame"

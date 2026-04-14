@@ -1,9 +1,26 @@
 ---
 layout: project
 title: "Dry Ice Blaster Feeding System Design and Implementation"
+card_title: "Dry Ice Blaster Feeding System for Catalyst Cleaning"
 permalink: /projects/dry-ice-blaster-feeding-system/
 date: 2024-02-06
-description: "Where theoretical fluid dynamics meets hands-on fabrication, we discover not just technical excellence, but the art of transforming industrial cleaning through precision engineering."
+description: "A dry ice pellet feeding system for industrial catalyst cleaning, integrating pressure-vessel design, TIG welding, pneumatic transport, and control hardware for stable field operation."
+card_description: "An innovative cryogenic pellet feeding system engineered for industrial catalyst surface cleaning. Features ASME pressure vessel design, TIG welding fabrication, and two-phase flow optimization for stable operation."
+share-description: "A dry ice pellet feeding system for industrial catalyst cleaning, integrating pressure-vessel design, TIG welding, pneumatic transport, and control hardware for stable field operation."
+subtitle: "Cryogenic pellet handling, pneumatic transport, and fabrication-focused design for industrial cleaning automation."
+thumbnail-img: /project/dry-ice-blaster-feeding-system/completed_dry_ice_blaster.png
+quick_summary_note: "A fabrication-heavy engineering write-up covering vessel design, flow analysis, commissioning, operating procedures, and field economics."
+quick_summary:
+  - label: "Focus"
+    value: "Dry ice pellet feeding and delivery for industrial surface cleaning"
+  - label: "Stack"
+    value: "Pressure-vessel design, TIG welding, inverter control, pneumatic transport"
+  - label: "Hardware"
+    value: "SUS316L vessel, feeder assembly, compressors, valves, and industrial frame"
+  - label: "Results"
+    value: "96.5% cleaning efficiency, 98.5% availability, and 2.2-month payback"
+  - label: "Key Theme"
+    value: "Translating fluid-dynamics analysis into manufacturable field equipment"
 ---
 
 ## Completed System

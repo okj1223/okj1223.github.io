@@ -1,10 +1,26 @@
 ---
 layout: project
 title: "Industrial Safety Robot System: A Comprehensive Multi-Modal Approach"
+card_title: "Industrial Safety Robot System"
 permalink: /projects/crack-ppe-detection/
 date: 2025-07-20
-description: "In the intersection of mathematics and machinery, we find not just efficiency, but the possibility of preserving human life itself."
+description: "A ROS2-based industrial safety monitoring system that combines crack detection, PPE compliance checking, human-risk awareness, and multi-robot coordination for real-time hazard response."
+share-description: "A ROS2-based industrial safety monitoring system that combines crack detection, PPE compliance checking, human-risk awareness, and multi-robot coordination for real-time hazard response."
+subtitle: "Industrial safety robotics integrating perception, coordination, alerting, and real-time operational awareness."
+thumbnail-img: /project/crack-ppe-detection/system_overview.png
 video_url: "https://www.youtube.com/embed/gsk4GZmsjrw"
+quick_summary_note: "This document blends safety analytics, perception, and multi-robot coordination, so the summary card highlights the operational picture first."
+quick_summary:
+  - label: "Focus"
+    value: "Industrial safety monitoring with crack, PPE, and human-risk detection"
+  - label: "Stack"
+    value: "ROS2, YOLOv8, MQTT, Kalman filtering, dashboard and edge communication"
+  - label: "Deployment"
+    value: "Multi-robot coordination for hazard detection and operator awareness"
+  - label: "Results"
+    value: "93% detection accuracy, 24.7% noise reduction, 96% coordination success"
+  - label: "Outcome"
+    value: "Safety-first automation with real-time alerts and tracking"
 ---
 
 ## Abstract

@@ -3,7 +3,23 @@ layout: project
 title: "Development of Intelligent Automated Mixing System for Industrial Chemical Processing"
 permalink: /projects/automated-mixing-system/
 date: 2024-10-02
-description: "Where precision meets automation, we find not just efficiency, but the transformation of industrial processes into symphonies of controlled chemistry."
+description: "An industrial chemical mixing platform that combines Arduino, Raspberry Pi, PID control, and MQTT-based monitoring to automate temperature, volume, and batch consistency management."
+card_description: "Advanced dual-controller automation system combining Arduino and Raspberry Pi for precision chemical mixing. Achieves tight temperature and volume control through intelligent PID tuning and process monitoring."
+share-description: "An industrial chemical mixing platform that combines Arduino, Raspberry Pi, PID control, and MQTT-based monitoring to automate temperature, volume, and batch consistency management."
+subtitle: "Industrial chemical mixing automation with dual-controller orchestration, closed-loop control, and process monitoring."
+thumbnail-img: /project/automated-mixing-system/automated-mixing-system.png
+quick_summary_note: "A large systems document covering controls, communication, piping, testing, and safety for an industrial mixing platform."
+quick_summary:
+  - label: "Focus"
+    value: "Automated industrial mixing for repeatable chemical processing"
+  - label: "Controllers"
+    value: "Arduino for real-time control and Raspberry Pi for higher-level orchestration"
+  - label: "Stack"
+    value: "PID control, MQTT, sensor arrays, solenoid valves, cloud monitoring"
+  - label: "Results"
+    value: "78% process-time reduction and 92% consistency improvement"
+  - label: "Key Theme"
+    value: "Turning manual batch mixing into a monitored closed-loop system"
 ---
 
 # Development of Intelligent Automated Mixing System for Industrial Chemical Processing

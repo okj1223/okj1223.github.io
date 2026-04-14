@@ -2,9 +2,26 @@
 layout: project
 date: 2025-09-05
 title: "Digital Twin-Based TurtleBot3 Autonomous Driving System Development and Implementation"
+card_title: "Digital Twin-Based TurtleBot3 Autonomous Driving System"
 description: "A comprehensive autonomous driving system for TurtleBot3 robots featuring advanced computer vision, inverse kinematics, and multi-sensor fusion, achieving 95% task success rate in Pick & Place operations and 98% object recognition accuracy."
+card_description: "Comprehensive autonomous driving system featuring advanced computer vision, inverse kinematics, and multi-sensor fusion. Achieving 95% task success rate in Pick & Place operations and 98% object recognition accuracy through digital twin technology."
+share-description: "A digital twin-based TurtleBot3 autonomy project combining ROS2, Gazebo, computer vision, inverse kinematics, and multi-sensor fusion for navigation and Pick & Place."
+subtitle: "Digital twin-driven autonomous navigation and Pick & Place with perception, control, and sim-to-real validation."
+thumbnail-img: /project/turtlebot3-autonomous-system/system_architecture_diagram.png
 video_url: "https://www.youtube.com/embed/WX1D9GZJOB4"
 permalink: /projects/turtlebot3-autonomous-system/
+quick_summary_note: "A long-form autonomy portfolio piece covering perception, control, inverse kinematics, multi-sensor fusion, and digital twin validation."
+quick_summary:
+  - label: "Focus"
+    value: "Indoor autonomous driving and Pick & Place with TurtleBot3"
+  - label: "Stack"
+    value: "ROS2, Gazebo, OpenCV, ArUco, inverse kinematics, sensor fusion"
+  - label: "Validation"
+    value: "Digital twin-first verification followed by real-robot tuning"
+  - label: "Results"
+    value: "95% Pick & Place success and 98% object recognition accuracy"
+  - label: "Key Theme"
+    value: "Bridging the sim-to-real gap for a full autonomy stack"
 ---
 # Digital Twin-Based TurtleBot3 Autonomous Driving System Development and Implementation
 

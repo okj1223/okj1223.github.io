@@ -2,11 +2,25 @@
 layout: project
 date: 2026-04-13
 title: "Humanoid Manipulation Data and Learning Workflow Support for Warehouse Task Automation"
+card_title: "Multi-Modal Humanoid Learning Pipeline for Warehouse Manipulation"
 description: "A public portfolio summary of my research assistant work at Robros on master-arm and glove-based teleoperation, dataset QA, and hybrid imitation-learning / reinforcement-learning workflow support for humanoid warehouse manipulation."
+card_description: "Research assistant work at Robros on master-arm and MANUS glove teleoperation, dataset QA taxonomy design, and hybrid imitation-learning / reinforcement-learning workflow support for humanoid packing and box-transfer PoCs."
 share-description: "Research assistant work at Robros on master-arm and glove-based teleoperation, dataset QA, and hybrid imitation-learning / reinforcement-learning support for humanoid warehouse manipulation."
 subtitle: "Research assistant work at Robros on master-arm and glove-based teleoperation, dataset QA, and hybrid imitation-learning / reinforcement-learning support for humanoid warehouse manipulation."
 thumbnail-img: /project/robros-humanoid-manipulation-data-pipeline/system-overview.svg
 permalink: /projects/robros-humanoid-manipulation-data-pipeline/
+quick_summary_note: "A compact operational summary for a research-oriented project that spans teleoperation, dataset curation, imitation learning, and runtime execution."
+quick_summary:
+  - label: "Role"
+    value: "Research Assistant supporting data collection, QA, and learning workflow design"
+  - label: "Scope"
+    value: "Humanoid box packing and box transfer tasks for logistics-oriented PoCs"
+  - label: "Inputs"
+    value: "Master-arm teleoperation, MANUS glove finger joints, robot state, and multi-view vision"
+  - label: "Learning"
+    value: "Imitation learning first, with reinforcement-oriented refinement in a hybrid workflow"
+  - label: "Current Stage"
+    value: "Upper-body internal PoC for warehouse task automation"
 ---
 
 # Humanoid Manipulation Data and Learning Workflow Support for Warehouse Task Automation

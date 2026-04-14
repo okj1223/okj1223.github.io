@@ -2,8 +2,24 @@
 layout: project
 title: "High-Pressure Dual Gear Pump System for Catalyst Regeneration"
 date: 2024-04-15
-description: "Designed and fabricated a portable dual gear pump system for industrial catalyst regeneration using precise hydraulic analysis, inverter control technology, modular aluminum frame design, and comprehensive electrical integration."
+description: "A portable high-pressure dual gear pump system for catalyst regeneration, designed through hydraulic head analysis, NPSH verification, inverter control, and modular field assembly."
+card_description: "A portable dual gear pump system designed for industrial catalyst regeneration processes. Features hydraulic analysis, inverter control, and modular frame design for high-pressure field operation."
+share-description: "A portable high-pressure dual gear pump system for catalyst regeneration, designed through hydraulic head analysis, NPSH verification, inverter control, and modular field assembly."
+subtitle: "Hydraulic analysis, inverter control, and modular field hardware for high-pressure regeneration workflows."
+thumbnail-img: /project/dual-gear-pump-system/complete-system-main.jpg
 permalink: /projects/dual-gear-pump-system/
+quick_summary_note: "A fluid-systems project focused on hydraulic sizing, cavitation prevention, controls integration, and field-ready assembly."
+quick_summary:
+  - label: "Focus"
+    value: "High-pressure fluid delivery for industrial catalyst regeneration"
+  - label: "Stack"
+    value: "Darcy-Weisbach analysis, NPSH checks, inverter control, modular frame design"
+  - label: "Hardware"
+    value: "Dual gear pumps, induction motors, flowmeters, pressure gauges, control panel"
+  - label: "Results"
+    value: "Approximately 20 L/min flow and 4 bar-class injection support in field conditions"
+  - label: "Key Theme"
+    value: "Turning hydraulic calculations into portable industrial equipment"
 ---
 
 # Design and Fabrication of High-Pressure Dual Gear Pump System for Catalyst Regeneration

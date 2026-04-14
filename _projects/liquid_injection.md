@@ -2,9 +2,26 @@
 layout: project
 date: 2025-08-06
 title: "Robot-Based Precision Concentration Control System: An Integrated Approach to Fluid Dynamic Modeling and Adaptive Control Algorithms"
+card_title: "Robot-Based Precision Concentration Control System"
 description: "An autonomous ROS2-based system for high-precision liquid pouring using industrial robotic arms, load cells, and MQTT communication"
+card_description: "An autonomous ROS2-based system for high-precision liquid pouring using industrial robotic arms, load cells, and MQTT communication. Achieving target concentration within +/-0.5% error range through intelligent fluid dynamic modeling and adaptive control algorithms."
+share-description: "An autonomous ROS2-based system for high-precision liquid pouring using industrial robotic arms, load cells, and MQTT communication."
+subtitle: "Precision pouring with ROS2 orchestration, fluid modeling, and adaptive concentration control."
+thumbnail-img: /project/liquid_injection/hardware_architecture.png
 video_url: "https://www.youtube.com/embed/yVg4EGmNAvk"
 permalink: /projects/liquid_injection/
+quick_summary_note: "This write-up goes deep on modeling and control, so the summary surfaces the task, stack, and practical outcome first."
+quick_summary:
+  - label: "Focus"
+    value: "Precision liquid pouring and target concentration control"
+  - label: "Hardware"
+    value: "Doosan M0609, load cells, tilting container mechanism, sensor feedback"
+  - label: "Stack"
+    value: "ROS2, MQTT, adaptive control, flow modeling, regression and filtering"
+  - label: "Results"
+    value: "Target concentration control within +/-0.5% error range"
+  - label: "Key Theme"
+    value: "Linking fluid dynamics to robot motion and real-time correction"
 ---
 
 > *"Machines translate the intuition of human hands into mathematical formulas. The accuracy of this translation determines the depth of technology."*

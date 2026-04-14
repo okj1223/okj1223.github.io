@@ -2,9 +2,26 @@
 layout: project
 date: 2025-08-21
 title: "AI-Powered PCB Quality Inspection System: Computer Vision and Voice-Controlled Robotics for Manufacturing Automation"
+card_title: "AI-Based PCB Quality Control System"
 description: "An autonomous quality control system combining YOLOv11 computer vision, RealSense 3D sensing, and voice commands to inspect PCBs with 94.5% accuracy."
+card_description: "Intelligent automation system combining computer vision, robotics, and voice commands for PCB inspection. This autonomous system detects defects, sorts products, and responds to voice commands while achieving industrial-grade accuracy at a fraction of traditional costs."
+share-description: "An autonomous PCB quality control system combining YOLOv11 computer vision, RealSense sensing, ROS2 orchestration, and voice interfaces for robotic inspection and sorting."
+subtitle: "PCB inspection and sorting with computer vision, robot handling, and voice-driven operator interaction."
+thumbnail-img: /project/pcb_inspection/archi.png
 video_url: "https://www.youtube.com/embed/gpQtFfs4qww"
 permalink: /projects/pcb_inspection/
+quick_summary_note: "Fast context for a long-form systems write-up that spans conveyor hardware, robot handling, computer vision, and voice interfaces."
+quick_summary:
+  - label: "Focus"
+    value: "Autonomous PCB inspection, classification, and robot-assisted sorting"
+  - label: "Stack"
+    value: "YOLOv11, ROS2, RealSense, MQTT, voice pipeline, web tooling"
+  - label: "Hardware"
+    value: "Custom conveyor, robot arm, webcam, depth camera, Arduino control"
+  - label: "Results"
+    value: "94.5% defect detection accuracy and 97% voice recognition accuracy"
+  - label: "Flow"
+    value: "Transport -> inspect -> classify -> sort -> report"
 ---
 
 *Building an Autonomous PCB Quality Management System by Combining Computer Vision, Robotics, and Voice Commands*

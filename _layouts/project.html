@@ -9,8 +9,9 @@ layout: default
 <section class="project-hero">
   <div class="container">
     <h1 class="project-title">{{ page.title }}</h1>
-    {% if page.description %}
-      <p class="project-subtitle">{{ page.description }}</p>
+    {% assign project_subtitle = page.subtitle | default: page.description %}
+    {% if project_subtitle %}
+      <p class="project-subtitle">{{ project_subtitle }}</p>
     {% endif %}
   </div>
 </section>
@@ -19,6 +20,25 @@ layout: default
   <div class="container project-layout">
     <!-- 본문 영역 -->
     <main class="project-content">
+      {% if page.quick_summary %}
+      <section class="project-quick-summary" aria-label="Quick Summary">
+        <div class="project-quick-summary-header">
+          <h2>Quick Summary</h2>
+          {% if page.quick_summary_note %}
+          <p>{{ page.quick_summary_note }}</p>
+          {% endif %}
+        </div>
+        <div class="project-quick-summary-grid">
+          {% for item in page.quick_summary %}
+          <article class="project-summary-card">
+            <span class="project-summary-label">{{ item.label }}</span>
+            <p class="project-summary-value">{{ item.value }}</p>
+          </article>
+          {% endfor %}
+        </div>
+      </section>
+      {% endif %}
+
       {{ content }}
 
       {% if page.video_url %}
@@ -183,6 +203,126 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
 
+  function cleanContextText(text) {
+    return text
+      .replace(/\s+/g, ' ')
+      .replace(/^\d+(?:\.\d+)*\s*/, '')
+      .replace(/^#+\s*/, '')
+      .replace(/[.:：]\s*$/, '')
+      .trim();
+  }
+
+  function findNearestCodeContext(card) {
+    let prev = card.previousElementSibling;
+
+    while (prev) {
+      if (prev.classList && prev.classList.contains('code-toggle')) {
+        prev = prev.previousElementSibling;
+        continue;
+      }
+
+      if (prev.matches && prev.matches('h2, h3, h4, h5')) {
+        const headingText = cleanContextText(prev.textContent || '');
+        if (headingText) return headingText;
+      }
+
+      if (prev.querySelector) {
+        const strong = prev.querySelector('strong');
+        if (strong) {
+          const strongText = cleanContextText(strong.textContent || '');
+          if (strongText && strongText.length <= 90) return strongText;
+        }
+      }
+
+      if (prev.matches && prev.matches('p')) {
+        const rawText = (prev.textContent || '').trim();
+        if (rawText.endsWith(':')) {
+          const paragraphText = cleanContextText(rawText);
+          if (paragraphText && paragraphText.length <= 90) return paragraphText;
+        }
+      }
+
+      prev = prev.previousElementSibling;
+    }
+
+    return '';
+  }
+
+  function humanizeLanguage(card, fallback) {
+    const code = card.querySelector('code[class*="language-"]');
+    const className = code
+      ? Array.from(code.classList).find(cls => cls.startsWith('language-'))
+      : '';
+    const lang = className ? className.replace('language-', '') : (fallback || '').toLowerCase();
+    const labels = {
+      python: 'Python',
+      py: 'Python',
+      cpp: 'C++',
+      c: 'C',
+      bash: 'Bash',
+      sh: 'Shell',
+      shell: 'Shell',
+      yaml: 'YAML',
+      yml: 'YAML',
+      json: 'JSON',
+      javascript: 'JavaScript',
+      js: 'JavaScript',
+      sql: 'SQL',
+      markdown: 'Markdown',
+      md: 'Markdown',
+      html: 'HTML',
+      css: 'CSS',
+      text: 'Text',
+      txt: 'Text'
+    };
+
+    return labels[lang] || (lang ? lang.toUpperCase() : 'Code');
+  }
+
+  content.querySelectorAll('.code-toggle').forEach(card => {
+    const button = card.querySelector('.code-toggle-button');
+    if (!button) return;
+
+    const text = button.textContent.trim();
+    const genericMatch = text.match(/^Toggle code:\s*Example\s+(.+?)\s+snippet$/i);
+    if (!genericMatch) return;
+
+    const context = findNearestCodeContext(card);
+    if (context) {
+      button.textContent = `Toggle code: ${context}`;
+      return;
+    }
+
+    const langLabel = humanizeLanguage(card, genericMatch[1]);
+    button.textContent = `Toggle code: ${langLabel} snippet`;
+  });
+
+  Array.from(content.querySelectorAll('h2')).forEach(heading => {
+    const headingText = cleanContextText(heading.textContent || '');
+    if (!/appendix/i.test(headingText)) return;
+    if (heading.closest('details')) return;
+
+    const details = document.createElement('details');
+    details.className = 'content-fold appendix-fold';
+
+    const summary = document.createElement('summary');
+    summary.textContent = `Supplementary section: ${headingText}`;
+    details.appendChild(summary);
+
+    heading.parentNode.insertBefore(details, heading);
+
+    let current = heading;
+    while (current) {
+      const next = current.nextElementSibling;
+      details.appendChild(current);
+
+      if (!next) break;
+      if (next.tagName === 'H2') break;
+
+      current = next;
+    }
+  });
+
   content.querySelectorAll('.code-toggle-button').forEach(button => {
     button.addEventListener('click', function() {
       const card = this.closest('.code-toggle');
@@ -252,6 +392,60 @@ body {
   box-shadow: var(--shadow-md) !important;
   border: 1px solid var(--clr-mist, #b8d4e3) !important;
   border-opacity: 0.25 !important;
+}
+
+.project-quick-summary {
+  margin: 0 0 2.2rem !important;
+  padding: 1.35rem !important;
+  border-radius: 16px !important;
+  background: linear-gradient(135deg, rgba(248, 252, 251, 0.98), rgba(240, 248, 246, 0.96)) !important;
+  border: 1px solid rgba(127, 179, 211, 0.28) !important;
+  box-shadow: 0 10px 28px rgba(93, 115, 126, 0.08) !important;
+}
+
+.project-quick-summary-header {
+  margin-bottom: 1rem !important;
+}
+
+.project-quick-summary-header h2 {
+  margin-top: 0 !important;
+  margin-bottom: 0.35rem !important;
+}
+
+.project-quick-summary-header p {
+  margin: 0 !important;
+  color: #5d737e !important;
+  font-size: 0.96rem !important;
+}
+
+.project-quick-summary-grid {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)) !important;
+  gap: 0.9rem !important;
+}
+
+.project-summary-card {
+  padding: 0.95rem 1rem !important;
+  border-radius: 12px !important;
+  background: rgba(255, 255, 255, 0.9) !important;
+  border: 1px solid rgba(184, 212, 227, 0.32) !important;
+}
+
+.project-summary-label {
+  display: inline-block !important;
+  margin-bottom: 0.45rem !important;
+  font-family: 'Inter', sans-serif !important;
+  font-size: 0.78rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.06em !important;
+  text-transform: uppercase !important;
+  color: #4a7a8e !important;
+}
+
+.project-summary-value {
+  margin: 0 !important;
+  font-size: 0.98rem !important;
+  line-height: 1.6 !important;
 }
 
 /* 본문 타이포그래피 */
@@ -748,6 +942,10 @@ body {
     flex-direction: column !important;
     padding: 1rem !important;
   }
+
+  .project-quick-summary-grid {
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)) !important;
+  }
   
   .project-toc {
     width: 100% !important;
@@ -810,6 +1008,10 @@ body {
   }
   
   .project-content {
+    padding: 1rem !important;
+  }
+
+  .project-quick-summary {
     padding: 1rem !important;
   }
   

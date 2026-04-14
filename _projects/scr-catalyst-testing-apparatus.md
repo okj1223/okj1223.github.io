@@ -2,8 +2,25 @@
 layout: project
 date: 2024-04-06
 title: "SCR DeNOx Catalyst Performance Testing Apparatus: VGB-R 302 Compliant Bench-Scale Evaluation System"
+card_title: "SCR DeNOx Catalyst Performance Testing Apparatus"
 description: "A precision testing apparatus for SCR catalyst performance evaluation compliant with international standards, achieving 94.3% NOx removal efficiency validation with four-zone temperature control and multi-component gas analysis."
+card_description: "A bench-scale testing apparatus compliant with VGB-R 302 for evaluating SCR catalyst performance. Features precision gas mixing, temperature control, and real-time NOx analysis for catalyst quality assessment."
+share-description: "A VGB-R 302-compliant bench-scale SCR catalyst evaluation apparatus with precision gas mixing, four-zone temperature control, and multi-component flue-gas analysis."
+subtitle: "Bench-scale SCR catalyst testing with controlled gas delivery, thermal zoning, and validation-grade instrumentation."
+thumbnail-img: /project/scr-catalyst-testing-apparatus/completed_apparatus.jpg
 permalink: /projects/scr-catalyst-testing-apparatus/
+quick_summary_note: "A standards-driven testbench project focused on gas handling, temperature control, catalyst evaluation, and measurement repeatability."
+quick_summary:
+  - label: "Focus"
+    value: "Bench-scale SCR catalyst performance evaluation under controlled flue-gas conditions"
+  - label: "Stack"
+    value: "VGB-R 302 methodology, MFC control, thermal zoning, gas analysis instrumentation"
+  - label: "Hardware"
+    value: "Gas cylinders, MFCs, furnace zones, catalyst reactor, analyzer, and control panel"
+  - label: "Results"
+    value: "94.3% NOx removal validation with stable four-zone temperature control"
+  - label: "Key Theme"
+    value: "Reproducing plant-like catalyst conditions in a repeatable lab-scale apparatus"
 ---
 
 # Design and Implementation of SCR DeNOx Catalyst Performance Testing Apparatus

@@ -231,9 +231,7 @@ subtitle: "Portfolio website of Oh Kyungjun, featuring humanoid robotics, autono
     {% for project in latest_projects limit: 2 %}
       {% assign matching_cards = site.data.project_cards | where: "url", project.url %}
       {% assign card = matching_cards | first %}
-      {% if card %}
-        {% include project-card.html project=project card=card %}
-      {% endif %}
+      {% include project-card.html project=project card=card %}
     {% endfor %}
 
     <!-- View All Projects 버튼 -->

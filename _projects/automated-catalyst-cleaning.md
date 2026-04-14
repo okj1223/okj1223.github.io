@@ -2,9 +2,24 @@
 layout: project
 title: "Automated Catalyst Cleaning Robot"
 date: 2025-01-10
-description: "Designed and fabricated an in-situ SCR catalyst cleaning system using Arduino-based electrical control, fluid dynamic nozzles, 3D modeling, and welded structural assembly."
+description: "An in-situ SCR catalyst cleaning robot integrating Arduino-based control, fluid-delivery design, mechanical fabrication, and hazardous-environment maintenance automation."
+share-description: "An in-situ SCR catalyst cleaning robot integrating Arduino-based control, fluid-delivery design, mechanical fabrication, and hazardous-environment maintenance automation."
+subtitle: "SCR catalyst maintenance automation with fluid delivery, motion hardware, and hazardous-environment workflow design."
+thumbnail-img: /project/automated-catalyst-cleaning/architecture-diagram.png
 video_url: "https://www.youtube.com/embed/7pVAK6bW15U"
 permalink: /projects/automated-catalyst-cleaning/
+quick_summary_note: "A systems-level maintenance automation project spanning mechanism design, cleaning workflow design, and hazardous-environment productivity gains."
+quick_summary:
+  - label: "Focus"
+    value: "In-situ SCR catalyst cleaning in hazardous industrial environments"
+  - label: "Stack"
+    value: "Arduino control, fluid-delivery nozzles, CAD/CAM, welded frame, motion hardware"
+  - label: "Results"
+    value: "58% cycle time reduction, 35% waste reduction, and 20% catalyst life extension"
+  - label: "Outcome"
+    value: "Reduced downtime and operator exposure during catalyst maintenance"
+  - label: "Key Theme"
+    value: "Converting hazardous manual maintenance into repeatable automation"
 ---
 
 # Automated Catalyst Cleaning Robot: Advanced Industrial Automation Solution
