@@ -312,11 +312,14 @@ defaults:
       type: "projects"
     values:
       layout: "page"
+      css:
+        - "/assets/css/project-detail.css"
       ext-css:
         - "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/github-dark.min.css"
       ext-js:
         - "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"
       js:
+        - "/assets/js/project-detail.js"
         - "/assets/js/project-code-highlight.js"
 
 # Exclude these files from production site
