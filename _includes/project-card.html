@@ -33,7 +33,7 @@
 {% endif %}
 
 {% if media_type == 'video' %}
-  {% assign media_poster = include.project.thumbnail-img %}
+  {% assign media_poster = include.project.card_video_poster | default: include.project.video_poster | default: '' %}
 
   {% if media_poster == nil or media_poster == empty %}
     {% assign video_id = '' %}
@@ -46,6 +46,10 @@
     {% if video_id != '' %}
       {% assign media_poster = 'https://img.youtube.com/vi/' | append: video_id | append: '/hqdefault.jpg' %}
     {% endif %}
+  {% endif %}
+
+  {% if media_poster == nil or media_poster == empty %}
+    {% assign media_poster = include.project.thumbnail-img %}
   {% endif %}
 {% endif %}
 

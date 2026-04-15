@@ -41,7 +41,7 @@ layout: base
       {% if page.video_url %}
       {% assign demo_embed = page.video_url %}
       {% assign demo_href = page.video_url | replace: 'https://www.youtube.com/embed/', 'https://www.youtube.com/watch?v=' %}
-      {% assign demo_poster = page.thumbnail-img %}
+      {% assign demo_poster = page.demo_poster | default: page.video_poster | default: '' %}
       {% assign demo_title = page.title | append: ' Demo Video' %}
       {% assign demo_poster_fit = page.demo_poster_fit | default: '' %}
       {% assign demo_poster_position = page.demo_poster_position | default: 'center center' %}
@@ -57,6 +57,10 @@ layout: base
         {% if demo_video_id != '' %}
           {% assign demo_poster = 'https://img.youtube.com/vi/' | append: demo_video_id | append: '/hqdefault.jpg' %}
         {% endif %}
+      {% endif %}
+
+      {% if demo_poster == nil or demo_poster == empty %}
+        {% assign demo_poster = page.thumbnail-img %}
       {% endif %}
 
       {% assign is_external_demo_href = false %}
