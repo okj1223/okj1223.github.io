@@ -68,9 +68,7 @@ eco_progress_nodes:
 
     {% assign latest_projects = site.projects | sort: "date" | reverse %}
     {% for project in latest_projects limit: 2 %}
-      {% assign matching_cards = site.data.project_cards | where: "url", project.url %}
-      {% assign card = matching_cards | first %}
-      {% include project-card.html project=project card=card %}
+      {% include project-card.html project=project %}
     {% endfor %}
 
     <!-- View All Projects 버튼 -->

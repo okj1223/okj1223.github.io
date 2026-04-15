@@ -9,6 +9,32 @@ share-description: "A VGB-R 302-compliant bench-scale SCR catalyst evaluation ap
 subtitle: "Bench-scale SCR catalyst testing with controlled gas delivery, thermal zoning, and validation-grade instrumentation."
 thumbnail-img: /project/scr-catalyst-testing-apparatus/completed_apparatus.jpg
 permalink: /projects/scr-catalyst-testing-apparatus/
+filter_categories:
+  - environmental
+  - control
+category_label: "Environmental Engineering - Catalyst Technology"
+impacts:
+  - value: "94.3%"
+    label: "NOx Removal"
+  - value: "+/-1.5C"
+    label: "Temp Control"
+  - value: "207 m/h"
+    label: "Catalyst Activity"
+tech_tags:
+  - label: "VGB-R 302"
+    style: "eng"
+  - label: "EPRI Protocol"
+    style: "eng"
+  - label: "Testo 350K"
+    style: "sensor"
+  - label: "V2O5-TiO2"
+    style: "design"
+  - label: "PID Control"
+    style: "eng"
+  - label: "HMI System"
+    style: "system"
+  - label: "NOx Analysis"
+    style: "data"
 quick_summary_note: "A standards-driven testbench project focused on gas handling, temperature control, catalyst evaluation, and measurement repeatability."
 quick_summary:
   - label: "Focus"

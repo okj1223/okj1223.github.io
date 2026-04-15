@@ -1,34 +1,59 @@
-{% assign card = include.card %}
-{% assign filter_categories = card.filter_categories | default: include.project.filter_categories %}
+{% assign filter_categories = include.project.filter_categories %}
 {% assign category_tokens = '' %}
 {% if filter_categories %}
   {% assign category_tokens = filter_categories | join: ' ' %}
 {% endif %}
-{% assign card_category = card.category_label | default: include.project.category_label | default: 'Technical Project' %}
-{% assign card_title = card.card_title | default: include.project.card_title | default: include.project.title %}
-{% assign card_description = card.card_description | default: include.project.card_description | default: include.project.share-description | default: include.project.description %}
-{% assign impacts = card.impacts | default: include.project.impacts %}
-{% assign tech_tags = card.tech_tags | default: include.project.tech_tags %}
+{% assign card_category = include.project.category_label | default: 'Technical Project' %}
+{% assign card_title = include.project.card_title | default: include.project.title %}
+{% assign card_description = include.project.card_description | default: include.project.share-description | default: include.project.description %}
+{% assign impacts = include.project.impacts %}
+{% assign tech_tags = include.project.tech_tags %}
+{% assign case_study_href = include.project.url | relative_url %}
 
-{% assign media_type = card.media.type %}
-{% assign media_href = card.media.href %}
-{% assign media_src = card.media.src %}
-{% assign media_alt = card.media.alt | default: include.project.title %}
-{% assign media_title = card.media.title | default: card_title %}
+{% assign media_type = '' %}
+{% assign media_href = '' %}
+{% assign media_src = '' %}
+{% assign media_alt = include.project.title %}
+{% assign media_title = card_title %}
+{% assign media_poster = '' %}
 
-{% if media_type == nil or media_type == empty %}
-  {% if include.project.video_url %}
-    {% assign media_type = 'video' %}
-    {% assign media_src = include.project.video_url %}
-    {% assign media_href = include.project.video_url | replace: 'https://www.youtube.com/embed/', 'https://www.youtube.com/watch?v=' %}
-    {% assign media_title = card_title | append: ' Demo' %}
-  {% elsif include.project.thumbnail-img %}
-    {% assign media_type = 'image' %}
-    {% assign media_href = include.project.url %}
-    {% assign media_src = include.project.thumbnail-img %}
-    {% assign media_alt = include.project.title %}
-    {% assign media_title = card_title %}
+{% if include.project.video_url %}
+  {% assign media_type = 'video' %}
+  {% assign media_src = include.project.video_url %}
+  {% assign media_href = include.project.video_url | replace: 'https://www.youtube.com/embed/', 'https://www.youtube.com/watch?v=' %}
+  {% assign media_title = card_title | append: ' Demo' %}
+{% elsif include.project.thumbnail-img %}
+  {% assign media_type = 'image' %}
+  {% assign media_href = include.project.url %}
+  {% assign media_src = include.project.thumbnail-img %}
+  {% assign media_alt = include.project.title %}
+  {% assign media_title = card_title %}
+{% endif %}
+
+{% if media_type == 'video' %}
+  {% assign media_poster = include.project.thumbnail-img %}
+
+  {% if media_poster == nil or media_poster == empty %}
+    {% assign video_id = '' %}
+    {% if media_href contains 'watch?v=' %}
+      {% assign video_id = media_href | split: 'watch?v=' | last | split: '&' | first %}
+    {% elsif media_src contains '/embed/' %}
+      {% assign video_id = media_src | split: '/embed/' | last | split: '?' | first %}
+    {% endif %}
+
+    {% if video_id != '' %}
+      {% assign media_poster = 'https://img.youtube.com/vi/' | append: video_id | append: '/hqdefault.jpg' %}
+    {% endif %}
   {% endif %}
+{% endif %}
+
+{% assign is_external_href = false %}
+{% assign is_external_src = false %}
+{% if media_href contains '://' %}
+  {% assign is_external_href = true %}
+{% endif %}
+{% if media_src contains '://' %}
+  {% assign is_external_src = true %}
 {% endif %}
 
 <article class="home-project-item" data-category="{{ category_tokens }}">
@@ -61,30 +86,51 @@
       </div>
     </a>
 
+    <div class="home-project-actions">
+      <a
+        href="{{ case_study_href }}"
+        class="home-project-action case-study">
+        Case Study
+      </a>
+      {% if media_type == 'video' and media_href %}
+      <a
+        href="{% if is_external_href %}{{ media_href }}{% else %}{{ media_href | relative_url }}{% endif %}"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="home-project-action demo">
+        Demo
+      </a>
+      {% endif %}
+    </div>
+
     {% if media_type and media_src %}
     <div class="home-project-media">
-      {% assign is_external_href = false %}
-      {% assign is_external_src = false %}
-      {% if media_href contains '://' %}
-        {% assign is_external_href = true %}
-      {% endif %}
-      {% if media_src contains '://' %}
-        {% assign is_external_src = true %}
-      {% endif %}
-
       {% if media_type == 'video' %}
       <a
         href="{% if is_external_href %}{{ media_href }}{% else %}{{ media_href | relative_url }}{% endif %}"
         target="_blank"
         rel="noopener noreferrer"
-        class="home-video-link">
+        class="home-video-link"
+        aria-label="Watch demo: {{ media_title }}">
         <div class="home-video-wrapper">
-          <iframe
-            src="{% if is_external_src %}{{ media_src }}{% else %}{{ media_src | relative_url }}{% endif %}"
+          {% if media_poster %}
+          {% assign is_external_poster = false %}
+          {% if media_poster contains '://' %}
+            {% assign is_external_poster = true %}
+          {% endif %}
+          <img
+            class="home-video-poster"
+            src="{% if is_external_poster %}{{ media_poster }}{% else %}{{ media_poster | relative_url }}{% endif %}"
+            alt="{{ media_alt }}"
             title="{{ media_title }}"
-            frameborder="0"
-            allowfullscreen>
-          </iframe>
+            loading="lazy">
+          {% endif %}
+          <div class="home-video-overlay" aria-hidden="true">
+            <span class="home-video-badge">
+              <span class="home-video-icon"></span>
+              <span class="home-video-text">Watch Demo</span>
+            </span>
+          </div>
         </div>
       </a>
       {% else %}

@@ -1155,6 +1155,59 @@ article .home-project-card {
   box-shadow: 0 2px 8px rgba(0,0,0,0.1) !important;
 }
 
+.home-project-actions {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 0.75rem !important;
+  justify-content: center !important;
+  align-items: center !important;
+  margin: 1rem auto 0 !important;
+  width: 100% !important;
+}
+
+.home-project-action {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  min-width: 140px !important;
+  padding: 0.72rem 1.1rem !important;
+  border-radius: 999px !important;
+  border: 1px solid rgba(74, 143, 168, 0.24) !important;
+  text-decoration: none !important;
+  font-family: var(--font-sans) !important;
+  font-size: 0.88rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.01em !important;
+  transition: transform 0.22s ease, box-shadow 0.22s ease, background 0.22s ease, color 0.22s ease !important;
+}
+
+.home-project-action.case-study {
+  background: linear-gradient(135deg, rgba(74, 143, 168, 0.12), rgba(127, 179, 211, 0.18)) !important;
+  color: var(--clr-navy) !important;
+}
+
+.home-project-action.demo {
+  background: linear-gradient(135deg, rgba(46, 74, 86, 0.9), rgba(74, 143, 168, 0.88)) !important;
+  color: #ffffff !important;
+  border-color: rgba(46, 74, 86, 0.4) !important;
+}
+
+.home-project-action:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 10px 24px rgba(30, 52, 64, 0.14) !important;
+  text-decoration: none !important;
+}
+
+.home-project-action.case-study:hover {
+  background: linear-gradient(135deg, rgba(74, 143, 168, 0.2), rgba(127, 179, 211, 0.28)) !important;
+  color: var(--clr-primary) !important;
+}
+
+.home-project-action.demo:hover {
+  background: linear-gradient(135deg, rgba(29, 48, 58, 0.96), rgba(54, 111, 131, 0.96)) !important;
+  color: #ffffff !important;
+}
+
 /* AI/머신러닝 태그 */
 .home-tech-tag.ai {
   background: rgba(127, 179, 211, 0.2) !important;
@@ -1258,6 +1311,10 @@ article .home-project-card {
   align-self: center !important;
 }
 
+.home-project-actions + .home-project-media {
+  margin-top: 1.2rem !important;
+}
+
 .home-video-link {
   display: block !important;
   width: 100% !important;
@@ -1279,16 +1336,64 @@ article .home-project-card {
   background: var(--gray-bg) !important;
 }
 
-.home-video-wrapper iframe {
-  position: absolute !important;
-  top: 0 !important;
-  left: 0 !important;
+.home-video-poster {
   width: 100% !important;
   height: 100% !important;
-  border: none !important;
-  pointer-events: auto !important;
-  border-radius: 8px !important;
+  display: block !important;
   object-fit: cover !important;
+  transition: transform 0.3s ease !important;
+}
+
+.home-video-overlay {
+  position: absolute !important;
+  inset: 0 !important;
+  display: flex !important;
+  align-items: flex-end !important;
+  justify-content: flex-start !important;
+  padding: 1rem !important;
+  background: linear-gradient(180deg, rgba(24, 34, 41, 0.04), rgba(24, 34, 41, 0.5)) !important;
+  pointer-events: none !important;
+}
+
+.home-video-badge {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 0.7rem !important;
+  padding: 0.7rem 1rem !important;
+  border-radius: 999px !important;
+  background: rgba(255, 255, 255, 0.94) !important;
+  color: var(--clr-navy) !important;
+  box-shadow: 0 10px 30px rgba(20, 35, 43, 0.16) !important;
+  transition: transform 0.22s ease, background 0.22s ease, color 0.22s ease !important;
+}
+
+.home-video-icon {
+  width: 2rem !important;
+  height: 2rem !important;
+  position: relative !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border-radius: 999px !important;
+  background: linear-gradient(135deg, var(--clr-primary), #2f6c81) !important;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.2) !important;
+}
+
+.home-video-icon::before {
+  content: '' !important;
+  width: 0 !important;
+  height: 0 !important;
+  margin-left: 0.16rem !important;
+  border-top: 0.38rem solid transparent !important;
+  border-bottom: 0.38rem solid transparent !important;
+  border-left: 0.62rem solid #ffffff !important;
+}
+
+.home-video-text {
+  font-family: var(--font-sans) !important;
+  font-size: 0.9rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.01em !important;
 }
 
 .home-image-link {
@@ -1319,6 +1424,16 @@ article .home-project-card {
 
 .home-image-link:hover img {
   transform: scale(1.03) !important;
+}
+
+.home-video-link:hover .home-video-poster {
+  transform: scale(1.03) !important;
+}
+
+.home-video-link:hover .home-video-badge {
+  transform: translateY(-2px) !important;
+  background: rgba(74, 143, 168, 0.92) !important;
+  color: #ffffff !important;
 }
 
 /* View All Projects 버튼 - 통합 스타일 */

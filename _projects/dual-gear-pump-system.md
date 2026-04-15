@@ -8,6 +8,32 @@ share-description: "A portable high-pressure dual gear pump system for catalyst 
 subtitle: "Hydraulic analysis, inverter control, and modular field hardware for high-pressure regeneration workflows."
 thumbnail-img: /project/dual-gear-pump-system/complete-system-main.jpg
 permalink: /projects/dual-gear-pump-system/
+filter_categories:
+  - mechanical
+  - environmental
+category_label: "Fluid Dynamics - Industrial Systems"
+impacts:
+  - value: "43+ bar"
+    label: "Max Pressure"
+  - value: "102.5%"
+    label: "Target Achievement"
+  - value: "7.24m"
+    label: "NPSH Margin"
+tech_tags:
+  - label: "Darcy-Weisbach"
+    style: "eng"
+  - label: "NPSH Analysis"
+    style: "eng"
+  - label: "LS ELECTRIC"
+    style: "comm"
+  - label: "ASEDA SAP-20"
+    style: "design"
+  - label: "4040/4080 Profile"
+    style: "design"
+  - label: "Inverter Control"
+    style: "prog"
+  - label: "Hydraulic Calc"
+    style: "data"
 quick_summary_note: "A fluid-systems project focused on hydraulic sizing, cavitation prevention, controls integration, and field-ready assembly."
 quick_summary:
   - label: "Focus"

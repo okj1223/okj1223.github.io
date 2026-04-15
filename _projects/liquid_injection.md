@@ -10,6 +10,34 @@ subtitle: "Precision pouring with ROS2 orchestration, fluid modeling, and adapti
 thumbnail-img: /project/liquid_injection/hardware_architecture.png
 video_url: "https://www.youtube.com/embed/yVg4EGmNAvk"
 permalink: /projects/liquid_injection/
+filter_categories:
+  - control
+  - robotics
+category_label: "Precision Control - Robotics"
+impacts:
+  - value: "+/-0.5%"
+    label: "Precision Accuracy"
+  - value: "89.3%"
+    label: "Model Validation"
+  - value: "8.3s"
+    label: "Response Time"
+tech_tags:
+  - label: "ROS2"
+    style: "prog ros"
+  - label: "Kalman Filter"
+    style: "data"
+  - label: "MQTT"
+    style: "comm"
+  - label: "Fluid Dynamics"
+    style: "eng"
+  - label: "Doosan M0609"
+    style: "robot-hw"
+  - label: "HX711 ADC"
+    style: "sensor"
+  - label: "Python"
+    style: "prog"
+  - label: "Arduino"
+    style: "prog"
 quick_summary_note: "This write-up goes deep on modeling and control, so the summary surfaces the task, stack, and practical outcome first."
 quick_summary:
   - label: "Focus"

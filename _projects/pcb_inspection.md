@@ -10,6 +10,34 @@ subtitle: "PCB inspection and sorting with computer vision, robot handling, and 
 thumbnail-img: /project/pcb_inspection/archi.png
 video_url: "https://www.youtube.com/embed/gpQtFfs4qww"
 permalink: /projects/pcb_inspection/
+filter_categories:
+  - ai
+  - robotics
+category_label: "AI - Robotics - Manufacturing"
+impacts:
+  - value: "94.5%"
+    label: "Detection Accuracy"
+  - value: "97%"
+    label: "Voice Accuracy"
+  - value: "85%"
+    label: "Cost Reduction"
+tech_tags:
+  - label: "YOLOv11"
+    style: "ai"
+  - label: "ROS2"
+    style: "prog ros"
+  - label: "Computer Vision"
+    style: "ai"
+  - label: "MQTT"
+    style: "comm"
+  - label: "Voice AI"
+    style: "ai"
+  - label: "LLM"
+    style: "ai"
+  - label: "3D Printing"
+    style: "design"
+  - label: "Robotics"
+    style: "eng"
 quick_summary_note: "Fast context for a long-form systems write-up that spans conveyor hardware, robot handling, computer vision, and voice interfaces."
 quick_summary:
   - label: "Focus"

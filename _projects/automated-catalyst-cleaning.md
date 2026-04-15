@@ -8,6 +8,29 @@ subtitle: "SCR catalyst maintenance automation with fluid delivery, motion hardw
 thumbnail-img: /project/automated-catalyst-cleaning/architecture-diagram.png
 video_url: "https://www.youtube.com/embed/7pVAK6bW15U"
 permalink: /projects/automated-catalyst-cleaning/
+filter_categories:
+  - robotics
+  - environmental
+  - mechanical
+category_label: "Environmental Automation - Engineering"
+impacts:
+  - value: "58%"
+    label: "Cycle Time Reduction"
+  - value: "35%"
+    label: "Waste Reduction"
+  - value: "20%"
+    label: "Life Extension"
+tech_tags:
+  - label: "Arduino"
+    style: "prog"
+  - label: "CAD Design"
+    style: "design"
+  - label: "Fluid Dynamics"
+    style: "eng"
+  - label: "CNC Machining"
+    style: "design"
+  - label: "C++"
+    style: "prog"
 quick_summary_note: "A systems-level maintenance automation project spanning mechanism design, cleaning workflow design, and hazardous-environment productivity gains."
 quick_summary:
   - label: "Focus"

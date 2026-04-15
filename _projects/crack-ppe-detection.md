@@ -9,6 +9,29 @@ share-description: "A ROS2-based industrial safety monitoring system that combin
 subtitle: "Industrial safety robotics integrating perception, coordination, alerting, and real-time operational awareness."
 thumbnail-img: /project/crack-ppe-detection/system_overview.png
 video_url: "https://www.youtube.com/embed/gsk4GZmsjrw"
+filter_categories:
+  - ai
+  - robotics
+  - environmental
+category_label: "Environmental Safety - AI"
+impacts:
+  - value: "93%"
+    label: "Detection Accuracy"
+  - value: "96%"
+    label: "Coordination Success"
+  - value: "350ms"
+    label: "Response Time"
+tech_tags:
+  - label: "ROS2"
+    style: "prog ros"
+  - label: "YOLOv8"
+    style: "ai"
+  - label: "Kalman Filter"
+    style: "data"
+  - label: "MQTT"
+    style: "comm"
+  - label: "Python"
+    style: "prog"
 quick_summary_note: "This document blends safety analytics, perception, and multi-robot coordination, so the summary card highlights the operational picture first."
 quick_summary:
   - label: "Focus"

@@ -287,9 +287,15 @@
       justify-content: flex-start !important;
     }
 
-    body.projects-page .home-project-tech {
-      justify-content: flex-start !important;
-    }
+body.projects-page .home-project-tech {
+  justify-content: flex-start !important;
+}
+
+body.projects-page .home-project-actions {
+  justify-content: flex-start !important;
+  padding: 0 1.6rem !important;
+  margin-top: 0.4rem !important;
+}
 
     /* 카테고리 필터 바 */
     .project-filter-bar {
@@ -1262,7 +1268,7 @@ html, body {
  transition: var(--smooth-transition);
 }
 
-.home-video-link:hover iframe,
+.home-video-link:hover .home-video-poster,
 .home-image-link:hover img {
  transform: scale(1.02);
 }

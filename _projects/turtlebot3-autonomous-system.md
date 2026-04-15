@@ -10,6 +10,34 @@ subtitle: "Digital twin-driven autonomous navigation and Pick & Place with perce
 thumbnail-img: /project/turtlebot3-autonomous-system/system_architecture_diagram.png
 video_url: "https://www.youtube.com/embed/WX1D9GZJOB4"
 permalink: /projects/turtlebot3-autonomous-system/
+filter_categories:
+  - robotics
+  - ai
+category_label: "Robotics - Autonomous Driving - Digital Twin"
+impacts:
+  - value: "95%"
+    label: "Pick & Place Success"
+  - value: "98%"
+    label: "Detection Accuracy"
+  - value: "8hr+"
+    label: "Continuous Operation"
+tech_tags:
+  - label: "ROS2"
+    style: "prog ros"
+  - label: "Computer Vision"
+    style: "ai"
+  - label: "Inverse Kinematics"
+    style: "eng"
+  - label: "Digital Twin"
+    style: "data"
+  - label: "Python"
+    style: "prog"
+  - label: "Gazebo"
+    style: "design"
+  - label: "ArUco"
+    style: "ai"
+  - label: "SLAM"
+    style: "eng"
 quick_summary_note: "A long-form autonomy portfolio piece covering perception, control, inverse kinematics, multi-sensor fusion, and digital twin validation."
 quick_summary:
   - label: "Focus"

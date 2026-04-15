@@ -9,6 +9,32 @@ card_description: "An innovative cryogenic pellet feeding system engineered for 
 share-description: "A dry ice pellet feeding system for industrial catalyst cleaning, integrating pressure-vessel design, TIG welding, pneumatic transport, and control hardware for stable field operation."
 subtitle: "Cryogenic pellet handling, pneumatic transport, and fabrication-focused design for industrial cleaning automation."
 thumbnail-img: /project/dry-ice-blaster-feeding-system/completed_dry_ice_blaster.png
+filter_categories:
+  - mechanical
+  - environmental
+category_label: "Pressure Vessels - TIG Welding - Pneumatic Systems"
+impacts:
+  - value: "2.3 mo"
+    label: "ROI Payback"
+  - value: "98.5%"
+    label: "Availability"
+  - value: "96.5%"
+    label: "Cleaning Efficiency"
+tech_tags:
+  - label: "ASME Sec.VIII"
+    style: "eng"
+  - label: "TIG Welding"
+    style: "eng"
+  - label: "SUS316L"
+    style: "design"
+  - label: "DKM Motor"
+    style: "design"
+  - label: "4040/4080 Profile"
+    style: "design"
+  - label: "LS iG5A Inverter"
+    style: "prog"
+  - label: "Two-Phase Flow"
+    style: "data"
 quick_summary_note: "A fabrication-heavy engineering write-up covering vessel design, flow analysis, commissioning, operating procedures, and field economics."
 quick_summary:
   - label: "Focus"

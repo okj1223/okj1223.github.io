@@ -9,6 +9,36 @@ share-description: "Research assistant work at Robros on master-arm and glove-ba
 subtitle: "Research assistant work at Robros on master-arm and glove-based teleoperation, dataset QA, and hybrid imitation-learning / reinforcement-learning support for humanoid warehouse manipulation."
 thumbnail-img: /project/robros-humanoid-manipulation-data-pipeline/system-overview.svg
 permalink: /projects/robros-humanoid-manipulation-data-pipeline/
+filter_categories:
+  - robotics
+  - ai
+category_label: "Humanoid Robotics - Imitation Learning - Logistics AI"
+impacts:
+  - value: "~10k"
+    label: "Collection Attempts"
+  - value: "3-tier"
+    label: "QA Taxonomy"
+  - value: "2"
+    label: "Task Families"
+tech_tags:
+  - label: "Humanoid"
+    style: "robot-hw"
+  - label: "Teleoperation"
+    style: "eng"
+  - label: "MANUS Glove"
+    style: "sensor"
+  - label: "Imitation Learning"
+    style: "ai"
+  - label: "VLM Conditioning"
+    style: "ai"
+  - label: "Dataset QA"
+    style: "data"
+  - label: "Robot Vision"
+    style: "sensor"
+  - label: "ROS2 Workflow"
+    style: "prog ros"
+  - label: "Logistics"
+    style: "system"
 quick_summary_note: "A compact operational summary for a research-oriented project that spans teleoperation, dataset curation, imitation learning, and runtime execution."
 quick_summary:
   - label: "Role"
