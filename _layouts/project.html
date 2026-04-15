@@ -43,6 +43,8 @@ layout: base
       {% assign demo_href = page.video_url | replace: 'https://www.youtube.com/embed/', 'https://www.youtube.com/watch?v=' %}
       {% assign demo_poster = page.thumbnail-img %}
       {% assign demo_title = page.title | append: ' Demo Video' %}
+      {% assign demo_poster_fit = page.demo_poster_fit | default: '' %}
+      {% assign demo_poster_position = page.demo_poster_position | default: 'center center' %}
 
       {% if demo_poster == nil or demo_poster == empty %}
         {% assign demo_video_id = '' %}
@@ -70,6 +72,21 @@ layout: base
         {% assign is_external_demo_poster = true %}
       {% endif %}
 
+      {% assign demo_poster_asset_downcase = demo_poster | downcase %}
+      {% if demo_poster_fit == '' %}
+        {% assign demo_poster_fit = 'cover' %}
+        {% if demo_poster_asset_downcase contains '.svg'
+           or demo_poster_asset_downcase contains 'architecture'
+           or demo_poster_asset_downcase contains 'diagram'
+           or demo_poster_asset_downcase contains 'overview'
+           or demo_poster_asset_downcase contains 'wiring'
+           or demo_poster_asset_downcase contains 'schematic'
+           or demo_poster_asset_downcase contains 'archi'
+           or demo_poster_asset_downcase contains 'system-overview' %}
+          {% assign demo_poster_fit = 'contain' %}
+        {% endif %}
+      {% endif %}
+
       <section class="project-demo-section" aria-labelledby="project-demo-heading">
         <div class="project-demo-header">
           <h2 id="project-demo-heading">Demo Video</h2>
@@ -82,7 +99,7 @@ layout: base
           aria-label="Watch demo: {{ demo_title }}"
           data-demo-embed="{% if is_external_demo_embed %}{{ demo_embed }}{% else %}{{ demo_embed | relative_url }}{% endif %}"
           data-demo-title="{{ demo_title | escape }}">
-          <div class="project-demo-media">
+          <div class="project-demo-media media-fit-{{ demo_poster_fit }}" style="--media-object-position: {{ demo_poster_position }};">
             {% if demo_poster %}
             <img
               class="project-demo-poster"

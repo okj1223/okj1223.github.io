@@ -9,6 +9,7 @@ card_description: "An innovative cryogenic pellet feeding system engineered for 
 share-description: "A dry ice pellet feeding system for industrial catalyst cleaning, integrating pressure-vessel design, TIG welding, pneumatic transport, and control hardware for stable field operation."
 subtitle: "Cryogenic pellet handling, pneumatic transport, and fabrication-focused design for industrial cleaning automation."
 thumbnail-img: /project/dry-ice-blaster-feeding-system/completed_dry_ice_blaster.png
+card_media_fit: contain
 filter_categories:
   - mechanical
   - environmental

@@ -1441,6 +1441,7 @@ body.demo-modal-open {
   height: 100% !important;
   display: block !important;
   object-fit: cover !important;
+  object-position: var(--media-object-position, center center) !important;
   transition: transform 0.3s ease !important;
 }
 
@@ -1518,8 +1519,21 @@ body.demo-modal-open {
   width: 100% !important;
   height: 100% !important;
   object-fit: cover !important;
+  object-position: var(--media-object-position, center center) !important;
   display: block !important;
   transition: transform 0.3s ease !important;
+}
+
+.home-video-wrapper.media-fit-contain,
+.home-image-wrapper.media-fit-contain {
+  background:
+    radial-gradient(circle at top, rgba(255, 255, 255, 0.95), rgba(239, 247, 251, 0.9) 58%, rgba(225, 238, 244, 0.96) 100%) !important;
+}
+
+.home-video-wrapper.media-fit-contain .home-video-poster,
+.home-image-wrapper.media-fit-contain img {
+  object-fit: contain !important;
+  padding: 0.85rem !important;
 }
 
 .home-image-link:hover img {
@@ -2533,7 +2547,18 @@ figure figcaption {
   height: 100% !important;
   display: block !important;
   object-fit: cover !important;
+  object-position: var(--media-object-position, center center) !important;
   transition: transform 0.28s ease !important;
+}
+
+.project-demo-media.media-fit-contain {
+  background:
+    radial-gradient(circle at top, rgba(254, 255, 255, 0.98), rgba(240, 248, 251, 0.94) 55%, rgba(227, 240, 245, 0.98) 100%) !important;
+}
+
+.project-demo-media.media-fit-contain .project-demo-poster {
+  object-fit: contain !important;
+  padding: 1rem !important;
 }
 
 .project-demo-overlay {

@@ -16,6 +16,8 @@
 {% assign media_alt = include.project.title %}
 {% assign media_title = card_title %}
 {% assign media_poster = '' %}
+{% assign media_fit = include.project.card_media_fit | default: '' %}
+{% assign media_position = include.project.card_media_position | default: 'center center' %}
 
 {% if include.project.video_url %}
   {% assign media_type = 'video' %}
@@ -44,6 +46,23 @@
     {% if video_id != '' %}
       {% assign media_poster = 'https://img.youtube.com/vi/' | append: video_id | append: '/hqdefault.jpg' %}
     {% endif %}
+  {% endif %}
+{% endif %}
+
+{% assign media_asset = media_poster | default: media_src %}
+{% assign media_asset_downcase = media_asset | downcase %}
+
+{% if media_fit == '' %}
+  {% assign media_fit = 'cover' %}
+  {% if media_asset_downcase contains '.svg'
+     or media_asset_downcase contains 'architecture'
+     or media_asset_downcase contains 'diagram'
+     or media_asset_downcase contains 'overview'
+     or media_asset_downcase contains 'wiring'
+     or media_asset_downcase contains 'schematic'
+     or media_asset_downcase contains 'archi'
+     or media_asset_downcase contains 'system-overview' %}
+    {% assign media_fit = 'contain' %}
   {% endif %}
 {% endif %}
 
@@ -116,7 +135,7 @@
         aria-label="Watch demo: {{ media_title }}"
         data-demo-embed="{% if is_external_src %}{{ media_src }}{% else %}{{ media_src | relative_url }}{% endif %}"
         data-demo-title="{{ media_title | escape }}">
-        <div class="home-video-wrapper">
+        <div class="home-video-wrapper media-fit-{{ media_fit }}" style="--media-object-position: {{ media_position }};">
           {% if media_poster %}
           {% assign is_external_poster = false %}
           {% if media_poster contains '://' %}
@@ -141,7 +160,7 @@
       <a
         href="{% if is_external_href %}{{ media_href }}{% else %}{{ media_href | relative_url }}{% endif %}"
         class="home-image-link">
-        <div class="home-image-wrapper">
+        <div class="home-image-wrapper media-fit-{{ media_fit }}" style="--media-object-position: {{ media_position }};">
           <img
             src="{% if is_external_src %}{{ media_src }}{% else %}{{ media_src | relative_url }}{% endif %}"
             alt="{{ media_alt }}"

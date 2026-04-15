@@ -8,6 +8,7 @@ card_description: "Advanced dual-controller automation system combining Arduino 
 share-description: "An industrial chemical mixing platform that combines Arduino, Raspberry Pi, PID control, and MQTT-based monitoring to automate temperature, volume, and batch consistency management."
 subtitle: "Industrial chemical mixing automation with dual-controller orchestration, closed-loop control, and process monitoring."
 thumbnail-img: /project/automated-mixing-system/automated-mixing-system.png
+card_media_fit: contain
 filter_categories:
   - control
   - mechanical
