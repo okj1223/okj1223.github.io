@@ -2,12 +2,21 @@
 
 <footer class="eco-footer">
   <!-- 3D Ocean Waves Section -->
-  <div class="ocean-waves-section">
+  <div
+    class="ocean-waves-section"
+    data-ocean-script-src="{{ '/assets/js/ocean-waves-3d.js' | relative_url }}?v={{ site.time | date: '%s' }}">
     <div class="ocean-waves-header">
       <h3>Ocean Cleanup Challenge</h3>
-      <p>Click floating debris to clean the ocean • Help restore marine life</p>
+      <p>Interactive 3D scene loads only when you scroll here on capable devices</p>
     </div>
-    <div id="ocean-waves-container"></div>
+    <div id="ocean-waves-container" aria-live="polite">
+      <div class="ocean-waves-fallback">
+        <div class="ocean-waves-fallback-card">
+          <strong>Static preview first, interactive scene later.</strong>
+          <span>The 3D ocean wakes up near the footer on desktop-class devices, so the rest of the site loads faster.</span>
+        </div>
+      </div>
+    </div>
   </div>
 
   <div class="footer-content">
@@ -18,7 +27,7 @@
           <div class="footer-profile">
             <div class="profile-avatar">
               <div class="avatar-circle">
-                <img src="{{ '/assets/img/profile.webp' | relative_url }}" alt="{{ site.author }}">
+                <img src="{{ '/assets/img/profile.webp' | relative_url }}" alt="{{ site.author }}" loading="lazy" decoding="async">
               </div>
             </div>
             <h3 class="profile-name">{{ site.author }}</h3>
@@ -171,8 +180,4 @@
   </button>
 </footer>
 
-<!-- Three.js Library -->
-<script src="https://cdn.jsdelivr.net/npm/three@0.150.0/build/three.min.js"></script>
-
-<!-- 3D Ocean Waves Script -->
-<script src="{{ '/assets/js/ocean-waves-3d.js' | relative_url }}?v={{ site.time | date: '%s' }}"></script>
+<script src="{{ '/assets/js/footer-ocean-loader.js' | relative_url }}?v={{ site.time | date: '%s' }}"></script>

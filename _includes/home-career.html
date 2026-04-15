@@ -1,0 +1,14 @@
+<section class="career-bio-section">
+  <div class="career-bio-box">
+    <h3 class="career-title">📄 Career & Education</h3>
+    <ul class="career-list">
+      {% for item in site.data.home.career %}
+      <li data-type="{{ item.type | escape_once }}">
+        <span class="career-institution">{{ item.institution | escape_once }}</span><br>
+        {{ item.summary | escape_once }}
+        <span class="career-date">{{ item.date | escape_once }}</span>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>

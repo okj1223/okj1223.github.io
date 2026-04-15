@@ -8,7 +8,7 @@ require "yaml"
 
 ROOT = Pathname(__dir__).join("..").realpath
 PROJECTS_DIR = ROOT.join("_projects")
-ALLOWED_FILTERS = %w[robotics ai control environmental mechanical].freeze
+PROJECT_FILTERS_FILE = ROOT.join("_data", "project_filters.yml")
 
 def blank?(value)
   return true if value.nil?
@@ -34,6 +34,28 @@ def load_front_matter(path)
   raise "#{path.basename}: missing YAML front matter" unless match
 
   load_yaml(StringIO.new(match[1]), path.basename.to_s) || {}
+end
+
+def load_project_filters
+  data = load_yaml(PROJECT_FILTERS_FILE.read, PROJECT_FILTERS_FILE.basename.to_s) || []
+
+  unless data.is_a?(Array)
+    raise "#{PROJECT_FILTERS_FILE.basename}: expected an array of filter definitions"
+  end
+
+  keys = data.map do |item|
+    unless item.is_a?(Hash) && present?(item["key"])
+      raise "#{PROJECT_FILTERS_FILE.basename}: each filter must define a `key`"
+    end
+
+    item["key"].to_s
+  end
+
+  if keys.uniq.length != keys.length
+    raise "#{PROJECT_FILTERS_FILE.basename}: duplicate filter keys detected"
+  end
+
+  keys.freeze
 end
 
 def normalized_array(value)
@@ -69,6 +91,7 @@ end
 
 projects = {}
 errors = []
+allowed_filters = load_project_filters
 
 Dir[PROJECTS_DIR.join("*.md")].sort.each do |file|
   path = Pathname(file)
@@ -92,7 +115,7 @@ Dir[PROJECTS_DIR.join("*.md")].sort.each do |file|
     add_error(errors, "#{path.basename}: missing `filter_categories`")
   end
 
-  unknown_filters = filter_categories - ALLOWED_FILTERS
+  unknown_filters = filter_categories - allowed_filters
   unless unknown_filters.empty?
     formatted = unknown_filters.map { |item| "`#{item}`" }.join(", ")
     add_error(errors, "#{path.basename}: unknown filter categories #{formatted}")

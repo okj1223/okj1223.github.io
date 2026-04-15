@@ -1,0 +1,28 @@
+<section class="certifications">
+  <h2>Certifications</h2>
+  <div class="container">
+    <ul class="cert-list">
+      {% for cert in site.data.home.certifications %}
+      <li class="cert-item">
+        <div class="cert-card">
+          <img
+            src="{{ cert.image | relative_url }}"
+            alt="{{ cert.alt | escape_once }}"
+            loading="lazy"
+            decoding="async">
+          <div class="cert-overlay">
+            <span class="cert-name">{{ cert.name | escape_once }}</span>
+          </div>
+        </div>
+        <div class="cert-details">
+          <ul>
+            {% for detail in cert.details %}
+            <li>{{ detail | escape_once }}</li>
+            {% endfor %}
+          </ul>
+        </div>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>

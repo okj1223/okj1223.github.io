@@ -20,6 +20,34 @@ eco_progress_nodes:
     icon: wrench
 ---
 
+{% assign project_count = site.projects | size %}
+{% assign domain_count = site.data.project_filters | size %}
+{% assign current_year = 'now' | date: '%Y' | plus: 0 %}
+{% assign current_month = 'now' | date: '%m' | plus: 0 %}
+{% assign current_month_index = current_year | times: 12 | plus: current_month %}
+{% assign earliest_career_month_index = 999999 %}
+
+{% for item in site.data.home.career %}
+  {% if item.type == 'career' and item.start %}
+    {% assign item_year = item.start | date: '%Y' | plus: 0 %}
+    {% assign item_month = item.start | date: '%m' | plus: 0 %}
+    {% assign item_month_index = item_year | times: 12 | plus: item_month %}
+    {% if item_month_index < earliest_career_month_index %}
+      {% assign earliest_career_month_index = item_month_index %}
+    {% endif %}
+  {% endif %}
+{% endfor %}
+
+{% if earliest_career_month_index == 999999 %}
+  {% assign experience_years = 1 %}
+{% else %}
+  {% assign experience_months = current_month_index | minus: earliest_career_month_index %}
+  {% assign experience_years = experience_months | plus: 11 | divided_by: 12 %}
+  {% if experience_years < 1 %}
+    {% assign experience_years = 1 %}
+  {% endif %}
+{% endif %}
+
 
 {% include eco-panels.html nodes=page.eco_progress_nodes %}
 
@@ -40,15 +68,15 @@ eco_progress_nodes:
       <p>Full-Stack Robotics Developer • Environmental Engineering • AI Systems</p>
       <div class="banner-stats">
         <div class="stat-item">
-          <span class="stat-number">{{ site.projects | size }}+</span>
+          <span class="stat-number">{{ project_count }}</span>
           <span class="stat-label">Projects</span>
         </div>
         <div class="stat-item">
-          <span class="stat-number">3+</span>
+          <span class="stat-number">{{ experience_years }}+</span>
           <span class="stat-label">Years Experience</span>
         </div>
         <div class="stat-item">
-          <span class="stat-number">6</span>
+          <span class="stat-number">{{ domain_count }}</span>
           <span class="stat-label">Domains</span>
         </div>
       </div>
@@ -62,20 +90,22 @@ eco_progress_nodes:
  <div class="home-projects-container">
    
    <!-- 카테고리 필터 바 -->
-   <div class="project-filter-bar">
-     <button class="proj-filter-btn active" data-filter="all">All</button>
-     <button class="proj-filter-btn" data-filter="robotics">Robotics</button>
-     <button class="proj-filter-btn" data-filter="ai">AI / Vision</button>
-     <button class="proj-filter-btn" data-filter="control">Control</button>
-     <button class="proj-filter-btn" data-filter="environmental">Environmental</button>
-     <button class="proj-filter-btn" data-filter="mechanical">Mechanical</button>
+   <div class="project-filter-bar" hidden aria-label="Project category filters">
+     <button class="proj-filter-btn active" data-filter="all" aria-pressed="true">All</button>
+     {% for filter in site.data.project_filters %}
+     <button class="proj-filter-btn" data-filter="{{ filter.key }}" aria-pressed="false">{{ filter.label }}</button>
+     {% endfor %}
    </div>
 
+   <noscript>
+     <p class="projects-noscript-note">Interactive filters and pagination need JavaScript. All projects are shown below in one continuous list.</p>
+   </noscript>
+
    <!-- 페이지네이션 정보 표시 -->
-   <div style="text-align: center; margin-bottom: 2rem;">
-     <div class="pagination-info">
+   <div class="projects-pagination-summary" hidden>
+     <div class="pagination-info" role="status" aria-live="polite">
        <span class="page-indicator">Page <span id="currentPage">1</span> of <span id="totalPages">1</span></span>
-       <span class="total-projects">(<span id="filteredProjectsCount">{{ site.projects | size }}</span> of <span id="allProjectsCount">{{ site.projects | size }}</span> projects)</span>
+       <span class="total-projects">(<span id="filteredProjectsCount">{{ project_count }}</span> of <span id="allProjectsCount">{{ project_count }}</span> projects)</span>
      </div>
    </div>
 
@@ -85,11 +115,14 @@ eco_progress_nodes:
      {% for project in sorted_projects %}
        {% include project-card.html project=project %}
      {% endfor %}
-
+     <div class="projects-empty-state" id="projectsEmptyState" hidden>
+       <h2>No projects match this filter yet.</h2>
+       <p>Try another category or return to the full project list.</p>
+     </div>
    </div>
 
    <!-- 페이지네이션 컨트롤 -->
-   <div class="pagination-controls">
+   <div class="pagination-controls" hidden>
      <button id="prevBtn" class="pagination-btn" disabled>
        <svg viewBox="0 0 24 24" fill="currentColor">
          <path d="M15.41,16.58L10.83,12L15.41,7.41L14,6L8,12L14,18L15.41,16.58Z"/>
@@ -98,8 +131,6 @@ eco_progress_nodes:
      </button>
      
      <div class="page-numbers">
-       <button class="page-number-btn active" data-page="1">1</button>
-       <button class="page-number-btn" data-page="2">2</button>
      </div>
      
      <button id="nextBtn" class="pagination-btn">

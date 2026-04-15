@@ -6,6 +6,34 @@ document.addEventListener('DOMContentLoaded', function() {
   const tocNav = document.getElementById('toc-nav');
   const tocSidebar = document.getElementById('toc-sidebar');
   const content = document.querySelector('.project-content');
+
+  function optimizeContentMedia(root) {
+    if (!root) return;
+
+    root.querySelectorAll('img').forEach((img) => {
+      if (!img.hasAttribute('loading')) {
+        img.setAttribute('loading', 'lazy');
+      }
+
+      if (!img.hasAttribute('decoding')) {
+        img.setAttribute('decoding', 'async');
+      }
+    });
+
+    root.querySelectorAll('iframe').forEach((frame) => {
+      if (!frame.hasAttribute('loading')) {
+        frame.setAttribute('loading', 'lazy');
+      }
+    });
+
+    root.querySelectorAll('video').forEach((video) => {
+      if (!video.hasAttribute('preload')) {
+        video.setAttribute('preload', 'metadata');
+      }
+    });
+  }
+
+  optimizeContentMedia(content);
   
   if (!tocNav || !content) return;
   

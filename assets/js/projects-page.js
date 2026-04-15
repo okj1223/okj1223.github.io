@@ -4,10 +4,13 @@ document.addEventListener('DOMContentLoaded', function () {
   var currentPage = 1;
   var itemsPerPage = 5;
 
+  var filterBar = document.querySelector('.project-filter-bar');
+  var paginationSummary = document.querySelector('.projects-pagination-summary');
   var filterBtns = Array.from(document.querySelectorAll('.proj-filter-btn'));
   var articles = Array.from(document.querySelectorAll('.home-project-item'));
   var pagination = document.querySelector('.pagination-controls');
   var pageInfo = document.querySelector('.pagination-info');
+  var emptyState = document.getElementById('projectsEmptyState');
   var currentPageSpan = document.getElementById('currentPage');
   var totalPagesSpan = document.getElementById('totalPages');
   var filteredProjectsSpan = document.getElementById('filteredProjectsCount');
@@ -18,6 +21,10 @@ document.addEventListener('DOMContentLoaded', function () {
   var allowedFilters = filterBtns
     .map(function (btn) { return btn.dataset.filter; })
     .filter(Boolean);
+
+  if (filterBar) filterBar.hidden = false;
+  if (paginationSummary) paginationSummary.hidden = false;
+  if (pagination) pagination.hidden = false;
 
   function getArticleCategories(article) {
     return (article.dataset.category || '')
@@ -172,7 +179,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
     setActiveFilterButton();
 
-    if (pageInfo) pageInfo.style.display = '';
+    if (emptyState) {
+      emptyState.hidden = totalFiltered !== 0;
+    }
+
+    if (pageInfo) pageInfo.style.display = totalFiltered === 0 ? 'none' : '';
     if (pagination) pagination.style.display = totalPages > 1 ? '' : 'none';
 
     if (currentPageSpan) currentPageSpan.textContent = totalFiltered === 0 ? '0' : String(currentPage);

@@ -1,0 +1,25 @@
+{% assign skill_categories = site.data.home.skills | map: "category" | uniq %}
+
+<section class="skills-section compact-skills">
+  <h2>Core Technical Skills</h2>
+
+  <div class="unified-skills-grid">
+    {% for skill in site.data.home.skills %}
+    <div class="skill-item" data-category="{{ skill.category | escape_once }}">
+      <img
+        src="{{ skill.image | relative_url }}"
+        alt="{{ skill.alt | escape_once }}"
+        loading="lazy"
+        decoding="async">
+      <span class="skill-name">{{ skill.name | escape_once }}</span>
+    </div>
+    {% endfor %}
+  </div>
+
+  <div class="skill-filter">
+    <button class="filter-btn active" data-filter="all" aria-pressed="true">All</button>
+    {% for category in skill_categories %}
+    <button class="filter-btn" data-filter="{{ category | escape_once }}" aria-pressed="false">{{ category | escape_once }}</button>
+    {% endfor %}
+  </div>
+</section>

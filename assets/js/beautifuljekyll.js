@@ -4,6 +4,8 @@ let BeautifulJekyllJS = {
 
   bigImgEl : null,
   numImgs : null,
+  searchInitialized : false,
+  searchLoadingPromise : null,
 
   init : function() {
     setTimeout(BeautifulJekyllJS.initNavbar, 10);
@@ -112,26 +114,143 @@ let BeautifulJekyllJS = {
     }
   },
 
+  loadScript : function(src, dataAttr) {
+    if (!src) {
+      return Promise.reject(new Error("Missing script source"));
+    }
+
+    const selector = dataAttr ? 'script[' + dataAttr + ']' : 'script[src="' + src + '"]';
+    const existing = document.querySelector(selector);
+
+    if (existing) {
+      if (existing.dataset.loaded === "true") {
+        return Promise.resolve();
+      }
+
+      return new Promise(function(resolve, reject) {
+        existing.addEventListener("load", function() {
+          existing.dataset.loaded = "true";
+          resolve();
+        }, { once : true });
+        existing.addEventListener("error", reject, { once : true });
+      });
+    }
+
+    return new Promise(function(resolve, reject) {
+      const script = document.createElement("script");
+      script.src = src;
+      script.async = true;
+      if (dataAttr) {
+        script.setAttribute(dataAttr, "true");
+      }
+      script.onload = function() {
+        script.dataset.loaded = "true";
+        resolve();
+      };
+      script.onerror = reject;
+      document.body.appendChild(script);
+    });
+  },
+
+  initializeSearch : function(overlay, searchInput, resultsContainer) {
+    if (BeautifulJekyllJS.searchInitialized || !window.SimpleJekyllSearch) {
+      return;
+    }
+
+    window.SimpleJekyllSearch({
+      searchInput : searchInput,
+      resultsContainer : resultsContainer,
+      json : overlay.dataset.searchJson
+    });
+
+    BeautifulJekyllJS.searchInitialized = true;
+  },
+
+  ensureSearchReady : function(overlay, searchInput, resultsContainer) {
+    const originalPlaceholder = searchInput.dataset.originalPlaceholder || searchInput.getAttribute("placeholder") || "Search";
+    searchInput.dataset.originalPlaceholder = originalPlaceholder;
+
+    if (BeautifulJekyllJS.searchInitialized) {
+      searchInput.disabled = false;
+      searchInput.placeholder = originalPlaceholder;
+      searchInput.removeAttribute("aria-busy");
+      return Promise.resolve();
+    }
+
+    if (BeautifulJekyllJS.searchLoadingPromise) {
+      return BeautifulJekyllJS.searchLoadingPromise;
+    }
+
+    searchInput.disabled = true;
+    searchInput.setAttribute("aria-busy", "true");
+    searchInput.placeholder = "Loading search...";
+    resultsContainer.innerHTML = "<li class=\"search-result-state\">Loading search index...</li>";
+
+    const scriptSrc = overlay.dataset.searchScript;
+
+    BeautifulJekyllJS.searchLoadingPromise = BeautifulJekyllJS.loadScript(scriptSrc, "data-search-script")
+      .then(function() {
+        BeautifulJekyllJS.initializeSearch(overlay, searchInput, resultsContainer);
+        searchInput.disabled = false;
+        searchInput.placeholder = originalPlaceholder;
+        searchInput.removeAttribute("aria-busy");
+        resultsContainer.innerHTML = "";
+      })
+      .catch(function() {
+        searchInput.disabled = true;
+        searchInput.placeholder = "Search unavailable";
+        resultsContainer.innerHTML = "<li class=\"search-result-state\">Search is temporarily unavailable.</li>";
+      })
+      .then(function() {
+        BeautifulJekyllJS.searchLoadingPromise = null;
+      });
+
+    return BeautifulJekyllJS.searchLoadingPromise;
+  },
+
+  openSearchOverlay : function() {
+    const overlay = document.getElementById("beautifuljekyll-search-overlay");
+    const searchInput = document.getElementById("nav-search-input");
+    const resultsContainer = document.getElementById("search-results-container");
+
+    if (!overlay || !searchInput || !resultsContainer) {
+      return;
+    }
+
+    $("#beautifuljekyll-search-overlay").show();
+    $("body").addClass("overflow-hidden");
+
+    BeautifulJekyllJS.ensureSearchReady(overlay, searchInput, resultsContainer).then(function() {
+      if (searchInput.disabled) {
+        return;
+      }
+
+      searchInput.focus();
+      searchInput.select();
+    });
+  },
+
+  closeSearchOverlay : function() {
+    $("#beautifuljekyll-search-overlay").hide();
+    $("body").removeClass("overflow-hidden");
+  },
+
   initSearch : function() {
-    if (!document.getElementById("beautifuljekyll-search-overlay")) {
+    if (!document.getElementById("beautifuljekyll-search-overlay") || !document.getElementById("nav-search-link")) {
       return;
     }
 
     $("#nav-search-link").click(function(e) {
       e.preventDefault();
-      $("#beautifuljekyll-search-overlay").show();
-      $("#nav-search-input").focus().select();
-      $("body").addClass("overflow-hidden");
+      BeautifulJekyllJS.openSearchOverlay();
     });
     $("#nav-search-exit").click(function(e) {
       e.preventDefault();
-      $("#beautifuljekyll-search-overlay").hide();
-      $("body").removeClass("overflow-hidden");
+      BeautifulJekyllJS.closeSearchOverlay();
     });
     $(document).on('keyup', function(e) {
       if (e.key == "Escape") {
-        $("#beautifuljekyll-search-overlay").hide();
-        $("body").removeClass("overflow-hidden");
+        BeautifulJekyllJS.closeSearchOverlay();
       }
     });
   }

@@ -1100,6 +1100,24 @@ html, body {
  z-index: 10;
 }
 
+.projects-pagination-summary {
+ text-align: center;
+ margin-bottom: 2rem;
+}
+
+.projects-noscript-note {
+ display: inline-block;
+ margin: 1rem auto 2rem auto;
+ padding: 0.9rem 1.1rem;
+ color: rgba(29, 74, 92, 0.82);
+ background: rgba(127, 179, 211, 0.08);
+ border: 1px solid rgba(127, 179, 211, 0.18);
+ border-radius: 16px;
+ font-family: 'Inter', sans-serif;
+ font-size: 0.92rem;
+ line-height: 1.6;
+}
+
 .pagination-info {
  display: inline-flex;
  justify-content: center;
@@ -1130,6 +1148,32 @@ html, body {
 .home-projects-grid {
  position: relative;
  min-height: 450px;
+}
+
+.projects-empty-state {
+ max-width: 34rem;
+ margin: 2rem auto 0 auto;
+ padding: 2rem 1.6rem;
+ text-align: center;
+ background: rgba(255, 255, 255, 0.88);
+ border: 1px solid rgba(127, 179, 211, 0.16);
+ border-radius: 22px;
+ box-shadow: 0 10px 28px rgba(127, 179, 211, 0.12);
+}
+
+.projects-empty-state h2 {
+ margin: 0 0 0.75rem 0;
+ font-size: 1.35rem;
+ color: var(--forest-green);
+ font-family: 'Merriweather', serif;
+}
+
+.projects-empty-state p {
+ margin: 0;
+ font-size: 0.98rem;
+ line-height: 1.7;
+ color: rgba(93, 115, 126, 0.92);
+ font-family: 'Inter', sans-serif;
 }
 
 .project-page {

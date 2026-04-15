@@ -12,8 +12,16 @@
 <body>
   <div class="intro-wrapper">
 
-    <video id="intro-video" autoplay muted playsinline loop>
-      <source src="{{ '/assets/videos/intro.mp4' | relative_url }}" type="video/mp4">
+    <video
+      id="intro-video"
+      muted
+      playsinline
+      loop
+      preload="none"
+      poster="{{ '/assets/img/banner.webp' | relative_url }}"
+      aria-hidden="true">
+      <source data-src="{{ '/assets/videos/intro.webm' | relative_url }}" type="video/webm">
+      <source data-src="{{ '/assets/videos/intro.mp4' | relative_url }}" type="video/mp4">
     </video>
 
     <div class="intro-overlay"></div>

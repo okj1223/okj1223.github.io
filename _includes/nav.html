@@ -3,12 +3,12 @@
   {%- if site.title-img -%}
     <!-- 로고 이미지만 사용 (텍스트 제거) -->
     <a class="navbar-brand navbar-brand-logo" href="{{ '/' | absolute_url }}">
-      <img alt="{{ site.title }} Logo" src="{{ site.title-img | relative_url}}" class="brand-logo-only"/>
+      <img alt="{{ site.title }} Logo" src="{{ site.title-img | relative_url}}" class="brand-logo-only" decoding="async" fetchpriority="high"/>
     </a>
   {%- elsif site.site-logo -%}
     <!-- site-logo가 있으면 그것만 사용 -->
     <a class="navbar-brand navbar-brand-logo" href="{{ '/' | absolute_url }}">
-      <img src="{{ site.site-logo | relative_url }}" alt="{{ site.title }} Logo" class="brand-logo-only">
+      <img src="{{ site.site-logo | relative_url }}" alt="{{ site.title }} Logo" class="brand-logo-only" decoding="async" fetchpriority="high">
     </a>
   {%- elsif site.title -%}
     <!-- 로고 이미지가 없으면 텍스트만 표시 -->

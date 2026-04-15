@@ -11,3 +11,6 @@ ehthumbs.db
 Gemfile.lock
 
 beautiful-jekyll-theme-*.gem
+
+# local source backups
+_source_media/

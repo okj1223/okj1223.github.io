@@ -1,0 +1,10 @@
+- key: robotics
+  label: Robotics
+- key: ai
+  label: AI / Vision
+- key: control
+  label: Control
+- key: environmental
+  label: Environmental
+- key: mechanical
+  label: Mechanical

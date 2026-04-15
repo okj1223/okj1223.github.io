@@ -1,0 +1,167 @@
+partner_logos:
+  - image: /assets/img/logo_inu.png
+    alt: Incheon National University Logo
+  - image: /assets/img/logo_envirgo.png
+    alt: EnvGo Logo
+  - image: /assets/img/logo_ge.jpg
+    alt: Geesco Logo
+  - image: /assets/img/logo_doo.svg
+    alt: Doosan Logo
+
+skills:
+  - category: Programming
+    name: Python
+    image: /assets/img/logo_python.webp
+    alt: Python
+  - category: Programming
+    name: C/C++
+    image: /assets/img/logo_C.svg
+    alt: C
+  - category: Programming
+    name: JavaScript
+    image: /assets/img/logo_js.png
+    alt: JavaScript
+  - category: Frameworks
+    name: React
+    image: /assets/img/logo_react.png
+    alt: React
+  - category: Frameworks
+    name: ROS2
+    image: /assets/img/logo_ros2.png
+    alt: ROS2
+  - category: Frameworks
+    name: PyTorch
+    image: /assets/img/logo_pytorch.webp
+    alt: PyTorch
+  - category: Frameworks
+    name: Scikit-learn
+    image: /assets/img/logo_scikit.png
+    alt: Scikit-learn
+  - category: Web & Mobile
+    name: HTML/CSS
+    image: /assets/img/logo_htmlcss.jpg
+    alt: HTML
+  - category: Web & Mobile
+    name: Android
+    image: /assets/img/logo_android.png
+    alt: Android
+  - category: Embedded
+    name: Arduino
+    image: /assets/img/logo_arduino.png
+    alt: Arduino
+  - category: Embedded
+    name: MQTT
+    image: /assets/img/logo_mqtt.png
+    alt: MQTT
+  - category: DevOps
+    name: Docker
+    image: /assets/img/logo_docker.png
+    alt: Docker
+  - category: DevOps
+    name: Git
+    image: /assets/img/logo_git.png
+    alt: Git
+  - category: DevOps
+    name: Linux
+    image: /assets/img/logo_linux.png
+    alt: Linux
+  - category: CAD
+    name: AutoCAD
+    image: /assets/img/logo_cad.webp
+    alt: AutoCAD
+  - category: CAD
+    name: Inventor
+    image: /assets/img/logo_in.jpg
+    alt: Inventor
+  - category: CAD
+    name: Fusion
+    image: /assets/img/logo_fu.PNG
+    alt: Fusion
+  - category: Creative
+    name: Premiere
+    image: /assets/img/logo_pri.png
+    alt: Premiere Pro
+  - category: Creative
+    name: Photoshop
+    image: /assets/img/logo_ps.png
+    alt: Photoshop
+
+certifications:
+  - name: Gas Tungsten Arc Welding Technician (TIG)
+    image: /assets/img/welding_img.webp
+    alt: TIG Welding Technician
+    details:
+      - Proficient in high-precision TIG welding of stainless steel components (<= 3 mm) for robotic structural frames and sensor mounts
+      - Familiar with integrating TIG welding into robotic automation cells, including torch path planning and weld parameter optimization
+      - Understands thermal distortion management in precision assemblies, critical for end-effector and actuator housing fabrication
+  - name: Forklift Operator License
+    image: /assets/img/forklift_img.webp
+    alt: Forklift Operator License
+    details:
+      - Understanding of kinematics and control for wheeled mobile robots in indoor logistics environments
+      - Simulation of automated forklift systems using ROS or Python for path planning and load control
+      - Integration of obstacle detection sensors (e.g., ultrasonic, LiDAR) for safe autonomous navigation
+  - name: Industrial Safety Engineer
+    image: /assets/img/safety_img.webp
+    alt: Industrial Safety Engineer
+    details:
+      - Perform risk assessments on automated workcells and robotic cells to identify pinch points, reach hazards, and control failures
+      - Design and integrate safety-rated hardware (light curtains, safety PLCs, emergency stops) into robotic installations
+      - Create training programs for operators and maintenance teams on safe robot operation, lock-out/tag-out (LOTO), and preventive maintenance
+  - name: Air Environment Engineer
+    image: /assets/img/air_environment_img.webp
+    alt: Air Environment Engineer
+    details:
+      - Integration of air quality monitoring sensors into mobile or industrial robotic platforms
+      - Design of environmental data acquisition systems using embedded devices (e.g., Arduino, Raspberry Pi)
+      - Development of safety control logic based on pollutant concentration thresholds to enable autonomous robotic decision-making
+  - name: General Mechanical Engineer
+    image: /assets/img/mechanical_engineer_img.webp
+    alt: General Mechanical Engineer
+    details:
+      - Design and analysis of robot joints and linkages using CAD and structural simulation tools
+      - Application of mechanical tolerance and fit standards in precision robotic assemblies
+      - Selection and integration of actuators, gears, and mechanical components based on load and motion requirements
+
+career:
+  - type: education
+    start: 2017-03-01
+    end: 2024-02-29
+    institution: Incheon National University
+    summary: B.Eng. in Environmental Engineering (Major), Minor in Renewable Energy Engineering
+    date: Mar. 2017 - Feb. 2024
+  - type: career
+    start: 2023-06-01
+    end: 2023-08-31
+    institution: Greenhouse Gas Inventory & Research Center of Korea (Ministry of Environment)
+    summary: Internship - Legal Advisory Support on GHG Regulations and Reporting Systems
+    date: Jun. 2023 - Aug. 2023
+  - type: career
+    start: 2023-11-01
+    end: 2025-03-31
+    institution: Geesco Co., Ltd. - R&D Center
+    summary: Senior Mechanical Engineer (Deputy Manager)
+    date: Nov. 2023 - Mar. 2025
+  - type: education
+    start: 2024-08-01
+    end: 2026-07-31
+    institution: Academic Credit Bank System, South Korea
+    summary: B.Eng. in Mechatronics Engineering (In Progress)
+    date: Aug. 2024 - Jul. 2026
+  - type: education
+    start: 2025-03-01
+    end: 2025-09-30
+    institution: Doosan Robotics AI Robot Training Program
+    summary: Intensive Training in AI, ML, DL, RNN, Python, and ROS2
+    date: Mar. 2025 - Sep. 2025
+  - type: education
+    start: 2025-09-01
+    end: 2025-11-30
+    institution: CIA (Cebu International Academy) / GLC (Global Language Cebu), Philippines
+    summary: English Language Study Program
+    date: Sep. 2025 - Nov. 2025
+  - type: career
+    start: 2026-03-01
+    institution: Robros
+    summary: Research Assistant - Data Collection & Inspection, Humanoid Robot AI Training
+    date: Mar. 2026 - Present

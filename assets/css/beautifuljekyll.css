@@ -1109,6 +1109,17 @@ pre {
   text-decoration: underline;
 }
 
+#search-results-container .search-result-state {
+  max-width: 42rem;
+  margin: 1rem auto;
+  padding: 1rem 1.25rem;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
 #nav-search-icon {
   display: inline-block;
 }
