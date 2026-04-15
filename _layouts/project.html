@@ -39,17 +39,83 @@ layout: base
       {{ content }}
 
       {% if page.video_url %}
-      <div class="video-inline">
-        <h2>Demo Video</h2>
-        <div class="video-wrapper">
-          <iframe
-            src="{{ page.video_url }}"
-            title="{{ page.title }}"
-            frameborder="0"
-            allowfullscreen>
-          </iframe>
+      {% assign demo_embed = page.video_url %}
+      {% assign demo_href = page.video_url | replace: 'https://www.youtube.com/embed/', 'https://www.youtube.com/watch?v=' %}
+      {% assign demo_poster = page.thumbnail-img %}
+      {% assign demo_title = page.title | append: ' Demo Video' %}
+
+      {% if demo_poster == nil or demo_poster == empty %}
+        {% assign demo_video_id = '' %}
+        {% if demo_href contains 'watch?v=' %}
+          {% assign demo_video_id = demo_href | split: 'watch?v=' | last | split: '&' | first %}
+        {% elsif demo_embed contains '/embed/' %}
+          {% assign demo_video_id = demo_embed | split: '/embed/' | last | split: '?' | first %}
+        {% endif %}
+
+        {% if demo_video_id != '' %}
+          {% assign demo_poster = 'https://img.youtube.com/vi/' | append: demo_video_id | append: '/hqdefault.jpg' %}
+        {% endif %}
+      {% endif %}
+
+      {% assign is_external_demo_href = false %}
+      {% assign is_external_demo_embed = false %}
+      {% assign is_external_demo_poster = false %}
+      {% if demo_href contains '://' %}
+        {% assign is_external_demo_href = true %}
+      {% endif %}
+      {% if demo_embed contains '://' %}
+        {% assign is_external_demo_embed = true %}
+      {% endif %}
+      {% if demo_poster contains '://' %}
+        {% assign is_external_demo_poster = true %}
+      {% endif %}
+
+      <section class="project-demo-section" aria-labelledby="project-demo-heading">
+        <div class="project-demo-header">
+          <h2 id="project-demo-heading">Demo Video</h2>
+          <p>Open the project demo in an expanded player without leaving this case study.</p>
         </div>
-      </div>
+
+        <a
+          href="{% if is_external_demo_href %}{{ demo_href }}{% else %}{{ demo_href | relative_url }}{% endif %}"
+          class="project-demo-link"
+          aria-label="Watch demo: {{ demo_title }}"
+          data-demo-embed="{% if is_external_demo_embed %}{{ demo_embed }}{% else %}{{ demo_embed | relative_url }}{% endif %}"
+          data-demo-title="{{ demo_title | escape }}">
+          <div class="project-demo-media">
+            {% if demo_poster %}
+            <img
+              class="project-demo-poster"
+              src="{% if is_external_demo_poster %}{{ demo_poster }}{% else %}{{ demo_poster | relative_url }}{% endif %}"
+              alt="{{ page.title }} demo poster"
+              loading="lazy">
+            {% endif %}
+            <div class="project-demo-overlay" aria-hidden="true">
+              <span class="project-demo-badge">
+                <span class="home-video-icon"></span>
+                <span class="project-demo-badge-text">Play Demo in Modal</span>
+              </span>
+            </div>
+          </div>
+        </a>
+
+        <div class="project-demo-actions">
+          <a
+            href="{% if is_external_demo_href %}{{ demo_href }}{% else %}{{ demo_href | relative_url }}{% endif %}"
+            class="project-demo-action primary"
+            data-demo-embed="{% if is_external_demo_embed %}{{ demo_embed }}{% else %}{{ demo_embed | relative_url }}{% endif %}"
+            data-demo-title="{{ demo_title | escape }}">
+            Play Demo
+          </a>
+          <a
+            href="{% if is_external_demo_href %}{{ demo_href }}{% else %}{{ demo_href | relative_url }}{% endif %}"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="project-demo-action secondary">
+            Open Video Source
+          </a>
+        </div>
+      </section>
       {% endif %}
     </main>
 
