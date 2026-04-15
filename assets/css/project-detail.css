@@ -51,13 +51,13 @@ body {
 .project-hero .container,
 .project-overview .container,
 .project-back .container {
-  max-width: min(100%, 1400px) !important;
+  max-width: min(100%, 1520px) !important;
   box-sizing: border-box !important;
 }
 
 /* 📋 TOC와 프로젝트 레이아웃 스타일 */
 .project-layout {
-  --project-content-max: 860px;
+  --project-content-max: 1020px;
   --project-toc-width: 250px;
   display: grid !important;
   grid-template-columns:
@@ -65,8 +65,8 @@ body {
     minmax(0, var(--project-content-max))
     minmax(0, var(--project-toc-width)) !important;
   gap: clamp(1rem, 2vw, 2rem) !important;
-  width: min(100%, 1440px) !important;
-  max-width: 1440px !important;
+  width: min(100%, 1560px) !important;
+  max-width: 1560px !important;
   margin: 0 auto !important;
   align-items: flex-start !important;
   justify-content: center !important;
@@ -82,7 +82,7 @@ body {
   max-width: var(--project-content-max) !important;
   text-align: left !important;
   background: var(--clr-surface, #fff) !important;
-  padding: 2rem !important;
+  padding: 2.2rem 2.35rem !important;
   border-radius: var(--radius-lg, 14px) !important;
   box-shadow: var(--shadow-md) !important;
   border: 1px solid var(--clr-mist, #b8d4e3) !important;
@@ -218,7 +218,7 @@ body {
 .project-content figure img {
   display: block !important;
   margin: 0 auto !important;
-  max-width: 80% !important; /* 기본 너비를 80%로 제한 */
+  max-width: 90% !important; /* 기본 너비를 살짝 넓혀 본문 폭과 균형 맞춤 */
   max-height: 500px !important; /* 최대 높이 제한 */
   height: auto !important;
   border-radius: 12px !important;
@@ -228,7 +228,7 @@ body {
 
 /* 일반 이미지 (figure 밖의 이미지)도 크기 제한 */
 .project-content img {
-  max-width: 80% !important;
+  max-width: 90% !important;
   max-height: 500px !important;
   height: auto !important;
   border-radius: 8px !important;
@@ -827,7 +827,7 @@ body {
   }
   
   .project-content {
-    padding: 1.5rem !important;
+    padding: 1.5rem 1.6rem !important;
   }
   
   /* 태블릿에서 이미지 크기 */
@@ -859,7 +859,7 @@ body {
   }
   
   .project-content {
-    padding: 1rem !important;
+    padding: 1rem 1.05rem !important;
   }
 
   .project-quick-summary {
