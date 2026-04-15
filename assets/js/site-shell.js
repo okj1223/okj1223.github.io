@@ -8,7 +8,11 @@ document.addEventListener('DOMContentLoaded', function () {
   var navbarCollapse = document.querySelector('.navbar-collapse');
   var backToTopButton = document.getElementById('backToTop');
   var socialLinks = Array.from(document.querySelectorAll('.social-link'));
+  var demoModal = document.getElementById('siteVideoModal');
+  var demoModalFrame = document.getElementById('siteVideoModalFrame');
+  var demoModalTitle = document.getElementById('siteVideoModalTitle');
   var navbarTicking = false;
+  var activeDemoTrigger = null;
 
   function closeMobileMenu() {
     if (!navbarCollapse || !navbarToggler) {
@@ -287,6 +291,109 @@ document.addEventListener('DOMContentLoaded', function () {
       icon.style.transform = 'translateY(0) rotate(0deg)';
     });
   });
+
+  function buildDemoEmbedUrl(source) {
+    var url;
+
+    if (!source) {
+      return '';
+    }
+
+    try {
+      url = new URL(source, window.location.origin);
+    } catch (error) {
+      return source;
+    }
+
+    if (url.hostname.indexOf('youtube.com') !== -1 || url.hostname.indexOf('youtu.be') !== -1) {
+      url.searchParams.set('autoplay', '1');
+      url.searchParams.set('rel', '0');
+      url.searchParams.set('modestbranding', '1');
+    }
+
+    return url.toString();
+  }
+
+  function closeDemoModal() {
+    if (!demoModal || demoModal.hidden) {
+      return;
+    }
+
+    demoModal.hidden = true;
+    demoModal.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('demo-modal-open');
+
+    if (demoModalFrame) {
+      demoModalFrame.src = '';
+      demoModalFrame.title = 'Project demo video';
+    }
+
+    if (activeDemoTrigger && typeof activeDemoTrigger.focus === 'function') {
+      activeDemoTrigger.focus();
+    }
+
+    activeDemoTrigger = null;
+  }
+
+  function openDemoModal(trigger) {
+    var embedSource;
+    var resolvedTitle;
+
+    if (!demoModal || !demoModalFrame || !trigger) {
+      return;
+    }
+
+    embedSource = trigger.getAttribute('data-demo-embed');
+    if (!embedSource) {
+      return;
+    }
+
+    resolvedTitle = trigger.getAttribute('data-demo-title') ||
+      trigger.getAttribute('aria-label') ||
+      'Project demo video';
+
+    activeDemoTrigger = trigger;
+
+    if (demoModalTitle) {
+      demoModalTitle.textContent = resolvedTitle;
+    }
+
+    demoModalFrame.title = resolvedTitle;
+    demoModalFrame.src = buildDemoEmbedUrl(embedSource);
+    demoModal.hidden = false;
+    demoModal.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('demo-modal-open');
+  }
+
+  if (demoModal) {
+    document.addEventListener('click', function (event) {
+      var trigger = event.target.closest('[data-demo-embed]');
+      var closeTrigger = event.target.closest('[data-close-demo-modal]');
+
+      if (closeTrigger) {
+        event.preventDefault();
+        closeDemoModal();
+        return;
+      }
+
+      if (!trigger) {
+        return;
+      }
+
+      if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) {
+        return;
+      }
+
+      event.preventDefault();
+      openDemoModal(trigger);
+    });
+
+    document.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape') {
+        closeDemoModal();
+      }
+    });
+  }
 });
 
 window.addEventListener('beforeunload', function () {

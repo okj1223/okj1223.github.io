@@ -97,7 +97,9 @@
         href="{% if is_external_href %}{{ media_href }}{% else %}{{ media_href | relative_url }}{% endif %}"
         target="_blank"
         rel="noopener noreferrer"
-        class="home-project-action demo">
+        class="home-project-action demo"
+        data-demo-embed="{% if is_external_src %}{{ media_src }}{% else %}{{ media_src | relative_url }}{% endif %}"
+        data-demo-title="{{ media_title | escape }}">
         Demo
       </a>
       {% endif %}
@@ -111,7 +113,9 @@
         target="_blank"
         rel="noopener noreferrer"
         class="home-video-link"
-        aria-label="Watch demo: {{ media_title }}">
+        aria-label="Watch demo: {{ media_title }}"
+        data-demo-embed="{% if is_external_src %}{{ media_src }}{% else %}{{ media_src | relative_url }}{% endif %}"
+        data-demo-title="{{ media_title | escape }}">
         <div class="home-video-wrapper">
           {% if media_poster %}
           {% assign is_external_poster = false %}

@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
   if (!tocNav || !content) return;
   
   // h2, h3, h4 헤딩 찾기
-  const headings = content.querySelectorAll('h2, h3, h4');
+  const headings = Array.from(content.querySelectorAll('h2, h3, h4'));
   
   if (headings.length === 0) {
     document.getElementById('toc-sidebar').style.display = 'none';
@@ -50,8 +50,10 @@ document.addEventListener('DOMContentLoaded', function() {
   tocNav.innerHTML = tocHTML;
   
   // 스무스 스크롤 이벤트
-  const tocLinks = tocNav.querySelectorAll('.toc-link');
+  const tocLinks = Array.from(tocNav.querySelectorAll('.toc-link'));
   let activeTargetId = '';
+  let activeSyncFrame = null;
+  const sectionActivationOffset = 140;
 
   function keepActiveLinkVisible(activeLink) {
     if (!activeLink || !tocNav || window.innerWidth <= 960) return;
@@ -75,6 +77,7 @@ document.addEventListener('DOMContentLoaded', function() {
       
       if (target) {
         const offsetTop = target.getBoundingClientRect().top + window.pageYOffset - 100;
+        setActiveLink(targetId);
         window.scrollTo({
           top: offsetTop,
           behavior: 'smooth'
@@ -98,45 +101,67 @@ document.addEventListener('DOMContentLoaded', function() {
     }, { passive: false });
   }
   
-  // 스크롤 시 현재 섹션 하이라이트
-  function updateActiveLink() {
-    let current = '';
-    const scrollPos = window.pageYOffset + 150;
-    
-    headings.forEach(heading => {
-      const offsetTop = heading.offsetTop;
-      if (offsetTop <= scrollPos) {
-        current = heading.id;
-      }
-    });
-    
-    if (current === activeTargetId) return;
-    activeTargetId = current;
-
+  function setActiveLink(targetId) {
+    if (!targetId || targetId === activeTargetId) return;
+    activeTargetId = targetId;
     let activeLink = null;
 
-    // 활성 링크 업데이트
     tocLinks.forEach(link => {
-      const isActive = link.getAttribute('data-target') === current;
+      const isActive = link.getAttribute('data-target') === targetId;
       link.classList.toggle('active', isActive);
       if (isActive) activeLink = link;
     });
 
     keepActiveLinkVisible(activeLink);
   }
-  
-  // Update active TOC state directly on scroll so long pages do not get stuck
-  // behind rAF throttling while the user is reading.
-  window.addEventListener('scroll', updateActiveLink, { passive: true });
-  document.addEventListener('scroll', updateActiveLink, { passive: true });
-  window.addEventListener('resize', updateActiveLink);
 
-  // Fallback sync keeps the sidebar state aligned on browsers/pages where
-  // scroll events on long, heavy documents can occasionally lag or be missed.
-  window.setInterval(updateActiveLink, 250);
-  
-  // 초기 활성 링크 설정
-  updateActiveLink();
+  function resolveCurrentTargetId() {
+    const scrollPos = window.pageYOffset + sectionActivationOffset;
+    let current = headings[0] ? headings[0].id : '';
+
+    headings.forEach(heading => {
+      if (heading.offsetTop <= scrollPos) {
+        current = heading.id;
+      }
+    });
+
+    return current;
+  }
+
+  function syncActiveLink() {
+    activeSyncFrame = null;
+    setActiveLink(resolveCurrentTargetId());
+  }
+
+  function requestActiveLinkSync() {
+    if (activeSyncFrame !== null) return;
+    activeSyncFrame = window.requestAnimationFrame(syncActiveLink);
+  }
+
+  if ('IntersectionObserver' in window) {
+    const tocObserver = new IntersectionObserver(function() {
+      requestActiveLinkSync();
+    }, {
+      root: null,
+      rootMargin: `-${sectionActivationOffset}px 0px -65% 0px`,
+      threshold: [0, 1]
+    });
+
+    headings.forEach(heading => {
+      tocObserver.observe(heading);
+    });
+
+    window.addEventListener('resize', requestActiveLinkSync);
+    window.addEventListener('load', requestActiveLinkSync);
+    window.addEventListener('hashchange', requestActiveLinkSync);
+  } else {
+    window.addEventListener('scroll', requestActiveLinkSync, { passive: true });
+    window.addEventListener('resize', requestActiveLinkSync);
+    window.addEventListener('load', requestActiveLinkSync);
+    window.addEventListener('hashchange', requestActiveLinkSync);
+  }
+
+  requestActiveLinkSync();
 
   // 표 → 반응형 스크롤 래퍼 자동 적용
   content.querySelectorAll('table').forEach(table => {
