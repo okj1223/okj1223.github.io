@@ -1,12 +1,21 @@
-partner_logos:
+academic_logos:
   - image: /assets/img/logo_inu.png
     alt: Incheon National University Logo
+    class: logo-img--inu
+  - image: /assets/img/logo_ntu.png
+    alt: National Taiwan University Logo
+    class: logo-img--ntu
+
+company_logos:
   - image: /assets/img/logo_envirgo.png
     alt: EnvGo Logo
   - image: /assets/img/logo_ge.jpg
     alt: Geesco Logo
   - image: /assets/img/logo_doo.svg
     alt: Doosan Logo
+  - image: /assets/img/logo_robros_black.png
+    alt: ROBROS Logo
+    class: logo-img--robros
 
 skills:
   - category: Programming
@@ -162,6 +171,11 @@ career:
     date: Sep. 2025 - Nov. 2025
   - type: career
     start: 2026-03-01
-    institution: Robros
+    institution: ROBROS
     summary: Research Assistant - Data Collection & Inspection, Humanoid Robot AI Training
     date: Mar. 2026 - Present
+  - type: education
+    start: 2026-09-01
+    institution: National Taiwan University - Department of Mechanical Engineering, System Control Group
+    summary: Incoming M.S. Program in Mechanical Engineering
+    date: Sep. 2026 - Incoming

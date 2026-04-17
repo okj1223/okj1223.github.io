@@ -1,11 +1,24 @@
 <section class="logo-section">
-  <div class="container flex-center">
-    {% for logo in site.data.home.partner_logos %}
-    <img
-      src="{{ logo.image | relative_url }}"
-      alt="{{ logo.alt | escape_once }}"
-      class="logo-img"
-      decoding="async">
-    {% endfor %}
+  <div class="container logo-stack">
+    <div class="logo-row logo-row--academic" aria-label="Academic institutions">
+      {% for logo in site.data.home.academic_logos %}
+      <img
+        src="{{ logo.image | relative_url }}"
+        alt="{{ logo.alt | escape_once }}"
+        class="logo-img{% if logo.class %} {{ logo.class | escape_once }}{% endif %}"
+        loading="lazy"
+        decoding="async">
+      {% endfor %}
+    </div>
+    <div class="logo-row logo-row--company" aria-label="Companies">
+      {% for logo in site.data.home.company_logos %}
+      <img
+        src="{{ logo.image | relative_url }}"
+        alt="{{ logo.alt | escape_once }}"
+        class="logo-img{% if logo.class %} {{ logo.class | escape_once }}{% endif %}"
+        loading="lazy"
+        decoding="async">
+      {% endfor %}
+    </div>
   </div>
 </section>
