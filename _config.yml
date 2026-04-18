@@ -49,16 +49,16 @@ kramdown:
 banner-img: "/assets/img/banner.webp"
 
 # 배너 위에 표시할 타이틀 텍스트
-banner-title: "Envirobotics Researcher"
+banner-title: "Field-Tested Robotics Systems"
 
 # 타이틀 아래에 보조 문구
-banner-subtitle: "Environmental · AI · Robotics"
+banner-subtitle: "Humanoid Learning / Autonomous Systems / Industrial Automation"
 
 banner-name: "Oh Kyungjun"
 
 # banner 설정 섹션에 추가
-banner-line1: "Crafting AI‑driven envirobots with ROS2 & Python"
-banner-line2: "Sensing pollution, eliminate contaminants, and restore ecosystems"
+banner-line1: "Designing control, perception, and hardware systems that work beyond clean demos."
+banner-line2: "From warehouse humanoids and AI inspection to process control and environmental engineering."
 
 ################
 # --- Logo --- #

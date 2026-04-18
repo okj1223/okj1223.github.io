@@ -1,3 +1,16 @@
+focus_areas:
+  - title: Humanoid Robotics
+    description: Teleoperation, dataset QA, and learning workflow support for warehouse manipulation tasks.
+  - title: Autonomous Systems
+    description: ROS2-based perception, digital twins, navigation, and sim-to-real validation for mobile robots.
+  - title: Industrial Automation
+    description: Control, sensing, fluid systems, and field-ready hardware for process and environmental engineering.
+
+featured_projects:
+  - /projects/robros-humanoid-manipulation-data-pipeline/
+  - /projects/turtlebot3-autonomous-system/
+  - /projects/automated-mixing-system/
+
 academic_logos:
   - image: /assets/img/logo_inu.png
     alt: Incheon National University Logo

@@ -1,14 +1,35 @@
 <section class="career-bio-section">
   <div class="career-bio-box">
-    <h3 class="career-title">📄 Career & Education</h3>
-    <ul class="career-list">
-      {% for item in site.data.home.career %}
-      <li data-type="{{ item.type | escape_once }}">
-        <span class="career-institution">{{ item.institution | escape_once }}</span><br>
-        {{ item.summary | escape_once }}
-        <span class="career-date">{{ item.date | escape_once }}</span>
-      </li>
-      {% endfor %}
-    </ul>
+    {% assign career_entries = site.data.home.career | where: "type", "career" %}
+    {% assign education_entries = site.data.home.career | where: "type", "education" %}
+    <h3 class="career-title">Career and Education</h3>
+
+    <div class="career-columns">
+      <section class="career-group" aria-labelledby="career-group-heading">
+        <h4 class="career-group-title" id="career-group-heading">Professional Experience</h4>
+        <ul class="career-list">
+          {% for item in career_entries %}
+          <li data-type="{{ item.type | escape_once }}">
+            <span class="career-institution">{{ item.institution | escape_once }}</span>
+            <p class="career-summary">{{ item.summary | escape_once }}</p>
+            <span class="career-date">{{ item.date | escape_once }}</span>
+          </li>
+          {% endfor %}
+        </ul>
+      </section>
+
+      <section class="career-group" aria-labelledby="education-group-heading">
+        <h4 class="career-group-title" id="education-group-heading">Education and Training</h4>
+        <ul class="career-list">
+          {% for item in education_entries %}
+          <li data-type="{{ item.type | escape_once }}">
+            <span class="career-institution">{{ item.institution | escape_once }}</span>
+            <p class="career-summary">{{ item.summary | escape_once }}</p>
+            <span class="career-date">{{ item.date | escape_once }}</span>
+          </li>
+          {% endfor %}
+        </ul>
+      </section>
+    </div>
   </div>
 </section>

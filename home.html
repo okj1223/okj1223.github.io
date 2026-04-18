@@ -18,7 +18,6 @@ eco_progress_nodes:
     icon: briefcase
 ---
 
-
 {% if site.banner-img %}
 <div id="banner" data-banner-image="{{ site.banner-img | relative_url }}">
   <div class="banner-overlay">
@@ -30,10 +29,9 @@ eco_progress_nodes:
       <p class="banner-line2">{{ site.banner-line2 }}</p>
     </div>
 
-    <!-- ✅ CV Download Buttons -->
     <div class="cv-button-wrapper">
-      <a href="{{ '/assets/files/CV_Kyungjun_Oh.pdf' | relative_url }}" download class="cv-button">📄 Download Resume</a>
-      <a href="{{ '/assets/files/Cover_letter_Kyungjun_Oh.pdf' | relative_url }}" download class="cv-button">📝 Cover Letter</a>
+      <a href="{{ '/assets/files/CV_Kyungjun_Oh.pdf' | relative_url }}" download class="cv-button">Download Resume</a>
+      <a href="{{ '/assets/files/Cover_letter_Kyungjun_Oh.pdf' | relative_url }}" download class="cv-button">Cover Letter</a>
     </div>
   </div>
 </div>
@@ -42,50 +40,76 @@ eco_progress_nodes:
 {% include eco-panels.html nodes=page.eco_progress_nodes %}
 {% include bg-grid-pattern.html %}
 
+{% assign focus_areas = site.data.home.focus_areas %}
+{% if focus_areas and focus_areas.size > 0 %}
+<section class="home-focus-section">
+  <div class="container home-focus-shell">
+    <div class="home-focus-header">
+      <p class="home-focus-kicker">Current Focus</p>
+      <h2>Building robotics systems that hold up outside the lab.</h2>
+      <p>I work across hardware, control, perception, and deployment constraints to turn complex engineering problems into reliable systems.</p>
+    </div>
+
+    <div class="home-focus-grid">
+      {% for area in focus_areas %}
+      <article class="home-focus-card">
+        <h3>{{ area.title }}</h3>
+        <p>{{ area.description }}</p>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+
 {% include home-partner-logos.html %}
 
 {% include eco-leaves.html %}
 
 <div class="section-divider">
-    <div class="plant-divider"></div>
+  <div class="plant-divider"></div>
 </div>
 
-<!-- Latest Projects 섹션 - 새로운 스타일 -->
 <section class="home-projects-section">
   <div class="home-projects-container">
-    <h2 class="projects-section-title">
-    Latest Projects
-    </h2>
-    <p class="projects-section-subtitle">Showcasing recent work across humanoid robotics, autonomy, and intelligent automation</p>
+    <h2 class="projects-section-title">Featured Projects</h2>
+    <p class="projects-section-subtitle">Selected case studies across humanoid learning workflows, autonomous systems, and industrial automation.</p>
 
-    {% assign latest_projects = site.projects | sort: "date" | reverse %}
-    {% for project in latest_projects limit: 2 %}
-      {% include project-card.html project=project %}
-    {% endfor %}
+    {% assign featured_project_urls = site.data.home.featured_projects %}
+    {% if featured_project_urls and featured_project_urls.size > 0 %}
+      {% for project_url in featured_project_urls %}
+        {% assign featured_project = site.projects | where: "url", project_url | first %}
+        {% if featured_project %}
+          {% include project-card.html project=featured_project %}
+        {% endif %}
+      {% endfor %}
+    {% else %}
+      {% assign latest_projects = site.projects | sort: "date" | reverse %}
+      {% for project in latest_projects limit: 3 %}
+        {% include project-card.html project=project %}
+      {% endfor %}
+    {% endif %}
 
-    <!-- View All Projects 버튼 -->
     <div class="view-all-projects">
-      <a href="{{ '/projects/' | relative_url }}" class="view-all-button">View All Projects →</a>
+      <a href="{{ '/projects/' | relative_url }}" class="view-all-button">Browse All Projects →</a>
     </div>
   </div>
 </section>
 
 <div class="section-divider">
-    <div class="plant-divider"></div>
+  <div class="plant-divider"></div>
 </div>
 
 {% include home-skills.html %}
 
-
-
 <div class="section-divider">
-    <div class="plant-divider"></div>
+  <div class="plant-divider"></div>
 </div>
 
 {% include home-certifications.html %}
 
 <div class="section-divider">
-    <div class="plant-divider"></div>
+  <div class="plant-divider"></div>
 </div>
 
 {% include home-career.html %}
