@@ -234,6 +234,8 @@ document.addEventListener('DOMContentLoaded', function () {
         }, 500);
       }
 
+      closeMobileMenu();
+
       if (window.openSearch) {
         window.openSearch();
       }

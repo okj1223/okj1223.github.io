@@ -1022,6 +1022,10 @@ pre {
 }
 
 /* Search bar */
+body.overflow-hidden {
+  overflow: hidden !important;
+}
+
 #beautifuljekyll-search-overlay {
   font-family: var(--header-font);
   display: none;
