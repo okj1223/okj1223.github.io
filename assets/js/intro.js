@@ -14,11 +14,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
   var connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
   var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var smallViewport = window.matchMedia('(max-width: 767px)').matches;
   var saveData = Boolean(connection && connection.saveData);
-  var effectiveType = connection && connection.effectiveType ? connection.effectiveType : '';
-  var slowConnection = /(^|[^a-z])(slow-2g|2g)([^a-z]|$)/i.test(effectiveType);
-  var shouldEnhanceVideo = !prefersReducedMotion && !smallViewport && !saveData && !slowConnection;
+  var shouldEnhanceVideo = !prefersReducedMotion && !saveData;
+  var hasStarted = false;
 
   function markStaticMode() {
     wrapper.classList.add('video-disabled');
@@ -38,11 +36,23 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   function startVideoPlayback() {
+    if (hasStarted) {
+      return;
+    }
+
+    hasStarted = true;
     wrapper.classList.add('video-ready');
+    video.muted = true;
+    video.defaultMuted = true;
+    video.setAttribute('muted', '');
+    video.setAttribute('playsinline', '');
 
     var playAttempt = video.play();
     if (playAttempt && typeof playAttempt.catch === 'function') {
-      playAttempt.catch(markStaticMode);
+      playAttempt.catch(function() {
+        hasStarted = false;
+        markStaticMode();
+      });
     }
   }
 
@@ -53,13 +63,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
   wrapper.classList.add('video-enhanced');
   video.addEventListener('canplay', startVideoPlayback, { once: true });
+  video.addEventListener('loadeddata', startVideoPlayback, { once: true });
   video.addEventListener('error', markStaticMode, { once: true });
 
-  if (typeof window.requestIdleCallback === 'function') {
-    window.requestIdleCallback(loadIntroVideo, { timeout: 1200 });
-  } else {
-    window.setTimeout(loadIntroVideo, 250);
-  }
+  loadIntroVideo();
 
   document.addEventListener('visibilitychange', function() {
     if (document.hidden) {
@@ -68,6 +75,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     if (wrapper.classList.contains('video-ready')) {
+      hasStarted = false;
       startVideoPlayback();
     }
   });

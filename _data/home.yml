@@ -1,6 +1,6 @@
 focus_areas:
-  - title: Humanoid Robotics
-    description: Teleoperation, dataset QA, and learning workflow support for warehouse manipulation tasks.
+  - title: Robot Learning Systems
+    description: Teleoperation, dataset QA, and learning workflow support across manipulation-focused robot platforms.
   - title: Autonomous Systems
     description: ROS2-based perception, digital twins, navigation, and sim-to-real validation for mobile robots.
   - title: Industrial Automation
@@ -12,21 +12,24 @@ featured_projects:
   - /projects/automated-mixing-system/
 
 academic_logos:
-  - image: /assets/img/logo_inu.png
+  - image: /assets/img/logos/partners/academic/incheon-national-university.png
     alt: Incheon National University Logo
     class: logo-img--inu
-  - image: /assets/img/logo_ntu.png
+  - image: /assets/img/logos/partners/academic/national-taiwan-university.png
     alt: National Taiwan University Logo
     class: logo-img--ntu
 
 company_logos:
-  - image: /assets/img/logo_envirgo.png
+  - image: /assets/img/logos/partners/company/envgo.png
     alt: EnvGo Logo
-  - image: /assets/img/logo_ge.jpg
+    class: logo-img--envgo
+  - image: /assets/img/logos/partners/company/geesco.png
     alt: Geesco Logo
-  - image: /assets/img/logo_doo.svg
+    class: logo-img--ge
+  - image: /assets/img/logos/partners/company/doosan.svg
     alt: Doosan Logo
-  - image: /assets/img/logo_robros_black.png
+    class: logo-img--doosan
+  - image: /assets/img/logos/partners/company/robros.png
     alt: ROBROS Logo
     class: logo-img--robros
 
@@ -189,6 +192,6 @@ career:
     date: Mar. 2026 - Present
   - type: education
     start: 2026-09-01
-    institution: National Taiwan University - Department of Mechanical Engineering, System Control Group
-    summary: Incoming M.S. Program in Mechanical Engineering
+    institution: National Taiwan University
+    summary: Incoming M.S. Program in Mechanical Engineering, System Control Group
     date: Sep. 2026 - Incoming

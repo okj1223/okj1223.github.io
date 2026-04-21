@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
   var navbar = document.querySelector('.navbar-custom');
   var navLinks = Array.from(document.querySelectorAll('.navbar-nav .nav-link'));
-  var brandLogo = document.querySelector('.brand-logo-only');
+  var brandWordmark = document.querySelector('.navbar-brand-wordmark');
   var searchLink = document.getElementById('nav-search-link');
   var searchIcon = document.getElementById('nav-search-icon');
   var navbarToggler = document.querySelector('.navbar-toggler');
@@ -139,16 +139,16 @@ document.addEventListener('DOMContentLoaded', function () {
     window.requestAnimationFrame(animation);
   }
 
-  if (brandLogo) {
-    brandLogo.addEventListener('mouseenter', function () {
-      brandLogo.style.transform = 'scale(1.1) rotate(3deg)';
-      brandLogo.style.transition = 'all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55)';
-      brandLogo.style.filter = 'drop-shadow(0 6px 12px rgba(127, 179, 211, 0.3))';
+  if (brandWordmark) {
+    brandWordmark.addEventListener('mouseenter', function () {
+      brandWordmark.style.transform = 'translateY(-1px)';
+      brandWordmark.style.transition = 'all 0.24s ease';
+      brandWordmark.style.filter = 'drop-shadow(0 10px 22px rgba(22, 16, 12, 0.18))';
     });
 
-    brandLogo.addEventListener('mouseleave', function () {
-      brandLogo.style.transform = '';
-      brandLogo.style.filter = '';
+    brandWordmark.addEventListener('mouseleave', function () {
+      brandWordmark.style.transform = '';
+      brandWordmark.style.filter = '';
     });
   }
 

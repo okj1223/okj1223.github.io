@@ -1,23 +1,27 @@
 <section class="logo-section">
   <div class="container logo-stack">
-    <div class="logo-row logo-row--academic" aria-label="Academic institutions">
+    <div class="logo-band-line logo-row logo-row--academic" aria-label="Academic institutions">
       {% for logo in site.data.home.academic_logos %}
-      <img
-        src="{{ logo.image | relative_url }}"
-        alt="{{ logo.alt | escape_once }}"
-        class="logo-img{% if logo.class %} {{ logo.class | escape_once }}{% endif %}"
-        loading="lazy"
-        decoding="async">
+      <div class="logo-card logo-card--academic">
+        <img
+          src="{{ logo.image | relative_url }}"
+          alt="{{ logo.alt | escape_once }}"
+          class="logo-img{% if logo.class %} {{ logo.class | escape_once }}{% endif %}"
+          loading="lazy"
+          decoding="async">
+      </div>
       {% endfor %}
     </div>
-    <div class="logo-row logo-row--company" aria-label="Companies">
+    <div class="logo-band-line logo-row logo-row--company" aria-label="Companies">
       {% for logo in site.data.home.company_logos %}
-      <img
-        src="{{ logo.image | relative_url }}"
-        alt="{{ logo.alt | escape_once }}"
-        class="logo-img{% if logo.class %} {{ logo.class | escape_once }}{% endif %}"
-        loading="lazy"
-        decoding="async">
+      <div class="logo-card logo-card--company">
+        <img
+          src="{{ logo.image | relative_url }}"
+          alt="{{ logo.alt | escape_once }}"
+          class="logo-img{% if logo.class %} {{ logo.class | escape_once }}{% endif %}"
+          loading="lazy"
+          decoding="async">
+      </div>
       {% endfor %}
     </div>
   </div>

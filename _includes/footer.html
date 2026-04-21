@@ -1,21 +1,8 @@
-<link rel="stylesheet" href="/assets/css/ocean-waves.css">
-
 <footer class="eco-footer">
-  <!-- 3D Ocean Waves Section -->
-  <div
-    class="ocean-waves-section"
-    data-ocean-script-src="{{ '/assets/js/ocean-waves-3d.js' | relative_url }}?v={{ site.time | date: '%s' }}">
-    <div class="ocean-waves-header">
-      <h3>Ocean Cleanup Challenge</h3>
-      <p>Interactive 3D scene loads only when you scroll here on capable devices</p>
-    </div>
-    <div id="ocean-waves-container" aria-live="polite">
-      <div class="ocean-waves-fallback">
-        <div class="ocean-waves-fallback-card">
-          <strong>Static preview first, interactive scene later.</strong>
-          <span>The 3D ocean wakes up near the footer on desktop-class devices, so the rest of the site loads faster.</span>
-        </div>
-      </div>
+  <div class="footer-ambient">
+    <div class="container-md footer-ambient-copy">
+      <p class="footer-ambient-kicker">Robotics Lounge</p>
+      <p class="footer-ambient-text">Robot learning, autonomy, manipulation, and industrial automation presented with a calmer, more tactile visual language.</p>
     </div>
   </div>
 
@@ -26,22 +13,22 @@
         <div class="col-lg-4 footer-section">
           <div class="footer-profile">
             <div class="profile-avatar">
-              <div class="avatar-circle">
-                <img src="{{ '/assets/img/profile.webp' | relative_url }}" alt="{{ site.author }}" loading="lazy" decoding="async">
-              </div>
+            <div class="avatar-circle">
+              <img src="{{ '/assets/img/profile.webp' | relative_url }}" alt="{{ site.author }}" loading="lazy" decoding="async">
             </div>
-            <h3 class="profile-name">{{ site.author }}</h3>
-            <p class="profile-title">Envirobotics Researcher</p>
-            <p class="profile-description">
-              Crafting AI-driven environmental robots with passion for sustainable technology and ecosystem restoration.
-            </p>
           </div>
+          <h3 class="profile-name">{{ site.title }} Lab</h3>
+          <p class="profile-title">Robotics Systems Engineer</p>
+          <p class="profile-description">
+              Building reliable robotics systems across hardware, perception, control, autonomy, and deployment.
+          </p>
         </div>
+      </div>
 
         <!-- 가운데: 빠른 링크 -->
         <div class="col-lg-4 footer-section">
           <h4 class="footer-section-title">
-            <span class="title-icon">🔗</span>
+            <span class="title-icon" aria-hidden="true"><i class="fas fa-link"></i></span>
             Quick Links
           </h4>
           <ul class="footer-links">
@@ -67,7 +54,7 @@
         <!-- 오른쪽: 연락처 및 소셜 -->
         <div class="col-lg-4 footer-section">
           <h4 class="footer-section-title">
-            <span class="title-icon">💬</span>
+            <span class="title-icon" aria-hidden="true"><i class="fas fa-envelope-open-text"></i></span>
             Get In Touch
           </h4>
           
@@ -104,12 +91,12 @@
           <!-- 연락처 정보 -->
           <div class="contact-info">
             <div class="contact-item">
-              <span class="contact-icon">📍</span>
+              <span class="contact-icon" aria-hidden="true"><i class="fas fa-location-dot"></i></span>
               <span class="contact-text">Incheon, South Korea</span>
             </div>
             <div class="contact-item">
-              <span class="contact-icon">⚡</span>
-              <span class="contact-text">Available for collaborations</span>
+              <span class="contact-icon" aria-hidden="true"><i class="fas fa-microchip"></i></span>
+              <span class="contact-text">Open to robotics research and systems collaboration</span>
             </div>
           </div>
         </div>
@@ -122,7 +109,7 @@
             <div class="copyright-info">
               <p class="copyright-text">
                 <span class="copyright-symbol">©</span>
-                {{ site.time | date: '%Y' }} {{ site.author }}
+                {{ site.time | date: '%Y' }} {{ site.title }} Lab
                 {% if site.url-pretty %}
                   <span class="site-url">
                     <a href="{% if site.url-canonical %}{{ site.url-canonical }}{% else %}{{ '/' | absolute_url }}{% endif %}">
@@ -153,9 +140,8 @@
               
               {% unless site.remove-ads %}
                 <p class="powered-by">
-                  Engineered for 
-                  <a href="{{ '/projects/' | relative_url }}">a greener tomorrow</a>
-                  <span class="heart-icon">🌍</span>
+                  Built around
+                  <a href="{{ '/projects/' | relative_url }}">robot learning, autonomy, and field-ready engineering</a>
                 </p>
               {% endunless %}
             </div>
@@ -176,8 +162,6 @@
 
   <!-- 맨 위로 가기 버튼 -->
   <button class="back-to-top" id="backToTop" title="Back to top">
-    <span class="back-to-top-icon">🚀</span>
+    <span class="back-to-top-icon">Top</span>
   </button>
 </footer>
-
-<script src="{{ '/assets/js/footer-ocean-loader.js' | relative_url }}?v={{ site.time | date: '%s' }}"></script>

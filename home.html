@@ -1,25 +1,16 @@
 ---
 layout: base
 permalink: /home.html
-description: "Portfolio website of Oh Kyungjun, featuring humanoid robotics, autonomous systems, AI inspection, and industrial automation projects."
-share-description: "Portfolio website of Oh Kyungjun, featuring humanoid robotics, autonomous systems, AI inspection, and industrial automation projects."
-subtitle: "Portfolio website of Oh Kyungjun, featuring humanoid robotics, autonomous systems, AI inspection, and industrial automation projects."
+body-class: home-page
+description: "Portfolio website of Kyungjun Oh, featuring robotics systems, autonomous platforms, AI inspection, and industrial automation projects."
+share-description: "Portfolio website of Kyungjun Oh, featuring robotics systems, autonomous platforms, AI inspection, and industrial automation projects."
+subtitle: "Portfolio website of Kyungjun Oh, featuring robotics systems, autonomous platforms, AI inspection, and industrial automation projects."
 js:
-  - "/assets/js/eco-panels.js"
   - "/assets/js/home-skills.js"
-eco_progress_nodes:
-  - section: banner
-    icon: star
-  - section: projects
-    icon: wrench
-  - section: skills
-    icon: mail
-  - section: career
-    icon: briefcase
 ---
 
 {% if site.banner-img %}
-<div id="banner" data-banner-image="{{ site.banner-img | relative_url }}">
+<div id="banner" data-banner-image="{{ site.banner-img | relative_url }}" style="background-image: url('{{ site.banner-img | relative_url }}');">
   <div class="banner-overlay">
     <h1 class="banner-title">{{ site.banner-title }}</h1>
     <p class="banner-subtitle">{{ site.banner-subtitle }}</p>
@@ -28,16 +19,12 @@ eco_progress_nodes:
       <p class="banner-line1">{{ site.banner-line1 }}</p>
       <p class="banner-line2">{{ site.banner-line2 }}</p>
     </div>
-
-    <div class="cv-button-wrapper">
-      <a href="{{ '/assets/files/CV_Kyungjun_Oh.pdf' | relative_url }}" download class="cv-button">Download Resume</a>
-      <a href="{{ '/assets/files/Cover_letter_Kyungjun_Oh.pdf' | relative_url }}" download class="cv-button">Cover Letter</a>
-    </div>
   </div>
 </div>
 {% endif %}
 
-{% include eco-panels.html nodes=page.eco_progress_nodes %}
+{% include home-partner-logos.html %}
+
 {% include bg-grid-pattern.html %}
 
 {% assign focus_areas = site.data.home.focus_areas %}
@@ -62,10 +49,6 @@ eco_progress_nodes:
 </section>
 {% endif %}
 
-{% include home-partner-logos.html %}
-
-{% include eco-leaves.html %}
-
 <div class="section-divider">
   <div class="plant-divider"></div>
 </div>
@@ -73,7 +56,7 @@ eco_progress_nodes:
 <section class="home-projects-section">
   <div class="home-projects-container">
     <h2 class="projects-section-title">Featured Projects</h2>
-    <p class="projects-section-subtitle">Selected case studies across humanoid learning workflows, autonomous systems, and industrial automation.</p>
+    <p class="projects-section-subtitle">Selected case studies across robot learning, autonomous systems, and industrial automation.</p>
 
     {% assign featured_project_urls = site.data.home.featured_projects %}
     {% if featured_project_urls and featured_project_urls.size > 0 %}

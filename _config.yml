@@ -10,11 +10,9 @@
 ############################
 
 # Name of website
-title: KERIA Lab
-
-site-logo: "/assets/img/logo.png"
+title: Kyungjun Oh
 # Your name to show in the footer
-author: Oh Kyungjun
+author: Kyungjun Oh
 
 # IMPORTANT: Collections MUST come before navbar-links
 collections:
@@ -46,19 +44,19 @@ kramdown:
 ###########################
 
 # 배너에 사용할 이미지 경로 (assets/img/ 아래 파일명)
-banner-img: "/assets/img/banner.webp"
+banner-img: "/assets/img/robotics-lounge-banner.png"
 
 # 배너 위에 표시할 타이틀 텍스트
-banner-title: "Field-Tested Robotics Systems"
+banner-title: "Robotics Systems for Real Environments"
 
 # 타이틀 아래에 보조 문구
-banner-subtitle: "Humanoid Learning / Autonomous Systems / Industrial Automation"
+banner-subtitle: "Manipulation / Mobility / Autonomy / Industrial Automation"
 
-banner-name: "Oh Kyungjun"
+banner-name: "Kyungjun Oh"
 
 # banner 설정 섹션에 추가
-banner-line1: "Designing control, perception, and hardware systems that work beyond clean demos."
-banner-line2: "From warehouse humanoids and AI inspection to process control and environmental engineering."
+banner-line1: "Designing control, perception, and hardware systems with a broad robotics-first perspective."
+banner-line2: "Focused on robotics across humanoids, quadrupeds, mobile platforms, and automation rather than a single form factor."
 
 ################
 # --- Logo --- #
@@ -127,7 +125,7 @@ share-links-active:
 
 # How to display the link to your website in the footer
 # Remove this if you don't want a link in the footer
-url-pretty: "kerialab.com"
+url-pretty: "kyungjunoh.lab"
 
 # Add the website title to the title of every page
 title-on-all-pages: true
@@ -186,6 +184,7 @@ footer-hover-col: "#0085A1"
 # For any extra visual customization, you can include additional CSS files in every page on your site. List any custom CSS files here
 site-css:
  - "/assets/css/ecosystem.css"     # 내 커스텀 CSS
+ - "/assets/css/robotic-lounge-theme.css"
 
 # If you have common JavaScript files that should be included in every page, list them here
 site-js:

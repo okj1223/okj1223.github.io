@@ -4,21 +4,21 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>{{ page.title }}</title>
-  <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}" />
   <link rel="stylesheet" href="{{ '/assets/css/ecosystem.css' | relative_url }}" />
-  <link rel="stylesheet" href="{{ '/assets/css/intro.css' | relative_url }}" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ '/assets/css/intro.css' | relative_url }}?v={{ site.time | date: '%s' }}" />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
   <div class="intro-wrapper">
 
     <video
       id="intro-video"
+      autoplay
       muted
       playsinline
       loop
-      preload="none"
-      poster="{{ '/assets/img/banner.webp' | relative_url }}"
+      preload="metadata"
+      poster="{{ '/assets/img/robotics-lounge-banner.png' | relative_url }}"
       aria-hidden="true">
       <source data-src="{{ '/assets/videos/intro.webm' | relative_url }}" type="video/webm">
       <source data-src="{{ '/assets/videos/intro.mp4' | relative_url }}" type="video/mp4">
@@ -39,7 +39,10 @@
         from concept to deployment.
       </p>
 
-      <p class="intro-byline">Oh Kyungjun</p>
+      <p class="intro-byline">
+        <span class="intro-byline-label">Portfolio by</span>
+        <span class="intro-byline-name">Kyungjun Oh</span>
+      </p>
 
       <button id="skip-button" data-href="{{ '/home.html' | relative_url }}">
         View Portfolio &nbsp;→
@@ -48,6 +51,6 @@
     </div>
   </div>
 
-  <script src="{{ '/assets/js/intro.js' | relative_url }}"></script>
+  <script src="{{ '/assets/js/intro.js' | relative_url }}?v={{ site.time | date: '%s' }}"></script>
 </body>
 </html>
