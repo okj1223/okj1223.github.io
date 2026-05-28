@@ -1547,6 +1547,7 @@ body.home-page .home-project-item {
     margin-left: -6rem !important;
     padding: 0 !important;
     border-radius: 0 28px 28px 0 !important;
+    background: transparent !important;
     box-shadow: none !important;
     border: 0 !important;
     position: relative !important;
@@ -1577,20 +1578,22 @@ body.home-page .home-project-item {
   body.home-page .home-video-poster,
   body.home-page .home-image-wrapper img {
     object-fit: cover !important;
-    object-position: 62% center !important;
+    object-position: 32% center !important;
     -webkit-mask-image: linear-gradient(
       90deg,
       rgba(0, 0, 0, 0) 0%,
-      rgba(0, 0, 0, 0.16) 11%,
-      rgba(0, 0, 0, 0.72) 25%,
-      rgba(0, 0, 0, 1) 38%
+      rgba(0, 0, 0, 0.02) 20%,
+      rgba(0, 0, 0, 0.3) 42%,
+      rgba(0, 0, 0, 0.78) 58%,
+      rgba(0, 0, 0, 1) 72%
     ) !important;
     mask-image: linear-gradient(
       90deg,
       rgba(0, 0, 0, 0) 0%,
-      rgba(0, 0, 0, 0.16) 11%,
-      rgba(0, 0, 0, 0.72) 25%,
-      rgba(0, 0, 0, 1) 38%
+      rgba(0, 0, 0, 0.02) 20%,
+      rgba(0, 0, 0, 0.3) 42%,
+      rgba(0, 0, 0, 0.78) 58%,
+      rgba(0, 0, 0, 1) 72%
     ) !important;
   }
 
