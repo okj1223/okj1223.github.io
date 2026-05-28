@@ -2185,3 +2185,214 @@ body.projects-page .home-project-item {
     transform: none !important;
   }
 }
+
+/* Project page banner uses the same visual language as the home hero. */
+body.projects-page .drone-banner-environment {
+  min-height: clamp(560px, 72vh, 760px) !important;
+  background-image: url('/assets/img/robotics-lounge-banner.png') !important;
+  background-color: #171412 !important;
+  background-size: cover !important;
+  background-position: center center !important;
+  display: flex !important;
+  align-items: stretch !important;
+  justify-content: flex-start !important;
+}
+
+body.projects-page .drone-banner-environment::before {
+  content: '' !important;
+  position: absolute !important;
+  inset: 0 !important;
+  z-index: 1 !important;
+  background:
+    linear-gradient(90deg, rgba(10, 9, 8, 0.92) 0%, rgba(10, 9, 8, 0.68) 31%, rgba(10, 9, 8, 0.22) 63%, rgba(10, 9, 8, 0.62) 100%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.1) 0%, transparent 24%) !important;
+}
+
+body.projects-page .banner-text-overlay {
+  width: 100% !important;
+  max-width: none !important;
+  box-sizing: border-box !important;
+  padding: clamp(7rem, 10vw, 8.5rem) clamp(1.5rem, 5vw, 4.5rem) clamp(3.2rem, 6vw, 4.5rem) !important;
+  color: #fbf7f1 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
+  justify-content: flex-end !important;
+  gap: 0.75rem !important;
+  text-align: left !important;
+}
+
+body.projects-page .banner-title,
+body.projects-page .banner-subtitle,
+body.projects-page .banner-name,
+body.projects-page .banner-extra {
+  box-sizing: border-box !important;
+  width: min(100%, 620px) !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+body.projects-page .banner-subtitle {
+  order: -2 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  font-family: 'Sora', 'Inter', sans-serif !important;
+  font-size: 0.74rem !important;
+  font-weight: 700 !important;
+  line-height: 1.45 !important;
+  color: rgba(244, 236, 228, 0.78) !important;
+  letter-spacing: 0.2em !important;
+  text-transform: uppercase !important;
+  word-break: normal !important;
+  overflow-wrap: normal !important;
+}
+
+body.projects-page .banner-subtitle span {
+  display: inline !important;
+}
+
+body.projects-page .banner-subtitle-tail::before {
+  content: ' / ';
+}
+
+body.projects-page .banner-title {
+  order: -1 !important;
+  max-width: 11ch !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  font-family: 'Fraunces', 'Merriweather', Georgia, serif !important;
+  font-size: clamp(4rem, 8vw, 6.4rem) !important;
+  font-weight: 500 !important;
+  line-height: 0.96 !important;
+  color: #fbf7f1 !important;
+  letter-spacing: 0 !important;
+  text-shadow: 0 18px 40px rgba(0, 0, 0, 0.36) !important;
+  animation: none !important;
+}
+
+body.projects-page .banner-name {
+  order: 0 !important;
+  margin: 0.2rem 0 0 !important;
+  padding: 0 !important;
+  font-family: 'Sora', 'Inter', sans-serif !important;
+  font-size: 0.78rem !important;
+  font-weight: 700 !important;
+  line-height: 1.3 !important;
+  letter-spacing: 0.22em !important;
+  color: rgba(250, 242, 234, 0.58) !important;
+  text-transform: uppercase !important;
+}
+
+body.projects-page .banner-extra {
+  order: 1 !important;
+  margin-top: 0.5rem !important;
+  padding: 1.3rem 1.4rem !important;
+  background: linear-gradient(180deg, rgba(250, 246, 241, 0.12), rgba(250, 246, 241, 0.04)) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-radius: 24px !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12), 0 20px 50px rgba(0, 0, 0, 0.18) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+}
+
+body.projects-page .banner-line1,
+body.projects-page .banner-line2 {
+  margin: 0 !important;
+  padding: 0 !important;
+  font-family: 'Inter', sans-serif !important;
+  letter-spacing: 0 !important;
+  animation: none !important;
+}
+
+body.projects-page .banner-line1 {
+  font-size: clamp(1.05rem, 2vw, 1.25rem) !important;
+  font-weight: 600 !important;
+  line-height: 1.45 !important;
+  color: #f9f3ec !important;
+}
+
+body.projects-page .banner-line2 {
+  margin-top: 0.45rem !important;
+  font-size: 0.98rem !important;
+  font-weight: 400 !important;
+  line-height: 1.55 !important;
+  color: rgba(244, 236, 228, 0.75) !important;
+}
+
+@media (max-width: 980px) {
+  body.projects-page .drone-banner-environment {
+    min-height: 72svh !important;
+  }
+
+  body.projects-page .banner-text-overlay {
+    padding: 6.25rem 1.25rem 3rem !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+  }
+
+  body.projects-page .banner-title,
+  body.projects-page .banner-subtitle,
+  body.projects-page .banner-name,
+  body.projects-page .banner-extra {
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  body.projects-page .banner-title {
+    max-width: min(100%, 12ch) !important;
+    font-size: clamp(2.65rem, 11vw, 4.4rem) !important;
+    line-height: 1 !important;
+  }
+
+  body.projects-page .banner-subtitle {
+    max-width: 22rem !important;
+    font-size: 0.68rem !important;
+    letter-spacing: 0.14em !important;
+    line-height: 1.55 !important;
+  }
+
+  body.projects-page .banner-subtitle span {
+    display: block !important;
+  }
+
+  body.projects-page .banner-subtitle-tail::before {
+    content: '' !important;
+  }
+
+  body.projects-page .banner-name {
+    letter-spacing: 0.18em !important;
+  }
+
+  body.projects-page .banner-extra {
+    width: min(100%, 22rem) !important;
+    padding: 1rem !important;
+    border-radius: 18px !important;
+  }
+
+  body.projects-page .banner-line1,
+  body.projects-page .banner-line2 {
+    font-size: 0.86rem !important;
+    line-height: 1.55 !important;
+  }
+}
+
+@media (max-width: 420px) {
+  body.projects-page .drone-banner-environment {
+    min-height: 68svh !important;
+  }
+
+  body.projects-page .banner-title {
+    font-size: clamp(2.45rem, 12vw, 3rem) !important;
+  }
+
+  body.projects-page .banner-subtitle {
+    max-width: 19rem !important;
+    font-size: 0.62rem !important;
+    letter-spacing: 0.1em !important;
+  }
+
+  body.projects-page .banner-extra {
+    width: min(100%, 19.5rem) !important;
+  }
+}
