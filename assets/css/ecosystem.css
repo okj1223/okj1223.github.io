@@ -3740,15 +3740,19 @@ p, h1, h2, h3, h4, h5, h6, li, td, th, span, a, label {
   background: linear-gradient(135deg, #7fb3d3, #87ceeb); /* 블루그린 → 스카이블루 */
 }
 
-.unified-skills-grid .skill-item[data-category="Frameworks"]::before {
-  background: linear-gradient(135deg, #a8d8a8, #98c4c4); /* 민트그린 → 틸 */
+.unified-skills-grid .skill-item[data-category="AI/ML"]::before {
+  background: linear-gradient(135deg, #8f9fd3, #b4c6ef);
+}
+
+.unified-skills-grid .skill-item[data-category="Robotics"]::before {
+  background: linear-gradient(135deg, #6fa8a8, #8cc7bd);
 }
 
 .unified-skills-grid .skill-item[data-category="Web & Mobile"]::before {
   background: linear-gradient(135deg, #87ceeb, #b8d4e3); /* 스카이블루 → 라이트블루 */
 }
 
-.unified-skills-grid .skill-item[data-category="Embedded"]::before {
+.unified-skills-grid .skill-item[data-category="Embedded & IoT"]::before {
   background: linear-gradient(135deg, #c4a484, #d4b896); /* 베이지 → 라이트베이지 */
 }
 
@@ -3756,7 +3760,7 @@ p, h1, h2, h3, h4, h5, h6, li, td, th, span, a, label {
   background: linear-gradient(135deg, #5d737e, #7a8e96); /* 다크그레이 → 미디움그레이 */
 }
 
-.unified-skills-grid .skill-item[data-category="Cloud & Backend"]::before {
+.unified-skills-grid .skill-item[data-category="Cloud & Infrastructure"]::before {
   background: linear-gradient(135deg, #6f8f9f, #8fc7b5);
 }
 
@@ -3764,7 +3768,7 @@ p, h1, h2, h3, h4, h5, h6, li, td, th, span, a, label {
   background: linear-gradient(135deg, #9dbf9d, #b8d4b8); /* 세이지그린 → 라이트세이지 */
 }
 
-.unified-skills-grid .skill-item[data-category="Creative"]::before {
+.unified-skills-grid .skill-item[data-category="Creative Tools"]::before {
   background: linear-gradient(135deg, #d19ba3, #e8b5c0); /* 로즈 → 라이트로즈 */
 }
 

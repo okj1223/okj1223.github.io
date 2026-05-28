@@ -7,11 +7,12 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   function showSkillItem(item) {
-    item.style.display = 'flex';
+    clearTimeout(item._skillFilterTimer);
+    item.style.setProperty('display', 'flex', 'important');
     item.style.opacity = '0';
     item.style.transform = 'translateY(20px)';
 
-    setTimeout(function () {
+    item._skillFilterTimer = setTimeout(function () {
       item.style.transition = 'all 0.3s ease';
       item.style.opacity = '1';
       item.style.transform = 'translateY(0)';
@@ -19,12 +20,13 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   function hideSkillItem(item) {
+    clearTimeout(item._skillFilterTimer);
     item.style.transition = 'all 0.3s ease';
     item.style.opacity = '0';
     item.style.transform = 'translateY(20px)';
 
-    setTimeout(function () {
-      item.style.display = 'none';
+    item._skillFilterTimer = setTimeout(function () {
+      item.style.setProperty('display', 'none', 'important');
     }, 300);
   }
 
@@ -39,9 +41,11 @@ document.addEventListener('DOMContentLoaded', function () {
       });
 
       skillItems.forEach(function (item) {
-        var category = item.getAttribute('data-category');
+        var categories = (item.getAttribute('data-categories') || item.getAttribute('data-category') || '')
+          .split('||')
+          .filter(Boolean);
 
-        if (filter === 'all' || category === filter) {
+        if (filter === 'all' || categories.indexOf(filter) !== -1) {
           showSkillItem(item);
           return;
         }

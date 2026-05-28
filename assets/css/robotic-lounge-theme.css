@@ -1566,7 +1566,8 @@ body.home-page .home-project-item {
     grid-template-rows: minmax(0, 1fr) auto !important;
     gap: 0 !important;
     align-items: stretch !important;
-    min-height: 390px !important;
+    min-height: 420px !important;
+    height: 420px !important;
     padding: 0 !important;
     isolation: isolate !important;
     transition: transform 140ms ease, box-shadow 140ms ease, border-color 140ms ease !important;
@@ -1774,5 +1775,129 @@ body.home-page .home-project-item {
   body.home-page .home-image-link:hover img,
   body.home-page .home-video-link:not(.home-media-static):hover .home-video-poster {
     transform: translateX(14%) scale(1.1) !important;
+  }
+}
+
+@media (max-width: 768px) {
+  body.home-page .home-projects-section {
+    padding-left: 0.55rem !important;
+    padding-right: 0.55rem !important;
+  }
+
+  body.home-page .home-project-item {
+    margin-bottom: 0.85rem !important;
+  }
+
+  body.home-page .projects-section-title {
+    font-size: 1.55rem !important;
+    line-height: 1.15 !important;
+    margin-bottom: 0.85rem !important;
+  }
+
+  body.home-page .projects-section-subtitle {
+    font-size: 0.78rem !important;
+    line-height: 1.5 !important;
+    margin-bottom: 1.35rem !important;
+  }
+
+  body.home-page .home-project-card {
+    gap: 0.62rem !important;
+    padding: 0.78rem !important;
+    border-radius: 16px !important;
+  }
+
+  body.home-page .home-project-meta {
+    gap: 0.38rem !important;
+    margin-bottom: 0.48rem !important;
+  }
+
+  body.home-page .home-project-year,
+  body.home-page .home-project-category {
+    padding: 0.22rem 0.45rem !important;
+    font-size: 0.54rem !important;
+    line-height: 1.15 !important;
+    letter-spacing: 0.035em !important;
+  }
+
+  body.home-page .home-project-title {
+    font-size: clamp(1.02rem, 4.6vw, 1.18rem) !important;
+    line-height: 1.14 !important;
+    margin-bottom: 0.52rem !important;
+  }
+
+  body.home-page .home-project-description {
+    -webkit-line-clamp: 2 !important;
+    font-size: 0.74rem !important;
+    line-height: 1.46 !important;
+    margin-bottom: 0.58rem !important;
+  }
+
+  body.home-page .home-project-impact {
+    gap: 0.34rem !important;
+    padding: 0.46rem !important;
+    margin-bottom: 0.58rem !important;
+    border-radius: 12px !important;
+  }
+
+  body.home-page .home-impact-value {
+    font-size: 0.8rem !important;
+  }
+
+  body.home-page .home-impact-label {
+    font-size: 0.38rem !important;
+    line-height: 1.14 !important;
+    letter-spacing: 0.025em !important;
+  }
+
+  body.home-page .home-project-tech {
+    gap: 0.28rem !important;
+  }
+
+  body.home-page .home-tech-tag {
+    padding: 0.22rem 0.44rem !important;
+    font-size: 0.5rem !important;
+    line-height: 1.15 !important;
+  }
+
+  body.home-page .home-project-media {
+    height: clamp(7.3rem, 36vw, 9.4rem) !important;
+    min-height: 0 !important;
+    padding: 0.26rem !important;
+    border-radius: 14px !important;
+  }
+
+  body.home-page .home-video-link,
+  body.home-page .home-image-link,
+  body.home-page .home-video-wrapper,
+  body.home-page .home-image-wrapper {
+    height: 100% !important;
+    min-height: 0 !important;
+  }
+
+  body.home-page .home-video-wrapper,
+  body.home-page .home-image-wrapper {
+    aspect-ratio: auto !important;
+    border-radius: 11px !important;
+  }
+
+  body.home-page .home-video-poster,
+  body.home-page .home-image-wrapper img,
+  body.home-page .home-image-link:hover img,
+  body.home-page .home-video-link:not(.home-media-static):hover .home-video-poster {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    transform: translateX(10%) scale(1.08) !important;
+  }
+
+  body.home-page .home-project-actions {
+    gap: 0.36rem !important;
+  }
+
+  body.home-page .home-project-action {
+    min-width: 5.65rem !important;
+    padding: 0.46rem 0.62rem !important;
+    border-radius: 12px !important;
+    font-size: 0.63rem !important;
   }
 }

@@ -33,96 +33,163 @@ company_logos:
     alt: ROBROS Logo
     class: logo-img--robros
 
+skill_categories:
+  - Programming
+  - AI/ML
+  - Robotics
+  - Web & Mobile
+  - Embedded & IoT
+  - Cloud & Infrastructure
+  - DevOps
+  - CAD
+  - Creative Tools
+
 skills:
   - category: Programming
+    categories:
+      - Programming
+      - AI/ML
     name: Python
     image: /assets/img/logo_python.webp
     alt: Python
   - category: Programming
+    categories:
+      - Programming
+      - Embedded & IoT
     name: C/C++
     image: /assets/img/logo_C.svg
     alt: C
   - category: Programming
+    categories:
+      - Programming
+      - Web & Mobile
     name: JavaScript
     image: /assets/img/logo_js.png
     alt: JavaScript
-  - category: Frameworks
+  - category: Web & Mobile
+    categories:
+      - Web & Mobile
     name: React
     image: /assets/img/logo_react.png
     alt: React
-  - category: Frameworks
+  - category: Robotics
+    categories:
+      - Robotics
+      - Embedded & IoT
     name: ROS2
     image: /assets/img/logo_ros2.png
     alt: ROS2
-  - category: Frameworks
+  - category: AI/ML
+    categories:
+      - AI/ML
     name: PyTorch
     image: /assets/img/logo_pytorch.webp
     alt: PyTorch
-  - category: Frameworks
+  - category: AI/ML
+    categories:
+      - AI/ML
+      - Robotics
     name: YOLO
     image: /assets/img/logo_yolo.svg
     alt: YOLO
-  - category: Frameworks
+  - category: AI/ML
+    categories:
+      - AI/ML
     name: Scikit-learn
     image: /assets/img/logo_scikit.png
     alt: Scikit-learn
   - category: Web & Mobile
+    categories:
+      - Web & Mobile
     name: HTML/CSS
     image: /assets/img/logo_htmlcss.png
     alt: HTML
   - category: Web & Mobile
+    categories:
+      - Web & Mobile
     name: Android
     image: /assets/img/logo_android.png
     alt: Android
-  - category: Embedded
+  - category: Embedded & IoT
+    categories:
+      - Embedded & IoT
     name: Arduino
     image: /assets/img/logo_arduino.png
     alt: Arduino
-  - category: Embedded
+  - category: Embedded & IoT
+    categories:
+      - Embedded & IoT
+      - Cloud & Infrastructure
     name: MQTT
     image: /assets/img/logo_mqtt.png
     alt: MQTT
   - category: DevOps
+    categories:
+      - DevOps
+      - Cloud & Infrastructure
     name: Docker
     image: /assets/img/logo_docker.png
     alt: Docker
   - category: DevOps
+    categories:
+      - DevOps
     name: Git
     image: /assets/img/logo_git.png
     alt: Git
   - category: DevOps
+    categories:
+      - DevOps
+      - Embedded & IoT
     name: Linux
     image: /assets/img/logo_linux.png
     alt: Linux
-  - category: Cloud & Backend
+  - category: Cloud & Infrastructure
+    categories:
+      - Cloud & Infrastructure
+      - Web & Mobile
     name: Vercel
     image: /assets/img/logo_vercel.svg
     alt: Vercel
-  - category: Cloud & Backend
+  - category: Cloud & Infrastructure
+    categories:
+      - Cloud & Infrastructure
     name: Supabase
     image: /assets/img/logo_supabase.svg
     alt: Supabase
-  - category: Cloud & Backend
+  - category: Cloud & Infrastructure
+    categories:
+      - Cloud & Infrastructure
+      - DevOps
     name: Tailscale
     image: /assets/img/logo_tailscale.svg
     alt: Tailscale
   - category: CAD
+    categories:
+      - CAD
     name: AutoCAD
     image: /assets/img/logo_cad.webp
     alt: AutoCAD
   - category: CAD
+    categories:
+      - CAD
     name: Inventor
     image: /assets/img/logo_in.png
     alt: Inventor
   - category: CAD
+    categories:
+      - CAD
     name: Fusion
     image: /assets/img/logo_fu.PNG
     alt: Fusion
-  - category: Creative
+  - category: Creative Tools
+    categories:
+      - Creative Tools
     name: Premiere
     image: /assets/img/logo_pri.png
     alt: Premiere Pro
-  - category: Creative
+  - category: Creative Tools
+    categories:
+      - Creative Tools
     name: Photoshop
     image: /assets/img/logo_ps.png
     alt: Photoshop

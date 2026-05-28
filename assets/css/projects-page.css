@@ -2070,7 +2070,8 @@ body.projects-page .home-project-item {
     grid-template-rows: minmax(0, 1fr) auto !important;
     gap: 0 !important;
     align-items: stretch !important;
-    min-height: 350px !important;
+    min-height: 420px !important;
+    height: 420px !important;
     padding: 0 !important;
     isolation: isolate !important;
     transition: transform 140ms ease, box-shadow 140ms ease, border-color 140ms ease !important;
@@ -2275,6 +2276,123 @@ body.projects-page .home-project-item {
   body.projects-page .home-image-link:hover img,
   body.projects-page .home-video-link:not(.home-media-static):hover .home-video-poster {
     transform: translateX(14%) scale(1.1) !important;
+  }
+}
+
+@media (max-width: 768px) {
+  body.projects-page .home-projects-grid {
+    gap: 0.78rem !important;
+  }
+
+  body.projects-page .project-filter-bar {
+    gap: 0.34rem !important;
+    margin-bottom: 1rem !important;
+  }
+
+  body.projects-page .proj-filter-btn {
+    padding: 0.42rem 0.56rem !important;
+    font-size: 0.64rem !important;
+  }
+
+  body.projects-page .home-project-card {
+    gap: 0.62rem !important;
+    padding: 0.78rem !important;
+    border-radius: 16px !important;
+  }
+
+  body.projects-page .home-project-meta {
+    gap: 0.36rem !important;
+    margin-bottom: 0.46rem !important;
+  }
+
+  body.projects-page .home-project-year,
+  body.projects-page .home-project-category {
+    padding: 0.22rem 0.44rem !important;
+    font-size: 0.53rem !important;
+    line-height: 1.15 !important;
+    letter-spacing: 0.035em !important;
+  }
+
+  body.projects-page .home-project-title {
+    font-size: clamp(1rem, 4.5vw, 1.14rem) !important;
+    line-height: 1.15 !important;
+    margin-bottom: 0.5rem !important;
+  }
+
+  body.projects-page .home-project-description {
+    -webkit-line-clamp: 2 !important;
+    font-size: 0.72rem !important;
+    line-height: 1.45 !important;
+    margin-bottom: 0.56rem !important;
+  }
+
+  body.projects-page .home-project-impact {
+    gap: 0.32rem !important;
+    padding: 0.44rem !important;
+    margin-bottom: 0.56rem !important;
+    border-radius: 12px !important;
+  }
+
+  body.projects-page .home-impact-value {
+    font-size: 0.78rem !important;
+  }
+
+  body.projects-page .home-impact-label {
+    font-size: 0.38rem !important;
+    line-height: 1.14 !important;
+    letter-spacing: 0.02em !important;
+  }
+
+  body.projects-page .home-project-tech {
+    gap: 0.28rem !important;
+  }
+
+  body.projects-page .home-tech-tag {
+    padding: 0.22rem 0.43rem !important;
+    font-size: 0.49rem !important;
+    line-height: 1.15 !important;
+  }
+
+  body.projects-page .home-project-actions {
+    gap: 0.36rem !important;
+  }
+
+  body.projects-page .home-project-action {
+    min-width: 5.55rem !important;
+    padding: 0.45rem 0.6rem !important;
+    border-radius: 12px !important;
+    font-size: 0.62rem !important;
+  }
+
+  body.projects-page .home-project-media {
+    height: clamp(7.4rem, 36vw, 9.5rem) !important;
+    min-height: 0 !important;
+    padding: 0.26rem !important;
+    border-radius: 14px !important;
+  }
+
+  body.projects-page .home-video-link,
+  body.projects-page .home-image-link,
+  body.projects-page .home-video-wrapper,
+  body.projects-page .home-image-wrapper {
+    height: 100% !important;
+    min-height: 0 !important;
+  }
+
+  body.projects-page .home-video-wrapper,
+  body.projects-page .home-image-wrapper {
+    aspect-ratio: auto !important;
+    border-radius: 11px !important;
+  }
+
+  body.projects-page .home-video-poster,
+  body.projects-page .home-image-wrapper img,
+  body.projects-page .home-image-link:hover img,
+  body.projects-page .home-video-link:not(.home-media-static):hover .home-video-poster {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    transform: translateX(10%) scale(1.08) !important;
   }
 }
 

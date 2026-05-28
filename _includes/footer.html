@@ -17,7 +17,7 @@
               <img src="{{ '/assets/img/profile.webp' | relative_url }}" alt="{{ site.author }}" loading="lazy" decoding="async">
             </div>
           </div>
-          <h3 class="profile-name">{{ site.title }} Lab</h3>
+          <h3 class="profile-name">{{ site.author | default: site.title }}</h3>
           <p class="profile-title">Robotics Systems Engineer</p>
           <p class="profile-description">
               Building reliable robotics systems across hardware, perception, control, autonomy, and deployment.
@@ -109,7 +109,7 @@
             <div class="copyright-info">
               <p class="copyright-text">
                 <span class="copyright-symbol">©</span>
-                {{ site.time | date: '%Y' }} {{ site.title }} Lab
+                {{ site.time | date: '%Y' }} {{ site.author | default: site.title }}
                 {% if site.url-pretty %}
                   <span class="site-url">
                     <a href="{% if site.url-canonical %}{{ site.url-canonical }}{% else %}{{ '/' | absolute_url }}{% endif %}">
