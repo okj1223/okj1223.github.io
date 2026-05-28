@@ -1100,6 +1100,15 @@ html, body {
  z-index: 10;
 }
 
+body.projects-page .home-projects-container {
+ max-width: 1260px !important;
+ padding: 0 1.5rem !important;
+}
+
+body.projects-page .home-project-item {
+ max-width: 1180px !important;
+}
+
 .projects-pagination-summary {
  text-align: center;
  margin-bottom: 2rem;
@@ -1858,6 +1867,13 @@ html, body {
     overflow-wrap: anywhere !important;
   }
 
+  body.projects-page .home-project-year,
+  body.projects-page .home-project-category {
+    padding: 0.3rem 0.56rem !important;
+    font-size: 0.6rem !important;
+    letter-spacing: 0.05em !important;
+  }
+
   body.projects-page .home-project-title {
     font-size: clamp(1.22rem, 6vw, 1.45rem) !important;
     line-height: 1.2 !important;
@@ -1865,9 +1881,13 @@ html, body {
   }
 
   body.projects-page .home-project-description {
+    display: -webkit-box !important;
+    -webkit-box-orient: vertical !important;
+    -webkit-line-clamp: 3 !important;
     font-size: 0.88rem !important;
     line-height: 1.55 !important;
-    margin-bottom: 0.85rem !important;
+    margin: 0 0 0.78rem !important;
+    overflow: hidden !important;
   }
 
   body.projects-page .home-project-impact {
@@ -1894,6 +1914,12 @@ html, body {
 
   body.projects-page .home-project-tech {
     gap: 0.4rem !important;
+    max-height: none !important;
+    overflow: visible !important;
+  }
+
+  body.projects-page .home-project-tech .home-tech-tag:nth-child(n+7) {
+    display: none !important;
   }
 
   body.projects-page .home-tech-tag {
@@ -1962,20 +1988,27 @@ html, body {
   }
 
   body.projects-page .home-project-impact {
-    grid-template-columns: 1fr !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    padding: 0.6rem !important;
+    gap: 0.4rem !important;
+  }
+
+  body.projects-page .home-impact-label {
+    font-size: 0.49rem !important;
   }
 }
 
 @media (min-width: 769px) {
   body.projects-page .home-project-card {
     display: grid !important;
-    grid-template-columns: minmax(0, 3fr) minmax(360px, 2fr) !important;
+    grid-template-columns: minmax(0, 1.2fr) minmax(380px, 1fr) !important;
     grid-template-areas:
       "content media"
       "actions media" !important;
+    grid-template-rows: minmax(0, 1fr) auto !important;
     gap: 0 !important;
     align-items: stretch !important;
-    min-height: 390px !important;
+    min-height: 350px !important;
     padding: 0 !important;
     transition: transform 140ms ease, box-shadow 140ms ease, border-color 140ms ease !important;
   }
@@ -1995,14 +2028,66 @@ html, body {
     min-height: 0 !important;
   }
 
+  body.projects-page .home-project-meta {
+    margin-bottom: 0.7rem !important;
+  }
+
+  body.projects-page .home-project-title {
+    margin-bottom: 0.7rem !important;
+  }
+
+  body.projects-page .home-project-description {
+    display: -webkit-box !important;
+    -webkit-box-orient: vertical !important;
+    -webkit-line-clamp: 3 !important;
+    margin: 0 0 0.8rem !important;
+    font-size: 0.9rem !important;
+    line-height: 1.5 !important;
+    overflow: hidden !important;
+  }
+
+  body.projects-page .home-project-impact {
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 0.5rem !important;
+    padding: 0.64rem 0.7rem !important;
+    margin-bottom: 0.8rem !important;
+    border-radius: 14px !important;
+  }
+
+  body.projects-page .home-impact-item {
+    min-width: 0 !important;
+  }
+
+  body.projects-page .home-impact-value {
+    font-size: 1.04rem !important;
+  }
+
+  body.projects-page .home-impact-label {
+    font-size: 0.55rem !important;
+    line-height: 1.18 !important;
+    letter-spacing: 0.04em !important;
+  }
+
+  body.projects-page .home-project-tech {
+    gap: 0.36rem !important;
+  }
+
+  body.projects-page .home-tech-tag {
+    padding: 0.27rem 0.54rem !important;
+    font-size: 0.6rem !important;
+    line-height: 1.15 !important;
+  }
+
   body.projects-page .home-project-actions {
     grid-area: actions !important;
-    padding: 0 1.2rem 1.35rem 1.4rem !important;
+    padding: 0 1.2rem 1.15rem 1.4rem !important;
     align-self: end !important;
   }
 
   body.projects-page .home-project-action {
     min-width: 132px !important;
+    padding: 0.68rem 0.9rem !important;
   }
 
   body.projects-page .home-project-media {
@@ -2010,11 +2095,14 @@ html, body {
     align-self: stretch !important;
     height: 100% !important;
     min-height: 100% !important;
+    width: calc(100% + 1rem) !important;
+    margin-left: -1rem !important;
     padding: 0 !important;
     border-radius: 0 20px 20px 0 !important;
     box-shadow: none !important;
     border: 0 !important;
-    border-left: 1px solid rgba(84, 61, 43, 0.1) !important;
+    position: relative !important;
+    z-index: 1 !important;
   }
 
   body.projects-page .home-video-link,
@@ -2031,9 +2119,30 @@ html, body {
     border-radius: 0 20px 20px 0 !important;
   }
 
+  body.projects-page .home-video-wrapper::before,
+  body.projects-page .home-image-wrapper::before {
+    content: "" !important;
+    position: absolute !important;
+    inset: 0 auto 0 0 !important;
+    width: clamp(4.5rem, 8vw, 8.5rem) !important;
+    background: linear-gradient(
+      90deg,
+      rgba(238, 229, 218, 0.98) 0%,
+      rgba(238, 229, 218, 0.74) 34%,
+      rgba(238, 229, 218, 0.32) 66%,
+      rgba(238, 229, 218, 0) 100%
+    ) !important;
+    pointer-events: none !important;
+    z-index: 1 !important;
+  }
+
   body.projects-page .home-video-poster,
   body.projects-page .home-image-wrapper img {
     object-fit: cover !important;
+  }
+
+  body.projects-page .home-video-overlay {
+    z-index: 2 !important;
   }
 
   body.projects-page .home-video-wrapper.media-fit-contain .home-video-poster,
