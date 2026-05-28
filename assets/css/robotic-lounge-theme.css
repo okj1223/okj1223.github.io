@@ -1694,3 +1694,25 @@ body.home-page .home-project-item {
     transform: none !important;
   }
 }
+
+@media (max-width: 980px) {
+  body.home-page .home-video-link,
+  body.home-page .home-image-link,
+  body.home-page .home-video-wrapper,
+  body.home-page .home-image-wrapper {
+    overflow: hidden !important;
+  }
+
+  body.home-page .home-video-poster,
+  body.home-page .home-image-wrapper img {
+    object-fit: cover !important;
+    object-position: -85% center !important;
+    transform: translateX(14%) scale(1.1) !important;
+    transform-origin: center center !important;
+  }
+
+  body.home-page .home-image-link:hover img,
+  body.home-page .home-video-link:hover .home-video-poster {
+    transform: translateX(14%) scale(1.1) !important;
+  }
+}

@@ -2189,6 +2189,28 @@ body.projects-page .home-project-item {
   }
 }
 
+@media (max-width: 768px) {
+  body.projects-page .home-video-link,
+  body.projects-page .home-image-link,
+  body.projects-page .home-video-wrapper,
+  body.projects-page .home-image-wrapper {
+    overflow: hidden !important;
+  }
+
+  body.projects-page .home-video-poster,
+  body.projects-page .home-image-wrapper img {
+    object-fit: cover !important;
+    object-position: -85% center !important;
+    transform: translateX(14%) scale(1.1) !important;
+    transform-origin: center center !important;
+  }
+
+  body.projects-page .home-image-link:hover img,
+  body.projects-page .home-video-link:hover .home-video-poster {
+    transform: translateX(14%) scale(1.1) !important;
+  }
+}
+
 /* Project page banner uses the same visual language as the home hero. */
 body.projects-page .drone-banner-environment {
   min-height: clamp(560px, 72vh, 760px) !important;
