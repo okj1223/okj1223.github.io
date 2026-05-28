@@ -181,7 +181,11 @@ career:
     start: 2025-09-01
     end: 2025-11-30
     institution: CIA (Cebu International Academy) / GLC (Global Language Cebu), Philippines
-    map_url: "https://www.google.com/maps/search/?api=1&query=CIA%20Cebu%20International%20Academy%20GLC%20Global%20Language%20Cebu%20Philippines"
+    institution_links:
+      - label: CIA (Cebu International Academy)
+        map_url: "https://www.google.com/maps/search/?api=1&query=CIA%20Building%20Vistamar%20Avenue%20Sitio%20Dapdap%20Barangay%20Mactan%20Lapu-Lapu%20City%20Cebu%20Philippines%206015"
+      - label: GLC (Global Language Cebu), Philippines
+        map_url: "https://www.google.com/maps/search/?api=1&query=2815%20New%20Frontier%20Street%20Mabolo%20Cebu%20City%20Cebu%20Philippines%206000"
     summary: English Language Study Program
     date: Sep. 2025 - Nov. 2025
   - type: career

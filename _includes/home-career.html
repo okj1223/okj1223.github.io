@@ -10,13 +10,24 @@
         <ul class="career-list">
           {% for item in career_entries %}
           <li data-type="{{ item.type | escape_once }}">
-            {% if item.map_url %}
+            {% if item.institution_links %}
+            <span class="career-institution career-institution-multi">
+              {% for link in item.institution_links %}
+              <a
+                class="career-institution-link"
+                href="{{ link.map_url | escape_once }}"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Open Google Maps for {{ link.label | escape_once }}">{{ link.label | escape_once }}</a>{% unless forloop.last %}<span class="career-link-separator"> / </span>{% endunless %}
+              {% endfor %}
+            </span>
+            {% elsif item.map_url %}
             <a
               class="career-institution career-institution-link"
               href="{{ item.map_url | escape_once }}"
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="Open map for {{ item.institution | escape_once }}">
+              aria-label="Open Google Maps for {{ item.institution | escape_once }}">
               {{ item.institution | escape_once }}
             </a>
             {% else %}
@@ -34,13 +45,24 @@
         <ul class="career-list">
           {% for item in education_entries %}
           <li data-type="{{ item.type | escape_once }}">
-            {% if item.map_url %}
+            {% if item.institution_links %}
+            <span class="career-institution career-institution-multi">
+              {% for link in item.institution_links %}
+              <a
+                class="career-institution-link"
+                href="{{ link.map_url | escape_once }}"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Open Google Maps for {{ link.label | escape_once }}">{{ link.label | escape_once }}</a>{% unless forloop.last %}<span class="career-link-separator"> / </span>{% endunless %}
+              {% endfor %}
+            </span>
+            {% elsif item.map_url %}
             <a
               class="career-institution career-institution-link"
               href="{{ item.map_url | escape_once }}"
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="Open map for {{ item.institution | escape_once }}">
+              aria-label="Open Google Maps for {{ item.institution | escape_once }}">
               {{ item.institution | escape_once }}
             </a>
             {% else %}

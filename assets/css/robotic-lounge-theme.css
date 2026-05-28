@@ -820,33 +820,24 @@ body.home-page .home-project-item {
 }
 
 .career-institution-link {
-  display: inline-flex !important;
-  align-items: baseline !important;
-  gap: 0.35rem !important;
+  color: inherit !important;
   text-decoration: none !important;
   transition: color 140ms ease !important;
 }
 
-.career-institution-link::after {
-  content: "Map" !important;
-  font-family: 'Sora', sans-serif !important;
-  font-size: 0.58rem !important;
-  font-weight: 700 !important;
-  letter-spacing: 0.08em !important;
-  text-transform: uppercase !important;
-  color: var(--robot-bronze) !important;
-  opacity: 0.74 !important;
+.career-institution-multi {
+  display: block !important;
+  line-height: 1.35 !important;
+}
+
+.career-link-separator {
+  color: rgba(43, 37, 32, 0.42) !important;
 }
 
 .career-institution-link:hover,
 .career-institution-link:focus {
   color: var(--robot-wood) !important;
   text-decoration: none !important;
-}
-
-.career-institution-link:hover::after,
-.career-institution-link:focus::after {
-  opacity: 1 !important;
 }
 
 .career-date {
