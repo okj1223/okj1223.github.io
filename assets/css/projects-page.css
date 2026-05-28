@@ -2143,6 +2143,7 @@ body.projects-page .home-project-item {
   body.projects-page .home-video-poster,
   body.projects-page .home-image-wrapper img {
     object-fit: cover !important;
+    object-position: 62% center !important;
     -webkit-mask-image: linear-gradient(
       90deg,
       rgba(0, 0, 0, 0) 0%,

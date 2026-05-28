@@ -9,9 +9,9 @@ share-description: "A ROS2-based industrial safety monitoring system that combin
 subtitle: "Industrial safety robotics integrating perception, coordination, alerting, and real-time operational awareness."
 thumbnail-img: /project/crack-ppe-detection/system_overview.png
 video_url: "https://www.youtube.com/embed/gsk4GZmsjrw"
-card_video_poster: /project/crack-ppe-detection/aplication.gif
+card_video_poster: /project/crack-ppe-detection/system_overview.png
 card_media_fit: cover
-card_media_position: center top
+card_media_position: center center
 filter_categories:
   - ai
   - robotics
