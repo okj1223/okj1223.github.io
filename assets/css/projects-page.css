@@ -2144,22 +2144,22 @@ body.projects-page .home-project-item {
   body.projects-page .home-video-poster,
   body.projects-page .home-image-wrapper img {
     object-fit: cover !important;
-    object-position: 32% center !important;
+    object-position: 0% center !important;
     -webkit-mask-image: linear-gradient(
       90deg,
       rgba(0, 0, 0, 0) 0%,
-      rgba(0, 0, 0, 0.02) 20%,
-      rgba(0, 0, 0, 0.3) 42%,
-      rgba(0, 0, 0, 0.78) 58%,
-      rgba(0, 0, 0, 1) 72%
+      rgba(0, 0, 0, 0.04) 12%,
+      rgba(0, 0, 0, 0.34) 34%,
+      rgba(0, 0, 0, 0.82) 50%,
+      rgba(0, 0, 0, 1) 60%
     ) !important;
     mask-image: linear-gradient(
       90deg,
       rgba(0, 0, 0, 0) 0%,
-      rgba(0, 0, 0, 0.02) 20%,
-      rgba(0, 0, 0, 0.3) 42%,
-      rgba(0, 0, 0, 0.78) 58%,
-      rgba(0, 0, 0, 1) 72%
+      rgba(0, 0, 0, 0.04) 12%,
+      rgba(0, 0, 0, 0.34) 34%,
+      rgba(0, 0, 0, 0.82) 50%,
+      rgba(0, 0, 0, 1) 60%
     ) !important;
   }
 
