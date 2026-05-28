@@ -129,12 +129,7 @@
     {% if media_type and media_src %}
     <div class="home-project-media">
       {% if media_type == 'video' %}
-      <a
-        href="{% if is_external_href %}{{ media_href }}{% else %}{{ media_href | relative_url }}{% endif %}"
-        class="home-video-link"
-        aria-label="Watch demo: {{ media_title }}"
-        data-demo-embed="{% if is_external_src %}{{ media_src }}{% else %}{{ media_src | relative_url }}{% endif %}"
-        data-demo-title="{{ media_title | escape }}">
+      <div class="home-video-link home-media-static">
         <div class="home-video-wrapper media-fit-{{ media_fit }}" style="--media-object-position: {{ media_position }};">
           {% if media_poster %}
           {% assign is_external_poster = false %}
@@ -148,14 +143,8 @@
             title="{{ media_title }}"
             loading="lazy">
           {% endif %}
-          <div class="home-video-overlay" aria-hidden="true">
-            <span class="home-video-badge">
-              <span class="home-video-icon"></span>
-              <span class="home-video-text">Watch Demo</span>
-            </span>
-          </div>
         </div>
-      </a>
+      </div>
       {% else %}
       <a
         href="{% if is_external_href %}{{ media_href }}{% else %}{{ media_href | relative_url }}{% endif %}"

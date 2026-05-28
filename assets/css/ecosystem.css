@@ -1344,7 +1344,7 @@ article .home-project-card {
   display: flex !important;
   grid-area: actions !important;
   flex-wrap: wrap !important;
-  gap: 0.75rem !important;
+  gap: 0.5rem !important;
   justify-content: flex-start !important;
   align-items: center !important;
   margin: 0 !important;
@@ -1356,43 +1356,45 @@ article .home-project-card {
   display: inline-flex !important;
   align-items: center !important;
   justify-content: center !important;
-  min-width: 152px !important;
-  padding: 0.84rem 1.2rem !important;
-  border-radius: 999px !important;
-  border: 1px solid rgba(74, 143, 168, 0.24) !important;
+  min-width: 124px !important;
+  padding: 0.66rem 0.95rem !important;
+  border-radius: 14px !important;
+  border: 1px solid rgba(40, 31, 24, 0.14) !important;
   text-decoration: none !important;
   font-family: var(--font-sans) !important;
-  font-size: 0.84rem !important;
+  font-size: 0.76rem !important;
   font-weight: 700 !important;
-  letter-spacing: 0.05em !important;
-  text-transform: uppercase !important;
-  transition: transform 0.22s ease, box-shadow 0.22s ease, background 0.22s ease, color 0.22s ease !important;
+  letter-spacing: 0.02em !important;
+  text-transform: none !important;
+  box-shadow: 0 8px 18px rgba(27, 21, 16, 0.08) !important;
+  transition: transform 140ms ease, box-shadow 140ms ease, background 140ms ease, color 140ms ease, border-color 140ms ease !important;
 }
 
 .home-project-action.case-study {
-  background: linear-gradient(135deg, rgba(74, 143, 168, 0.12), rgba(127, 179, 211, 0.18)) !important;
-  color: var(--clr-navy) !important;
+  background: rgba(255, 255, 255, 0.82) !important;
+  color: rgba(32, 25, 20, 0.88) !important;
 }
 
 .home-project-action.demo {
-  background: linear-gradient(135deg, rgba(46, 74, 86, 0.9), rgba(74, 143, 168, 0.88)) !important;
-  color: #ffffff !important;
-  border-color: rgba(46, 74, 86, 0.4) !important;
+  background: linear-gradient(135deg, #201915, #4a3528) !important;
+  color: #fbf7f1 !important;
+  border-color: rgba(40, 31, 24, 0.28) !important;
 }
 
 .home-project-action:hover {
-  transform: translateY(-2px) !important;
-  box-shadow: 0 10px 24px rgba(30, 52, 64, 0.14) !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 12px 24px rgba(27, 21, 16, 0.14) !important;
   text-decoration: none !important;
 }
 
 .home-project-action.case-study:hover {
-  background: linear-gradient(135deg, rgba(74, 143, 168, 0.2), rgba(127, 179, 211, 0.28)) !important;
-  color: var(--clr-primary) !important;
+  background: rgba(250, 247, 243, 0.96) !important;
+  color: rgba(32, 25, 20, 0.96) !important;
+  border-color: rgba(90, 68, 49, 0.24) !important;
 }
 
 .home-project-action.demo:hover {
-  background: linear-gradient(135deg, rgba(29, 48, 58, 0.96), rgba(54, 111, 131, 0.96)) !important;
+  background: linear-gradient(135deg, #17120f, #5c4030) !important;
   color: #ffffff !important;
 }
 
@@ -1619,6 +1621,10 @@ body.demo-modal-open {
   border: none !important;
 }
 
+.home-video-link.home-media-static {
+  cursor: default !important;
+}
+
 .home-video-wrapper {
   position: relative !important;
   width: 100% !important;
@@ -1733,11 +1739,11 @@ body.demo-modal-open {
   transform: scale(1.03) !important;
 }
 
-.home-video-link:hover .home-video-poster {
+.home-video-link:not(.home-media-static):hover .home-video-poster {
   transform: scale(1.03) !important;
 }
 
-.home-video-link:hover .home-video-badge {
+.home-video-link:not(.home-media-static):hover .home-video-badge {
   transform: translateY(-2px) !important;
   background: rgba(74, 143, 168, 0.92) !important;
   color: #ffffff !important;
