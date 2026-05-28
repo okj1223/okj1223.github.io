@@ -1802,3 +1802,231 @@ html, body {
    font-size: 1rem;
  }
 }
+
+@media (max-width: 768px) {
+  body.projects-page .home-projects-section {
+    padding-left: clamp(0.8rem, 4vw, 1rem) !important;
+    padding-right: clamp(0.8rem, 4vw, 1rem) !important;
+  }
+
+  body.projects-page .home-projects-container {
+    max-width: 100% !important;
+    padding: 0 !important;
+  }
+
+  body.projects-page .home-projects-grid {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0 !important;
+    gap: 1rem !important;
+  }
+
+  body.projects-page .home-project-item {
+    max-width: 100% !important;
+    margin: 0 !important;
+  }
+
+  body.projects-page .home-project-card {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 1.05rem !important;
+    border-radius: 18px !important;
+    gap: 0.9rem !important;
+  }
+
+  body.projects-page .home-project-link,
+  body.projects-page .home-project-content,
+  body.projects-page .home-project-media,
+  body.projects-page .home-project-actions {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+  }
+
+  body.projects-page .home-project-content {
+    padding: 0 !important;
+  }
+
+  body.projects-page .home-project-meta {
+    align-items: flex-start !important;
+    gap: 0.45rem !important;
+  }
+
+  body.projects-page .home-project-category {
+    max-width: 100% !important;
+    white-space: normal !important;
+    overflow-wrap: anywhere !important;
+  }
+
+  body.projects-page .home-project-title {
+    font-size: clamp(1.22rem, 6vw, 1.45rem) !important;
+    line-height: 1.2 !important;
+    margin-bottom: 0.7rem !important;
+  }
+
+  body.projects-page .home-project-description {
+    font-size: 0.88rem !important;
+    line-height: 1.55 !important;
+    margin-bottom: 0.85rem !important;
+  }
+
+  body.projects-page .home-project-impact {
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 0.45rem !important;
+    padding: 0.68rem !important;
+    justify-content: stretch !important;
+  }
+
+  body.projects-page .home-impact-item {
+    min-width: 0 !important;
+    text-align: center !important;
+  }
+
+  body.projects-page .home-impact-value {
+    font-size: 1rem !important;
+  }
+
+  body.projects-page .home-impact-label {
+    font-size: 0.54rem !important;
+    line-height: 1.25 !important;
+  }
+
+  body.projects-page .home-project-tech {
+    gap: 0.4rem !important;
+  }
+
+  body.projects-page .home-tech-tag {
+    padding: 0.3rem 0.58rem !important;
+    font-size: 0.62rem !important;
+    line-height: 1.2 !important;
+  }
+
+  body.projects-page .home-project-actions {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(8.2rem, 1fr)) !important;
+    gap: 0.62rem !important;
+    justify-content: stretch !important;
+    padding: 0 !important;
+    margin-top: 0 !important;
+  }
+
+  body.projects-page .home-project-action {
+    min-width: 0 !important;
+    width: 100% !important;
+    padding: 0.76rem 0.68rem !important;
+    font-size: 0.72rem !important;
+    line-height: 1.2 !important;
+  }
+
+  body.projects-page .home-project-media {
+    align-self: stretch !important;
+    padding: 0.35rem !important;
+    border-radius: 16px !important;
+  }
+
+  body.projects-page .home-video-wrapper,
+  body.projects-page .home-image-wrapper {
+    border-radius: 12px !important;
+  }
+}
+
+@media (max-width: 420px) {
+  body.projects-page .drone-banner-environment {
+    min-height: 72vh !important;
+  }
+
+  body.projects-page .banner-text-overlay {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+
+  body.projects-page .project-filter-bar {
+    padding: 0 !important;
+    margin-bottom: 1.25rem !important;
+  }
+
+  body.projects-page .proj-filter-btn {
+    font-size: 0.72rem !important;
+    padding: 0.5rem 0.65rem !important;
+  }
+
+  body.projects-page .home-project-card {
+    padding: 0.95rem !important;
+  }
+
+  body.projects-page .home-project-impact {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+@media (min-width: 769px) {
+  body.projects-page .home-project-card {
+    display: grid !important;
+    grid-template-columns: minmax(0, 3fr) minmax(360px, 2fr) !important;
+    grid-template-areas:
+      "content media"
+      "actions media" !important;
+    gap: 0 !important;
+    align-items: stretch !important;
+    min-height: 390px !important;
+    padding: 0 !important;
+  }
+
+  body.projects-page .home-project-link {
+    grid-area: content !important;
+    padding: 1.35rem 1.2rem 0 1.4rem !important;
+  }
+
+  body.projects-page .home-project-content {
+    padding: 0 !important;
+    min-height: 0 !important;
+  }
+
+  body.projects-page .home-project-actions {
+    grid-area: actions !important;
+    padding: 0 1.2rem 1.35rem 1.4rem !important;
+    align-self: end !important;
+  }
+
+  body.projects-page .home-project-action {
+    min-width: 132px !important;
+  }
+
+  body.projects-page .home-project-media {
+    grid-area: media !important;
+    align-self: stretch !important;
+    height: 100% !important;
+    min-height: 100% !important;
+    padding: 0 !important;
+    border-radius: 0 20px 20px 0 !important;
+    box-shadow: none !important;
+    border: 0 !important;
+    border-left: 1px solid rgba(84, 61, 43, 0.1) !important;
+  }
+
+  body.projects-page .home-video-link,
+  body.projects-page .home-image-link,
+  body.projects-page .home-video-wrapper,
+  body.projects-page .home-image-wrapper {
+    height: 100% !important;
+    min-height: 100% !important;
+  }
+
+  body.projects-page .home-video-wrapper,
+  body.projects-page .home-image-wrapper {
+    aspect-ratio: auto !important;
+    border-radius: 0 20px 20px 0 !important;
+  }
+
+  body.projects-page .home-video-poster,
+  body.projects-page .home-image-wrapper img {
+    object-fit: cover !important;
+  }
+
+  body.projects-page .home-video-wrapper.media-fit-contain .home-video-poster,
+  body.projects-page .home-image-wrapper.media-fit-contain img {
+    object-fit: contain !important;
+    padding: 0.85rem !important;
+  }
+}

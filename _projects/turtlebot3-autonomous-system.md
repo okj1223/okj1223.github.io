@@ -9,6 +9,8 @@ share-description: "A digital twin-based TurtleBot3 autonomy project combining R
 subtitle: "Digital twin-driven autonomous navigation and Pick & Place with perception, control, and sim-to-real validation."
 thumbnail-img: /project/turtlebot3-autonomous-system/system_architecture_diagram.png
 video_url: "https://www.youtube.com/embed/WX1D9GZJOB4"
+card_video_poster: /project/turtlebot3-autonomous-system/turtlebot3_arm_joints.png
+card_media_fit: cover
 permalink: /projects/turtlebot3-autonomous-system/
 filter_categories:
   - robotics

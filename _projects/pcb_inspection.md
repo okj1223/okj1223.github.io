@@ -9,6 +9,8 @@ share-description: "An autonomous PCB quality control system combining YOLOv11 c
 subtitle: "PCB inspection and sorting with computer vision, robot handling, and voice-driven operator interaction."
 thumbnail-img: /project/pcb_inspection/archi.png
 video_url: "https://www.youtube.com/embed/gpQtFfs4qww"
+card_video_poster: /project/pcb_inspection/conveyor-belt-prototype-v1-assembled-arduino-rails.jpg
+card_media_fit: cover
 permalink: /projects/pcb_inspection/
 filter_categories:
   - ai

@@ -9,6 +9,8 @@ share-description: "An autonomous ROS2-based system for high-precision liquid po
 subtitle: "Precision pouring with ROS2 orchestration, fluid modeling, and adaptive concentration control."
 thumbnail-img: /project/liquid_injection/hardware_architecture.png
 video_url: "https://www.youtube.com/embed/yVg4EGmNAvk"
+card_video_poster: /project/liquid_injection/completed_frame.jpg
+card_media_fit: cover
 permalink: /projects/liquid_injection/
 filter_categories:
   - control

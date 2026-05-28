@@ -7,6 +7,8 @@ share-description: "An in-situ SCR catalyst cleaning robot integrating Arduino-b
 subtitle: "SCR catalyst maintenance automation with fluid delivery, motion hardware, and hazardous-environment workflow design."
 thumbnail-img: /project/automated-catalyst-cleaning/architecture-diagram.png
 video_url: "https://www.youtube.com/embed/7pVAK6bW15U"
+card_video_poster: /project/automated-catalyst-cleaning/cleaning_robot_components.jpg
+card_media_fit: cover
 permalink: /projects/automated-catalyst-cleaning/
 filter_categories:
   - robotics

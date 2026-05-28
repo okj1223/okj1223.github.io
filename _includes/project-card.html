@@ -33,7 +33,7 @@
 {% endif %}
 
 {% if media_type == 'video' %}
-  {% assign media_poster = include.project.card_video_poster | default: include.project.video_poster | default: '' %}
+  {% assign media_poster = include.project.card_video_poster | default: include.project.thumbnail-img | default: include.project.video_poster | default: '' %}
 
   {% if media_poster == nil or media_poster == empty %}
     {% assign video_id = '' %}
@@ -79,7 +79,7 @@
   {% assign is_external_src = true %}
 {% endif %}
 
-<article class="home-project-item" data-category="{{ category_tokens }}">
+<article class="home-project-item{% if media_type == 'video' %} has-demo-video{% endif %}" data-category="{{ category_tokens }}">
   <div class="home-project-card">
     <a href="{{ include.project.url | relative_url }}" class="home-project-link">
       <div class="home-project-content">
@@ -113,17 +113,15 @@
       <a
         href="{{ case_study_href }}"
         class="home-project-action case-study">
-        Case Study
+        View Report
       </a>
       {% if media_type == 'video' and media_href %}
       <a
         href="{% if is_external_href %}{{ media_href }}{% else %}{{ media_href | relative_url }}{% endif %}"
-        target="_blank"
-        rel="noopener noreferrer"
         class="home-project-action demo"
         data-demo-embed="{% if is_external_src %}{{ media_src }}{% else %}{{ media_src | relative_url }}{% endif %}"
         data-demo-title="{{ media_title | escape }}">
-        Demo
+        Watch Demo
       </a>
       {% endif %}
     </div>
@@ -133,8 +131,6 @@
       {% if media_type == 'video' %}
       <a
         href="{% if is_external_href %}{{ media_href }}{% else %}{{ media_href | relative_url }}{% endif %}"
-        target="_blank"
-        rel="noopener noreferrer"
         class="home-video-link"
         aria-label="Watch demo: {{ media_title }}"
         data-demo-embed="{% if is_external_src %}{{ media_src }}{% else %}{{ media_src | relative_url }}{% endif %}"
