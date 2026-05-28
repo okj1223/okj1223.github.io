@@ -1439,7 +1439,7 @@ body.home-page .home-project-item {
 
 @media (min-width: 981px) {
   body.home-page .home-project-card {
-    grid-template-columns: minmax(0, 1.2fr) minmax(420px, 1fr) !important;
+    grid-template-columns: minmax(0, 1.04fr) minmax(440px, 0.96fr) !important;
     grid-template-areas:
       "content media"
       "actions media" !important;
@@ -1448,7 +1448,31 @@ body.home-page .home-project-item {
     align-items: stretch !important;
     min-height: 390px !important;
     padding: 0 !important;
+    isolation: isolate !important;
     transition: transform 140ms ease, box-shadow 140ms ease, border-color 140ms ease !important;
+  }
+
+  body.home-page .home-project-card::before {
+    z-index: 3 !important;
+  }
+
+  body.home-page .home-project-card::after {
+    content: "" !important;
+    position: absolute !important;
+    inset: 0 !important;
+    display: block !important;
+    clear: none !important;
+    background: linear-gradient(
+      90deg,
+      rgba(251, 248, 243, 0.99) 0%,
+      rgba(251, 248, 243, 0.99) 45%,
+      rgba(251, 248, 243, 0.9) 55%,
+      rgba(251, 248, 243, 0.54) 65%,
+      rgba(251, 248, 243, 0.08) 78%,
+      rgba(251, 248, 243, 0) 100%
+    ) !important;
+    pointer-events: none !important;
+    z-index: 1 !important;
   }
 
   body.home-page .home-project-card:hover {
@@ -1458,6 +1482,8 @@ body.home-page .home-project-item {
 
   body.home-page .home-project-link {
     padding: 1.55rem 1.6rem 0 1.7rem !important;
+    position: relative !important;
+    z-index: 2 !important;
   }
 
   body.home-page .home-project-content {
@@ -1518,6 +1544,8 @@ body.home-page .home-project-item {
   body.home-page .home-project-actions {
     padding: 0 1.6rem 1.3rem 1.7rem !important;
     align-self: end !important;
+    position: relative !important;
+    z-index: 2 !important;
   }
 
   body.home-page .home-project-action {
@@ -1529,14 +1557,14 @@ body.home-page .home-project-item {
     align-self: stretch !important;
     height: 100% !important;
     min-height: 100% !important;
-    width: calc(100% + 1.15rem) !important;
-    margin-left: -1.15rem !important;
+    width: calc(100% + 6rem) !important;
+    margin-left: -6rem !important;
     padding: 0 !important;
     border-radius: 0 28px 28px 0 !important;
     box-shadow: none !important;
     border: 0 !important;
     position: relative !important;
-    z-index: 1 !important;
+    z-index: 0 !important;
   }
 
   body.home-page .home-video-link,
@@ -1555,19 +1583,8 @@ body.home-page .home-project-item {
 
   body.home-page .home-video-wrapper::before,
   body.home-page .home-image-wrapper::before {
-    content: "" !important;
-    position: absolute !important;
-    inset: 0 auto 0 0 !important;
-    width: clamp(5rem, 9vw, 9.5rem) !important;
-    background: linear-gradient(
-      90deg,
-      rgba(238, 229, 218, 0.98) 0%,
-      rgba(238, 229, 218, 0.76) 34%,
-      rgba(238, 229, 218, 0.34) 66%,
-      rgba(238, 229, 218, 0) 100%
-    ) !important;
-    pointer-events: none !important;
-    z-index: 1 !important;
+    content: none !important;
+    display: none !important;
   }
 
   body.home-page .home-video-poster,

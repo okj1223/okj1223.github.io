@@ -27,7 +27,7 @@
 {% elsif include.project.thumbnail-img %}
   {% assign media_type = 'image' %}
   {% assign media_href = include.project.url %}
-  {% assign media_src = include.project.thumbnail-img %}
+  {% assign media_src = include.project.card_image | default: include.project.thumbnail-img %}
   {% assign media_alt = include.project.title %}
   {% assign media_title = card_title %}
 {% endif %}

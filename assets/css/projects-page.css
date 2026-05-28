@@ -2001,7 +2001,7 @@ body.projects-page .home-project-item {
 @media (min-width: 769px) {
   body.projects-page .home-project-card {
     display: grid !important;
-    grid-template-columns: minmax(0, 1.2fr) minmax(380px, 1fr) !important;
+    grid-template-columns: minmax(0, 1.04fr) minmax(420px, 0.96fr) !important;
     grid-template-areas:
       "content media"
       "actions media" !important;
@@ -2010,7 +2010,31 @@ body.projects-page .home-project-item {
     align-items: stretch !important;
     min-height: 350px !important;
     padding: 0 !important;
+    isolation: isolate !important;
     transition: transform 140ms ease, box-shadow 140ms ease, border-color 140ms ease !important;
+  }
+
+  body.projects-page .home-project-card::before {
+    z-index: 3 !important;
+  }
+
+  body.projects-page .home-project-card::after {
+    content: "" !important;
+    position: absolute !important;
+    inset: 0 !important;
+    display: block !important;
+    clear: none !important;
+    background: linear-gradient(
+      90deg,
+      rgba(251, 248, 243, 0.99) 0%,
+      rgba(251, 248, 243, 0.99) 45%,
+      rgba(251, 248, 243, 0.9) 55%,
+      rgba(251, 248, 243, 0.54) 65%,
+      rgba(251, 248, 243, 0.08) 78%,
+      rgba(251, 248, 243, 0) 100%
+    ) !important;
+    pointer-events: none !important;
+    z-index: 1 !important;
   }
 
   body.projects-page .home-project-card:hover {
@@ -2021,6 +2045,8 @@ body.projects-page .home-project-item {
   body.projects-page .home-project-link {
     grid-area: content !important;
     padding: 1.35rem 1.2rem 0 1.4rem !important;
+    position: relative !important;
+    z-index: 2 !important;
   }
 
   body.projects-page .home-project-content {
@@ -2083,6 +2109,8 @@ body.projects-page .home-project-item {
     grid-area: actions !important;
     padding: 0 1.2rem 1.15rem 1.4rem !important;
     align-self: end !important;
+    position: relative !important;
+    z-index: 2 !important;
   }
 
   body.projects-page .home-project-action {
@@ -2095,14 +2123,14 @@ body.projects-page .home-project-item {
     align-self: stretch !important;
     height: 100% !important;
     min-height: 100% !important;
-    width: calc(100% + 1rem) !important;
-    margin-left: -1rem !important;
+    width: calc(100% + 5.5rem) !important;
+    margin-left: -5.5rem !important;
     padding: 0 !important;
     border-radius: 0 20px 20px 0 !important;
     box-shadow: none !important;
     border: 0 !important;
     position: relative !important;
-    z-index: 1 !important;
+    z-index: 0 !important;
   }
 
   body.projects-page .home-video-link,
@@ -2121,19 +2149,8 @@ body.projects-page .home-project-item {
 
   body.projects-page .home-video-wrapper::before,
   body.projects-page .home-image-wrapper::before {
-    content: "" !important;
-    position: absolute !important;
-    inset: 0 auto 0 0 !important;
-    width: clamp(4.5rem, 8vw, 8.5rem) !important;
-    background: linear-gradient(
-      90deg,
-      rgba(238, 229, 218, 0.98) 0%,
-      rgba(238, 229, 218, 0.74) 34%,
-      rgba(238, 229, 218, 0.32) 66%,
-      rgba(238, 229, 218, 0) 100%
-    ) !important;
-    pointer-events: none !important;
-    z-index: 1 !important;
+    content: none !important;
+    display: none !important;
   }
 
   body.projects-page .home-video-poster,

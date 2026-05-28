@@ -8,6 +8,9 @@ card_description: "Research assistant work at Robros on master-arm and MANUS glo
 share-description: "Research assistant work at Robros on master-arm and glove-based teleoperation, dataset QA, and hybrid imitation-learning / reinforcement-learning support for humanoid warehouse manipulation."
 subtitle: "Research assistant work at Robros on master-arm and glove-based teleoperation, dataset QA, and hybrid imitation-learning / reinforcement-learning support for humanoid warehouse manipulation."
 thumbnail-img: /project/robros-humanoid-manipulation-data-pipeline/system-overview.svg
+card_image: /assets/img/robotics-lounge-banner.png
+card_media_fit: cover
+card_media_position: center center
 permalink: /projects/robros-humanoid-manipulation-data-pipeline/
 filter_categories:
   - robotics
