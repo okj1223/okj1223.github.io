@@ -59,12 +59,16 @@ skills:
     image: /assets/img/logo_pytorch.webp
     alt: PyTorch
   - category: Frameworks
+    name: YOLO
+    image: /assets/img/logo_yolo.svg
+    alt: YOLO
+  - category: Frameworks
     name: Scikit-learn
     image: /assets/img/logo_scikit.png
     alt: Scikit-learn
   - category: Web & Mobile
     name: HTML/CSS
-    image: /assets/img/logo_htmlcss.jpg
+    image: /assets/img/logo_htmlcss.png
     alt: HTML
   - category: Web & Mobile
     name: Android
@@ -90,13 +94,25 @@ skills:
     name: Linux
     image: /assets/img/logo_linux.png
     alt: Linux
+  - category: Cloud & Backend
+    name: Vercel
+    image: /assets/img/logo_vercel.svg
+    alt: Vercel
+  - category: Cloud & Backend
+    name: Supabase
+    image: /assets/img/logo_supabase.svg
+    alt: Supabase
+  - category: Cloud & Backend
+    name: Tailscale
+    image: /assets/img/logo_tailscale.svg
+    alt: Tailscale
   - category: CAD
     name: AutoCAD
     image: /assets/img/logo_cad.webp
     alt: AutoCAD
   - category: CAD
     name: Inventor
-    image: /assets/img/logo_in.jpg
+    image: /assets/img/logo_in.png
     alt: Inventor
   - category: CAD
     name: Fusion

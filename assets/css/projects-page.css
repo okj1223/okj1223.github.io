@@ -1291,14 +1291,74 @@ body.projects-page .home-project-item {
  font-weight: 500;
  font-family: 'Inter', sans-serif;
  transition: var(--smooth-transition);
+ background: rgba(255, 255, 255, 0.78) !important;
+ color: rgba(43, 37, 32, 0.74) !important;
+ border: 1px solid rgba(84, 61, 43, 0.14) !important;
 }
 
-.home-tech-tag.ai { background: rgba(135, 206, 235, 0.15); color: #4a90a4; }
-.home-tech-tag.prog { background: rgba(127, 179, 211, 0.15); color: #5d8aa8; }
-.home-tech-tag.comm { background: rgba(168, 216, 168, 0.15); color: #6b9b6b; }
-.home-tech-tag.design { background: rgba(196, 164, 132, 0.15); color: #8b7355; }
-.home-tech-tag.data { background: rgba(147, 112, 147, 0.15); color: #735773; }
-.home-tech-tag.eng { background: rgba(205, 133, 63, 0.15); color: #8b5a2b; }
+.home-tech-tag.ai {
+ background: rgba(49, 130, 206, 0.13) !important;
+ color: #25658f !important;
+ border-color: rgba(49, 130, 206, 0.28) !important;
+}
+
+.home-tech-tag.prog {
+ background: rgba(79, 70, 229, 0.11) !important;
+ color: #4d46a3 !important;
+ border-color: rgba(79, 70, 229, 0.24) !important;
+}
+
+.home-tech-tag.prog.ros,
+.home-tech-tag.ros {
+ background: rgba(21, 101, 192, 0.14) !important;
+ color: #185b9f !important;
+ border-color: rgba(21, 101, 192, 0.3) !important;
+}
+
+.home-tech-tag.comm {
+ background: rgba(15, 118, 110, 0.12) !important;
+ color: #167267 !important;
+ border-color: rgba(15, 118, 110, 0.26) !important;
+}
+
+.home-tech-tag.data {
+ background: rgba(126, 87, 194, 0.12) !important;
+ color: #6847a3 !important;
+ border-color: rgba(126, 87, 194, 0.26) !important;
+}
+
+.home-tech-tag.eng,
+.home-tech-tag.fluid,
+.home-tech-tag.precision {
+ background: rgba(194, 107, 47, 0.13) !important;
+ color: #8f5427 !important;
+ border-color: rgba(194, 107, 47, 0.28) !important;
+}
+
+.home-tech-tag.design,
+.home-tech-tag.manu {
+ background: rgba(139, 111, 64, 0.13) !important;
+ color: #765b32 !important;
+ border-color: rgba(139, 111, 64, 0.26) !important;
+}
+
+.home-tech-tag.robot-hw {
+ background: rgba(71, 85, 105, 0.13) !important;
+ color: #465265 !important;
+ border-color: rgba(71, 85, 105, 0.28) !important;
+}
+
+.home-tech-tag.sensor {
+ background: rgba(8, 126, 139, 0.12) !important;
+ color: #0d6f7a !important;
+ border-color: rgba(8, 126, 139, 0.28) !important;
+}
+
+.home-tech-tag.system {
+ background: rgba(76, 94, 72, 0.13) !important;
+ color: #4e6549 !important;
+ border-color: rgba(76, 94, 72, 0.27) !important;
+}
 
 .home-tech-tag:hover {
  transform: translateY(-2px);
@@ -2001,7 +2061,7 @@ body.projects-page .home-project-item {
 @media (min-width: 769px) {
   body.projects-page .home-project-card {
     display: grid !important;
-    grid-template-columns: minmax(0, 1.04fr) minmax(420px, 0.96fr) !important;
+    grid-template-columns: minmax(0, 0.95fr) minmax(450px, 1.05fr) !important;
     grid-template-areas:
       "content media"
       "actions media" !important;
@@ -2030,7 +2090,7 @@ body.projects-page .home-project-item {
 
   body.projects-page .home-project-link {
     grid-area: content !important;
-    padding: 1.35rem 1.2rem 0 1.4rem !important;
+    padding: 1.3rem 1rem 0 1.25rem !important;
     position: relative !important;
     z-index: 2 !important;
   }
@@ -2093,7 +2153,7 @@ body.projects-page .home-project-item {
 
   body.projects-page .home-project-actions {
     grid-area: actions !important;
-    padding: 0 1.2rem 1.15rem 1.4rem !important;
+    padding: 0 1rem 1.1rem 1.25rem !important;
     align-self: end !important;
     position: relative !important;
     z-index: 2 !important;

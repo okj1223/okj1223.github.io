@@ -3750,6 +3750,10 @@ p, h1, h2, h3, h4, h5, h6, li, td, th, span, a, label {
   background: linear-gradient(135deg, #5d737e, #7a8e96); /* 다크그레이 → 미디움그레이 */
 }
 
+.unified-skills-grid .skill-item[data-category="Cloud & Backend"]::before {
+  background: linear-gradient(135deg, #6f8f9f, #8fc7b5);
+}
+
 .unified-skills-grid .skill-item[data-category="CAD"]::before {
   background: linear-gradient(135deg, #9dbf9d, #b8d4b8); /* 세이지그린 → 라이트세이지 */
 }
