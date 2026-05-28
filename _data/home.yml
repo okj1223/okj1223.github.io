@@ -153,45 +153,46 @@ career:
     start: 2017-03-01
     end: 2024-02-29
     institution: Incheon National University
+    map_url: "https://www.google.com/maps/search/?api=1&query=Incheon%20National%20University"
     summary: B.Eng. in Environmental Engineering (Major), Minor in Renewable Energy Engineering
     date: Mar. 2017 - Feb. 2024
   - type: career
     start: 2023-06-01
     end: 2023-08-31
     institution: Greenhouse Gas Inventory & Research Center of Korea (Ministry of Environment)
+    map_url: "https://www.google.com/maps/search/?api=1&query=Greenhouse%20Gas%20Inventory%20and%20Research%20Center%20of%20Korea%20Ministry%20of%20Environment"
     summary: Internship - Legal Advisory Support on GHG Regulations and Reporting Systems
     date: Jun. 2023 - Aug. 2023
   - type: career
     start: 2023-11-01
     end: 2025-03-31
     institution: Geesco Co., Ltd. - R&D Center
+    map_url: "https://www.google.com/maps/search/?api=1&query=Geesco%20Co.%20Ltd.%20R%26D%20Center%20Korea"
     summary: Senior Mechanical Engineer (Deputy Manager)
     date: Nov. 2023 - Mar. 2025
-  - type: education
-    start: 2024-08-01
-    end: 2026-07-31
-    institution: Academic Credit Bank System, South Korea
-    summary: B.Eng. in Mechatronics Engineering (In Progress)
-    date: Aug. 2024 - Jul. 2026
   - type: education
     start: 2025-03-01
     end: 2025-09-30
     institution: Doosan Robotics AI Robot Training Program
+    map_url: "https://www.google.com/maps/search/?api=1&query=Doosan%20Robotics"
     summary: Intensive Training in AI, ML, DL, RNN, Python, and ROS2
     date: Mar. 2025 - Sep. 2025
   - type: education
     start: 2025-09-01
     end: 2025-11-30
     institution: CIA (Cebu International Academy) / GLC (Global Language Cebu), Philippines
+    map_url: "https://www.google.com/maps/search/?api=1&query=CIA%20Cebu%20International%20Academy%20GLC%20Global%20Language%20Cebu%20Philippines"
     summary: English Language Study Program
     date: Sep. 2025 - Nov. 2025
   - type: career
     start: 2026-03-01
     institution: ROBROS
+    map_url: "https://www.google.com/maps/search/?api=1&query=ROBROS%20Korea"
     summary: Research Assistant - Data Collection & Inspection, Humanoid Robot AI Training
     date: Mar. 2026 - Present
   - type: education
     start: 2026-09-01
     institution: National Taiwan University
+    map_url: "https://www.google.com/maps/search/?api=1&query=National%20Taiwan%20University"
     summary: Incoming M.S. Program in Mechanical Engineering, System Control Group
     date: Sep. 2026 - Incoming

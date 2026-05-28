@@ -810,6 +810,36 @@ main.container-fluid {
   font-weight: 500 !important;
 }
 
+.career-institution-link {
+  display: inline-flex !important;
+  align-items: baseline !important;
+  gap: 0.35rem !important;
+  text-decoration: none !important;
+  transition: color 140ms ease !important;
+}
+
+.career-institution-link::after {
+  content: "Map" !important;
+  font-family: 'Sora', sans-serif !important;
+  font-size: 0.58rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.08em !important;
+  text-transform: uppercase !important;
+  color: var(--robot-bronze) !important;
+  opacity: 0.74 !important;
+}
+
+.career-institution-link:hover,
+.career-institution-link:focus {
+  color: var(--robot-wood) !important;
+  text-decoration: none !important;
+}
+
+.career-institution-link:hover::after,
+.career-institution-link:focus::after {
+  opacity: 1 !important;
+}
+
 .career-date {
   color: var(--robot-bronze) !important;
   letter-spacing: 0.06em !important;
@@ -1320,6 +1350,12 @@ main.container-fluid {
     border-radius: 14px !important;
   }
 
+  body.home-page .home-video-wrapper.media-fit-contain .home-video-poster,
+  body.home-page .home-image-wrapper.media-fit-contain img {
+    object-fit: cover !important;
+    padding: 0 !important;
+  }
+
   body.home-page .home-video-overlay {
     padding: 0.8rem !important;
   }
@@ -1392,6 +1428,12 @@ main.container-fluid {
     align-items: stretch !important;
     min-height: 468px !important;
     padding: 0 !important;
+    transition: transform 140ms ease, box-shadow 140ms ease, border-color 140ms ease !important;
+  }
+
+  body.home-page .home-project-card:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 24px 56px rgba(14, 10, 8, 0.16) !important;
   }
 
   body.home-page .home-project-link {
@@ -1443,12 +1485,22 @@ main.container-fluid {
 
   body.home-page .home-video-wrapper.media-fit-contain .home-video-poster,
   body.home-page .home-image-wrapper.media-fit-contain img {
-    object-fit: contain !important;
+    object-fit: cover !important;
+    padding: 0 !important;
   }
 
   body.home-page .home-video-overlay {
     align-items: flex-end !important;
     justify-content: flex-start !important;
     padding: 1.25rem !important;
+  }
+
+  body.home-page .home-image-link:hover img,
+  body.home-page .home-video-link:hover .home-video-poster {
+    transform: none !important;
+  }
+
+  body.home-page .home-video-link:hover .home-video-badge {
+    transform: none !important;
   }
 }

@@ -10,7 +10,18 @@
         <ul class="career-list">
           {% for item in career_entries %}
           <li data-type="{{ item.type | escape_once }}">
+            {% if item.map_url %}
+            <a
+              class="career-institution career-institution-link"
+              href="{{ item.map_url | escape_once }}"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Open map for {{ item.institution | escape_once }}">
+              {{ item.institution | escape_once }}
+            </a>
+            {% else %}
             <span class="career-institution">{{ item.institution | escape_once }}</span>
+            {% endif %}
             <p class="career-summary">{{ item.summary | escape_once }}</p>
             <span class="career-date">{{ item.date | escape_once }}</span>
           </li>
@@ -23,7 +34,18 @@
         <ul class="career-list">
           {% for item in education_entries %}
           <li data-type="{{ item.type | escape_once }}">
+            {% if item.map_url %}
+            <a
+              class="career-institution career-institution-link"
+              href="{{ item.map_url | escape_once }}"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Open map for {{ item.institution | escape_once }}">
+              {{ item.institution | escape_once }}
+            </a>
+            {% else %}
             <span class="career-institution">{{ item.institution | escape_once }}</span>
+            {% endif %}
             <p class="career-summary">{{ item.summary | escape_once }}</p>
             <span class="career-date">{{ item.date | escape_once }}</span>
           </li>
