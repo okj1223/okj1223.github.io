@@ -12,8 +12,16 @@ js:
 {% if site.banner-img %}
 <div id="banner" data-banner-image="{{ site.banner-img | relative_url }}" style="background-image: url('{{ site.banner-img | relative_url }}');">
   <div class="banner-overlay">
-    <h1 class="banner-title">{{ site.banner-title }}</h1>
-    <p class="banner-subtitle">{{ site.banner-subtitle }}</p>
+    <h1 class="banner-title" aria-label="{{ site.banner-title }}">
+      <span>Robotics</span>
+      <span>Systems</span>
+      <span>for Real</span>
+      <span>Environments</span>
+    </h1>
+    <p class="banner-subtitle">
+      <span>Manipulation / Mobility / Autonomy</span>
+      <span class="banner-subtitle-tail">Industrial Automation</span>
+    </p>
     <p class="banner-name">{{ site.banner-name }}</p>
     <div class="banner-extra">
       <p class="banner-line1">{{ site.banner-line1 }}</p>
