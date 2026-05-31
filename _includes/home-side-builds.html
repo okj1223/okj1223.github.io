@@ -1,0 +1,71 @@
+{% assign side_builds = site.data.home.side_builds %}
+{% if side_builds and side_builds.size > 0 %}
+<section class="side-builds-section" aria-labelledby="side-builds-title">
+  <div class="side-builds-container">
+    <div class="side-builds-header">
+      <p class="side-builds-kicker">Side Builds</p>
+      <h2 id="side-builds-title">Small tools built around real workflow friction.</h2>
+      <p>Personal systems, utilities, and experiments that show how I turn repeated pain points into usable software.</p>
+    </div>
+
+    <div class="side-builds-grid">
+      {% for build in side_builds %}
+      <article class="side-build-card">
+        <div class="side-build-card-top">
+          <div class="side-build-mark{% if build.image %} has-image{% else %} has-symbol{% endif %}" aria-hidden="true">
+            {% if build.image %}
+            <img src="{{ build.image | relative_url }}" alt="{{ build.alt | default: build.name }}" loading="lazy">
+            {% elsif build.icon %}
+            <i class="{{ build.icon }}"></i>
+            {% else %}
+            <span>{{ build.visual_label | default: build.name | slice: 0, 2 }}</span>
+            {% endif %}
+          </div>
+          <div class="side-build-meta">
+            <span>{{ build.kicker }}</span>
+            <strong>{{ build.status }}</strong>
+          </div>
+        </div>
+
+        <h3>{{ build.name }}</h3>
+        <p class="side-build-description">{{ build.description }}</p>
+
+        {% if build.highlights %}
+        <ul class="side-build-highlights">
+          {% for highlight in build.highlights %}
+          <li>{{ highlight }}</li>
+          {% endfor %}
+        </ul>
+        {% endif %}
+
+        {% if build.tags %}
+        <div class="side-build-tags" aria-label="{{ build.name }} technology tags">
+          {% for tag in build.tags %}
+          <span>{{ tag }}</span>
+          {% endfor %}
+        </div>
+        {% endif %}
+
+        {% assign report_url = build.report_url | default: build.page_url %}
+        {% if report_url or build.repo_url %}
+        <div class="side-build-actions">
+          {% if report_url %}
+          <a class="side-build-link" href="{{ report_url | relative_url }}" aria-label="Open {{ build.name }} technical report">
+            <i class="fa-solid fa-file-lines" aria-hidden="true"></i>
+            <span>{{ build.report_label | default: "View Report" }}</span>
+          </a>
+          {% endif %}
+          {% if build.repo_url %}
+          <a class="side-build-link{% if report_url %} secondary{% endif %}" href="{{ build.repo_url }}" target="_blank" rel="noopener noreferrer" aria-label="Open {{ build.name }} repository">
+            <i class="fa-brands fa-github" aria-hidden="true"></i>
+            <span>View Repo</span>
+          </a>
+          {% endif %}
+        </div>
+        {% endif %}
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}

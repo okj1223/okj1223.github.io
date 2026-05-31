@@ -11,6 +11,76 @@ featured_projects:
   - /projects/turtlebot3-autonomous-system/
   - /projects/automated-mixing-system/
 
+side_builds:
+  - name: Notion Printer
+    kicker: Document Automation
+    status: Active build
+    image: /assets/img/side-builds/notion-printer.png
+    alt: Notion Printer logo
+    description: A personal desktop and web utility that turns exported Notion pages into clean, print-ready HTML documents with preview, packaging, and layout tooling.
+    report_url: /side-builds/notion-printer/
+    repo_url: "https://github.com/okj1223/notion_printer"
+    highlights:
+      - Notion export to print-ready HTML pipeline
+      - Preview launcher and desktop shortcuts
+      - Packaging flow for team-friendly installs
+    tags:
+      - Python
+      - HTML/CSS
+      - Document Automation
+      - Desktop Tooling
+  - name: LifeOS
+    kicker: Personal Systems
+    status: Private PWA
+    image: /assets/img/side-builds/lifeos.png
+    alt: LifeOS logo
+    description: A private personal operating system for capture, planning, execution, review, habits, knowledge management, search, archive, export, and mobile-friendly quick capture.
+    report_url: /side-builds/lifeos/
+    repo_url: "https://github.com/okj1223/LifeOS"
+    highlights:
+      - Owner-only app guard with Supabase Auth
+      - Goals, projects, tasks, reviews, habits, and resources
+      - Install-friendly PWA with offline quick capture
+    tags:
+      - Next.js
+      - Supabase
+      - PWA
+      - Workflow Systems
+  - name: Weaveflow
+    kicker: AI Workflow Kernel
+    status: Automation POC
+    image: /assets/img/side-builds/weaveflow.png
+    alt: Weaveflow logo
+    description: A local-first AI work factory for starting, checking, cancelling, and recovering long-running Codex work from OpenClaw/Discord while preserving local artifacts, checkpoints, and Korean reports.
+    report_url: /side-builds/weaveflow/
+    repo_url: "https://github.com/okj1223/weaveflow"
+    highlights:
+      - Remote OpenClaw/Codex control for long-running work
+      - Company and overnight profiles split work into checkpointed segments
+      - Runtime, preflight, policy, and quality gates block fake delegation
+    tags:
+      - Python
+      - CLI
+      - SQLite
+      - OpenClaw/Codex
+  - name: Smart Learn
+    kicker: Multi-Deck Study PWA
+    status: Personal study app
+    image: /assets/img/side-builds/smartlearn.png
+    alt: Smart Learn logo
+    description: A self-hosted multi-deck study player built after notebook-style study workflows became too brittle, with keyboard-friendly review, English-only TTS, mobile PWA access, and local progress tracking.
+    report_url: /side-builds/smartlearn/
+    repo_url: "https://github.com/okj1223/toefl/tree/main/smartlearn"
+    highlights:
+      - Runs from a lightweight Python server and opens in desktop, mini window, or phone PWA
+      - Keyboard, swipe, and TTS controls make hands-light study practical
+      - Smart mode prioritizes due, weak, recovery, relearning, attention, and new cards
+    tags:
+      - Python
+      - SQLite
+      - PWA
+      - Tailscale
+
 academic_logos:
   - image: /assets/img/logos/partners/academic/incheon-national-university.png
     alt: Incheon National University Logo

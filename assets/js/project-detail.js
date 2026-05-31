@@ -10,6 +10,36 @@ document.addEventListener('DOMContentLoaded', function() {
   function optimizeContentMedia(root) {
     if (!root) return;
 
+    function handleBrokenImage(img) {
+      if (img.dataset.missingHandled === 'true') return;
+      img.dataset.missingHandled = 'true';
+
+      const fallback = document.createElement('div');
+      fallback.className = 'project-missing-media';
+      if (img.classList.contains('flowchart') || img.classList.contains('diagram') || img.classList.contains('architecture')) {
+        fallback.classList.add('flowchart');
+      }
+      fallback.setAttribute('role', 'note');
+
+      const title = document.createElement('strong');
+      title.textContent = img.getAttribute('alt') || 'Project visual';
+
+      const status = document.createElement('span');
+      status.textContent = 'Visual asset pending';
+
+      const source = img.getAttribute('src');
+      fallback.appendChild(title);
+      fallback.appendChild(status);
+
+      if (source) {
+        const code = document.createElement('code');
+        code.textContent = source;
+        fallback.appendChild(code);
+      }
+
+      img.replaceWith(fallback);
+    }
+
     root.querySelectorAll('img').forEach((img) => {
       if (!img.hasAttribute('loading')) {
         img.setAttribute('loading', 'lazy');
@@ -17,6 +47,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
       if (!img.hasAttribute('decoding')) {
         img.setAttribute('decoding', 'async');
+      }
+
+      img.addEventListener('error', () => handleBrokenImage(img), { once: true });
+      if (img.complete && img.naturalWidth === 0) {
+        handleBrokenImage(img);
       }
     });
 
@@ -104,7 +139,14 @@ document.addEventListener('DOMContentLoaded', function() {
       const target = document.getElementById(targetId);
       
       if (target) {
-        const offsetTop = target.getBoundingClientRect().top + window.pageYOffset - 100;
+        const fixedNav = document.querySelector('.navbar-custom');
+        const navHeight = fixedNav ? fixedNav.getBoundingClientRect().height : 0;
+        const tocStyle = tocSidebar ? window.getComputedStyle(tocSidebar) : null;
+        const tocHeight = tocSidebar && tocStyle && tocStyle.position === 'sticky'
+          ? tocSidebar.getBoundingClientRect().height
+          : 0;
+        const scrollOffset = navHeight + (window.innerWidth <= 960 ? tocHeight + 12 : 24);
+        const offsetTop = target.getBoundingClientRect().top + window.pageYOffset - scrollOffset;
         setActiveLink(targetId);
         window.scrollTo({
           top: offsetTop,

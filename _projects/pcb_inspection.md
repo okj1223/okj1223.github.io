@@ -394,7 +394,7 @@ Calculation result:
 
 <figure markdown="0">
   <img class="project-image"
-       src="{{ '/project/pcb_inspection_robot/conveyor_3d_modeling.gif' | relative_url }}"
+       src="{{ '/project/pcb_inspection/conveyor_3d_modeling.gif' | relative_url }}"
        alt="3D modeling process of conveyor frame"
        loading="lazy">
   <figcaption>Figure 3.1: 3D modeling process of conveyor frame using Fusion software. Structural optimization design considering PLA material properties</figcaption>

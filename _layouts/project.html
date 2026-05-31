@@ -152,8 +152,10 @@ layout: base
 
 <section class="project-back">
   <div class="container">
-    <a href="{{ '/projects/' | relative_url }}" class="button view-all-button">
-      &larr; Back to Projects
+    {% assign project_back_url = page.back_url | default: '/projects/' %}
+    {% assign project_back_label = page.back_label | default: 'Back to Projects' %}
+    <a href="{{ project_back_url | relative_url }}" class="button view-all-button">
+      &larr; {{ project_back_label }}
     </a>
   </div>
 </section>
