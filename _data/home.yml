@@ -9,7 +9,7 @@ focus_areas:
 featured_projects:
   - /projects/robros-humanoid-manipulation-data-pipeline/
   - /projects/turtlebot3-autonomous-system/
-  - /projects/automated-mixing-system/
+  - /projects/automated-catalyst-cleaning/
 
 side_builds:
   - name: Notion Printer

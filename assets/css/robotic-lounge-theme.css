@@ -2606,3 +2606,1116 @@ body.home-page .home-project-item {
     font-size: 0.63rem !important;
   }
 }
+
+/* Final mobile balance pass: compact dense sections without dropping core project media. */
+@media (max-width: 768px) {
+  body.home-page,
+  body.home-page *,
+  body.home-page *::before,
+  body.home-page *::after {
+    box-sizing: border-box !important;
+  }
+
+  html,
+  body.home-page {
+    max-width: 100vw !important;
+    overflow-x: hidden !important;
+  }
+
+  body.home-page .home-focus-section,
+  body.home-page .logo-section,
+  body.home-page .home-projects-section,
+  body.home-page .side-builds-section,
+  body.home-page .certifications,
+  body.home-page .career-bio-section,
+  body.home-page .section-divider {
+    padding-left: 0.7rem !important;
+    padding-right: 0.7rem !important;
+  }
+
+  body.home-page .home-focus-shell,
+  body.home-page .logo-stack,
+  body.home-page .home-projects-container,
+  body.home-page .career-bio-box,
+  body.home-page .certifications .container {
+    width: 100% !important;
+    max-width: 100% !important;
+    border-radius: 14px !important;
+    padding: 0.85rem !important;
+  }
+
+  body.home-page .home-projects-container {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  body.home-page .logo-section {
+    margin-bottom: 1rem !important;
+    padding-top: 0.65rem !important;
+    padding-bottom: 0.65rem !important;
+  }
+
+  body.home-page .logo-stack {
+    gap: 0.42rem !important;
+    padding: 0 !important;
+    box-shadow: none !important;
+    border: 0 !important;
+    background: transparent !important;
+  }
+
+  body.home-page .logo-row {
+    width: 100% !important;
+    column-gap: 0.55rem !important;
+    row-gap: 0.34rem !important;
+  }
+
+  body.home-page .logo-row--academic,
+  body.home-page .logo-row--company {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  body.home-page .logo-row--academic .logo-card:first-child,
+  body.home-page .logo-row--academic .logo-card:nth-child(2) {
+    grid-column: auto !important;
+  }
+
+  body.home-page .logo-card {
+    min-height: 2rem !important;
+    align-items: center !important;
+    justify-content: center !important;
+    justify-self: stretch !important;
+  }
+
+  body.home-page .logo-section .logo-row--academic .logo-img,
+  body.home-page .logo-section .logo-row--company .logo-img,
+  body.home-page .logo-row--academic .logo-img,
+  body.home-page .logo-row--company .logo-img {
+    width: 100% !important;
+    max-width: none !important;
+    object-fit: contain !important;
+    object-position: center center !important;
+  }
+
+  body.home-page .logo-section .logo-row--academic .logo-img--inu,
+  body.home-page .logo-row--academic .logo-img--inu {
+    height: 1.75rem !important;
+  }
+
+  body.home-page .logo-section .logo-row--academic .logo-img--ntu,
+  body.home-page .logo-row--academic .logo-img--ntu {
+    height: 2.15rem !important;
+  }
+
+  body.home-page .logo-section .logo-row--company .logo-img--envgo,
+  body.home-page .logo-section .logo-row--company .logo-img--ge,
+  body.home-page .logo-row--company .logo-img--envgo,
+  body.home-page .logo-row--company .logo-img--ge {
+    height: 1.45rem !important;
+  }
+
+  body.home-page .logo-section .logo-row--company .logo-img--doosan,
+  body.home-page .logo-row--company .logo-img--doosan {
+    height: 1.22rem !important;
+  }
+
+  body.home-page .logo-section .logo-row--company .logo-img--robros,
+  body.home-page .logo-row--company .logo-img--robros {
+    height: 0.96rem !important;
+  }
+
+  body.home-page .home-focus-section {
+    margin: 1rem 0 1.15rem !important;
+  }
+
+  body.home-page .home-focus-header {
+    margin-bottom: 0.7rem !important;
+  }
+
+  body.home-page .home-focus-kicker {
+    margin-bottom: 0.28rem !important;
+    font-size: 0.55rem !important;
+    letter-spacing: 0.08em !important;
+  }
+
+  body.home-page .home-focus-header h2 {
+    max-width: 18rem !important;
+    font-size: 1.04rem !important;
+    line-height: 1.16 !important;
+  }
+
+  body.home-page .home-focus-header p {
+    max-width: 20rem !important;
+    margin-top: 0.38rem !important;
+    font-size: 0.68rem !important;
+    line-height: 1.42 !important;
+  }
+
+  body.home-page .home-focus-grid {
+    gap: 0.45rem !important;
+  }
+
+  body.home-page .home-focus-card {
+    padding: 0.58rem 0.62rem !important;
+    border-radius: 11px !important;
+    box-shadow: 0 7px 16px rgba(18, 14, 11, 0.055) !important;
+  }
+
+  body.home-page .home-focus-card h3 {
+    margin-bottom: 0.24rem !important;
+    font-size: 0.78rem !important;
+    line-height: 1.18 !important;
+  }
+
+  body.home-page .home-focus-card p {
+    font-size: 0.64rem !important;
+    line-height: 1.35 !important;
+  }
+
+  body.home-page .projects-section-title {
+    margin-bottom: 0.42rem !important;
+    font-size: 1.16rem !important;
+  }
+
+  body.home-page .projects-section-subtitle {
+    max-width: 20rem !important;
+    margin-bottom: 0.85rem !important;
+    font-size: 0.68rem !important;
+    line-height: 1.42 !important;
+  }
+
+  body.home-page .home-project-card {
+    gap: 0.52rem !important;
+    padding: 0.62rem !important;
+    border-radius: 13px !important;
+  }
+
+  body.home-page .home-project-link,
+  body.home-page .home-project-actions {
+    padding: 0 !important;
+  }
+
+  body.home-page .home-project-content,
+  body.home-page .home-project-title,
+  body.home-page .home-project-description {
+    text-align: left !important;
+  }
+
+  body.home-page .home-project-meta,
+  body.home-page .home-project-tech,
+  body.home-page .home-project-actions {
+    justify-content: flex-start !important;
+  }
+
+  body.home-page .home-project-title {
+    font-size: 0.98rem !important;
+    line-height: 1.14 !important;
+    margin-bottom: 0.38rem !important;
+  }
+
+  body.home-page .home-project-description {
+    display: -webkit-box !important;
+    -webkit-box-orient: vertical !important;
+    -webkit-line-clamp: 2 !important;
+    overflow: hidden !important;
+    font-size: 0.68rem !important;
+    line-height: 1.38 !important;
+    margin-bottom: 0.46rem !important;
+  }
+
+  body.home-page .home-project-impact {
+    display: none !important;
+  }
+
+  body.home-page .home-project-tech .home-tech-tag:nth-child(n+5) {
+    display: none !important;
+  }
+
+  body.home-page .home-project-media {
+    display: block !important;
+    width: 100% !important;
+    height: clamp(6.4rem, 31vw, 8.2rem) !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    padding: 0.22rem !important;
+    border-radius: 11px !important;
+    background: rgba(255, 255, 255, 0.55) !important;
+    box-shadow: none !important;
+    border: 1px solid rgba(90, 68, 49, 0.08) !important;
+  }
+
+  body.home-page .home-video-link,
+  body.home-page .home-image-link,
+  body.home-page .home-video-wrapper,
+  body.home-page .home-image-wrapper {
+    height: 100% !important;
+    min-height: 0 !important;
+    border-radius: 9px !important;
+  }
+
+  body.home-page .home-video-wrapper,
+  body.home-page .home-image-wrapper {
+    aspect-ratio: auto !important;
+  }
+
+  body.home-page .home-video-poster,
+  body.home-page .home-image-wrapper img,
+  body.home-page .home-image-link:hover img,
+  body.home-page .home-video-link:not(.home-media-static):hover .home-video-poster {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: var(--media-object-position, center center) !important;
+    transform: none !important;
+    -webkit-mask-image: none !important;
+    mask-image: none !important;
+  }
+
+  body.home-page .home-video-wrapper.media-fit-contain .home-video-poster,
+  body.home-page .home-image-wrapper.media-fit-contain img {
+    object-fit: contain !important;
+    padding: 0.28rem !important;
+  }
+
+  body.home-page .home-project-action {
+    min-width: 0 !important;
+    padding: 0.38rem 0.54rem !important;
+    border-radius: 9px !important;
+    font-size: 0.58rem !important;
+  }
+
+  body.home-page .certifications {
+    margin-top: 0 !important;
+  }
+
+  body.home-page .certifications h2,
+  body.home-page .career-title {
+    margin: 0 0 0.75rem !important;
+    padding-bottom: 0 !important;
+    font-size: 1.06rem !important;
+    line-height: 1.15 !important;
+  }
+
+  body.home-page .certifications h2::after,
+  body.home-page .career-title::after {
+    display: none !important;
+  }
+
+  body.home-page .cert-list {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 0.52rem !important;
+    max-width: 100% !important;
+  }
+
+  body.home-page .cert-item {
+    min-width: 0 !important;
+    flex: none !important;
+  }
+
+  body.home-page .cert-card {
+    height: 6.7rem !important;
+    border-radius: 11px !important;
+    box-shadow: 0 8px 18px rgba(18, 14, 11, 0.08) !important;
+  }
+
+  body.home-page .cert-overlay {
+    padding: 1.2rem 0.38rem 0.38rem !important;
+  }
+
+  body.home-page .cert-name {
+    display: block !important;
+    font-size: 0.55rem !important;
+    line-height: 1.12 !important;
+  }
+
+  body.home-page .cert-details {
+    display: none !important;
+  }
+
+  body.home-page .career-bio-section {
+    padding-top: 0 !important;
+    padding-bottom: 1.4rem !important;
+  }
+
+  body.home-page .career-columns {
+    gap: 0.72rem !important;
+  }
+
+  body.home-page .career-group-title {
+    margin-bottom: 0.45rem !important;
+    font-size: 0.6rem !important;
+    letter-spacing: 0.04em !important;
+  }
+
+  body.home-page .career-list {
+    gap: 0.46rem !important;
+  }
+
+  body.home-page .career-list li,
+  body.home-page .career-list li[data-type="education"],
+  body.home-page .career-list li[data-type="career"] {
+    padding: 0.58rem 0.64rem !important;
+    border-left-width: 3px !important;
+    border-radius: 11px !important;
+    box-shadow: 0 7px 16px rgba(18, 14, 11, 0.055) !important;
+  }
+
+  body.home-page .career-list li:hover {
+    transform: none !important;
+  }
+
+  body.home-page .career-institution {
+    font-size: 0.72rem !important;
+    line-height: 1.24 !important;
+  }
+
+  body.home-page .career-summary {
+    margin-top: 0.24rem !important;
+    font-size: 0.62rem !important;
+    line-height: 1.35 !important;
+  }
+
+  body.home-page .career-date {
+    margin-top: 0.25rem !important;
+    font-size: 0.52rem !important;
+    line-height: 1.2 !important;
+    letter-spacing: 0.035em !important;
+  }
+
+  body.home-page .section-divider {
+    margin: 1.25rem auto !important;
+  }
+}
+
+@media (max-width: 420px) {
+  body.home-page .home-focus-section,
+  body.home-page .logo-section,
+  body.home-page .home-projects-section,
+  body.home-page .side-builds-section,
+  body.home-page .certifications,
+  body.home-page .career-bio-section,
+  body.home-page .section-divider {
+    padding-left: 0.55rem !important;
+    padding-right: 0.55rem !important;
+  }
+
+  body.home-page .home-focus-shell,
+  body.home-page .career-bio-box,
+  body.home-page .certifications .container {
+    padding: 0.72rem !important;
+  }
+
+  body.home-page .logo-section .logo-row--academic .logo-img--inu,
+  body.home-page .logo-row--academic .logo-img--inu {
+    height: 1.58rem !important;
+  }
+
+  body.home-page .logo-section .logo-row--academic .logo-img--ntu,
+  body.home-page .logo-row--academic .logo-img--ntu {
+    height: 1.92rem !important;
+  }
+
+  body.home-page .logo-section .logo-row--company .logo-img--envgo,
+  body.home-page .logo-section .logo-row--company .logo-img--ge,
+  body.home-page .logo-row--company .logo-img--envgo,
+  body.home-page .logo-row--company .logo-img--ge {
+    height: 1.26rem !important;
+  }
+
+  body.home-page .logo-section .logo-row--company .logo-img--doosan,
+  body.home-page .logo-row--company .logo-img--doosan {
+    height: 1.08rem !important;
+  }
+
+  body.home-page .logo-section .logo-row--company .logo-img--robros,
+  body.home-page .logo-row--company .logo-img--robros {
+    height: 0.86rem !important;
+  }
+
+  body.home-page .home-project-media {
+    height: 6.2rem !important;
+  }
+
+  body.home-page .cert-card {
+    height: 5.95rem !important;
+  }
+}
+
+/* Compact footer, stable skill filtering, and less-cropped project media. */
+.unified-skills-grid .skill-item {
+  --skill-accent: #aa7e57;
+  --skill-accent-2: #e3c8ab;
+  transition:
+    opacity 160ms ease,
+    filter 160ms ease,
+    transform 160ms ease,
+    border-color 160ms ease,
+    box-shadow 160ms ease,
+    background 160ms ease !important;
+}
+
+.unified-skills-grid .skill-item[data-category="Programming"] {
+  --skill-accent: #4d8db7;
+  --skill-accent-2: #8ed0ef;
+}
+
+.unified-skills-grid .skill-item[data-category="AI/ML"] {
+  --skill-accent: #6f79c6;
+  --skill-accent-2: #b8c5f4;
+}
+
+.unified-skills-grid .skill-item[data-category="Robotics"] {
+  --skill-accent: #3b8f8a;
+  --skill-accent-2: #91d2c8;
+}
+
+.unified-skills-grid .skill-item[data-category="Web & Mobile"] {
+  --skill-accent: #2d92be;
+  --skill-accent-2: #b7ddec;
+}
+
+.unified-skills-grid .skill-item[data-category="Embedded & IoT"] {
+  --skill-accent: #b47b44;
+  --skill-accent-2: #e3bc8d;
+}
+
+.unified-skills-grid .skill-item[data-category="Cloud & Infrastructure"] {
+  --skill-accent: #507d92;
+  --skill-accent-2: #8fc7b5;
+}
+
+.unified-skills-grid .skill-item[data-category="DevOps"] {
+  --skill-accent: #586d78;
+  --skill-accent-2: #9aabb3;
+}
+
+.unified-skills-grid .skill-item[data-category="CAD"] {
+  --skill-accent: #6f9d6f;
+  --skill-accent-2: #b8d4b8;
+}
+
+.unified-skills-grid .skill-item[data-category="Creative Tools"] {
+  --skill-accent: #be7582;
+  --skill-accent-2: #e7b5c0;
+}
+
+.unified-skills-grid .skill-item::before {
+  background: linear-gradient(135deg, var(--skill-accent), var(--skill-accent-2)) !important;
+}
+
+.unified-skills-grid .skill-item::after {
+  content: "" !important;
+  position: absolute !important;
+  inset: 0.38rem !important;
+  border-radius: 16px !important;
+  border: 1px solid transparent !important;
+  pointer-events: none !important;
+  transition: border-color 160ms ease, box-shadow 160ms ease, opacity 160ms ease !important;
+  opacity: 0 !important;
+}
+
+.skills-section.is-filtered .unified-skills-grid .skill-item {
+  opacity: 0.32 !important;
+  filter: grayscale(0.55) saturate(0.48) !important;
+  transform: scale(0.96) !important;
+  box-shadow: 0 8px 20px rgba(17, 13, 10, 0.045) !important;
+}
+
+.skills-section.is-filtered .unified-skills-grid .skill-item.is-selected {
+  opacity: 1 !important;
+  filter: none !important;
+  transform: translateY(-2px) !important;
+  border-color: color-mix(in srgb, var(--skill-accent) 46%, transparent) !important;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(249, 244, 238, 0.94)),
+    linear-gradient(135deg, color-mix(in srgb, var(--skill-accent) 18%, transparent), transparent) !important;
+  box-shadow: 0 16px 36px color-mix(in srgb, var(--skill-accent) 18%, rgba(17, 13, 10, 0.1)) !important;
+}
+
+.skills-section.is-filtered .unified-skills-grid .skill-item.is-selected::after {
+  opacity: 1 !important;
+  border-color: color-mix(in srgb, var(--skill-accent) 36%, transparent) !important;
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--skill-accent-2) 40%, transparent) !important;
+}
+
+.skills-section.is-filtered .unified-skills-grid .skill-item.is-dimmed img,
+.skills-section.is-filtered .unified-skills-grid .skill-item.is-dimmed .skill-name {
+  opacity: 0.68 !important;
+}
+
+.filter-btn {
+  --filter-accent: #4b3626;
+  --filter-accent-2: #181311;
+}
+
+.filter-btn[data-filter="Programming"] {
+  --filter-accent: #4d8db7;
+  --filter-accent-2: #8ed0ef;
+}
+
+.filter-btn[data-filter="AI/ML"] {
+  --filter-accent: #6f79c6;
+  --filter-accent-2: #b8c5f4;
+}
+
+.filter-btn[data-filter="Robotics"] {
+  --filter-accent: #3b8f8a;
+  --filter-accent-2: #91d2c8;
+}
+
+.filter-btn[data-filter="Web & Mobile"] {
+  --filter-accent: #2d92be;
+  --filter-accent-2: #b7ddec;
+}
+
+.filter-btn[data-filter="Embedded & IoT"] {
+  --filter-accent: #b47b44;
+  --filter-accent-2: #e3bc8d;
+}
+
+.filter-btn[data-filter="Cloud & Infrastructure"] {
+  --filter-accent: #507d92;
+  --filter-accent-2: #8fc7b5;
+}
+
+.filter-btn[data-filter="DevOps"] {
+  --filter-accent: #586d78;
+  --filter-accent-2: #9aabb3;
+}
+
+.filter-btn[data-filter="CAD"] {
+  --filter-accent: #6f9d6f;
+  --filter-accent-2: #b8d4b8;
+}
+
+.filter-btn[data-filter="Creative Tools"] {
+  --filter-accent: #be7582;
+  --filter-accent-2: #e7b5c0;
+}
+
+.filter-btn.active,
+.filter-btn:hover {
+  background: linear-gradient(135deg, var(--filter-accent), var(--filter-accent-2)) !important;
+  color: #ffffff !important;
+  border-color: transparent !important;
+  box-shadow: 0 8px 18px color-mix(in srgb, var(--filter-accent) 20%, transparent) !important;
+}
+
+@media (min-width: 981px) {
+  body.home-page .home-video-poster,
+  body.home-page .home-image-wrapper img,
+  body.home-page .home-image-link:hover img,
+  body.home-page .home-video-link:not(.home-media-static):hover .home-video-poster {
+    transform: none !important;
+    object-position: var(--media-object-position, center center) !important;
+  }
+
+  body.home-page .home-video-wrapper.media-fit-contain .home-video-poster,
+  body.home-page .home-image-wrapper.media-fit-contain img {
+    object-fit: contain !important;
+    padding: 1rem !important;
+  }
+}
+
+@media (max-width: 768px) {
+  body.home-page .home-project-media {
+    aspect-ratio: 16 / 9 !important;
+    height: auto !important;
+    min-height: 0 !important;
+    padding: 0.22rem !important;
+  }
+
+  body.home-page .home-video-poster,
+  body.home-page .home-image-wrapper img,
+  body.home-page .home-image-link:hover img,
+  body.home-page .home-video-link:not(.home-media-static):hover .home-video-poster {
+    object-fit: contain !important;
+    object-position: var(--media-object-position, center center) !important;
+    transform: none !important;
+    -webkit-mask-image: none !important;
+    mask-image: none !important;
+  }
+
+  body.home-page .home-video-wrapper,
+  body.home-page .home-image-wrapper {
+    background:
+      linear-gradient(180deg, rgba(248, 252, 253, 0.98), rgba(228, 238, 243, 0.92)) !important;
+  }
+
+  body.home-page .skill-filter {
+    min-height: 1.9rem !important;
+  }
+
+  body.home-page .skill-filter,
+  body.home-page .skill-filter * {
+    scrollbar-width: none !important;
+  }
+
+  body.home-page .skill-filter::-webkit-scrollbar {
+    display: none !important;
+  }
+}
+
+.eco-footer {
+  margin-top: 2.5rem !important;
+}
+
+.footer-ambient {
+  padding: 1.3rem 0 0.9rem !important;
+}
+
+.footer-ambient-copy {
+  gap: 0.35rem !important;
+}
+
+.footer-ambient-kicker {
+  font-size: 0.58rem !important;
+  letter-spacing: 0.14em !important;
+}
+
+.footer-ambient-text {
+  max-width: 48rem !important;
+  font-size: clamp(0.86rem, 1.35vw, 1.12rem) !important;
+  line-height: 1.35 !important;
+}
+
+.footer-content {
+  padding: 1.25rem 0 0.35rem !important;
+}
+
+.footer-section {
+  margin-bottom: 0.75rem !important;
+}
+
+.footer-profile {
+  padding: 0 !important;
+}
+
+.profile-avatar {
+  margin-bottom: 0.5rem !important;
+}
+
+.avatar-circle {
+  width: 48px !important;
+  height: 48px !important;
+}
+
+.profile-name {
+  margin-bottom: 0.25rem !important;
+  font-size: 1rem !important;
+}
+
+.profile-name::after {
+  display: none !important;
+}
+
+.profile-title {
+  margin-bottom: 0.35rem !important;
+  font-size: 0.72rem !important;
+}
+
+.eco-footer .profile-description {
+  max-width: 18rem !important;
+  font-size: 0.68rem !important;
+  line-height: 1.38 !important;
+}
+
+.footer-section-title {
+  margin-bottom: 0.55rem !important;
+  font-size: 0.82rem !important;
+}
+
+.footer-links li {
+  margin-bottom: 0.22rem !important;
+}
+
+.footer-link {
+  gap: 0.32rem !important;
+  padding: 0.14rem 0 !important;
+  font-size: 0.72rem !important;
+}
+
+.social-networks {
+  gap: 0.42rem !important;
+  margin-bottom: 0.6rem !important;
+}
+
+.social-link {
+  gap: 0.55rem !important;
+  padding: 0.38rem 0.5rem !important;
+  border-radius: 10px !important;
+}
+
+.social-icon {
+  width: 1.85rem !important;
+  height: 1.85rem !important;
+  font-size: 0.82rem !important;
+}
+
+.social-label,
+.contact-text {
+  font-size: 0.7rem !important;
+}
+
+.contact-info {
+  margin-top: 0.45rem !important;
+}
+
+.contact-item {
+  gap: 0.42rem !important;
+  margin-bottom: 0.35rem !important;
+  padding: 0.34rem 0.42rem !important;
+  border-radius: 9px !important;
+}
+
+.footer-bottom {
+  margin-top: 0.75rem !important;
+  padding-top: 0.65rem !important;
+}
+
+.copyright-text,
+.powered-by {
+  font-size: 0.64rem !important;
+}
+
+.tech-stack {
+  gap: 0.42rem !important;
+  margin-bottom: 0.24rem !important;
+}
+
+.tech-item {
+  font-size: 0.9rem !important;
+}
+
+@media (max-width: 768px) {
+  .eco-footer {
+    margin-top: 1.4rem !important;
+  }
+
+  .footer-ambient {
+    display: none !important;
+  }
+
+  .footer-content {
+    padding: 0.55rem 0 0.22rem !important;
+  }
+
+  .footer-section {
+    margin-bottom: 0.32rem !important;
+    padding: 0 0.25rem !important;
+  }
+
+  .footer-profile {
+    display: grid !important;
+    grid-template-columns: auto minmax(0, 1fr) !important;
+    grid-template-areas:
+      "avatar name"
+      "avatar title" !important;
+    column-gap: 0.58rem !important;
+    align-items: center !important;
+    text-align: left !important;
+    max-width: 16rem !important;
+    margin: 0 auto !important;
+  }
+
+  .profile-avatar {
+    grid-area: avatar !important;
+    margin: 0 !important;
+  }
+
+  .avatar-circle {
+    width: 1.8rem !important;
+    height: 1.8rem !important;
+  }
+
+  .profile-name {
+    grid-area: name !important;
+    margin: 0 !important;
+    font-size: 0.7rem !important;
+    line-height: 1.15 !important;
+  }
+
+  .profile-title {
+    grid-area: title !important;
+    margin: 0.14rem 0 0 !important;
+    font-size: 0.5rem !important;
+    line-height: 1.2 !important;
+  }
+
+  .eco-footer .profile-description {
+    display: none !important;
+  }
+
+  .footer-section-title {
+    display: none !important;
+  }
+
+  .footer-links {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    gap: 0.18rem 0.5rem !important;
+  }
+
+  .footer-links li {
+    margin: 0 !important;
+  }
+
+  .footer-link {
+    padding: 0 !important;
+    font-size: 0.55rem !important;
+  }
+
+  .social-networks {
+    flex-direction: row !important;
+    justify-content: center !important;
+    gap: 0.32rem !important;
+    margin-bottom: 0.15rem !important;
+  }
+
+  .social-link {
+    width: 1.72rem !important;
+    height: 1.72rem !important;
+    padding: 0 !important;
+    justify-content: center !important;
+    border-radius: 999px !important;
+  }
+
+  .social-icon {
+    width: 100% !important;
+    height: 100% !important;
+    font-size: 0.68rem !important;
+  }
+
+  .social-label {
+    display: none !important;
+  }
+
+  .contact-info {
+    display: none !important;
+  }
+
+  .footer-bottom {
+    margin-top: 0.25rem !important;
+    padding-top: 0.3rem !important;
+  }
+
+  .copyright-info,
+  .footer-credits {
+    margin: 0 !important;
+    text-align: center !important;
+  }
+
+  .copyright-text,
+  .powered-by {
+    font-size: 0.49rem !important;
+    line-height: 1.25 !important;
+  }
+
+  .tech-stack {
+    display: none !important;
+  }
+
+  .back-to-top {
+    width: 2.18rem !important;
+    height: 2.18rem !important;
+    right: 0.58rem !important;
+    bottom: 0.58rem !important;
+  }
+
+  .back-to-top-icon {
+    font-size: 0.48rem !important;
+    letter-spacing: 0.06em !important;
+  }
+}
+
+/* Filter-driven skill highlight: one selected category color, no per-card rings. */
+.skills-section {
+  --active-skill-accent: #4b3626;
+  --active-skill-accent-2: #181311;
+  --active-skill-ink: #ffffff;
+}
+
+.skills-section[data-active-filter="Programming"] {
+  --active-skill-accent: #3f86b5;
+  --active-skill-accent-2: #8ed0ef;
+}
+
+.skills-section[data-active-filter="AI/ML"] {
+  --active-skill-accent: #686ed0;
+  --active-skill-accent-2: #b8c5f4;
+}
+
+.skills-section[data-active-filter="Robotics"] {
+  --active-skill-accent: #2f9b93;
+  --active-skill-accent-2: #92d7cf;
+}
+
+.skills-section[data-active-filter="Web & Mobile"] {
+  --active-skill-accent: #208fbd;
+  --active-skill-accent-2: #b7ddec;
+}
+
+.skills-section[data-active-filter="Embedded & IoT"] {
+  --active-skill-accent: #b7793e;
+  --active-skill-accent-2: #e3bc8d;
+}
+
+.skills-section[data-active-filter="Cloud & Infrastructure"] {
+  --active-skill-accent: #477d97;
+  --active-skill-accent-2: #8fc7b5;
+}
+
+.skills-section[data-active-filter="DevOps"] {
+  --active-skill-accent: #596f7b;
+  --active-skill-accent-2: #9aabb3;
+}
+
+.skills-section[data-active-filter="CAD"] {
+  --active-skill-accent: #679968;
+  --active-skill-accent-2: #b8d4b8;
+}
+
+.skills-section[data-active-filter="Creative Tools"] {
+  --active-skill-accent: #bd6f80;
+  --active-skill-accent-2: #e7b5c0;
+}
+
+.skills-section .unified-skills-grid .skill-item {
+  --skill-accent: #a98b70;
+  --skill-accent-2: #e5d8ca;
+}
+
+.skills-section.is-filtered .unified-skills-grid .skill-item.is-selected {
+  --skill-accent: var(--active-skill-accent);
+  --skill-accent-2: var(--active-skill-accent-2);
+  opacity: 1 !important;
+  filter: none !important;
+  transform: translateY(-3px) !important;
+  border-color: color-mix(in srgb, var(--active-skill-accent) 18%, rgba(255, 255, 255, 0.5)) !important;
+  background:
+    radial-gradient(circle at 50% -10%, color-mix(in srgb, var(--active-skill-accent-2) 46%, transparent) 0%, transparent 48%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(250, 246, 241, 0.94)) !important;
+  box-shadow:
+    0 18px 34px color-mix(in srgb, var(--active-skill-accent) 24%, transparent),
+    inset 0 1px 0 rgba(255, 255, 255, 0.78) !important;
+}
+
+.skills-section.is-filtered .unified-skills-grid .skill-item.is-dimmed {
+  --skill-accent: #b8aa9b;
+  --skill-accent-2: #e7ded4;
+  opacity: 0.22 !important;
+  filter: grayscale(0.9) saturate(0.42) !important;
+  transform: scale(0.965) !important;
+  border-color: rgba(90, 68, 49, 0.055) !important;
+  box-shadow: 0 6px 16px rgba(17, 13, 10, 0.035) !important;
+}
+
+.skills-section .unified-skills-grid .skill-item::after {
+  content: "" !important;
+  position: absolute !important;
+  left: 0.38rem !important;
+  right: auto !important;
+  top: 0.62rem !important;
+  bottom: 0.62rem !important;
+  width: 3px !important;
+  height: auto !important;
+  border: 0 !important;
+  border-radius: 999px !important;
+  background:
+    linear-gradient(180deg, transparent, var(--active-skill-accent-2) 24%, var(--active-skill-accent) 72%, transparent) !important;
+  box-shadow: 0 0 16px color-mix(in srgb, var(--active-skill-accent) 44%, transparent) !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  transform: scaleY(0.42) !important;
+  transition: opacity 160ms ease, transform 160ms ease !important;
+}
+
+.skills-section.is-filtered .unified-skills-grid .skill-item.is-selected::after {
+  opacity: 1 !important;
+  transform: scaleY(1) !important;
+}
+
+.skills-section.is-filtered .unified-skills-grid .skill-item.is-selected img {
+  transform: translateY(-1px) scale(1.08) !important;
+  filter:
+    drop-shadow(0 7px 14px color-mix(in srgb, var(--active-skill-accent) 22%, transparent))
+    saturate(1.05) !important;
+}
+
+.skills-section.is-filtered .unified-skills-grid .skill-item.is-selected .skill-name {
+  color: color-mix(in srgb, var(--active-skill-accent) 72%, #1f1713) !important;
+}
+
+.skills-section.is-filtered .unified-skills-grid .skill-item.is-selected::before {
+  background: linear-gradient(135deg, var(--active-skill-accent), var(--active-skill-accent-2)) !important;
+}
+
+.skills-section.is-filtered .unified-skills-grid .skill-item.is-dimmed::after {
+  opacity: 0 !important;
+}
+
+.skills-section.is-filtered .unified-skills-grid .skill-item:hover:not(.is-selected) {
+  transform: scale(0.965) !important;
+}
+
+.skills-section.is-filtered .unified-skills-grid .skill-item.is-selected:hover {
+  transform: translateY(-4px) !important;
+}
+
+/* Project thumbnails: photos fill the frame; diagrams keep their full shape. */
+body.home-page .home-project-media {
+  overflow: hidden !important;
+}
+
+body.home-page .home-video-wrapper.media-fit-cover,
+body.home-page .home-image-wrapper.media-fit-cover {
+  background: #11100f !important;
+}
+
+body.home-page .home-video-wrapper.media-fit-cover .home-video-poster,
+body.home-page .home-image-wrapper.media-fit-cover img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: var(--media-object-position, center center) !important;
+  padding: 0 !important;
+  transform: none !important;
+  -webkit-mask-image: none !important;
+  mask-image: none !important;
+}
+
+body.home-page .home-video-wrapper.media-fit-contain,
+body.home-page .home-image-wrapper.media-fit-contain {
+  background:
+    radial-gradient(circle at center, rgba(255, 255, 255, 0.92), rgba(228, 238, 243, 0.92)) !important;
+}
+
+body.home-page .home-video-wrapper.media-fit-contain .home-video-poster,
+body.home-page .home-image-wrapper.media-fit-contain img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain !important;
+  object-position: var(--media-object-position, center center) !important;
+  padding: clamp(0.32rem, 1.5vw, 0.8rem) !important;
+  transform: none !important;
+  -webkit-mask-image: none !important;
+  mask-image: none !important;
+}
+
+@media (max-width: 768px) {
+  body.home-page .home-project-media {
+    aspect-ratio: 16 / 9 !important;
+    height: auto !important;
+  }
+
+  body.home-page .home-video-wrapper.media-fit-cover .home-video-poster,
+  body.home-page .home-image-wrapper.media-fit-cover img {
+    object-fit: cover !important;
+  }
+
+  body.home-page .home-video-wrapper.media-fit-contain .home-video-poster,
+  body.home-page .home-image-wrapper.media-fit-contain img {
+    object-fit: contain !important;
+  }
+}
