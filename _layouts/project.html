@@ -2,9 +2,20 @@
 layout: base
 ---
 
+{% assign project_hero_image = page.card_image | default: page.card_video_poster | default: page.thumbnail-img %}
+{% assign project_hero_image_external = false %}
+{% if project_hero_image contains '://' %}
+  {% assign project_hero_image_external = true %}
+{% endif %}
+
 <!-- 상세 페이지 본문 시작 -->
-<section class="project-hero">
+<section
+  class="project-hero{% if project_hero_image %} has-media{% endif %}"
+  {% if project_hero_image %}style="--project-hero-image: url('{% if project_hero_image_external %}{{ project_hero_image }}{% else %}{{ project_hero_image | relative_url }}{% endif %}');"{% endif %}>
   <div class="container">
+    {% if page.category_label %}
+      <p class="project-hero-kicker">{{ page.category_label }}</p>
+    {% endif %}
     <h1 class="project-title">{{ page.title }}</h1>
     {% assign project_subtitle = page.subtitle | default: page.description %}
     {% if project_subtitle %}
@@ -16,7 +27,7 @@ layout: base
 <section class="project-overview">
   <div class="container project-layout">
     <!-- 본문 영역 -->
-    <main class="project-content">
+    <main class="project-content" id="main-content" tabindex="-1">
       {% if page.quick_summary %}
       <section class="project-quick-summary" aria-label="Quick Summary">
         <div class="project-quick-summary-header">
@@ -142,7 +153,7 @@ layout: base
 
     <!-- 자동 TOC 사이드바 -->
     <aside class="project-toc" id="toc-sidebar">
-      <h4>📋 Contents</h4>
+      <h2 class="project-toc-title">Contents</h2>
       <nav id="toc-nav">
         <!-- TOC가 여기에 자동 생성됩니다 -->
       </nav>
@@ -160,6 +171,4 @@ layout: base
   </div>
 </section>
 
-<!-- 🌿 에코 테마 배경 요소들 추가 -->
-{% include eco-leaves.html %}
 {% include bg-grid-pattern.html %}

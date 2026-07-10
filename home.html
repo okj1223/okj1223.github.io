@@ -1,112 +1,20 @@
 ---
-layout: base
+layout: null
 permalink: /home.html
-body-class: home-page
-description: "Portfolio website of Kyungjun Oh, featuring robotics systems, autonomous platforms, AI inspection, and industrial automation projects."
-share-description: "Portfolio website of Kyungjun Oh, featuring robotics systems, autonomous platforms, AI inspection, and industrial automation projects."
-subtitle: "Portfolio website of Kyungjun Oh, featuring robotics systems, autonomous platforms, AI inspection, and industrial automation projects."
-js:
-  - "/assets/js/home-skills.js"
+sitemap: false
 ---
 
-{% if site.banner-img %}
-<div id="banner" data-banner-image="{{ site.banner-img | relative_url }}" style="background-image: url('{{ site.banner-img | relative_url }}');">
-  <div class="banner-overlay">
-    <h1 class="banner-title" aria-label="{{ site.banner-title }}">
-      <span>Robotics</span>
-      <span>Systems</span>
-      <span>for Real</span>
-      <span>Environments</span>
-    </h1>
-    <p class="banner-subtitle">
-      <span>Manipulation / Mobility / Autonomy</span>
-      <span class="banner-subtitle-tail">Industrial Automation</span>
-    </p>
-    <p class="banner-name">{{ site.banner-name }}</p>
-    <div class="banner-extra">
-      <p class="banner-line1">{{ site.banner-line1 }}</p>
-      <p class="banner-line2">{{ site.banner-line2 }}</p>
-    </div>
-  </div>
-</div>
-{% endif %}
-
-{% include home-partner-logos.html %}
-
-{% include bg-grid-pattern.html %}
-
-{% assign focus_areas = site.data.home.focus_areas %}
-{% if focus_areas and focus_areas.size > 0 %}
-<section class="home-focus-section">
-  <div class="container home-focus-shell">
-    <div class="home-focus-header">
-      <p class="home-focus-kicker">Current Focus</p>
-      <h2>Building robotics systems that hold up outside the lab.</h2>
-      <p>I work across hardware, control, perception, and deployment constraints to turn complex engineering problems into reliable systems.</p>
-    </div>
-
-    <div class="home-focus-grid">
-      {% for area in focus_areas %}
-      <article class="home-focus-card">
-        <h3>{{ area.title }}</h3>
-        <p>{{ area.description }}</p>
-      </article>
-      {% endfor %}
-    </div>
-  </div>
-</section>
-{% endif %}
-
-<div class="section-divider">
-  <div class="plant-divider"></div>
-</div>
-
-<section class="home-projects-section">
-  <div class="home-projects-container">
-    <h2 class="projects-section-title">Featured Projects</h2>
-    <p class="projects-section-subtitle">Selected case studies across robot learning, autonomous systems, and industrial automation.</p>
-
-    {% assign featured_project_urls = site.data.home.featured_projects %}
-    {% if featured_project_urls and featured_project_urls.size > 0 %}
-      {% for project_url in featured_project_urls %}
-        {% assign featured_project = site.projects | where: "url", project_url | first %}
-        {% if featured_project %}
-          {% include project-card.html project=featured_project %}
-        {% endif %}
-      {% endfor %}
-    {% else %}
-      {% assign latest_projects = site.projects | sort: "date" | reverse %}
-      {% for project in latest_projects limit: 3 %}
-        {% include project-card.html project=project %}
-      {% endfor %}
-    {% endif %}
-
-    <div class="view-all-projects">
-      <a href="{{ '/projects/' | relative_url }}" class="view-all-button">Browse All Projects →</a>
-    </div>
-  </div>
-</section>
-
-<div class="section-divider">
-  <div class="plant-divider"></div>
-</div>
-
-{% include home-side-builds.html %}
-
-<div class="section-divider">
-  <div class="plant-divider"></div>
-</div>
-
-{% include home-skills.html %}
-
-<div class="section-divider">
-  <div class="plant-divider"></div>
-</div>
-
-{% include home-certifications.html %}
-
-<div class="section-divider">
-  <div class="plant-divider"></div>
-</div>
-
-{% include home-career.html %}
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Portfolio moved | Kyungjun Oh</title>
+  <link rel="canonical" href="{{ '/' | absolute_url }}">
+  <meta http-equiv="refresh" content="0; url={{ '/' | relative_url }}">
+</head>
+<body>
+  <p>This portfolio has moved to <a href="{{ '/' | relative_url }}">the homepage</a>.</p>
+  <script>window.location.replace({{ '/' | relative_url | jsonify }});</script>
+</body>
+</html>

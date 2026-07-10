@@ -3,29 +3,41 @@
   {% assign skill_categories = site.data.home.skills | map: "category" | uniq %}
 {% endunless %}
 
-<section class="skills-section compact-skills">
-  <h2>Core Technical Skills</h2>
+<section class="skills-section compact-skills" aria-labelledby="skills-title">
+  <div class="skills-inner">
+    <header class="home-section-heading skills-header">
+      <p class="home-section-kicker">Capabilities</p>
+      <h2 id="skills-title">Core Technical Skills</h2>
+      <p class="home-section-intro">Tools I use across robotics, automation, perception, and deployment.</p>
+    </header>
 
-  <div class="unified-skills-grid">
-    {% for skill in site.data.home.skills %}
-    <div
-      class="skill-item"
-      data-category="{{ skill.category | escape_once }}"
-      data-categories="{{ skill.categories | join: '||' | escape_once }}">
-      <img
-        src="{{ skill.image | relative_url }}"
-        alt="{{ skill.alt | escape_once }}"
-        loading="lazy"
-        decoding="async">
-      <span class="skill-name">{{ skill.name | escape_once }}</span>
+    <div class="skill-filter-row">
+      <div class="skill-filter" role="group" aria-label="Filter technical skills by category">
+        <button class="filter-btn active" data-filter="all" aria-pressed="true">All</button>
+        {% for category in skill_categories %}
+        <button class="filter-btn" data-filter="{{ category | escape_once }}" aria-pressed="false">{{ category | escape_once }}</button>
+        {% endfor %}
+      </div>
+      <p class="skill-filter-status" id="skillsFilterStatus" aria-live="polite">{{ site.data.home.skills.size }} tools</p>
     </div>
-    {% endfor %}
-  </div>
 
-  <div class="skill-filter">
-    <button class="filter-btn active" data-filter="all" aria-pressed="true">All</button>
-    {% for category in skill_categories %}
-    <button class="filter-btn" data-filter="{{ category | escape_once }}" aria-pressed="false">{{ category | escape_once }}</button>
-    {% endfor %}
+    <div class="unified-skills-grid">
+      {% for skill in site.data.home.skills %}
+      <div
+        class="skill-item"
+        style="--skill-index: {{ forloop.index0 }};"
+        data-category="{{ skill.category | escape_once }}"
+        data-categories="{{ skill.categories | join: '||' | escape_once }}">
+        <span class="skill-icon-frame" aria-hidden="true">
+          <img
+            src="{{ skill.image | relative_url }}"
+            alt=""
+            loading="lazy"
+            decoding="async">
+        </span>
+        <span class="skill-name">{{ skill.name | escape_once }}</span>
+      </div>
+      {% endfor %}
+    </div>
   </div>
 </section>

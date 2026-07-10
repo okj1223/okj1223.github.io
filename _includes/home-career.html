@@ -1,76 +1,27 @@
-<section class="career-bio-section">
+<section class="career-bio-section" aria-labelledby="career-title">
   <div class="career-bio-box">
-    {% assign career_entries = site.data.home.career | where: "type", "career" %}
-    {% assign education_entries = site.data.home.career | where: "type", "education" %}
-    <h3 class="career-title">Career and Education</h3>
+    {% assign career_entries = site.data.home.career | where: "type", "career" | sort: "start" | reverse %}
+    {% assign education_entries = site.data.home.career | where: "type", "education" | sort: "start" | reverse %}
+    <header class="home-section-heading career-header">
+      <p class="home-section-kicker">Background</p>
+      <h2 class="career-title" id="career-title">Career and Education</h2>
+    </header>
 
     <div class="career-columns">
       <section class="career-group" aria-labelledby="career-group-heading">
-        <h4 class="career-group-title" id="career-group-heading">Professional Experience</h4>
+        <h3 class="career-group-title" id="career-group-heading">Professional Experience</h3>
         <ul class="career-list">
           {% for item in career_entries %}
-          <li data-type="{{ item.type | escape_once }}">
-            {% if item.institution_links %}
-            <span class="career-institution career-institution-multi">
-              {% for link in item.institution_links %}
-              <a
-                class="career-institution-link"
-                href="{{ link.map_url | escape_once }}"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Open Google Maps for {{ link.label | escape_once }}">{{ link.label | escape_once }}</a>{% unless forloop.last %}<span class="career-link-separator"> / </span>{% endunless %}
-              {% endfor %}
-            </span>
-            {% elsif item.map_url %}
-            <a
-              class="career-institution career-institution-link"
-              href="{{ item.map_url | escape_once }}"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Open Google Maps for {{ item.institution | escape_once }}">
-              {{ item.institution | escape_once }}
-            </a>
-            {% else %}
-            <span class="career-institution">{{ item.institution | escape_once }}</span>
-            {% endif %}
-            <p class="career-summary">{{ item.summary | escape_once }}</p>
-            <span class="career-date">{{ item.date | escape_once }}</span>
-          </li>
+          {% include career-entry.html item=item %}
           {% endfor %}
         </ul>
       </section>
 
       <section class="career-group" aria-labelledby="education-group-heading">
-        <h4 class="career-group-title" id="education-group-heading">Education and Training</h4>
+        <h3 class="career-group-title" id="education-group-heading">Education and Training</h3>
         <ul class="career-list">
           {% for item in education_entries %}
-          <li data-type="{{ item.type | escape_once }}">
-            {% if item.institution_links %}
-            <span class="career-institution career-institution-multi">
-              {% for link in item.institution_links %}
-              <a
-                class="career-institution-link"
-                href="{{ link.map_url | escape_once }}"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Open Google Maps for {{ link.label | escape_once }}">{{ link.label | escape_once }}</a>{% unless forloop.last %}<span class="career-link-separator"> / </span>{% endunless %}
-              {% endfor %}
-            </span>
-            {% elsif item.map_url %}
-            <a
-              class="career-institution career-institution-link"
-              href="{{ item.map_url | escape_once }}"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Open Google Maps for {{ item.institution | escape_once }}">
-              {{ item.institution | escape_once }}
-            </a>
-            {% else %}
-            <span class="career-institution">{{ item.institution | escape_once }}</span>
-            {% endif %}
-            <p class="career-summary">{{ item.summary | escape_once }}</p>
-            <span class="career-date">{{ item.date | escape_once }}</span>
-          </li>
+          {% include career-entry.html item=item %}
           {% endfor %}
         </ul>
       </section>

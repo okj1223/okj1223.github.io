@@ -27,6 +27,8 @@ common-js:
 <body{% if page.body-class %} class="{{ page.body-class }}"{% endif %}>
   {% include gtm_body.html %}
 
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
   {% include nav.html %}
 
   {{ content }}

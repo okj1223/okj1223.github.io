@@ -1,0 +1,37 @@
+{% assign experience_affiliations = site.data.home.career | where: "type", "career" | where: "show_affiliation", true | sort: "start" | reverse %}
+{% assign education_affiliations = site.data.home.career | where: "type", "education" | where: "show_affiliation", true | sort: "start" | reverse %}
+
+<section class="home-affiliations" aria-labelledby="home-affiliations-title">
+  <div class="home-affiliations-inner">
+    <div class="home-affiliations-intro">
+      <p>Trajectory</p>
+      <h2 id="home-affiliations-title">Experience &amp; Education</h2>
+    </div>
+
+    <section class="affiliation-group" aria-labelledby="experience-affiliations-title">
+      <h3 id="experience-affiliations-title">Work</h3>
+      <ul class="affiliation-list">
+        {% for item in experience_affiliations %}
+        <li aria-label="{{ item.institution | escape_once }}, {{ item.relation | escape_once }}">
+          <img src="{{ item.logo | relative_url }}" alt="" loading="eager" decoding="async">
+          <span class="sr-only">{{ item.institution | escape_once }}</span>
+          <span class="affiliation-relation">{{ item.relation | escape_once }}</span>
+        </li>
+        {% endfor %}
+      </ul>
+    </section>
+
+    <section class="affiliation-group" aria-labelledby="education-affiliations-title">
+      <h3 id="education-affiliations-title">Study &amp; Training</h3>
+      <ul class="affiliation-list">
+        {% for item in education_affiliations %}
+        <li aria-label="{{ item.institution | escape_once }}, {{ item.relation | escape_once }}">
+          <img src="{{ item.logo | relative_url }}" alt="" loading="eager" decoding="async">
+          <span class="sr-only">{{ item.institution | escape_once }}</span>
+          <span class="affiliation-relation">{{ item.relation | escape_once }}</span>
+        </li>
+        {% endfor %}
+      </ul>
+    </section>
+  </div>
+</section>

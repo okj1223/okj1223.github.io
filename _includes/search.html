@@ -2,12 +2,16 @@
 
 <div
   id="beautifuljekyll-search-overlay"
+  role="dialog"
+  aria-modal="true"
+  aria-label="Portfolio search"
+  aria-hidden="true"
   data-search-script="https://unpkg.com/simple-jekyll-search@latest/dest/simple-jekyll-search.min.js"
   data-search-json="{{ site.baseurl }}/assets/data/searchcorpus.json">
 
-  <div id="nav-search-exit" title="Exit search">✕</div>
-  <input type="text" id="nav-search-input" placeholder="Search">
-  <ul id="search-results-container"></ul>
+  <button id="nav-search-exit" type="button" title="Close search" aria-label="Close search">&times;</button>
+  <input type="search" id="nav-search-input" placeholder="Search projects and pages" aria-label="Search projects and pages" autocomplete="off">
+  <ul id="search-results-container" aria-live="polite"></ul>
 </div>
 
 {% endif %}

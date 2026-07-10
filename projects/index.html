@@ -1,31 +1,21 @@
 ---
 layout: projects-list
-title: Projects Portfolio
+title: Projects
 body-class: projects-page
 permalink: /projects/
 description: "Technical portfolio of robotics, AI, control, and industrial automation projects, including recent humanoid manipulation and autonomous system work."
 share-description: "Technical portfolio of robotics, AI, control, and industrial automation projects, including recent humanoid manipulation and autonomous system work."
+share-img: /assets/img/robotics-lounge-banner.webp
 subtitle: "Technical portfolio of robotics, AI, control, and industrial automation projects, including recent humanoid manipulation and autonomous system work."
 ext-css:
   - "https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Inter:wght@300;400;500;600;700&display=swap"
 css:
   - "/assets/css/projects-page.css"
 js:
-  - "/assets/js/eco-panels.js"
   - "/assets/js/projects-page.js"
-eco_progress_nodes:
-  - section: banner
-    icon: star
-  - section: projects
-    icon: wrench
 ---
 
 {% assign project_count = site.projects | size %}
-
-{% include eco-panels.html nodes=page.eco_progress_nodes %}
-
-<!-- 🌿 에코 테마 배경 요소들 -->
-{% include eco-leaves.html %}
 
 {% include bg-grid-pattern.html %}
 
@@ -35,9 +25,9 @@ eco_progress_nodes:
       <span>Robotics / AI Vision / Control</span>
       <span class="banner-subtitle-tail">Industrial Automation</span>
     </p>
-    <h1 class="banner-title" aria-label="Projects Portfolio">
+    <h1 class="banner-title" aria-label="Selected Projects">
+      <span>Selected</span>
       <span>Projects</span>
-      <span>Portfolio</span>
     </h1>
     <p class="banner-name">Kyungjun Oh</p>
     <div class="banner-extra">
@@ -72,7 +62,7 @@ eco_progress_nodes:
    </div>
 
    <!-- 프로젝트 그리드 컨테이너 -->
-   <div id="projectsGrid" class="home-projects-grid">
+   <div id="projectsGrid" class="project-card-list" data-project-card-list>
      {% assign sorted_projects = site.projects | sort: "date" | reverse %}
      {% for project in sorted_projects %}
        {% include project-card.html project=project %}
@@ -85,7 +75,7 @@ eco_progress_nodes:
 
    <!-- 페이지네이션 컨트롤 -->
    <div class="pagination-controls" hidden>
-     <button id="prevBtn" class="pagination-btn" disabled>
+     <button id="prevBtn" class="pagination-btn" type="button" aria-label="Previous page" title="Previous page" disabled>
        <svg viewBox="0 0 24 24" fill="currentColor">
          <path d="M15.41,16.58L10.83,12L15.41,7.41L14,6L8,12L14,18L15.41,16.58Z"/>
        </svg>
@@ -95,19 +85,12 @@ eco_progress_nodes:
      <div class="page-numbers">
      </div>
      
-     <button id="nextBtn" class="pagination-btn">
+     <button id="nextBtn" class="pagination-btn" type="button" aria-label="Next page" title="Next page">
        Next
        <svg viewBox="0 0 24 24" fill="currentColor">
          <path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z"/>
        </svg>
      </button>
-   </div>
-
-   <!-- Back to Home 버튼 -->
-   <div class="view-all-projects">
-     <a href="/home.html" class="view-all-button">
-       🏠 Back to Home
-     </a>
    </div>
 
  </div>

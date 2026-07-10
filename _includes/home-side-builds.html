@@ -2,10 +2,10 @@
 {% if side_builds and side_builds.size > 0 %}
 <section class="side-builds-section" aria-labelledby="side-builds-title">
   <div class="side-builds-container">
-    <div class="side-builds-header">
-      <p class="side-builds-kicker">Side Builds</p>
-      <h2 id="side-builds-title">Small tools built around real workflow friction.</h2>
-      <p>Personal systems, utilities, and experiments that show how I turn repeated pain points into usable software.</p>
+    <div class="side-builds-header home-section-heading">
+      <p class="side-builds-kicker home-section-kicker">Side Builds</p>
+      <h2 id="side-builds-title">Small Tools</h2>
+      <p>Personal utilities and experiments for repeated workflow problems.</p>
     </div>
 
     <div class="side-builds-grid">
@@ -30,14 +30,6 @@
         <h3>{{ build.name }}</h3>
         <p class="side-build-description">{{ build.description }}</p>
 
-        {% if build.highlights %}
-        <ul class="side-build-highlights">
-          {% for highlight in build.highlights %}
-          <li>{{ highlight }}</li>
-          {% endfor %}
-        </ul>
-        {% endif %}
-
         {% if build.tags %}
         <div class="side-build-tags" aria-label="{{ build.name }} technology tags">
           {% for tag in build.tags %}
@@ -50,13 +42,13 @@
         {% if report_url or build.repo_url %}
         <div class="side-build-actions">
           {% if report_url %}
-          <a class="side-build-link" href="{{ report_url | relative_url }}" aria-label="Open {{ build.name }} technical report">
+          <a class="side-build-link" href="{{ report_url | relative_url }}" aria-label="Open {{ build.name }} technical report" title="Open {{ build.name }} report">
             <i class="fa-solid fa-file-lines" aria-hidden="true"></i>
             <span>{{ build.report_label | default: "View Report" }}</span>
           </a>
           {% endif %}
           {% if build.repo_url %}
-          <a class="side-build-link{% if report_url %} secondary{% endif %}" href="{{ build.repo_url }}" target="_blank" rel="noopener noreferrer" aria-label="Open {{ build.name }} repository">
+          <a class="side-build-link{% if report_url %} secondary{% endif %}" href="{{ build.repo_url }}" target="_blank" rel="noopener noreferrer" aria-label="Open {{ build.name }} repository" title="Open {{ build.name }} repository">
             <i class="fa-brands fa-github" aria-hidden="true"></i>
             <span>View Repo</span>
           </a>

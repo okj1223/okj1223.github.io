@@ -1,0 +1,1168 @@
+/* Final portfolio-specific overrides. Loaded after the legacy theme layers. */
+.navbar-custom {
+  position: relative !important;
+  top: auto !important;
+  transform: none !important;
+  height: 68px !important;
+  background: rgba(252, 250, 247, 0.96) !important;
+  box-shadow: 0 8px 24px rgba(22, 20, 18, 0.06) !important;
+}
+
+
+.navbar-custom .navbar-brand {
+  min-height: 68px !important;
+}
+
+.navbar-brand-name {
+  font-size: 1rem !important;
+  letter-spacing: 0 !important;
+}
+
+.navbar-nav .nav-link,
+#nav-search-link {
+  min-height: 44px !important;
+  border-radius: 8px !important;
+}
+
+body.home-page .skills-section {
+  width: 100% !important;
+  max-width: none !important;
+}
+
+body.home-page .skills-inner {
+  width: min(100%, 1180px) !important;
+  margin: 0 auto !important;
+}
+
+.affiliation-group h3 {
+  overflow-wrap: normal !important;
+  word-break: keep-all !important;
+}
+
+body.home-page .cert-list {
+  display: grid !important;
+  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  gap: 1rem !important;
+}
+
+.eco-footer {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.eco-footer .social-networks {
+  flex-direction: row !important;
+  align-items: flex-start !important;
+}
+
+.eco-footer .social-link {
+  flex: 0 0 auto !important;
+}
+
+/* Keep personal utilities visibly secondary to the main project case studies. */
+body.home-page .side-builds-section {
+  padding: 2.75rem 1.5rem !important;
+  background: #f6f3ee !important;
+}
+
+body.home-page .side-builds-container {
+  max-width: 1000px !important;
+}
+
+body.home-page .side-builds-header {
+  max-width: 620px !important;
+  margin: 0 0 1.1rem !important;
+  text-align: left !important;
+}
+
+body.home-page .side-builds-header h2 {
+  margin-bottom: 0.35rem !important;
+  font-size: 1.55rem !important;
+  line-height: 1.2 !important;
+}
+
+body.home-page .side-builds-header > p:last-child {
+  font-size: 0.9rem !important;
+  line-height: 1.5 !important;
+}
+
+body.home-page .side-builds-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  gap: 0.7rem !important;
+}
+
+body.home-page .side-build-card,
+body.home-page .side-build-card:last-child:nth-child(odd) {
+  display: grid !important;
+  grid-template-columns: 40px minmax(0, 1fr) 36px !important;
+  grid-template-areas:
+    "mark title action"
+    "mark meta action"
+    "desc desc desc"
+    "tags tags tags" !important;
+  width: auto !important;
+  min-height: 0 !important;
+  gap: 0.32rem 0.65rem !important;
+  padding: 0.8rem 0.9rem !important;
+  border-radius: 8px !important;
+  background: rgba(255, 255, 255, 0.76) !important;
+  box-shadow: none !important;
+}
+
+body.home-page .side-build-card-top {
+  display: contents !important;
+}
+
+body.home-page .side-build-mark {
+  grid-area: mark !important;
+  width: 40px !important;
+  height: 40px !important;
+  flex: 0 0 40px !important;
+  border-radius: 8px !important;
+  box-shadow: none !important;
+}
+
+body.home-page .side-build-card h3 {
+  grid-area: title !important;
+  align-self: end !important;
+  font-size: 1rem !important;
+  line-height: 1.2 !important;
+}
+
+body.home-page .side-build-meta {
+  grid-area: meta !important;
+  justify-content: flex-start !important;
+  gap: 0.3rem !important;
+}
+
+body.home-page .side-build-meta span {
+  display: none !important;
+}
+
+body.home-page .side-build-meta strong {
+  min-height: 1.15rem !important;
+  padding: 0.12rem 0.32rem !important;
+  font-size: 0.52rem !important;
+  letter-spacing: 0.03em !important;
+}
+
+body.home-page .side-build-description {
+  grid-area: desc !important;
+  display: -webkit-box !important;
+  overflow: hidden !important;
+  -webkit-box-orient: vertical !important;
+  -webkit-line-clamp: 2 !important;
+  font-size: 0.82rem !important;
+  line-height: 1.45 !important;
+}
+
+body.home-page .side-build-highlights {
+  display: none !important;
+}
+
+body.home-page .side-build-tags {
+  grid-area: tags !important;
+  gap: 0.3rem !important;
+  margin-top: 0 !important;
+}
+
+body.home-page .side-build-tags span {
+  min-height: 1.2rem !important;
+  padding: 0.16rem 0.38rem !important;
+  font-size: 0.58rem !important;
+}
+
+body.home-page .side-build-tags span:nth-child(n+4) {
+  display: none !important;
+}
+
+body.home-page .side-build-actions {
+  grid-area: action !important;
+  align-self: center !important;
+  margin: 0 !important;
+}
+
+body.home-page .side-build-link {
+  width: 36px !important;
+  min-width: 36px !important;
+  min-height: 36px !important;
+  padding: 0 !important;
+  border-radius: 8px !important;
+}
+
+body.home-page .side-build-link span {
+  display: none !important;
+}
+
+@media (max-width: 900px) {
+  body.home-page .side-builds-grid {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+}
+
+body.about-page main#main-content {
+  padding-top: 7.5rem !important;
+  padding-bottom: 5rem !important;
+}
+
+@media (max-width: 1199px) {
+  .navbar-custom {
+    height: 60px !important;
+  }
+
+  .navbar-custom .navbar-brand {
+    min-height: 60px !important;
+  }
+
+  .navbar-toggler {
+    width: 44px !important;
+    height: 44px !important;
+    padding: 0 !important;
+    border-radius: 8px !important;
+    background: #fff !important;
+    box-shadow: none !important;
+  }
+
+  .navbar-collapse {
+    top: 60px !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+    max-width: none !important;
+    padding: 0.75rem 1rem 1rem !important;
+    background: #fcfaf7 !important;
+    border: 0 !important;
+    border-bottom: 1px solid rgba(31, 42, 39, 0.12) !important;
+    border-radius: 0 !important;
+    box-shadow: 0 14px 28px rgba(22, 20, 18, 0.12) !important;
+  }
+
+  .navbar-collapse.collapse:not(.show) {
+    display: none !important;
+  }
+
+  .navbar-collapse.collapse.show {
+    display: flex !important;
+  }
+}
+
+@media (max-width: 760px) {
+  body.about-page main#main-content {
+    padding-top: 5.25rem !important;
+    padding-bottom: 3.5rem !important;
+  }
+
+  .about-intro {
+    grid-template-columns: 104px minmax(0, 1fr) !important;
+    align-items: start !important;
+    gap: 1rem !important;
+  }
+
+  .about-portrait {
+    width: 104px !important;
+    height: 136px !important;
+  }
+
+  .about-intro h1 {
+    font-size: 1.85rem !important;
+  }
+
+  .about-lede {
+    font-size: 0.9rem !important;
+    line-height: 1.6 !important;
+  }
+}
+
+@media (max-width: 600px) {
+  body.home-page .home-affiliations {
+    padding: 1.1rem 0.9rem !important;
+  }
+
+  body.home-page .home-focus-section,
+  body.home-page .home-projects-section,
+  body.home-page .career-bio-section,
+  body.home-page .skills-section,
+  body.home-page .side-builds-section,
+  body.home-page .certifications {
+    padding: 3rem 0.9rem !important;
+  }
+
+  body.home-page .home-focus-shell,
+  body.home-page .home-projects-container,
+  body.home-page .career-bio-box,
+  body.home-page .skills-inner,
+  body.home-page .side-builds-container,
+  body.home-page .certifications .container {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  .home-affiliations-inner {
+    display: block !important;
+  }
+
+  .home-affiliations-intro {
+    margin-bottom: 0.9rem !important;
+  }
+
+  .affiliation-group {
+    display: grid !important;
+    grid-template-columns: 76px minmax(0, 1fr) !important;
+    gap: 0.5rem !important;
+    padding: 0.75rem 0 !important;
+    border-top: 1px solid #e0e6e3 !important;
+    border-left: 0 !important;
+  }
+
+  .affiliation-group h3 {
+    font-size: 0.68rem !important;
+    letter-spacing: 0.04em !important;
+  }
+
+  .affiliation-list li {
+    grid-template-rows: 30px auto !important;
+    padding: 0 0.3rem !important;
+  }
+
+  .affiliation-list img {
+    max-width: 80px !important;
+    max-height: 24px !important;
+  }
+
+  .affiliation-relation {
+    font-size: 0.72rem !important;
+    line-height: 1.3 !important;
+  }
+
+  body.home-page .home-focus-header > p:last-child,
+  body.home-page .home-focus-card p,
+  body.home-page .projects-section-subtitle,
+  body.home-page .side-builds-header > p:last-child,
+  body.home-page .side-build-description {
+    font-size: 0.875rem !important;
+    line-height: 1.55 !important;
+  }
+
+  body.home-page .home-focus-card {
+    padding: 1rem !important;
+  }
+
+  body.home-page .home-focus-card h3 {
+    font-size: 0.96rem !important;
+    line-height: 1.35 !important;
+  }
+
+  body.home-page .home-project-category,
+  body.home-page .home-project-year {
+    font-size: 0.68rem !important;
+    line-height: 1.3 !important;
+  }
+
+  body.home-page .home-project-title {
+    font-size: 1.12rem !important;
+    line-height: 1.2 !important;
+  }
+
+  body.home-page .home-project-description {
+    -webkit-line-clamp: 3 !important;
+    font-size: 0.875rem !important;
+    line-height: 1.5 !important;
+  }
+
+  body.home-page .home-impact-value {
+    font-size: 0.9rem !important;
+  }
+
+  body.home-page .home-impact-label {
+    font-size: 0.66rem !important;
+    line-height: 1.25 !important;
+  }
+
+  body.home-page .home-tech-tag,
+  body.home-page .side-build-tags span {
+    font-size: 0.68rem !important;
+    line-height: 1.2 !important;
+  }
+
+  body.home-page .home-project-action,
+  body.home-page .side-build-link {
+    min-height: 40px !important;
+    padding: 0.55rem 0.75rem !important;
+    border-radius: 8px !important;
+    font-size: 0.78rem !important;
+  }
+
+  body.home-page .career-list {
+    gap: 0.65rem !important;
+  }
+
+  body.home-page .career-list li,
+  body.home-page .career-list li[data-type="education"],
+  body.home-page .career-list li[data-type="career"] {
+    padding: 0.9rem !important;
+  }
+
+  .career-entry.has-logo {
+    grid-template-columns: 68px minmax(0, 1fr) !important;
+    gap: 0.75rem !important;
+  }
+
+  .career-logo-frame {
+    width: 68px !important;
+    height: 34px !important;
+  }
+
+  .career-logo-frame img {
+    max-width: 68px !important;
+    max-height: 28px !important;
+  }
+
+  body.home-page .career-institution {
+    font-size: 0.875rem !important;
+    line-height: 1.35 !important;
+  }
+
+  body.home-page .career-relation {
+    font-size: 0.7rem !important;
+  }
+
+  body.home-page .career-summary {
+    font-size: 0.82rem !important;
+    line-height: 1.5 !important;
+  }
+
+  body.home-page .career-date {
+    font-size: 0.75rem !important;
+    line-height: 1.35 !important;
+    letter-spacing: 0.02em !important;
+  }
+
+  body.home-page .side-build-card {
+    padding: 1rem !important;
+  }
+
+  body.home-page .side-build-card h3 {
+    font-size: 1.02rem !important;
+  }
+
+  body.home-page .side-build-description {
+    font-size: 0.875rem !important;
+  }
+
+  body.home-page .side-build-highlights li {
+    font-size: 0.8rem !important;
+    line-height: 1.5 !important;
+  }
+
+  body.home-page .unified-skills-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 0.55rem !important;
+  }
+
+  body.home-page .skill-item {
+    min-height: 78px !important;
+    padding: 0.65rem 0.4rem !important;
+  }
+
+  body.home-page .skill-item img {
+    width: 30px !important;
+    height: 30px !important;
+  }
+
+  body.home-page .skill-name {
+    font-size: 0.75rem !important;
+    line-height: 1.25 !important;
+  }
+
+  body.home-page .skill-filter {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    justify-content: flex-start !important;
+    gap: 0.4rem !important;
+    overflow-x: auto !important;
+    padding: 0.25rem 0 0.55rem !important;
+    scrollbar-width: none !important;
+  }
+
+  body.home-page .skill-filter::-webkit-scrollbar {
+    display: none !important;
+  }
+
+  body.home-page .filter-btn {
+    flex: 0 0 auto !important;
+    min-height: 36px !important;
+    padding: 0.5rem 0.7rem !important;
+    border-radius: 8px !important;
+    font-size: 0.72rem !important;
+    line-height: 1.2 !important;
+  }
+
+  body.home-page .cert-list {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 0.75rem !important;
+  }
+
+  body.home-page .certifications-intro {
+    font-size: 0.875rem !important;
+    line-height: 1.55 !important;
+  }
+
+  body.home-page .cert-name {
+    font-size: 0.75rem !important;
+    line-height: 1.3 !important;
+  }
+
+  .eco-footer .footer-content {
+    padding: 2.75rem 1rem 1rem !important;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1.75rem !important;
+  }
+
+  .eco-footer .profile-description,
+  .footer-availability {
+    font-size: 0.84rem !important;
+  }
+
+  .eco-footer .footer-links {
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+    gap: 0.5rem 1.25rem !important;
+  }
+
+  .eco-footer .footer-link,
+  .eco-footer .social-label {
+    font-size: 0.8rem !important;
+  }
+
+  .eco-footer .footer-bottom {
+    align-items: flex-start !important;
+    flex-direction: column !important;
+    margin-top: 1.75rem !important;
+  }
+
+  .eco-footer .copyright-text,
+  .footer-site-link {
+    font-size: 0.75rem !important;
+  }
+}
+
+/* Cohesive home-page surface and skills interaction system. */
+body.home-page {
+  --home-canvas: #f3f5f3;
+  --home-surface: #fbfcfb;
+  --home-ink: #232925;
+  --home-muted: #61706a;
+  --home-line: #d8dfdc;
+  --home-accent: #2f7064;
+  --home-accent-soft: #e0ece8;
+}
+
+body.home-page main#main-content {
+  background: var(--home-canvas) !important;
+}
+
+body.home-page .home-focus-section,
+body.home-page .home-projects-section,
+body.home-page .side-builds-section,
+body.home-page .skills-section,
+body.home-page .certifications,
+body.home-page .career-bio-section {
+  position: relative !important;
+  margin: 0 !important;
+  border: 0 !important;
+  background: transparent !important;
+}
+
+body.home-page .home-projects-section,
+body.home-page .side-builds-section,
+body.home-page .skills-section,
+body.home-page .certifications,
+body.home-page .career-bio-section {
+  padding-top: clamp(3.5rem, 5.5vw, 4.75rem) !important;
+  padding-bottom: clamp(3.5rem, 5.5vw, 4.75rem) !important;
+}
+
+body.home-page .home-projects-section::before,
+body.home-page .side-builds-section::before,
+body.home-page .skills-section::before,
+body.home-page .certifications::before,
+body.home-page .career-bio-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: min(calc(100% - 3rem), 1180px);
+  height: 1px;
+  background: var(--home-line);
+  transform: translateX(-50%);
+}
+
+body.home-page .home-focus-shell,
+body.home-page .home-projects-container,
+body.home-page .side-builds-container,
+body.home-page .skills-inner,
+body.home-page .certifications .container,
+body.home-page .career-bio-box {
+  width: min(calc(100% - 3rem), 1180px) !important;
+  max-width: 1180px !important;
+  margin-right: auto !important;
+  margin-left: auto !important;
+}
+
+body.home-page .home-projects-container {
+  width: 100% !important;
+}
+
+body.home-page .home-section-heading {
+  width: min(100%, 720px) !important;
+  margin: 0 auto 2.1rem !important;
+  text-align: center !important;
+}
+
+body.home-page .home-section-kicker,
+body.home-page .home-focus-kicker,
+body.home-page .side-builds-kicker {
+  margin: 0 0 0.55rem !important;
+  color: var(--home-accent) !important;
+  font-family: 'Sora', sans-serif !important;
+  font-size: 0.72rem !important;
+  font-weight: 700 !important;
+  line-height: 1.35 !important;
+  letter-spacing: 0 !important;
+  text-transform: uppercase !important;
+}
+
+body.home-page .home-section-heading h2,
+body.home-page .skills-section h2,
+body.home-page .certifications h2,
+body.home-page .career-title,
+body.home-page .side-builds-header h2 {
+  margin: 0 !important;
+  color: var(--home-ink) !important;
+  font-family: 'Sora', sans-serif !important;
+  font-size: clamp(1.65rem, 2.5vw, 2.1rem) !important;
+  font-weight: 750 !important;
+  line-height: 1.2 !important;
+  letter-spacing: 0 !important;
+}
+
+body.home-page .home-section-heading h2::after,
+body.home-page .skills-section h2::after,
+body.home-page .certifications h2::after,
+body.home-page .career-title::after {
+  display: none !important;
+}
+
+body.home-page .home-section-intro,
+body.home-page .home-section-heading > p:last-child,
+body.home-page .side-builds-header > p:last-child,
+body.home-page .certifications-intro {
+  max-width: 660px !important;
+  margin: 0.65rem auto 0 !important;
+  padding: 0 !important;
+  color: var(--home-muted) !important;
+  font-family: 'Sora', sans-serif !important;
+  font-size: 0.92rem !important;
+  line-height: 1.65 !important;
+  letter-spacing: 0 !important;
+}
+
+body.home-page .home-focus-card,
+body.home-page .home-project-card,
+body.home-page .side-build-card,
+body.home-page .skill-item,
+body.home-page .career-list li,
+body.home-page .cert-card {
+  border: 1px solid var(--home-line) !important;
+  border-radius: 8px !important;
+  background: var(--home-surface) !important;
+  box-shadow: 0 10px 28px rgba(32, 48, 42, 0.05) !important;
+}
+
+body.home-page .skills-inner {
+  max-width: 1080px !important;
+}
+
+body.home-page .skill-filter-row {
+  display: grid !important;
+  gap: 0.7rem !important;
+  width: min(100%, 1040px) !important;
+  margin: 0 auto 1.5rem !important;
+}
+
+body.home-page .skill-filter {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  justify-content: center !important;
+  gap: 0.5rem !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: visible !important;
+}
+
+body.home-page .filter-btn {
+  --filter-accent: #365f57;
+  position: relative !important;
+  display: inline-flex !important;
+  min-height: 40px !important;
+  flex: 0 0 auto !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 0.45rem !important;
+  margin: 0 !important;
+  padding: 0.55rem 0.75rem !important;
+  border: 1px solid var(--home-line) !important;
+  border-radius: 8px !important;
+  background: rgba(251, 252, 251, 0.78) !important;
+  color: #52605a !important;
+  box-shadow: none !important;
+  font-family: 'Sora', sans-serif !important;
+  font-size: 0.72rem !important;
+  font-weight: 650 !important;
+  line-height: 1.2 !important;
+  letter-spacing: 0 !important;
+  transform: none !important;
+  transition: background-color 180ms ease, border-color 180ms ease, color 180ms ease, transform 180ms ease, box-shadow 180ms ease !important;
+}
+
+body.home-page .filter-btn::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  flex: 0 0 6px;
+  border-radius: 50%;
+  background: var(--filter-accent);
+  opacity: 0.42;
+  transform: scale(0.8);
+  transition: opacity 180ms ease, transform 180ms ease, background-color 180ms ease;
+}
+
+body.home-page .filter-btn[data-filter="Programming"] {
+  --filter-accent: #2f7064;
+}
+
+body.home-page .filter-btn[data-filter="AI/ML"] {
+  --filter-accent: #356b86;
+}
+
+body.home-page .filter-btn[data-filter="Robotics"] {
+  --filter-accent: #74583f;
+}
+
+body.home-page .filter-btn[data-filter="Web & Mobile"] {
+  --filter-accent: #496d78;
+}
+
+body.home-page .filter-btn[data-filter="Embedded & IoT"] {
+  --filter-accent: #746635;
+}
+
+body.home-page .filter-btn[data-filter="Cloud & Infrastructure"] {
+  --filter-accent: #53647d;
+}
+
+body.home-page .filter-btn[data-filter="DevOps"] {
+  --filter-accent: #5e6662;
+}
+
+body.home-page .filter-btn[data-filter="CAD"] {
+  --filter-accent: #875443;
+}
+
+body.home-page .filter-btn[data-filter="Creative Tools"] {
+  --filter-accent: #735b73;
+}
+
+body.home-page .filter-btn:hover {
+  border-color: color-mix(in srgb, var(--filter-accent) 42%, var(--home-line)) !important;
+  background: var(--home-surface) !important;
+  color: var(--home-ink) !important;
+  transform: translateY(-1px) !important;
+}
+
+body.home-page .filter-btn.active,
+body.home-page .filter-btn.active:hover {
+  border-color: var(--filter-accent) !important;
+  background: var(--filter-accent) !important;
+  color: #ffffff !important;
+  box-shadow: 0 8px 18px color-mix(in srgb, var(--filter-accent) 18%, transparent) !important;
+  transform: translateY(-1px) !important;
+}
+
+body.home-page .filter-btn.active::before {
+  background: #ffffff;
+  opacity: 0.92;
+  transform: scale(1);
+}
+
+body.home-page .filter-btn:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--filter-accent) 30%, transparent) !important;
+  outline-offset: 2px !important;
+}
+
+body.home-page .skill-filter-status {
+  margin: 0 !important;
+  color: #73807a !important;
+  font-family: 'Sora', sans-serif !important;
+  font-size: 0.72rem !important;
+  line-height: 1.4 !important;
+  text-align: center !important;
+}
+
+body.home-page .unified-skills-grid {
+  display: grid !important;
+  grid-template-columns: repeat(8, minmax(0, 1fr)) !important;
+  gap: 0.75rem !important;
+  width: min(100%, 1040px) !important;
+  margin: 0 auto !important;
+  padding: 0 !important;
+}
+
+body.home-page .unified-skills-grid .skill-item {
+  position: relative !important;
+  display: grid !important;
+  grid-template-rows: 44px auto !important;
+  width: auto !important;
+  min-width: 0 !important;
+  min-height: 108px !important;
+  flex: initial !important;
+  align-content: center !important;
+  align-items: center !important;
+  justify-items: center !important;
+  gap: 12px !important;
+  padding: 14px 10px 12px !important;
+  overflow: hidden !important;
+  color: var(--home-ink) !important;
+  opacity: 1 !important;
+  filter: none !important;
+  transform: none !important;
+  transition: opacity 200ms ease, filter 200ms ease, transform 200ms ease, border-color 200ms ease, background-color 200ms ease, box-shadow 200ms ease !important;
+  transition-delay: calc(var(--skill-index, 0) * 5ms) !important;
+}
+
+body.home-page .unified-skills-grid .skill-item::before {
+  display: none !important;
+  content: none !important;
+}
+
+body.home-page .unified-skills-grid .skill-item::after {
+  content: "" !important;
+  position: absolute !important;
+  inset: 0 0 auto !important;
+  width: 100% !important;
+  height: 3px !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: var(--active-skill-accent, var(--home-accent)) !important;
+  box-shadow: none !important;
+  opacity: 0 !important;
+  transform: scaleX(0.35) !important;
+  transform-origin: center !important;
+  transition: opacity 180ms ease, transform 220ms ease !important;
+}
+
+body.home-page .skill-icon-frame {
+  display: grid !important;
+  width: 44px !important;
+  height: 44px !important;
+  place-items: center !important;
+}
+
+body.home-page .skill-icon-frame img,
+body.home-page .unified-skills-grid .skill-item img {
+  display: block !important;
+  width: 38px !important;
+  height: 38px !important;
+  max-width: 38px !important;
+  max-height: 38px !important;
+  margin: 0 !important;
+  object-fit: contain !important;
+  filter: none !important;
+  transform: none !important;
+  transition: transform 200ms ease, filter 200ms ease, opacity 200ms ease !important;
+}
+
+body.home-page .skill-name {
+  position: static !important;
+  inset: auto !important;
+  display: block !important;
+  width: 100% !important;
+  margin: 0 !important;
+  color: #44514c !important;
+  font-family: 'Sora', sans-serif !important;
+  font-size: 0.75rem !important;
+  font-weight: 650 !important;
+  line-height: 1.25 !important;
+  letter-spacing: 0 !important;
+  text-align: center !important;
+  overflow-wrap: anywhere !important;
+}
+
+body.home-page .skills-section {
+  --active-skill-accent: #365f57;
+}
+
+body.home-page .skills-section[data-active-filter="Programming"] {
+  --active-skill-accent: #2f7064;
+}
+
+body.home-page .skills-section[data-active-filter="AI/ML"] {
+  --active-skill-accent: #356b86;
+}
+
+body.home-page .skills-section[data-active-filter="Robotics"] {
+  --active-skill-accent: #74583f;
+}
+
+body.home-page .skills-section[data-active-filter="Web & Mobile"] {
+  --active-skill-accent: #496d78;
+}
+
+body.home-page .skills-section[data-active-filter="Embedded & IoT"] {
+  --active-skill-accent: #746635;
+}
+
+body.home-page .skills-section[data-active-filter="Cloud & Infrastructure"] {
+  --active-skill-accent: #53647d;
+}
+
+body.home-page .skills-section[data-active-filter="DevOps"] {
+  --active-skill-accent: #5e6662;
+}
+
+body.home-page .skills-section[data-active-filter="CAD"] {
+  --active-skill-accent: #875443;
+}
+
+body.home-page .skills-section[data-active-filter="Creative Tools"] {
+  --active-skill-accent: #735b73;
+}
+
+body.home-page .skills-section.is-filtered .unified-skills-grid .skill-item,
+body.home-page .skills-section.is-filtered .unified-skills-grid .skill-item.is-dimmed {
+  border-color: color-mix(in srgb, var(--home-line) 75%, transparent) !important;
+  background: color-mix(in srgb, var(--home-surface) 82%, var(--home-canvas)) !important;
+  box-shadow: none !important;
+  opacity: 0.52 !important;
+  filter: grayscale(0.72) saturate(0.55) !important;
+  transform: scale(0.985) !important;
+}
+
+body.home-page .skills-section.is-filtered .unified-skills-grid .skill-item.is-dimmed img,
+body.home-page .skills-section.is-filtered .unified-skills-grid .skill-item.is-dimmed .skill-name {
+  opacity: 1 !important;
+}
+
+body.home-page .skills-section.is-filtered .unified-skills-grid .skill-item.is-selected {
+  border-color: color-mix(in srgb, var(--active-skill-accent) 52%, var(--home-line)) !important;
+  background: color-mix(in srgb, var(--active-skill-accent) 7%, var(--home-surface)) !important;
+  box-shadow: 0 12px 24px color-mix(in srgb, var(--active-skill-accent) 12%, transparent) !important;
+  opacity: 1 !important;
+  filter: none !important;
+  transform: translateY(-2px) !important;
+}
+
+body.home-page .skills-section.is-filtered .unified-skills-grid .skill-item.is-selected::after {
+  opacity: 1 !important;
+  transform: scaleX(1) !important;
+}
+
+body.home-page .skills-section.is-filtered .unified-skills-grid .skill-item.is-selected img {
+  filter: drop-shadow(0 5px 9px color-mix(in srgb, var(--active-skill-accent) 16%, transparent)) !important;
+  transform: scale(1.04) !important;
+}
+
+body.home-page .skills-section.is-filtered .unified-skills-grid .skill-item.is-selected .skill-name {
+  color: color-mix(in srgb, var(--active-skill-accent) 70%, var(--home-ink)) !important;
+}
+
+body.home-page .unified-skills-grid .skill-item:hover {
+  border-color: color-mix(in srgb, var(--home-accent) 35%, var(--home-line)) !important;
+  box-shadow: 0 12px 26px rgba(32, 48, 42, 0.08) !important;
+  transform: translateY(-2px) !important;
+}
+
+@media (max-width: 1000px) {
+  body.home-page .unified-skills-grid {
+    grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
+  }
+}
+
+@media (max-width: 760px) {
+  body.home-page .home-projects-section,
+  body.home-page .side-builds-section,
+  body.home-page .skills-section,
+  body.home-page .certifications,
+  body.home-page .career-bio-section {
+    padding-top: 3.25rem !important;
+    padding-bottom: 3.25rem !important;
+  }
+
+  body.home-page .home-projects-section::before,
+  body.home-page .side-builds-section::before,
+  body.home-page .skills-section::before,
+  body.home-page .certifications::before,
+  body.home-page .career-bio-section::before,
+  body.home-page .home-focus-shell,
+  body.home-page .home-projects-container,
+  body.home-page .side-builds-container,
+  body.home-page .skills-inner,
+  body.home-page .certifications .container,
+  body.home-page .career-bio-box {
+    width: calc(100% - 1.8rem) !important;
+  }
+
+  body.home-page .home-section-heading {
+    margin-bottom: 1.6rem !important;
+  }
+
+  body.home-page .home-section-heading h2,
+  body.home-page .skills-section h2,
+  body.home-page .certifications h2,
+  body.home-page .career-title,
+  body.home-page .side-builds-header h2 {
+    font-size: 1.55rem !important;
+  }
+
+  body.home-page .skill-filter-row {
+    gap: 0.55rem !important;
+    margin-bottom: 1.2rem !important;
+  }
+
+  body.home-page .skill-filter {
+    flex-wrap: nowrap !important;
+    justify-content: flex-start !important;
+    overflow-x: auto !important;
+    padding: 0.15rem 0 0.45rem !important;
+    scroll-padding-inline: 0.25rem !important;
+    scrollbar-width: none !important;
+  }
+
+  body.home-page .skill-filter::-webkit-scrollbar {
+    display: none !important;
+  }
+
+  body.home-page .skill-filter-status {
+    text-align: left !important;
+  }
+
+  body.home-page .unified-skills-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+    gap: 0.55rem !important;
+  }
+
+  body.home-page .unified-skills-grid .skill-item {
+    min-height: 98px !important;
+    grid-template-rows: 38px auto !important;
+    gap: 9px !important;
+    padding: 12px 6px 10px !important;
+  }
+
+  body.home-page .skill-icon-frame {
+    width: 38px !important;
+    height: 38px !important;
+  }
+
+  body.home-page .skill-icon-frame img,
+  body.home-page .unified-skills-grid .skill-item img {
+    width: 32px !important;
+    height: 32px !important;
+    max-width: 32px !important;
+    max-height: 32px !important;
+  }
+
+  body.home-page .skill-name {
+    font-size: 0.68rem !important;
+  }
+}
+
+@media (max-width: 520px) {
+  body.home-page .unified-skills-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.home-page .filter-btn,
+  body.home-page .filter-btn::before,
+  body.home-page .unified-skills-grid .skill-item,
+  body.home-page .unified-skills-grid .skill-item::after,
+  body.home-page .unified-skills-grid .skill-item img {
+    transition: none !important;
+    transition-delay: 0s !important;
+  }
+}
+
+/* Paired institution marks for a single education entry. */
+body.home-page .career-entry.has-multiple-logos {
+  grid-template-columns: 96px minmax(0, 1fr) !important;
+}
+
+body.home-page .career-logo-group {
+  display: grid;
+  grid-template-columns: 36px minmax(0, 1fr);
+  align-items: center;
+  gap: 6px;
+  width: 96px;
+}
+
+body.home-page .career-logo-group .career-logo-frame {
+  width: 100% !important;
+  height: 42px !important;
+}
+
+body.home-page .career-logo-group .career-logo-frame:first-child img {
+  max-width: 34px !important;
+  max-height: 34px !important;
+}
+
+body.home-page .career-logo-group .career-logo-frame:last-child img {
+  max-width: 54px !important;
+  max-height: 30px !important;
+}
+
+@media (max-width: 720px) {
+  body.home-page .home-projects-section {
+    padding-right: 12px !important;
+    padding-left: 12px !important;
+  }
+
+  body.home-page .home-projects-container {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-right: 0 !important;
+    margin-left: 0 !important;
+    padding-right: 0 !important;
+    padding-left: 0 !important;
+  }
+
+  body.home-page .career-entry.has-multiple-logos {
+    grid-template-columns: 82px minmax(0, 1fr) !important;
+  }
+
+  body.home-page .career-logo-group {
+    grid-template-columns: 31px minmax(0, 1fr);
+    gap: 5px;
+    width: 82px;
+  }
+
+  body.home-page .career-logo-group .career-logo-frame {
+    height: 34px !important;
+  }
+
+  body.home-page .career-logo-group .career-logo-frame:first-child img {
+    max-width: 29px !important;
+    max-height: 29px !important;
+  }
+
+  body.home-page .career-logo-group .career-logo-frame:last-child img {
+    max-width: 46px !important;
+    max-height: 25px !important;
+  }
+}

@@ -1,0 +1,91 @@
+{% if site.banner-img %}
+<section id="banner" aria-labelledby="home-hero-title" data-banner-image="{{ site.banner-img | relative_url }}" style="background-image: url('{{ site.banner-img | relative_url }}');">
+  <div class="banner-overlay">
+    <p class="banner-subtitle">
+      <span>Manipulation / Mobility / Autonomy</span>
+      <span class="banner-subtitle-tail">Industrial Automation</span>
+    </p>
+    <h1 class="banner-title" id="home-hero-title">
+      <span>Robotics</span>
+      <span>Systems</span>
+      <span>for Real</span>
+      <span>Environments</span>
+    </h1>
+    <p class="banner-name">{{ site.banner-name }}</p>
+    <div class="banner-extra">
+      <p class="banner-line1">{{ site.banner-line1 }}</p>
+      <p class="banner-line2">{{ site.banner-line2 }}</p>
+    </div>
+    <div class="banner-actions" aria-label="Portfolio actions">
+      <a class="banner-action primary" href="{{ '/projects/' | relative_url }}">
+        <i class="fa-solid fa-diagram-project" aria-hidden="true"></i>
+        <span>View Projects</span>
+      </a>
+      <a class="banner-action secondary" href="mailto:{{ site.social-network-links.email }}">
+        <i class="fa-regular fa-envelope" aria-hidden="true"></i>
+        <span>Contact</span>
+      </a>
+    </div>
+  </div>
+</section>
+{% endif %}
+
+{% include bg-grid-pattern.html %}
+
+{% assign focus_areas = site.data.home.focus_areas %}
+{% if focus_areas and focus_areas.size > 0 %}
+<section class="home-focus-section" aria-labelledby="home-focus-title">
+  <div class="container home-focus-shell">
+    <div class="home-focus-header home-section-heading">
+      <p class="home-focus-kicker home-section-kicker">Current Focus</p>
+      <h2 id="home-focus-title">Building robotics systems that hold up outside the lab.</h2>
+      <p>I work across hardware, control, perception, and deployment constraints to turn complex engineering problems into reliable systems.</p>
+    </div>
+
+    <div class="home-focus-grid">
+      {% for area in focus_areas %}
+      <article class="home-focus-card">
+        <h3>{{ area.title }}</h3>
+        <p>{{ area.description }}</p>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+
+<section class="home-projects-section" aria-labelledby="featured-projects-title">
+  <div class="home-projects-container">
+    <header class="home-section-heading home-projects-heading">
+      <p class="home-section-kicker">Selected Work</p>
+      <h2 class="projects-section-title" id="featured-projects-title">Featured Projects</h2>
+      <p class="projects-section-subtitle home-section-intro">Selected case studies with clear context, responsibilities, engineering decisions, and evidence.</p>
+    </header>
+
+    {% assign featured_projects = site.projects | where: "featured", true | sort: "featured_order" %}
+    <div class="project-card-list" data-project-card-list>
+      {% if featured_projects and featured_projects.size > 0 %}
+        {% for project in featured_projects limit: 3 %}
+          {% include project-card.html project=project heading_level=3 %}
+        {% endfor %}
+      {% else %}
+        {% assign latest_projects = site.projects | sort: "date" | reverse %}
+        {% for project in latest_projects limit: 3 %}
+          {% include project-card.html project=project heading_level=3 %}
+        {% endfor %}
+      {% endif %}
+    </div>
+
+    <div class="view-all-projects">
+      <a href="{{ '/projects/' | relative_url }}" class="view-all-button">Browse All Projects</a>
+    </div>
+  </div>
+</section>
+
+{% include home-side-builds.html %}
+
+{% include home-skills.html %}
+
+{% include home-certifications.html %}
+
+{% include home-career.html %}

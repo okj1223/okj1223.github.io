@@ -13,6 +13,9 @@
 title: Kyungjun Oh
 # Your name to show in the footer
 author: Kyungjun Oh
+url: "https://okj1223.github.io"
+baseurl: ""
+language: en
 
 # IMPORTANT: Collections MUST come before navbar-links
 collections:
@@ -25,7 +28,7 @@ collections:
 ###############################################
 
 navbar-links:
-  Home: "/home.html"
+  Home: "/"
   About Me: "/aboutme/"
   Projects: "/projects/"
 
@@ -44,7 +47,7 @@ kramdown:
 ###########################
 
 # 배너에 사용할 이미지 경로 (assets/img/ 아래 파일명)
-banner-img: "/assets/img/robotics-lounge-banner.png"
+banner-img: "/assets/img/robotics-lounge-banner.webp"
 
 # 배너 위에 표시할 타이틀 텍스트
 banner-title: "Robotics Systems for Real Environments"
@@ -55,8 +58,8 @@ banner-subtitle: "Manipulation / Mobility / Autonomy / Industrial Automation"
 banner-name: "Kyungjun Oh"
 
 # banner 설정 섹션에 추가
-banner-line1: "Designing control, perception, and hardware systems with a broad robotics-first perspective."
-banner-line2: "Focused on robotics across humanoids, quadrupeds, mobile platforms, and automation rather than a single form factor."
+banner-line1: "Robotics systems engineer working across hardware, control, perception, and deployment."
+banner-line2: "Research Assistant at ROBROS · Incoming M.S. student at National Taiwan University"
 
 ################
 # --- Logo --- #
@@ -111,7 +114,7 @@ social-network-links:
 
 # If you want your website to generate an RSS feed, provide a description
 # The URL for the feed will be https://<your_website>/feed.xml
-rss-description: 'Sharing my journey through mechanical, electronic, and robotics design.'
+# This portfolio does not currently publish blog posts or an RSS feed.
 
 ###########################
 # --- General options --- #
@@ -125,7 +128,7 @@ share-links-active:
 
 # How to display the link to your website in the footer
 # Remove this if you don't want a link in the footer
-url-pretty: "kyungjunoh.lab"
+url-pretty: "okj1223.github.io"
 
 # Add the website title to the title of every page
 title-on-all-pages: true
@@ -143,7 +146,7 @@ feed_show_tags: true
 post_search: true
 
 # Add a button in the footer to edit the current page. Only works if your website is hosted on GitHub
-edit_page_button: true
+edit_page_button: false
 
 # Allow sub-menu items (second-level navigation menu items) to be longer than the top-level menu
 # If this setting is off, then long sub-menu words might get cut off
@@ -151,7 +154,7 @@ edit_page_button: true
 navbar-var-length: false
 
 # The keywords to associate with your website, for SEO purposes
-#keywords: "my,list,of,keywords"
+keywords: "robotics systems engineer, robot learning, ROS2, autonomous systems, industrial automation, Kyungjun Oh"
 
 ######################################
 # --- Colours / background image --- #
@@ -185,6 +188,8 @@ footer-hover-col: "#0085A1"
 site-css:
  - "/assets/css/ecosystem.css"     # 내 커스텀 CSS
  - "/assets/css/robotic-lounge-theme.css"
+ - "/assets/css/portfolio-polish.css"
+ - "/assets/css/project-card.css"
 
 # If you have common JavaScript files that should be included in every page, list them here
 site-js:
@@ -309,7 +314,7 @@ defaults:
       path: ""
       type: "projects"
     values:
-      layout: "page"
+      layout: "project"
       css:
         - "/assets/css/project-detail.css?v=20260415-1"
       ext-css:
@@ -330,6 +335,21 @@ exclude:
   - README.md
   - screenshot.png
   - docs/
+  - Home/
+  - .lazyweb/
+  - PROJECT_ASSET_TODO.md
+  - commit.txt
+  - scripts/
+  - Appraisals
+  - staticman.yml
+  - feed.xml
+  - tags.html
+  - game/
+  - assets/videos/
+  - assets/files/CV_Kyungjun_Oh.pdf
+  - assets/files/Cover_letter_Kyungjun_Oh.pdf
+  - assets/css/ecosystem_backup.css
+  - beautiful-jekyll-theme.gemspec
 
 plugins:
   - jekyll-paginate

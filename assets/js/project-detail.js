@@ -119,7 +119,24 @@ document.addEventListener('DOMContentLoaded', function() {
   const sectionActivationOffset = 140;
 
   function keepActiveLinkVisible(activeLink) {
-    if (!activeLink || !tocNav || window.innerWidth <= 960) return;
+    if (!activeLink || !tocNav) return;
+
+    if (window.innerWidth <= 960) {
+      if (tocNav.scrollWidth <= tocNav.clientWidth) return;
+
+      const navRect = tocNav.getBoundingClientRect();
+      const linkRect = activeLink.getBoundingClientRect();
+      const linkLeftInNav = tocNav.scrollLeft + (linkRect.left - navRect.left);
+      const targetScrollLeft = linkLeftInNav - (tocNav.clientWidth * 0.2);
+      const maxScrollLeft = tocNav.scrollWidth - tocNav.clientWidth;
+
+      tocNav.scrollTo({
+        left: Math.max(0, Math.min(maxScrollLeft, targetScrollLeft)),
+        behavior: 'smooth'
+      });
+      return;
+    }
+
     if (tocNav.scrollHeight <= tocNav.clientHeight) return;
 
     const navRect = tocNav.getBoundingClientRect();
@@ -140,7 +157,10 @@ document.addEventListener('DOMContentLoaded', function() {
       
       if (target) {
         const fixedNav = document.querySelector('.navbar-custom');
-        const navHeight = fixedNav ? fixedNav.getBoundingClientRect().height : 0;
+        const navPosition = fixedNav ? window.getComputedStyle(fixedNav).position : '';
+        const navHeight = fixedNav && (navPosition === 'fixed' || navPosition === 'sticky')
+          ? fixedNav.getBoundingClientRect().height
+          : 0;
         const tocStyle = tocSidebar ? window.getComputedStyle(tocSidebar) : null;
         const tocHeight = tocSidebar && tocStyle && tocStyle.position === 'sticky'
           ? tocSidebar.getBoundingClientRect().height

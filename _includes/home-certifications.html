@@ -1,5 +1,9 @@
-<section class="certifications">
-  <h2>Certifications</h2>
+<section class="certifications" aria-labelledby="certifications-title">
+  <header class="home-section-heading certifications-header">
+    <p class="home-section-kicker">Credentials</p>
+    <h2 id="certifications-title">Technical Licenses</h2>
+    <p class="certifications-intro home-section-intro">Selected credentials supporting hands-on fabrication, equipment operation, safety, and environmental engineering. Verification details are available on request.</p>
+  </header>
   <div class="container">
     <ul class="cert-list">
       {% for cert in site.data.home.certifications %}
@@ -14,6 +18,7 @@
             <span class="cert-name">{{ cert.name | escape_once }}</span>
           </div>
         </div>
+        {% if cert.details %}
         <div class="cert-details">
           <ul>
             {% for detail in cert.details %}
@@ -21,6 +26,7 @@
             {% endfor %}
           </ul>
         </div>
+        {% endif %}
       </li>
       {% endfor %}
     </ul>

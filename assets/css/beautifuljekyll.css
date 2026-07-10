@@ -1026,6 +1026,27 @@ body.overflow-hidden {
   overflow: hidden !important;
 }
 
+.skip-link {
+  position: fixed;
+  top: 0.65rem;
+  left: 0.65rem;
+  z-index: 1000000;
+  padding: 0.65rem 0.85rem;
+  border-radius: 6px;
+  background: #fff;
+  color: #211a15;
+  font-weight: 700;
+  transform: translateY(-160%);
+  transition: transform 120ms ease;
+}
+
+.skip-link:focus {
+  color: #211a15;
+  outline: 2px solid #211a15;
+  outline-offset: 2px;
+  transform: translateY(0);
+}
+
 #beautifuljekyll-search-overlay {
   font-family: var(--header-font);
   display: none;
@@ -1041,29 +1062,41 @@ body.overflow-hidden {
 }
 
 #nav-search-exit {
+  appearance: none;
   position: absolute;
-  top: 1.5rem;
+  top: 1rem;
   cursor: pointer;
   right: 25%;
   margin-right: 2rem;
-  color: #555;
-  font-size: 2rem;
-  line-height: 2rem;
+  display: grid;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  place-items: center;
+  border: 0;
+  background: transparent;
+  color: #fff;
+  font-size: 1.75rem;
+  line-height: 1;
   font-weight: bold;
 }
 #nav-search-exit:hover {
-  color: #000;
+  color: #d8d2cc;
+}
+#nav-search-exit:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 2px;
 }
 #nav-search-input {
   text-align: center;
   background: #e7edee;
   margin: auto;
   display: block;
-  font-size: 2rem;
+  font-size: 1.35rem;
   width: 50%;
   transition: width 300ms ease;
   color: #222;
-  border-radius: 5rem;
+  border-radius: 8px;
   outline: none;
   border: none;
   padding: 0 3rem;
@@ -1080,9 +1113,11 @@ body.overflow-hidden {
 @media (max-width: 767px) {
   #nav-search-input {
     width: 100%;
+    padding: 0 3.25rem 0 1rem;
   }
   #nav-search-exit {
     right: 0;
+    margin-right: 1rem;
   }
 }
 #nav-search-input:focus {

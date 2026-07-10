@@ -6,6 +6,7 @@ let BeautifulJekyllJS = {
   numImgs : null,
   searchInitialized : false,
   searchLoadingPromise : null,
+  searchHiddenSiblings : [],
 
   init : function() {
     setTimeout(BeautifulJekyllJS.initNavbar, 10);
@@ -217,6 +218,17 @@ let BeautifulJekyllJS = {
       return;
     }
 
+    BeautifulJekyllJS.searchReturnFocus = document.activeElement;
+    BeautifulJekyllJS.searchHiddenSiblings = Array.from(document.body.children)
+      .filter(function(element) {
+        return element !== overlay && element.tagName !== "SCRIPT";
+      })
+      .map(function(element) {
+        const hadInert = element.hasAttribute("inert");
+        element.setAttribute("inert", "");
+        return { element : element, hadInert : hadInert };
+      });
+    overlay.setAttribute("aria-hidden", "false");
     $("#beautifuljekyll-search-overlay").show();
     $("body").addClass("overflow-hidden");
 
@@ -231,8 +243,27 @@ let BeautifulJekyllJS = {
   },
 
   closeSearchOverlay : function() {
-    $("#beautifuljekyll-search-overlay").hide();
+    const overlay = document.getElementById("beautifuljekyll-search-overlay");
+    if (!overlay || overlay.getAttribute("aria-hidden") === "true") {
+      return;
+    }
+
+    overlay.setAttribute("aria-hidden", "true");
+    $(overlay).hide();
     $("body").removeClass("overflow-hidden");
+
+    BeautifulJekyllJS.searchHiddenSiblings.forEach(function(item) {
+      if (!item.hadInert) {
+        item.element.removeAttribute("inert");
+      }
+    });
+    BeautifulJekyllJS.searchHiddenSiblings = [];
+
+    if (BeautifulJekyllJS.searchReturnFocus && typeof BeautifulJekyllJS.searchReturnFocus.focus === "function") {
+      BeautifulJekyllJS.searchReturnFocus.focus();
+    }
+
+    BeautifulJekyllJS.searchReturnFocus = null;
   },
 
   initSearch : function() {
@@ -247,6 +278,26 @@ let BeautifulJekyllJS = {
     $("#nav-search-exit").click(function(e) {
       e.preventDefault();
       BeautifulJekyllJS.closeSearchOverlay();
+    });
+    $("#beautifuljekyll-search-overlay").on("keydown", function(e) {
+      if (e.key !== "Tab") {
+        return;
+      }
+
+      const focusable = Array.from(this.querySelectorAll('button:not([disabled]), input:not([disabled]), a[href]'));
+      if (focusable.length === 0) {
+        return;
+      }
+
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
     });
     $(document).on('keyup', function(e) {
       if (e.key == "Escape") {

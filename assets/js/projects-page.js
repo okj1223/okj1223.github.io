@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function () {
   var filterBar = document.querySelector('.project-filter-bar');
   var paginationSummary = document.querySelector('.projects-pagination-summary');
   var filterBtns = Array.from(document.querySelectorAll('.proj-filter-btn'));
-  var articles = Array.from(document.querySelectorAll('.home-project-item'));
+  var articles = Array.from(document.querySelectorAll('.project-card-item'));
   var pagination = document.querySelector('.pagination-controls');
   var pageInfo = document.querySelector('.pagination-info');
   var emptyState = document.getElementById('projectsEmptyState');
@@ -152,6 +152,10 @@ document.addEventListener('DOMContentLoaded', function () {
       button.className = 'page-number-btn' + (page === currentPage ? ' active' : '');
       button.dataset.page = String(page);
       button.textContent = String(page);
+      button.setAttribute('aria-label', 'Page ' + page);
+      if (page === currentPage) {
+        button.setAttribute('aria-current', 'page');
+      }
       pageNumbers.appendChild(button);
     }
   }

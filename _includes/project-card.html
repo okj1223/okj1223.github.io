@@ -4,11 +4,15 @@
   {% assign category_tokens = filter_categories | join: ' ' %}
 {% endif %}
 {% assign card_category = include.project.category_label | default: 'Technical Project' %}
+{% assign card_category_primary = card_category | split: ' - ' | first %}
 {% assign card_title = include.project.card_title | default: include.project.title %}
 {% assign card_description = include.project.card_description | default: include.project.share-description | default: include.project.description %}
 {% assign impacts = include.project.impacts %}
 {% assign tech_tags = include.project.tech_tags %}
+{% assign tech_tag_count = tech_tags | size %}
+{% assign hidden_tech_tag_count = tech_tag_count | minus: 5 %}
 {% assign case_study_href = include.project.url | relative_url %}
+{% assign heading_level = include.heading_level | default: 2 %}
 
 {% assign media_type = '' %}
 {% assign media_href = '' %}
@@ -79,85 +83,86 @@
   {% assign is_external_src = true %}
 {% endif %}
 
-<article class="home-project-item{% if media_type == 'video' %} has-demo-video{% endif %}" data-category="{{ category_tokens }}">
-  <div class="home-project-card">
-    <a href="{{ include.project.url | relative_url }}" class="home-project-link">
-      <div class="home-project-content">
-        <div class="home-project-meta">
-          <time class="home-project-year">{{ include.project.date | date: "%Y.%m.%d" }}</time>
-          <span class="home-project-category">{{ card_category }}</span>
+<article class="project-card-item{% if media_type == 'video' %} has-demo-video{% endif %}" data-category="{{ category_tokens }}">
+  <div class="project-card">
+    <div class="project-card__content">
+      <div class="project-card__meta">
+        <span class="project-card__category" title="{{ card_category | escape }}">{{ card_category_primary }}</span>
+        <time class="project-card__date" datetime="{{ include.project.date | date_to_xmlschema }}">{{ include.project.date | date: "%b %Y" }}</time>
+      </div>
+
+      <h{{ heading_level }} class="project-card__title">
+        <a class="project-card__primary-link" href="{{ case_study_href }}">{{ card_title }}</a>
+      </h{{ heading_level }}>
+      <p class="project-card__description">{{ card_description }}</p>
+
+      {% if impacts %}
+      <dl class="project-card__metrics" aria-label="Project highlights">
+        {% for impact in impacts limit: 3 %}
+        <div class="project-card__metric">
+          <dt>{{ impact.value }}</dt>
+          <dd>{{ impact.label }}</dd>
         </div>
-        <h2 class="home-project-title">{{ card_title }}</h2>
-        <p class="home-project-description">{{ card_description }}</p>
-        {% if impacts %}
-        <div class="home-project-impact">
-          {% for impact in impacts limit: 3 %}
-          <div class="home-impact-item">
-            <span class="home-impact-value">{{ impact.value }}</span>
-            <span class="home-impact-label">{{ impact.label }}</span>
-          </div>
-          {% endfor %}
-        </div>
-        {% endif %}
-        {% if tech_tags %}
-        <div class="home-project-tech">
-          {% for tag in tech_tags %}
-          <span class="home-tech-tag {{ tag.style }}">{{ tag.label }}</span>
-          {% endfor %}
-        </div>
+        {% endfor %}
+      </dl>
+      {% endif %}
+
+      {% if tech_tags %}
+      <div class="project-card__tags" aria-label="Key technologies">
+        {% for tag in tech_tags limit: 5 %}
+        <span class="project-card__tag {{ tag.style }}">{{ tag.label }}</span>
+        {% endfor %}
+        {% if hidden_tech_tag_count > 0 %}
+        <span class="project-card__tag project-card__tag--more" aria-label="{{ hidden_tech_tag_count }} more technologies">+{{ hidden_tech_tag_count }}</span>
         {% endif %}
       </div>
-    </a>
-
-    <div class="home-project-actions">
-      <a
-        href="{{ case_study_href }}"
-        class="home-project-action case-study">
-        View Report
-      </a>
-      {% if media_type == 'video' and media_href %}
-      <a
-        href="{% if is_external_href %}{{ media_href }}{% else %}{{ media_href | relative_url }}{% endif %}"
-        class="home-project-action demo"
-        data-demo-embed="{% if is_external_src %}{{ media_src }}{% else %}{{ media_src | relative_url }}{% endif %}"
-        data-demo-title="{{ media_title | escape }}">
-        Watch Demo
-      </a>
       {% endif %}
+
+      <div class="project-card__actions">
+        <span class="project-card__case-study-hint" aria-hidden="true">
+          View case study
+          <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+        </span>
+        {% if media_type == 'video' and media_href %}
+        <a
+          href="{% if is_external_href %}{{ media_href }}{% else %}{{ media_href | relative_url }}{% endif %}"
+          class="project-card__demo-action"
+          data-demo-embed="{% if is_external_src %}{{ media_src }}{% else %}{{ media_src | relative_url }}{% endif %}"
+          data-demo-title="{{ media_title | escape }}">
+          <i class="fa-solid fa-play" aria-hidden="true"></i>
+          <span>Watch demo</span>
+        </a>
+        {% endif %}
+      </div>
     </div>
 
     {% if media_type and media_src %}
-    <div class="home-project-media">
-      {% if media_type == 'video' %}
-      <div class="home-video-link home-media-static">
-        <div class="home-video-wrapper media-fit-{{ media_fit }}" style="--media-object-position: {{ media_position }};">
+    <div class="project-card__media">
+      <div class="project-card__media-frame media-fit-{{ media_fit }}" style="--media-object-position: {{ media_position }};">
+        {% if media_type == 'video' %}
           {% if media_poster %}
           {% assign is_external_poster = false %}
           {% if media_poster contains '://' %}
             {% assign is_external_poster = true %}
           {% endif %}
           <img
-            class="home-video-poster"
             src="{% if is_external_poster %}{{ media_poster }}{% else %}{{ media_poster | relative_url }}{% endif %}"
             alt="{{ media_alt }}"
-            title="{{ media_title }}"
-            loading="lazy">
+            loading="lazy"
+            decoding="async">
           {% endif %}
-        </div>
-      </div>
-      {% else %}
-      <a
-        href="{% if is_external_href %}{{ media_href }}{% else %}{{ media_href | relative_url }}{% endif %}"
-        class="home-image-link">
-        <div class="home-image-wrapper media-fit-{{ media_fit }}" style="--media-object-position: {{ media_position }};">
+          <span class="project-card__media-label" aria-hidden="true">
+            <i class="fa-solid fa-play" aria-hidden="true"></i>
+            Demo available
+          </span>
+        {% else %}
           <img
             src="{% if is_external_src %}{{ media_src }}{% else %}{{ media_src | relative_url }}{% endif %}"
             alt="{{ media_alt }}"
-            title="{{ media_title }}"
-            loading="lazy">
-        </div>
-      </a>
-      {% endif %}
+            loading="lazy"
+            decoding="async">
+        {% endif %}
+      </div>
     </div>
     {% endif %}
   </div>

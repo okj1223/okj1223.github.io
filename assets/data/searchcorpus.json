@@ -1,23 +1,62 @@
 ---
 layout: null
 ---
-[ 
-{% for post in site.posts %} 
-{ 
-"title"    : "{% if post.title != "" %}{{ post.title | strip_html | escape }}{% else %}{{ post.excerpt | strip_html | escape | strip }}{%endif%}", 
-"desc"     : "{% if post.title != "" %}{{ post.title | strip_html | escape }}{% else %}{{ post.excerpt | strip_html | escape | strip }}{%endif%}", 
-"category" : "{{ post.tags | join: ', ' }}", 
-"url"      : "{{ site.baseurl }}{{ post.url | escape }}", 
-"date"     : "{{ post.date | date: "%B %e, %Y" | default: "January 1, 1970" }}" 
-}, 
-{% endfor %} 
-{% for page in site.html_pages %}{% if page.title != "{title}" and page.title != "404 - Page not found" %} 
-{ 
-"title"    : "{% if page.title != "" %}{{ page.title | strip_html | escape }}{% else %}{{ page.excerpt | strip_html | escape | strip }}{% endif %}", 
-"desc"     : "{% if page.title != "" %}{{ page.title | strip_html | escape }}{% else %}{{ page.excerpt | strip_html | escape | strip }}{% endif %}", 
-"category" : "{% if page.tags %}{{ page.tags | join: ', ' }}{% else %}page{% endif %}", 
-"url"      : "{{ site.baseurl }}{{ page.url }}", 
-"date"     : "{{ page.date | date: '%B %e, %Y' | default: "January 1, 1970" }}" 
-}{% unless forloop.last %},{% endunless %} 
-{% endif %}{% endfor %} 
+{% assign search_items = site.projects | concat: site.html_pages %}
+[
+{% assign first_item = true %}
+{% for item in search_items %}
+  {% assign search_title = item.title | default: '' | strip %}
+  {% assign search_url = item.url | default: '' %}
+  {% assign include_item = true %}
+  {% if search_title == '' or search_title == '{title}' or search_title == '404 - Page not found' %}
+    {% assign include_item = false %}
+  {% endif %}
+  {% if search_url == '' or search_url == '/404.html' or search_url contains '/assets/' %}
+    {% assign include_item = false %}
+  {% endif %}
+  {% if search_url == '/tags/' or search_title == 'Tag Index' %}
+    {% assign include_item = false %}
+  {% endif %}
+  {% if include_item %}
+    {% if item.description %}
+      {% assign search_description = item.description | strip_html | normalize_whitespace | strip %}
+    {% elsif item.share-description %}
+      {% assign search_description = item.share-description | strip_html | normalize_whitespace | strip %}
+    {% elsif item.subtitle %}
+      {% assign search_description = item.subtitle | strip_html | normalize_whitespace | strip %}
+    {% elsif item.excerpt %}
+      {% assign search_description = item.excerpt | markdownify | strip_html | normalize_whitespace | strip %}
+    {% else %}
+      {% assign search_description = item.content | markdownify | strip_html | normalize_whitespace | strip %}
+    {% endif %}
+    {% if search_url == '/' %}
+      {% assign search_category = 'Homepage' %}
+    {% elsif search_url == '/aboutme/' %}
+      {% assign search_category = 'Profile' %}
+    {% elsif search_url == '/projects/' %}
+      {% assign search_category = 'Project Index' %}
+    {% elsif item.category_label %}
+      {% assign search_category = item.category_label %}
+    {% elsif item.tags and item.tags != empty %}
+      {% assign search_category = item.tags | join: ', ' %}
+    {% elsif item.categories and item.categories != empty %}
+      {% assign search_category = item.categories | join: ', ' %}
+    {% else %}
+      {% assign search_category = 'Page' %}
+    {% endif %}
+    {% assign search_date = '' %}
+    {% if item.date %}
+      {% assign search_date = item.date | date: '%B %-d, %Y' %}
+    {% endif %}
+    {% unless first_item %},{% endunless %}
+    {
+      "title": {{ search_title | strip_html | strip | jsonify }},
+      "desc": {{ search_description | truncate: 700 | jsonify }},
+      "category": {{ search_category | strip_html | strip | jsonify }},
+      "url": {{ search_url | relative_url | jsonify }},
+      "date": {{ search_date | jsonify }}
+    }
+    {% assign first_item = false %}
+  {% endif %}
+{% endfor %}
 ]

@@ -4,7 +4,7 @@
       width: 100%;
       min-height: 50vh;
       overflow: hidden;
-      background-image: url('/assets/img/robotics-lounge-banner.png');
+      background-image: url('/assets/img/robotics-lounge-banner.webp');
       background-size: cover;
       background-position: center center;
       display: flex;
@@ -38,7 +38,7 @@
       color: #ffffff;
       line-height: 1.2;
       font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
-      letter-spacing: -0.02em;
+      letter-spacing: 0;
     }
 
     .banner-title h2 {
@@ -1102,7 +1102,7 @@ html, body {
 }
 
 body.projects-page .home-projects-container {
- max-width: 1260px !important;
+ max-width: 1180px !important;
  padding: 0 1.5rem !important;
 }
 
@@ -2015,7 +2015,7 @@ body.projects-page .home-project-item {
 
   body.projects-page .home-video-wrapper,
   body.projects-page .home-image-wrapper {
-    border-radius: 12px !important;
+    border-radius: 8px !important;
   }
 
   body.projects-page .home-video-wrapper.media-fit-contain .home-video-poster,
@@ -2399,7 +2399,7 @@ body.projects-page .home-project-item {
 /* Project page banner uses the same visual language as the home hero. */
 body.projects-page .drone-banner-environment {
   min-height: clamp(560px, 72vh, 760px) !important;
-  background-image: url('/assets/img/robotics-lounge-banner.png') !important;
+  background-image: url('/assets/img/robotics-lounge-banner.webp') !important;
   background-color: #171412 !important;
   background-size: cover !important;
   background-position: center center !important;
@@ -2711,7 +2711,7 @@ body.projects-page .banner-line2 {
 
   body.projects-page .home-project-card {
     padding: 0.64rem !important;
-    border-radius: 12px !important;
+    border-radius: 8px !important;
     gap: 0.46rem !important;
     min-height: auto !important;
   }
@@ -2779,8 +2779,173 @@ body.projects-page .banner-line2 {
     min-width: auto !important;
     min-height: 1.75rem !important;
     padding: 0.36rem 0.5rem !important;
-    border-radius: 999px !important;
+    border-radius: 8px !important;
     font-size: 0.56rem !important;
     line-height: 1.1 !important;
+  }
+}
+
+body.projects-page .banner-extra {
+  padding: 0 !important;
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+body.projects-page .home-project-card,
+body.projects-page .home-video-wrapper,
+body.projects-page .home-image-wrapper {
+  border-radius: 8px !important;
+}
+
+@media (max-width: 600px) {
+  body.projects-page .project-filter-bar {
+    gap: 0.45rem !important;
+  }
+
+  body.projects-page .proj-filter-btn {
+    min-height: 36px !important;
+    padding: 0.5rem 0.65rem !important;
+    border-radius: 8px !important;
+    font-size: 0.7rem !important;
+    line-height: 1.2 !important;
+  }
+
+  body.projects-page .home-projects-grid {
+    gap: 0.9rem !important;
+  }
+
+  body.projects-page .home-project-card {
+    padding: 0.9rem !important;
+    gap: 0.7rem !important;
+    border-radius: 8px !important;
+  }
+
+  body.projects-page .home-project-link {
+    order: 1 !important;
+  }
+
+  body.projects-page .home-project-media {
+    display: block !important;
+    order: 2 !important;
+    width: 100% !important;
+    margin: 0 !important;
+  }
+
+  body.projects-page .home-project-actions {
+    order: 3 !important;
+    gap: 0.5rem !important;
+  }
+
+  body.projects-page .home-video-wrapper,
+  body.projects-page .home-image-wrapper {
+    width: 100% !important;
+    min-height: 0 !important;
+    aspect-ratio: 16 / 9 !important;
+    border-radius: 8px !important;
+  }
+
+  body.projects-page .home-video-poster,
+  body.projects-page .home-image-wrapper img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+  }
+
+  body.projects-page .home-video-wrapper.media-fit-contain .home-video-poster,
+  body.projects-page .home-image-wrapper.media-fit-contain img {
+    object-fit: contain !important;
+    background: #f7f8f7 !important;
+  }
+
+  body.projects-page .home-project-year,
+  body.projects-page .home-project-category {
+    font-size: 0.68rem !important;
+    line-height: 1.3 !important;
+  }
+
+  body.projects-page .home-project-title {
+    margin-bottom: 0.5rem !important;
+    font-size: 1.05rem !important;
+    line-height: 1.22 !important;
+  }
+
+  body.projects-page .home-project-description {
+    -webkit-line-clamp: 3 !important;
+    margin-bottom: 0.65rem !important;
+    font-size: 0.875rem !important;
+    line-height: 1.5 !important;
+  }
+
+  body.projects-page .home-tech-tag {
+    padding: 0.32rem 0.48rem !important;
+    font-size: 0.68rem !important;
+    line-height: 1.2 !important;
+  }
+
+  body.projects-page .home-project-action {
+    min-height: 40px !important;
+    padding: 0.55rem 0.75rem !important;
+    border-radius: 8px !important;
+    font-size: 0.78rem !important;
+    line-height: 1.2 !important;
+  }
+
+  body.projects-page .pagination-controls {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    gap: 0.5rem !important;
+    margin: 1.25rem 0 0.75rem !important;
+  }
+
+  body.projects-page .pagination-btn,
+  body.projects-page .page-number-btn {
+    flex: 0 0 44px !important;
+    width: 44px !important;
+    min-width: 44px !important;
+    max-width: 44px !important;
+    height: 44px !important;
+    min-height: 44px !important;
+    padding: 0 !important;
+    justify-content: center !important;
+    border-radius: 8px !important;
+  }
+
+  body.projects-page .pagination-btn {
+    overflow: hidden !important;
+    font-size: 0 !important;
+  }
+
+  body.projects-page .pagination-btn svg {
+    width: 20px !important;
+    height: 20px !important;
+  }
+
+  body.projects-page .page-numbers {
+    gap: 0.5rem !important;
+  }
+
+  body.projects-page .page-number-btn {
+    font-size: 0.82rem !important;
+  }
+}
+
+@media (max-width: 720px) {
+  body.projects-page .home-projects-section {
+    padding-right: 12px !important;
+    padding-left: 12px !important;
+  }
+
+  body.projects-page .home-projects-container {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-right: 0 !important;
+    margin-left: 0 !important;
+    padding-right: 0 !important;
+    padding-left: 0 !important;
   }
 }

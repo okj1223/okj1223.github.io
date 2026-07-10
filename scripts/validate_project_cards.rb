@@ -90,6 +90,7 @@ def validate_collection(errors, project_file, label, items, required_keys)
 end
 
 projects = {}
+featured_projects = []
 errors = []
 allowed_filters = load_project_filters
 
@@ -109,6 +110,23 @@ Dir[PROJECTS_DIR.join("*.md")].sort.each do |file|
   end
 
   projects[permalink] = path.basename.to_s
+
+  featured = front_matter["featured"]
+  featured_order = front_matter["featured_order"]
+
+  if front_matter.key?("featured") && ![true, false].include?(featured)
+    add_error(errors, "#{path.basename}: `featured` must be true or false")
+  end
+
+  if featured == true
+    if !featured_order.is_a?(Integer) || featured_order <= 0
+      add_error(errors, "#{path.basename}: featured projects need a positive integer `featured_order`")
+    else
+      featured_projects << [featured_order, path.basename.to_s]
+    end
+  elsif present?(featured_order)
+    add_error(errors, "#{path.basename}: `featured_order` requires `featured: true`")
+  end
 
   filter_categories = normalized_array(front_matter["filter_categories"])
   if filter_categories.empty?
@@ -140,6 +158,21 @@ Dir[PROJECTS_DIR.join("*.md")].sort.each do |file|
 
   has_media = present?(front_matter["video_url"]) || present?(front_matter["thumbnail-img"])
   add_error(errors, "#{path.basename}: missing `video_url` or `thumbnail-img`") unless has_media
+end
+
+if featured_projects.length != 3
+  add_error(errors, "expected exactly 3 featured projects, found #{featured_projects.length}")
+end
+
+featured_orders = featured_projects.map(&:first)
+duplicate_featured_orders = featured_orders.group_by(&:itself).select { |_order, items| items.length > 1 }.keys
+unless duplicate_featured_orders.empty?
+  add_error(errors, "duplicate featured project orders: #{duplicate_featured_orders.sort.join(', ')}")
+end
+
+expected_featured_orders = (1..featured_projects.length).to_a
+unless featured_orders.sort == expected_featured_orders
+  add_error(errors, "featured project orders must be contiguous: #{expected_featured_orders.join(', ')}")
 end
 
 if errors.any?

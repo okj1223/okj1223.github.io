@@ -1,0 +1,47 @@
+{% assign item = include.item %}
+<li class="career-entry{% if item.logo or item.logos %} has-logo{% endif %}{% if item.logos %} has-multiple-logos{% endif %}" data-type="{{ item.type | escape_once }}">
+  {% if item.logos %}
+  <div class="career-logo-group" aria-hidden="true">
+    {% for logo in item.logos %}
+    <div class="career-logo-frame">
+      <img src="{{ logo.image | relative_url }}" alt="" loading="lazy" decoding="async">
+    </div>
+    {% endfor %}
+  </div>
+  {% elsif item.logo %}
+  <div class="career-logo-frame" aria-hidden="true">
+    <img src="{{ item.logo | relative_url }}" alt="" loading="lazy" decoding="async">
+  </div>
+  {% endif %}
+
+  <div class="career-entry-copy">
+    <div class="career-entry-heading">
+      {% if item.institution_links %}
+      <span class="career-institution career-institution-multi">
+        {% for link in item.institution_links %}
+        <a
+          class="career-institution-link"
+          href="{{ link.map_url | escape_once }}"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Open Google Maps for {{ link.label | escape_once }}">{{ link.label | escape_once }}</a>{% unless forloop.last %}<span class="career-link-separator"> / </span>{% endunless %}
+        {% endfor %}
+      </span>
+      {% elsif item.map_url %}
+      <a
+        class="career-institution career-institution-link"
+        href="{{ item.map_url | escape_once }}"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Open Google Maps for {{ item.institution | escape_once }}">
+        {{ item.institution | escape_once }}
+      </a>
+      {% else %}
+      <span class="career-institution">{{ item.institution | escape_once }}</span>
+      {% endif %}
+      {% if item.relation %}<span class="career-relation">{{ item.relation | escape_once }}</span>{% endif %}
+    </div>
+    <p class="career-summary">{{ item.summary | escape_once }}</p>
+    <span class="career-date">{{ item.date | escape_once }}</span>
+  </div>
+</li>
