@@ -1,5 +1,5 @@
 {% assign item = include.item %}
-<li class="career-entry{% if item.logo or item.logos %} has-logo{% endif %}{% if item.logos %} has-multiple-logos{% endif %}" data-type="{{ item.type | escape_once }}">
+<li class="career-entry{% if item.logo or item.logos %} has-logo{% endif %}{% if item.logos %} has-multiple-logos{% endif %}{% if item.logo_variant %} career-entry--logo-{{ item.logo_variant | escape_once }}{% endif %}" data-type="{{ item.type | escape_once }}">
   {% if item.logos %}
   <div class="career-logo-group" aria-hidden="true">
     {% for logo in item.logos %}
@@ -42,6 +42,7 @@
       {% if item.relation %}<span class="career-relation">{{ item.relation | escape_once }}</span>{% endif %}
     </div>
     <p class="career-summary">{{ item.summary | escape_once }}</p>
+    {% if item.note %}<p class="career-note">{{ item.note | escape_once }}</p>{% endif %}
     <span class="career-date">{{ item.date | escape_once }}</span>
   </div>
 </li>

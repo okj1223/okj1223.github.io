@@ -1099,32 +1099,72 @@ body.home-page .unified-skills-grid .skill-item:hover {
   }
 }
 
-/* Paired institution marks for a single education entry. */
-body.home-page .career-entry.has-multiple-logos {
-  grid-template-columns: 96px minmax(0, 1fr) !important;
+body.home-page .career-note {
+  margin: 0.35rem 0 0;
+  padding-left: 0.65rem;
+  border-left: 2px solid rgba(57, 112, 99, 0.28);
+  color: rgba(43, 37, 32, 0.58);
+  font-size: 0.72rem;
+  font-style: italic;
+  line-height: 1.45;
 }
 
+/* Keep institution marks in a dedicated top-left row so long titles retain the full card width. */
+body.home-page .career-entry.has-logo {
+  display: flex !important;
+  flex-direction: column;
+  align-items: stretch !important;
+  gap: 0.7rem !important;
+}
+
+body.home-page .career-entry.has-logo > .career-logo-frame {
+  width: 100% !important;
+  height: 40px !important;
+  place-items: center start;
+}
+
+body.home-page .career-entry.has-logo > .career-logo-frame img {
+  max-width: 104px !important;
+  max-height: 36px !important;
+  object-position: left center;
+}
+
+/* Paired institution marks share the same top-left logo row. */
 body.home-page .career-logo-group {
-  display: grid;
-  grid-template-columns: 36px minmax(0, 1fr);
+  display: flex;
   align-items: center;
-  gap: 6px;
-  width: 96px;
+  justify-content: flex-start;
+  gap: 10px;
+  width: 100%;
+  height: 40px;
 }
 
 body.home-page .career-logo-group .career-logo-frame {
-  width: 100% !important;
-  height: 42px !important;
+  width: auto !important;
+  height: 40px !important;
 }
 
 body.home-page .career-logo-group .career-logo-frame:first-child img {
-  max-width: 34px !important;
-  max-height: 34px !important;
+  max-width: 36px !important;
+  max-height: 36px !important;
 }
 
 body.home-page .career-logo-group .career-logo-frame:last-child img {
-  max-width: 54px !important;
-  max-height: 30px !important;
+  max-width: 64px !important;
+  max-height: 32px !important;
+}
+
+/* Crop transparent canvas space while keeping the official wordmark large and legible. */
+body.home-page .career-entry--logo-wordmark > .career-logo-frame {
+  height: 52px !important;
+  overflow: hidden;
+}
+
+body.home-page .career-entry--logo-wordmark > .career-logo-frame img {
+  width: 240px !important;
+  max-width: none !important;
+  height: auto !important;
+  max-height: none !important;
 }
 
 @media (max-width: 720px) {
@@ -1142,27 +1182,43 @@ body.home-page .career-logo-group .career-logo-frame:last-child img {
     padding-left: 0 !important;
   }
 
-  body.home-page .career-entry.has-multiple-logos {
-    grid-template-columns: 82px minmax(0, 1fr) !important;
+  body.home-page .career-entry.has-logo {
+    gap: 0.6rem !important;
+  }
+
+  body.home-page .career-entry.has-logo > .career-logo-frame {
+    height: 36px !important;
+  }
+
+  body.home-page .career-entry.has-logo > .career-logo-frame img {
+    max-width: 96px !important;
+    max-height: 32px !important;
   }
 
   body.home-page .career-logo-group {
-    grid-template-columns: 31px minmax(0, 1fr);
-    gap: 5px;
-    width: 82px;
+    gap: 8px;
+    height: 36px;
   }
 
   body.home-page .career-logo-group .career-logo-frame {
-    height: 34px !important;
+    height: 36px !important;
   }
 
   body.home-page .career-logo-group .career-logo-frame:first-child img {
-    max-width: 29px !important;
-    max-height: 29px !important;
+    max-width: 32px !important;
+    max-height: 32px !important;
   }
 
   body.home-page .career-logo-group .career-logo-frame:last-child img {
-    max-width: 46px !important;
-    max-height: 25px !important;
+    max-width: 56px !important;
+    max-height: 28px !important;
+  }
+
+  body.home-page .career-entry--logo-wordmark > .career-logo-frame {
+    height: 44px !important;
+  }
+
+  body.home-page .career-entry--logo-wordmark > .career-logo-frame img {
+    width: 200px !important;
   }
 }

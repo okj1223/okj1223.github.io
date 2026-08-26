@@ -12,10 +12,12 @@
       <h3 id="experience-affiliations-title">Work</h3>
       <ul class="affiliation-list">
         {% for item in experience_affiliations %}
-        <li aria-label="{{ item.institution | escape_once }}, {{ item.relation | escape_once }}">
+        <li aria-label="{{ item.institution | escape_once }}{% if item.relation %}, {{ item.relation | escape_once }}{% endif %}">
           <img src="{{ item.logo | relative_url }}" alt="" loading="eager" decoding="async">
           <span class="sr-only">{{ item.institution | escape_once }}</span>
+          {% if item.relation %}
           <span class="affiliation-relation">{{ item.relation | escape_once }}</span>
+          {% endif %}
         </li>
         {% endfor %}
       </ul>
@@ -25,10 +27,12 @@
       <h3 id="education-affiliations-title">Study &amp; Training</h3>
       <ul class="affiliation-list">
         {% for item in education_affiliations %}
-        <li aria-label="{{ item.institution | escape_once }}, {{ item.relation | escape_once }}">
+        <li aria-label="{{ item.institution | escape_once }}{% if item.relation %}, {{ item.relation | escape_once }}{% endif %}">
           <img src="{{ item.logo | relative_url }}" alt="" loading="eager" decoding="async">
           <span class="sr-only">{{ item.institution | escape_once }}</span>
+          {% if item.relation %}
           <span class="affiliation-relation">{{ item.relation | escape_once }}</span>
+          {% endif %}
         </li>
         {% endfor %}
       </ul>

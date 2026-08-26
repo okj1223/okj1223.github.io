@@ -252,46 +252,45 @@ career:
     start: 2017-03-01
     end: 2024-02-29
     institution: Incheon National University
-    relation: B.Eng.
     logo: /assets/img/logos/partners/academic/incheon-national-university.png
     show_affiliation: true
     map_url: "https://www.google.com/maps/search/?api=1&query=Incheon%20National%20University"
-    summary: B.Eng. in Environmental Engineering (Major), Minor in Renewable Energy Engineering
+    summary: B.Eng. in Environmental Engineering; Minor in Renewable Energy Engineering
+    note: Timeline note — Includes a two-year leave of absence for mandatory military service
     date: Mar. 2017 - Feb. 2024
   - type: career
     start: 2023-06-01
     end: 2023-08-31
     institution: Greenhouse Gas Inventory & Research Center of Korea (Ministry of Environment)
-    relation: Internship
+    relation: Intern
     logo: /assets/img/logos/partners/academic/greenhouse-gas-inventory-research-center.png
+    logo_variant: wordmark
     map_url: "https://www.google.com/maps/search/?api=1&query=Greenhouse%20Gas%20Inventory%20and%20Research%20Center%20of%20Korea%20Ministry%20of%20Environment"
-    summary: Internship - Legal Advisory Support on GHG Regulations and Reporting Systems
+    summary: Supported legal and policy research on greenhouse-gas regulations and reporting systems
     date: Jun. 2023 - Aug. 2023
   - type: career
     start: 2023-11-01
     end: 2025-03-31
     institution: Geesco Co., Ltd. - R&D Center
-    relation: Past employer
+    relation: Senior Researcher · Assistant Manager
     logo: /assets/img/logos/partners/company/geesco.png
     show_affiliation: true
     map_url: "https://www.google.com/maps/search/?api=1&query=Geesco%20Co.%20Ltd.%20R%26D%20Center%20Korea"
-    summary: Senior Mechanical Engineer (Deputy Manager)
+    summary: Led mechanical design, fabrication, controls integration, and commissioning for SCR catalyst-regeneration and industrial automation equipment
     date: Nov. 2023 - Mar. 2025
   - type: education
     start: 2025-03-01
     end: 2025-09-30
     institution: Doosan Robotics AI Robot Training Program
-    relation: Training program
     logo: /assets/img/logos/partners/company/doosan-robotics.png
     show_affiliation: true
     map_url: "https://www.google.com/maps/search/?api=1&query=Doosan%20Robotics"
-    summary: Intensive Training in AI, ML, DL, RNN, Python, and ROS2
+    summary: AI & Robotics Training Program with intensive training in machine learning, deep learning, RNNs, Python, and ROS2
     date: Mar. 2025 - Sep. 2025
   - type: education
     start: 2025-09-01
     end: 2025-11-30
     institution: CIA (Cebu International Academy) / GLC (Global Language Cebu), Philippines
-    relation: Language study
     logos:
       - image: /assets/img/logos/partners/academic/cebu-international-academy.png
       - image: /assets/img/logos/partners/academic/global-language-cebu.png
@@ -300,23 +299,23 @@ career:
         map_url: "https://www.google.com/maps/search/?api=1&query=CIA%20Building%20Vistamar%20Avenue%20Sitio%20Dapdap%20Barangay%20Mactan%20Lapu-Lapu%20City%20Cebu%20Philippines%206015"
       - label: GLC (Global Language Cebu), Philippines
         map_url: "https://www.google.com/maps/search/?api=1&query=2815%20New%20Frontier%20Street%20Mabolo%20Cebu%20City%20Cebu%20Philippines%206000"
-    summary: English Language Study Program
+    summary: Full-time English Language Program in Cebu, Philippines
     date: Sep. 2025 - Nov. 2025
   - type: career
     start: 2026-03-01
+    end: 2026-07-31
     institution: ROBROS
-    relation: Current role
+    relation: Robotics Research Assistant
     logo: /assets/img/logos/partners/company/robros.png
     show_affiliation: true
     map_url: "https://www.google.com/maps/search/?api=1&query=ROBROS%20Korea"
-    summary: Research Assistant - Data Collection & Inspection, Humanoid Robot AI Training
-    date: Mar. 2026 - Present
+    summary: Humanoid robot AI training, teleoperation data collection and inspection, data-collection experiment pipeline design, and data-collection system development
+    date: Mar. 2026 - Jul. 2026
   - type: education
     start: 2026-09-01
     institution: National Taiwan University
-    relation: Incoming M.S. - Sep. 2026
     logo: /assets/img/logos/partners/academic/national-taiwan-university.png
     show_affiliation: true
     map_url: "https://www.google.com/maps/search/?api=1&query=National%20Taiwan%20University"
-    summary: Incoming M.S. Program in Mechanical Engineering, System Control Group
-    date: Sep. 2026 - Incoming
+    summary: M.S. in Mechanical Engineering, System Control Group
+    date: Sep. 2026 - Present

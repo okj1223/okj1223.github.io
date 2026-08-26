@@ -13,15 +13,15 @@ share-img: /assets/img/profile.webp
 <div class="about-intro-copy">
 <p class="about-kicker">Robotics Systems Engineer</p>
 <h1>About Me</h1>
-<p class="about-lede">I work across hardware, control, perception, and deployment. I currently support humanoid manipulation data collection and dataset quality workflows as a Research Assistant at ROBROS, and I will begin an M.S. program in Mechanical Engineering at National Taiwan University in September 2026.</p>
+<p class="about-lede">I am an M.S. student in Mechanical Engineering in the System Control Group at National Taiwan University. My work spans hardware, control, perception, and deployment, with recent experience supporting humanoid manipulation data collection and dataset quality workflows at ROBROS.</p>
 </div>
 </div>
 
 My background connects environmental engineering, mechanical design, industrial automation, and robotics. That path shaped how I work: start from field constraints, define what can be measured, build the smallest useful system, and document the limits as carefully as the result.
 
-## Current Work
+## Current Focus
 
-- Humanoid robot data collection, teleoperation workflows, and dataset quality assurance
+- Robot learning, teleoperation workflows, and dataset quality for humanoid manipulation
 - ROS2-based autonomy, perception pipelines, and sim-to-real validation
 - Industrial automation systems involving sensors, control, fluid handling, and safety engineering
 
