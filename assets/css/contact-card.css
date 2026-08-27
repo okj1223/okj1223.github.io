@@ -67,6 +67,7 @@ body.contact-card-page::before {
 
 .contact-card-frame {
   position: relative;
+  isolation: isolate;
   display: grid;
   grid-template-columns: minmax(0, 1.45fr) minmax(18rem, 0.8fr);
   grid-template-areas:
@@ -89,6 +90,7 @@ body.contact-card-page::before {
 .contact-card-frame::before {
   content: '';
   position: absolute;
+  z-index: 2;
   top: 0;
   right: 0;
   width: 0.42rem;
@@ -99,6 +101,7 @@ body.contact-card-page::before {
 .contact-card-frame::after {
   content: '';
   position: absolute;
+  z-index: 0;
   right: -8rem;
   bottom: -12rem;
   width: 28rem;
@@ -243,7 +246,7 @@ body.contact-card-page::before {
   overflow: hidden;
   border: 1px solid rgba(23, 22, 20, 0.1);
   border-radius: 1.4rem;
-  background: rgba(255, 255, 255, 0.54);
+  background: #f8f6f1;
 }
 
 .contact-card-qr-summary {
