@@ -362,6 +362,93 @@ body {
   text-align: left !important;
 }
 
+.project-content .project-owned-pipeline {
+  width: 100% !important;
+  margin: 1.6rem 0 2.4rem !important;
+  padding: 1.1rem !important;
+  border: 1px solid rgba(74, 53, 40, 0.14) !important;
+  border-radius: 20px !important;
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.92), rgba(241, 247, 244, 0.8)) !important;
+  box-shadow: 0 16px 38px rgba(31, 24, 20, 0.07) !important;
+}
+
+.project-content .project-owned-pipeline__header {
+  padding: 0.25rem 0.25rem 1rem !important;
+}
+
+.project-content .project-owned-pipeline__header span,
+.project-content .project-owned-pipeline__header strong {
+  display: block !important;
+}
+
+.project-content .project-owned-pipeline__header span {
+  color: #862633 !important;
+  font-size: 0.66rem !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.09em !important;
+  text-transform: uppercase !important;
+}
+
+.project-content .project-owned-pipeline__header strong {
+  margin-top: 0.3rem !important;
+  color: #27211d !important;
+  font-size: clamp(1.15rem, 2vw, 1.45rem) !important;
+  line-height: 1.25 !important;
+}
+
+.project-content .project-owned-pipeline__steps {
+  display: grid !important;
+  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  gap: 0.6rem !important;
+}
+
+.project-content .project-owned-pipeline__steps > div {
+  min-width: 0 !important;
+  padding: 0.9rem !important;
+  border: 1px solid rgba(74, 53, 40, 0.11) !important;
+  border-radius: 14px !important;
+  background: rgba(255, 255, 255, 0.78) !important;
+}
+
+.project-content .project-owned-pipeline__steps span,
+.project-content .project-owned-pipeline__steps strong,
+.project-content .project-owned-pipeline__steps small {
+  display: block !important;
+}
+
+.project-content .project-owned-pipeline__steps span {
+  margin-bottom: 0.4rem !important;
+  color: #862633 !important;
+  font-size: 0.64rem !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.08em !important;
+}
+
+.project-content .project-owned-pipeline__steps strong {
+  color: #294f48 !important;
+  font-size: 0.86rem !important;
+  line-height: 1.35 !important;
+}
+
+.project-content .project-owned-pipeline__steps small {
+  margin-top: 0.35rem !important;
+  color: #75685d !important;
+  font-size: 0.64rem !important;
+  line-height: 1.45 !important;
+}
+
+.project-content .project-owned-pipeline__feedback {
+  margin-top: 0.7rem !important;
+  padding: 0.72rem 0.9rem !important;
+  border-radius: 12px !important;
+  background: rgba(134, 38, 51, 0.07) !important;
+  color: #6d2530 !important;
+  font-size: 0.72rem !important;
+  font-weight: 700 !important;
+  line-height: 1.45 !important;
+  text-align: center !important;
+}
+
 .project-content .project-protocol-grid {
   display: grid !important;
   grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
@@ -447,53 +534,6 @@ body {
   line-height: 1.45 !important;
 }
 
-.project-content .project-qa-grid {
-  display: grid !important;
-  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
-  gap: 0.65rem !important;
-  margin: 1.3rem 0 2rem !important;
-}
-
-.project-content .project-qa-card {
-  min-width: 0 !important;
-  padding: 1rem !important;
-  border: 1px solid rgba(74, 53, 40, 0.12) !important;
-  border-radius: 14px !important;
-  background: rgba(255, 255, 255, 0.8) !important;
-}
-
-.project-content .project-qa-card span,
-.project-content .project-qa-card strong {
-  display: block !important;
-}
-
-.project-content .project-qa-card span {
-  color: #75685d !important;
-  font-size: 0.62rem !important;
-  font-weight: 800 !important;
-  letter-spacing: 0.07em !important;
-  text-transform: uppercase !important;
-}
-
-.project-content .project-qa-card strong {
-  margin-top: 0.35rem !important;
-  color: #2b2520 !important;
-  font-size: 0.92rem !important;
-  line-height: 1.35 !important;
-}
-
-.project-content .project-qa-card p {
-  margin: 0.5rem 0 0 !important;
-  color: #655a50 !important;
-  font-size: 0.72rem !important;
-  line-height: 1.5 !important;
-}
-
-.project-content .project-qa-card.is-corrupted { border-top: 3px solid #7c6a85 !important; }
-.project-content .project-qa-card.is-fail { border-top: 3px solid #b74949 !important; }
-.project-content .project-qa-card.is-dirty { border-top: 3px solid #d08b32 !important; }
-.project-content .project-qa-card.is-success { border-top: 3px solid #3b9472 !important; }
-
 .project-content .project-media-grid {
   display: grid !important;
   grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
@@ -557,9 +597,17 @@ body {
 }
 
 @media (max-width: 700px) {
+  .project-content .project-owned-pipeline {
+    padding: 0.75rem !important;
+    border-radius: 16px !important;
+  }
+
+  .project-content .project-owned-pipeline__steps {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+
   .project-content .project-protocol-grid,
-  .project-content .project-flow,
-  .project-content .project-qa-grid {
+  .project-content .project-flow {
     grid-template-columns: minmax(0, 1fr) !important;
   }
 
