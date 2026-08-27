@@ -73,9 +73,13 @@ js:
         <span aria-hidden="true">↓</span>
         <span>Save contact</span>
       </a>
-      <button class="contact-card-action contact-card-action--secondary" type="button" data-share-card>
+      <a class="contact-card-action contact-card-action--secondary" href="{{ '/assets/img/contact-card/kyungjun-oh-contact-card.png' | relative_url }}" download>
+        <span aria-hidden="true">↓</span>
+        <span>Save card image</span>
+      </a>
+      <button class="contact-card-share-link" type="button" data-share-card>
         <span aria-hidden="true">↗</span>
-        <span data-share-label>Share card</span>
+        <span data-share-label>Share link</span>
       </button>
       <p class="contact-card-status" data-share-status role="status" aria-live="polite"></p>
     </nav>

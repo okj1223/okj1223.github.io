@@ -17,7 +17,7 @@
     shareLabel.textContent = message;
     shareStatus.textContent = message;
     resetTimer = window.setTimeout(function () {
-      shareLabel.textContent = 'Share card';
+      shareLabel.textContent = 'Share link';
       shareStatus.textContent = '';
     }, 2200);
   }

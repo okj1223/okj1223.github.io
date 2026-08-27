@@ -438,6 +438,32 @@ body.contact-card-page::before {
   color: #fff !important;
 }
 
+.contact-card-share-link {
+  display: inline-flex;
+  grid-column: 1 / -1;
+  align-items: center;
+  justify-self: center;
+  gap: 0.35rem;
+  min-height: 2rem;
+  padding: 0.25rem 0.6rem;
+  border: 0;
+  background: transparent;
+  color: var(--card-ink-soft);
+  font-family: inherit;
+  font-size: 0.61rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  text-decoration: underline;
+  text-decoration-color: rgba(23, 22, 20, 0.24);
+  text-underline-offset: 0.2em;
+}
+
+.contact-card-share-link:hover,
+.contact-card-share-link:focus-visible {
+  color: var(--card-burgundy);
+}
+
 .contact-card-status {
   position: absolute;
   width: 1px;
