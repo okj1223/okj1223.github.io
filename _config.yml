@@ -50,6 +50,8 @@ kramdown:
 banner-img: "/assets/img/robotics-automation-portfolio-reel-poster.webp"
 banner-video: "/assets/videos/robotics-automation-portfolio-reel.mp4"
 banner-video-poster: "/assets/img/robotics-automation-portfolio-reel-poster.webp"
+banner-video-mobile: "/assets/videos/robotics-automation-portfolio-reel-mobile.mp4"
+banner-video-poster-mobile: "/assets/img/robotics-automation-portfolio-reel-mobile-poster.webp"
 
 # 배너 위에 표시할 타이틀 텍스트
 banner-title: "Robotics, end to end."

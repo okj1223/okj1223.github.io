@@ -8,6 +8,7 @@ source_dir="$repo_dir/_source_media/home-banner"
 video_dir="$repo_dir/assets/videos"
 image_dir="$repo_dir/assets/img"
 work_dir=$(mktemp -d /tmp/home-banner-reel.XXXXXX)
+layout_mode="${1:-desktop}"
 
 segment_duration="2.500"
 transition_duration="0.375"
@@ -20,6 +21,23 @@ portrait_stage_width="1080"
 portrait_stage_height="600"
 wide_stage_width="1280"
 edge_feather="48"
+
+case "$layout_mode" in
+  desktop)
+    stage_overlay_x="W-w"
+    output_video_name="robotics-automation-portfolio-reel.mp4"
+    output_poster_name="robotics-automation-portfolio-reel-poster.webp"
+    ;;
+  mobile)
+    stage_overlay_x="(W-w)/2"
+    output_video_name="robotics-automation-portfolio-reel-mobile.mp4"
+    output_poster_name="robotics-automation-portfolio-reel-mobile-poster.webp"
+    ;;
+  *)
+    printf 'Usage: %s [desktop|mobile]\n' "$0" >&2
+    exit 2
+    ;;
+esac
 
 cleanup() {
   case "$work_dir" in
@@ -82,7 +100,7 @@ encode_landscape_video() {
     ffmpeg -nostdin -hide_banner -loglevel error -y \
       -i "$input_path" \
       -an \
-      -filter_complex "color=c=black:s=${frame_size}:r=${frame_rate}:d=${target_duration}[bg-ready];[0:v]trim=start=${source_start}:duration=${trimmed_duration},setpts=(PTS-STARTPTS)*${pts_factor},fps=${frame_rate},scale=${content_width}:${frame_height}:force_original_aspect_ratio=increase:flags=lanczos,crop=${content_width}:${frame_height}:(in_w-out_w)/2:(in_h-out_h)*${crop_anchor_y},format=yuv444p,split=2[fg-color][fg-mask-source];[fg-mask-source]format=gray,geq=lum='clip(255*X/${edge_feather},0,255)'[fg-mask];[fg-color][fg-mask]alphamerge[fg-card];[bg-ready][fg-card]overlay=W-w:0,setsar=1,format=yuv420p[out]" \
+      -filter_complex "color=c=black:s=${frame_size}:r=${frame_rate}:d=${target_duration}[bg-ready];[0:v]trim=start=${source_start}:duration=${trimmed_duration},setpts=(PTS-STARTPTS)*${pts_factor},fps=${frame_rate},scale=${content_width}:${frame_height}:force_original_aspect_ratio=increase:flags=lanczos,crop=${content_width}:${frame_height}:(in_w-out_w)/2:(in_h-out_h)*${crop_anchor_y},format=yuv444p,split=2[fg-color][fg-mask-source];[fg-mask-source]format=gray,geq=lum='clip(255*X/${edge_feather},0,255)'[fg-mask];[fg-color][fg-mask]alphamerge[fg-card];[bg-ready][fg-card]overlay=x='${stage_overlay_x}':y=0,setsar=1,format=yuv420p[out]" \
       -map '[out]' \
       -t "$target_duration" \
       -c:v libx264 -preset fast -crf 18 -video_track_timescale 24000 \
@@ -127,7 +145,7 @@ encode_contained_video() {
   ffmpeg -nostdin -hide_banner -loglevel error -y \
     -i "$input_path" \
     -an \
-    -filter_complex "color=c=black:s=${frame_size}:r=${frame_rate}:d=${target_duration}[bg-ready];[0:v]trim=start=${source_start}:duration=${trimmed_duration},setpts=(PTS-STARTPTS)*${pts_factor},crop=iw:trunc(ih*${crop_height_fraction}/2)*2:0:trunc(ih*${crop_top_fraction}/2)*2,fps=${frame_rate},${foreground_scale},eq=contrast=1.04:saturation=1.04,format=yuv444p,split=2[fg-color][fg-mask-source];[fg-mask-source]format=gray,geq=lum='clip(255*X/${edge_feather},0,255)'[fg-mask];[fg-color][fg-mask]alphamerge[fg-card];[bg-ready][fg-card]overlay=W-w:(H-h)/2,setsar=1,format=yuv420p[out]" \
+    -filter_complex "color=c=black:s=${frame_size}:r=${frame_rate}:d=${target_duration}[bg-ready];[0:v]trim=start=${source_start}:duration=${trimmed_duration},setpts=(PTS-STARTPTS)*${pts_factor},crop=iw:trunc(ih*${crop_height_fraction}/2)*2:0:trunc(ih*${crop_top_fraction}/2)*2,fps=${frame_rate},${foreground_scale},eq=contrast=1.04:saturation=1.04,format=yuv444p,split=2[fg-color][fg-mask-source];[fg-mask-source]format=gray,geq=lum='clip(255*X/${edge_feather},0,255)'[fg-mask];[fg-color][fg-mask]alphamerge[fg-card];[bg-ready][fg-card]overlay=x='${stage_overlay_x}':y='(H-h)/2',setsar=1,format=yuv420p[out]" \
     -map '[out]' \
     -t "$target_duration" \
     -c:v libx264 -preset fast -crf 18 -video_track_timescale 24000 \
@@ -146,7 +164,7 @@ encode_photo_card() {
   ffmpeg -nostdin -hide_banner -loglevel error -y \
     -i "$input_path" \
     -an \
-    -filter_complex "color=c=black:s=${frame_size}:r=${frame_rate}:d=${segment_duration}[bg-ready];[0:v]transpose=clock,crop=iw:trunc(ih*${crop_height_fraction}/2)*2:0:trunc(ih*${crop_top_fraction}/2)*2,scale=${portrait_stage_width}:${portrait_stage_height}:force_original_aspect_ratio=increase:flags=lanczos,crop=${portrait_stage_width}:${portrait_stage_height}:(in_w-out_w)/2:(in_h-out_h)/2,eq=contrast=1.04:saturation=1.04,tpad=stop_mode=clone:stop_duration=${segment_duration},fps=${frame_rate},setpts=PTS-STARTPTS,format=yuv444p,split=2[fg-color][fg-mask-source];[fg-mask-source]format=gray,geq=lum='clip(255*X/${edge_feather},0,255)'[fg-mask];[fg-color][fg-mask]alphamerge[fg-feather];[bg-ready][fg-feather]overlay=x='W-w':y='(H-h)/2':shortest=1,setsar=1,format=yuv420p[out]" \
+    -filter_complex "color=c=black:s=${frame_size}:r=${frame_rate}:d=${segment_duration}[bg-ready];[0:v]transpose=clock,crop=iw:trunc(ih*${crop_height_fraction}/2)*2:0:trunc(ih*${crop_top_fraction}/2)*2,scale=${portrait_stage_width}:${portrait_stage_height}:force_original_aspect_ratio=increase:flags=lanczos,crop=${portrait_stage_width}:${portrait_stage_height}:(in_w-out_w)/2:(in_h-out_h)/2,eq=contrast=1.04:saturation=1.04,tpad=stop_mode=clone:stop_duration=${segment_duration},fps=${frame_rate},setpts=PTS-STARTPTS,format=yuv444p,split=2[fg-color][fg-mask-source];[fg-mask-source]format=gray,geq=lum='clip(255*X/${edge_feather},0,255)'[fg-mask];[fg-color][fg-mask]alphamerge[fg-feather];[bg-ready][fg-feather]overlay=x='${stage_overlay_x}':y='(H-h)/2':shortest=1,setsar=1,format=yuv420p[out]" \
     -map '[out]' \
     -t "$segment_duration" \
     -c:v libx264 -preset fast -crf 18 -video_track_timescale 24000 \
@@ -166,7 +184,7 @@ encode_portrait_photo() {
   ffmpeg -nostdin -hide_banner -loglevel error -y \
     -i "$input_path" \
     -an \
-    -filter_complex "color=c=black:s=${frame_size}:r=${frame_rate}:d=${segment_duration}[bg-ready];[0:v]crop=iw:trunc(ih*${crop_height_fraction}/2)*2:0:trunc(ih*${crop_top_fraction}/2)*2,scale=${portrait_stage_width}:${portrait_stage_height}:force_original_aspect_ratio=increase:flags=lanczos,crop=${portrait_stage_width}:${portrait_stage_height}:(in_w-out_w)/2:(in_h-out_h)/2,unsharp=5:5:0.45:3:3:0,eq=contrast=1.04:saturation=1.04,tpad=stop_mode=clone:stop_duration=${segment_duration},fps=${frame_rate},setpts=PTS-STARTPTS,format=yuv444p,split=2[fg-color][fg-mask-source];[fg-mask-source]format=gray,geq=lum='clip(255*X/${edge_feather},0,255)'[fg-mask];[fg-color][fg-mask]alphamerge[fg-feather];[bg-ready][fg-feather]overlay=x='W-w':y='(H-h)/2':shortest=1,setsar=1,format=yuv420p[out]" \
+    -filter_complex "color=c=black:s=${frame_size}:r=${frame_rate}:d=${segment_duration}[bg-ready];[0:v]crop=iw:trunc(ih*${crop_height_fraction}/2)*2:0:trunc(ih*${crop_top_fraction}/2)*2,scale=${portrait_stage_width}:${portrait_stage_height}:force_original_aspect_ratio=increase:flags=lanczos,crop=${portrait_stage_width}:${portrait_stage_height}:(in_w-out_w)/2:(in_h-out_h)/2,unsharp=5:5:0.45:3:3:0,eq=contrast=1.04:saturation=1.04,tpad=stop_mode=clone:stop_duration=${segment_duration},fps=${frame_rate},setpts=PTS-STARTPTS,format=yuv444p,split=2[fg-color][fg-mask-source];[fg-mask-source]format=gray,geq=lum='clip(255*X/${edge_feather},0,255)'[fg-mask];[fg-color][fg-mask]alphamerge[fg-feather];[bg-ready][fg-feather]overlay=x='${stage_overlay_x}':y='(H-h)/2':shortest=1,setsar=1,format=yuv420p[out]" \
     -map '[out]' \
     -t "$segment_duration" \
     -c:v libx264 -preset fast -crf 18 -video_track_timescale 24000 \
@@ -196,16 +214,16 @@ ffmpeg -nostdin -hide_banner -loglevel error -y \
   -map '[out]' -an \
   -c:v libx264 -preset slow -crf 23 -profile:v high -level 4.1 \
   -movflags +faststart \
-  "$work_dir/robotics-automation-portfolio-reel.mp4"
+  "$work_dir/$output_video_name"
 
 ffmpeg -nostdin -hide_banner -loglevel error -y \
-  -ss 0.8 -i "$work_dir/robotics-automation-portfolio-reel.mp4" \
+  -ss 0.8 -i "$work_dir/$output_video_name" \
   -frames:v 1 -vf "scale=${frame_width}:${frame_height}:flags=lanczos" \
   -c:v libwebp -quality 82 -update 1 \
-  "$work_dir/robotics-automation-portfolio-reel-poster.webp"
+  "$work_dir/$output_poster_name"
 
-mv -- "$work_dir/robotics-automation-portfolio-reel.mp4" "$video_dir/robotics-automation-portfolio-reel.mp4"
-mv -- "$work_dir/robotics-automation-portfolio-reel-poster.webp" "$image_dir/robotics-automation-portfolio-reel-poster.webp"
+mv -- "$work_dir/$output_video_name" "$video_dir/$output_video_name"
+mv -- "$work_dir/$output_poster_name" "$image_dir/$output_poster_name"
 
-printf 'Built %s\n' "$video_dir/robotics-automation-portfolio-reel.mp4"
-printf 'Built %s\n' "$image_dir/robotics-automation-portfolio-reel-poster.webp"
+printf 'Built %s\n' "$video_dir/$output_video_name"
+printf 'Built %s\n' "$image_dir/$output_poster_name"

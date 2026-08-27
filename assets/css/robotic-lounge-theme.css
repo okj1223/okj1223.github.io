@@ -1625,6 +1625,21 @@ body.home-page .home-project-item {
   pointer-events: none;
 }
 
+#banner .banner-media--mobile {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  #banner .banner-media--desktop {
+    display: none;
+  }
+
+  #banner .banner-media--mobile {
+    display: block;
+    object-position: center center;
+  }
+}
+
 #banner.has-banner-video::before {
   z-index: 1 !important;
   background:
@@ -4956,5 +4971,108 @@ body.home-page .career-institution-multi {
     min-height: 1.05rem;
     padding: 0.18rem 0.38rem;
     font-size: 0.46rem;
+  }
+
+  /* Mobile focus panel: one coherent surface with three readable rows. */
+  body.home-page .home-focus-shell {
+    padding: 1rem !important;
+    border: 1px solid rgba(66, 83, 76, 0.12) !important;
+    border-radius: 16px !important;
+    background: rgba(255, 255, 255, 0.78) !important;
+    box-shadow: 0 12px 28px rgba(29, 39, 35, 0.055) !important;
+  }
+
+  body.home-page .home-focus-header {
+    width: 100% !important;
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 0 0 0.9rem !important;
+    border-bottom: 1px solid rgba(66, 83, 76, 0.12) !important;
+    text-align: left !important;
+  }
+
+  body.home-page .home-focus-kicker {
+    margin: 0 0 0.34rem !important;
+  }
+
+  body.home-page .home-focus-header h2 {
+    max-width: 19rem !important;
+    margin: 0 !important;
+    font-size: 1.12rem !important;
+    line-height: 1.18 !important;
+  }
+
+  body.home-page .home-focus-header > p:last-child {
+    max-width: none !important;
+    margin: 0.48rem 0 0 !important;
+    font-size: 0.7rem !important;
+    line-height: 1.5 !important;
+  }
+
+  body.home-page .home-focus-grid {
+    counter-reset: mobile-focus-item;
+    gap: 0 !important;
+  }
+
+  body.home-page .home-focus-card {
+    counter-increment: mobile-focus-item;
+    display: grid !important;
+    grid-template-columns: 1.55rem minmax(0, 1fr) !important;
+    column-gap: 0.58rem !important;
+    padding: 0.82rem 0 !important;
+    border: 0 !important;
+    border-bottom: 1px solid rgba(66, 83, 76, 0.1) !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+  }
+
+  body.home-page .home-focus-card:last-child {
+    padding-bottom: 0 !important;
+    border-bottom: 0 !important;
+  }
+
+  body.home-page .home-focus-card::before {
+    content: "0" counter(mobile-focus-item);
+    grid-column: 1;
+    grid-row: 1 / span 2;
+    padding-top: 0.05rem;
+    color: #8b6a4e;
+    font-family: 'Sora', sans-serif;
+    font-size: 0.58rem;
+    font-weight: 800;
+    line-height: 1.25;
+    letter-spacing: 0.04em;
+  }
+
+  body.home-page .home-focus-card h3,
+  body.home-page .home-focus-card p {
+    grid-column: 2;
+  }
+
+  body.home-page .home-focus-card h3 {
+    margin: 0 0 0.25rem !important;
+    font-size: 0.82rem !important;
+    line-height: 1.25 !important;
+  }
+
+  body.home-page .home-focus-card p {
+    font-size: 0.67rem !important;
+    line-height: 1.46 !important;
+  }
+
+  /* The mobile footer is one column, so its identity block should center too. */
+  .eco-footer .footer-identity {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    width: 100% !important;
+    text-align: center !important;
+  }
+
+  .eco-footer .footer-identity .profile-name,
+  .eco-footer .footer-identity .profile-title {
+    width: 100% !important;
+    text-align: center !important;
   }
 }

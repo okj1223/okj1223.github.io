@@ -3,7 +3,7 @@
 <section id="banner"{% if site.banner-video %} class="has-banner-video"{% endif %} aria-labelledby="home-hero-title" data-banner-image="{{ banner_poster | relative_url }}" style="background-image: url('{{ banner_poster | relative_url }}');">
   {% if site.banner-video %}
   <video
-    class="banner-media"
+    class="banner-media banner-media--desktop"
     autoplay
     muted
     loop
@@ -12,8 +12,22 @@
     poster="{{ banner_poster | relative_url }}"
     aria-hidden="true"
     tabindex="-1">
-    <source src="{{ site.banner-video | relative_url }}" type="video/mp4">
+    <source src="{{ site.banner-video | relative_url }}" type="video/mp4" media="(min-width: 769px)">
   </video>
+  {% if site.banner-video-mobile %}
+  <video
+    class="banner-media banner-media--mobile"
+    autoplay
+    muted
+    loop
+    playsinline
+    preload="metadata"
+    poster="{{ site.banner-video-poster-mobile | relative_url }}"
+    aria-hidden="true"
+    tabindex="-1">
+    <source src="{{ site.banner-video-mobile | relative_url }}" type="video/mp4" media="(max-width: 768px)">
+  </video>
+  {% endif %}
   {% endif %}
   <div class="banner-overlay">
     <p class="banner-subtitle">
