@@ -8,18 +8,18 @@
     </header>
 
     <div class="career-columns">
-      <section class="career-group" aria-labelledby="career-group-heading">
+      <section class="career-group career-group--professional" aria-labelledby="career-group-heading">
         <h3 class="career-group-title" id="career-group-heading">Professional Experience</h3>
-        <ul class="career-list">
+        <ul class="career-list career-list--professional">
           {% for item in career_entries %}
           {% include career-entry.html item=item %}
           {% endfor %}
         </ul>
       </section>
 
-      <section class="career-group" aria-labelledby="education-group-heading">
+      <section class="career-group career-group--education" aria-labelledby="education-group-heading">
         <h3 class="career-group-title" id="education-group-heading">Education and Training</h3>
-        <ul class="career-list">
+        <ul class="career-list career-list--education">
           {% for item in education_entries %}
           {% include career-entry.html item=item %}
           {% endfor %}

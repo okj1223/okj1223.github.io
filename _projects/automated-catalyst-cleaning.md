@@ -92,7 +92,7 @@ The mechanism used stepper-driven motion and fabricated supports to guide the cl
 The physical build made several design constraints concrete. The structure had to hold alignment across travel, leave room for hoses and wiring, and allow a technician to reach fasteners during adjustment. Motor torque alone was not enough; bearing placement, bracket stiffness, rail alignment, and cable routing all affected whether motion stayed smooth.
 
 <figure markdown="0">
-  <video class="project-video" controls muted playsinline preload="metadata" aria-label="Recorded fabrication work on a metal component">
+  <video class="project-video" autoplay loop muted playsinline preload="metadata" aria-label="Recorded fabrication work on a metal component">
     <source src="{{ '/project/automated-catalyst-cleaning/grinding.webm' | relative_url }}" type="video/webm">
   </video>
   <figcaption>Workshop fabrication during prototype development.</figcaption>

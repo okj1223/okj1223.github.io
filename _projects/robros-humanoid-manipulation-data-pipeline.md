@@ -10,8 +10,8 @@ card_description: "Research-assistant work at Robros on master-arm and MANUS glo
 share-description: "Robros research-assistant work on teleoperation, multi-modal demonstration data, dataset QA, and learning-workflow support for humanoid warehouse tasks."
 subtitle: "Owning the data-quality layer between teleoperation and humanoid manipulation experiments."
 thumbnail-img: /project/robros-humanoid-manipulation-data-pipeline/system-overview.svg
-share-img: /assets/img/robotics-lounge-banner.webp
-card_image: /assets/img/robotics-lounge-banner.webp
+share-img: /assets/img/humanoid-teleoperation-workflow-cover.webp
+card_image: /assets/img/humanoid-teleoperation-workflow-cover.webp
 card_media_fit: cover
 card_media_position: center center
 permalink: /projects/robros-humanoid-manipulation-data-pipeline/

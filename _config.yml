@@ -52,15 +52,15 @@ banner-video: "/assets/videos/robotics-automation-portfolio-reel.mp4"
 banner-video-poster: "/assets/img/robotics-automation-portfolio-reel-poster.webp"
 
 # 배너 위에 표시할 타이틀 텍스트
-banner-title: "From perception to action."
+banner-title: "Robotics, end to end."
 
 # 타이틀 아래에 보조 문구
-banner-subtitle: "Manipulation / Mobility / Autonomy / Industrial Automation"
+banner-subtitle: "Design / Fabrication / Intelligence / Deployment"
 
 banner-name: "Kyungjun Oh"
 
 # banner 설정 섹션에 추가
-banner-line1: "I build robotic systems that sense, decide, and act beyond the lab."
+banner-line1: "Working across CAD, fabrication, vision, learning, autonomy, and field deployment."
 banner-line2: "M.S. Student in Mechanical Engineering at National Taiwan University"
 
 ################

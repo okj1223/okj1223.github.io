@@ -4808,6 +4808,7 @@ body.home-page .home-image-wrapper.media-fit-contain img {
     line-height: 0.98 !important;
     letter-spacing: -0.045em !important;
     text-wrap: wrap !important;
+    text-align: left !important;
   }
 
   body.home-page .banner-title span {
@@ -4822,6 +4823,15 @@ body.home-page .home-image-wrapper.media-fit-contain img {
     font-size: 0.68rem !important;
     color: rgba(250, 247, 242, 0.70) !important;
     letter-spacing: 0.11em !important;
+    text-align: left !important;
+  }
+
+  body.home-page .banner-subtitle span {
+    display: block !important;
+  }
+
+  body.home-page .banner-subtitle-tail::before {
+    content: '' !important;
   }
 
   body.home-page .banner-name {
@@ -4850,5 +4860,101 @@ body.home-page .home-image-wrapper.media-fit-contain img {
   body.home-page .banner-actions {
     justify-content: flex-start !important;
     margin-top: 0.8rem !important;
+  }
+}
+
+/* Career status hierarchy: only the active NTU program carries a current cue. */
+body.home-page .career-group-title {
+  margin-bottom: 0.7rem !important;
+}
+
+body.home-page .career-list {
+  padding-left: 0 !important;
+}
+
+body.home-page .career-list li.career-entry--past,
+body.home-page .career-list li.career-entry--past[data-type="education"],
+body.home-page .career-list li.career-entry--past[data-type="career"] {
+  opacity: 0.74;
+  background: rgba(255, 255, 255, 0.62) !important;
+  border-color: rgba(49, 79, 70, 0.08) !important;
+  box-shadow: none !important;
+  transition: opacity 180ms ease, background 180ms ease, border-color 180ms ease !important;
+}
+
+body.home-page .career-list li.career-entry--past[data-type="career"] {
+  border-left-color: rgba(154, 118, 87, 0.56) !important;
+}
+
+body.home-page .career-list li.career-entry--past[data-type="education"] {
+  border-left-color: rgba(121, 165, 153, 0.56) !important;
+}
+
+body.home-page .career-list li.career-entry--past:hover,
+body.home-page .career-list li.career-entry--past:focus-within {
+  opacity: 0.92;
+  background: rgba(255, 255, 255, 0.84) !important;
+}
+
+body.home-page .career-list li.career-entry--current,
+body.home-page .career-list li.career-entry--current[data-type="education"] {
+  position: relative;
+  opacity: 1;
+  background: rgba(255, 255, 255, 0.98) !important;
+  border: 1px solid rgba(83, 130, 118, 0.42) !important;
+  border-left: 4px solid #538276 !important;
+  box-shadow:
+    0 0 0 1px rgba(83, 130, 118, 0.08),
+    0 16px 34px rgba(41, 74, 66, 0.12) !important;
+}
+
+body.home-page .career-date-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin-top: 0.35rem;
+}
+
+body.home-page .career-date-row .career-date {
+  display: inline-block;
+  margin-top: 0 !important;
+}
+
+body.home-page .career-current-badge {
+  display: inline-flex;
+  align-items: center;
+  min-height: 1.3rem;
+  padding: 0.22rem 0.48rem;
+  border: 1px solid rgba(83, 130, 118, 0.28);
+  border-radius: 999px;
+  background: rgba(83, 130, 118, 0.11);
+  color: #35685c;
+  font-family: 'Sora', sans-serif;
+  font-size: 0.56rem;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+body.home-page .career-institution-multi {
+  color: inherit !important;
+}
+
+@media (max-width: 768px) {
+  body.home-page .career-group-title {
+    margin-bottom: 0.5rem !important;
+  }
+
+  body.home-page .career-date-row {
+    gap: 0.34rem;
+    margin-top: 0.25rem;
+  }
+
+  body.home-page .career-current-badge {
+    min-height: 1.05rem;
+    padding: 0.18rem 0.38rem;
+    font-size: 0.46rem;
   }
 }

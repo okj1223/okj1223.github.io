@@ -119,7 +119,7 @@ For object handling, the project used an ArUco marker to estimate a target pose 
 </figure>
 
 <figure markdown="0">
-  <video class="project-video" controls muted playsinline preload="metadata" aria-label="Recorded ArUco marker detection used during object-localization tests">
+  <video class="project-video" autoplay loop muted playsinline preload="metadata" aria-label="Recorded ArUco marker detection used during object-localization tests">
     <source src="{{ '/project/turtlebot3-autonomous-system/aruco-marker-detection.webm' | relative_url }}" type="video/webm">
   </video>
   <figcaption>Recorded marker-detection step from the manipulation workflow.</figcaption>

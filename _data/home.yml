@@ -313,6 +313,7 @@ career:
     date: Mar. 2026 - Jul. 2026
   - type: education
     start: 2026-09-01
+    current: true
     institution: National Taiwan University
     logo: /assets/img/logos/partners/academic/national-taiwan-university.png
     show_affiliation: true

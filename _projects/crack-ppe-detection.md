@@ -105,7 +105,7 @@ MQTT was used for demonstration-scale coordination. The project did not validate
 The dashboard brought detections and robot state into one interface. That was useful during integration because the team could see whether a missing result came from perception, transport, or presentation instead of treating the system as one opaque process.
 
 <figure markdown="0">
-  <video class="project-video" controls muted playsinline preload="metadata" aria-label="Recorded dashboard prototype showing safety events and robot information">
+  <video class="project-video" autoplay loop muted playsinline preload="metadata" aria-label="Recorded dashboard prototype showing safety events and robot information">
     <source src="{{ '/project/crack-ppe-detection/dashboard-prototype.webm' | relative_url }}" type="video/webm">
   </video>
   <figcaption>Recorded monitoring interface from the prototype.</figcaption>

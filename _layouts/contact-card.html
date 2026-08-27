@@ -1,0 +1,18 @@
+---
+layout: null
+---
+
+<!DOCTYPE html>
+<html lang="{{ page.language | default: site.language | default: 'en' }}">
+{% include head.html %}
+<body{% if page.body-class %} class="{{ page.body-class }}"{% endif %}>
+  <a class="contact-card-skip" href="#main-content">Skip to contact card</a>
+  {{ content }}
+
+  {% if page.js %}
+    {% for js in page.js %}
+    <script src="{{ js | relative_url }}?v={{ site.time | date: '%s' }}"></script>
+    {% endfor %}
+  {% endif %}
+</body>
+</html>

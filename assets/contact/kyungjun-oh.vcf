@@ -1,0 +1,13 @@
+BEGIN:VCARD
+VERSION:3.0
+N:Oh;Kyungjun;;;
+FN:Kyungjun Oh
+ORG:National Taiwan University;Department of Mechanical Engineering;ASR Lab
+TITLE:M.S. Student
+EMAIL;TYPE=INTERNET,WORK:r15522852@ntu.edu.tw
+EMAIL;TYPE=INTERNET,HOME:rudwns181211@gmail.com
+URL;TYPE=WORK:https://okj1223.github.io/card/
+URL;TYPE=PORTFOLIO:https://okj1223.github.io/
+NOTE:Robotics\, Control\, and Embodied AI
+REV:20260828T000000Z
+END:VCARD

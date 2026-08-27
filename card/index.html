@@ -1,0 +1,107 @@
+---
+layout: contact-card
+title: Contact Card
+share-title: Kyungjun Oh · NTU
+description: "Contact card for Kyungjun Oh, M.S. Student in Mechanical Engineering at National Taiwan University and ASR Lab."
+share-description: "Kyungjun Oh · M.S. Student · Mechanical Engineering · National Taiwan University · ASR Lab"
+share-img: /assets/img/profile.webp
+permalink: /card/
+body-class: contact-card-page
+css:
+  - /assets/css/contact-card.css
+js:
+  - /assets/js/contact-card.js
+---
+
+<main class="contact-card-shell" id="main-content" tabindex="-1">
+  <article class="contact-card-frame" aria-labelledby="contact-card-name">
+    <header class="contact-card-topbar">
+      <a class="contact-card-home" href="{{ '/' | relative_url }}" aria-label="Open Kyungjun Oh's portfolio">
+        <span aria-hidden="true">←</span>
+        <span>Portfolio</span>
+      </a>
+      <div class="contact-card-mark" aria-label="National Taiwan University, ASR Lab">
+        <img
+          src="{{ '/assets/img/contact-card/ntu-logo-transparent.png' | relative_url }}"
+          alt="National Taiwan University"
+          width="1139"
+          height="340">
+        <span>ASR LAB</span>
+      </div>
+    </header>
+
+    <section class="contact-card-identity">
+      <p class="contact-card-kicker">National Taiwan University</p>
+      <h1 id="contact-card-name"><span>Kyungjun</span> <span>Oh.</span></h1>
+      <p class="contact-card-role">M.S. Student</p>
+      <p class="contact-card-affiliation">
+        Department of Mechanical Engineering<br>
+        ASR Lab
+      </p>
+      <p class="contact-card-focus" aria-label="Research interests">
+        <span>Robotics</span>
+        <span>Control</span>
+        <span>Embodied AI</span>
+      </p>
+    </section>
+
+    <details class="contact-card-qr-panel">
+      <summary class="contact-card-qr-summary">
+        <span class="contact-card-qr-summary-copy">
+          <strong>Show QR code</strong>
+          <small>Open when you want someone to scan</small>
+        </span>
+        <span class="contact-card-qr-toggle" aria-hidden="true"></span>
+      </summary>
+      <div class="contact-card-qr-content">
+        <div class="contact-card-qr-wrap">
+          <img
+            src="{{ '/assets/img/contact-card/kyungjun-oh-card-qr.png' | relative_url }}"
+            alt="QR code opening Kyungjun Oh's digital contact card"
+            width="960"
+            height="960">
+        </div>
+        <div class="contact-card-qr-copy">
+          <p>Scan to connect</p>
+          <span>okj1223.github.io/card</span>
+        </div>
+      </div>
+    </details>
+
+    <nav class="contact-card-actions" aria-label="Contact card actions">
+      <a class="contact-card-action contact-card-action--primary" href="{{ '/assets/contact/kyungjun-oh.vcf' | relative_url }}" download>
+        <span aria-hidden="true">↓</span>
+        <span>Save contact</span>
+      </a>
+      <button class="contact-card-action contact-card-action--secondary" type="button" data-share-card>
+        <span aria-hidden="true">↗</span>
+        <span data-share-label>Share card</span>
+      </button>
+      <p class="contact-card-status" data-share-status role="status" aria-live="polite"></p>
+    </nav>
+
+    <dl class="contact-card-details">
+      <div class="contact-card-detail">
+        <dt>NTU email</dt>
+        <dd><a href="mailto:r15522852@ntu.edu.tw">r15522852@ntu.edu.tw</a></dd>
+      </div>
+      <div class="contact-card-detail">
+        <dt>Personal</dt>
+        <dd><a href="mailto:rudwns181211@gmail.com">rudwns181211@gmail.com</a></dd>
+      </div>
+      <div class="contact-card-detail">
+        <dt>Portfolio</dt>
+        <dd><a href="{{ '/' | absolute_url }}">okj1223.github.io</a></dd>
+      </div>
+      <div class="contact-card-detail">
+        <dt>GitHub</dt>
+        <dd><a href="https://github.com/okj1223" target="_blank" rel="noopener noreferrer">@okj1223</a></dd>
+      </div>
+    </dl>
+
+    <footer class="contact-card-footer">
+      <span>Robotics, end to end.</span>
+      <span>2026</span>
+    </footer>
+  </article>
+</main>

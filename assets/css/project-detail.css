@@ -260,9 +260,13 @@ body {
   display: block !important;
   width: min(100%, 860px) !important;
   height: auto !important;
+  padding: 0 !important;
+  aspect-ratio: auto !important;
   margin: 0 auto !important;
+  overflow: hidden !important;
   border-radius: 8px !important;
-  background: #171412 !important;
+  background: transparent !important;
+  box-shadow: none !important;
 }
 
 .project-content > *,
