@@ -46,11 +46,13 @@ kramdown:
 # --- Banner Settings --- #
 ###########################
 
-# 배너에 사용할 이미지 경로 (assets/img/ 아래 파일명)
-banner-img: "/assets/img/robotics-lounge-banner.webp"
+# 배너 영상과 자동재생이 불가능할 때 사용할 포스터 이미지
+banner-img: "/assets/img/robotics-automation-portfolio-reel-poster.webp"
+banner-video: "/assets/videos/robotics-automation-portfolio-reel.mp4"
+banner-video-poster: "/assets/img/robotics-automation-portfolio-reel-poster.webp"
 
 # 배너 위에 표시할 타이틀 텍스트
-banner-title: "Robotics Systems for Real Environments"
+banner-title: "From perception to action."
 
 # 타이틀 아래에 보조 문구
 banner-subtitle: "Manipulation / Mobility / Autonomy / Industrial Automation"
@@ -58,7 +60,7 @@ banner-subtitle: "Manipulation / Mobility / Autonomy / Industrial Automation"
 banner-name: "Kyungjun Oh"
 
 # banner 설정 섹션에 추가
-banner-line1: "Robotics systems engineer working across hardware, control, perception, and deployment."
+banner-line1: "I build robotic systems that sense, decide, and act beyond the lab."
 banner-line2: "M.S. Student in Mechanical Engineering at National Taiwan University"
 
 ################
@@ -345,7 +347,6 @@ exclude:
   - feed.xml
   - tags.html
   - game/
-  - assets/videos/
   - assets/files/CV_Kyungjun_Oh.pdf
   - assets/files/Cover_letter_Kyungjun_Oh.pdf
   - assets/css/ecosystem_backup.css

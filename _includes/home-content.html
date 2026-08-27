@@ -1,15 +1,28 @@
-{% if site.banner-img %}
-<section id="banner" aria-labelledby="home-hero-title" data-banner-image="{{ site.banner-img | relative_url }}" style="background-image: url('{{ site.banner-img | relative_url }}');">
+{% assign banner_poster = site.banner-video-poster | default: site.banner-img %}
+{% if banner_poster %}
+<section id="banner"{% if site.banner-video %} class="has-banner-video"{% endif %} aria-labelledby="home-hero-title" data-banner-image="{{ banner_poster | relative_url }}" style="background-image: url('{{ banner_poster | relative_url }}');">
+  {% if site.banner-video %}
+  <video
+    class="banner-media"
+    autoplay
+    muted
+    loop
+    playsinline
+    preload="metadata"
+    poster="{{ banner_poster | relative_url }}"
+    aria-hidden="true"
+    tabindex="-1">
+    <source src="{{ site.banner-video | relative_url }}" type="video/mp4">
+  </video>
+  {% endif %}
   <div class="banner-overlay">
     <p class="banner-subtitle">
       <span>Manipulation / Mobility / Autonomy</span>
       <span class="banner-subtitle-tail">Industrial Automation</span>
     </p>
     <h1 class="banner-title" id="home-hero-title">
-      <span>Robotics</span>
-      <span>Systems</span>
-      <span>for Real</span>
-      <span>Environments</span>
+      <span>From perception</span>
+      <span>to action.</span>
     </h1>
     <p class="banner-name">{{ site.banner-name }}</p>
     <div class="banner-extra">
