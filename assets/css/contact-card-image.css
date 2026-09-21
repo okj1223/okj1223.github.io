@@ -152,7 +152,7 @@ body.contact-card-image-page::before {
 }
 
 .contact-card-image-contact dl div {
-  padding: 18px 0 19px;
+  padding: 9px 0;
   border-bottom: 1px solid var(--image-card-line);
 }
 

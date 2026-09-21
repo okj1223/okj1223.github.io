@@ -73,7 +73,7 @@ js:
         <span aria-hidden="true">↓</span>
         <span>Save contact</span>
       </a>
-      <a class="contact-card-action contact-card-action--secondary" href="{{ '/assets/img/contact-card/kyungjun-oh-contact-card.png' | relative_url }}" data-save-card-image>
+      <a class="contact-card-action contact-card-action--secondary" href="{{ '/assets/img/contact-card/kyungjun-oh-contact-card.png' | relative_url }}?v={{ site.time | date: '%s' }}" data-save-card-image>
         <span aria-hidden="true">↓</span>
         <span data-save-image-label>Save card image</span>
       </a>
@@ -85,6 +85,10 @@ js:
     </nav>
 
     <dl class="contact-card-details">
+      <div class="contact-card-detail">
+        <dt>Phone · Taiwan</dt>
+        <dd><a href="tel:+886937352010">0937 352 010</a></dd>
+      </div>
       <div class="contact-card-detail">
         <dt>NTU email</dt>
         <dd><a href="mailto:r15522852@ntu.edu.tw">r15522852@ntu.edu.tw</a></dd>
