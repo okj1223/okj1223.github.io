@@ -425,6 +425,53 @@ I designed the collection as an experiment loop, not a one-way data-generation j
 | Can a marginal episode be repaired or reused? | Permit traceable trimming and subtask-level relabeling; preserve Dirty Success separately | Frame timeline, trim range, label boundaries, saved reviewer decision |
 | What should change in the next run? | Feed rollout and review findings back into task setup and collection criteria | Failure categories, action–observation mismatch, downstream behavior |
 
+## From Curated Episodes to a Learning Experiment
+
+The learning workflow depended on an explicit relationship between what the robot observed and what action it was asked to execute. An episode could contain visually convincing behavior while still being unsuitable for a particular training experiment—for example, if the command was shifted relative to the image or if an intervention changed the meaning of the target action.
+
+At the public abstraction level, imitation learning maps an observation history and task condition to a robot action or action sequence. The data contract must therefore answer four questions:
+
+| Contract question | Consequence for the experiment |
+| --- | --- |
+| What does an action represent? | Joint targets, increments, and task-space targets require different interpretation |
+| Which observation precedes that action? | Incorrect timing can teach a response to information unavailable at execution time |
+| How are episode and subtask boundaries handled? | Histories and targets should not cross an unrelated reset or task transition |
+| Which episodes are eligible? | Success, recovery, no-op, and intervention cases have different learning roles |
+
+My protocol and review work made these distinctions available before dataset selection. A successful packing episode could contribute task execution, a clean no-op episode could teach waiting, and a labeled recovery segment could support a separate question about recovering from deviation. Combining them without their conditions would erase the intent of the experiment.
+
+Train/validation organization also needs an episode-level boundary. Adjacent frames from one teleoperated motion are highly related. Putting neighboring frames in different splits can make imitation error look reassuring while saying little about a new object placement, a different operator, or an independently collected episode.
+
+## Runtime Execution and Action–Observation Diagnosis
+
+The runtime question was whether a learned command produced the intended physical response. This extended the same action–observation comparison used during demonstration review into rollout analysis.
+
+An inference output has to retain its action convention, joint order, units, frame, and timing as it passes through the robot interface. Observation history, normalization, execution limits, and reset behavior are part of that boundary. A policy file alone is not the complete deployed behavior.
+
+For sequence-based outputs, the execution layer must also define which predicted command is current, how a newly predicted sequence replaces an older one, and how interruption or task completion invalidates pending commands. These are interface questions for the learning workflow; the public description does not disclose the company's implementation.
+
+I used the recorded task video, action state, observation state, and semantic timeline together to organize diagnosis:
+
+| Rollout symptom | What the comparison helps investigate |
+| --- | --- |
+| Correct intention, delayed hand opening | Command timing versus actual hand response |
+| Plausible arm path, failed release | Finger state and release boundary rather than arm pose alone |
+| Action begins before the task is valid | Positive/no-op data and trigger definition |
+| Continued action after target removal | Stop-transition data and execution-state handling |
+| Unexpected recovery motion | Whether the segment is intentional recovery, intervention, or a task failure |
+| Good offline fit, poor physical rollout | Coverage, alignment, action semantics, and closed-loop error accumulation |
+
+This kept model changes connected to a specific experimental question. A lower imitation loss was useful information, but physical task completion, appropriate waiting, release quality, and recovery behavior still needed their own review.
+
+## Imitation, Reinforcement Learning, and Evaluation Roles
+
+Demonstrations supplied examples of the intended behavior. Reinforcement-learning-oriented experiments posed a different question: how behavior changes through interaction and feedback. The project connected data collection and evaluation to those experiments without treating every curated episode as proof of an autonomous policy.
+
+The evaluation structure separated **recording validity**, **task outcome**, **execution quality**, and **experimental coverage**. This made it possible to preserve a useful failed rollout, reject corrupted data, distinguish a dirty success from a clean one, and identify which conditions the next collection round needed.
+
+The resulting contribution was a complete experimental loop: controlled whole-body task definition, usable demonstrations, traceable data decisions, learning interfaces, and physical rollout diagnosis. Exact models, training settings, and internal numerical results remain within the company program.
+
+
 ## Evidence and Outcome
 
 I built the end-to-end path from experimental question to learning-ready data and the next iteration. The pipeline connected whole-body control, operator calibration, Positive and no-op experiment design, task protocol, synchronized multi-modal recording, recorder-state monitoring, automated FAIL/WARN/PASS checks, the manual Corrupted/Fail/Dirty Success/Success decision tree, temporal and Recovery labels, action–observation diagnosis, targeted trimming, dataset filtering, and downstream experiment feedback.

@@ -97,6 +97,72 @@ The electrical enclosure contains separate drives and protective devices for the
   <figcaption>Control enclosure during assembly, with independent motor drives, breakers, grounding, and cable-entry provisions.</figcaption>
 </figure>
 
+## Hydraulic Sizing: Work Back from the Application Point
+
+The original design brief included a long delivery hose, elevation change, and a required pressure at the application nozzle. These are different contributions to the pump's duty. A gauge at the pump outlet does not report the pressure available at the far end of the hose.
+
+The head budget was organized as:
+
+`H_required = Δz + Δp_nozzle/(ρg) + Σh_friction + Σh_fittings`
+
+For each line, velocity follows `v = Q/A`, straight-pipe loss follows `h_f = f(L/D)v²/(2g)`, and local losses follow `h_m = K v²/(2g)`. Keeping branch flow separate from total system flow matters: a shared suction line and two discharge branches do not carry the same flow.
+
+This is why hose diameter was a central engineering decision. At a fixed flow, a smaller internal diameter raises velocity and can increase friction loss sharply. The correct calculation needs the actual hose bore, fluid viscosity, and fittings, rather than the nominal connection size alone.
+
+Hydraulic power is `P_h = Δp Q`. Motor selection additionally accounts for pump and transmission efficiency and the operating range. The two pump trains were considered independently so that one operating condition would not be hidden behind a combined system total.
+
+## Suction Conditions and Pump Selection
+
+The suction side determines whether the pump receives a continuous liquid supply. Its pressure budget includes tank level, atmospheric or vessel pressure, vapor pressure, and inlet losses. Suction restriction, air ingress, or a long inlet hose can defeat a pump that otherwise has sufficient discharge capacity.
+
+The design used gear pumps because their positive-displacement behavior supports a controllable delivery rate over a useful pressure range. Approximately, flow is displacement per revolution × speed × volumetric efficiency. Slip and fluid properties affect the realized flow, so the frequency setting is a control input, not a flow measurement.
+
+<figure class="project-evidence-figure" markdown="0">
+  <img src="{{ '/project/dual-gear-pump-system/gear-pump-internal.PNG' | relative_url }}" alt="Gear-pump mechanism showing fluid carried around the meshing gears from inlet to outlet" loading="lazy">
+  <figcaption>Positive-displacement operation motivated the pump selection and made pressure relief a separate design requirement.</figcaption>
+</figure>
+
+The design also considered strainers, priming, flexible connections, isolation, and access to the pump coupling. A suction calculation needs comparison with the selected pump's requirements at the intended duty; a generic “typical NPSH” value is not a substitute for that check.
+
+## Electrical Integration and Independent Control
+
+Each train combined a pump and motor with a variable-frequency drive. Independent run and speed commands let the operator adjust delivery without making the second train follow every change. The shared stop function, distribution protection, and individual drive states belonged to the same control-panel design.
+
+<figure class="project-evidence-figure" markdown="0">
+  <img src="{{ '/project/dual-gear-pump-system/wiring-diagram.png' | relative_url }}" alt="Archived electrical architecture for the gear-pump motors and their drive controls" loading="lazy">
+  <figcaption>Power distribution and control were documented together with the two motor-driven pump trains.</figcaption>
+</figure>
+
+The enclosure layout separated incoming power, drive connections, control wiring, and field terminations. Cable routes and service access mattered because a portable unit is repeatedly connected, moved, and inspected. Motor direction, coupling alignment, and the correspondence between panel labels and actual equipment were part of integration.
+
+The VFD provides speed control and motor-related protection. It does not remove the need for a correctly designed relief path for a positive-displacement pump. Likewise, a pressure gauge makes an operating condition visible; it is not itself a pressure-limiting device.
+
+## Packaging the System for Field Use
+
+The fabricated package used modular aluminum profiles, motor/pump mounting, hose connections, instruments, a control enclosure, and casters. The layout had to keep the unit movable while leaving room to inspect leaks, reach valves, access the coupling, and read pressure and flow indications.
+
+<figure class="project-evidence-figure" markdown="0">
+  <img src="{{ '/project/dual-gear-pump-system/complete-system-page.jpg' | relative_url }}" alt="Annotated view of the completed mobile pump package and component arrangement" loading="lazy">
+  <figcaption>Completed package showing how the hydraulic path, drive, controls, and portable frame were integrated.</figcaption>
+</figure>
+
+Vibration management extended beyond the motor base. A rigidly strained pipe connection can load the pump, and a poorly supported hose can interfere with moving the unit. Flexible connections and serviceable routing therefore influenced the frame arrangement.
+
+## Commissioning Logic and Measurement Boundaries
+
+The commissioning discussion covered rotation and priming, line routing, visible leaks, independent controls, instrument response, and the relationship between speed, flow, pressure, and motor load. A useful operating record identifies the fluid, hose arrangement, elevation, instrument location, and which pump train is running.
+
+| Quantity | What it establishes |
+| --- | --- |
+| Drive frequency | Requested motor operating point |
+| Measured delivery flow | Actual liquid output under that load |
+| Pump-outlet pressure | Pressure before the delivery network |
+| Application-point pressure | Pressure remaining after line and elevation losses |
+| Motor current | Electrical loading at the observed condition |
+
+The hardware record and hydraulic model together explain the commissioning questions. Verified flow, pressure, endurance, and protection behavior require the corresponding instrument and test records.
+
+
 ## Key Decisions
 
 ### Use positive-displacement gear pumps

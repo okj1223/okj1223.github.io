@@ -1,17 +1,19 @@
 {
-  "project": "Quadruped Stair Climbing with Reinforcement Learning",
+  "project": "Quadruped Stair Locomotion: From Restored Models to Learned Control",
   "evidence_cutoff": "2026-10-15",
   "case_study_prepared": "2026-10-20",
-  "scope": "Existing simulation records; no new research runs for publication. Development comparisons, not held-out or real-robot results.",
+  "scope": "Retained simulation research, including supplied-policy restoration, reference controllers, learned-policy trials, and development comparisons. Each milestone has its own model, terrain, sensing, criterion, and evaluation scope. No hardware result or new run for publication.",
   "nominal_terrain": {
     "riser_m": 0.07,
     "steps": 4,
     "tread_m": 0.3,
-    "width_m": 1.4
+    "width_m": 1.4,
+    "scope": "Later October terrain-conditioned controller only"
   },
   "assumptions": [
-    "Ideal terrain map and localization",
-    "No verified physical sensor or real-robot transfer"
+    "No verified real-robot transfer",
+    "Later October controller uses ideal terrain map and localization; earlier depth branch uses simulated camera rays and ideal foot-load channels",
+    "Controller and model revisions are not one uniform benchmark"
   ],
   "control": {
     "physics_dt_s": 0.005,
@@ -139,6 +141,389 @@
       "state_playback": false,
       "speed": 1,
       "extra_physics_steps": 0
+    },
+    {
+      "file": "reference-20cm-ascent.webp",
+      "source_artifact": "outputs/mpc20_r34_complete_video/t_150.png",
+      "sha256": "d19e7aca1d48310f19da7cf0761c3eb9a356ad592cca29820b98aa114bd36969",
+      "graphics_only_rendering_of_retained_states": true,
+      "new_physics_run": false
+    },
+    {
+      "file": "reference-20cm-neutral-finish.webp",
+      "source_artifact": "outputs/mpc20_r73_finish_review_b/end.png",
+      "sha256": "226bb5d8af1568076fbba911ec45676320ce7a825915aba471eb9d054ac3d7be",
+      "graphics_only_rendering_of_retained_states": true,
+      "new_physics_run": false
+    }
+  ],
+  "restoration": {
+    "supplied_actor_inputs": 93,
+    "supplied_actor_outputs": 13,
+    "supplied_basic_features": 61,
+    "supplied_latent_features": 32,
+    "reconstructed_thesis_actor_inputs": 315,
+    "reconstructed_thesis_actor_outputs": 13,
+    "rough_replay_tested_seeds": [
+      100,
+      101,
+      102
+    ],
+    "rough_replay_top_visits": 3,
+    "rough_replay_riser_m": 0.07,
+    "scope": "Supplied-policy replay using matched body-frame action manager; not recovery of historical 315-input weights",
+    "later_flat_development_campaign": {
+      "candidates": 4,
+      "seeds_per_candidate": 3,
+      "completed_runs": 12,
+      "preserved_completed_runs": 8,
+      "new_fresh_runs": 4,
+      "exact_resume_claim": false,
+      "benchmark_success_claim": false
+    }
+  },
+  "flat_baseline": {
+    "artifact": "outputs/sol_asr_flat_long300_eval/result.json",
+    "training_transitions": 3686400,
+    "duration_s": 10,
+    "forward_distance_m": 4.260124,
+    "post_start_mean_speed_m_s": 0.439961995,
+    "command_m_s": 0.4,
+    "scope": "Single retained fixed-condition rollout; initial baseline before fitted actuator delay"
+  },
+  "depth_branch": {
+    "artifact": "outputs/astra_depthstairs_r1_suite/result.json",
+    "depth_pixels": [
+      64,
+      48
+    ],
+    "depth_hz": 10,
+    "map_cells": 247,
+    "policy_hz": 50,
+    "ideal_foot_load_features": 4,
+    "additional_transitions": 2457600,
+    "evaluations": [
+      {
+        "riser_m": 0.03,
+        "steps": 3,
+        "success": 5,
+        "cases": 5
+      },
+      {
+        "riser_m": 0.06,
+        "steps": 3,
+        "success": 0,
+        "cases": 5
+      }
+    ],
+    "scope": "Simulated camera-depth map and ideal load features, full 12-second task criterion; distinct from later ideal-map family"
+  },
+  "reference_20cm": {
+    "riser_m": 0.2,
+    "steps": 4,
+    "tread_m": 0.28,
+    "R34": {
+      "motion_s": 271.84,
+      "command_replay_s": 178.28,
+      "online_continuation_s": 93.56,
+      "offline_planning_with_physics_paused": true,
+      "real_time_controller_claim": false
+    },
+    "R43": {
+      "artifact": "outputs/stairs_project_r43_collect_a/result.json",
+      "motion_s": 250.08,
+      "observation_command_pairs": 12504,
+      "command_clipped_ticks": 0,
+      "measured_joint_bound_excess": 0,
+      "scope": "Explicit finite stairs command profile; physical joint limits and fitted delay retained; rough non-foot contact remains"
+    },
+    "R73": {
+      "full_floor_to_finish_physics_s": 300.34,
+      "neutral_joint_rms_deg": 2.98,
+      "foot_spacing_m": 0.761,
+      "neutral_reference_spacing_m": 0.776,
+      "final_two_seconds_neutral_and_standing_ticks": [
+        100,
+        100
+      ],
+      "scope": "Reference and offline-planning refinement, not learned real-time control"
+    }
+  },
+  "imitation_and_recovery": {
+    "R43_BC": {
+      "updates": 3000,
+      "observations": 143,
+      "samples": 12504,
+      "command_rmse_deg_approx": 0.84,
+      "student_only_success": 0,
+      "student_only_cases": 1,
+      "failure_s": 1.28
+    },
+    "R35": {
+      "transitions_per_arm": 819200,
+      "demo_assisted_completions": [
+        0,
+        8
+      ],
+      "unassisted_completions": [
+        0,
+        8
+      ],
+      "scope": "Development comparisons, six unique evaluations and two duplicates"
+    },
+    "R36_R37": {
+      "standalone_student_completions": [
+        0,
+        6
+      ],
+      "methods": [
+        "feed-forward BC",
+        "delta actions",
+        "GRU imitation",
+        "reference-assisted corrective collection"
+      ],
+      "scope": "Intervention-assisted acquisition does not equal student-only success"
+    },
+    "R56": {
+      "local_recovery_s": 2.5,
+      "training_transitions": 1024,
+      "smoke_completions": [
+        8,
+        8
+      ],
+      "scope": "Workflow smoke check, not comparative superiority"
+    },
+    "R69_R72": {
+      "learned_speed_transitions": 122880,
+      "learned_advantage_survived_matched_comparison": false,
+      "retained_simple_schedule_motion_s": 205.28,
+      "simple_schedule_perturbation_completions": [
+        4,
+        4
+      ]
+    }
+  },
+  "learned_20cm_two_step": {
+    "riser_m": 0.2,
+    "steps": 2,
+    "tread_m": 0.3,
+    "controller_family": "fixed-IK diagonal-swing assisted policy v34",
+    "held_out": true,
+    "success": 7,
+    "cases": 10,
+    "scope": "Held-out seeds 208–217; reported two-step quality gate, high impacts remain, not full four-step completion",
+    "trials": [
+      {
+        "seed": 208,
+        "success": true,
+        "peak_foot_force_n": 8697.0654296875,
+        "artifact": "outputs/replication_chain2_v34_s208_r1/result.json",
+        "sha256": "6b4a9022080567d034c7fc33fdc0d24e676b608e9fe3d5f8a620fbc3768940d3"
+      },
+      {
+        "seed": 209,
+        "success": true,
+        "peak_foot_force_n": 8925.21484375,
+        "artifact": "outputs/replication_chain2_v34_s209_r1/result.json",
+        "sha256": "29a6c23824c413fa8e5317f490355f693c9bd23c82ba007fd07fa2629c5f1963"
+      },
+      {
+        "seed": 210,
+        "success": true,
+        "peak_foot_force_n": 4344.77685546875,
+        "artifact": "outputs/replication_chain2_v34_s210_r1/result.json",
+        "sha256": "23bbe308cd279e48157280f76089ab2c149e40761966eee13d6468155a1d5747"
+      },
+      {
+        "seed": 211,
+        "success": false,
+        "peak_foot_force_n": 2702.46826171875,
+        "artifact": "outputs/replication_chain2_v34_s211_r1/result.json",
+        "sha256": "7dab50f723a3cdb60484e561bf2b7cdc402c69c2a9bd5362422c6a1c501783c7"
+      },
+      {
+        "seed": 212,
+        "success": true,
+        "peak_foot_force_n": 6331.79833984375,
+        "artifact": "outputs/replication_chain2_v34_s212_r1/result.json",
+        "sha256": "84628d9ca2e7071a8bd441da5a1976a6c671b63dd18426f27be0653ab9f0d1a3"
+      },
+      {
+        "seed": 213,
+        "success": false,
+        "peak_foot_force_n": 10181.1044921875,
+        "artifact": "outputs/replication_chain2_v34_s213_r1/result.json",
+        "sha256": "f146a30c07726ae205cfbfc93f79c2ece36e056ef1a38cfe07543227b20fbc54"
+      },
+      {
+        "seed": 214,
+        "success": true,
+        "peak_foot_force_n": 5656.58837890625,
+        "artifact": "outputs/replication_chain2_v34_s214_r1/result.json",
+        "sha256": "8337ce9d8a965c72956939c88f5b29c015f761bf6af36a627cfbfe8d75c4ab8a"
+      },
+      {
+        "seed": 215,
+        "success": true,
+        "peak_foot_force_n": 8608.80078125,
+        "artifact": "outputs/replication_chain2_v34_s215_r1/result.json",
+        "sha256": "b7c94fa5b0105e0c15a974e00920e1fa9fdaf95855796014d8d3dde4b17d0e66"
+      },
+      {
+        "seed": 216,
+        "success": true,
+        "peak_foot_force_n": 7672.44091796875,
+        "artifact": "outputs/replication_chain2_v34_s216_r1/result.json",
+        "sha256": "7ca496b56c8de7e8fb2e604120aeab1f579f72b6ad134b14f12fdae99a3a2ce5"
+      },
+      {
+        "seed": 217,
+        "success": false,
+        "peak_foot_force_n": 5477.802734375,
+        "artifact": "outputs/replication_chain2_v34_s217_r1/result.json",
+        "sha256": "505b91dabd301e7ef67bd9c9c493ba01f644181228aca686665af5937fa641d2"
+      }
+    ]
+  },
+  "four_step_learning_extension": {
+    "transitions_per_arm": 3686400,
+    "arms": [
+      "full scan",
+      "local view"
+    ],
+    "selected_development_evaluations_per_arm": 14,
+    "success_per_arm": 0,
+    "scope": "Two training arms; no held-out four-step result advanced"
+  },
+  "direct_joint_phase_comparison": {
+    "riser_m": 0.08,
+    "steps": 1,
+    "transitions_per_arm": 3686400,
+    "held_out_landing_proxy": [
+      3,
+      5
+    ],
+    "held_out_strict_quality": [
+      0,
+      5
+    ],
+    "scope": "ASR phase-guided implementation comparison, not exact published-robot reproduction"
+  },
+  "larger_curriculum_run": {
+    "artifact": "HUMAN_STAIRS_RL_R5_RESULTS_KO.md",
+    "transitions": 24576000,
+    "scope": "Stalled at low curriculum stages; did not acquire higher-stair behavior"
+  },
+  "historical_sources": [
+    {
+      "artifact": "SOL_ASR_BOOTSTRAP_KO.md",
+      "bytes": 14960,
+      "sha256": "154c0d737825e0122188ba45ec79aef4df093b5afae5c3642fe52126f286f2d5"
+    },
+    {
+      "artifact": "ASTRA_COMMAND_V3_RESULTS_KO.md",
+      "bytes": 14587,
+      "sha256": "8f82c31796b91f187d5a3e05186b042212f2d81e4b622ebf79bd6d2075538d6e"
+    },
+    {
+      "artifact": "ASTRA_DEPTH_STAIRS_RESULTS_KO.md",
+      "bytes": 8506,
+      "sha256": "2384188294e68283074df3471b706577bba3298c14f27fac412787673914cc32"
+    },
+    {
+      "artifact": "MPC_TEACHER_20CM_R34_WEIGHT_SHIFT_KO.md",
+      "bytes": 15938,
+      "sha256": "641016694376f615a24a82ffd717425014127c5e9c9f2642fbbf2b6182b3e6aa"
+    },
+    {
+      "artifact": "SOFT_STAIRS_R35_KO.md",
+      "bytes": 11803,
+      "sha256": "51087f773096721ade5dda51a2672a33b80a021c731e7a20f4eef43d60d49648"
+    },
+    {
+      "artifact": "GUIDED_STAIRS_R36_KO.md",
+      "bytes": 13391,
+      "sha256": "f974d6de2334f4322c814f32dff6ff4d52e0f63a29ccb8fa2b14e041ca5a9036"
+    },
+    {
+      "artifact": "CORRECTIVE_STAIRS_R37_KO.md",
+      "bytes": 13030,
+      "sha256": "94df582fa9472d7ee4b598494ea596b59a88e23bd2e8f8a318b077787c86f870"
+    },
+    {
+      "artifact": "STAIRS_PROJECT_R43_KO.md",
+      "bytes": 10323,
+      "sha256": "afdacb4361724556e553595a3a866df6215f2b96de33fbc8b59be9629efb1ffc"
+    },
+    {
+      "artifact": "R56_LAB_MEETING_STATUS_KO.md",
+      "bytes": 6685,
+      "sha256": "c9429bf5730b6997452f21338306cea8ad37aab65c42126af38d1986b61e0441"
+    },
+    {
+      "artifact": "STAIRS_R69_R72_SPEED_AND_FINISH_RESULTS_KO.md",
+      "bytes": 7564,
+      "sha256": "39998ee820238dd833ac910e1d9d28c873ed109977e1ceee1be1d8b5625f482b"
+    },
+    {
+      "artifact": "STAIRS_R73_NEUTRAL_FINISH_RESULTS_KO.md",
+      "bytes": 5511,
+      "sha256": "3c8ffd518a05368ff196023c881173d9fd71b116dc8f8110965056ab1658f424"
+    },
+    {
+      "artifact": "QUADRUPED_4STEP_DECISION_2026_09_25_KO.md",
+      "bytes": 8038,
+      "sha256": "08a8ea5c8ecf3db7cacae6e45e9ada9f25f48bcff32e116e386f4f127163c885"
+    },
+    {
+      "artifact": "PGTT_ASR_REPLICATION_2026_09_25_KO.md",
+      "bytes": 9660,
+      "sha256": "aebf80f533bd706dd0ca094045a11ddbd3a24b26756a3dd4b5db776e83ebc974"
+    },
+    {
+      "artifact": "HUMAN_STAIRS_RL_R5_RESULTS_KO.md",
+      "bytes": 12655,
+      "sha256": "c54e509abf4482d131edd627ca928c504ed05066c952b2ae7a15b9a699a59040"
+    },
+    {
+      "artifact": "FITTED_TROT_STAIRS_PILOTS_2026_09_24_KO.md",
+      "bytes": 21292,
+      "sha256": "54532f3b5caac01780ed71f2bb7edd41e565b5a6e3bc2aa87e7cafd3579faa0c"
+    },
+    {
+      "artifact": "docs/ASR_COLLISION_ROOT_CAUSE_20261003_KO.txt",
+      "bytes": 5002,
+      "sha256": "a500acb4ff8850799a6fceb5ccfeb25bec3d0069699e06a921f4c6d072c9252a"
+    },
+    {
+      "artifact": "docs/ASR_THIGH_COLLISION_FIX_20261003_KO.txt",
+      "bytes": 5629,
+      "sha256": "722f13dd8391c857b542b041090c4c5d98d6f987abfda2182106e39cdfb110de"
+    },
+    {
+      "artifact": "docs/MOTOR_CONTACT_HANDOFF_RESULTS_20261005_KO.md",
+      "bytes": 40039,
+      "sha256": "822722e7592db6ad28b29a73dd48507fc1f294991046c9e371fc13214f5d55fb"
+    },
+    {
+      "artifact": "docs/WHOLE_SOLE_RESULT_20261006_KO.md",
+      "bytes": 20931,
+      "sha256": "d81bf74844deaaac11fb8fa5f81b4bfa7139a4817d96d7fd715975c8230f4e61"
+    },
+    {
+      "artifact": "docs/HUMANOID_TRANSFER_HANDOFF_20261015.txt",
+      "bytes": 17007,
+      "sha256": "291cb12ce0bc432ff9d3b97dc2645bd7a54b0d0cfbbd632bd8001351da0bb698"
+    },
+    {
+      "archive": "restoration",
+      "artifact": "recovery/reports/TITAN_ROUGH_CONTROLLER_RESTORATION_2026-09-25.md",
+      "sha256": "613f37b7a8c98e6636885ec3b6f47543b0b403a1ee6b27d7f452299ba5bfac4d"
+    },
+    {
+      "archive": "restoration",
+      "artifact": "recovery/reports/TITAN_PAPER315_RECONSTRUCTION_2026-09-25.md",
+      "sha256": "d2d3503847e9a4e47d955cb10317cad9b2a832c57a43cc374b5de462aef423e8"
     }
   ]
 }

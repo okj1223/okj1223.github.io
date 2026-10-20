@@ -100,6 +100,59 @@ The pellet feeder is driven by a geared motor. A drive-control chain provides an
   <figcaption>The implemented control concept: operator speed setting and emergency stop feeding the drive and geared motor.</figcaption>
 </figure>
 
+## Pellet Handling and Pneumatic Delivery
+
+The design separates **how many pellets enter the stream** from **how the air transports them**. A hopper and rotary feed mechanism meter the solids, while the compressed-air circuit carries them toward the cleaning head. Adjusting only the air supply cannot fully control an irregular pellet feed.
+
+The pellet path had to account for more than nominal particle diameter. Pellets can settle, bridge, fragment, and change condition while waiting in the hopper. A restriction that conveys air acceptably may still obstruct solids. Hopper discharge geometry, feeder clearance, hose routing, and nozzle transitions therefore belonged to one material-handling problem.
+
+The engineering analysis explored conveying velocity, pressure losses, pellet acceleration, and sublimation. These are useful design questions, but a gas-only incompressible pressure-loss estimate is not a complete model of compressible, particle-laden flow. Pressures also need explicit locations and either gauge or absolute units before they can be combined.
+
+## Hopper, Frame, and Fabrication
+
+The physical build combined a stainless hopper and feed assembly with a modular aluminum-profile frame. The frame provided equipment mounting and field mobility; the hopper had to support the stored material and guide it toward the feeder while remaining accessible for inspection and clearing.
+
+Fabrication work included cutting and fitting stainless parts, TIG welding, assembling the feed hardware, and integrating pneumatic connections. Fit-up and weld distortion affect how mating parts align. A clean exterior weld appearance alone does not establish dimensional fit or pressure qualification.
+
+The modular structure made layout changes possible without rebuilding a welded chassis. It also allowed the control enclosure, gauges, and hose connections to be positioned for access. The resulting machine was an assembly of process hardware, drive hardware, and field-service interfaces.
+
+## Feed Drive and Control Signal Path
+
+The control drawing shows a low-speed geared feed motor and a separate speed-control path. The engineering task was to translate an operator speed request into consistent feeder rotation while providing stop and fault handling.
+
+The important distinction is between the power stage and the reference signal. A variable-frequency drive for an AC motor does not directly drive a DC geared motor through its three-phase output. Where a drive or panel provides an analog speed reference, the receiving DC controller and its power supply remain distinct components. This distinction determines which device supplies power and which device only requests a speed.
+
+| Control concern | Connection to pellet delivery |
+| --- | --- |
+| Start and stop | Prevent unintended feeding during setup or interruption |
+| Adjustable feed speed | Change material delivery without redesigning the mechanical feeder |
+| Drive load | Reveal a jam or excessive mechanical resistance |
+| Air availability | Separate a feed problem from inadequate conveying |
+| Accessible local controls | Support observation and adjustment during commissioning |
+
+The motor's geared output speed and torque have to be evaluated together. A high gear ratio increases available torque while reducing speed, and the feeder geometry determines how much material a revolution can move. Pellet packing and slip mean this still needs empirical checking.
+
+## Bridging, Moisture, and Nozzle Behavior
+
+The commissioning work was organized around observable failure modes:
+
+**Bridging at the hopper outlet.** Material can stop reaching the feed mechanism even though the drive is rotating. Outlet geometry, surface condition, pellet condition, and agitation are candidate causes. Observing the hopper and feed mechanism separately helps locate the interruption.
+
+**Icing and moisture.** Cold surfaces and moist air can alter the passage geometry and restrict delivery. The diagnostic question is where restriction develops and whether it follows air preparation, environmental exposure, or a particular cold section.
+
+**Fragmentation and uneven spray.** An aggressive restriction or abrupt change in direction can change the particle distribution before the outlet. The apparent cleaning pattern therefore reflects both feeder consistency and the downstream path.
+
+**Drive and pneumatic interaction.** Increasing feeder speed when air transport is already inadequate can make the blockage worse. Feed command, air condition, outlet behavior, and drive load need to be observed together.
+
+The troubleshooting structure links each observed symptom to a mechanical, material, or pneumatic cause. Specific operating settings and corrective procedures still depend on the installed equipment and its commissioning records.
+
+## What the Build Demonstrates
+
+The photographs and diagrams show an integrated mobile feeder: hopper, feed mechanism, geared drive, pneumatic path, local controls, and a serviceable frame. The engineering contribution was connecting these parts into a usable apparatus and reasoning through the coupled mechanical and pneumatic problems during commissioning.
+
+The former long-form page also included nozzle calculations, welding discussions, operating concepts, and a future automation roadmap. Their useful engineering content is retained here at the design level. Certification, laboratory weld-test results, exact feed-accuracy percentages, and long-duration availability are not inferred from the completed machine photograph.
+
+
 ## Key Decisions
 
 ### Meter pellets separately from conveying air

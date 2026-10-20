@@ -68,9 +68,7 @@ Gazebo provided a repeatable environment for checking message flow and behavior 
 
 ## Context and Role
 
-The archived project material describes an integrated build but does not include a team roster or module-by-module ownership record. I therefore present my role as a **system integration and sim-to-real contribution** without claiming sole ownership of every perception, control, or manipulation component.
-
-My focus in the portfolio is the engineering process represented by the project: connecting the autonomy modules, exposing intermediate results for debugging, and tuning behavior after moving from the simulated track to the physical platform. The discussion is limited to artifacts and decisions preserved in the project archive.
+My contribution focused on **system integration and sim-to-real development**: connecting perception, behavior selection, mobile control, and manipulation; exposing intermediate results for debugging; and tuning behavior on the physical platform. The case study explains those interfaces and the integrated team build, with component-level design detail where the retained material supports it.
 
 ## Scope
 
@@ -94,7 +92,7 @@ This scope was deliberately structured around a known course and visible cues. I
 
 ## Perception and Mobile Control
 
-The lane pipeline used OpenCV processing on a camera region of interest to isolate the course marking and estimate lateral error. A steering controller converted that error into motion commands. Controller values were adjusted through closed-loop observation on the physical platform; no analytical derivation is presented because the retained material does not include traceable tuning data.
+The lane pipeline used OpenCV processing on a camera region of interest to isolate the course marking and estimate lateral error. A steering controller converted that error into motion commands. Controller values were adjusted through closed-loop observation on the physical platform. The model below explains the steering relationship; specific tuning values require their original trial records.
 
 <figure markdown="0">
   <img class="project-image"
@@ -138,6 +136,90 @@ Simulation was most useful for repeatability and visibility. The team could rese
 - small base-position errors propagated into the grasp pose.
 
 This made the digital twin a development tool rather than a claim that simulation and reality were identical.
+
+## Lane Perception: From Pixels to a Steering Error
+
+The lane-following work began with the image pipeline, because an unstable visual target makes controller tuning misleading. The documented processing sequence was **region of interest → HSV mask → reflection suppression → geometric validation → lane fit → temporal filtering**.
+
+HSV made it possible to inspect color and brightness separately. A bright, low-saturation floor reflection can resemble a painted lane in RGB; suppressing that region before fitting reduces the chance of steering toward a light reflection. The mask still needs spatial checks: a large patch of the right color is not necessarily a lane boundary.
+
+The lane fit used image rows as the independent coordinate, expressed as `x(y) = ay² + by + c`. A sliding search followed the boundary through the image, while previous detections supplied continuity when part of a line disappeared. The useful debugging views were the mask, selected pixels, fitted boundaries, and the resulting centerline—not only the final camera image with an attractive overlay.
+
+At a chosen look-ahead row, the centerline gives a lateral pixel error relative to the image center. The steering controller combines this error with its rate of change. The derivative uses the actual sample interval; changing camera frequency otherwise changes the effective controller. Forward speed decreases as the error grows so the robot has time to turn.
+
+| Stage | Engineering purpose | Failure to distinguish |
+| --- | --- | --- |
+| Color and brightness mask | Identify plausible lane pixels | Lighting drift versus a real lane change |
+| Geometry and curve fitting | Turn fragments into a path estimate | A short reflection versus a continuous boundary |
+| Temporal filtering | Reduce frame-to-frame steering jitter | Useful smoothing versus excessive delay |
+| PD steering and speed scheduling | Convert path error into motion | Poor perception versus poorly tuned control |
+
+Pixel-space curve coefficients are image measurements. Converting them into physical curvature requires camera calibration and a ground-plane mapping; an image curve alone does not establish a turning radius in metres.
+
+## Traffic Signals and Barrier-State Detection
+
+The robot also needed discrete decisions: proceed, wait, or hand control to another behavior. Traffic-light detection combined color masks with candidate shape checks. Red spans the end and beginning of the hue range, so its mask needs both intervals. Candidate area, circularity, and aspect ratio help reject colored objects that are not the intended signal.
+
+<figure class="project-evidence-figure" markdown="0">
+  <img src="{{ '/project/turtlebot3-autonomous-system/traffic_light_detection.png' | relative_url }}" alt="Physical-course traffic-light detection examples with red and green classification overlays" loading="lazy">
+  <figcaption>Archived traffic-light debugging views on the physical course. Color classification is one input to behavior selection.</figcaption>
+</figure>
+
+Barrier detection used a different geometric cue: the orientation of the barrier and its visible points. The documented approach grouped candidate points, fitted a line, and classified its orientation as raised or lowered. A temporal decision window reduced rapid switching when an LED or line segment disappeared in a frame.
+
+<figure class="project-evidence-figure" markdown="0">
+  <img src="{{ '/project/turtlebot3-autonomous-system/barrier_detection.png' | relative_url }}" alt="Barrier perception pipeline showing the physical barrier, detected points, and line-based state analysis" loading="lazy">
+  <figcaption>Barrier-state analysis connected an observed line orientation to a persistent discrete state.</figcaption>
+</figure>
+
+This distinction mattered for integration: lane following emits a continuous steering request, while a red light or lowered barrier imposes a discrete constraint on motion. Allowing all of them to publish competing wheel commands would make the combined behavior depend on callback timing.
+
+## Marker Pose, Coordinate Frames, and Arm Kinematics
+
+The manipulation path connected a detected ArUco marker to a reachable arm pose. The camera first estimates a marker pose from known marker geometry and calibrated image observations. That pose must then be transformed into the robot base frame before inverse kinematics can use it:
+
+`T_base_marker = T_base_camera × T_camera_marker`
+
+The desired grasp additionally includes a marker-to-tool offset. This keeps “where the marker is” separate from “where the gripper must be.” Confusing either the transform direction or the tool offset can produce a plausible-looking camera overlay and a consistently wrong arm motion.
+
+<div class="project-evidence-grid" markdown="0">
+  <figure class="project-evidence-card">
+    <img src="{{ '/project/turtlebot3-autonomous-system/solvepnp_3d_visualization.png' | relative_url }}" alt="Camera and marker geometry used to explain pose estimation" loading="lazy">
+    <figcaption>Pose estimation connects image points to a marker frame.</figcaption>
+  </figure>
+  <figure class="project-evidence-card">
+    <img src="{{ '/project/turtlebot3-autonomous-system/camera_coordinate_3d.png' | relative_url }}" alt="Camera coordinate axes and robot geometry in a 3D visualization" loading="lazy">
+    <figcaption>The camera-to-base transform connects perception to arm motion.</figcaption>
+  </figure>
+</div>
+
+For the four-joint arm, the geometric solution separates base yaw from the planar shoulder–elbow problem. After subtracting the tool offset for the requested tool orientation, the wrist target has coordinates `(r, z)`. With planar link lengths `L1` and `L2`:
+
+`c3 = (r² + z² − L1² − L2²) / (2 L1 L2)`
+
+`q3 = ±acos(c3)`
+
+`q2 = atan2(z, r) − atan2(L2 sin(q3), L1 + L2 cos(q3))`
+
+The wrist angle completes the selected tool pitch, and the model's joint offsets and sign conventions convert these geometric angles into actuator commands. Both elbow branches need a joint-limit and continuity check. A target with `|c3| > 1` beyond numerical tolerance is unreachable; clipping a substantially invalid value would conceal the problem.
+
+<figure class="project-evidence-figure" markdown="0">
+  <img src="{{ '/project/turtlebot3-autonomous-system/kinematics_basics.png' | relative_url }}" alt="Arm links, joint angles, and end-effector position used in the kinematics explanation" loading="lazy">
+  <figcaption>Link geometry provides the starting model. Encoder offsets, camera alignment, and the actual tool point still have to agree with it.</figcaption>
+</figure>
+
+The practical work was therefore broader than deriving an inverse formula: align coordinate frames, account for the physical tool, choose a continuous valid solution, and verify the resulting pose through forward kinematics. Near a singular posture, a small target-position change can require a large joint change. For a task Jacobian that is not square, singular values or a pseudoinverse are appropriate tools; taking an ordinary determinant or inverse of the full rectangular Jacobian is not.
+
+## State Estimation and Behavior Arbitration
+
+The design also explored combining wheel odometry, inertial information, and visual observations. These signals do not measure the same thing. Encoders describe wheel motion, an IMU describes rotational and acceleration-related motion, and a marker supplies a pose relative to a known frame. Raw LiDAR ranges become pose constraints only through a map or geometric observation model.
+
+A useful state estimate must preserve those meanings and timestamps. Wheel slip can make odometry disagree with visual position; temporary occlusion can make a visual update stale. Filtering can balance uncertain measurements, but it cannot repair a wrong frame transform or a measurement model that treats ranges as coordinates.
+
+At the system boundary, a mission state selects which behavior is allowed to command the robot. The architecture separates lane tracking, signal waiting, barrier waiting, marker approach, and arm manipulation from the final command publisher. Manipulation requires a stable mobile base; navigation should not silently resume while the arm is still executing a task.
+
+The digital twin made these transitions repeatable. Hardware trials then exposed the factors that the virtual course simplified: reflections, camera mounting, wheel response, latency, and arm calibration. Keeping intermediate images and discrete state transitions visible made it possible to determine whether a failure began in perception, planning, or execution.
+
 
 ## Engineering Decisions
 

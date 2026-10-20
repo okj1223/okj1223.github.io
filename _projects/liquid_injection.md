@@ -38,7 +38,7 @@ tech_tags:
     style: "prog"
   - label: "CAD / 3D Printing"
     style: "design"
-quick_summary_note: "A recruiter-facing account of the physical measurement stack and robot integration, scoped to end-to-end behavior rather than an accuracy benchmark."
+quick_summary_note: "Mechanical fixture, sensor electronics, concentration model, and robot pouring workflow."
 quick_summary:
   - label: "Context"
     value: "Reduce operator-dependent variation in small-volume liquid pouring"
@@ -69,7 +69,7 @@ I worked on the physical measurement and integration path:
 - connected mass messages to the robot-control side through MQTT,
 - and supported robot pouring trials and analysis of angle-dependent flow behavior.
 
-My contribution was system integration rather than a claim of inventing a new fluid model or owning a production control algorithm.
+My contribution connected the custom measurement hardware, acquisition software, feedback model, and robot pouring workflow.
 
 ## System
 
@@ -92,6 +92,86 @@ The architecture deliberately separates sensor acquisition from robot motion. Th
        loading="lazy">
   <figcaption>The completed load-cell fixture, designed to locate the receiving vessel consistently while avoiding unintended side loading.</figcaption>
 </figure>
+
+## Designing the Measurement Fixture
+
+The receiving vessel needed a repeatable load path into the sensor. If the cup touched a surrounding frame, or the platform rubbed against a cable or bracket, part of the load could bypass the load cell. The fixture work therefore connected mechanical geometry directly to measurement quality.
+
+The custom frame provided mounting points, a receiving platform, and positioning features. CAD made it possible to check clearances before printing; the physical assembly then exposed access, stiffness, and cable-routing issues that a drawing alone could not settle.
+
+<div class="project-evidence-grid" markdown="0">
+  <figure class="project-evidence-card">
+    <img src="{{ '/project/liquid_injection/frame_design_3d.gif' | relative_url }}" alt="CAD model of the load-cell support and receiving-vessel fixture" loading="lazy">
+    <figcaption>Fixture CAD tied sensor mounting to repeatable vessel placement.</figcaption>
+  </figure>
+  <figure class="project-evidence-card">
+    <img src="{{ '/project/liquid_injection/loadcell_internal.png' | relative_url }}" alt="Illustration of the load-cell force path and strain measurement" loading="lazy">
+    <figcaption>The sensor measures deformation along a load path; fixture contact and off-axis loading matter.</figcaption>
+  </figure>
+</div>
+
+<figure class="project-evidence-figure" markdown="0">
+  <video controls playsinline muted preload="metadata" aria-label="Printing the custom load-cell fixture">
+    <source src="{{ '/project/liquid_injection/fixture-printing.mp4' | relative_url }}" type="video/mp4">
+  </video>
+  <figcaption>Printing the custom load-cell fixture.</figcaption>
+</figure>
+
+## Wiring, Calibration, and Stable Mass Messages
+
+The electrical path was **load cell → HX711 → Arduino → serial host → MQTT → robot-control node**. Soldering and strain relief were part of the measurement work: an intermittent connection or mechanically loaded cable can look like a control disturbance.
+
+<figure class="project-evidence-figure" markdown="0">
+  <img src="{{ '/project/liquid_injection/electrical_schematic.webp' | relative_url }}" alt="Load-cell, HX711 converter, and Arduino wiring diagram" loading="lazy">
+  <figcaption>The wiring diagram connects the physical fixture to the mass-acquisition path.</figcaption>
+</figure>
+
+Calibration converts the converter reading into mass, and tare removes the empty receiving vessel's contribution. Stability detection then decides whether a recent measurement window is sufficiently settled for a control decision. Filtering and stability checks have different jobs: filtering reduces noise, while a stability flag describes whether the signal is currently trustworthy for the intended action.
+
+The controller needs more than a number. A useful mass message carries a timestamp, units, and measurement status. Retaining the last value without its age can make a disconnected scale appear perfectly stable. Likewise, resetting tare midway through a pour would change the meaning of the accumulated mass.
+
+## Turning Concentration into a Measurable Target
+
+The experiment's target concentration can be expressed as a mass balance. With known solute mass `m_s` and added water mass `m_w`, the solute mass fraction is:
+
+`c = m_s / (m_s + m_w)`
+
+For a desired fraction `c_target`, the corresponding water target is:
+
+`m_w,target = m_s (1 / c_target − 1)`
+
+This connects the user-facing concentration setting to what the scale can actually measure. Percent concentration must first be divided by 100. The scale reading is a mass after tare; integrating a mass reading over time would produce mass × time, not mass.
+
+As water is added while solute mass stays fixed, concentration decreases:
+
+`dc/dt = −m_s (dm_w/dt) / (m_s + m_w)²`
+
+That negative sign is important for the controller's direction. These equations explain the target calculation; they do not substitute for a recorded concentration-accuracy test.
+
+## Pouring Dynamics and Feedback Design
+
+Tilt angle does not uniquely determine flow. The same angle can produce a different transfer rate as the source container empties, the liquid reaches the spout, or the robot changes angular speed. Container geometry and the history of the motion therefore mattered alongside the current pose.
+
+The modeling work considered effective liquid head, an outlet coefficient, and continuity as tools for explaining the angle–flow relationship. A simple discharge approximation has the form `Q ≈ C_d A √(2gh_eff)`. It is useful for reasoning about trends, but the effective head and coefficient depend on the actual container and flow regime.
+
+The practical feedback sequence was to approach the pouring region, establish flow, observe mass accumulation, reduce the pour as the target approached, return the container, and wait for the receiving scale to settle. Liquid already in flight continues to arrive after the arm starts returning. A stop decision based only on the current mass can therefore overshoot.
+
+| Observation | What it helps distinguish |
+| --- | --- |
+| Stable mass before motion | Tare and initial loading |
+| Mass rise during tilt | Actual transfer versus commanded motion |
+| Mass-rate estimate | Flow starting, changing, or stopping |
+| Mass added after return begins | Sensor delay and liquid still in flight |
+| Final settled mass | Delivered amount rather than a transient reading |
+
+## Filtering and Evaluation
+
+The development notes explored moving-window stability checks and state-estimation approaches, including EKF and UKF formulations. Their purpose was to estimate quantities such as mass and mass rate from noisy observations and robot motion. A more elaborate filter is useful only if its assumptions match the experiment; it can otherwise introduce a smooth but delayed estimate.
+
+The appropriate comparison preserves the same starting mass, container, target, and motion conditions, then measures final error, overshoot, completion time, and repeatability across pours. Plotting raw mass, filtered mass, tilt command, and actual robot motion on one time axis helps distinguish mechanical vibration, filtering lag, and real flow dynamics.
+
+The fixture, electronics, integration, and pouring workflow establish the prototype. Comparing estimator accuracy requires the same calibration, input trials, and final settled-mass reference across filters.
+
 
 ## Key Decisions
 

@@ -18,6 +18,10 @@ layout: null
     {% assign include_item = false %}
   {% endif %}
   {% if include_item %}
+    {% assign search_content = '' %}
+    {% if search_url contains '/projects/' and search_url != '/projects/' %}
+      {% assign search_content = item.content | markdownify | strip_html | normalize_whitespace | strip %}
+    {% endif %}
     {% if item.description %}
       {% assign search_description = item.description | strip_html | normalize_whitespace | strip %}
     {% elsif item.share-description %}
@@ -52,6 +56,7 @@ layout: null
     {
       "title": {{ search_title | strip_html | strip | jsonify }},
       "desc": {{ search_description | truncate: 700 | jsonify }},
+      "content": {{ search_content | jsonify }},
       "category": {{ search_category | strip_html | strip | jsonify }},
       "url": {{ search_url | relative_url | jsonify }},
       "date": {{ search_date | jsonify }}

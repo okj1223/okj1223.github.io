@@ -126,6 +126,69 @@ The intended control sequence included:
 
 The archive does not include a preserved firmware repository or test record. The defensible evidence is therefore the controller architecture and physical integration, not a claim about unrecorded software behaviors.
 
+## CAD, Machining, and Assembly
+
+The mechanism had to connect a rail reference, a moving carriage, a drive, and a cleaning head without making assembly or maintenance unnecessarily difficult. The development work included both the assembled geometry and the individual parts needed to realize it.
+
+<figure class="project-evidence-figure" markdown="0">
+  <video controls playsinline muted preload="metadata" aria-label="Original CAD assembly and motion record for the cleaning mechanism">
+    <source src="{{ '/project/automated-catalyst-cleaning/cad-motion.mp4' | relative_url }}" type="video/mp4">
+  </video>
+  <figcaption>Recovered CAD assembly record. This shows the design work behind the fabricated mechanism.</figcaption>
+</figure>
+
+I carried out grinding work and coordinated the component fabrication and assembly. The retained workshop record also covers machining of the cleaning-head hardware and rail-related operations. These were coupled decisions: a part that fits in CAD still needs a usable datum, tool access, mounting clearance, and an assembly sequence.
+
+<div class="project-evidence-grid" markdown="0">
+  <figure class="project-evidence-card">
+    <img src="{{ '/project/automated-catalyst-cleaning/tap-machine.webp' | relative_url }}" alt="Workshop machine operation used during fabrication of the catalyst-cleaning mechanism" loading="lazy">
+    <figcaption>Recovered workshop fabrication photograph.</figcaption>
+  </figure>
+  <figure class="project-evidence-card">
+    <img src="{{ '/project/automated-catalyst-cleaning/3dworking2.PNG' | relative_url }}" alt="Technical CAD drawing of the cleaning mechanism and its component geometry" loading="lazy">
+    <figcaption>Drawing work connected the assembly concept to component geometry.</figcaption>
+  </figure>
+</div>
+
+The critical mechanical interfaces were rail alignment, carriage resistance, drive coupling, and nozzle positioning. A misaligned rail can increase friction and consume the motor's available torque. A flexible cleaning-head mount can change stand-off distance even when the carriage reaches its commanded position. These problems require mechanical inspection as well as software changes.
+
+## Motion Sequencing and Firmware Structure
+
+The controller organized the mechanism as a sequence of explicit states: establish a reference, travel to the work region, apply the cleaning action, index to the next location, and return or stop. Limit-switch homing established a repeatable origin for an otherwise open-loop stepper axis.
+
+| State or function | What the controller tracks | Engineering reason |
+| --- | --- | --- |
+| Homing | Switch state, direction, and travel progress | Establish the position reference before indexing |
+| Travel | Requested steps and pulse timing | Move the carriage without blocking input handling |
+| Cleaning dwell | Fluid command and elapsed time | Associate application with a defined location |
+| Indexing | Next position and remaining pattern | Repeat the scan consistently |
+| Fault/stop | Inhibit state and recovery requirement | Prevent an automatic return to motion after a fault |
+
+Stepper pulse count is a commanded displacement. It does not measure whether the mechanism missed steps. The design discussion therefore treated homing, end limits, acceleration, and mechanical load as part of positioning, rather than relying on microstep resolution as an accuracy claim.
+
+For a screw-driven axis, commanded linear travel follows `x = N p / S`, where `N` is the number of driver pulses, `p` is screw lead per revolution, and `S` is pulses per revolution. Microstepping changes `S`; backlash, compliance, and missed motion remain separate sources of positioning error.
+
+Separating pulse generation and state transitions also makes the sequence inspectable. An operator or log should be able to identify whether the machine is traveling, waiting, applying fluid, or stopped. A long blocking delay can obscure input changes and make a sequence difficult to interrupt or diagnose.
+
+## Nozzle, Structure, and Drive Calculations
+
+The mechanical design was supported by three related calculations.
+
+**Fluid delivery.** The orifice relation `Q = C_d A √(2Δp/ρ)` connects opening area and pressure difference to an estimated liquid flow. Hose and fitting losses belong upstream of the nozzle pressure drop. Spray coverage then depends on stand-off distance and pattern geometry, so a pressure value alone does not determine the cleaning footprint.
+
+**Structural stiffness.** Head deflection changes where the spray lands. For an ideal cantilever with an end force, deflection is `δ = FL³/(3EI)` and a rectangular section has `I = bh³/12`. The support condition must match the actual part; applying a simply supported beam's stiffness to a cantilever would give a different result. These calculations guided the design discussion, while actual assembly stiffness still depends on joints and fastening.
+
+**Drive capacity.** Screw force, lead, efficiency, acceleration, and guide friction determine the required drive torque. Available stepper torque must be considered at operating speed, with the actual driver and supply. Holding torque or a microstep count is insufficient to establish that the axis can move a contaminated or misaligned mechanism.
+
+Together, these checks linked process requirements to hardware: the cleaning footprint sets travel and spacing; the head and hoses impose load; the frame and drive must maintain that geometry during motion.
+
+## Workshop Verification and Iteration
+
+The useful checks progressed from components to the assembled sequence: free movement and alignment, direction and homing, carriage travel, nozzle mounting, fluid connections, and coordinated motion/application. Looking at the mechanism during these stages helped separate a tight guide, a command problem, and an unsuitable nozzle arrangement.
+
+CAD, fabricated components, nozzle hardware, the grinding record, and workshop operation document the design-to-build process. Dimensional accuracy and cleaning effectiveness require their own measurement protocols.
+
+
 ## Engineering Decisions
 
 **Use accessible prototype hardware.** Stepper motors, fabricated brackets, and an Arduino made it possible to diagnose motion and wiring directly during assembly.

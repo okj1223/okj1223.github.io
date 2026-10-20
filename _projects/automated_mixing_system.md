@@ -35,7 +35,7 @@ tech_tags:
     style: "comm"
   - label: "Process Sensing"
     style: "sensor"
-quick_summary_note: "A concise case study of the control architecture and physical mixing prototype, scoped to demonstrated integration rather than production KPIs."
+quick_summary_note: "Batch sequencing, sensor interfaces, temperature control, equipment integration, and physical mixing."
 quick_summary:
   - label: "Context"
     value: "A manual industrial mixing sequence that depended on operator timing and observation"
@@ -67,7 +67,7 @@ This page presents the resulting prototype and system design. It does not presen
        src="{{ '/project/automated-mixing-system/automated-mixing-system.png' | relative_url }}"
        alt="Liquid being agitated in the physical mixing vessel"
        loading="lazy">
-  <figcaption>Physical mixing trial in the project vessel. This is the surviving public hardware evidence for the project.</figcaption>
+  <figcaption>Physical mixing trial in the project vessel.</figcaption>
 </figure>
 
 ## My Role
@@ -98,6 +98,77 @@ The intended signal path is:
 5. alarms or invalid conditions stop progression and require review.
 
 The batch itself is represented as an explicit state sequence: idle, preparation or heating, filling, operator-confirmed material addition, mixing, transfer, and completion. A state transition occurs only when its entry conditions are met. This keeps timing logic, sensor checks, and operator actions from becoming an unstructured collection of relay commands.
+
+## Batch Sequence and State Transitions
+
+The central control artifact was the batch sequence. The documented sequence includes initialization, filling, heating, mixing, cooling, transfer, completion, and fault handling. Each state combines an equipment command with a condition for leaving that state.
+
+<div class="project-owned-pipeline" markdown="0">
+  <div class="project-flow" role="list">
+    <div role="listitem"><strong>Prepare</strong><small>Check the selected batch and sensor state.</small></div>
+    <div role="listitem"><strong>Fill</strong><small>Observe level and confirm the intended quantity.</small></div>
+    <div role="listitem"><strong>Condition and mix</strong><small>Control temperature and execute the mixing interval.</small></div>
+    <div role="listitem"><strong>Transfer</strong><small>Route the batch and monitor completion.</small></div>
+    <div role="listitem"><strong>Complete or fault</strong><small>Record the outcome and require an explicit next action.</small></div>
+  </div>
+</div>
+
+The transition condition matters as much as the state name. “Heater on for a fixed duration” and “temperature reached and held” describe different processes. Likewise, an elapsed transfer time does not necessarily mean the vessel emptied. Measurements, timeouts, and equipment feedback provide different evidence and should not be silently substituted for one another.
+
+| Phase | Main feedback | Control-design question |
+| --- | --- | --- |
+| Filling | Level or accumulated flow | Has the intended amount actually entered? |
+| Heating | Temperature and sensor validity | Is the process approaching its target without an invalid reading? |
+| Mixing | Elapsed mixing interval and equipment state | Did mixing occur under the intended process conditions? |
+| Transfer | Level, flow, and pump state | Is material leaving through the selected route? |
+| Fault handling | Cause and latched state | What must be checked before a controlled restart? |
+
+## Sensor Interfaces and Signal Conditioning
+
+The documented sensor plan combined temperature, level, pressure, and flow measurements. These channels have different interfaces and failure modes.
+
+Temperature measurement was described around a PT100 interface. Level measurement required a conversion from sensor distance into vessel fill height and then volume. For a vessel with a conical lower section, a single constant “litres per centimetre” conversion is inappropriate across the entire height.
+
+The pressure channel required the correct sensor transfer function and pressure convention. Flow pulses required a calibration factor and counting interval. These conversions belong close to acquisition so the higher-level controller receives quantities with declared units.
+
+The integration work also considered filtering, range checks, missing readings, and wiring around switching equipment. A filtered value can still be invalid. The controller must retain both the measurement and its status rather than replacing every questionable reading with a plausible constant.
+
+## Temperature Control and Saturation
+
+The design used feedback control for temperature, with a heater command limited by the available actuator. In parallel PID notation:
+
+`u = Kp e + Ki ∫e dt + Kd de/dt`
+
+The process responds slowly compared with sensor sampling, and thermal delay can cause the integral term to keep accumulating before the temperature visibly changes. Anti-windup handles this mismatch when the heater command is saturated. It is also necessary to define what happens to controller state when a batch changes phase or a sensor becomes invalid.
+
+The control design considered step-response modeling and PID tuning. The meaningful engineering sequence is to identify the measured response, choose an initial controller, and inspect overshoot, settling, and actuator saturation during the relevant process state. A set of coefficients without their units, sample interval, and actuator convention is not a reproducible controller.
+
+A supervisory temperature command and a power-control stage also need a clear boundary. Calling a system “cascade control” requires a genuine inner feedback loop; a PWM output alone is an actuator command, not evidence of a separately measured power loop.
+
+## Arduino, Raspberry Pi, and Message Boundaries
+
+The layered architecture assigned immediate sensor and equipment handling to the Arduino, while the Raspberry Pi handled supervision, logs, and the user interface. This separated the process sequence from network or browser delays.
+
+The documented serial protocol carried status and commands between the two controllers. Message framing, length, type, and an integrity check help detect incomplete or corrupted frames. The receiving side also needs a timeout and a defined response to stale commands.
+
+Supervisory records should connect a batch identifier with state transitions, setpoints, measurements, and faults. That makes it possible to answer whether a temperature excursion happened during heating, after transfer began, or while communication was interrupted.
+
+The MQTT and web-interface discussion extended the monitoring architecture. Remote visibility can improve operation, but it should not make a network connection a prerequisite for the local controller to recognize an invalid sensor or stop an active sequence.
+
+## Transfer Hydraulics, Piping, and Electrical Integration
+
+The pump-selection work began with the intended batch volume and transfer time: `Q_required = V_batch / t_transfer`. The required head then includes elevation, line losses, fittings, and the receiving condition. The operating point is where the selected pump characteristic meets the system requirement.
+
+That process is more useful than repeating a catalog maximum flow and maximum head as though both occur simultaneously. Wetted-material compatibility, liquid temperature, suction conditions, and service access also affect selection. The old page's exact pump identity and ratings are not established by the retained vessel photograph.
+
+The electrical design discussion covered actuator relays, power supplies, sensor interfaces, grounding, and the separation of process control from protective functions. The piping and instrumentation view connected each valve and sensor to its role in filling, mixing, draining, or transferring.
+
+## Validation as a Sequence of Observable Checks
+
+The engineering validation plan moved from individual channels to complete batches: verify sensor conversion, check actuator correspondence, exercise one state transition at a time, and then observe the combined sequence. Invalid readings, interrupted communication, and an incomplete transition belong in that plan alongside a nominal batch.
+
+For process performance, the important outputs are final batch quantity, temperature history, phase duration, and repeatability under declared starting conditions. These quantities connect the control design to a repeatable commissioning plan. Capability, availability, and energy improvements need measured batch histories before they can be reported as results.
+
 
 ## Key Decisions
 

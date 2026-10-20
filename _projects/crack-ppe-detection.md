@@ -72,9 +72,7 @@ It should be read as a systems-integration exercise, not as a production safety 
 
 ## Context and Role
 
-The surviving project material identifies this as a team training project, but it does not preserve a reliable task-by-task ownership record. I therefore present it as a **team contribution** and do not claim sole authorship of the perception, navigation, communication, or interface modules.
-
-My portfolio contribution is the integrated system work represented here: understanding how the modules exchange information, bringing the robot-side and monitoring-side workflow together, and documenting the engineering decisions and limitations. The scope is limited to what the retained project artifacts can support.
+My contribution was **system integration within Team RobotFactory**: connecting the robot-side and monitoring-side workflow, organizing the information exchanged between modules, and documenting the resulting behavior and engineering decisions. The perception, navigation, messaging, and interface sections describe the shared prototype rather than assigning every module to one person.
 
 ## Problem and Scope
 
@@ -110,6 +108,86 @@ The dashboard brought detections and robot state into one interface. That was us
   </video>
   <figcaption>Recorded monitoring interface from the prototype.</figcaption>
 </figure>
+
+## Person Detection, PPE Association, and Tracking
+
+The perception pipeline combined a lightweight YOLO detector with downstream logic for interpreting detections over time. Person and PPE detections are related but different outputs: a helmet visible somewhere in an image does not establish that every visible person is wearing one.
+
+The engineering problem was to associate candidate equipment with the relevant person, retain confidence and location, and avoid generating a new incident every time the same person appeared in another frame. Bounding-box overlap, plausible body regions, and temporal association provide practical structure for that decision.
+
+<figure class="project-evidence-figure" markdown="0">
+  <img src="{{ '/project/crack-ppe-detection/detection_framework.png' | relative_url }}" alt="Detection framework connecting image processing, object detection, tracking, and event reporting" loading="lazy">
+  <figcaption>The detection workflow separated visual observations from the events reported to the operator.</figcaption>
+</figure>
+
+The project notes explored Kalman-based tracking to smooth position changes and maintain a track through short interruptions. A prediction helps associate a new detection with an existing track, but it does not create a new observation. Track age, missed frames, and uncertainty should remain visible when a person is temporarily occluded.
+
+This is also why per-frame confidence, detection accuracy, tracking stability, and incident quality are separate evaluation questions. A stable track can still have the wrong class, and a correct detection can still generate an incorrectly associated alert.
+
+## Crack Candidates and Image Segmentation
+
+The crack-analysis path started with a candidate image region and then used color/brightness segmentation and morphology to describe the visible feature. The retained screenshot shows the intermediate mask and detected region, making the processing more inspectable than a final “crack” label alone.
+
+<figure class="project-evidence-figure" markdown="0">
+  <img src="{{ '/project/crack-ppe-detection/hsv_segmentation.png' | relative_url }}" alt="Crack-candidate image with segmentation mask and detection overlay" loading="lazy">
+  <figcaption>Crack-candidate segmentation from the prototype. Image measurements need calibration before being interpreted as physical dimensions.</figcaption>
+</figure>
+
+Morphological operations can remove isolated noise or join fragmented regions, but they can also change the apparent width of a thin feature. Lighting, texture, joints, and shadows are important confounders. The useful output retains the image evidence and candidate geometry for review.
+
+The design additionally explored depth-assisted measurements. Pixel area is not physical surface area, and camera-to-surface range is not automatically crack depth. Volumetric estimates require a calibrated reference surface, adequate spatial resolution, and a validated measurement model. The available images demonstrate the processing concept; calibrated crack-volume accuracy requires a separate measurement study.
+
+## Navigation and Multi-Robot Coordination
+
+Robot navigation and inspection-event handling operated at different levels. Local ROS2 processing handled the robot's observations and navigation stack. A supervisory layer received status, distributed task requests, and associated reported events with their source robot.
+
+<figure class="project-evidence-figure" markdown="0">
+  <img src="{{ '/project/crack-ppe-detection/nav_arc.PNG' | relative_url }}" alt="Navigation architecture linking planning, obstacle handling, control, and robot state" loading="lazy">
+  <figcaption>Navigation was a separate subsystem within the wider inspection workflow.</figcaption>
+</figure>
+
+The coordination design considered global planning, local obstacle response, and task prioritization. At the integration boundary, the important questions were concrete: which robot owns a task, whether the request was accepted, whether it is still executing, and what happens when the robot disconnects.
+
+Priority-based dispatch is distinct from a mathematically verified distributed-consensus algorithm. The public case study preserves the implemented-system concept and its coordination interfaces, while treating the former consensus equations and large-fleet claims as design exploration without a retained validation package.
+
+## MQTT Events, Commands, and Operator State
+
+MQTT connected robot-side observations to the monitoring interface. The system architecture separated detections and status from operator commands so a dashboard display update could not be confused with an instruction to the robot.
+
+<div class="project-evidence-grid" markdown="0">
+  <figure class="project-evidence-card">
+    <img src="{{ '/project/crack-ppe-detection/detect_arc.PNG' | relative_url }}" alt="MQTT detection communication diagram with robot publishers and shared monitoring" loading="lazy">
+    <figcaption>Detection reporting through the shared messaging layer.</figcaption>
+  </figure>
+  <figure class="project-evidence-card">
+    <img src="{{ '/project/crack-ppe-detection/protocol_comparison.png' | relative_url }}" alt="Archived communication-flow diagram linking MQTT topic publishers and subscribers" loading="lazy">
+    <figcaption>Topic and message flow made the system interfaces explicit.</figcaption>
+  </figure>
+</div>
+
+A useful event record identifies the robot, event type, observation time, confidence, location context, and supporting image. An operator action needs its own identity and completion state. Network receipt, command acceptance, and physical task completion are three different events.
+
+The reliability design must also account for stale status and duplicate delivery. A recently disconnected robot should not remain visually indistinguishable from a healthy robot simply because its last status was retained. Likewise, retransmitting a command should not create a second navigation task.
+
+## Dashboard and Mobile Operator Prototype
+
+The monitoring work brought robot status, detections, and operator interaction into a shared view. The dashboard and application demonstrations are part of the project evidence, alongside the robot-side perception diagrams.
+
+<figure class="project-evidence-figure" markdown="0">
+  <video controls playsinline muted preload="metadata" aria-label="Recovered operator application demonstration for the safety-inspection prototype">
+    <source src="{{ '/project/crack-ppe-detection/operator-application.mp4' | relative_url }}" type="video/mp4">
+  </video>
+  <figcaption>Operator-application demonstration showing the prototype interaction and monitoring flow.</figcaption>
+</figure>
+
+The operator needs enough context to review a candidate incident: what was detected, where it was observed, whether the robot is still connected, and which image supports the event. This is a human review workflow. The interface demonstration does not establish autonomous industrial safety decisions, predictive maintenance, or validated augmented-reality operation.
+
+## Evaluation Boundaries
+
+An end-to-end evaluation needs to follow an observation through detection, association, publication, display, and any requested robot action. That catches integration failures that a detector-only score misses: the wrong robot identifier, a delayed image, a duplicated event, or a command shown as complete before the robot finishes.
+
+The demonstrated contribution is the connected perception, tracking, navigation, messaging, and interface workflow. Quantitative fleet-scale reliability and detection accuracy require retained datasets and repeatable trials.
+
 
 ## Engineering Decisions
 

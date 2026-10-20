@@ -74,9 +74,7 @@ The project demonstrates physical and software integration at prototype scale. I
 
 ## Context and Role
 
-The archived write-up describes the system as a team-built prototype but does not include a dependable ownership matrix for each module. I therefore describe my role as a **system-integration contribution** and avoid claiming sole authorship of the conveyor, vision models, robot code, or speech pipeline.
-
-My work represented in this portfolio is the integration perspective: defining the board flow, connecting hardware and software boundaries, and resolving practical mismatches between the conveyor, cameras, robot, and messaging layer. The case study is limited to the hardware and integration evidence retained with the project.
+I contributed to **system integration** in this team-built prototype: defining the board flow, connecting hardware and software boundaries, and resolving practical mismatches between the conveyor, cameras, robot, and messaging layer. The engineering account covers the full shared system so that the conveyor, inspection logic, robot handoff, and voice interface can be understood together; it does not assign sole authorship of every module.
 
 ## Physical Transport Prototype
 
@@ -125,6 +123,115 @@ A web-based circuit-design view was explored as a way to express the expected bo
 </figure>
 
 The voice path was an operator-interface experiment, not a validated factory control method. Production use would require command confirmation, access control, noise testing, clear machine-state feedback, and a separate safety-rated stop path.
+
+## Conveyor Design and Fabrication
+
+The conveyor was part of the inspection instrument. Its frame, belt tracking, drive friction, and stopping behavior determined whether the camera saw a board in a repeatable position. The mechanical work covered CAD, printed frame and rail components, motor mounting, belt installation, and Arduino-controlled transport.
+
+<div class="project-evidence-grid" markdown="0">
+  <figure class="project-evidence-card">
+    <img src="{{ '/project/pcb_inspection/conveyor_3d_modeling.gif' | relative_url }}" alt="CAD development of the printed conveyor structure" loading="lazy">
+    <figcaption>Conveyor CAD and printable structure.</figcaption>
+  </figure>
+  <figure class="project-evidence-card">
+    <img src="{{ '/project/pcb_inspection/conveyor-drive-assembly.webp' | relative_url }}" alt="Conveyor frame with motors installed before fitting the belt" loading="lazy">
+    <figcaption>Conveyor drive assembly before belt installation.</figcaption>
+  </figure>
+</div>
+
+<figure class="project-evidence-figure" markdown="0">
+  <video controls playsinline muted preload="metadata" aria-label="Fabrication video of the conveyor's printed parts">
+    <source src="{{ '/project/pcb_inspection/conveyor-printing.mp4' | relative_url }}" type="video/mp4">
+  </video>
+  <figcaption>Printing the custom conveyor parts before drive and belt assembly.</figcaption>
+</figure>
+
+The control problem included starting from rest, transporting steadily, and stopping at the inspection position. Static friction can keep a lightly driven belt stationary even when the same command sustains motion once it is moving. The implementation discussion therefore included a short starting command followed by a lower running command. Belt tension and alignment had to be addressed mechanically before treating every transport inconsistency as a software problem.
+
+An inspection trigger turns continuous transport into a discrete job. A board crossing an image line should create one inspection event, not a new request on every frame. The event needs a board or job identifier that can follow the board through inspection, result publication, and robot handling.
+
+## From Component Detections to a Board Judgment
+
+The vision work had two layers. YOLO-based detection located the board and visible components. A separate template comparison evaluated whether those components matched the intended board configuration. A detector's confidence answers whether a visual feature resembles a class; it does not by itself answer whether the assembly is correct.
+
+The documented normalization used the direction from the board center toward a recognizable connector as an orientation reference. Detected component positions could then be translated and rotated into a common board frame before matching against a template. This reduces false mismatch caused by the entire board being rotated in the camera.
+
+Matching considers component class and normalized position, while preventing one observed component from satisfying several expected components. Missing, extra, or misplaced parts can then be reported explicitly. The documented implementation uses greedy matching, a practical heuristic whose assignment order can affect ambiguous cases.
+
+The inspection decision also used observations across multiple frames. Aggregating several views reduces sensitivity to one blurred or partially occluded image, but it introduces a time window. The board must remain in the correct inspection region during that window, and the resulting decision must remain associated with the same board.
+
+<figure class="project-evidence-figure" markdown="0">
+  <img src="{{ '/project/pcb_inspection/circuit_judgment_overlay.jpg' | relative_url }}" alt="Circuit inspection overlay showing component locations and connection comparison" loading="lazy">
+  <figcaption>Inspection overlays expose which observed features and connections contributed to the board judgment.</figcaption>
+</figure>
+
+## RealSense Alignment and Robot Integration
+
+The robot-side workflow used a RealSense D435i with a Doosan M0609 arm. Board localization and circuit inspection are related but separate tasks: localization supplies a spatial target, while inspection compares visual structure with a specification.
+
+For a valid aligned depth sample `Z` at image coordinates `(u, v)`, calibrated camera intrinsics give the point:
+
+`X = (u − cx) Z / fx`, `Y = (v − cy) Z / fy`
+
+The camera-frame point then passes through the hand–eye transform into the robot's working frame. Invalid depth, depth/color misalignment, and an incorrect transform can all create a bad robot target even when the 2D bounding box looks correct. The documented sequence approached a known observation pose and refined the board center before the next robot action.
+
+The web circuit designer provided the other half of the contract. A specification contained component identities, positions, and expected connections in a structured representation. The inspection side cached the selected specification and compared observations against that version. Changing the displayed circuit without changing the inspection-side specification would otherwise produce a system that appeared connected while evaluating the wrong board.
+
+| Interface | Information carried | Why it mattered |
+| --- | --- | --- |
+| Conveyor → inspection | Board arrival and inspection job | Avoid repeated triggers for one board |
+| Circuit editor → inspection | Selected circuit specification | Separate expected configuration from observed detections |
+| Camera → robot | Valid spatial target in a declared frame | Turn image localization into an executable pose |
+| Inspection → workflow | Result and associated board/job | Keep handling decisions attached to the right item |
+
+## Voice Interface: Wake Word to Structured Command
+
+The voice work was a substantial subsystem, with its own audio features, learned detector, speaker gate, transcription, and intent interpretation. Its purpose was to let an operator request an action through a structured interface while leaving the robot workflow responsible for whether that action could execute.
+
+The documented chain was:
+
+**audio buffer → keyword spotting → speaker verification → utterance capture → speech-to-text → intent parsing → MQTT command**
+
+<figure class="project-evidence-figure" markdown="0">
+  <img src="{{ '/project/pcb_inspection/voice_control_system_architecture.png' | relative_url }}" alt="Voice-control architecture connecting speech processing, language interpretation, messaging, and feedback" loading="lazy">
+  <figcaption>The voice interface connected several processing stages; speech recognition alone was not the complete control path.</figcaption>
+</figure>
+
+### Keyword spotting and speaker verification
+
+Audio was transformed into a log-Mel spectrogram so a small convolutional network could recognize a wake-word pattern over time and frequency. The development notes included positive examples, non-keyword examples, background noise, and augmentation. These serve different purposes: background examples help suppress accidental activation, while speaker variation helps avoid memorizing one recording.
+
+<div class="project-evidence-grid" markdown="0">
+  <figure class="project-evidence-card">
+    <img src="{{ '/project/pcb_inspection/voice_to_2D_tensor.jpg' | relative_url }}" alt="Waveform and corresponding time-frequency representation for keyword spotting" loading="lazy">
+    <figcaption>Waveform to time-frequency input.</figcaption>
+  </figure>
+  <figure class="project-evidence-card">
+    <img src="{{ '/project/pcb_inspection/Log-Mel_changing.PNG' | relative_url }}" alt="Stages of log-Mel feature extraction from an audio signal" loading="lazy">
+    <figcaption>Feature preparation for the keyword detector.</figcaption>
+  </figure>
+</div>
+
+<figure class="project-evidence-figure" markdown="0">
+  <img src="{{ '/project/pcb_inspection/2D_CNN.jpg' | relative_url }}" alt="Convolutional keyword-spotting network diagram" loading="lazy">
+  <figcaption>Keyword-spotting model design for the voice interface.</figcaption>
+</figure>
+
+Keyword confidence and speaker identity were separate decisions. The speaker stage compared an utterance embedding with an enrolled voice profile using cosine similarity. Passing one gate did not imply passing the other. The architecture also considered repeated-trigger suppression, a bounded audio buffer, voice activity detection, and a capture timeout so background audio could not create an indefinitely growing recording.
+
+### Transcription, intent, and execution
+
+After capturing an utterance, speech-to-text produced text for an intent layer. Simple known phrases could use a deterministic rule; more variable language could use a constrained language-model response. The intended output was a recognized action with parameters, not executable robot code.
+
+<figure class="project-evidence-figure" markdown="0">
+  <img src="{{ '/project/pcb_inspection/STT_system_architecture.png' | relative_url }}" alt="Speech-to-text pipeline with audio acquisition, speaker checks, transcription, and command messaging" loading="lazy">
+  <figcaption>Speech processing and command publication were designed as separate stages with explicit handoffs.</figcaption>
+</figure>
+
+Network-dependent transcription and language processing run on a different timescale from belt and robot control. Queues isolate those delays from immediate device callbacks. A valid spoken command still needs workflow-state validation: a request to inspect should not start a second inspection while the current board is being handled.
+
+MQTT's at-least-once delivery option can redeliver a message. Command identifiers and state-aware handling are therefore important interface requirements; a retry must not be interpreted as a second physical task. These architectural checks are more useful than treating a text transcript as proof that the requested robot action completed.
+
 
 ## Engineering Decisions
 

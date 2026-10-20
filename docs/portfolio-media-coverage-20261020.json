@@ -1,0 +1,728 @@
+{
+  "compared_commit": "beda9b7996fe5952c3a96f7606c32314b5a11f18^",
+  "projects": [
+    {
+      "project": "automated-catalyst-cleaning.md",
+      "historical_media": [
+        {
+          "historical_reference": "/project/automated-catalyst-cleaning/3dworking1.gif",
+          "present_before_rewrite": true,
+          "disposition": "format-converted equivalent",
+          "published_reference": "/project/automated-catalyst-cleaning/cad-motion.mp4"
+        },
+        {
+          "historical_reference": "/project/automated-catalyst-cleaning/3dworking2.PNG",
+          "present_before_rewrite": true,
+          "disposition": "retained",
+          "published_reference": "/project/automated-catalyst-cleaning/3dworking2.PNG"
+        },
+        {
+          "historical_reference": "/project/automated-catalyst-cleaning/architecture-diagram.png",
+          "present_before_rewrite": true,
+          "disposition": "retained",
+          "published_reference": "/project/automated-catalyst-cleaning/architecture-diagram.png"
+        },
+        {
+          "historical_reference": "/project/automated-catalyst-cleaning/cleaning_robot_components.jpg",
+          "present_before_rewrite": true,
+          "disposition": "format-converted equivalent",
+          "published_reference": "/project/automated-catalyst-cleaning/cleaning_robot_components.webp"
+        },
+        {
+          "historical_reference": "/project/automated-catalyst-cleaning/grinding.gif",
+          "present_before_rewrite": true,
+          "disposition": "format-converted equivalent",
+          "published_reference": "/project/automated-catalyst-cleaning/grinding.webm"
+        },
+        {
+          "historical_reference": "/project/automated-catalyst-cleaning/nozzle_handle.jpg",
+          "present_before_rewrite": true,
+          "disposition": "format-converted equivalent",
+          "published_reference": "/project/automated-catalyst-cleaning/nozzle_handle.webp"
+        },
+        {
+          "historical_reference": "/project/automated-catalyst-cleaning/tap_machine.jpg",
+          "present_before_rewrite": true,
+          "disposition": "format-converted equivalent",
+          "published_reference": "/project/automated-catalyst-cleaning/tap-machine.webp"
+        }
+      ],
+      "current_media_references": [
+        "/project/automated-catalyst-cleaning/3dworking2.PNG",
+        "/project/automated-catalyst-cleaning/architecture-diagram.png",
+        "/project/automated-catalyst-cleaning/cad-motion.mp4",
+        "/project/automated-catalyst-cleaning/cleaning_robot_components.webp",
+        "/project/automated-catalyst-cleaning/grinding.webm",
+        "/project/automated-catalyst-cleaning/nozzle_handle.webp",
+        "/project/automated-catalyst-cleaning/tap-machine.webp"
+      ]
+    },
+    {
+      "project": "automated_mixing_system.md",
+      "historical_media": [
+        {
+          "historical_reference": "/project/automated-mixing-system/arduino_flow.png",
+          "present_before_rewrite": false,
+          "disposition": "referenced file absent before rewrite; no original media to restore"
+        },
+        {
+          "historical_reference": "/project/automated-mixing-system/automated-mixing-system.png",
+          "present_before_rewrite": true,
+          "disposition": "retained",
+          "published_reference": "/project/automated-mixing-system/automated-mixing-system.png"
+        },
+        {
+          "historical_reference": "/project/automated-mixing-system/automated_process_flow.png",
+          "present_before_rewrite": false,
+          "disposition": "referenced file absent before rewrite; no original media to restore"
+        },
+        {
+          "historical_reference": "/project/automated-mixing-system/availability.png",
+          "present_before_rewrite": false,
+          "disposition": "referenced file absent before rewrite; no original media to restore"
+        },
+        {
+          "historical_reference": "/project/automated-mixing-system/cascade_control.png",
+          "present_before_rewrite": false,
+          "disposition": "referenced file absent before rewrite; no original media to restore"
+        },
+        {
+          "historical_reference": "/project/automated-mixing-system/control_circuit.png",
+          "present_before_rewrite": false,
+          "disposition": "referenced file absent before rewrite; no original media to restore"
+        },
+        {
+          "historical_reference": "/project/automated-mixing-system/current_loop_interface.png",
+          "present_before_rewrite": false,
+          "disposition": "referenced file absent before rewrite; no original media to restore"
+        },
+        {
+          "historical_reference": "/project/automated-mixing-system/cv_calculation.png",
+          "present_before_rewrite": false,
+          "disposition": "referenced file absent before rewrite; no original media to restore"
+        },
+        {
+          "historical_reference": "/project/automated-mixing-system/cycle_time.png",
+          "present_before_rewrite": false,
+          "disposition": "referenced file absent before rewrite; no original media to restore"
+        },
+        {
+          "historical_reference": "/project/automated-mixing-system/database_schema.png",
+          "present_before_rewrite": false,
+          "disposition": "referenced file absent before rewrite; no original media to restore"
+        },
+        {
+          "historical_reference": "/project/automated-mixing-system/digital_twin.png",
+          "present_before_rewrite": false,
+          "disposition": "referenced file absent before rewrite; no original media to restore"
+        },
+        {
+          "historical_reference": "/project/automated-mixing-system/failure_testing.png",
+          "present_before_rewrite": false,
+          "disposition": "referenced file absent before rewrite; no original media to restore"
+        },
+        {
+          "historical_reference": "/project/automated-mixing-system/flow_calculation.png",
+          "present_before_rewrite": false,
+          "disposition": "referenced file absent before rewrite; no original media to restore"
+        },
+        {
+          "historical_reference": "/project/automated-mixing-system/hazop_matrix.png",
+          "present_before_rewrite": false,
+          "disposition": "referenced file absent before rewrite; no original media to restore"
+        },
+        {
+          "historical_reference": "/project/automated-mixing-system/head_calculation.png",
+          "present_before_rewrite": false,
+          "disposition": "referenced file absent before rewrite; no original media to restore"
+        },
+        {
+          "historical_reference": "/project/automated-mixing-system/manual_process_timeline.png",
+          "present_before_rewrite": false,
+          "disposition": "referenced file absent before rewrite; no original media to restore"
+        },
+        {
+          "historical_reference": "/project/automated-mixing-system/ml_architecture.png",
+          "present_before_rewrite": false,
+          "disposition": "referenced file absent before rewrite; no original media to restore"
+        },
+        {
+          "historical_reference": "/project/automated-mixing-system/mqtt_qos.png",
+          "present_before_rewrite": false,
+          "disposition": "referenced file absent before rewrite; no original media to restore"
+        },
+        {
+          "historical_reference": "/project/automated-mixing-system/mqtt_topics.png",
+          "present_before_rewrite": false,
+          "disposition": "referenced file absent before rewrite; no original media to restore"
+        },
+        {
+          "historical_reference": "/project/automated-mixing-system/packet_format.png",
+          "present_before_rewrite": false,
+          "disposition": "referenced file absent before rewrite; no original media to restore"
+        },
+        {
+          "historical_reference": "/project/automated-mixing-system/packet_structure.png",
+          "present_before_rewrite": false,
+          "disposition": "referenced file absent before rewrite; no original media to restore"
+        },
+        {
+          "historical_reference": "/project/automated-mixing-system/pcb_layout.png",
+          "present_before_rewrite": false,
+          "disposition": "referenced file absent before rewrite; no original media to restore"
+        },
+        {
+          "historical_reference": "/project/automated-mixing-system/pid_diagram.png",
+          "present_before_rewrite": false,
+          "disposition": "referenced file absent before rewrite; no original media to restore"
+        },
+        {
+          "historical_reference": "/project/automated-mixing-system/pid_tuning.png",
+          "present_before_rewrite": false,
+          "disposition": "referenced file absent before rewrite; no original media to restore"
+        },
+        {
+          "historical_reference": "/project/automated-mixing-system/pipe_support.png",
+          "present_before_rewrite": false,
+          "disposition": "referenced file absent before rewrite; no original media to restore"
+        },
+        {
+          "historical_reference": "/project/automated-mixing-system/pipe_velocity.png",
+          "present_before_rewrite": false,
+          "disposition": "referenced file absent before rewrite; no original media to restore"
+        },
+        {
+          "historical_reference": "/project/automated-mixing-system/power_distribution.png",
+          "present_before_rewrite": false,
+          "disposition": "referenced file absent before rewrite; no original media to restore"
+        },
+        {
+          "historical_reference": "/project/automated-mixing-system/pump_curves.png",
+          "present_before_rewrite": false,
+          "disposition": "referenced file absent before rewrite; no original media to restore"
+        },
+        {
+          "historical_reference": "/project/automated-mixing-system/raspi_architecture.png",
+          "present_before_rewrite": false,
+          "disposition": "referenced file absent before rewrite; no original media to restore"
+        },
+        {
+          "historical_reference": "/project/automated-mixing-system/relay_assignment.png",
+          "present_before_rewrite": false,
+          "disposition": "referenced file absent before rewrite; no original media to restore"
+        },
+        {
+          "historical_reference": "/project/automated-mixing-system/rtd_calibration.png",
+          "present_before_rewrite": false,
+          "disposition": "referenced file absent before rewrite; no original media to restore"
+        },
+        {
+          "historical_reference": "/project/automated-mixing-system/safety_circuit.png",
+          "present_before_rewrite": false,
+          "disposition": "referenced file absent before rewrite; no original media to restore"
+        },
+        {
+          "historical_reference": "/project/automated-mixing-system/sil_levels.png",
+          "present_before_rewrite": false,
+          "disposition": "referenced file absent before rewrite; no original media to restore"
+        },
+        {
+          "historical_reference": "/project/automated-mixing-system/spc_charts.png",
+          "present_before_rewrite": false,
+          "disposition": "referenced file absent before rewrite; no original media to restore"
+        },
+        {
+          "historical_reference": "/project/automated-mixing-system/state_machine.png",
+          "present_before_rewrite": false,
+          "disposition": "referenced file absent before rewrite; no original media to restore"
+        },
+        {
+          "historical_reference": "/project/automated-mixing-system/state_space.png",
+          "present_before_rewrite": false,
+          "disposition": "referenced file absent before rewrite; no original media to restore"
+        },
+        {
+          "historical_reference": "/project/automated-mixing-system/system_architecture.png",
+          "present_before_rewrite": false,
+          "disposition": "referenced file absent before rewrite; no original media to restore"
+        },
+        {
+          "historical_reference": "/project/automated-mixing-system/tank_geometry.png",
+          "present_before_rewrite": false,
+          "disposition": "referenced file absent before rewrite; no original media to restore"
+        },
+        {
+          "historical_reference": "/project/automated-mixing-system/test_protocol.png",
+          "present_before_rewrite": false,
+          "disposition": "referenced file absent before rewrite; no original media to restore"
+        },
+        {
+          "historical_reference": "/project/automated-mixing-system/transfer_function.png",
+          "present_before_rewrite": false,
+          "disposition": "referenced file absent before rewrite; no original media to restore"
+        }
+      ],
+      "current_media_references": [
+        "/project/automated-mixing-system/automated-mixing-system.png"
+      ]
+    },
+    {
+      "project": "crack-ppe-detection.md",
+      "historical_media": [
+        {
+          "historical_reference": "/project/crack-ppe-detection/accident-circle.png",
+          "present_before_rewrite": true,
+          "disposition": "statistical graphic excluded without supporting source data"
+        },
+        {
+          "historical_reference": "/project/crack-ppe-detection/aplication.gif",
+          "present_before_rewrite": true,
+          "disposition": "format-converted equivalent",
+          "published_reference": "/project/crack-ppe-detection/operator-application.mp4"
+        },
+        {
+          "historical_reference": "/project/crack-ppe-detection/dash.gif",
+          "present_before_rewrite": true,
+          "disposition": "format-converted equivalent",
+          "published_reference": "/project/crack-ppe-detection/dashboard-prototype.webm"
+        },
+        {
+          "historical_reference": "/project/crack-ppe-detection/detection_framework.png",
+          "present_before_rewrite": true,
+          "disposition": "retained",
+          "published_reference": "/project/crack-ppe-detection/detection_framework.png"
+        },
+        {
+          "historical_reference": "/project/crack-ppe-detection/fatality_rate_graph.png",
+          "present_before_rewrite": true,
+          "disposition": "statistical graphic excluded without supporting source data"
+        },
+        {
+          "historical_reference": "/project/crack-ppe-detection/hsv_segmentation.png",
+          "present_before_rewrite": true,
+          "disposition": "retained",
+          "published_reference": "/project/crack-ppe-detection/hsv_segmentation.png"
+        },
+        {
+          "historical_reference": "/project/crack-ppe-detection/model_comparison.png",
+          "present_before_rewrite": true,
+          "disposition": "statistical graphic excluded without supporting source data"
+        },
+        {
+          "historical_reference": "/project/crack-ppe-detection/nav_arc.PNG",
+          "present_before_rewrite": true,
+          "disposition": "retained",
+          "published_reference": "/project/crack-ppe-detection/nav_arc.PNG"
+        },
+        {
+          "historical_reference": "/project/crack-ppe-detection/protocol_comparison.png",
+          "present_before_rewrite": true,
+          "disposition": "retained",
+          "published_reference": "/project/crack-ppe-detection/protocol_comparison.png"
+        },
+        {
+          "historical_reference": "/project/crack-ppe-detection/system_overview.png",
+          "present_before_rewrite": true,
+          "disposition": "retained",
+          "published_reference": "/project/crack-ppe-detection/system_overview.png"
+        }
+      ],
+      "current_media_references": [
+        "/project/crack-ppe-detection/dashboard-prototype-poster.webp",
+        "/project/crack-ppe-detection/dashboard-prototype.webm",
+        "/project/crack-ppe-detection/detect_arc.PNG",
+        "/project/crack-ppe-detection/detection_framework.png",
+        "/project/crack-ppe-detection/hsv_segmentation.png",
+        "/project/crack-ppe-detection/nav_arc.PNG",
+        "/project/crack-ppe-detection/operator-application.mp4",
+        "/project/crack-ppe-detection/protocol_comparison.png",
+        "/project/crack-ppe-detection/system_overview.png"
+      ]
+    },
+    {
+      "project": "dry-ice-blaster-feeding-system.md",
+      "historical_media": [
+        {
+          "historical_reference": "/project/dry-ice-blaster-feeding-system/completed_dry_ice_blaster.png",
+          "present_before_rewrite": true,
+          "disposition": "format-converted equivalent",
+          "published_reference": "/project/dry-ice-blaster-feeding-system/completed_dry_ice_blaster.webp"
+        },
+        {
+          "historical_reference": "/project/dry-ice-blaster-feeding-system/control_system.png",
+          "present_before_rewrite": true,
+          "disposition": "retained",
+          "published_reference": "/project/dry-ice-blaster-feeding-system/control_system.png"
+        },
+        {
+          "historical_reference": "/project/dry-ice-blaster-feeding-system/overall_architecture.png",
+          "present_before_rewrite": true,
+          "disposition": "retained",
+          "published_reference": "/project/dry-ice-blaster-feeding-system/overall_architecture.png"
+        }
+      ],
+      "current_media_references": [
+        "/project/dry-ice-blaster-feeding-system/completed_dry_ice_blaster.webp",
+        "/project/dry-ice-blaster-feeding-system/control_system.png",
+        "/project/dry-ice-blaster-feeding-system/overall_architecture.png"
+      ]
+    },
+    {
+      "project": "dual-gear-pump-system.md",
+      "historical_media": [
+        {
+          "historical_reference": "/project/dual-gear-pump-system/complete-system-main.jpg",
+          "present_before_rewrite": true,
+          "disposition": "format-converted equivalent",
+          "published_reference": "/project/dual-gear-pump-system/complete-system-main.webp"
+        },
+        {
+          "historical_reference": "/project/dual-gear-pump-system/control-panel-interior.jpg",
+          "present_before_rewrite": true,
+          "disposition": "format-converted equivalent",
+          "published_reference": "/project/dual-gear-pump-system/control-panel-interior.webp"
+        },
+        {
+          "historical_reference": "/project/dual-gear-pump-system/gear-pump-internal.PNG",
+          "present_before_rewrite": true,
+          "disposition": "retained",
+          "published_reference": "/project/dual-gear-pump-system/gear-pump-internal.PNG"
+        },
+        {
+          "historical_reference": "/project/dual-gear-pump-system/system-architecture.png",
+          "present_before_rewrite": true,
+          "disposition": "retained",
+          "published_reference": "/project/dual-gear-pump-system/system-architecture.png"
+        },
+        {
+          "historical_reference": "/project/dual-gear-pump-system/wiring-diagram.png",
+          "present_before_rewrite": true,
+          "disposition": "retained",
+          "published_reference": "/project/dual-gear-pump-system/wiring-diagram.png"
+        }
+      ],
+      "current_media_references": [
+        "/project/dual-gear-pump-system/complete-system-main.webp",
+        "/project/dual-gear-pump-system/complete-system-page.jpg",
+        "/project/dual-gear-pump-system/control-panel-interior.webp",
+        "/project/dual-gear-pump-system/gear-pump-internal.PNG",
+        "/project/dual-gear-pump-system/system-architecture.png",
+        "/project/dual-gear-pump-system/wiring-diagram.png"
+      ]
+    },
+    {
+      "project": "liquid_injection.md",
+      "historical_media": [
+        {
+          "historical_reference": "/project/liquid_injection/3d_printing_process.gif",
+          "present_before_rewrite": true,
+          "disposition": "format-converted equivalent",
+          "published_reference": "/project/liquid_injection/fixture-printing.mp4"
+        },
+        {
+          "historical_reference": "/project/liquid_injection/completed_frame.jpg",
+          "present_before_rewrite": true,
+          "disposition": "retained",
+          "published_reference": "/project/liquid_injection/completed_frame.jpg"
+        },
+        {
+          "historical_reference": "/project/liquid_injection/electrical_schematic.webp",
+          "present_before_rewrite": true,
+          "disposition": "retained",
+          "published_reference": "/project/liquid_injection/electrical_schematic.webp"
+        },
+        {
+          "historical_reference": "/project/liquid_injection/frame_design_3d.gif",
+          "present_before_rewrite": true,
+          "disposition": "retained",
+          "published_reference": "/project/liquid_injection/frame_design_3d.gif"
+        },
+        {
+          "historical_reference": "/project/liquid_injection/hardware_architecture.png",
+          "present_before_rewrite": true,
+          "disposition": "retained",
+          "published_reference": "/project/liquid_injection/hardware_architecture.png"
+        },
+        {
+          "historical_reference": "/project/liquid_injection/hx711_soldering.jpg",
+          "present_before_rewrite": true,
+          "disposition": "retained",
+          "published_reference": "/project/liquid_injection/hx711_soldering.jpg"
+        },
+        {
+          "historical_reference": "/project/liquid_injection/loadcell_internal.png",
+          "present_before_rewrite": true,
+          "disposition": "retained",
+          "published_reference": "/project/liquid_injection/loadcell_internal.png"
+        }
+      ],
+      "current_media_references": [
+        "/project/liquid_injection/completed_frame.jpg",
+        "/project/liquid_injection/electrical_schematic.webp",
+        "/project/liquid_injection/fixture-printing.mp4",
+        "/project/liquid_injection/frame_design_3d.gif",
+        "/project/liquid_injection/hardware_architecture.png",
+        "/project/liquid_injection/hx711_soldering.jpg",
+        "/project/liquid_injection/loadcell_internal.png"
+      ]
+    },
+    {
+      "project": "pcb_inspection.md",
+      "historical_media": [
+        {
+          "historical_reference": "/project/pcb_inspection/2D_CNN.jpg",
+          "present_before_rewrite": true,
+          "disposition": "retained",
+          "published_reference": "/project/pcb_inspection/2D_CNN.jpg"
+        },
+        {
+          "historical_reference": "/project/pcb_inspection/Log-Mel_changing.PNG",
+          "present_before_rewrite": true,
+          "disposition": "retained",
+          "published_reference": "/project/pcb_inspection/Log-Mel_changing.PNG"
+        },
+        {
+          "historical_reference": "/project/pcb_inspection/STT_system_architecture.png",
+          "present_before_rewrite": true,
+          "disposition": "retained",
+          "published_reference": "/project/pcb_inspection/STT_system_architecture.png"
+        },
+        {
+          "historical_reference": "/project/pcb_inspection/archi.png",
+          "present_before_rewrite": true,
+          "disposition": "retained",
+          "published_reference": "/project/pcb_inspection/archi.png"
+        },
+        {
+          "historical_reference": "/project/pcb_inspection/circuit_judgment_overlay.jpg",
+          "present_before_rewrite": true,
+          "disposition": "retained",
+          "published_reference": "/project/pcb_inspection/circuit_judgment_overlay.jpg"
+        },
+        {
+          "historical_reference": "/project/pcb_inspection/conveyor-belt-prototype-v1-assembled-arduino-rails.jpg",
+          "present_before_rewrite": true,
+          "disposition": "retained",
+          "published_reference": "/project/pcb_inspection/conveyor-belt-prototype-v1-assembled-arduino-rails.jpg"
+        },
+        {
+          "historical_reference": "/project/pcb_inspection/conveyor-belt-prototype-v1-frame-3d-printing.gif",
+          "present_before_rewrite": true,
+          "disposition": "format-converted equivalent",
+          "published_reference": "/project/pcb_inspection/conveyor-printing.mp4"
+        },
+        {
+          "historical_reference": "/project/pcb_inspection/conveyor-belt-prototype-v1-frame-motors-no-belt.jpg",
+          "present_before_rewrite": true,
+          "disposition": "format-converted equivalent",
+          "published_reference": "/project/pcb_inspection/conveyor-drive-assembly.webp"
+        },
+        {
+          "historical_reference": "/project/pcb_inspection/conveyor_3d_modeling.gif",
+          "present_before_rewrite": true,
+          "disposition": "retained",
+          "published_reference": "/project/pcb_inspection/conveyor_3d_modeling.gif"
+        },
+        {
+          "historical_reference": "/project/pcb_inspection/voice_control_system_architecture.png",
+          "present_before_rewrite": true,
+          "disposition": "retained",
+          "published_reference": "/project/pcb_inspection/voice_control_system_architecture.png"
+        },
+        {
+          "historical_reference": "/project/pcb_inspection/voice_to_2D_tensor.jpg",
+          "present_before_rewrite": true,
+          "disposition": "retained",
+          "published_reference": "/project/pcb_inspection/voice_to_2D_tensor.jpg"
+        },
+        {
+          "historical_reference": "/project/pcb_inspection/web_circuit_designer.PNG",
+          "present_before_rewrite": true,
+          "disposition": "retained",
+          "published_reference": "/project/pcb_inspection/web_circuit_designer.PNG"
+        },
+        {
+          "historical_reference": "/project/pcb_inspection/yolo_detection_realtime.jpg",
+          "present_before_rewrite": true,
+          "disposition": "retained",
+          "published_reference": "/project/pcb_inspection/yolo_detection_realtime.jpg"
+        }
+      ],
+      "current_media_references": [
+        "/project/pcb_inspection/2D_CNN.jpg",
+        "/project/pcb_inspection/Log-Mel_changing.PNG",
+        "/project/pcb_inspection/STT_system_architecture.png",
+        "/project/pcb_inspection/archi.png",
+        "/project/pcb_inspection/circuit_judgment_overlay.jpg",
+        "/project/pcb_inspection/conveyor-belt-prototype-v1-assembled-arduino-rails.jpg",
+        "/project/pcb_inspection/conveyor-drive-assembly.webp",
+        "/project/pcb_inspection/conveyor-printing.mp4",
+        "/project/pcb_inspection/conveyor_3d_modeling.gif",
+        "/project/pcb_inspection/voice_control_system_architecture.png",
+        "/project/pcb_inspection/voice_to_2D_tensor.jpg",
+        "/project/pcb_inspection/web_circuit_designer.PNG",
+        "/project/pcb_inspection/yolo_detection_realtime.jpg"
+      ]
+    },
+    {
+      "project": "robros-humanoid-manipulation-data-pipeline.md",
+      "historical_media": [
+        {
+          "historical_reference": "/project/robros-humanoid-manipulation-data-pipeline/system-overview.svg",
+          "present_before_rewrite": true,
+          "disposition": "superseded by current public-safe protocol and workflow figures"
+        }
+      ],
+      "current_media_references": [
+        "/project/robros-humanoid-manipulation-data-pipeline/action-stop-target-removal.webp",
+        "/project/robros-humanoid-manipulation-data-pipeline/action-trigger-target-appearance.webp",
+        "/project/robros-humanoid-manipulation-data-pipeline/action-vs-observation.webp",
+        "/project/robros-humanoid-manipulation-data-pipeline/automated-validation-outcomes.webp",
+        "/project/robros-humanoid-manipulation-data-pipeline/collection-preflight-check.webp",
+        "/project/robros-humanoid-manipulation-data-pipeline/episode-subtask-segmentation.webp",
+        "/project/robros-humanoid-manipulation-data-pipeline/manual-review-decision-tree.webp",
+        "/project/robros-humanoid-manipulation-data-pipeline/master-arm-hardware.webp",
+        "/project/robros-humanoid-manipulation-data-pipeline/master-arm-operator-fit.webp",
+        "/project/robros-humanoid-manipulation-data-pipeline/observation-state-traces.webp",
+        "/project/robros-humanoid-manipulation-data-pipeline/operator-pedal-controls.webp",
+        "/project/robros-humanoid-manipulation-data-pipeline/pick-boundary-example.webp",
+        "/project/robros-humanoid-manipulation-data-pipeline/place-boundary-example.webp",
+        "/project/robros-humanoid-manipulation-data-pipeline/recovery-label-timeline.webp",
+        "/project/robros-humanoid-manipulation-data-pipeline/tabletop-pick-and-place.webp"
+      ]
+    },
+    {
+      "project": "scr-catalyst-testing-apparatus.md",
+      "historical_media": [
+        {
+          "historical_reference": "/project/scr-catalyst-testing-apparatus/completed_apparatus.jpg",
+          "present_before_rewrite": true,
+          "disposition": "format-converted equivalent",
+          "published_reference": "/project/scr-catalyst-testing-apparatus/completed_apparatus.webp"
+        },
+        {
+          "historical_reference": "/project/scr_catalyst/mfc_panel.png",
+          "present_before_rewrite": false,
+          "disposition": "referenced file absent before rewrite; no original media to restore"
+        },
+        {
+          "historical_reference": "/project/scr_catalyst/piping_diagram.png",
+          "present_before_rewrite": false,
+          "disposition": "referenced file absent before rewrite; no original media to restore"
+        }
+      ],
+      "current_media_references": [
+        "/project/scr-catalyst-testing-apparatus/completed_apparatus.webp"
+      ]
+    },
+    {
+      "project": "turtlebot3-autonomous-system.md",
+      "historical_media": [
+        {
+          "historical_reference": "/project/turtlebot3-autonomous-system/aruco_marker_detection.gif",
+          "present_before_rewrite": true,
+          "disposition": "format-converted equivalent",
+          "published_reference": "/project/turtlebot3-autonomous-system/aruco-marker-detection.webm"
+        },
+        {
+          "historical_reference": "/project/turtlebot3-autonomous-system/barrier_detection.png",
+          "present_before_rewrite": true,
+          "disposition": "retained",
+          "published_reference": "/project/turtlebot3-autonomous-system/barrier_detection.png"
+        },
+        {
+          "historical_reference": "/project/turtlebot3-autonomous-system/camera_coordinate_3d.png",
+          "present_before_rewrite": true,
+          "disposition": "retained",
+          "published_reference": "/project/turtlebot3-autonomous-system/camera_coordinate_3d.png"
+        },
+        {
+          "historical_reference": "/project/turtlebot3-autonomous-system/digital_twin_gazebo_map.png",
+          "present_before_rewrite": true,
+          "disposition": "retained",
+          "published_reference": "/project/turtlebot3-autonomous-system/digital_twin_gazebo_map.png"
+        },
+        {
+          "historical_reference": "/project/turtlebot3-autonomous-system/kinematics_basics.png",
+          "present_before_rewrite": true,
+          "disposition": "retained",
+          "published_reference": "/project/turtlebot3-autonomous-system/kinematics_basics.png"
+        },
+        {
+          "historical_reference": "/project/turtlebot3-autonomous-system/lane_detection_rqt.png",
+          "present_before_rewrite": true,
+          "disposition": "retained",
+          "published_reference": "/project/turtlebot3-autonomous-system/lane_detection_rqt.png"
+        },
+        {
+          "historical_reference": "/project/turtlebot3-autonomous-system/solvepnp_3d_visualization.png",
+          "present_before_rewrite": true,
+          "disposition": "retained",
+          "published_reference": "/project/turtlebot3-autonomous-system/solvepnp_3d_visualization.png"
+        },
+        {
+          "historical_reference": "/project/turtlebot3-autonomous-system/system_architecture_diagram.png",
+          "present_before_rewrite": true,
+          "disposition": "retained",
+          "published_reference": "/project/turtlebot3-autonomous-system/system_architecture_diagram.png"
+        },
+        {
+          "historical_reference": "/project/turtlebot3-autonomous-system/traffic_light_detection.png",
+          "present_before_rewrite": true,
+          "disposition": "retained",
+          "published_reference": "/project/turtlebot3-autonomous-system/traffic_light_detection.png"
+        },
+        {
+          "historical_reference": "/project/turtlebot3-autonomous-system/turtlebot3_arm_joints.png",
+          "present_before_rewrite": true,
+          "disposition": "retained",
+          "published_reference": "/project/turtlebot3-autonomous-system/turtlebot3_arm_joints.png"
+        }
+      ],
+      "current_media_references": [
+        "/project/turtlebot3-autonomous-system/aruco-marker-detection.webm",
+        "/project/turtlebot3-autonomous-system/barrier_detection.png",
+        "/project/turtlebot3-autonomous-system/camera_coordinate_3d.png",
+        "/project/turtlebot3-autonomous-system/digital_twin_gazebo_map.png",
+        "/project/turtlebot3-autonomous-system/kinematics_basics.png",
+        "/project/turtlebot3-autonomous-system/lane_detection_rqt.png",
+        "/project/turtlebot3-autonomous-system/solvepnp_3d_visualization.png",
+        "/project/turtlebot3-autonomous-system/system_architecture_diagram.png",
+        "/project/turtlebot3-autonomous-system/traffic_light_detection.png",
+        "/project/turtlebot3-autonomous-system/turtlebot3_arm_joints.png"
+      ]
+    }
+  ],
+  "new_recovered_assets": [
+    {
+      "file": "project/automated-catalyst-cleaning/cad-motion.mp4",
+      "bytes": 608974,
+      "sha256": "e9bde92461bb36bcc7ae1983a8d43fcd722b935468c1bf84613f1f47c7af6858"
+    },
+    {
+      "file": "project/automated-catalyst-cleaning/tap-machine.webp",
+      "bytes": 210948,
+      "sha256": "e9bb95ac4fb6bc945a6db1d4342c10dce75143854799871d2d232a2c54220757"
+    },
+    {
+      "file": "project/liquid_injection/fixture-printing.mp4",
+      "bytes": 522566,
+      "sha256": "5e30021f75a30f4419e6eb657459cf39378b15b13c36da1e98a98536942f5393"
+    },
+    {
+      "file": "project/pcb_inspection/conveyor-printing.mp4",
+      "bytes": 501604,
+      "sha256": "c48a65e175f13443f87d709f4ddcd907939d1c2cdb1a05d3916956b0a8caa41b"
+    },
+    {
+      "file": "project/pcb_inspection/conveyor-drive-assembly.webp",
+      "bytes": 142352,
+      "sha256": "dea1cbf8e3ac22f97245ea44396d1bab3c4fbcde3e33caf53999afb15f8466fc"
+    },
+    {
+      "file": "project/crack-ppe-detection/operator-application.mp4",
+      "bytes": 1090065,
+      "sha256": "e9eea21cbd01ce4abb0aaad99314ab3e542732b551daa8f9e4aa303e3d17d85c"
+    }
+  ]
+}
