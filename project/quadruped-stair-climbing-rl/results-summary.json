@@ -1,0 +1,144 @@
+{
+  "project": "Quadruped Stair Climbing with Reinforcement Learning",
+  "evidence_cutoff": "2026-10-15",
+  "case_study_prepared": "2026-10-20",
+  "scope": "Existing simulation records; no new research runs for publication. Development comparisons, not held-out or real-robot results.",
+  "nominal_terrain": {
+    "riser_m": 0.07,
+    "steps": 4,
+    "tread_m": 0.3,
+    "width_m": 1.4
+  },
+  "assumptions": [
+    "Ideal terrain map and localization",
+    "No verified physical sensor or real-robot transfer"
+  ],
+  "control": {
+    "physics_dt_s": 0.005,
+    "control_dt_s": 0.02,
+    "hip_thigh_delay_ms": 40,
+    "calf_delay_ms": 50,
+    "joint_count": 12,
+    "later_actor_input_features": 1651,
+    "later_actions": 28
+  },
+  "landing_comparison": {
+    "source_artifact": "docs/diagnostics/stair_policy_20261013/landing_consistency_comparison_r1667.json",
+    "source_sha256": "813f266e33d4d3c2987bcc1f645b5e03fe60721723a33d7911ba08b7967822db",
+    "scope": "One nominal7cm4step case, retained RL actor plus two controller repairs. No new learner,20case success rate,20cm result or sim2real claim. Rendered candidate uses live physics; rendering adds no physics steps.",
+    "common_interval_s": [
+      0.5,
+      12.0
+    ],
+    "metrics": [
+      {
+        "quantity": "Body roll RMS",
+        "unit": "degrees",
+        "before": 5.451855266216345,
+        "after": 4.663884605702302
+      },
+      {
+        "quantity": "Foot impact P90",
+        "unit": "N",
+        "before": 839.919921875,
+        "after": 793.745849609375
+      },
+      {
+        "quantity": "Joint-torque RMS",
+        "unit": "N·m",
+        "before": 32.59485244200507,
+        "after": 32.790329741783665
+      }
+    ],
+    "completion_times_s": [
+      12.02,
+      13.46
+    ],
+    "roll_rate_rms_rad_s": [
+      0.34851149908925,
+      0.31962595826805923
+    ],
+    "front_right_load_delay_mean_s_reported": [
+      0.2717,
+      0.2083
+    ],
+    "front_right_landing_events_per_run_reported": 12,
+    "interpretation": "Bundled controller repair on one nominal condition; improvement is not uniform across spatial regions."
+  },
+  "mild_randomization_comparison": {
+    "scope": "20 reused development cases; same checkpoint and domain draws; moving-ascent criterion, not stable stopping",
+    "runs": [
+      {
+        "artifact": "outputs/retry_support_dr7_20261015_r1817/result.json",
+        "completions": 14,
+        "cases": 20,
+        "checkpoint_sha256": "bb921ed8682226a994e7bebf58a398e612d89a54e815451c60eb5711d81c7495",
+        "no_reset": true
+      },
+      {
+        "artifact": "outputs/prelift_body_dr7_20261015_r1822/result.json",
+        "completions": 11,
+        "cases": 20,
+        "checkpoint_sha256": "bb921ed8682226a994e7bebf58a398e612d89a54e815451c60eb5711d81c7495",
+        "no_reset": true
+      },
+      {
+        "artifact": "outputs/map_goal_dr7_20261015_r1825/result.json",
+        "completions": 7,
+        "cases": 20,
+        "checkpoint_sha256": "bb921ed8682226a994e7bebf58a398e612d89a54e815451c60eb5711d81c7495",
+        "no_reset": true
+      }
+    ],
+    "gained_and_lost": [
+      {
+        "gained": 0,
+        "lost": 3
+      },
+      {
+        "gained": 3,
+        "lost": 10
+      }
+    ]
+  },
+  "recorded_training_example": {
+    "artifact": "outputs/private_balance_train7_20261015_r1804/result.json",
+    "num_envs": 256,
+    "rollout_steps": 32,
+    "updates": 32,
+    "additional_control_transitions": 262144
+  },
+  "height_extension": {
+    "riser_m": 0.12,
+    "completed_ascent": false,
+    "adaptation_updates": 8,
+    "adaptation_control_transitions": 32768,
+    "original_supervisor_status": "FAILED: declared32 while actualrecipe8",
+    "independent_actual_training_verification": true,
+    "scope": "One centered start; post-adaptation evaluation failed at about2.30s. Original failed supervisor receipt preserved."
+  },
+  "media": [
+    {
+      "file": "stair-ascent-7cm.mp4",
+      "source_artifact": "outputs/landing_contrast_rgb7_20261013_r1668/policy.mp4",
+      "sha256": "04bf1171989049a4f1db515a7bf2d5e2e8dce50209145b6e39d54c45b26c10e6",
+      "frames": 336,
+      "fps": 25,
+      "actual_live_simulation": true,
+      "state_playback": false,
+      "speed": 1,
+      "extra_physics_steps": 0
+    },
+    {
+      "file": "stair-extension-12cm-failure.mp4",
+      "source_artifact": "outputs/height12_latest_rgb_20261014_r1726/policy.mp4",
+      "sha256": "05056ef822d941fb3b26aa4bb0dd3b1d309f60f2c5b18d397d66b816563aa95f",
+      "frames": 57,
+      "fps": 25,
+      "actual_live_simulation": true,
+      "state_playback": false,
+      "speed": 1,
+      "extra_physics_steps": 0
+    }
+  ]
+}

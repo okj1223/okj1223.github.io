@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="1000" viewBox="0 0 1440 1000" role="img" aria-labelledby="title desc">
+  <title id="title">Quadruped reinforcement learning and execution loop</title>
+  <desc id="desc">Public terrain and robot observations feed a PPO actor. Its learned gait, foot-placement and feedback adjustments pass through geometric planning and constrained inverse kinematics, then joint control and a delayed simulated plant. Measured state closes the loop. Training rewards and privileged diagnostics are separate from runtime actor inputs.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto-start-reverse"><path d="M0 0 10 5 0 10" fill="none" stroke="#862633" stroke-width="1.8"/></marker>
+    <style>
+      text { font-family: Inter, Arial, sans-serif; fill: #29231f; }
+      .eyebrow { font-size: 20px; font-weight: 700; letter-spacing: 2px; fill: #862633; }
+      .title { font-size: 39px; font-weight: 750; }
+      .heading { font-size: 29px; font-weight: 700; }
+      .body { font-size: 24px; fill: #64594f; }
+      .small { font-size: 21px; fill: #64594f; }
+      .number { font-size: 21px; font-weight: 700; fill: #862633; }
+      .card { fill: #fff; stroke: #ded6ce; stroke-width: 2; }
+      .flow { fill: none; stroke: #862633; stroke-width: 3.5; marker-end: url(#arrow); }
+    </style>
+  </defs>
+  <rect width="1440" height="1000" rx="26" fill="#f7f3ee"/>
+  <text x="60" y="63" class="eyebrow">POLICY → EXECUTION → PHYSICAL RESPONSE</text>
+  <text x="60" y="116" class="title">From learned action to actual foot support</text>
+
+  <rect x="60" y="170" width="400" height="235" rx="18" class="card"/>
+  <text x="84" y="212" class="number">01 / AVAILABLE OBSERVATIONS</text>
+  <text x="84" y="257" class="heading">Terrain + robot state</text>
+  <text x="84" y="301" class="body">Map · joints · IMU-related state</text>
+  <text x="84" y="339" class="body">Command · history · control state</text>
+  <text x="84" y="379" class="small">Ideal map and localization assumed</text>
+
+  <rect x="520" y="170" width="370" height="235" rx="18" fill="#862633"/>
+  <text x="546" y="212" style="font-size:21px;font-weight:700;fill:#f1c8cb">02 / LEARNED POLICY</text>
+  <text x="546" y="257" style="font-size:29px;font-weight:700;fill:white">PPO actor</text>
+  <text x="546" y="301" style="font-size:24px;fill:#fff1ed">1,651 input features</text>
+  <text x="546" y="339" style="font-size:24px;fill:#fff1ed">28 learned outputs</text>
+  <text x="546" y="379" style="font-size:21px;fill:#f1c8cb">Gait · footholds · body feedback</text>
+
+  <rect x="950" y="170" width="430" height="235" rx="18" class="card"/>
+  <text x="976" y="212" class="number">03 / FEASIBLE EXECUTION</text>
+  <text x="976" y="257" class="heading">Foot trajectories + IK</text>
+  <text x="976" y="301" class="body">Full-foot landing geometry</text>
+  <text x="976" y="339" class="body">Joint bounds · support estimates</text>
+  <text x="976" y="379" class="small">12 joint targets → position control</text>
+  <path d="M460 285H510" class="flow"/>
+  <path d="M890 285H940" class="flow"/>
+  <path d="M1165 405V465" class="flow"/>
+
+  <rect x="950" y="480" width="430" height="215" rx="18" class="card"/>
+  <text x="976" y="522" class="number">04 / DELAYED PHYSICAL PLANT</text>
+  <text x="976" y="567" class="heading">Actuators + Isaac PhysX</text>
+  <text x="976" y="611" class="body">Fitted motors · contacts · dynamics</text>
+  <text x="976" y="651" class="small">40 / 50 ms delay · 200 Hz physics</text>
+
+  <rect x="520" y="480" width="370" height="215" rx="18" class="card"/>
+  <text x="546" y="522" class="number">05 / CLOSED-LOOP RESPONSE</text>
+  <text x="546" y="567" class="heading">Measured motion</text>
+  <text x="546" y="611" class="body">Joint and body response</text>
+  <text x="546" y="651" class="small">Runtime feedback at 50 Hz</text>
+  <path d="M950 585H902" class="flow"/>
+  <path d="M520 585H260V417" class="flow"/>
+  <text x="70" y="635" class="body">A planned stance phase</text>
+  <text x="70" y="671" class="body">still needs physical support.</text>
+
+  <rect x="60" y="765" width="1320" height="175" rx="18" fill="#eae5de" stroke="#b6a89a" stroke-width="2" stroke-dasharray="8 7"/>
+  <text x="86" y="810" class="eyebrow">TRAINING &amp; ANALYSIS / SEPARATE INFORMATION BOUNDARY</text>
+  <text x="86" y="854" class="body">PPO reward and critic · actual contact forces · non-foot contact · torque · outcome</text>
+  <text x="86" y="896" class="small">Contact truth and randomized plant parameters are not injected into the runtime actor.</text>
+  <path d="M707 765V709" stroke="#a08d7b" stroke-width="2.5" stroke-dasharray="7 7" fill="none"/>
+</svg>
