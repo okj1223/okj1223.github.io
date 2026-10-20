@@ -13,7 +13,7 @@ share-img: /assets/img/profile.webp
 <div class="about-intro-copy">
 <p class="about-kicker">Robotics Systems Engineer</p>
 <h1>About Me</h1>
-<p class="about-lede">I am an M.S. student in Mechanical Engineering in the System Control Group at National Taiwan University. My work spans hardware, control, perception, and deployment, with recent experience supporting humanoid manipulation data collection and dataset quality workflows at ROBROS.</p>
+<p class="about-lede">I am an M.S. student in Mechanical Engineering in the System Control Group at National Taiwan University. My work spans hardware, control, perception, and robot learning. As a research assistant in the ROBROS AI team, I worked on OpenVLA humanoid manipulation experiments, designed demonstration and dataset workflows, and analyzed physical rollouts and failure cases.</p>
 </div>
 </div>
 

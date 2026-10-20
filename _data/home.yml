@@ -305,11 +305,11 @@ career:
     start: 2026-03-01
     end: 2026-07-31
     institution: ROBROS
-    relation: Robotics Research Assistant
+    relation: Robotics Research Assistant, AI Team
     logo: /assets/img/logos/partners/company/robros.png
     show_affiliation: true
     map_url: "https://www.google.com/maps/search/?api=1&query=ROBROS%20Korea"
-    summary: Humanoid robot AI training, teleoperation data collection and inspection, data-collection experiment pipeline design, and data-collection system development
+    summary: OpenVLA humanoid manipulation experiments, demonstration and dataset pipeline design, whole-body teleoperation, quality assurance, and inference failure analysis
     date: Mar. 2026 - Jul. 2026
   - type: education
     start: 2026-09-01

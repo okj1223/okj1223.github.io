@@ -3,12 +3,12 @@ layout: project
 date: 2026-04-13
 featured: true
 featured_order: 1
-title: "End-to-End Humanoid Manipulation Experiment and Data Pipeline for Warehouse Automation"
-card_title: "End-to-End Humanoid Experiment & Learning Pipeline"
-description: "A public-safe case study of the whole-body humanoid experiments and end-to-end teleoperation, action/no-action data design, validation, labeling, and learning pipeline I designed and operated at Robros."
-card_description: "Designed and operated a whole-body humanoid experimentation pipeline spanning task protocols, positive and no-op conditions, teleoperation, synchronized collection, QA, labeling, and learning iteration."
-share-description: "End-to-end whole-body humanoid experiment and learning-data pipeline designed and operated at Robros."
-subtitle: "Designing when the robot should act or stop, operating the whole body, and owning the pipeline from task protocol to learning-ready data."
+title: "OpenVLA Humanoid Manipulation and Experiment Pipeline at ROBROS"
+card_title: "ROBROS: OpenVLA & Humanoid Learning"
+description: "My work as a research assistant in the ROBROS AI team: OpenVLA manipulation experiments, whole-body teleoperation, experiment and dataset design, quality assurance, and physical rollout analysis."
+card_description: "Worked in the ROBROS AI team on OpenVLA sock and box manipulation, designing the experiment and data pipeline and analyzing target selection, missed grasps, and retry behavior."
+share-description: "ROBROS AI-team experience with OpenVLA, whole-body humanoid experiments, dataset design, and rollout failure analysis."
+subtitle: "AI-team research spanning OpenVLA manipulation, whole-body demonstrations, dataset quality, and the behavior of learned policies on a real robot."
 thumbnail-img: /assets/img/humanoid-teleoperation-workflow-cover.webp
 share-img: /assets/img/humanoid-teleoperation-workflow-cover.webp
 card_image: /assets/img/humanoid-teleoperation-workflow-cover.webp
@@ -18,7 +18,7 @@ permalink: /projects/robros-humanoid-manipulation-data-pipeline/
 filter_categories:
   - robotics
   - ai
-category_label: "Humanoid Robotics - Robot Learning - Logistics"
+category_label: "Humanoid Robotics - Vision-Language-Action - Robot Learning"
 impacts:
   - value: "3"
     label: "Task Protocols"
@@ -27,6 +27,10 @@ impacts:
   - value: "2-stage"
     label: "Automated + Manual QA"
 tech_tags:
+  - label: "OpenVLA"
+    style: "ai"
+  - label: "Vision-Language-Action"
+    style: "ai"
   - label: "Humanoid"
     style: "robot-hw"
   - label: "Whole-Body Control"
@@ -45,25 +49,27 @@ tech_tags:
     style: "sensor"
   - label: "ROS2 Workflow"
     style: "prog ros"
-quick_summary_note: "An end-to-end experiment-design and pipeline-ownership case study; customer details, internal tooling, dataset scale, and model performance remain non-public."
+quick_summary_note: "AI-team research experience combining OpenVLA manipulation experiments with an end-to-end demonstration and evaluation workflow. Individual rollout observations are reported without inferring a benchmark success rate."
 quick_summary:
   - label: "Role"
-    value: "Experiment and pipeline designer; whole-body teleoperator; action/no-action protocol, collection, QA, labeling, and learning-workflow owner"
+    value: "Research assistant in the ROBROS AI team; experiment and pipeline designer, whole-body teleoperator, dataset curator, and rollout reviewer"
   - label: "Scope"
-    value: "Whole-body humanoid soft-goods packing, box transfer, and tabletop pick-and-place experiments"
+    value: "OpenVLA sock pick-and-place and box lift-and-place; whole-body soft-goods packing, box transfer, and tabletop protocols"
   - label: "Inputs"
-    value: "Master-arm motion, MANUS finger articulation, robot state, multi-view vision, and episode metadata"
+    value: "Camera images and language instructions for VLA; synchronized robot state, master-arm and MANUS input, video, and episode metadata for demonstrations"
   - label: "Workflow"
-    value: "Design action and no-action conditions, calibrate, control, collect, validate, segment, grade, curate, train, and iterate"
+    value: "Design task and action/no-action conditions, collect and curate demonstrations, support learning experiments, review inference, and revise the next experiment"
   - label: "Status"
-    value: "Internal research PoC; dataset scale, model details, and performance remain non-public"
+    value: "Real-robot research PoC with OpenVLA; exact checkpoints, training settings, dataset scale, and aggregate performance remain non-public"
 ---
 
 ## Context
 
 Warehouse manipulation is difficult to reduce to a fixed sequence of robot commands. Packing deformable items depends on grasp shape and release timing. Moving boxes between storage and conveyor areas requires locomotion, torso motion, coordinated bimanual contact, and consistent placement. Human demonstration is a practical starting point only when the experiment, control protocol, synchronized recording, and evaluation criteria are designed as one system.
 
-At Robros, I designed and ran whole-body humanoid experiments across three related task protocols:
+At **ROBROS, I worked as a research assistant in the AI team**, contributing to **OpenVLA-based humanoid manipulation experiments** and designing the experiment and demonstration-data pipeline. Our OpenVLA work included **sock pick-and-place** and **box lift-and-place**, with camera images and language instructions conditioning robot actions. Reviewing physical rollouts was part of the work: I examined which object the robot approached, whether a grasp actually succeeded, and how it behaved after a miss.
+
+Across the broader humanoid program, I designed and ran three related task protocols:
 
 - packing soft household items such as socks, shirts, and towels into boxes;
 - transferring boxes from a storage rack to a conveyor;
@@ -72,6 +78,22 @@ At Robros, I designed and ran whole-body humanoid experiments across three relat
 Whole-body box transfer combined forward and backward stepping, torso bending and recovery, waist rotation, dual-arm box support, hand control, placement, and return to the initial pose. I designed how these actions were sequenced, collected, segmented, and evaluated—not only how the arm demonstration was recorded.
 
 The experimental challenge was to preserve the right kind of variation. Object position and task conditions needed enough diversity for learning, while initial pose, grasp convention, whole-body motion intent, episode boundaries, and safety procedure had to remain consistent across operators. The work remains an internal research PoC, so this page presents the pipeline I designed at a public-safe level.
+
+## AI-Team Work with OpenVLA
+
+Vision-language-action (VLA) models connect visual observations and a language instruction to robot actions. **OpenVLA was the model family we used for the sock and box manipulation experiments.** Its public model supports adaptation to robot tasks through demonstration-based fine-tuning; the [OpenVLA project](https://openvla.github.io/) describes that general method. Our company's checkpoint, adaptation settings, prompts, and robot interface are not specified here.
+
+My work connected the team's model experiments to the physical task: define what should happen, collect and review demonstrations under that definition, prepare usable episodes, and inspect the learned behavior during inference. I designed the task protocols and data workflow described below, operated whole-body demonstrations, and used rollout failures to inform subsequent collection and evaluation. The model stack and robot platform were shared team systems.
+
+| Part of the AI workflow | My contribution and its purpose |
+| --- | --- |
+| Task and experiment design | Defined object setup, action/no-action conditions, completion criteria, and failure cases so the intended behavior could be collected and evaluated consistently |
+| Demonstration data | Operated the robot through teleoperation and organized synchronized images, actions, observations, and episode metadata |
+| Learning-data preparation | Defined QA gates, semantic labels, recovery boundaries, trimming rules, and subset selection to support model-training experiments |
+| OpenVLA inference review | Examined sock and box rollouts for target selection, actual object possession, continued motion after a missed grasp, and regrasp attempts |
+| Experimental feedback | Connected observed behavior to questions about demonstration coverage, stopping, recovery, and the next experiment |
+
+VLA and imitation learning describe different aspects of this workflow. VLA describes the model's vision, language, and action interface. Imitation learning describes learning from demonstrations, which can also be used to adapt a VLA. The demonstrations and QA pipeline therefore had a direct role in the AI work.
 
 <div class="project-protocol-grid" markdown="0">
   <div class="project-protocol-card">
@@ -118,7 +140,8 @@ I designed the end-to-end experiment and data workflow shown above, then operate
 - **collection-pipeline design:** defining preflight, synchronized episode boundaries, recorder states, ingestion checks, and the conditions required before review;
 - **evaluation-pipeline design:** separating automated integrity validation from manual task evaluation, then defining grade priority, rejection rules, and pending-review handling;
 - **labeling and repair design:** decomposing tasks into frame-level subtasks, setting semantic label boundaries, and defining trim or partial-deletion rules;
-- **learning iteration:** curating experiment-ready subsets, reviewing downstream behavior, and feeding failures back into the next protocol and collection round.
+- **learning iteration:** curating experiment-ready subsets, reviewing downstream behavior, and feeding failures back into the next protocol and collection round;
+- **VLA experiment review:** working with the AI team's OpenVLA sock and box experiments, analyzing target selection and failed-grasp responses during inference, and using those observations to frame recovery and generalization questions.
 
 I wrote the operating, task, collection, review, and labeling guidelines represented by the source documentation. This converted the experiment from tacit operator knowledge into a reproducible process another collector or reviewer could execute consistently.
 
@@ -405,20 +428,21 @@ For grasp-sensitive tasks, the arm path is not enough. A delayed opening, asymme
 
 ## Experiment Design and Learning Iteration
 
-I designed the collection as an experiment loop, not a one-way data-generation job:
+I designed the collection as an experiment loop connected to the AI team's model work:
 
 1. define the behavior or failure mode the next experiment needs to test, including whether the robot should act, wait, start, or stop;
 2. specify the whole-body task, positive and no-op conditions, controlled variables, allowed variation, initial state, and evaluation rule;
 3. collect synchronized demonstrations under that protocol;
 4. run automated FAIL/WARN/PASS validation, then the documented manual grade decision tree and semantic labeling;
 5. build a learning-ready subset based on the experiment's inclusion rules;
-6. run imitation-learning or reinforcement-learning-oriented experiments;
+6. use curated data in the team's imitation-learning and OpenVLA experiment workflow;
 7. inspect rollout behavior and trace the result back to protocol, control, recording, label, or model issues;
 8. revise the next experiment and collection round.
 
 | Experimental question | Design decision I made | Evidence used |
 | --- | --- | --- |
 | Can the robot reproduce the intended whole-body sequence? | Split the task into locomotion, lift, rotation, placement, and return phases | Multi-view video, phase labels, action and observation state |
+| How does OpenVLA respond when execution diverges from the demonstrations? | Review target choice, grasp outcome, continuation, and retry as separate events | Sock and box inference recordings, object state, and the task's expected response |
 | Does the policy act only when the task condition is valid? | Collect Positive, Easy Negative, Hard Negative, Borderline, and Transition episodes with explicit expected responses | Target presence and location, operator response, task video, episode condition |
 | Is variation useful or merely operator noise? | Hold posture, grasp convention, sequence, and label semantics constant while varying approved object and target positions | Protocol version, setup metadata, cross-operator episode review |
 | Is a bad result a data problem or an execution problem? | Separate automated recording validation from manual task outcome evaluation | PASS/WARN/FAIL gate, Corrupted/Fail/Dirty/Success grade, reviewer reason |
@@ -429,7 +453,7 @@ I designed the collection as an experiment loop, not a one-way data-generation j
 
 The learning workflow depended on an explicit relationship between what the robot observed and what action it was asked to execute. An episode could contain visually convincing behavior while still being unsuitable for a particular training experiment—for example, if the command was shifted relative to the image or if an intervention changed the meaning of the target action.
 
-At the public abstraction level, imitation learning maps an observation history and task condition to a robot action or action sequence. The data contract must therefore answer four questions:
+For the OpenVLA work, the task condition included a language instruction and the policy received visual input. More generally, imitation learning maps an observation and task condition to a robot action; some policy designs also use observation histories or action sequences. The data contract must therefore answer four questions:
 
 | Contract question | Consequence for the experiment |
 | --- | --- |
@@ -448,7 +472,7 @@ The runtime question was whether a learned command produced the intended physica
 
 An inference output has to retain its action convention, joint order, units, frame, and timing as it passes through the robot interface. Observation history, normalization, execution limits, and reset behavior are part of that boundary. A policy file alone is not the complete deployed behavior.
 
-For sequence-based outputs, the execution layer must also define which predicted command is current, how a newly predicted sequence replaces an older one, and how interruption or task completion invalidates pending commands. These are interface questions for the learning workflow; the public description does not disclose the company's implementation.
+When a policy uses sequence-based outputs, the execution layer must also define which predicted command is current, how a newly predicted sequence replaces an older one, and how interruption or task completion invalidates pending commands. This is a general interface consideration; it does not specify the action-output format of our OpenVLA setup.
 
 I used the recorded task video, action state, observation state, and semantic timeline together to organize diagnosis:
 
@@ -463,20 +487,51 @@ I used the recorded task video, action state, observation state, and semantic ti
 
 This kept model changes connected to a specific experimental question. A lower imitation loss was useful information, but physical task completion, appropriate waiting, release quality, and recovery behavior still needed their own review.
 
-## Imitation, Reinforcement Learning, and Evaluation Roles
+## OpenVLA Rollouts: Target Selection and Failed-Grasp Responses
 
-Demonstrations supplied examples of the intended behavior. Reinforcement-learning-oriented experiments posed a different question: how behavior changes through interaction and feedback. The project connected data collection and evaluation to those experiments without treating every curated episode as proof of an autonomous policy.
+I presented these experiments in my October 20, 2026 research report. The report identifies my industry role in the AI team, our use of OpenVLA, and the sock and box tasks. Its recorded examples show why evaluating a policy requires following the object and the task outcome through time.
+
+### Box task: a change in the selected target
+
+In the box experiment, inference began at approximately **15 seconds** in the original recording. The robot first handled boxes placed above a larger supporting container. Once those target boxes had been removed, its hands approached the supporting container itself at approximately **33 seconds**.
+
+We had not used that container as a manipulation target or demonstrated that approach in our task-specific demonstrations. The attempt to grasp it was unsuccessful. The observation was therefore a change in target selection, with the new manipulation task still incomplete.
+
+This raised a concrete question: was the response driven by the visual scene, the language instruction, or a familiar movement pattern? We had not isolated those causes. My account of the task-specific demonstrations also does not establish what was present in the model's pretraining data. The useful finding was the behavior to investigate, rather than a claim of verified zero-shot task success.
+
+### Sock task: continuing after a miss versus trying again
+
+The sock recording contained two different responses after an unsuccessful grasp:
+
+| Original recording interval | Observed behavior | Evaluation consequence |
+| --- | --- | --- |
+| **16.5–23.5 s** | The sock remained on the table while the hand continued toward the destination box | A placement-like motion occurred without the object. Arm motion alone would misclassify the attempt |
+| **47.5–59.6 s** | After a miss, the hand returned to the sock and attempted another grasp; it briefly moved the sock, then lost it again | A retry was observable, but the excerpt ended without a completed placement |
+
+We had not added explicit recovery demonstrations to our task-specific training, which made the retry particularly interesting. That is my account of the experiment's data preparation, rather than an audit of the model's full training history. The recording alone cannot establish whether the policy detected failure internally or why it tried again.
+
+For evaluation, I separated **attempted grasp**, **object possession**, **retry**, and **completed placement**. A return motion can be worth studying even when recovery fails. This distinction also connects directly to the Recovery labels, failure grades, and action/no-action conditions in the data pipeline.
+
+### Research questions arising from the experiments
+
+These observations shaped my interest in reliable recovery, generalization across objects and instructions, learning with fewer demonstrations, and VLA model design. They suggested controlled comparisons: vary the instruction while holding the scene fixed, vary target availability under the same instruction, and compare failed-grasp responses across repeated trials. These are research questions motivated by the observed behavior, not completed ablation results.
+
+## VLA, Imitation Learning, and Reinforcement Learning
+
+The OpenVLA experiments used the team's demonstration and learning workflow to study real robot behavior. The research report also records earlier online reinforcement-learning attempts that did not work as expected. It provides no result tying an RL update to improved performance on these OpenVLA tasks, leaving that connection as a question for further experimentation.
 
 The evaluation structure separated **recording validity**, **task outcome**, **execution quality**, and **experimental coverage**. This made it possible to preserve a useful failed rollout, reject corrupted data, distinguish a dirty success from a clean one, and identify which conditions the next collection round needed.
 
-The resulting contribution was a complete experimental loop: controlled whole-body task definition, usable demonstrations, traceable data decisions, learning interfaces, and physical rollout diagnosis. Exact models, training settings, and internal numerical results remain within the company program.
+The resulting contribution connected AI-team experimentation with controlled task definitions, usable demonstrations, traceable data decisions, and physical rollout diagnosis. OpenVLA is identified at the model-family level; exact checkpoints, training settings, and internal numerical results remain within the company program.
 
 
 ## Evidence and Outcome
 
-I built the end-to-end path from experimental question to learning-ready data and the next iteration. The pipeline connected whole-body control, operator calibration, Positive and no-op experiment design, task protocol, synchronized multi-modal recording, recorder-state monitoring, automated FAIL/WARN/PASS checks, the manual Corrupted/Fail/Dirty Success/Success decision tree, temporal and Recovery labels, action–observation diagnosis, targeted trimming, dataset filtering, and downstream experiment feedback.
+As a research assistant in the ROBROS AI team, I worked with OpenVLA sock and box manipulation experiments and built the path from experimental question to learning-ready data and the next iteration. The pipeline connected whole-body control, operator calibration, Positive and no-op experiment design, task protocol, synchronized multi-modal recording, recorder-state monitoring, automated FAIL/WARN/PASS checks, the manual Corrupted/Fail/Dirty Success/Success decision tree, temporal and Recovery labels, action–observation diagnosis, targeted trimming, dataset filtering, and downstream experiment feedback.
 
 The result was a reproducible experimental system across three task protocols, not merely a set of demonstrations. It made whole-body runs easier to reproduce, compare, diagnose, curate, and reuse; it also turned fit, posture, timing, recovery, evaluation, and labeling judgment into explicit operating rules. No dataset-size, policy-success-rate, ablation, production-throughput, or deployment-readiness figure is claimed on this page.
+
+The October 20 report's slides 4–6 and speaker notes document the OpenVLA work and the rollout observations summarized above. The named model and my role come from my account of the work. The recordings support the visible motion and object outcomes, while the model's internal reasoning and the causes of those behaviors remain open.
 
 ## Public Media Appearances
 
@@ -518,6 +573,6 @@ Because this work belongs to an active company research program, the public summ
 
 The workflow diagram is a portfolio abstraction rather than an export of the internal architecture. Supporting figures are documentation-safe illustrations or tightly cropped excerpts with customer, credential, and deployment details omitted. Company source code, raw demonstrations, credentials, and full internal UI captures are not published because they may contain proprietary robot behavior, workspaces, or operational details.
 
-The current scope is whole-body experimental control and learning-pipeline development rather than a claim of autonomous warehouse deployment. Remaining technical risks include gait and manipulation coordination, demonstration variance, sensor synchronization, hand-state mismatch, object diversity, real-hardware safety, and transfer from a controlled setup to deployment-like conditions.
+The scope includes AI-team OpenVLA manipulation experiments, inference and failure analysis, whole-body experimental control, and learning-pipeline development. Remaining technical risks include target selection, reliable recovery, gait and manipulation coordination, demonstration variance, sensor synchronization, hand-state mismatch, object diversity, real-hardware safety, and transfer from a controlled setup to deployment-like conditions.
 
 The main lesson was that robot-learning quality is designed before training begins. Positive and no-op conditions, start/stop transitions, whole-body task structure, operator fit, disciplined teleoperation, synchronized sensing, automated FAIL/WARN/PASS validation, and the manual grade decision tree determine whether later model work starts from a useful signal or avoidable noise.

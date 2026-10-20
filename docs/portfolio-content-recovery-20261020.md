@@ -39,7 +39,7 @@ instructions are not restored as accomplished work.
 | PCB inspection | Conveyor CAD/printing/drive/friction; detector versus board judgment; orientation/normalization/matching; RealSense/robot transforms; inspection specification; wake-word/speaker verification/STT/intent/MQTT | **Conveyor Design and Fabrication** through **Voice Interface: Wake Word to Structured Command**. All older extant media subjects are present, including recovered printing and pre-belt assembly. Team integration scope retained. |
 | TurtleBot3 | HSV/reflection handling; polynomial lane/PD; traffic/barrier states; marker transforms; arm IK/Jacobian; sensor fusion/arbitration; simulation-to-hardware iteration | **Lane Perception: From Pixels to a Steering Error** through **State Estimation and Behavior Arbitration**. Incorrect general square-Jacobian inversion replaced by a damped pseudoinverse explanation. General models separated from unpreserved tuned coefficients. |
 | SCR apparatus | Gas mixture/flow control; reactor/sample/thermal zones; analyzer path; experiment sequence; NOx conversion/space velocity; uncertainty | **Integrating Gas Delivery, Reactor, and Measurement** through **Repeatability and Uncertainty**. Flow-weighted concentration and GHSV defined consistently. Apparent conversion is not intrinsic kinetics. No unverified compliance or round-robin result. |
-| Robros humanoid | Whole-body protocol/teleoperation; synchronized episodes; labeling/quality gates; curation; learning/runtime interfaces | August expansion retained. **From Curated Episodes to a Learning Experiment**, **Runtime Execution and Action–Observation Diagnosis**, and **Imitation, Reinforcement Learning, and Evaluation Roles** add training/evaluation connections at a public-safe level. |
+| Robros humanoid | AI-team OpenVLA work; whole-body protocol/teleoperation; synchronized episodes; labeling/quality gates; curation; learning/runtime interfaces; target-selection and failed-grasp analysis | August expansion retained. **AI-Team Work with OpenVLA**, **From Curated Episodes to a Learning Experiment**, **Runtime Execution and Action–Observation Diagnosis**, **OpenVLA Rollouts: Target Selection and Failed-Grasp Responses**, and **VLA, Imitation Learning, and Reinforcement Learning** connect the data pipeline to the model experiments. See the follow-up source audit below. |
 | Quadruped stairs | Restoration; actor contracts; flat/command/depth baselines; full-height reference/neutral finish; command limits; BC/GRU/corrective collection; recovery/speed; two-step learning; PPO/curriculum; asset/motor/sole diagnostics; later terrain control/randomization/height extension | Entire case rebuilt as **Reconstruct, Teach, Learn, and Explain**, followed by eight technical stages. Earlier 20 cm reference and learned two-step results restored with their execution conditions. Existing 7 cm live recording, measured comparison and failed extension retained. Expanded JSON records scopes, sources, seed results and hashes. |
 
 ## Media coverage
@@ -88,3 +88,42 @@ new physics or learned-policy videos. The existing live-physics videos are uncha
 The working browser, media, and rendered-link receipts are retained separately.
 Publication requires a clean staged diff, normal push, successful current Pages
 workflow, and verification of the served cases, search index, and changed media.
+
+## Follow-up: omitted ROBROS AI-team and VLA experience
+
+The first recovery at `3c26765` still omitted the named OpenVLA work and the
+AI-team role. Its ROBROS audit relied on the existing protocol account and added
+general learning interfaces without checking the presenter's Downloads deck.
+The restored article now covers those missing subjects explicitly.
+
+Primary source: `02_Kyungjun_Oh_weekly_report_261020.pptx`, slides **4–6**
+and their speaker notes, SHA-256
+`3b601912cd9192dbb84107e5faba134cd5033e12ec70c04348fc1954ad6e25a3`.
+The source deck and its original embedded media remain outside the public repository.
+
+| Source | Content reflected in the project |
+| --- | --- |
+| Slide 4 and notes | Research assistant working in the AI team; OpenVLA sock pick-and-place and box lift-and-place; images and instructions conditioning actions |
+| Slide 5 and notes | Original 15.0–37.6 s box excerpt; approach to the supporting container at about 33 s after target removal; unsuccessful grasp; target selection and its cause treated separately |
+| Slide 6 and notes | Original 16.5–23.5 s sock miss followed by continuation; 47.5–59.6 s retry, brief movement, then loss; no completed placement in the retry excerpt |
+| Slide 6 and notes | Presenter account of no added task-specific recovery demonstrations, earlier online-RL difficulty, and interests in recovery, generalization, data efficiency, and model design |
+| OpenVLA project website | General VLA interface and demonstration-based adaptation, linked as model background rather than evidence of the company's implementation |
+
+Role, model attribution, inference timing, and task-specific demonstration coverage
+come from the presenter's account. The inspected clips support visible motion and
+object outcomes; they do not independently establish the checkpoint, prompt,
+training recipe, internal failure awareness, or causal mechanism. The text retains
+that distinction and makes no successful recovery or zero-shot task-success claim.
+The later lab-platform proposal is not attributed to the ROBROS employment period.
+
+The case title, project-card copy, technology tags, role and workflow summary,
+homepage career entry, and About introduction now identify the AI-team/OpenVLA
+work consistently. Existing protocol, QA, labeling, whole-body control, and media
+coverage are retained.
+
+Follow-up validation: all 11 project-card records, the production Jekyll build,
+and Doctor pass. All 15 existing ROBROS project-image references are retained;
+the rendered case's 29 local asset references resolve. Desktop and 390 px mobile
+browser checks pass without page overflow, with 27 matching heading/TOC entries
+and scrollable tables. `OpenVLA` search returns the updated case. The homepage
+card and AI-team career entry, and the About introduction, display the new scope.
